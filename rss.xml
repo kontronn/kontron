@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kontronn</title>
+    <link>https://www.kontronn.com/</link>
+    <description>Recent content on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 26 Jul 2022 21:46:25 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>北南南北</title>
+      <link>https://www.kontronn.com/about.html</link>
+      <pubDate>Thu, 09 Jun 2022 20:12:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/about.html</guid>
+      <description>北南南北 是众多使用 VxWorks 嵌入式实时操作系统的网友分享经验的平台，为的就是让 VxWorks 的学习和应用变得相对开放一些，在此也欢迎你的加入！
+我们的愿景 技术创新是技术持续发展的生命力，紧跟技术的发展趋势，研究最新的技术，保持对新技术的热情和好奇心，让技术为生产和生活服务。
+使用反馈  加入 VxWorks Club   或 Google AI TPU     欢迎你的加入
+ </description>
+    </item>
+    
+    <item>
+      <title>友情链接</title>
+      <link>https://www.kontronn.com/flinks.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.kontronn.com/flinks.html</guid>
+      <description>如想交换本站友情链接，请在评论区留下你的站点信息，格式参考如下：
+- name: VxWorks俱乐部 desc: VxWorks实时操作系统 avatar: https://www.vxworks.net/images/vxworks-club-logo.png link: https://www.vxworks.net </description>
+    </item>
+    
+  </channel>
+</rss>
