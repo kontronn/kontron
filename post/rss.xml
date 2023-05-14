@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>News on Kontronn</title>
-    <link>https://www.kontronn.com/categories/news/</link>
-    <description>Recent content in News on Kontronn</description>
+    <title>Posts on Kontronn</title>
+    <link>https://www.kontronn.com/post/</link>
+    <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 May 2023 12:31:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 May 2023 12:31:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
       <link>https://www.kontronn.com/post/linux/how-to-install-pinyin-for-ubuntu-22.04.html</link>

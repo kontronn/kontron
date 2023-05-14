@@ -2,6 +2,28 @@
 <search>
   
   <entry>
+    <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
+    <url>/post/linux/how-to-install-pinyin-for-ubuntu-22.04.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Samsung</tag>
+      <tag>CXL 2.0</tag>
+      <tag>CXL Memory</tag>
+    </tags>
+    <content type="html"><![CDATA[基于先进CXL 2.0的128GB CXL DRAM将于今年量产，加速下一代存储器解决方案的商用化，三星将继续与全球数据中心、服务器、芯片企业合作，扩大CXL生态系统
+三星电子今日宣布，研发出其首款支持Compute Express Link™（CXL™）2.0的128GB DRAM。同时，三星与英特尔密切合作，在英特尔®至强®平台上取得了具有里程碑意义的进展。
+继2022年五月，三星电子研发出其首款基于CXL 1.1的CXL DRAM（内存扩展器）后，又继续推出支持CXL 2.0的128GB CXL DRAM，预计将加速下一代存储解决方案的商用化。该解决方案支持PCIe 5.0（x8通道），提供高达每秒35GB的带宽。
+三星电子新业务企划副总裁Jangseok Choi表示： 作为CXL联盟的董事会成员，三星电子在CXL技术上一直处于前沿地位，这一突破性的进展强化了我们通过与全球各地的数据中心、企业级服务器和芯片公司合作，进一步扩大CXL生态系统的决心。
+英特尔公司技术创新总监Jim Pappas表示： 英特尔很高兴与三星合作，共同投资一个充满活力的CXL生态系统。英特尔将继续与三星携手，促进创新CXL产品在整个行业的发展和采用。
+澜起科技总裁Stephen Tai表示： 澜起科技很高兴能够量产第一批支持CXL 2.0的控制器，我们期待与三星继续加强合作，推进CXL技术发展并扩大其生态系统。
+CXL 2.0是三星有史以来第一个支持内存池（Pooling）的产品。内存池是一种内存管理技术，它将服务器平台上的多个CXL内存块绑定在一起，形成一个内存池，使多个主机能够根据需要从池中动态分配内存。这项新技术使客户尽可能的降本增效，从而帮助企业将有限的资源重新投资于增强服务器内存中去。
+三星电子计划于今年年底之前开始量产这一最新的CXL 2.0 DRAM，并准备推出多种容量的产品，以满足快速变化的下一代计算市场，进一步加速扩大CXL生态系统。
+CXL作为下一代，能够为高性能服务器系统中与CPU一起使用的加速器、DRAM和存储设备提高效率。由于它与主内存（main DRAM）共同使用时可扩大带宽和容量，该技术的进步有望在人工智能（AI）和机器学习（ML）等核心技术，对处理高速数据的需求极大增加的下一代计算市场引起轰动。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>北南南北</title>
     <url>/about.html</url>
     <categories>
