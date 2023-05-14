@@ -5,8 +5,7 @@
     <link>https://www.kontronn.com/</link>
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Tue, 26 Jul 2022 21:46:25 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <language>zh-CN</language><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>北南南北</title>
       <link>https://www.kontronn.com/about.html</link>
@@ -26,7 +25,7 @@
       
       <guid>https://www.kontronn.com/flinks.html</guid>
       <description>如想交换本站友情链接，请在评论区留下你的站点信息，格式参考如下：
-- name: VxWorks俱乐部 desc: VxWorks实时操作系统 avatar: https://www.vxworks.net/images/vxworks-club-logo.png link: https://www.vxworks.net </description>
+name: VxWorks俱乐部 desc: VxWorks实时操作系统 link: https://www.vxworks.net </description>
     </item>
     
   </channel>
