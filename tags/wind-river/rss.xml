@@ -1,37 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Wind River on VxWorks 7</title>
-    <link>https://www.vxworks7.com/tags/wind-river/</link>
-    <description>Recent content in Wind River on VxWorks 7</description>
+    <title>Wind River on Kontronn</title>
+    <link>https://www.kontronn.com/tags/wind-river/</link>
+    <description>Recent content in Wind River on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 07 May 2023 11:13:00 -0400</lastBuildDate><atom:link href="https://www.vxworks7.com/tags/wind-river/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 12:48:11 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/wind-river/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>风河Helix虚拟化平台和VxWorks 653提供更广泛的安全认证证据以加速航天航空和国防系统的开发</title>
-      <link>https://www.vxworks7.com/post/news/wind-river-helix-virtualization-platform-and-vxworks-653.html</link>
-      <pubDate>Sun, 07 May 2023 11:13:00 -0400</pubDate>
+      <title>风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发</title>
+      <link>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</link>
+      <pubDate>Mon, 22 May 2023 12:48:11 -0400</pubDate>
       
-      <guid>https://www.vxworks7.com/post/news/wind-river-helix-virtualization-platform-and-vxworks-653.html</guid>
-      <description>&lt;p&gt;全球领先的关键任务智能系统软件提供商风河公司近日宣布，提供更广泛的安全认证平台架构支持。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Wind River风河系统公司的发展历史</title>
-      <link>https://www.vxworks7.com/post/news/wind-river-systems-development-history.html</link>
-      <pubDate>Sun, 07 May 2023 06:32:29 -0400</pubDate>
-      
-      <guid>https://www.vxworks7.com/post/news/wind-river-systems-development-history.html</guid>
-      <description>&lt;p&gt;风河系统公司由Jerry Fiddler和Dave Wilner共同创立，1981年Fiddler离开美国劳伦斯伯克利国家实验室，从事控制系统的软件编写工作，但他想在“计算机音乐合成”方面创业，于是他投资了一家致力于实时处理方面的咨询公司。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Wind River Studio支持最新英特尔处理器，满足CSP之5G需求</title>
-      <link>https://www.vxworks7.com/post/news/wind-river-studio-supports-the-latest-intel-processors-to-meet-5g-needs-of-cloud-service-provider.html</link>
-      <pubDate>Sat, 15 Apr 2023 08:51:48 -0400</pubDate>
-      
-      <guid>https://www.vxworks7.com/post/news/wind-river-studio-supports-the-latest-intel-processors-to-meet-5g-needs-of-cloud-service-provider.html</guid>
-      <description>&lt;p&gt;全球领先的关键任务智能系统软件提供商风河公司近日于西班牙巴塞罗那2023世界移动大会上宣布Wind River Studio支持第四代Intel Xeon Scalable处理器，同时搭载Intel vRAN Boost，包含集成化加速功能，有助提升吞吐量并降低延迟与功耗，从而满足极具挑战性的5G负载，且仅占用单核物理空间。&lt;/p&gt;</description>
+      <guid>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</guid>
+      <description>&lt;p&gt;为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。&lt;/p&gt;</description>
     </item>
     
   </channel>

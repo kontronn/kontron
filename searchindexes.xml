@@ -2,6 +2,26 @@
 <search>
   
   <entry>
+    <title>风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&D 系统的开发</title>
+    <url>/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Wind River</tag>
+      <tag>Helix Virtualization</tag>
+      <tag>VxWorks 653</tag>
+    </tags>
+    <content type="html"><![CDATA[为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。
+DO-178C DAL A 认证证据现已可用于 Armv8-A 架构的 Wind River Helix™ 虚拟化平台。 最新版本的 VxWorks  ® 653 为 PowerPC 提供更新的 DO-178C DAL A 认证证据。
+具有 DO-178C DAL A 证据的 Helix 平台是一个安全认证的多核、多租户平台，支持多个独立的关键级别。 它专为各种关键任务行业用例而设计，例如商业和军事航空电子设备，允许客户运行不安全的软件以及经过最高级别认证的软件，这些软件涉及航空电子设备 (DO-178C)、汽车 (ISO 26262)、工业 ( IEC 61508) 和其他类似标准。 Helix Platform 也符合 ARINC 653 标准，并在最新的硬件平台上提供强大的时间和空间分区，以确保故障遏制以及以最少的测试和集成需求升级应用程序的能力。
+VxWorks 653，具有DO-178C DAL A证明，是一个安全可靠的多核、多租户平台，可用于PowerPC架构。 VxWorks 653 也符合 ARINC 653 标准，具有与 Helix 平台相同的稳健性。
+“智能边缘的发展为航空航天和国防等行业提出了一系列独特的要求和挑战，包括与认证需求相关的复杂性增加。 随着 Helix 平台和 VxWorks 653 的更新安全认证证据的可用性，我们正在为我们的客户提供更多灵活性和加速创新的机会，以创建下一代安全可靠的多操作系统智能设备，”首席产品 Avijit Sinha 说 军官，风河。
+风河技术已在最具挑战性的安全关键型应用中得到验证，使组织能够更轻松、更经济地满足 EN 50128、IEC 61508、ISO 26262、DO-178C 和 ED-12C 的严格安全认证要求。
+凭借在 120 多架民用和军用飞机的 880 多个安全项目中得到 400 多家客户验证的技术，风河正在推动航空航天和国防领域向软件定义系统的过渡。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
     <url>/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</url>
     <categories><category>News</category>

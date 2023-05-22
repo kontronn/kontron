@@ -6,7 +6,16 @@
     <description>Recent content in News on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 May 2023 12:31:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 12:48:11 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发</title>
+      <link>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</link>
+      <pubDate>Mon, 22 May 2023 12:48:11 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</guid>
+      <description>&lt;p&gt;为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
       <link>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</link>
