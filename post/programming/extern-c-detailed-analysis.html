@@ -269,7 +269,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="151"></div>
+      <div class="item-count" id="wordsCount" data-count="150"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -355,7 +355,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>33</span>
+  <span class="post-meta-item-text">字数：</span><span>32</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -387,12 +387,12 @@
     <div class="post-body  autonumber " itemprop="articleBody">
       
   <p>在你工作过的系统里，不知能否看到类似下面的代码。</p>
-<p><img src="https://images0.cnblogs.com/blog/517264/201306/30155545-c4256af2e10747f6b1386390f87eb78f.jpg" alt="My Handle H"></p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-1.jpg" alt="My Handle H"></p>
 <p>这好像没有什么问题，你应该还会想&quot; “嗯⋯是啊，我们的代码都是这样写的，从来没有因此碰到过什么麻烦啊～”。</p>
 <p>你说的没错，如果你的头文件从来没有被任何C++程序引用过的话。</p>
-<p>这与C++有什么关系呢? 看看__cplusplus（注意前面是两个下划线） 的名字你就应该知道它与C++有很大关系。__cplusplus是一个C++规范规定的预定义宏。你可以信任的是：所有的现代C++编译器都预先定义了它；而所有C语言编译器则不会。另外，按照规范__cplusplus的值应该等于1 9 9 7 1 1 L ，然而不是所有的编译器都照此实现，比如g++编译器就将它的值定义为1。</p>
+<p>这与C++有什么关系呢? 看看__cplusplus（注意前面是两个下划线）的名字你就应该知道它与C++有很大关系。__cplusplus是一个C++规范规定的预定义宏。你可以信任的是：所有的现代C++编译器都预先定义了它；而所有C语言编译器则不会。另外，按照规范__cplusplus的值应该等于1 9 9 7 1 1 L ，然而不是所有的编译器都照此实现，比如g++编译器就将它的值定义为1。</p>
 <p>所以，如果上述代码被C语言程序引用的话，它的内容就等价于下列代码。</p>
-<p><img src="https://images0.cnblogs.com/blog/517264/201306/30160050-f46b0f9a4bc74634850a0ab4355b8d1c.jpg" alt="My Handle H 2"></p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-2.jpg" alt="My Handle H 2"></p>
 <p>在这种情况下，既然extern &ldquo;C&rdquo; { }经过预处理之后根本就不存在，那么它和#include指令之间的关系问题自然也就是无中生有。</p>
 <h2 id="extern-c的前世今生">extern &ldquo;C&quot;的前世今生</h2>
 <p>在C++编译器里，有一位暗黑破坏神，专门从事一份称作“名字粉碎”(name mangling)的工作。当把一个C++的源文件投入编译的时候，它就开始工作，把每一个它在源文件里看到的外部可见的名字粉碎的面目全非，然后存储到二进制目标文件的符号表里。</p>
@@ -403,7 +403,6 @@
 <p>但 C语言却是一门单一名字空间的语言，也不允许函数重载，也就是说，在一个编译和链接的范围之内，C语言不允许存在同名对象。比如，在一个编译单元内部，不允许存在同名的函数，无论这个函数是否用static修饰；在一个可执行程序对应的所有目标文件里，不允许存在同名对象，无论它代表一个全局变量，还是一个函数。所以，C语言编译器不需要对任何名字进行复杂的处理（或者仅仅对名字进行简单一致的修饰（decoration），比如在名字前面统一的加上单下划线_）。</p>
 <p>C++的缔造者Bjarne Stroustrup在最初就把——能够兼容C，能够复用大量已经存在的C库——列为C++语言的重要目标。但两种语言的编译器对待名字的处理方式是不一致的，这就给链接过程带来了麻烦。</p>
 <p>例如，现有一个名为my_handle.h的头文件，内容如下：</p>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
