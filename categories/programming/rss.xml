@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Kontronn</title>
-    <link>https://www.kontronn.com/post/</link>
-    <description>Recent content in Posts on Kontronn</description>
+    <title>Programming on Kontronn</title>
+    <link>https://www.kontronn.com/categories/programming/</link>
+    <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 06 Jun 2023 13:01:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jun 2023 13:01:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于extern C的的详细剖析</title>
       <link>https://www.kontronn.com/post/programming/extern-c-detailed-analysis.html</link>
@@ -27,24 +27,6 @@ extern &amp;ldquo;C&amp;quot;的前世今生 在C++编译器里，有一位暗�
 但 C语言却是一门单一名字空间的语言，也不允许函数重载，也就是说，在一个编译和链接的范围之内，C语言不允许存在同名对象。比如，在一个编译单元内部，不允许存在同名的函数，无论这个函数是否用static修饰；在一个可执行程序对应的所有目标文件里，不允许存在同名对象，无论它代表一个全局变量，还是一个函数。所以，C语言编译器不需要对任何名字进行复杂的处理（或者仅仅对名字进行简单一致的修饰（decoration），比如在名字前面统一的加上单下划线_）。
 C++的缔造者Bjarne Stroustrup在最初就把——能够兼容C，能够复用大量已经存在的C库——列为C++语言的重要目标。但两种语言的编译器对待名字的处理方式是不一致的，这就给链接过程带来了麻烦。
 例如，现有一个名为my_handle.h的头文件，内容如下：</description>
-    </item>
-    
-    <item>
-      <title>风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发</title>
-      <link>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</link>
-      <pubDate>Mon, 22 May 2023 12:48:11 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</guid>
-      <description>&lt;p&gt;为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
-      <link>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</link>
-      <pubDate>Fri, 12 May 2023 12:31:56 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</guid>
-      <description>&lt;p&gt;基于先进CXL 2.0的128GB CXL DRAM将于今年量产，加速下一代存储器解决方案的商用化，三星将继续与全球数据中心、服务器、芯片企业合作，扩大CXL生态系统&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -10,19 +10,19 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="Kontronn" />
+<meta itemprop="name" content="Programming" />
 <meta itemprop="description" content="Where there is embedded, there is VxWorks." />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
 <meta itemprop="keywords" content="Embedded,VxWorks,Linux,Server,Real Time" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Kontronn" />
+<meta property="og:title" content="Programming" />
 <meta property="og:description" content="Where there is embedded, there is VxWorks." />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/"/>
+<meta property="og:url" content="https://www.kontronn.com/categories/programming/"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 
@@ -39,7 +39,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":true,"isPage":false,"path":"www.kontronn.com","permalink":"https://www.kontronn.com/","title":"Kontronn"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":false,"path":"programming","permalink":"https://www.kontronn.com/categories/programming/","title":"Programming"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -55,7 +55,7 @@
 
 
 
-  <title>Kontronn</title>
+  <title>Programming - 分类 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -98,7 +98,7 @@
 <nav class="site-nav">
   <ul class="main-menu menu">
     <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse  menu-item-active" rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
       </a>
     </li>
     <li class="menu-item menu-item-about">
@@ -296,220 +296,44 @@
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-    <div class="main-inner index posts-expand">
+    <div class="main-inner categories posts-collapse">
       
-
-
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/extern-c-detailed-analysis.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="关于extern C的的详细剖析">
-      <meta itemprop="description" content="关于extern C的的详细剖析">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/programming/extern-c-detailed-analysis.html" itemprop="url" class="post-title-link">关于extern C的的详细剖析</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-06-06 13:01:56 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-06-06 13:01:56 -0400 EDT">2023-06-06</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/programming" itemprop="url" rel="index">
-      <span itemprop="name">Programming</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  在你工作过的系统里，不知能否看到类似下面的代码。
-这好像没有什么问题，你应该还会想&quot; “嗯⋯是啊，我们的代码都是这样写的，从来没有因此碰到过什么麻烦啊～”。
-你说的没错，如果你的头文件从来没有被任何C++程序引用过的话。
-这与C++有什么关系呢? 看看__cplusplus（注意前面是两个下划线） 的名字你就应该知道它与C++有很大关系。__cplusplus是一个C++规范规定的预定义宏。你可以信任的是：所有的现代C++编译器都预先定义了它；而所有C语言编译器则不会。另外，按照规范__cplusplus的值应该等于1 9 9 7 1 1 L ，然而不是所有的编译器都照此实现，比如g++编译器就将它的值定义为1。
-所以，如果上述代码被C语言程序引用的话，它的内容就等价于下列代码。
-在这种情况下，既然extern &ldquo;C&rdquo; { }经过预处理之后根本就不存在，那么它和#include指令之间的关系问题自然也就是无中生有。
-extern &ldquo;C&quot;的前世今生 在C++编译器里，有一位暗黑破坏神，专门从事一份称作“名字粉碎”(name mangling)的工作。当把一个C++的源文件投入编译的时候，它就开始工作，把每一个它在源文件里看到的外部可见的名字粉碎的面目全非，然后存储到二进制目标文件的符号表里。
-之所以在C++的世界里存在这样一个怪物，是因为C++允许对一个名字给予不同的定义，只要在语义上没有二义性就好。比如，你可以让两个函数是同名的，只要它们的参数列表不同即可，这就是函数重载(function overloading)；甚至，你可以让两个函数的原型声明是完全相同的，只要它们所处的名字空间(namespace)不一样即可。事实上，当处于不同的名字空间时，所有的名字都是可以重复的，无论是函数名，变量名，还是类型名。
-另外，C++程序的构造方式仍然继承了C语言的传统：编译器把每一个通过命令行指定的源代码文件看做一个独立的编译单元，生成目标文件；然后，链接器通过查找这些目标文件的符号表将它们链接在一起生成可执行程序。
-编译和链接是两个阶段的事情；事实上，编译器和链接器是两个完全独立的工具。编译器可以通过语义分析知道那些同名的符号之间的差别；而链接器却只能通过目标文件符号表中保存的名字来识别对象。
-所以，编译器进行名字粉碎的目的是为了让链接器在工作的时候不陷入困惑，将所有名字重新编码，生成全局唯一，不重复的新名字，让链接器能够准确识别每个名字所对应的对象。
-但 C语言却是一门单一名字空间的语言，也不允许函数重载，也就是说，在一个编译和链接的范围之内，C语言不允许存在同名对象。比如，在一个编译单元内部，不允许存在同名的函数，无论这个函数是否用static修饰；在一个可执行程序对应的所有目标文件里，不允许存在同名对象，无论它代表一个全局变量，还是一个函数。所以，C语言编译器不需要对任何名字进行复杂的处理（或者仅仅对名字进行简单一致的修饰（decoration），比如在名字前面统一的加上单下划线_）。
-C++的缔造者Bjarne Stroustrup在最初就把——能够兼容C，能够复用大量已经存在的C库——列为C++语言的重要目标。但两种语言的编译器对待名字的处理方式是不一致的，这就给链接过程带来了麻烦。
-例如，现有一个名为my_handle.h的头文件，内容如下：
-
-
+<div class="post-block">
+  <div class="post-content">
+    <div class="collection-title">
+      <span class="collection-header">
+        <h2>
+        Programming
+        <small>分类</small>
+      </h2>
+      </span>
     </div>
-    <footer class="post-footer">
+
+    
+
+<div class="collection-year">
+  <span class="collection-header">2023</span>
+</div>
+
+<article itemscope itemtype="http://schema.org/Article">
+  <header class="post-header">
+    <div class="post-meta-container">
       
-<div class="post-button">
-  <a class="btn" href="/post/programming/extern-c-detailed-analysis.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
-
-    </footer>
-  </article>
-</div>
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发">
-      <meta itemprop="description" content="风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html" itemprop="url" class="post-title-link">风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-05-22 12:48:11 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-05-22 12:48:11 -0400 EDT">2023-05-22</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。</p>
-
-
+      <time itemprop="dateCreated" datetime="2023-06-06T13:01:56-04:00" content="06-06">
+        06-06
+      </time>
     </div>
-    <footer class="post-footer">
-      
-<div class="post-button">
-  <a class="btn" href="/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
-
-    </footer>
-  </article>
-</div>
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="三星电子研发出其首款支持CXL 2.0的CXL DRAM">
-      <meta itemprop="description" content="三星电子研发出其首款支持CXL 2.0的CXL DRAM">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html" itemprop="url" class="post-title-link">三星电子研发出其首款支持CXL 2.0的CXL DRAM</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-05-12 12:31:56 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-05-12 12:31:56 -0400 EDT">2023-05-12</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>基于先进CXL 2.0的128GB CXL DRAM将于今年量产，加速下一代存储器解决方案的商用化，三星将继续与全球数据中心、服务器、芯片企业合作，扩大CXL生态系统</p>
-
-
+    <div class="post-title">
+      <a class="post-title-link" href="/post/programming/extern-c-detailed-analysis.html" itemprop="url">
+        <span itemprop="name">关于extern C的的详细剖析</span>
+      </a>
     </div>
-    <footer class="post-footer">
-      
-<div class="post-button">
-  <a class="btn" href="/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
+  </header>
+</article>
 
-    </footer>
-  </article>
+ 
+    
+  </div>
 </div>
 <nav class="pagination">
         <span class="page-number current">1</span>
