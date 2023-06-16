@@ -6,7 +6,16 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 06 Jun 2023 13:01:56 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Jun 2023 12:10:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在 Linux 使用 pv 命令监控数据传输速度与进度</title>
+      <link>https://www.kontronn.com/post/linux/using-pv-cmd-to-monitor-data-transfer-speed-and-progress.html</link>
+      <pubDate>Fri, 16 Jun 2023 12:10:10 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/using-pv-cmd-to-monitor-data-transfer-speed-and-progress.html</guid>
+      <description>&lt;p&gt;pv 命令是一个在 Linux/Unix 系统的实用工具，用于监控数据的流动。pv 命令可以用于计算数据传输的速度，显示进度条以及估算剩余时间等。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>关于extern C的的详细剖析</title>
       <link>https://www.kontronn.com/post/programming/extern-c-detailed-analysis.html</link>

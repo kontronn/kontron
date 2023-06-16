@@ -2,6 +2,21 @@
 <search>
   
   <entry>
+    <title>如何在 Linux 使用 pv 命令监控数据传输速度与进度</title>
+    <url>/post/linux/using-pv-cmd-to-monitor-data-transfer-speed-and-progress.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>pv</tag>
+    </tags>
+    <content type="html"><![CDATA[pv 命令是一个在 Linux/Unix 系统的实用工具，用于监控数据的流动。pv 命令可以用于计算数据传输的速度，显示进度条以及估算剩余时间等。
+&lsquo;pv&rsquo;命令可以通过管道监控数据流的进度，但是无法直接监控&rsquo;mv&rsquo;命令的进度。这是因为&rsquo;mv&rsquo;命令实际上是将文件从一个位置移动到另一个位置，而不是在管道中传输数据。
+默认情况下，pv 命令只会显示一个进度条，以及传输速度和估算的剩余时间等信息。除了默认的进度条外，pv 命令还支持许多选项。
+在本教程中，我们将会说明如何在 Linux 使用 pv 命令监控数据的传输速度并估算剩余时间等信息。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>关于extern C的的详细剖析</title>
     <url>/post/programming/extern-c-detailed-analysis.html</url>
     <categories><category>Programming</category>
