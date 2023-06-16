@@ -173,7 +173,15 @@
     <div class="sidebar-panel-container">
       
       <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#pv-命令">pv 命令</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
       </div>
       
       <div class="site-overview-wrap sidebar-panel">
@@ -265,7 +273,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="164"></div>
+      <div class="item-count" id="wordsCount" data-count="174"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -351,7 +359,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>14</span>
+  <span class="post-meta-item-text">字数：</span><span>24</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -383,9 +391,14 @@
     <div class="post-body  autonumber " itemprop="articleBody">
       
   <p>pv 命令是一个在 Linux/Unix 系统的实用工具，用于监控数据的流动。pv 命令可以用于计算数据传输的速度，显示进度条以及估算剩余时间等。</p>
-<p>&lsquo;pv&rsquo;命令可以通过管道监控数据流的进度，但是无法直接监控&rsquo;mv&rsquo;命令的进度。这是因为&rsquo;mv&rsquo;命令实际上是将文件从一个位置移动到另一个位置，而不是在管道中传输数据。</p>
+<p><code>pv</code>命令可以通过管道监控数据流的进度，但是无法直接监控<code>mv</code>命令的进度。这是因为<code>mv</code>命令实际上是将文件从一个位置移动到另一个位置，而不是在管道中传输数据。</p>
 <p>默认情况下，pv 命令只会显示一个进度条，以及传输速度和估算的剩余时间等信息。除了默认的进度条外，pv 命令还支持许多选项。</p>
 <p>在本教程中，我们将会说明如何在 Linux 使用 pv 命令监控数据的传输速度并估算剩余时间等信息。</p>
+<h3 id="pv-命令">pv 命令</h3>
+<p>pv 命令的使用非常简单，只需在终端输入 pv 命令，后面是需要监视的文件或数据流即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pv file.txt &gt; /dev/null
+
+</code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
