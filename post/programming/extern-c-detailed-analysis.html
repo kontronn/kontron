@@ -175,7 +175,17 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#extern-c的前世今生">extern &ldquo;C&quot;的前世今生</a></li>
+    <li><a href="#extern-c的前世今生">extern &ldquo;C&quot;的前世今生</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#链接规范的用法有两种">链接规范的用法有两种：</a></li>
+            <li><a href="#小心门后的未知世界">小心门后的未知世界</a></li>
+          </ul>
+        </li>
+        <li><a href="#q--a">Q &amp; A</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
       </div>
@@ -269,11 +279,11 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="284"></div>
+      <div class="item-count" id="wordsCount" data-count="676"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="4"></div>
+      <div class="item-count" id="readTimes" data-times="6"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
@@ -355,7 +365,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>36</span>
+  <span class="post-meta-item-text">字数：</span><span>428</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -363,7 +373,7 @@
     <i class="far fa-clock"></i>
   </span>
   <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
+  <span>3分钟</span>
 </span>
 
     
@@ -410,6 +420,203 @@
 <p>随后，我们想让一个C++程序调用这些函数，所以，它也包含了头文件my_handle.h。</p>
 <p>假设这个C++源代码文件的名字叫my_handle_client.cpp，其内容如下：</p>
 <p><img src="https://www.kontronn.com/imgs/post/extern-c-5.jpg" alt="My Handle H 5"></p>
+<p>其中，粗体的部分就是那三个函数的名字被粉碎后的样子。</p>
+<p>然后，为了让程序可以工作，你必须将my_handle.o和my_handle_client.o放在一起链接。由于在两个目标文件对于同一对象的命名不一样，链接器将报告相关的“符号未定义”错误。</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-6.jpg" alt="My Handle H 6"></p>
+<p>为了解决这一问题，C++引入了链接规范(linkage specification)的概念，表示法为extern&quot;language string&rdquo;，C++编译器普遍支持的&quot;language string&quot;有&quot;C&quot;和&quot;C++&quot;，分别对应C语言和C++语言。</p>
+<p>链接规范的作用是告诉C++编译：对于所有使用了链接规范进行修饰的声明或定义，应该按照指定语言的方式来处理，比如名字，调用习惯（calling convention）等等。</p>
+<h4 id="链接规范的用法有两种">链接规范的用法有两种：</h4>
+<ol>
+<li>单个声明的链接规范，比如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> <span style="color:#66d9ef">void</span> foo();
+</code></pre></div><ol start="2">
+<li>一组声明的链接规范，比如：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>
+{
+　　<span style="color:#66d9ef">void</span> foo();
+　　<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">bar</span>();
+}
+</code></pre></div><p>对我们之前的例子而言，如果我们把头文件my_handle.h的内容改成：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-7.jpg" alt="My Handle H 7"></p>
+<p>然后使用C++编译器重新编译my_handle_client.cpp，所生成目标文件my_handle_client.o中的符号表就变为：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-8.jpg" alt="My Handle H 8"></p>
+<p>从中我们可以看出，此时，用extern &ldquo;C&rdquo; 修饰了的声明，其生成的符号和C语言编译器生成的符号保持了一致。这样，当你再次把my_handle.o和my_handle_client.o放在一起链接的时候，就不会再有之前的“符号未定义”错误了。</p>
+<p>但此时，如果你重新编译my_handle.c，C语言编译器将会报告“语法错误”，因为extern&quot;C&quot;是C++的语法，C语言编译器不认识它。此时，可以按照我们之前已经讨论的，使用宏__cplusplus来识别C和C++编译器。修改后的my_handle.h的代码如下：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-9.jpg" alt="My Handle H 9"></p>
+<h4 id="小心门后的未知世界">小心门后的未知世界</h4>
+<p>在我们清楚了 extern &ldquo;C&rdquo; 的来历和用途之后，回到我们本来的话题上，为什么不能把#include 指令放置在 extern &ldquo;C&rdquo; { &hellip; } 里面？</p>
+<p>我们先来看一个例子，现有a.h，b.h，c.h以及foo.cpp，其中foo.cpp包含c.h，c.h包含b.h，b.h包含a.h，如下：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-10.jpg" alt="My Handle H 10"></p>
+<p>现使用C++编译器的预处理选项来编译foo.cpp，得到下面的结果：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-11.jpg" alt="My Handle H 11"></p>
+<p>正如你看到的，当你把#include指令放置在extern &ldquo;C&rdquo; { }里的时候，则会造成extern &ldquo;C&rdquo; { } 的嵌套。这种嵌套是被C++规范允许的。当嵌套发生时，以最内层的嵌套为准。比如在下面代码中，函数foo会使用C++的链接规范，而函数bar则会使用C的链接规范。</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-12.jpg" alt="My Handle H 12"></p>
+<p>如果能够保证一个C语言头文件直接或间接依赖的所有头文件也都是C语言的，那么按照C++语言规范，这种嵌套应该不会有什么问题。</p>
+<p>但具体到某些编译器的实现，比如MSVC2005，却可能由于 extern &ldquo;C&rdquo; { } 的嵌套过深而报告错误。</p>
+<p>不要因此而责备微软，因为就这个问题而言，这种嵌套是毫无意义的。你完全可以通过把#include指令放置在extern &ldquo;C&rdquo; { }的外面来避免嵌套。</p>
+<p>拿之前的例子来说，如果我们把各个头文件的 #include 指令都移到extern &ldquo;C&rdquo; { } 之外，然后使用C++编译器的预处理选项来编译foo.cpp，就会得到下面的结果：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-13.jpg" alt="My Handle H 13"></p>
+<p>这样的结果肯定不会引起编译问题的结果——即便是使用MSVC。</p>
+<p>把 #include 指令放置在extern &ldquo;C&rdquo; { }里面的另外一个重大风险是，你可能会无意中改变一个函数声明的链接规范。比如：有两个头文件a.h，b.h，其中b.h包含a.h，如下：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-14.jpg" alt="My Handle H 14"></p>
+<p>按照a.h作者的本意，函数foo是一个C++自由函数，其链接规范为&quot;C++&quot;。但在b.h中，由于#include &ldquo;a.h&quot;被放到了extern &ldquo;C&rdquo; { }的内部，函数foo的链接规范被不正确地更改了。</p>
+<p>由于每一条 #include 指令后面都隐藏这一个未知的世界，除非你刻意去探索，否则你永远都不知道，当你把一条条#include指令放置于extern &ldquo;C&rdquo; { }里面的时候，到底会产生怎样的结果，会带来何种的风险。</p>
+<p>或许你会说，“我可以去查看这些被包含的头文件，我可以保证它们不会带来麻烦”。但，何必呢？毕竟，我们完全可以不必为不必要的事情买单，不是吗？</p>
+<h3 id="q--a">Q &amp; A</h3>
+<p>Q: 难道任何# i n c l u d e指令都不能放在e x t e r n &ldquo;C&quot;里面吗？</p>
+<p>A: 正像这个世界的大多数规则一样，总会存在特殊情况。</p>
+<p>有时候，你可能利用头文件机制“巧妙”的解决一些问题。比如，#pragma pack的问题。这些头文件和常规的头文件作用是不一样的，它们里面不会放置C的函数声明或者变量定义，链接规范不会对它们的内容产生影响。这种情况下，你可以不必遵守这些规则。</p>
+<p>更加一般的原则是，在你明白了这所有的原理之后，只要你明白自己在干什么，那就去做吧。</p>
+<p>Q: 你只说了不应该放入e x t e r n &ldquo;C&quot;的，但什么可以放入呢？</p>
+<p>A: 链接规范仅仅用于修饰函数和变量，以及函数类型。所以，严格的讲，你只应该把这三种对象放置于extern &ldquo;C&quot;的内部。</p>
+<p>但，你把C语言的其它元素，比如非函数类型定义（结构体，枚举等）放入extern &ldquo;C&quot;内部，也不会带来任何影响。更不用说宏定义预处理指令了。</p>
+<p>所以，如果你更加看重良好组织和管理的习惯，你应该只在必须使用extern &ldquo;C&quot;声明的地方使用它。即使你比较懒惰，绝大多数情况下，把一个头件自身的所有定义和声明都放置在extern&quot;C&quot;里面也不会有太大的问题。</p>
+<p>Q: 如果一个带有函数/变量声明的C头文件里没有e x t e r n &ldquo;C&quot;声明怎么办？</p>
+<p>A: 如果你可以判断，这个头文件永远不可能让C++代码来使用，那么就不要管它。</p>
+<p>但现实是，大多数情况下，你无法准确的推测未来。你在现在就加上这个extern &ldquo;C&rdquo;，这花不了你多少成本，但如果你现在没有加，等到将来这个头文件无意中被别人的C++程序包含的时候，别人很可能需要更高的成本来定位错误和修复问题。</p>
+<p>Q: 如果我的C+ +程序想包含一个C头文件a . h，它的内容包含了C的函数/变量声明，但它们却没有使用e x t e r n &ldquo;C&quot;链接规范，该怎么办？</p>
+<p>A: 在a.h里面加上它。</p>
+<p>某些人可能会建议你，如果a.h没有extern &ldquo;C&rdquo;，而b.cpp包含了a.h，可以在b.cpp里加上 ：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>
+{
+　　<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;a.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>}
+</code></pre></div><p>这是一个邪恶的方案，原因在之前我们已经阐述。但值得探讨的是，这种方案这背后却可能隐含着一个假设，即我们不能修改a.h。不能修改的原因可能来自两个方面：</p>
+<ol>
+<li>
+<p>头文件代码属于其它团队或者第三方公司，你没有修改代码的权限；</p>
+</li>
+<li>
+<p>虽然你拥有修改代码的权限，但由于这个头文件属于遗留系统，冒然修改可能会带来不可预知的问题。</p>
+</li>
+</ol>
+<p>对 于第一种情况，不要试图自己进行workaround，因为这会给你带来不必要的麻烦。正确的解决方案是，把它当作一个bug，发送缺陷报告给相应的团队 或第三方公司。</p>
+<p>如果是自己公司的团队或你已经付费的第三方公司，他们有义务为你进行这样的修改。如果他们不明白这件事情的重要性，告诉他们。如果这些头文 件属于一个免费开源软件，自己进行正确的修改，并发布patch给其开发团队。</p>
+<p>在 第二种情况下，你需要抛弃掉这种不必要的安全意识。</p>
+<p>因为，首先，对于大多数头文件而言，这种修改都不是一种复杂的，高风险的修改，一切都在可控的范围之 内；</p>
+<p>其次，如果某个头文件混乱而复杂，虽然对于遗留系统的哲学应该是：“在它还没有带来麻烦之前不要动它”，但现在麻烦已经来了，逃避不如正视，所以上策 是，将其视作一个可以整理到干净合理状态的良好机会。</p>
+<p>Q: 我们代码中关于e x t e r n &ldquo;C&quot;的写法如下，这正确吗?</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-15.jpg" alt="My Handle H 15"></p>
+<p>A: 不确定。</p>
+<p>按照C++的规范定义，__cplusplus 的值应该被定义为199711L，这是一个非零的值；尽管某些编译器并没有按照规范来实现，但仍然能够保证__cplusplus的值为非零——至少我到目前为止还没有看到哪款编译器将其实现为0。</p>
+<p>这种情况下，#if __cplusplus &hellip; #endif完全是冗余的。</p>
+<p>但，C++编译器的厂商是如此之多，没有人可以保证某款编译器，或某款编译器的早期版本没有将__cplusplus的值定义为0。</p>
+<p>但即便如此，只要能够保证宏__cplusplus只在C++编译器中被预先定义 ，那么，仅仅使用#ifdef __cplusplus ⋯ #endif就足以确保意图的正确性；额外的使用#if __cplusplus &hellip; #endif反而是错误的。</p>
+<p>只有在这种情况下：即某个厂商的C语言和C++语言编译器都预先定义了__cplusplus ，但通过其值为0和非零来进行区分，使用#if __cplusplus &hellip; #endif才是正确且必要的。</p>
+<p>既然现实世界是如此复杂，你就需要明确自己的目标，然后根据目标定义相应的策略。比如：如果你的目标是让你的代码能够使用几款主流的、正确遵守了规范的编译器进行编译，那么你只需要简单的使用#ifdef __cplusplus &hellip; #endif就足够了。</p>
+<p>但如果你的产品是一个雄心勃勃的，试图兼容各种编译器的（包括未知的）跨平台产品， 我们可能不得不使用下述方法来应对各种情况 ，其中__ALIEN_C_LINKAGE__是为了标识那些在C和C++编译中都定义了__cplusplus宏的编译器。</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-16.jpg" alt="My Handle H 16"></p>
+<p>这应该可以工作，但在每个头文件中都写这么一大串，不仅有碍观瞻，还会造成一旦策略进行修改，就会到处修改的状况。违反了DRY(Don&rsquo;t Repeat Yourself)原则，你总要为之付出额外的代价。解决它的一个简单方案是，定义一个特定的头文件——比如clinkage.h，在其中增加这样的定义：</p>
+<p><img src="https://www.kontronn.com/imgs/post/extern-c-17.jpg" alt="My Handle H 17"></p>
+<p>以下举例中c的函数声明和定义分别在cfun.h 和 cfun.c 中，函数打印字符串 “this is c fun call”，c++函数声明和定义分别在cppfun.h 和 cppfun.cpp中，函数打印字符串 &ldquo;this is cpp fun call&rdquo;, 编译环境vc2010</p>
+<p>c++ 调用 c 的方法（关键是要让c的函数按照c的方式编译，而不是c++的方式）</p>
+<p>（1） cfun.h如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef _C_FUN_H_
+</span><span style="color:#75715e">#define _C_FUN_H_
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cfun</span>();
+
+<span style="color:#75715e">#endif
+</span></code></pre></div><p>cppfun.cpp 如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">//#include &#34;cfun.h&#34;  不需要包含cfun.h
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cppfun.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>using namespace std;
+<span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>     <span style="color:#66d9ef">void</span> cfun(); <span style="color:#75715e">//声明为 extern void cfun(); 错误
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cppfun</span>()
+{
+    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;this is cpp fun call&#34;</span><span style="color:#f92672">&lt;&lt;</span>endl;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    cfun();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>（2）cfun.h同上，cppfun.cpp 如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>
+{
+    <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cfun.h&#34;//注意include语句一定要单独占一行;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>}
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cppfun.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>using namespace std;
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cppfun</span>()
+{
+    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;this is cpp fun call&#34;</span><span style="color:#f92672">&lt;&lt;</span>endl;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    cfun();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>（3）cfun.h如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef _C_FUN_H_
+</span><span style="color:#75715e">#define _C_FUN_H_
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#ifdef __cplusplus
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span>
+{
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+    <span style="color:#66d9ef">void</span> cfun();
+
+<span style="color:#75715e">#ifdef __cplusplus
+</span><span style="color:#75715e"></span>}
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#endif
+</span></code></pre></div><p>cppfun.cpp如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cfun.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cppfun.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>using namespace std;
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cppfun</span>()
+{
+    cout<span style="color:#f92672">&lt;&lt;</span><span style="color:#e6db74">&#34;this is cpp fun call&#34;</span><span style="color:#f92672">&lt;&lt;</span>endl;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    cfun();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>c调用c++（关键是C++ 提供一个符合 C 调用惯例的函数）</p>
+<p>在vs2010上测试时，没有声明什么extern等，只在在cfun.c中包含cppfun.h，然后调用cppfun()也可以编译运行，在gcc下就编译出错，按照c++/c的标准这种做法应该是错误的。以下方法两种编译器都可以运行</p>
+<p>cppfun.h如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#ifndef _CPP_FUN_H_
+</span><span style="color:#75715e">#define _CPP_FUN_H_
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> <span style="color:#66d9ef">void</span> cppfun();
+
+<span style="color:#75715e">#endif
+</span></code></pre></div><p>cfun.c如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">//#include &#34;cppfun.h&#34; //不要包含头文件，否则编译出错
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;cfun.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cfun</span>()
+{
+    printf(<span style="color:#e6db74">&#34;this is c fun call</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+}
+
+<span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">cppfun</span>();
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+<span style="color:#75715e">#ifdef __cplusplus
+</span><span style="color:#75715e"></span>    cfun();
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>    cppfun();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
