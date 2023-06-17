@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 16 Jun 2023 12:10:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jun 2023 10:20:58 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux系统内核概述</title>
+      <link>https://www.kontronn.com/post/linux/linux-kernel-overview.html</link>
+      <pubDate>Sat, 17 Jun 2023 10:20:58 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-kernel-overview.html</guid>
+      <description>&lt;p&gt;Linux 内核是一种开源的类 Unix 操作系统宏内核。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>如何在 Linux 使用 pv 命令监控数据传输速度与进度</title>
       <link>https://www.kontronn.com/post/linux/using-pv-cmd-to-monitor-data-transfer-speed-and-progress.html</link>
