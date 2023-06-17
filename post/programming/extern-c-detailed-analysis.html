@@ -175,9 +175,9 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#extern-c的前世今生">extern &ldquo;C&quot;的前世今生</a>
+    <li>
       <ul>
-        <li>
+        <li><a href="#extern-c的前世今生">extern &ldquo;C&quot;的前世今生</a>
           <ul>
             <li><a href="#链接规范的用法有两种">链接规范的用法有两种：</a></li>
             <li><a href="#小心门后的未知世界">小心门后的未知世界</a></li>
@@ -404,7 +404,7 @@
 <p>所以，如果上述代码被C语言程序引用的话，它的内容就等价于下列代码。</p>
 <p><img src="https://www.kontronn.com/imgs/post/extern-c-2.jpg" alt="My Handle H 2"></p>
 <p>在这种情况下，既然extern &ldquo;C&rdquo; { }经过预处理之后根本就不存在，那么它和#include指令之间的关系问题自然也就是无中生有。</p>
-<h2 id="extern-c的前世今生">extern &ldquo;C&quot;的前世今生</h2>
+<h3 id="extern-c的前世今生">extern &ldquo;C&quot;的前世今生</h3>
 <p>在C++编译器里，有一位暗黑破坏神，专门从事一份称作“名字粉碎”(name mangling)的工作。当把一个C++的源文件投入编译的时候，它就开始工作，把每一个它在源文件里看到的外部可见的名字粉碎的面目全非，然后存储到二进制目标文件的符号表里。</p>
 <p>之所以在C++的世界里存在这样一个怪物，是因为C++允许对一个名字给予不同的定义，只要在语义上没有二义性就好。比如，你可以让两个函数是同名的，只要它们的参数列表不同即可，这就是函数重载(function overloading)；甚至，你可以让两个函数的原型声明是完全相同的，只要它们所处的名字空间(namespace)不一样即可。事实上，当处于不同的名字空间时，所有的名字都是可以重复的，无论是函数名，变量名，还是类型名。</p>
 <p>另外，C++程序的构造方式仍然继承了C语言的传统：编译器把每一个通过命令行指定的源代码文件看做一个独立的编译单元，生成目标文件；然后，链接器通过查找这些目标文件的符号表将它们链接在一起生成可执行程序。</p>
