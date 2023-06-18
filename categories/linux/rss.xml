@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Jun 2023 10:20:58 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Jun 2023 11:06:12 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux中pdf转word的工具你知道几个</title>
+      <link>https://www.kontronn.com/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html</link>
+      <pubDate>Sun, 18 Jun 2023 11:06:12 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html</guid>
+      <description>&lt;p&gt;下面推荐5款Linux中pdf转word的工具&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux系统内核概述</title>
       <link>https://www.kontronn.com/post/linux/linux-kernel-overview.html</link>

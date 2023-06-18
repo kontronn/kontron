@@ -2,6 +2,30 @@
 <search>
   
   <entry>
+    <title>Linux中pdf转word的工具你知道几个</title>
+    <url>/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>PDF</tag>
+      <tag>Word</tag>
+    </tags>
+    <content type="html"><![CDATA[下面推荐5款Linux中pdf转word的工具
+LibreOffice LibreOffice是一个免费的开源Office套件，可以将PDF文件转换为Word文档。
+# 安装LibreOffice sudo apt-get install libreoffice # 将PDF转换为Word文档 libreoffice --convert-to docx filename.pdf 其中，“docx”表示要将PDF转换为的输出格式，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux系统中使用，并且命令简单易用。
+Pdf2doc Pdf2doc是一个基于Python的命令行工具，可以将PDF文件转换为Microsoft Word文档。
+# 安装Pdf2doc sudo apt-get install pdf2doc # 将PDF转换为Word文档 pdf2doc filename.pdf 在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中使用，只需在终端输入相应的命令即可。
+GImageReader GImageReader是一款免费的OCR（光学字符识别）软件，可以将扫描的PDF文件转换为Word文档。
+# 安装GImageReader sudo apt-get install gimagereader # 将PDF转换为Word文档 gimagereader filename.pdf 在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具支持多种语言的OCR识别，可以在Linux中使用。
+Pandoc Pandoc是一个跨平台的文档格式转换器，支持将PDF文件转换为Word文档。
+# 安装Pandoc sudo apt-get install pandoc # 将PDF转换为Word文档 pandoc -s -o output.docx input.pdf 在这个命令中，“-s”表示生成带有样式的Word文档，“-o”后面跟输出文件的名称和保存的路径，“input.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中进行使用。
+Unoconv Unoconv是一个用于文件格式转换的Python包，可以将PDF文件转换为Word文档。
+# 安装Unoconv sudo apt-get install unoconv # 将PDF转换为Word文档 unoconv -f docx filename.pdf 在这个命令中，“docx”表示要将PDF文件转换成的输出格式，“filename.pdf”表明要转换的PDF文件的文件名。这个工具也非常简单易用。
+总结：以上是5个将PDF文件转换为Word文档的Linux工具，它们都是免费的工具，不需要任何商业版本。这些工具均可以在Linux平台上使用，并且可以快速并且容易地将PDF文件转换为Word文档。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux系统内核概述</title>
     <url>/post/linux/linux-kernel-overview.html</url>
     <categories><category>Linux</category>
