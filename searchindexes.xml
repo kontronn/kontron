@@ -2,6 +2,43 @@
 <search>
   
   <entry>
+    <title>什么是 nftables ? 它与 iptables 的区别是什么？</title>
+    <url>/post/linux/difference-between-nftables-and-iptables.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>nftables, iptables</tag>
+    </tags>
+    <content type="html"><![CDATA[几乎每个 Linux 管理员都使用过 iptables，它是一个 Linux 系统的防火墙。
+什么是 nftables ? 它与 iptables 的区别是什么？ 但是你可能还不太熟悉 nftables，这是一个新的防火墙，可为我们提供一些必需的升级，还有可能会取代 iptables。
+为什么要使用 nftables 呢？ nftables 是由 Netfilter 开发的，该组织目前维护 iptables。nftables 的创建是为了解决 iptables 的一些性能和扩展问题。
+除了新的语法和一些升级以外，nftables 的功能与 iptables 几乎是一样的。之所以推出 nftables 的另一个原因，是因为 iptables 的框架变的有点复杂，iptables, ip6tables, arptables 以及 ebtables 都有不同但相似的功能。
+比如，在 iptables 中创建 IPv4 规则和在 ip6tables 中创建 IPv6 规则并保持两者同步是非常低效的。Nftables 旨在取代所有这些，成为一个集中的解决方案。
+尽管自 2014 年以来，nftables 就被包含在 Linux 内核中，但随着采用范围的扩大，它最近越来越受欢迎。Linux 世界的变化很慢，过时的实用程序通常需要几年或更长的时间才能逐步淘汰，取而代之的是升级后的实用程序。
+今天我们就简单介绍一下 nftables 和 iptables 之间的差异，并展示在新的 nftables 语法中配置防火墙规则的例子。
+nftables 中的链（chains）和规则 在 iptables 中，有三个默认的链：输入、输出和转发。这三个“链”（以及其他链）包含“规则”，iptables 通过将网络流量与 链中的规则列表匹配进行工作。如果正在检查的流量与任何规则都不匹配，则链的默认策略将用于流量（即ACCEPT、DROP）。
+Nftables的工作原理与此类似，也有“链”和“规则”。然而，它一开始没有任何基础链，这使得配置更加灵活。
+iptables 效率低下的一个方面是，即使流量与任何规则都不匹配，所有网络数据也必须遍历上述链中的一个或多个。无论你是否配置了链，iptables仍然会根据它们检查你的网络数据。
+在 Linux 中安装 nftables nftables 在所有主要的 Linux 发行版中都可用，可以使用发行版的包管理器安装。
+在 Ubuntu 或基于 Debian 的系统中可使用如下命令：
+sudo apt install nftables 设置 nftables在系统重启的时候自动启动，可执行如下操作：
+sudo systemctl enable nftables.service iptables 和 nftables 之间的语法差异 与 iptables 相比，nftables 的语法更加简单，不过对于 iptables 中的语法，在 nftables 中也能用。
+大家可使用 iptables-translate 工具，该工具接受 iptables 命令并将其转为等效的 nftables 命令，这是了解两种语法差异的一种简单方法。
+使用以下命令在 Ubuntu 和基于 Debian 的发行版上安装 iptables-translate：
+sudo apt install iptables-nftables-compat 安装后，你可以将 iptables 语法传递给 iptables-translate 命令，它将返回 nftables 等效命令。
+下面我们看一些具体的语法示例。
+阻止传入连接 下述命令将阻止来自IP地址192.168.2.1的传入连接：
+$ iptables-translate -A INPUT -s 192.168.2.1 -j DROP nft add rule ip filter INPUT ip saddr 192.168.2.1 counter drop 允许传入SSH连接 放开 ssh 连接权限：
+$ iptables-translate -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT nft add rule ip filter INPUT tcp dport 22 ct state new,established counter accept 允许来自特定 IP 范围的传入SSH连接 如果只想允许来自192.168.1.0/24的传入SSH连接：
+$ iptables-translate -A INPUT -p tcp -s 192.168.1.0/24 --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT nft add rule ip filter INPUT ip saddr 192.168.1.0/24 tcp dport 22 ct state new,established counter accept 允许MySQL连接到eth0网络接口 $ iptables-translate -A INPUT -i eth0 -p tcp --dport 3306 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT nft add rule ip filter INPUT iifname eth0 tcp dport 3306ct state new,established counter accept 允许传入HTTP和HTTPS流量 为了允许特定类型的流量，以下是这两个命令的语法：
+$ iptables-translate -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT nft add rule ip filter INPUT ip protocol tcp tcp dport { 80,443} ct state new,established counter accept 从这些例子中可以看出，nftables 语法与 iptables 非常相似，但命令更直观一些。
+nftables 日志 上述nft命令示例中的“counter”选项告诉nftables统计规则被触碰的次数，就像默认情况下使用的iptables一样。
+在nftables中，需要指定：
+nft add rule ip filter INPUT ip saddr 192.168.2.1 counter accept nftables内置了用于导出配置的选项。它目前支持XML和JSON。
+nft export xml ]]></content>
+  </entry>
+  
+  <entry>
     <title>风河支持NXP S32G3——信心百倍、加速创新</title>
     <url>/post/news/wind-river-supports-nxp-s32g3.html</url>
     <categories><category>News</category>
