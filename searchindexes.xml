@@ -2,6 +2,24 @@
 <search>
   
   <entry>
+    <title>风河支持NXP S32G3——信心百倍、加速创新</title>
+    <url>/post/news/wind-river-supports-nxp-s32g3.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Wind River</tag>
+      <tag>NXP</tag>
+      <tag>S32G3</tag>
+    </tags>
+    <content type="html"><![CDATA[风河公司与NXP公司的合作伙伴关系深厚且长远，由此不断地为我们的共同客户带来新的效益。 风河公司非常兴奋地宣布其运行时（Runtime）产品组合和Wind River Studio Linux 服务都已经支持下一代NXP S32G3处理器，从而有力地促进企业客户加速智能边缘设备的创建与部署。
+具体而言，风河将为VxWorks、Wind River Linux和Helix虚拟化平台提供S32G3 BSP（板级支持包），以及配套的设计、全生命周期安全与维护服务。例如，企业客户希望充分利用S32G3处理器独特的车辆场景功能，而风河的实时产品阵容以及久经验证的嵌入式专业知识都将在相应的软件支持平台上助力汽车解决方案的设计与构建。
+以上都是风河与NXP长期合作伙伴关系的基本组成部分，双方将共同致力于为嵌入式行业提供成熟可靠的硬件和软件解决方案。两家公司密切合作，其系统化效益就是形成了紧密集成的解决方案，获得更高的开发人员生产力、更佳的成本效率，还有更高的可靠性以及更快的上市速度。
+无论您属于哪个行业，无论您的企业正在为智能边缘创建什么样的系统或设备，风河广泛的软件产品阵容和DevOps成套工具都可以帮助您充分发挥NXP硬件潜能，加速您的项目进程。以下是风河为NXP客户提供支持的几个典型代表：
+ BSP 支持：风河为NXP系列处理器提供众多BSP，包括S32G、I.MX和Layerscape系列。 NXP LINUX SDK支持：针对NXP基于Yocto的Linux软件开发工具包，Wind River Studio Linux Services提供安全扫描、漏洞缓解和补救以及全生命周期管理和维护服务。 汽车解决方案：VxWorks和Wind River Linux为汽车网关、域和区域控制器提供高性能实时解决方案。在运行Linux或Android的i.MX应用处理器上构建信息娱乐解决方案方面，风河也拥有丰富的经验。 工业、医疗和机器人解决方案：风河拥有大量的NXP BSP ，非常适合用于关键基础设施、医疗和机器人的设计，因为它们都需要依赖于VxWorks的实时和确定性或Wind River Linux的开源灵活性。风河还为多个i.MX应用处理器提供VxWorks和Wind River Linux BSP，包括最新的i.MX x 93以及Helix Virtualization Platform虚拟化平台。 航空航天和国防解决方案：凡是需要安全认证的嵌入式设计都将得益于我们对NXP处理器的支持，从传统的Power架构到最新的Arm架构解决方案，如LX2160。借助于我们的Helix Virtualization Platform虚拟化平台和VxWorks和Wind River Linux的BSP，可以将NXP解决方案作为当今许多飞行系统的基石。 面向NXP平台的数字孪生和模拟仿真：帮助测试前移且提前启动软件项目并更快地推进开发工作，更快地构建更高质量且更安全的软件系统，并与DevOps开发实践完全集成。模拟仿真基于NXP硬件和软件的完整系统，支持ARM和PowerPC架构。 风河与NXP合作的广度和深度以及对最新产品的支持，都将为企业客户带来了巨大的价值，例如简化整个团队的开发流程以及加快产品上市速度。我们期待在S32G3上看到令人兴奋的新产品。   原文连接  
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux中pdf转word的工具你知道几个</title>
     <url>/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html</url>
     <categories><category>Linux</category>
