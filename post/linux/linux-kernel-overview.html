@@ -10,16 +10,16 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="Linux下SPI驱动详解" />
-<meta itemprop="description" content="Linux下SPI驱动详解" />
+<meta itemprop="name" content="Linux系统内核概述" />
+<meta itemprop="description" content="Linux系统内核概述" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="SPI" />
+<meta itemprop="keywords" content="Kernel" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Linux下SPI驱动详解" />
-<meta property="og:description" content="Linux下SPI驱动详解" />
+<meta property="og:title" content="Linux系统内核概述" />
+<meta property="og:description" content="Linux系统内核概述" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-06-21 23:42:52 -0400 EDT" />
-<meta property="article:modified_time" content="2023-06-21 23:42:52 -0400 EDT" />
+<meta property="article:published_time" content="2023-06-17 10:20:58 -0400 EDT" />
+<meta property="article:modified_time" content="2023-06-17 10:20:58 -0400 EDT" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-kernel-overview.html","permalink":"https://www.kontronn.com/post/linux/linux-kernel-overview.html","title":"Linux下SPI驱动详解"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-kernel-overview.html","permalink":"https://www.kontronn.com/post/linux/linux-kernel-overview.html","title":"Linux系统内核概述"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>Linux下SPI驱动详解 - Kontronn</title>
+  <title>Linux系统内核概述 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -175,9 +175,94 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#spi总线">SPI总线</a>
+    <li><a href="#内核简介">内核简介</a></li>
+    <li><a href="#内核模块">内核模块</a>
       <ul>
-        <li><a href="#spi总线概述">SPI总线概述</a></li>
+        <li><a href="#uname-命令">uname 命令</a>
+          <ul>
+            <li><a href="#使用格式">使用格式</a></li>
+            <li><a href="#参数解释">参数解释</a></li>
+          </ul>
+        </li>
+        <li><a href="#lsmod-命令">lsmod 命令</a>
+          <ul>
+            <li><a href="#命令定义">命令定义</a></li>
+            <li><a href="#字段含义">字段含义</a></li>
+          </ul>
+        </li>
+        <li><a href="#modinfo-命令">modinfo 命令</a>
+          <ul>
+            <li><a href="#命令定义-1">命令定义</a></li>
+            <li><a href="#语法">语法</a></li>
+            <li><a href="#选项">选项</a></li>
+            <li><a href="#实战演示">实战演示</a></li>
+          </ul>
+        </li>
+        <li><a href="#modprobe-命令">modprobe 命令</a>
+          <ul>
+            <li><a href="#命令定义-2">命令定义</a></li>
+            <li><a href="#bash">bash</a></li>
+            <li><a href="#语法-1">语法</a></li>
+            <li><a href="#选项-1">选项</a></li>
+          </ul>
+        </li>
+        <li><a href="#depmod-命令">depmod 命令</a>
+          <ul>
+            <li><a href="#语法-2">语法</a></li>
+            <li><a href="#参数">参数</a></li>
+          </ul>
+        </li>
+        <li><a href="#insmod-和-rmmod-命令">insmod 和 rmmod 命令</a>
+          <ul>
+            <li><a href="#insmod命令">insmod命令</a></li>
+            <li><a href="#rmmod命令">rmmod命令</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#proc-目录">/proc 目录</a>
+      <ul>
+        <li><a href="#sysctl-命令">sysctl 命令</a>
+          <ul>
+            <li><a href="#语法格式">语法格式</a></li>
+            <li><a href="#命令参数">命令参数</a></li>
+            <li><a href="#默认配置文件">默认配置文件</a></li>
+            <li><a href="#命令使用方式">命令使用方式</a></li>
+            <li><a href="#参数说明">参数说明</a></li>
+            <li><a href="#两种修改方式">两种修改方式</a></li>
+          </ul>
+        </li>
+        <li><a href="#修改配置文件">修改配置文件</a></li>
+        <li><a href="#实战演示-1">实战演示</a></li>
+      </ul>
+    </li>
+    <li><a href="#sys-目录">/sys 目录</a>
+      <ul>
+        <li><a href="#udev">udev</a></li>
+        <li><a href="#ramdisk-文件的制作">ramdisk 文件的制作</a>
+          <ul>
+            <li><a href="#方法一">方法一</a></li>
+            <li><a href="#方法二">方法二</a></li>
+          </ul>
+        </li>
+        <li><a href="#查看-ramdisk">查看 ramdisk</a></li>
+      </ul>
+    </li>
+    <li><a href="#编译内核">编译内核</a>
+      <ul>
+        <li><a href="#前提准备">前提准备</a></li>
+        <li><a href="#简易安装内核">简易安装内核</a>
+          <ul>
+            <li><a href="#简易安装">简易安装</a></li>
+            <li><a href="#简单依据模板文件的制作内核">简单依据模板文件的制作内核</a></li>
+          </ul>
+        </li>
+        <li><a href="#详解编译内核">详解编译内核</a>
+          <ul>
+            <li><a href="#1-配置内核选项">(1) 配置内核选项</a></li>
+            <li><a href="#2-编译---make--j-">(2) 编译 - make [-j #]</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -273,7 +358,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="2391"></div>
+      <div class="item-count" id="wordsCount" data-count="2401"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -323,11 +408,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Linux下SPI驱动详解">
-      <meta itemprop="description" content="Linux下SPI驱动详解">
+      <meta itemprop="name" content="Linux系统内核概述">
+      <meta itemprop="description" content="Linux系统内核概述">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">Linux下SPI驱动详解 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">Linux系统内核概述 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -337,7 +422,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-06-21 23:42:52 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-06-21 23:42:52 -0400 EDT">2023-06-21</time>
+  <time title="发表于：2023-06-17 10:20:58 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-06-17 10:20:58 -0400 EDT">2023-06-17</time>
 </span>
     
     
@@ -359,7 +444,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>35</span>
+  <span class="post-meta-item-text">字数：</span><span>1245</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -367,7 +452,7 @@
     <i class="far fa-clock"></i>
   </span>
   <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
+  <span>6分钟</span>
 </span>
 
     
@@ -390,21 +475,462 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <h2 id="spi总线">SPI总线</h2>
-<h3 id="spi总线概述">SPI总线概述</h3>
-<p>SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：</p>
+  <p>Linux 内核是一种开源的类 Unix 操作系统宏内核。</p>
+<p>Linux 内核是 Linux 操作系统的主要组件，也是计算机硬件与其进程之间的核心接口。它负责两者之间的通信，还要尽可能高效地管理资源。之所以称为内核，是因为它在操作系统中就像果实硬壳中的种子一样，并且控制着硬件的所有主要功能。内核的用途主要有以下 4 项工作：</p>
 <ul>
-<li>MOSI – 主设备数据输出，从设备数据输入 对应MOSI master output slave input</li>
-<li>MISO – 主设备数据输入，从设备数据输出  对应MISO master input slave output</li>
-<li>CLK – 时钟信号，由主设备产生</li>
-<li>nCS  – 从设备使能信号，由主设备控制</li>
+<li>
+<p>内存管理：追踪记录有多少内存存储了什么以及存储在哪里</p>
+</li>
+<li>
+<p>进程管理：确定哪些进程可以使用中央处理器、何时使用以及持续多长时间</p>
+</li>
+<li>
+<p>设备驱动程序：充当硬件与进程之间的调解程序/解释程序</p>
+</li>
+<li>
+<p>系统调用和安全防护：从流程接受服务请求</p>
+</li>
 </ul>
-<p>[Linux SPI Device Driver 1](
-<a href="https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png" title="https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png
-    <i class="fa fa-external-link-alt"></i>
-</a> description=&ldquo;aaa&rdquo;)</p>
+<p>在正确实施的情况下，内核对于用户是不可见的，它在自己的小世界(称为内核空间)中工作，并从中分配内存和跟踪所有内容的存储位置。用户所看到的内容则被称为用户空间。这些应用通过系统调用接口(SCI)与内核进行交互。</p>
+<h2 id="内核简介">内核简介</h2>
+<p>单内核体系设计、但充分借鉴了微内核设计体系的优点，为内核引入模块化机制。</p>
+<p>Linux 内核的重要组成部分，主要有以下几部分：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">kernel内核核心，一般为 bzImage通常在 /boot 目录下，名称为 vmlinuz-VERSION-RELEASE
 
+kernel object内核对象，一般放置于 /lib/modules/VERSION-RELEASE/[ ] ==&gt; N ==&gt; 不编译进内核[M] ==&gt; M ==&gt; 编译为模块文件[*] ==&gt; Y ==&gt; 编译进内核
+
+辅助文件(ramdisk)initrdinitramfs
+</code></pre></div><h2 id="内核模块">内核模块</h2>
+<h3 id="uname-命令">uname 命令</h3>
+<h4 id="使用格式">使用格式</h4>
+<p>uname [OPTION]&hellip;</p>
+<h4 id="参数解释">参数解释</h4>
+<ul>
+<li>-n 显示节点名称</li>
+<li>-r 显示VERSION-RELEASE</li>
+<li>-s 内核名称</li>
+<li>-v 内核版本</li>
+<li>-n 节点名</li>
+<li>-m 硬件名称</li>
+<li>-i 硬件平台</li>
+<li>-p 处理器类型</li>
+<li>-o 操作系统</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># uname -m</span>
+i686
+
+<span style="color:#75715e"># uname -r</span>
+2.6.32-573.22.1.el6.i686
+
+<span style="color:#75715e"># uname -a</span>
+Linux MyServer 2.6.32-573.22.1.el6.i686 ... i686 i386 GNU/Linux
+</code></pre></div><h3 id="lsmod-命令">lsmod 命令</h3>
+<p>显示由核心已经装载的内核模块</p>
+<h4 id="命令定义">命令定义</h4>
+<p>显示的内容来自于: /proc/modules 文件。</p>
+<p>使用 lsmod 命令时，常会采用类似 lsmod | grep -i ext4 这样的命令来查询系统是否加载了某些模块。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># cat /proc/modules</span>
+iptable_filter <span style="color:#ae81ff">2173</span> <span style="color:#ae81ff">0</span> - Live 0xed9b2000
+ip_tables <span style="color:#ae81ff">9567</span> <span style="color:#ae81ff">1</span> iptable_filter, Live 0xed9a9000
+ext3 <span style="color:#ae81ff">203718</span> <span style="color:#ae81ff">1</span> - Live 0xed962000
+jbd <span style="color:#ae81ff">65315</span> <span style="color:#ae81ff">1</span> ext3, Live 0xed904000
+xenfs <span style="color:#ae81ff">4360</span> <span style="color:#ae81ff">1</span> - Live 0xed8e6000
+ipv6 <span style="color:#ae81ff">271097</span> <span style="color:#ae81ff">14</span> - Live 0xed88e000
+xen_netfront <span style="color:#ae81ff">15871</span> <span style="color:#ae81ff">0</span> - Live 0xed7d9000
+ext4 <span style="color:#ae81ff">339812</span> <span style="color:#ae81ff">2</span> - Live 0xed764000
+jbd2 <span style="color:#ae81ff">75927</span> <span style="color:#ae81ff">1</span> ext4, Live 0xed6d9000
+mbcache <span style="color:#ae81ff">6017</span> <span style="color:#ae81ff">2</span> ext3,ext4, Live 0xed6b7000
+xen_blkfront <span style="color:#ae81ff">19209</span> <span style="color:#ae81ff">5</span> - Live 0xed69f000
+dm_mirror <span style="color:#ae81ff">11969</span> <span style="color:#ae81ff">0</span> - Live 0xed68d000
+dm_region_hash <span style="color:#ae81ff">9644</span> <span style="color:#ae81ff">1</span> dm_mirror, Live 0xed67e000
+dm_log <span style="color:#ae81ff">8322</span> <span style="color:#ae81ff">2</span> dm_mirror,dm_region_hash, Live 0xed672000
+dm_mod <span style="color:#ae81ff">84711</span> <span style="color:#ae81ff">11</span> dm_mirror,dm_log, Live 0xed64e000
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># lsmod | grep ext4</span>
+ext4                  <span style="color:#ae81ff">339812</span>  <span style="color:#ae81ff">2</span>
+jbd2                   <span style="color:#ae81ff">75927</span>  <span style="color:#ae81ff">1</span> ext4
+mbcache                 <span style="color:#ae81ff">6017</span>  <span style="color:#ae81ff">2</span> ext3,ext4
+</code></pre></div><h4 id="字段含义">字段含义</h4>
+<ul>
+<li>第 1 列：表示模块的名称</li>
+<li>第 2 列：表示模块的大小</li>
+<li>第 3 列：表示依赖模块的个数</li>
+<li>第 4 列：表示依赖模块的内容</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># lsmod</span>
+Module                  Size  Used by
+iptable_filter          <span style="color:#ae81ff">2173</span>  <span style="color:#ae81ff">0</span>
+ip_tables               <span style="color:#ae81ff">9567</span>  <span style="color:#ae81ff">1</span> iptable_filter
+ext3                  <span style="color:#ae81ff">203718</span>  <span style="color:#ae81ff">1</span>
+jbd                    <span style="color:#ae81ff">65315</span>  <span style="color:#ae81ff">1</span> ext3
+xenfs                   <span style="color:#ae81ff">4360</span>  <span style="color:#ae81ff">1</span>
+ipv6                  <span style="color:#ae81ff">271097</span>  <span style="color:#ae81ff">14</span>
+xen_netfront           <span style="color:#ae81ff">15871</span>  <span style="color:#ae81ff">0</span>
+ext4                  <span style="color:#ae81ff">339812</span>  <span style="color:#ae81ff">2</span>
+jbd2                   <span style="color:#ae81ff">75927</span>  <span style="color:#ae81ff">1</span> ext4
+mbcache                 <span style="color:#ae81ff">6017</span>  <span style="color:#ae81ff">2</span> ext3,ext4
+xen_blkfront           <span style="color:#ae81ff">19209</span>  <span style="color:#ae81ff">5</span>
+dm_mirror              <span style="color:#ae81ff">11969</span>  <span style="color:#ae81ff">0</span>
+dm_region_hash          <span style="color:#ae81ff">9644</span>  <span style="color:#ae81ff">1</span> dm_mirror
+dm_log                  <span style="color:#ae81ff">8322</span>  <span style="color:#ae81ff">2</span> dm_mirror,dm_region_hash
+dm_mod                 <span style="color:#ae81ff">84711</span>  <span style="color:#ae81ff">11</span> dm_mirror,dm_log
+</code></pre></div><h3 id="modinfo-命令">modinfo 命令</h3>
+<p>显示模块的详细描述信息</p>
+<h4 id="命令定义-1">命令定义</h4>
+<p>modinfo 列出 Linux 内核中命令行指定的模块的信息。</p>
+<p>modinfo 能够查询系统中未安装的模块信息。</p>
+<p>若模块名不是一个文件名，则会在 /lib/modules/version 目录中搜索，就像 modprobe 一样。</p>
+<p>modinfo 默认情况下，为了便于阅读，以下面的格式列出模块的每个属性：fieldname : value。</p>
+<h4 id="语法">语法</h4>
+<p>modinfo [选项] [ modulename|filename&hellip; ]</p>
+<h4 id="选项">选项</h4>
+<ul>
+<li>-n 只显示模块文件路径</li>
+<li>-p 显示模块参数</li>
+<li>-a author</li>
+<li>-d description</li>
+<li>-l license</li>
+<li>-0 使用’\0’字符分隔 field 值，而不是一个新行，对脚本比较有用</li>
+</ul>
+<h4 id="实战演示">实战演示</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># modinfo ext4</span>
+filename:       /lib/modules/2.6.32-573.22.1.el6.i686/kernel/fs/ext4/ext4.ko
+license:        GPL
+description:    Fourth Extended Filesystem
+author:         Remy Card, Stephen Tweedie, Andrew Morton, Andreas Dilger, Theodore and others
+srcversion:     CB1B990F5A758DFB0FB12F1
+depends:        mbcache,jbd2
+vermagic:       2.6.32-573.22.1.el6.i686 SMP mod_unload modversions <span style="color:#ae81ff">686</span>
+
+<span style="color:#75715e"># modinfo btrfs</span>
+filename:       /lib/modules/2.6.32-573.22.1.el6.i686/kernel/fs/btrfs/btrfs.ko
+license:        GPL
+alias:          devname:btrfs-control
+alias:          char-major-10-234
+srcversion:     B412C18B0F5BF7F1B3C941A
+depends:        libcrc32c,zlib_deflate,lzo_compress,lzo_decompress
+vermagic:       2.6.32-573.22.1.el6.i686 SMP mod_unload modversions <span style="color:#ae81ff">686</span>
+</code></pre></div><h3 id="modprobe-命令">modprobe 命令</h3>
+<p>装载或卸载内核模块</p>
+<h4 id="命令定义-2">命令定义</h4>
+<p>配置文件/etc/modprobe.conf/etc/modprobe.d/*.conf</p>
+<p>解决依赖modprobe需要一个最新的modules.dep文件，可以用depmod来生成该文件列出了每一个模块需要的其他模块，modprobe使用这个去自动添加或删除模块的依赖</p>
+<h4 id="bash">bash</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># modules.dep为解决依赖的配置文件，modules.dep.bin二进制文件运行</span>
+<span style="color:#75715e"># ls /lib/modules/2.6.32-358.6.1.el6.i686/</span>
+build              modules.block    modules.ieee1394map  modules.ofmap     modules.symbols.bin  weak-updates
+extra              modules.ccwmap   modules.inputmap     modules.order     modules.usbmap
+kernel             modules.dep      modules.isapnpmap    modules.pcimap    source
+modules.alias      modules.dep.bin  modules.modesetting  modules.seriomap  updates
+modules.alias.bin  modules.drm      modules.networking   modules.symbols   vdso
+</code></pre></div><h4 id="语法-1">语法</h4>
+<p>modprobe [ -c ]</p>
+<p>modprobe [ -l ] [ -t dirname ] [ wildcard ]</p>
+<p>modprobe [ -r ] [ -v ] [ -n ] [ -i ] [ modulename … ]</p>
+<h4 id="选项-1">选项</h4>
+<ul>
+<li>-v显示程序在干什么，通常在出问题的情况下，modprobe 才显示信息</li>
+<li>-C重载，默认配置文件(/etc/modprobe.conf 或 /etc/modprobe.d)</li>
+<li>-c输出配置文件并退出</li>
+<li>-n可以和 -v 选项一起使用，调试非常有用</li>
+<li>-i该选项会使得 modprobe 忽略配置文件中的，在命令行上输入的 install 和 remove</li>
+<li>-q一般 modprobe 删除或插入一个模块时，若没有找到会提示错误。使用该选项，会忽略指定的模块，并不提示任何错误信息。</li>
+<li>-r该选项会导致 modprobe 去删除，而不是插入一个模块通常没有没有理由去删除内核模块，除非是一些有 bug 的模块</li>
+<li>-f使用该选项是比较危险的和同时使用 –force-vermagic，–force-modversion 一样</li>
+<li>-l列出所有模块</li>
+<li>-a插入所有命令行中的模块</li>
+<li>-t强制 -l 显示 dirname 中的模块</li>
+<li>-s错误信息写入 syslog</li>
+</ul>
+<h3 id="depmod-命令">depmod 命令</h3>
+<p>内核模块依赖关系文件及系统信息映射文件的生成工具</p>
+<h4 id="语法-2">语法</h4>
+<p>depmod [-adeisvV][-m &lt;文件&gt;][&ndash;help][模块名称]</p>
+<h4 id="参数">参数</h4>
+<ul>
+<li>-a 分析所有可用的模块</li>
+<li>-d 执行排错模式</li>
+<li>-e 输出无法参照的符号</li>
+<li>-i 不检查符号表的版本</li>
+<li>-m&lt;文件&gt; 使用指定的符号表文件</li>
+<li>-s 在系统记录中记录错误</li>
+<li>-v 执行时显示详细的信息</li>
+<li>-V 显示版本信息</li>
+<li>&ndash;help 显示帮助</li>
+</ul>
+<h3 id="insmod-和-rmmod-命令">insmod 和 rmmod 命令</h3>
+<p>装载或卸载内核模块</p>
+<p>不解决依赖关系，需要自己手动卸载</p>
+<h4 id="insmod命令">insmod命令</h4>
+<p>向 Linux 内核中插入一个模块</p>
+<p>insmod 是一个向内核插入模块的小程序</p>
+<p>大多数用户使用 modprobe 因为它比较智能化</p>
+<p>insmod [ filename ] [ module options&hellip; ]</p>
+<h4 id="rmmod命令">rmmod命令</h4>
+<p>命令解析删除内核中的一模块rmmod 是一个可以从内核中删除模块的小程序，大多数用户使用modprobe -r去删除模块</p>
+<p>语法格式rmmod [ modulename ]</p>
+<p>参数选项-f除非编译内核时 CONFIG_MODULE_FORCE_UNLOAD 被设置该命令才有效果，否则没效果用该选项可以删除正在被使用的模块，设计为不能删除的模块，或者标记为 unsafe 的模块-wrmmod 拒绝删除正在被使用的模块使用该选项后，指定的模块会被孤立起来，直到不被使用-s将错误信息写入 syslog，而不是标准错误(stderr)</p>
+<h2 id="proc-目录">/proc 目录</h2>
+<p>内核把自己内部状态信息及统计信息，以及可配置参数通过 proc 伪文件系统加以输出。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># ls /proc/</span>
+<span style="color:#ae81ff">1</span>     <span style="color:#ae81ff">1173</span>  <span style="color:#ae81ff">22</span>     <span style="color:#ae81ff">29855</span>  <span style="color:#ae81ff">35</span>  <span style="color:#ae81ff">47</span>   <span style="color:#ae81ff">60</span>   <span style="color:#ae81ff">973</span>          filesystems  loadavg       scsi           version
+<span style="color:#ae81ff">10</span>    <span style="color:#ae81ff">12</span>    <span style="color:#ae81ff">23</span>     <span style="color:#ae81ff">3</span>      <span style="color:#ae81ff">36</span>  <span style="color:#ae81ff">48</span>   <span style="color:#ae81ff">600</span>  buddyinfo    fs           locks         self           vmallocinfo
+<span style="color:#ae81ff">1071</span>  <span style="color:#ae81ff">13</span>    <span style="color:#ae81ff">232</span>    <span style="color:#ae81ff">30</span>     <span style="color:#ae81ff">37</span>  <span style="color:#ae81ff">49</span>   <span style="color:#ae81ff">61</span>   bus          interrupts   mdstat        slabinfo       vmstat
+<span style="color:#ae81ff">1082</span>  <span style="color:#ae81ff">14</span>    <span style="color:#ae81ff">234</span>    <span style="color:#ae81ff">31</span>     <span style="color:#ae81ff">38</span>  <span style="color:#ae81ff">5</span>    <span style="color:#ae81ff">62</span>   cgroups      iomem        meminfo       softirqs       xen
+<span style="color:#ae81ff">1085</span>  <span style="color:#ae81ff">15</span>    <span style="color:#ae81ff">24</span>     <span style="color:#ae81ff">31314</span>  <span style="color:#ae81ff">39</span>  <span style="color:#ae81ff">528</span>  <span style="color:#ae81ff">7</span>    cmdline      ioports      misc          stat           zoneinfo
+<span style="color:#ae81ff">11</span>    <span style="color:#ae81ff">16</span>    <span style="color:#ae81ff">25</span>     <span style="color:#ae81ff">317</span>    <span style="color:#ae81ff">4</span>   <span style="color:#ae81ff">531</span>  <span style="color:#ae81ff">739</span>  cpuinfo      irq          modules       swaps
+<span style="color:#ae81ff">1150</span>  <span style="color:#ae81ff">17</span>    <span style="color:#ae81ff">252</span>    <span style="color:#ae81ff">318</span>    <span style="color:#ae81ff">40</span>  <span style="color:#ae81ff">543</span>  <span style="color:#ae81ff">8</span>    crypto       kallsyms     mounts        sys
+<span style="color:#ae81ff">1162</span>  <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">253</span>    <span style="color:#ae81ff">32</span>     <span style="color:#ae81ff">41</span>  <span style="color:#ae81ff">56</span>   <span style="color:#ae81ff">808</span>  devices      kcore        mtd           sysrq-trigger
+<span style="color:#ae81ff">1163</span>  <span style="color:#ae81ff">19</span>    <span style="color:#ae81ff">26</span>     <span style="color:#ae81ff">320</span>    <span style="color:#ae81ff">42</span>  <span style="color:#ae81ff">566</span>  <span style="color:#ae81ff">830</span>  diskstats    keys         net           sysvipc
+<span style="color:#ae81ff">1165</span>  <span style="color:#ae81ff">1908</span>  <span style="color:#ae81ff">27</span>     <span style="color:#ae81ff">33</span>     <span style="color:#ae81ff">43</span>  <span style="color:#ae81ff">567</span>  <span style="color:#ae81ff">853</span>  dma          key-users    pagetypeinfo  timer_list
+<span style="color:#ae81ff">1167</span>  <span style="color:#ae81ff">2</span>     <span style="color:#ae81ff">28</span>     <span style="color:#ae81ff">330</span>    <span style="color:#ae81ff">44</span>  <span style="color:#ae81ff">57</span>   <span style="color:#ae81ff">9</span>    driver       kmsg         partitions    timer_stats
+<span style="color:#ae81ff">1169</span>  <span style="color:#ae81ff">20</span>    <span style="color:#ae81ff">29</span>     <span style="color:#ae81ff">334</span>    <span style="color:#ae81ff">45</span>  <span style="color:#ae81ff">59</span>   <span style="color:#ae81ff">94</span>   execdomains  kpagecount   sched_debug   tty
+<span style="color:#ae81ff">1171</span>  <span style="color:#ae81ff">21</span>    <span style="color:#ae81ff">29853</span>  <span style="color:#ae81ff">34</span>     <span style="color:#ae81ff">46</span>  <span style="color:#ae81ff">6</span>    <span style="color:#ae81ff">95</span>   fb           kpageflags   schedstat     uptime
+</code></pre></div><h3 id="sysctl-命令">sysctl 命令</h3>
+<h4 id="语法格式">语法格式</h4>
+<p>sysctl(选项)(参数)</p>
+<h4 id="命令参数">命令参数</h4>
+<ul>
+<li>-n 打印值时不打印关键字</li>
+<li>-e 忽略未知关键字错误</li>
+<li>-N 仅打印名称</li>
+<li>-w 当改变 sysctl 设置时使用此项</li>
+<li>-p 从配置文件 /etc/sysctl.conf 加载内核参数设置</li>
+<li>-a 打印当前所有可用的内核参数变量和值</li>
+<li>-A 以表格方式打印当前所有可用的内核参数变量和值</li>
+</ul>
+<h4 id="默认配置文件">默认配置文件</h4>
+<p>/etc/sysctl.conf</p>
+<h4 id="命令使用方式">命令使用方式</h4>
+<p>(1) 设置某参数sysctl -w parameter=VALUE
+(2) 通过读取配置文件设置参数sysctl -p [/path/to/conf_file]</p>
+<h4 id="参数说明">参数说明</h4>
+<p>只读：输出信息</p>
+<p>可写：可接受用户指定“新值”来实现对内核某功能或特性的配置/proc/sys</p>
+<h4 id="两种修改方式">两种修改方式</h4>
+<p>(1) sysctl 命令用于查看或设定此目录中诸多参数sysctl -w path.to.parameter=VALUEsysctl -w kernel.hostname=mail.escapelife.com</p>
+<p>(2) echo 命令通过重定向的方式也可以修改大多数参数的值echo &ldquo;VALUE&rdquo; &gt; /proc/sys/path/to/parameterecho &ldquo;
+<a href="http://www.escapelife.com" title="www.escapelife.com" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    www.escapelife.com
+    <i class="fa fa-external-link-alt"></i>
+</a>&rdquo; &gt; /proc/sys/kernel/hostname</p>
+<p>配置文件中常用的几个参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">net.ipv4.ip_forward
+/proc/sys/net/ipv4/ip_forward
+vm.drop_caches
+/proc/sys/vm/drop_caches
+kernel.hostname
+/proc/sys/kernel/hostname
+</code></pre></div><h3 id="修改配置文件">修改配置文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># cat /etc/sysctl.conf</span>
+<span style="color:#75715e"># Kernel sysctl configuration file for Red Hat Linux</span>
+
+<span style="color:#75715e"># Controls IP packet forwarding</span>
+net.ipv4.ip_forward <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># Controls source route verification</span>
+net.ipv4.conf.default.rp_filter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># Do not accept source routing</span>
+net.ipv4.conf.default.accept_source_route <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># Controls the System Request debugging functionality of the kernel</span>
+kernel.sysrq <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># Controls whether core dumps will append the PID to the core filename.</span>
+<span style="color:#75715e"># Useful for debugging multi-threaded applications.</span>
+kernel.core_uses_pid <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># Controls the use of TCP syncookies</span>
+net.ipv4.tcp_syncookies <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># Disable netfilter on bridges.</span>
+net.bridge.bridge-nf-call-ip6tables <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+net.bridge.bridge-nf-call-iptables <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+net.bridge.bridge-nf-call-arptables <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># Controls the default maxmimum size of a mesage queue</span>
+kernel.msgmnb <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>
+
+<span style="color:#75715e"># Controls the maximum size of a message, in bytes</span>
+kernel.msgmax <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>
+
+<span style="color:#75715e"># Controls the maximum shared segment size, in bytes</span>
+kernel.shmmax <span style="color:#f92672">=</span> <span style="color:#ae81ff">4294967295</span>
+
+<span style="color:#75715e"># Controls the maximum number of shared memory segments, in pages</span>
+kernel.shmall <span style="color:#f92672">=</span> <span style="color:#ae81ff">268435456</span>
+<span style="color:#75715e"># Auto-enabled by xs-tools:install.sh</span>
+net.ipv4.conf.all.arp_notify <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</code></pre></div><h3 id="实战演示-1">实战演示</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 查看所有可读变量</span>
+sysctl -a
+
+<span style="color:#75715e"># 修改对应参数</span>
+sysctl -w kernel.sysrq<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+sysctl -w kernel.core_uses_pid<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+sysctl -w net.ipv4.conf.default.accept_redirects<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>
+
+<span style="color:#75715e"># 如果希望屏蔽别人 ping 你的主机，配置文件修改</span>
+net.ipv4.icmp_echo_ignore_all <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e"># 编辑完成后，请执行以下命令使变动立即生效</span>
+/sbin/sysctl -p
+/sbin/sysctl -w net.ipv4.route.flush<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><h2 id="sys-目录">/sys 目录</h2>
+<p>sysfs 伪文件系统，输出内核识别出的各硬件设备的相关属性信息，也有内核对硬件特性的设定信息。有些参数是可以修改的，用于调整硬件工作特性。</p>
+<h3 id="udev">udev</h3>
+<ul>
+<li>udev 是运行用户空间程序。</li>
+<li>udev 通 /sys/ 路径下输出的信息动态为各设备创建所需要设备文件。</li>
+<li>udev 是 Linux 内核的设备管理器，它取代了 udevadmin 和 hotplug，负责管理 /dev 中的设备节点。</li>
+<li>udev 也处理所有用户空间发生的硬件添加、删除事件，以及某些特定设备所需的固件加载。</li>
+<li>udev 为设备创建设备文件时，会读取其事先定义好的规则文件，一般在 /etc/udev/rules.d 及 /usr/lib/udev/rules.d 目录下。</li>
+</ul>
+<h3 id="ramdisk-文件的制作">ramdisk 文件的制作</h3>
+<h4 id="方法一">方法一</h4>
+<p>mkinitrd 命令</p>
+<p>为当前正在使用的内核重新制作 ramdisk 文件</p>
+<p>mkinitrd /boot/initramfs-$(uname -r).img $(uname -r)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 移动ramdisk文件到/root目录下</span>
+mv /boot/initramfs-2.6.32...img /root
+
+<span style="color:#75715e"># 为当前正在使用的内核重新制作ramdisk文件</span>
+mkinitrd /boot/initramfs-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>.img <span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>
+</code></pre></div><h4 id="方法二">方法二</h4>
+<p>dracut 命令</p>
+<p>为当前正在使用的内核重新制作 ramdisk 文件</p>
+<p>dracut /boot/initramfs-$(uname -r).img $(uname -r)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 移动ramdisk文件到/root目录下</span>
+mv /boot/initramfs-2.6.32...img /root
+
+<span style="color:#75715e"># 为当前正在使用的内核重新制作ramdisk文件</span>
+dracut /boot/initramfs-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>.img <span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span>
+</code></pre></div><h3 id="查看-ramdisk">查看 ramdisk</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 使用file命令查看ramdisk文件发现是以gz压缩存放的</span>
+file /boot/initramfs-2.6.32-504.el6.x86_64.img
+
+<span style="color:#75715e"># 改名称，解压</span>
+cd /boot/
+mv initramfs-2.6.32-504.el6.x86_64.img initramfs-2.6.32-504.el6.x86_64.img.gz
+gzip -d initramfs-2.6.32-504.el6.x86_64.img.gz
+
+<span style="color:#75715e"># 使用file命令查看发现是以cpio存放的文本文件</span>
+file initramfs-2.6.32-504.el6.x86_64.img
+
+<span style="color:#75715e"># 解压这个文本文件</span>
+<span style="color:#75715e"># 之后会在initrd目录下生成相应的文件，一个微型的/root</span>
+mkdir initrd
+cd initrd
+cpio -id &lt; ../initramfs-2.6.32-504.el6.x86_64.img
+
+<span style="color:#75715e"># 这个时候就可以查看init脚本文件了</span>
+cat init
+
+<span style="color:#75715e"># 在sbin文件中存放着相关的命令</span>
+ls sbin
+</code></pre></div><h2 id="编译内核">编译内核</h2>
+<h3 id="前提准备">前提准备</h3>
+<p>(1) 准备好开发环境</p>
+<p>包组(CentOS 6)</p>
+<p>Server Platform Development</p>
+<p>Development Tools</p>
+<p>(2) 获取目标主机上硬件设备的相关信息</p>
+<p>CPUcat /proc/cpuinfox86info -alscpu</p>
+<p>PCI 设备lspci-v-vvlsusb-v-vvlsblk</p>
+<p>了解全部硬件设备信息hal-device</p>
+<p>(3) 获取到目标主机系统功能的相关信息</p>
+<p>(4) 获取内核源代码包</p>
+<p>
+<a href="http://www.kernel.org" title="www.kernel.org" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    www.kernel.org
+    <i class="fa fa-external-link-alt"></i>
+</a></p>
+<h3 id="简易安装内核">简易安装内核</h3>
+<h4 id="简易安装">简易安装</h4>
+<p>获取当前系统的安装文件作为模块安装较为方便</p>
+<p>修改相应的参数即可</p>
+<p>只适用于当前特定的内核版本</p>
+<p>当前系统的安装文件在 config-2.6.32-504.el6.x86_64</p>
+<h4 id="简单依据模板文件的制作内核">简单依据模板文件的制作内核</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 下载对应的Linux内核版本进行解压缩</span>
+<span style="color:#75715e"># 会在/usr/src目录下创建debug、kernels和linux-3.10.67目录</span>
+tar xf linux-3.10.67.tar.xz -C /usr/src
+
+<span style="color:#75715e"># 为了方便多内核共存，使用连接指向</span>
+<span style="color:#75715e"># 会在当前目录下创建一个链接文件 linux -&gt; linux-3.10.67</span>
+cd /usr/src
+ln -sv linux-3.10.67 linux
+
+<span style="color:#75715e"># 创建模板</span>
+cd linux
+<span style="color:#75715e"># 查看链接指向的文件内容</span>
+ls
+<span style="color:#75715e"># 拷贝系统自带的模板文件</span>
+cp /boot/config-<span style="color:#66d9ef">$(</span>uname -r<span style="color:#66d9ef">)</span> .config
+
+<span style="color:#75715e"># 打开图形界面配置内核选项，选择添加、删除内核模块</span>
+<span style="color:#75715e"># 添加的默认选项来自.config配置文件</span>
+make menuconfig
+
+<span style="color:#75715e"># 使用screen来不中断安装</span>
+screen
+<span style="color:#75715e"># 采用几个线程进行编译</span>
+make -j n
+
+<span style="color:#75715e"># 安装内核</span>
+make modules_install
+<span style="color:#75715e"># make install中将会安装内容</span>
+<span style="color:#75715e"># 安装bzImage为/boot/vmlinuz-VERSION-RELEASE</span>
+<span style="color:#75715e"># 生成initramfs文件</span>
+<span style="color:#75715e"># 编辑grub的配置文件</span>
+make install
+
+<span style="color:#75715e"># 重启系统，并测试使用新内核，不是默认启动内核</span>
+init <span style="color:#ae81ff">6</span>
+</code></pre></div><h3 id="详解编译内核">详解编译内核</h3>
+<h4 id="1-配置内核选项">(1) 配置内核选项</h4>
+<h5 id="支持更新模式进行配置">支持“更新”模式进行配置</h5>
+<ul>
+<li>(a) make config：基于命令行以遍历的方式去配置内核中可配置的每个选项</li>
+<li>(b) make menuconfig：基于 curses 的文本窗口界面</li>
+<li>(c) make gconfig：基于 GTK 开发环境的窗口界面</li>
+<li>(d) make xconfig：基于 Qt 开发环境的窗口界面</li>
+</ul>
+<h5 id="支持全新配置模式进行配置">支持“全新配置”模式进行配置</h5>
+<ul>
+<li>(a) make defconfig：基于内核为目标平台提供的“默认”配置进行配置</li>
+<li>(b) make allnoconfig: 所有选项均回答为”no“</li>
+</ul>
+<h4 id="2-编译---make--j-">(2) 编译 - make [-j #]</h4>
+<p>如何只编译内核中的一部分功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># (a)只编译某子目录中的相关代码</span>
+cd /usr/src/linux
+make dir/
+
+<span style="color:#75715e"># (b)只编译一个特定的模块</span>
+cd /usr/src/linux
+make dir/file.ko
+
+<span style="color:#75715e"># 例如：只为e1000编译驱动</span>
+make drivers/net/ethernet/intel/e1000/e1000.ko
+</code></pre></div><p>如何交叉编译内核</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 编译的目标平台与当前平台不相同；</span>
+make ARCH<span style="color:#f92672">=</span>arch_name
+
+<span style="color:#75715e"># 要获取特定目标平台的使用帮助</span>
+make ARCH<span style="color:#f92672">=</span>arch_name help
+</code></pre></div><p>如何在已经执行过编译操作的内核源码树做重新编译</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 事先清理操作</span>
+
+<span style="color:#75715e"># 清理大多数编译生成的文件，但会保留config文件等</span>
+make clean
+
+<span style="color:#75715e"># 清理所有编译生成的文件、config及某些备份文件</span>
+make mrproper
+
+<span style="color:#75715e"># mrproper、patches以及编辑器备份文件</span>
+make distclean
+</code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -424,8 +950,8 @@
 
 <div class="post-tags">
   
-    <a href="/tags/spi">
-    SPI
+    <a href="/tags/kernel">
+    Kernel
   </a>
 </div>
 
@@ -453,7 +979,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      Linux下SPI驱动详解
+      Linux系统内核概述
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -461,7 +987,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/linux-kernel-overview.html" title="Linux下SPI驱动详解">https://www.kontronn.com/post/linux/linux-kernel-overview.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/linux-kernel-overview.html" title="Linux系统内核概述">https://www.kontronn.com/post/linux/linux-kernel-overview.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -486,10 +1012,13 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
+    <a href="/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html" rel="next" title="Linux中pdf转word的工具你知道几个">
+      <i class="fa fa-chevron-left"></i> Linux中pdf转word的工具你知道几个
+    </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/linux/difference-between-nftables-and-iptables.html" rel="prev" title="什么是 nftables ? 它与 iptables 的区别是什么？">
-      什么是 nftables ? 它与 iptables 的区别是什么？
+    <a href="/post/linux/using-pv-cmd-to-monitor-data-transfer-speed-and-progress.html" rel="prev" title="如何在 Linux 使用 pv 命令监控数据传输速度与进度">
+      如何在 Linux 使用 pv 命令监控数据传输速度与进度
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>
