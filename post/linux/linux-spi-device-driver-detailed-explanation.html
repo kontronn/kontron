@@ -437,24 +437,24 @@
 <li>CLK – 时钟信号，由主设备产生</li>
 <li>nCS  – 从设备使能信号，由主设备控制</li>
 </ul>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png" alt="Linux SPI Device Driver 1">
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-1.png" alt="Linux SPI Device Driver 1">
 图1-1 SPI总线模型</p>
 <h3 id="spi总线时序">SPI总线时序</h3>
 <p>SPI接口在Master控制下产生的从设备使能信号和时钟信号，两个双向移位寄存器按位传输进行数据交换，传输数据高位在前（MSB first），低位在后。如下图所示，在CLK的下降沿上数据改变，上升沿一位数据被存入移位寄存器。</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-2.png" alt="Linux SPI Device Driver 2">
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-2.png" alt="Linux SPI Device Driver 2">
 图1-2 spi传输时序图</p>
 <p>在一个SPI时钟周期内，会完成如下操作：（1）Master通过MOSI线发送1位数据，同时Slave通过MOSI线读取这1位数据；（2）Slave通过MISO线发送1位数据，同时Master通过MISO线读取这1位数据。Master和Slave各有一个移位寄存器，如图1-3所示，而且这两个移位寄存器连接成环状。依照CLK的变化，数据以MSB first的方式依次移出Master寄存器和Slave寄存器，并且依次移入Slave寄存器和Master寄存器。当寄存器中的内容全部移出时，相当于完成了两个寄存器内容的交换。</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-3.png" alt="Linux SPI Device Driver 3"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-3.png" alt="Linux SPI Device Driver 3"></p>
 <h3 id="spi总线传输模式">SPI总线传输模式</h3>
 <p>SPI总线传输一共有4种模式，这4种模式分别由时钟极性(CPOL，Clock Polarity)和时钟相位(CPHA，Clock Phase)来定义，其中CPOL参数规定了SCK时钟信号空闲状态的电平，CPHA规定了数据是在SCK时钟的上升沿被采样还是下降沿被采样。这四种模式的时序图如下图1-4所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-4.png" alt="Linux SPI Device Driver 4"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-4.png" alt="Linux SPI Device Driver 4"></p>
 <ul>
 <li>模式0：CPOL= 0，CPHA=0。CLK串行时钟线空闲是为低电平，数据在SCK时钟的上升沿被采样，数据在CLK时钟的下降沿切换</li>
 <li>模式1：CPOL= 0，CPHA=1。CLK串行时钟线空闲是为低电平，数据在SCK时钟的下降沿被采样，数据在CLK时钟的上升沿切换</li>
 <li>模式2：CPOL= 1，CPHA=0。CLK串行时钟线空闲是为高电平，数据在SCK时钟的下降沿被采样，数据在CLK时钟的上升沿切换</li>
 <li>模式3：CPOL= 1，CPHA=1。CLK串行时钟线空闲是为高电平，数据在SCK时钟的上升沿被采样，数据在CLK时钟的下降沿切换 其中比较常用的模式是模式0和模式3。为了更清晰的描述SPI总线的时序，下面展现了模式0下的SPI时序图1-5：</li>
 </ul>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-5.png" alt="Linux SPI Device Driver 5">
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-5.png" alt="Linux SPI Device Driver 5">
 图1-5 mode0下的SPI时序图</p>
 <h3 id="spi总线的优缺点">SPI总线的优缺点</h3>
 <ul>
@@ -469,17 +469,17 @@
 <li>spi控制器驱动（SPI Master Driver）：SPI Master针对不同类型的spi控制器硬件，实现spi总线的硬件访问操作。SPI Master通过接口函数向SPI Core注册一个控制器。</li>
 <li>spi设备驱动（SPI Device Driver）：SPI Driver是对应于spi设备端的驱动程序，通过接口函数向SPI Core进行注册，SPI Driver的作用是将spi设备挂接到spi总线上；Linux的软件架构图如图2-1所示：</li>
 </ol>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-6.png" alt="Linux SPI Device Driver 6">
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-6.png" alt="Linux SPI Device Driver 6">
 图2-1 spi软件架构图</p>
 <h3 id="初始化及退出流程">初始化及退出流程</h3>
 <h4 id="注册spi控制器">注册spi控制器</h4>
 <p>注册spi控制器到内核分为两个阶段：第一个阶段，使用spi_alloc_master,分配一个spi_master的空间，具体流程如图2-2所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-7.png" alt="Linux SPI Device Driver 7"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-7.png" alt="Linux SPI Device Driver 7"></p>
 <p>第二阶段，使用spi_register_master将第一阶段分配的spi_master注册到内核中，具体流程如2-3所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-8.png" alt="Linux SPI Device Driver 8"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-8.png" alt="Linux SPI Device Driver 8"></p>
 <h4 id="注销spi控制器">注销spi控制器</h4>
 <p>spi控制器注销的流程如图2-4所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-9.png" alt="Linux SPI Device Driver 9"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-9.png" alt="Linux SPI Device Driver 9"></p>
 <h3 id="关键数据结构">关键数据结构</h3>
 <h4 id="spi_device">spi_device</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_device {
@@ -744,7 +744,7 @@
 <li>如果使用同步方式，调用spi_sync()，如果使用异步方式，调用spi_async();(我调试外设时，只使用过spi_sync</li>
 </ol>
 <p>传输示意图如图2-5所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-10.png" alt="Linux SPI Device Driver 10"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-10.png" alt="Linux SPI Device Driver 10"></p>
 <h4 id="数据准备">数据准备</h4>
 <h5 id="spi_message_init">spi_message_init</h5>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spi_message_init</span>(<span style="color:#66d9ef">struct</span> spi_message <span style="color:#f92672">*</span>m)
@@ -766,13 +766,13 @@
 <li>对于同一个数据传输的发起者，既然异步方式无需等待数据传输完成即可返回，返回后，该发起者可以立刻又发起一个message，而这时上一个message还没有处理完。</li>
 <li>对于另外一个不同的发起者来说，也有可能同时发起一次message传输请求 首先分析spi_sync()接口的实现流程，如图2-6：</li>
 </ul>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-11.png" alt="Linux SPI Device Driver 11"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-11.png" alt="Linux SPI Device Driver 11"></p>
 <p>其次分析spi_async_locked接口的实现流程，如图2-7所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-12.png" alt="Linux SPI Device Driver 12"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-12.png" alt="Linux SPI Device Driver 12"></p>
 <p>spi_queued_transfer接口的实现流程如图3-8所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-13.png" alt="Linux SPI Device Driver 13"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-13.png" alt="Linux SPI Device Driver 13"></p>
 <p>spi_pump_messages函数的处理流程如图3-9所示：</p>
-<p><img src="https://www.kontron.com/imgs/post/linux-spi-device-driver-14.png" alt="Linux SPI Device Driver 14"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-14.png" alt="Linux SPI Device Driver 14"></p>
 <p>图中transfer_one_message是spi控制器驱动要实现的，主要功能是处理spi_message中的每个spi_transfer。</p>
 <h3 id="关键函数解析">关键函数解析</h3>
 <h4 id="spi_alloc_master">spi_alloc_master</h4>
