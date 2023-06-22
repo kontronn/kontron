@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="风河支持NXP S32G3——信心百倍、加速创新" />
-<meta itemprop="description" content="风河支持NXP S32G3——信心百倍、加速创新" />
+<meta itemprop="name" content="Linux驱动IO篇——mmap操作" />
+<meta itemprop="description" content="Linux驱动IO篇——mmap操作" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Wind River,NXP,S32G3" />
+<meta itemprop="keywords" content="Device Driver,mmap,IO" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="风河支持NXP S32G3——信心百倍、加速创新" />
-<meta property="og:description" content="风河支持NXP S32G3——信心百倍、加速创新" />
+<meta property="og:title" content="Linux驱动IO篇——mmap操作" />
+<meta property="og:description" content="Linux驱动IO篇——mmap操作" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-06-20 10:43:19 -0400 EDT" />
-<meta property="article:modified_time" content="2023-06-20 10:43:19 -0400 EDT" />
+<meta property="article:published_time" content="2023-06-22 11:11:12 -0400 EDT" />
+<meta property="article:modified_time" content="2023-06-22 11:11:12 -0400 EDT" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"wind-river-supports-nxp-s32g3.html","permalink":"https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html","title":"风河支持NXP S32G3——信心百倍、加速创新"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-io-device-driver-mmap-operation.html","permalink":"https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html","title":"Linux驱动IO篇——mmap操作"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>风河支持NXP S32G3——信心百倍、加速创新 - Kontronn</title>
+  <title>Linux驱动IO篇——mmap操作 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -173,7 +173,13 @@
     <div class="sidebar-panel-container">
       
       <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#应用层">应用层</a></li>
+    <li><a href="#驱动层">驱动层</a></li>
+  </ul>
+</nav></div>
       </div>
       
       <div class="site-overview-wrap sidebar-panel">
@@ -305,7 +311,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -315,11 +321,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="风河支持NXP S32G3——信心百倍、加速创新">
-      <meta itemprop="description" content="风河支持NXP S32G3——信心百倍、加速创新">
+      <meta itemprop="name" content="Linux驱动IO篇——mmap操作">
+      <meta itemprop="description" content="Linux驱动IO篇——mmap操作">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">风河支持NXP S32G3——信心百倍、加速创新 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">Linux驱动IO篇——mmap操作 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -329,7 +335,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-06-20 10:43:19 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-06-20 10:43:19 -0400 EDT">2023-06-20</time>
+  <time title="发表于：2023-06-22 11:11:12 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-06-22 11:11:12 -0400 EDT">2023-06-22</time>
 </span>
     
     
@@ -339,8 +345,8 @@
   </span>
   <span class="post-meta-item-text">分类于：</span>
   <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
+    <a href="/categories/linux" itemprop="url" rel="index">
+      <span itemprop="name">Linux</span>
     </a>
   </span>
 </span>
@@ -351,7 +357,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>46</span>
+  <span class="post-meta-item-text">字数：</span><span>163</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -370,7 +376,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/news/wind-river-supports-nxp-s32g3.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/linux-io-device-driver-mmap-operation.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -382,25 +388,90 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>风河公司与NXP公司的合作伙伴关系深厚且长远，由此不断地为我们的共同客户带来新的效益。 风河公司非常兴奋地宣布其运行时（Runtime）产品组合和Wind River Studio Linux 服务都已经支持下一代NXP S32G3处理器，从而有力地促进企业客户加速智能边缘设备的创建与部署。</p>
-<p>具体而言，风河将为VxWorks、Wind River Linux和Helix虚拟化平台提供S32G3 BSP（板级支持包），以及配套的设计、全生命周期安全与维护服务。例如，企业客户希望充分利用S32G3处理器独特的车辆场景功能，而风河的实时产品阵容以及久经验证的嵌入式专业知识都将在相应的软件支持平台上助力汽车解决方案的设计与构建。</p>
-<p>以上都是风河与NXP长期合作伙伴关系的基本组成部分，双方将共同致力于为嵌入式行业提供成熟可靠的硬件和软件解决方案。两家公司密切合作，其系统化效益就是形成了紧密集成的解决方案，获得更高的开发人员生产力、更佳的成本效率，还有更高的可靠性以及更快的上市速度。</p>
-<p>无论您属于哪个行业，无论您的企业正在为智能边缘创建什么样的系统或设备，风河广泛的软件产品阵容和DevOps成套工具都可以帮助您充分发挥NXP硬件潜能，加速您的项目进程。以下是风河为NXP客户提供支持的几个典型代表：</p>
-<p><img src="https://www.vxworks.net/images/news/wind-river-nxp-s32g3.png" alt="Wind River Support NXP S32G3"></p>
+  <p>平时我们写Linux驱动和用户空间交互时，都是通过<code>copy_from_user</code>把用户空间传过来的数据进行拷贝，为什么要这么做呢？</p>
+<h2 id="前言">前言</h2>
+<p>因为用户空间是不能直接内核空间数据的，他们映射的是不同的地址空间，只能先将数据拷贝过来，然后再操作。</p>
+<p>如果用户空间需要传几MB的数据给内核，那么原来的拷贝方式显然效率特别低，也不太现实，那怎么办呢？</p>
+<p>想想，之所以要拷贝是因为用户空间不能直接访问内核空间，那如果可以直接访问内核空间的buffer，是不是就解决了。</p>
+<p>简单来说，就是让一块物理内存拥有两份映射，即拥有两个虚拟地址，一个在内核空间，一个在用户空间。关系如下：</p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-io-device-driver-mmap-1.png" alt="Linux IO Device Driver MMAP 1"></p>
+<p>通过<code>mmap</code>映射就可以实现。</p>
+<h2 id="应用层">应用层</h2>
+<p>应用层代码很简单，主要就是通过<code>mmap</code>系统调用进行映射，然后就可以对返回的地址进行操作。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> buf;
+<span style="color:#75715e">/* 1. 打开文件 */</span>
+ fd <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;/dev/hello&#34;</span>, O_RDWR);
+ <span style="color:#66d9ef">if</span> (fd <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+ {
+      printf(<span style="color:#e6db74">&#34;can not open file /dev/hello</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+      <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+ }
+
+<span style="color:#75715e">/* 2. mmap
+</span><span style="color:#75715e">       * MAP_SHARED  : 多个APP都调用mmap映射同一块内存时, 对内存的修改大家都可以看到。
+</span><span style="color:#75715e">       *               就是说多个APP、驱动程序实际上访问的都是同一块内存
+</span><span style="color:#75715e">       * MAP_PRIVATE : 创建一个copy on write的私有映射。
+</span><span style="color:#75715e">       *               当APP对该内存进行修改时，其他程序是看不到这些修改的。
+</span><span style="color:#75715e">       *               就是当APP写内存时, 内核会先创建一个拷贝给这个APP,
+</span><span style="color:#75715e">       *               这个拷贝是这个APP私有的, 其他APP、驱动无法访问。
+</span><span style="color:#75715e">       */</span>
+buf <span style="color:#f92672">=</span>  mmap(NULL, <span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>, PROT_READ <span style="color:#f92672">|</span> PROT_WRITE, MAP_SHARED, fd, <span style="color:#ae81ff">0</span>);
+</code></pre></div><p><code>mmap</code>的第一个参数是想要映射的起始地址，通常设置为NULL，表示由内核来决定该起始地址。</p>
+<p>第二参数是要映射的内存空间的大小。</p>
+<p>第三个参数PROT_READ | PROT_WRITE表示映射后的空间是可读可写的。</p>
+<p>第四个参数可填MAP_SHARED或MAP_PRIVATE：</p>
 <ul>
-<li>BSP 支持：风河为NXP系列处理器提供众多BSP，包括S32G、I.MX和Layerscape系列。</li>
-<li>NXP LINUX SDK支持：针对NXP基于Yocto的Linux软件开发工具包，Wind River Studio Linux Services提供安全扫描、漏洞缓解和补救以及全生命周期管理和维护服务。</li>
-<li>汽车解决方案：VxWorks和Wind River Linux为汽车网关、域和区域控制器提供高性能实时解决方案。在运行Linux或Android的i.MX应用处理器上构建信息娱乐解决方案方面，风河也拥有丰富的经验。</li>
-<li>工业、医疗和机器人解决方案：风河拥有大量的NXP BSP ，非常适合用于关键基础设施、医疗和机器人的设计，因为它们都需要依赖于VxWorks的实时和确定性或Wind River Linux的开源灵活性。风河还为多个i.MX应用处理器提供VxWorks和Wind River Linux BSP，包括最新的i.MX x 93以及Helix Virtualization Platform虚拟化平台。</li>
-<li>航空航天和国防解决方案：凡是需要安全认证的嵌入式设计都将得益于我们对NXP处理器的支持，从传统的Power架构到最新的Arm架构解决方案，如LX2160。借助于我们的Helix Virtualization Platform虚拟化平台和VxWorks和Wind River Linux的BSP，可以将NXP解决方案作为当今许多飞行系统的基石。</li>
-<li>面向NXP平台的数字孪生和模拟仿真：帮助测试前移且提前启动软件项目并更快地推进开发工作，更快地构建更高质量且更安全的软件系统，并与DevOps开发实践完全集成。模拟仿真基于NXP硬件和软件的完整系统，支持ARM和PowerPC架构。</li>
-<li>风河与NXP合作的广度和深度以及对最新产品的支持，都将为企业客户带来了巨大的价值，例如简化整个团队的开发流程以及加快产品上市速度。我们期待在S32G3上看到令人兴奋的新产品。</li>
+<li>MAP_SHARED：多个APP都调用mmap映射同一块内存时, 对内存的修改大家都可以看到。就是说多个APP、驱动程序实际上访问的都是同一块内存。</li>
+<li>MAP_PRIVATE：创建一个copy on write的私有映射。当APP对该内存进行修改时，其他程序是看不到这些修改的。就是当APP写内存时, 内核会先创建一个拷贝给这个APP，这个拷贝是这个APP私有的, 其他APP、驱动无法访问。</li>
 </ul>
-<p>原文连接
-<a href="https://www.vxworks.net/news/1017-wind-river-supports-nxp-s32g3" title="VxWorks俱乐部" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    VxWorks俱乐部
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<h2 id="驱动层">驱动层</h2>
+<p>驱动层主要是实现<code>mmap</code>接口，而mmap接口的实现，主要是调用了remap_pfn_range函数，函数原型如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">remap_pfn_range</span>(
+  <span style="color:#66d9ef">struct</span> vm_area_struct <span style="color:#f92672">*</span>vma, 
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> addr, 
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> pfn, 
+  <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> size, 
+  pgprot_t prot);
+</code></pre></div><p><code>vma</code>：描述一片映射区域的结构体指针
+<code>addr</code>：要映射的虚拟地址起始地址
+<code>pfn</code>：物理内存所对应的页框号，就是将物理地址除以页大小得到的值
+<code>size</code>：映射的大小
+<code>prot</code>：该内存区域的访问权限</p>
+<p>驱动主要步骤：</p>
+<ol>
+<li>
+<p>使用kmalloc或者kzalloc函数分配一块内存kernel_buf，因为这样分配的内存物理地址是连续的，mmap后应用层会对这一个基地址去访问这块内存。</p>
+</li>
+<li>
+<p>实现mmap函数</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hello_drv_mmap</span>(<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>file, <span style="color:#66d9ef">struct</span> vm_area_struct <span style="color:#f92672">*</span>vma)
+{
+ <span style="color:#75715e">/* 获得物理地址 */</span>
+ <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> phy <span style="color:#f92672">=</span> virt_to_phys(kernel_buf);<span style="color:#75715e">//kernel_buf是内核空间分配的一块虚拟地址空间
+</span><span style="color:#75715e"></span>    
+    <span style="color:#75715e">/* 设置属性：cache, buffer*/</span>
+ vma<span style="color:#f92672">-&gt;</span>vm_page_prot <span style="color:#f92672">=</span> pgprot_writecombine(vma<span style="color:#f92672">-&gt;</span>vm_page_prot);
+    
+    <span style="color:#75715e">/* map */</span>
+    <span style="color:#66d9ef">if</span>(remap_pfn_range(vma, vma<span style="color:#f92672">-&gt;</span>vm_start, phy<span style="color:#f92672">&gt;&gt;</span>PAGE_SHFIT,
+                      vma<span style="color:#f92672">-&gt;</span>vm_end <span style="color:#f92672">-</span> vma<span style="color:#f92672">-&gt;</span>start, vma<span style="color:#f92672">-&gt;</span>vm_page_prot)){
+ printk(<span style="color:#e6db74">&#34;mmap remap_pfn_range failed</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>ENOBUFS;
+ }
+ <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> file_operations my_fops <span style="color:#f92672">=</span> {
+ .mmap <span style="color:#f92672">=</span> hello_drv_mmap,
+};
+</code></pre></div><ol>
+<li>通过virt_to_phys将虚拟地址转为物理地址，这里的kernel_buf是内核空间的一块虚拟地址空间</li>
+<li>设置属性：不使用cache，使用buffer</li>
+<li>映射：通过remap_pfn_range函数映射，phy&raquo;PAGE_SHIFT其实就是按page映射，除了这个参数，其他的起始地址、大小和权限都可以由用户在系统调用函数中指定。</li>
+</ol>
+<p>当应用层调用mmap后，就会调用到驱动层的mmap函数，最终应用层的虚拟地址和驱动中的物理地址就建立了映射关系，应用层也就可以直接访问驱动的buffer了。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -420,14 +491,14 @@
 
 <div class="post-tags">
   
-    <a href="/tags/wind-river">
-    Wind River
+    <a href="/tags/device-driver">
+    Device Driver
   </a>
-    <a href="/tags/nxp">
-    NXP
+    <a href="/tags/mmap">
+    mmap
   </a>
-    <a href="/tags/s32g3">
-    S32G3
+    <a href="/tags/io">
+    IO
   </a>
 </div>
 
@@ -455,7 +526,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      风河支持NXP S32G3——信心百倍、加速创新
+      Linux驱动IO篇——mmap操作
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -463,7 +534,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html" title="风河支持NXP S32G3——信心百倍、加速创新">https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html" title="Linux驱动IO篇——mmap操作">https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -488,13 +559,10 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/difference-between-nftables-and-iptables.html" rel="next" title="什么是 nftables ? 它与 iptables 的区别是什么？">
-      <i class="fa fa-chevron-left"></i> 什么是 nftables ? 它与 iptables 的区别是什么？
-    </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html" rel="prev" title="Linux中pdf转word的工具你知道几个">
-      Linux中pdf转word的工具你知道几个
+    <a href="/post/linux/linux-spi-device-driver-detailed-explanation.html" rel="prev" title="Linux下SPI驱动详解">
+      Linux下SPI驱动详解
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>

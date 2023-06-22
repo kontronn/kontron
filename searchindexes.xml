@@ -2,6 +2,36 @@
 <search>
   
   <entry>
+    <title>Linux驱动IO篇——mmap操作</title>
+    <url>/post/linux/linux-io-device-driver-mmap-operation.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Device Driver</tag>
+      <tag>mmap</tag>
+      <tag>IO</tag>
+    </tags>
+    <content type="html"><![CDATA[平时我们写Linux驱动和用户空间交互时，都是通过copy_from_user把用户空间传过来的数据进行拷贝，为什么要这么做呢？
+前言 因为用户空间是不能直接内核空间数据的，他们映射的是不同的地址空间，只能先将数据拷贝过来，然后再操作。
+如果用户空间需要传几MB的数据给内核，那么原来的拷贝方式显然效率特别低，也不太现实，那怎么办呢？
+想想，之所以要拷贝是因为用户空间不能直接访问内核空间，那如果可以直接访问内核空间的buffer，是不是就解决了。
+简单来说，就是让一块物理内存拥有两份映射，即拥有两个虚拟地址，一个在内核空间，一个在用户空间。关系如下：
+通过mmap映射就可以实现。
+应用层 应用层代码很简单，主要就是通过mmap系统调用进行映射，然后就可以对返回的地址进行操作。
+char * buf; /* 1. 打开文件 */ fd = open(&#34;/dev/hello&#34;, O_RDWR); if (fd == -1) { printf(&#34;can not open file /dev/hello\n&#34;); return -1; } /* 2. mmap * MAP_SHARED : 多个APP都调用mmap映射同一块内存时, 对内存的修改大家都可以看到。 * 就是说多个APP、驱动程序实际上访问的都是同一块内存 * MAP_PRIVATE : 创建一个copy on write的私有映射。 * 当APP对该内存进行修改时，其他程序是看不到这些修改的。 * 就是当APP写内存时, 内核会先创建一个拷贝给这个APP, * 这个拷贝是这个APP私有的, 其他APP、驱动无法访问。 */ buf = mmap(NULL, 1024*8, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0); mmap的第一个参数是想要映射的起始地址，通常设置为NULL，表示由内核来决定该起始地址。
+第二参数是要映射的内存空间的大小。
+第三个参数PROT_READ | PROT_WRITE表示映射后的空间是可读可写的。
+第四个参数可填MAP_SHARED或MAP_PRIVATE：
+ MAP_SHARED：多个APP都调用mmap映射同一块内存时, 对内存的修改大家都可以看到。就是说多个APP、驱动程序实际上访问的都是同一块内存。 MAP_PRIVATE：创建一个copy on write的私有映射。当APP对该内存进行修改时，其他程序是看不到这些修改的。就是当APP写内存时, 内核会先创建一个拷贝给这个APP，这个拷贝是这个APP私有的, 其他APP、驱动无法访问。  驱动层 驱动层主要是实现mmap接口，而mmap接口的实现，主要是调用了remap_pfn_range函数，函数原型如下：
+int remap_pfn_range( struct vm_area_struct *vma, unsigned long addr, unsigned long pfn, unsigned long size, pgprot_t prot); vma：描述一片映射区域的结构体指针 addr：要映射的虚拟地址起始地址 pfn：物理内存所对应的页框号，就是将物理地址除以页大小得到的值 size：映射的大小 prot：该内存区域的访问权限
+驱动主要步骤：
+  使用kmalloc或者kzalloc函数分配一块内存kernel_buf，因为这样分配的内存物理地址是连续的，mmap后应用层会对这一个基地址去访问这块内存。
+  实现mmap函数
+  static int hello_drv_mmap(struct file *file, struct vm_area_struct *vma) { /* 获得物理地址 */ unsigned long phy = virt_to_phys(kernel_buf);//kernel_buf是内核空间分配的一块虚拟地址空间  /* 设置属性：cache, buffer*/ vma-&gt;vm_page_prot = pgprot_writecombine(vma-&gt;vm_page_prot); /* map */ if(remap_pfn_range(vma, vma-&gt;vm_start, phy&gt;&gt;PAGE_SHFIT, vma-&gt;vm_end - vma-&gt;start, vma-&gt;vm_page_prot)){ printk(&#34;mmap remap_pfn_range failed\n&#34;); return -ENOBUFS; } return 0; } static struct file_operations my_fops = { .mmap = hello_drv_mmap, };  通过virt_to_phys将虚拟地址转为物理地址，这里的kernel_buf是内核空间的一块虚拟地址空间 设置属性：不使用cache，使用buffer 映射：通过remap_pfn_range函数映射，phy&raquo;PAGE_SHIFT其实就是按page映射，除了这个参数，其他的起始地址、大小和权限都可以由用户在系统调用函数中指定。  当应用层调用mmap后，就会调用到驱动层的mmap函数，最终应用层的虚拟地址和驱动中的物理地址就建立了映射关系，应用层也就可以直接访问驱动的buffer了。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux下SPI驱动详解</title>
     <url>/post/linux/linux-spi-device-driver-detailed-explanation.html</url>
     <categories><category>Linux</category>
