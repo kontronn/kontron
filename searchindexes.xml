@@ -3,16 +3,21 @@
   
   <entry>
     <title>Linux下SPI驱动详解</title>
-    <url>/post/linux/linux-kernel-overview.html</url>
+    <url>/post/linux/linux-spi-device-driver-detailed-explanation.html</url>
     <categories><category>Linux</category>
     </categories>
     <tags>
       <tag>SPI</tag>
     </tags>
-    <content type="html"><![CDATA[SPI总线 SPI总线概述 SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：
+    <content type="html"><![CDATA[SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。
+SPI总线 SPI总线概述 SPI是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：
  MOSI – 主设备数据输出，从设备数据输入 对应MOSI master output slave input MISO – 主设备数据输入，从设备数据输出 对应MISO master input slave output CLK – 时钟信号，由主设备产生 nCS – 从设备使能信号，由主设备控制  ![Linux SPI Device Driver 1]( https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png   description=&ldquo;aaa&rdquo;)
 SPI总线时序 SPI接口在Master控制下产生的从设备使能信号和时钟信号，两个双向移位寄存器按位传输进行数据交换，传输数据高位在前（MSB first），低位在后。如下图所示，在CLK的下降沿上数据改变，上升沿一位数据被存入移位寄存器。
 ![Linux SPI Device Driver 2]( https://www.kontron.com/imgs/post/linux-spi-device-driver-2.png   description=&ldquo;aaa&rdquo;)
+在一个SPI时钟周期内，会完成如下操作：（1）Master通过MOSI线发送1位数据，同时Slave通过MOSI线读取这1位数据；（2）Slave通过MISO线发送1位数据，同时Master通过MISO线读取这1位数据。Master和Slave各有一个移位寄存器，如图1-3所示，而且这两个移位寄存器连接成环状。依照CLK的变化，数据以MSB first的方式依次移出Master寄存器和Slave寄存器，并且依次移入Slave寄存器和Master寄存器。当寄存器中的内容全部移出时，相当于完成了两个寄存器内容的交换。
+![Linux SPI Device Driver 3]( https://www.kontron.com/imgs/post/linux-spi-device-driver-3.png   description=&ldquo;aaa&rdquo;)
+SPI总线传输模式 SPI总线传输一共有4种模式，这4种模式分别由时钟极性(CPOL，Clock Polarity)和时钟相位(CPHA，Clock Phase)来定义，其中CPOL参数规定了SCK时钟信号空闲状态的电平，CPHA规定了数据是在SCK时钟的上升沿被采样还是下降沿被采样。这四种模式的时序图如下图1-4所示：
+![Linux SPI Device Driver 4]( https://www.kontron.com/imgs/post/linux-spi-device-driver-4.png   description=&ldquo;aaa&rdquo;)
 ]]></content>
   </entry>
   

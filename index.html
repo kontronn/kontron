@@ -260,7 +260,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="2401"></div>
+      <div class="item-count" id="wordsCount" data-count="2422"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -302,7 +302,7 @@
 
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/linux-kernel-overview.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -317,7 +317,7 @@
     </span>
     <header class="post-header">
        <h2 class="post-title" itemprop="name headline">
-  <a href="/post/linux/linux-kernel-overview.html" itemprop="url" class="post-title-link">Linux下SPI驱动详解</a> </h2> <div class="post-meta-container">
+  <a href="/post/linux/linux-spi-device-driver-detailed-explanation.html" itemprop="url" class="post-title-link">Linux下SPI驱动详解</a> </h2> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -350,17 +350,14 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  SPI总线 SPI总线概述 SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：
- MOSI – 主设备数据输出，从设备数据输入 对应MOSI master output slave input MISO – 主设备数据输入，从设备数据输出 对应MISO master input slave output CLK – 时钟信号，由主设备产生 nCS – 从设备使能信号，由主设备控制  ![Linux SPI Device Driver 1]( https://www.kontron.com/imgs/post/linux-spi-device-driver-1.png   description=&ldquo;aaa&rdquo;)
-SPI总线时序 SPI接口在Master控制下产生的从设备使能信号和时钟信号，两个双向移位寄存器按位传输进行数据交换，传输数据高位在前（MSB first），低位在后。如下图所示，在CLK的下降沿上数据改变，上升沿一位数据被存入移位寄存器。
-![Linux SPI Device Driver 2]( https://www.kontron.com/imgs/post/linux-spi-device-driver-2.png   description=&ldquo;aaa&rdquo;)
+  <p>SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。</p>
 
 
     </div>
     <footer class="post-footer">
       
 <div class="post-button">
-  <a class="btn" href="/post/linux/linux-kernel-overview.html#more" rel="contents">
+  <a class="btn" href="/post/linux/linux-spi-device-driver-detailed-explanation.html#more" rel="contents">
     阅读全文 &raquo;
   </a>
 </div>
