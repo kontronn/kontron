@@ -7,7 +7,9 @@
     <categories><category>Linux</category>
     </categories>
     <tags>
+      <tag>Linux</tag>
       <tag>SPI</tag>
+      <tag>Device Driver</tag>
     </tags>
     <content type="html"><![CDATA[SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。
 SPI总线 SPI总线概述 SPI是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：
