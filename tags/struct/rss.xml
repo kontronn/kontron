@@ -6,7 +6,16 @@
     <description>Recent content in Struct on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 08:31:44 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux内核中使用的C语言技巧</title>
+      <link>https://www.kontronn.com/post/programming/c-language-tricks-used-in-the-linux-kernel.html</link>
+      <pubDate>Fri, 23 Jun 2023 08:31:44 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/c-language-tricks-used-in-the-linux-kernel.html</guid>
+      <description>&lt;p&gt;下面是Linux内核中常常使用到的C语言技巧，比较实用，小伙伴们学起来！注意需要GCC编译器才支持这些特性。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>嵌入式C语言之结构体封装函数</title>
       <link>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</link>

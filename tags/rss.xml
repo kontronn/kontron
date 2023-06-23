@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 08:19:59 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 08:31:44 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://www.kontronn.com/tags/c/</link>
+      <pubDate>Fri, 23 Jun 2023 08:31:44 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embedded</title>
+      <link>https://www.kontronn.com/tags/embedded/</link>
+      <pubDate>Fri, 23 Jun 2023 08:31:44 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Struct</title>
+      <link>https://www.kontronn.com/tags/struct/</link>
+      <pubDate>Fri, 23 Jun 2023 08:31:44 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/struct/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>BUS</title>
       <link>https://www.kontronn.com/tags/bus/</link>
@@ -67,33 +94,6 @@
       <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/soc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://www.kontronn.com/tags/c/</link>
-      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Embedded</title>
-      <link>https://www.kontronn.com/tags/embedded/</link>
-      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/embedded/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Struct</title>
-      <link>https://www.kontronn.com/tags/struct/</link>
-      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/struct/</guid>
       <description></description>
     </item>
     
