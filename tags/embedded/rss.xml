@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>C on Kontronn</title>
-    <link>https://www.kontronn.com/tags/c/</link>
-    <description>Recent content in C on Kontronn</description>
+    <title>Embedded on Kontronn</title>
+    <link>https://www.kontronn.com/tags/embedded/</link>
+    <description>Recent content in Embedded on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/embedded/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>嵌入式C语言之结构体封装函数</title>
       <link>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</link>
@@ -14,15 +14,6 @@
       
       <guid>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</guid>
       <description>&lt;p&gt;在嵌入式系统中，结构体封装函数可以用于对于嵌入式硬件资源进行抽象和封装，从而提高软件的可维护性和可移植性。结构体封装函数通常包含数据和行为，并提供了对数据的访问和操作方法。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>关于extern C的的详细剖析</title>
-      <link>https://www.kontronn.com/post/programming/extern-c-detailed-analysis.html</link>
-      <pubDate>Tue, 06 Jun 2023 13:01:56 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/post/programming/extern-c-detailed-analysis.html</guid>
-      <description>&lt;p&gt;在你工作过的系统里，不知能否看到类似下面的代码。&lt;/p&gt;</description>
     </item>
     
   </channel>

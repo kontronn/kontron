@@ -6,7 +6,16 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Jun 2023 11:11:12 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式C语言之结构体封装函数</title>
+      <link>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</link>
+      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</guid>
+      <description>&lt;p&gt;在嵌入式系统中，结构体封装函数可以用于对于嵌入式硬件资源进行抽象和封装，从而提高软件的可维护性和可移植性。结构体封装函数通常包含数据和行为，并提供了对数据的访问和操作方法。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux驱动IO篇——mmap操作</title>
       <link>https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html</link>

@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Jun 2023 11:11:12 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://www.kontronn.com/tags/c/</link>
+      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embedded</title>
+      <link>https://www.kontronn.com/tags/embedded/</link>
+      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Struct</title>
+      <link>https://www.kontronn.com/tags/struct/</link>
+      <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/struct/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Device Driver</title>
       <link>https://www.kontronn.com/tags/device-driver/</link>
@@ -121,15 +148,6 @@
       <pubDate>Fri, 16 Jun 2023 12:10:10 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/pv/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://www.kontronn.com/tags/c/</link>
-      <pubDate>Tue, 06 Jun 2023 13:01:56 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c/</guid>
       <description></description>
     </item>
     
