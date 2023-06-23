@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MCU on Kontronn</title>
+    <link>https://www.kontronn.com/tags/mcu/</link>
+    <description>Recent content in MCU on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 23 Jun 2023 08:13:55 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CPU、MPU、MCU和SOC的简介</title>
+      <link>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</guid>
+      <description>&lt;p&gt;在嵌入式开发中，我们会经常看到或接触一些专业术语，例如CPU、MPU、MCU和SOC等，并且这些专业术语出现的频率也是非常之高，在面试中也常常会作为提问的知识点，下面我们就来看一下他们之间的特点和区别。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

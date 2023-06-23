@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CPU on VxWorks 7</title>
-    <link>https://www.vxworks7.com/tags/cpu/</link>
-    <description>Recent content in CPU on VxWorks 7</description>
+    <title>CPU on Kontronn</title>
+    <link>https://www.kontronn.com/tags/cpu/</link>
+    <description>Recent content in CPU on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Oct 2022 06:53:45 -0400</lastBuildDate><atom:link href="https://www.vxworks7.com/tags/cpu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 08:13:55 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/cpu/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>FPGA硬核和软核处理器的区别</title>
-      <link>https://www.vxworks7.com/post/fpga/difference-between-hard-core-processor-and-soft-core-processor-of-fpga.html</link>
-      <pubDate>Sat, 29 Oct 2022 06:53:45 -0400</pubDate>
+      <title>CPU、MPU、MCU和SOC的简介</title>
+      <link>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
       
-      <guid>https://www.vxworks7.com/post/fpga/difference-between-hard-core-processor-and-soft-core-processor-of-fpga.html</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;从架构的角度来说，SOPC和SoC FPGA是统一的，都是由FPGA部分和处理器部分组成。在SoC FPGA 中，嵌入的是纯硬件基础的硬核处理器，简称HPS(Hardware Processor System)，而SOPC技术中，嵌入的是使用FPGA逻辑资源实现的软核处理器，两者指令集不一样，处理器性能也不一样。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <guid>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</guid>
+      <description>&lt;p&gt;在嵌入式开发中，我们会经常看到或接触一些专业术语，例如CPU、MPU、MCU和SOC等，并且这些专业术语出现的频率也是非常之高，在面试中也常常会作为提问的知识点，下面我们就来看一下他们之间的特点和区别。&lt;/p&gt;</description>
     </item>
     
   </channel>

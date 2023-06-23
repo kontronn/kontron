@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 08:13:55 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CPU</title>
+      <link>https://www.kontronn.com/tags/cpu/</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/cpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MCU</title>
+      <link>https://www.kontronn.com/tags/mcu/</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/mcu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MPU</title>
+      <link>https://www.kontronn.com/tags/mpu/</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/mpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SOC</title>
+      <link>https://www.kontronn.com/tags/soc/</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/soc/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>C</title>
       <link>https://www.kontronn.com/tags/c/</link>

@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 03:04:41 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Jun 2023 08:13:55 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MCU</title>
+      <link>https://www.kontronn.com/categories/mcu/</link>
+      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/categories/mcu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Programming</title>
       <link>https://www.kontronn.com/categories/programming/</link>
