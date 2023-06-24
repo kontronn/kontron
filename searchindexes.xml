@@ -2,6 +2,28 @@
 <search>
   
   <entry>
+    <title>英特尔宣布，出售设备公司股份</title>
+    <url>/post/news/intel-announces-sale-of-stake-IMS.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>IMS</tag>
+      <tag>Bain Capital</tag>
+    </tags>
+    <content type="html"><![CDATA[英特尔公司今天宣布，已同意将其 IMS Nanofabrication GmbH (“IMS”) 业务约 20% 的股份出售给 Bain Capital Special Situations（“贝恩资本”）处理的一项交易中，IMS 的估值约为 43 亿美元。
+该交易预计将于 2023 年第三季度完成。IMS 将作为独立子公司运营，并继续由首席执行官 Elmar Platzgummer 博士领导。
+英特尔方面透露：“考虑到估值水平和投资水平，这将成为我们有史以来最好的收购之一。”
+自 2015 年发明多电子束技术并推出首款商用多光束掩模写入器以来，总部位于奥地利维也纳的 IMS 一直是先进技术节点多光束掩模写入领域的行业领导者。英特尔最初于 2009 年投资 IMS，并最终于 2015 年收购了该业务。自收购以来，IMS 为英特尔带来了显著的投资回报，同时将其员工和生产能力增长了四倍，并交付了另外三代产品。
+如今，随着 EUV 技术在前沿技术中得到广泛采用，创建高级 EUV（极紫外光刻）掩模所需的多光束掩模写入工具已成为半导体制造生态系统中越来越重要的组成部分。这项投资将使 IMS 能够通过加速创新和实现更深入的跨行业合作来抓住多光束掩模写入工具的重要市场机会。
+企业发展高级副总裁 Matt Poirier 表示：“光刻技术的进步对于推动半导体行业的持续进步至关重要，而掩模写入在行业向新图案技术（例如高数值孔径 EUV）过渡中发挥着核心作用。”在英特尔。“贝恩资本的投资和合作将为 IMS 提供更大的独立性，并带来战略视角，帮助加速下一阶段的光刻技术创新，最终使整个生态系统受益。”
+Platzgummer 表示：“我们很高兴能获得贝恩资本这一宝贵的合作伙伴，贝恩资本在与企业合作推动增长和价值创造方面拥有悠久的历史。随着 EUV 变得更加普遍和高效，他们与我们一样坚信 IMS 面临着有意义的机遇。High-NA EUV 在本世纪下半叶从开发转向大批量制造。我们期待扩大我们的能力，为世界上最大的芯片生产商提供支持，他们依靠我们的技术来生产当前和下一代半导体产品。
+贝恩资本 (Bain Capital) 合伙人 Marvin Larbi-Yeboa 表示：“作为半导体制造和纳米技术行业新兴技术的全球领导者和创新者，我们相信 IMS 处于有利地位，能够利用随着芯片产能增加而带来的有吸引力的长期有利因素在线并建立其领先的竞争地位、技术差异化和尖端的产品能力。”
+贝恩资本董事总经理 Will Tetler 补充道：“我们期待与 IMS 卓越的管理团队和英特尔合作，利用我们深厚的行业经验和价值创造能力，通过进一步投资支持业务的长期增长战略其领先的技术和产品组合使 IMS 能够扩大其竞争市场地位。”
+]]></content>
+  </entry>
+  
+  <entry>
     <title>STM32的完整启动流程分析</title>
     <url>/post/mcu/STM32-whole-boot-up-process-analysis.html</url>
     <categories><category>MCU</category>
