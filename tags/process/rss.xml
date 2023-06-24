@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>process on Kontronn</title>
+    <link>https://www.kontronn.com/tags/process/</link>
+    <description>Recent content in process on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 23 Jun 2023 23:36:57 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/process/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32的完整启动流程分析</title>
+      <link>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</link>
+      <pubDate>Fri, 23 Jun 2023 23:36:57 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</guid>
+      <description>&lt;p&gt;关于STM32的启动流程，网上有的资料在讨论几种boot模式，有的在回答启动文件的内容，在查阅了很多资料后，本文给出一个比较全面的总结和回答。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
