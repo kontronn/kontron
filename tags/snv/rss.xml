@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Samsung on Kontronn</title>
-    <link>https://www.kontronn.com/tags/samsung/</link>
-    <description>Recent content in Samsung on Kontronn</description>
+    <title>SNV on Kontronn</title>
+    <link>https://www.kontronn.com/tags/snv/</link>
+    <description>Recent content in SNV on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Jun 2023 11:36:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/samsung/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jun 2023 11:36:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/snv/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>风河携手三星推进软件定义汽车演进</title>
       <link>https://www.kontronn.com/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</link>
@@ -14,15 +14,6 @@
       
       <guid>https://www.kontronn.com/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</guid>
       <description>&lt;p&gt;领先的关键任务智能系统软件提供商风河公司宣布与三星电子系统LSI业务部建立新的合作关系。双方将致力于加速软件定义汽车的发展，开发高质量车载信息娱乐解决方案（IVI）、座舱监控和高级驾驶辅助系统。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
-      <link>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</link>
-      <pubDate>Fri, 12 May 2023 12:31:56 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</guid>
-      <description>&lt;p&gt;基于先进CXL 2.0的128GB CXL DRAM将于今年量产，加速下一代存储器解决方案的商用化，三星将继续与全球数据中心、服务器、芯片企业合作，扩大CXL生态系统&lt;/p&gt;</description>
     </item>
     
   </channel>

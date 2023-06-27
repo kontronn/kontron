@@ -2,6 +2,24 @@
 <search>
   
   <entry>
+    <title>风河携手三星推进软件定义汽车演进</title>
+    <url>/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Wind River</tag>
+      <tag>Samsung</tag>
+      <tag>SNV</tag>
+    </tags>
+    <content type="html"><![CDATA[领先的关键任务智能系统软件提供商风河公司宣布与三星电子系统LSI业务部建立新的合作关系。双方将致力于加速软件定义汽车的发展，开发高质量车载信息娱乐解决方案（IVI）、座舱监控和高级驾驶辅助系统。
+汽车工业正在向软件定义汽车演进，越来越多的功能和特性都将由软件来驱动，并能快速简便地进行更新。确保开发人员拥有卓越的工具、流程和结构，有效实现软件的创建、测试与更新，这对整个行业来说皆属最高优先事项。
+为了加速迭代演进，风河将基于三星Exynos Auto V920芯片组向客户提供自己的软件技术，创建一整套完全集成化的汽车软件与硬件解决方案，其中的核心是Wind River Helix™ Virtualization Platform（虚拟化平台）。这是一套获得安全认证的多核、多操作系统平台，支持最终用户融合不同安全性要求的运行时环境，包括VxWorks®实时操作系统(RTOS)、Linux和Android。
+要设计和开发互联自动驾驶电动汽车，必须采用新的软件定义方法，以及高性能计算系统。我们与三星携手合作，支持OEM厂商和Tier 1供应商继承和发展过去三十多年来在航空航天与国防、工业、医疗和电信等诸多领域所积累的技术和经验，构建对未来软件定义车辆至关重要的软件系统，满足多种不同层次的关键性认证要求。
+Exynos Auto V920是我们最新的5nm汽用处理器，提供强大的智能化性能和更高水平的车内体验，让汽车拥有更高的安全性。这套系统能够以高效节能的方式在多个虚拟机上同时运行多个应用，从而满足了行业的低功耗需求。通过与风河公司的密切合作，我们能够加强业界领先的IVI开发工作，并通过风河领先的运行时环境进一步扩展到多个安全关键领域。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>英特尔宣布，出售设备公司股份</title>
     <url>/post/news/intel-announces-sale-of-stake-IMS.html</url>
     <categories><category>News</category>
