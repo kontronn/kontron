@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 08 Jul 2023 21:39:54 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jul 2023 22:04:43 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Awk</title>
+      <link>https://www.kontronn.com/tags/awk/</link>
+      <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/awk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grep</title>
+      <link>https://www.kontronn.com/tags/grep/</link>
+      <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/grep/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sed</title>
+      <link>https://www.kontronn.com/tags/sed/</link>
+      <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/sed/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>IPv4, IPv6</title>
       <link>https://www.kontronn.com/tags/ipv4-ipv6/</link>

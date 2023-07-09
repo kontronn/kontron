@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Grep on Kontronn</title>
+    <link>https://www.kontronn.com/tags/grep/</link>
+    <description>Recent content in Grep on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 08 Jul 2023 22:04:43 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/grep/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux三剑客（grep,sed,awk）</title>
+      <link>https://www.kontronn.com/post/linux/linux-three-musketeers.html</link>
+      <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-three-musketeers.html</guid>
+      <description>&lt;p&gt;在Linux系统中，awk、grep、sed等命令被广泛用于文本处理。它们是非常强大的命令行工具，可以用于搜索、替换、过滤、排序等多种操作。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
