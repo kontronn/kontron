@@ -3,21 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-06-27T11:36:10-04:00</lastmod>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ipv4-ipv6/</loc>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-06-27T11:36:10-04:00</lastmod>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/news/</loc>
-    <lastmod>2023-06-27T11:36:10-04:00</lastmod>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/how-to-configure-ipv4-and-ipv6.html</loc>
+    <lastmod>2023-07-08T21:39:54-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/news/</loc>
     <lastmod>2023-06-27T11:36:10-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -28,11 +48,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/snv/</loc>
-    <lastmod>2023-06-27T11:36:10-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2023-06-27T11:36:10-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -183,11 +198,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/io/</loc>
-    <lastmod>2023-06-22T11:11:12-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2023-06-22T11:11:12-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Jun 2023 11:11:12 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jul 2023 21:39:54 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何在 Linux 中配置 IPv4 和 IPv6 地址</title>
+      <link>https://www.kontronn.com/post/linux/how-to-configure-ipv4-and-ipv6.html</link>
+      <pubDate>Sat, 08 Jul 2023 21:39:54 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-to-configure-ipv4-and-ipv6.html</guid>
+      <description>&lt;p&gt;IPv4和IPv6是Internet上常用的两种IP地址协议。在Linux系统中，您可以通过配置网络接口来设置IPv4和IPv6地址。本文将详细介绍如何在Linux中配置IPv4和IPv6地址。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux驱动IO篇——mmap操作</title>
       <link>https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html</link>

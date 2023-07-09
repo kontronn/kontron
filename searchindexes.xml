@@ -2,6 +2,40 @@
 <search>
   
   <entry>
+    <title>如何在 Linux 中配置 IPv4 和 IPv6 地址</title>
+    <url>/post/linux/how-to-configure-ipv4-and-ipv6.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>IPv4, IPv6</tag>
+    </tags>
+    <content type="html"><![CDATA[IPv4和IPv6是Internet上常用的两种IP地址协议。在Linux系统中，您可以通过配置网络接口来设置IPv4和IPv6地址。本文将详细介绍如何在Linux中配置IPv4和IPv6地址。
+步骤 1：确定网络接口 在开始配置IP地址之前，您需要确定要配置的网络接口。执行以下命令来列出当前系统上的网络接口：
+ifconfig -a 该命令将显示所有可用的网络接口及其相关信息。确定要配置的网络接口的名称，例如eth0或enp0s3。
+步骤 2：配置 IPv4 地址 ###临时配置
+要临时配置IPv4地址，可以使用ifconfig命令。执行以下命令来设置IPv4地址：
+sudo ifconfig &lt;interface&gt; &lt;ipv4_address&gt; netmask &lt;netmask&gt; 将替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，替换为子网掩码。
+例如，要将IP地址为192.168.1.10，子网掩码为255.255.255.0的IPv4地址分配给eth0接口，执行以下命令：
+sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0 永久配置 要永久配置IPv4地址，您需要编辑网络接口的配置文件。执行以下命令来打开配置文件：
+sudo nano /etc/network/interfaces 在文件中找到要配置的接口部分，添加以下行：
+auto &lt;interface&gt; iface &lt;interface&gt; inet static address &lt;ipv4_address&gt; netmask &lt;netmask&gt; gateway &lt;gateway_address&gt; 将替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，替换为子网掩码，&lt;gateway_address&gt;替换为网关地址。
+保存文件并关闭文本编辑器。然后，执行以下命令以使更改生效：
+sudo systemctl restart networking 现在，您的Linux系统将使用配置的IPv4地址。
+步骤 3：配置 IPv6 地址 临时配置 要临时配置IPv6地址，可以使用ifconfig命令。执行以下命令来设置IPv6地址：
+sudo ifconfig &lt;interface&gt; inet6 add &lt;ipv6_address&gt;/&lt;prefix_length&gt; 将替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。
+例如，要将IPv6地址为2001:0db8:85a3:0000:0000:8a2e:0370:7334，前缀长度为64的IPv6地址分配给eth0接口，执行以下命令：
+sudo ifconfig eth0 inet6 add 2001:0db8:85a3:0000:0000:8a2e:0370:7334/64 永久配置 要永久配置IPv6地址，您需要编辑网络接口的配置文件。执行以下命令来打开配置文件：
+sudo nano /etc/network/interfaces 在文件中找到要配置的接口部分，添加以下行：
+iface &lt;interface&gt; inet6 static address &lt;ipv6_address&gt;/&lt;prefix_length&gt; 将替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。
+保存文件并关闭文本编辑器。然后，执行以下命令以使更改生效：
+sudo systemctl restart networking 现在，您的Linux系统将使用配置的IPv6地址。
+步骤 4：验证配置 要验证IPv4和IPv6地址的配置是否成功，可以执行以下命令来查看网络接口的IP地址信息：
+ifconfig &lt;interface&gt; 将&lt;interface&gt;替换为您配置的网络接口的名称。该命令将显示指定接口的IP地址信息，包括IPv4和IPv6地址。 结论 通过本文的指导，您已经学会了在Linux中配置IPv4和IPv6地址的详细步骤。根据您的网络需求，您可以临时或永久地配置这些地址。
+具体的配置方式可能因Linux发行版和版本而有所不同。本文提供了一般的配置方法，但如果您的系统有特定的要求或网络环境，请参考相关文档或咨询系统管理员。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>风河携手三星推进软件定义汽车演进</title>
     <url>/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</url>
     <categories><category>News</category>
