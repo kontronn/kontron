@@ -6,7 +6,16 @@
     <description>Recent content in Struct on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Jun 2023 08:31:44 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Jul 2023 09:22:33 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10道经典的嵌入式C语言题目</title>
+      <link>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</link>
+      <pubDate>Mon, 10 Jul 2023 09:22:33 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</guid>
+      <description>&lt;p&gt;10个C语言面试题，涉及指针、进程、运算、结构体、函数、内存，看看你能做出几个&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux内核中使用的C语言技巧</title>
       <link>https://www.kontronn.com/post/programming/c-language-tricks-used-in-the-linux-kernel.html</link>

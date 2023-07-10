@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="10道经典的嵌入式C语言题目" />
+<meta itemprop="description" content="10道经典的嵌入式C语言题目" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="C,Embedded,Struct" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="10道经典的嵌入式C语言题目" />
+<meta property="og:description" content="10道经典的嵌入式C语言题目" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-07-10 09:22:33 -0400 EDT" />
+<meta property="article:modified_time" content="2023-07-10 09:22:33 -0400 EDT" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"ten-classical-embedded-c-language-examination-questions.html","permalink":"https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html","title":"10道经典的嵌入式C语言题目"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>10道经典的嵌入式C语言题目 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">23</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#gets函数">gets()函数</a></li>
+    <li><a href="#strcpy函数">strcpy()函数</a></li>
+    <li><a href="#main的返回类型">main()的返回类型</a></li>
+    <li><a href="#内存泄露">内存泄露</a></li>
+    <li><a href="#free函数">free()函数</a></li>
+    <li><a href="#使用_exit退出">使用_exit退出</a></li>
+    <li><a href="#void和c结构体">void*和C结构体</a></li>
+    <li><a href="#-和--操作">* 和 ++ 操作</a></li>
+    <li><a href="#问修改代码片段">问：修改代码片段</a></li>
+    <li><a href="#返回本地变量的地址">返回本地变量的地址</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2023-04-01T03:27:05-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="6680"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="46"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-07-10T09:22:33-04:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="10道经典的嵌入式C语言题目">
+      <meta itemprop="description" content="10道经典的嵌入式C语言题目">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">10道经典的嵌入式C语言题目 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-07-10 09:22:33 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-07-10 09:22:33 -0400 EDT">2023-07-10</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>336</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>2分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/ten-classical-embedded-c-language-examination-questions.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>10个C语言面试题，涉及指针、进程、运算、结构体、函数、内存，看看你能做出几个</p>
+<h2 id="gets函数">gets()函数</h2>
+<p>问：请找出下面代码里的问题：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">char</span> buff[<span style="color:#ae81ff">10</span>]; 
+    memset(buff,<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">sizeof</span>(buff)); 
+
+    gets(buff); 
+     
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> The buffer entered is [%s]</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,buff); 
+     
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：上面代码里的问题在于函数gets()的使用，这个函数从stdin接收一个字符串而不检查它所复制的缓存的容积，这可能会导致缓存溢出。这里推荐使用标准函数fgets()代替。</p>
+<h2 id="strcpy函数">strcpy()函数</h2>
+<p>问：下面是一个简单的密码保护功能，你能在不知道密码的情况下将其破解吗？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) 
+{ 
+    <span style="color:#66d9ef">int</span> flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; 
+    <span style="color:#66d9ef">char</span> passwd[<span style="color:#ae81ff">10</span>]; 
+
+    memset(passwd,<span style="color:#ae81ff">0</span>,<span style="color:#66d9ef">sizeof</span>(passwd)); 
+     
+    strcpy(passwd, argv[<span style="color:#ae81ff">1</span>]); 
+     
+    <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> strcmp(<span style="color:#e6db74">&#34;LinuxGeek&#34;</span>, passwd)) 
+    { 
+        flag <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; 
+    } 
+     
+    <span style="color:#66d9ef">if</span>(flag) 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Password cracked </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+    } 
+    <span style="color:#66d9ef">else</span> 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Incorrect passwd </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+     
+    } 
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：破解上述加密的关键在于利用攻破strcpy()函数的漏洞。所以用户在向“passwd”缓存输入随机密码的时候并没有提前检查“passwd”的容量是否足够。</p>
+<p>所以，如果用户输入一个足够造成缓存溢出并且重写“flag”变量默认值所存在位置的内存的长“密码”，即使这个密码无法通过验证，flag验证位也变成了非零，也就可以获得被保护的数据了。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">$ ./psswd aaaaaaaaaaaaa 
+Password cracked
+</code></pre></div><p>虽然上面的密码并不正确，但我们仍然可以通过缓存溢出绕开密码安全保护。</p>
+<p>要避免这样的问题，建议使用 strncpy()函数。</p>
+<p>作者注：最近的编译器会在内部检测栈溢出的可能，所以这样往栈里存储变量很难出现栈溢出。在我的gcc里默认就是这样，所以我不得不使用编译命令‘-fno-stack-protector’来实现上述方案。</p>
+<h2 id="main的返回类型">main()的返回类型</h2>
+<p>问：下面的代码能 编译通过吗？如果能，它有什么潜在的问题吗？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(<span style="color:#ae81ff">10</span>); 
+
+    <span style="color:#66d9ef">if</span>(NULL <span style="color:#f92672">==</span> ptr) 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Malloc failed </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+        <span style="color:#66d9ef">return</span>; 
+    } 
+    <span style="color:#66d9ef">else</span> 
+    { 
+        <span style="color:#75715e">// Do some processing 
+</span><span style="color:#75715e"></span>        free(ptr); 
+    } 
+     
+    <span style="color:#66d9ef">return</span>; 
+}
+</code></pre></div><p>答：因为main()方法的返回类型，这段代码的错误在大多数编译器里会被当作警告。</p>
+<p>main()的返回类型应该是“int”而不是“void”。因为“int”返回类型会让程序返回状态值。这点非常重要，特别当程序是作为依赖于程序成功运行的脚本的一部分运行时。</p>
+<h2 id="内存泄露">内存泄露</h2>
+<p>问：下面的代码会导致内存泄漏吗？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(<span style="color:#ae81ff">10</span>); 
+
+    <span style="color:#66d9ef">if</span>(NULL <span style="color:#f92672">==</span> ptr) 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Malloc failed </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+        <span style="color:#66d9ef">return</span>; 
+    } 
+    <span style="color:#66d9ef">else</span> 
+    { 
+        <span style="color:#75715e">// Do some processing 
+</span><span style="color:#75715e"></span>    } 
+     
+    <span style="color:#66d9ef">return</span>; 
+}
+</code></pre></div><p>答：尽管上面的代码并没有释放分配给“ptr”的内存，但并不会在程序退出后导致内存泄漏。在程序结束后，所有这个程序分配的内存都会自动被处理掉。</p>
+<p>但如果上面的代码处于一个“while循环”中，那将会导致严重的内存泄漏问题！</p>
+<p>提示：如果你想知道更多关于内存泄漏的知识和内存泄漏检测工具，可以来看看我们在Valgrind上的文章。</p>
+<h2 id="free函数">free()函数</h2>
+<p>问：下面的程序会在用户输入’freeze’的时候出问题，而’zebra’则不会，为什么？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[]) 
+{ 
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> (<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)malloc(<span style="color:#ae81ff">10</span>); 
+
+    <span style="color:#66d9ef">if</span>(NULL <span style="color:#f92672">==</span> ptr) 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Malloc failed </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; 
+    } 
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(argc <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) 
+    { 
+        printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Usage  </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+    } 
+    <span style="color:#66d9ef">else</span> 
+    { 
+        memset(ptr, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>); 
+     
+        strncpy(ptr, argv[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">9</span>); 
+     
+        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">*</span>ptr <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;z&#39;</span>) 
+        { 
+            <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>ptr <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;</span>) 
+                <span style="color:#66d9ef">break</span>; 
+            <span style="color:#66d9ef">else</span> 
+                ptr<span style="color:#f92672">++</span>; 
+        } 
+     
+        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">*</span>ptr <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;z&#39;</span>) 
+        { 
+            printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> String contains &#39;z&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+            <span style="color:#75715e">// Do some more processing 
+</span><span style="color:#75715e"></span>        } 
+     
+       free(ptr); 
+    } 
+     
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：这里的问题在于，代码会（通过增加“ptr”）修改while循环里“ptr”存储的地址。当输入“zebra”时，while循环会在执行前被终止，因此传给free()的变量就是传给malloc()的地址。</p>
+<p>但在“freeze”时，“ptr”存储的地址会在while循环里被修改，因此导致传给free()的地址出错，也就导致了seg-fault或者崩溃。</p>
+<h2 id="使用_exit退出">使用_exit退出</h2>
+<p>问：在下面的代码中，atexit()并没有被调用，为什么？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Cleanup function called </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>); 
+    <span style="color:#66d9ef">return</span>; 
+} 
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; 
+
+    atexit(func); 
+     
+    <span style="color:#66d9ef">for</span>(;i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0xffffff</span>;i<span style="color:#f92672">++</span>); 
+     
+    _exit(<span style="color:#ae81ff">0</span>); 
+}
+</code></pre></div><p>这是因为_exit()函数的使用，该函数并没有调用atexit()等函数清理。如果使用atexit()就应当使用exit()或者“return”与之相配合。</p>
+<h2 id="void和c结构体">void*和C结构体</h2>
+<p>问：你能设计一个能接受任何类型的参数并返回interger（整数）结果的函数吗？</p>
+<p>答：如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> func(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>ptr)
+</code></pre></div><p>如果这个函数的参数超过一个，那么这个函数应该由一个结构体来调用，这个结构体可以由需要传递参数来填充。</p>
+<h2 id="-和--操作">* 和 ++ 操作</h2>
+<p>问：下面的操作会输出什么？为什么？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Linux&#34;</span>; 
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> [%c] </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#f92672">*</span>ptr<span style="color:#f92672">++</span>); 
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> [%c] </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,<span style="color:#f92672">*</span>ptr); 
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：输出结果应该是这样：</p>
+<p>[L]</p>
+<p>[i]</p>
+<p>因为“++”和“ * ” 的优先权一样，所以“ * ptr++ ”相当于 “ * (ptr++) ”。即应该先执行 ptr++，然后才是 * ptr，所以操作结果是“L”。第二个结果是“i”。</p>
+<h2 id="问修改代码片段">问：修改代码片段</h2>
+<p>问：下面的代码段有错，你能指出来吗？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Linux&#34;</span>; 
+    <span style="color:#f92672">*</span>ptr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;T&#39;</span>; 
+
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> [%s] </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, ptr); 
+     
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：这是因为，通过 * ptr = ‘T’，会改变内存中代码段（只读代码）“Linux”的第一个字母。这个操作是无效的，因此会造成segment-fault或者崩溃。</p>
+<h2 id="返回本地变量的地址">返回本地变量的地址</h2>
+<p>问：下面代码有问题吗？如果有，该怎么修改？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;stdio.h&gt; </span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span><span style="color:#f92672">*</span> <span style="color:#a6e22e">inc</span>(<span style="color:#66d9ef">int</span> val) 
+{ 
+  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> val; 
+  a<span style="color:#f92672">++</span>; 
+  <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>a; 
+} 
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>) 
+{ 
+    <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>; 
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>val <span style="color:#f92672">=</span> inc(a); 
+    printf(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> Incremented value is equal to [%d] </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">*</span>val); 
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; 
+}
+</code></pre></div><p>答：尽管上面的程序有时候能够正常运行，但是在“inc()”中存在严重的漏洞。这个函数返回本地变量的地址。因为本地变量的生命周期就是“inc()”的生命周期，所以在inc结束后，使用本地变量会发生不好的结果。这可以通过将main()中变量“a”的地址来避免，这样以后还可以修改这个地址存储的值。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/c">
+    C
+  </a>
+    <a href="/tags/embedded">
+    Embedded
+  </a>
+    <a href="/tags/struct">
+    Struct
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      10道经典的嵌入式C语言题目
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html" title="10道经典的嵌入式C语言题目">https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/linux/linux-operating-system-study-boot.html" rel="prev" title="Linux操作系统学习——启动">
+      Linux操作系统学习——启动
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2023
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
