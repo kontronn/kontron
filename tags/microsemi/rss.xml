@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Microsemi on Kontronn</title>
+    <link>https://www.kontronn.com/tags/microsemi/</link>
+    <description>Recent content in Microsemi on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 11 Jul 2023 13:13:48 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/microsemi/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5款超强大的FPGA开发板</title>
+      <link>https://www.kontronn.com/post/fpga/5-ultra-powerful-fpga-development-boards.html</link>
+      <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/fpga/5-ultra-powerful-fpga-development-boards.html</guid>
+      <description>&lt;p&gt;随着人工智能、深度学习在市场越来越受欢迎，除了GPU、众多独角兽公司的AI专用芯片，FPGA同样是深度学习的热门平台之一。本文将给大家介绍5款强大到不可思议的FPGA开发板，当然价格也是高的离谱，肯能对于大多数工程师来说，这些属于求而不得的高端“玩具”。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

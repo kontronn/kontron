@@ -2,6 +2,40 @@
 <search>
   
   <entry>
+    <title>5款超强大的FPGA开发板</title>
+    <url>/post/fpga/5-ultra-powerful-fpga-development-boards.html</url>
+    <categories><category>FPGA</category>
+    </categories>
+    <tags>
+      <tag>FPGA</tag>
+      <tag>Xilinx</tag>
+      <tag>Microsemi</tag>
+      <tag>Stratix 10</tag>
+    </tags>
+    <content type="html"><![CDATA[随着人工智能、深度学习在市场越来越受欢迎，除了GPU、众多独角兽公司的AI专用芯片，FPGA同样是深度学习的热门平台之一。本文将给大家介绍5款强大到不可思议的FPGA开发板，当然价格也是高的离谱，肯能对于大多数工程师来说，这些属于求而不得的高端“玩具”。
+RTG4开发套件 RTG4-DEV-KIT是Microsemi公司的产品，当然目前的话已经被Microchip收购，这是一套为高端的客户提供的评估和开发平台，主要用于数据传输，串行连接，总线接口等高密度高性能FPGA的高速设计等应用 。
+该开发板采用RT4G150器件，采用陶瓷封装，提供150,000个逻辑元件，具有1,657个引脚，下图是RTG4-DEV-KIT开发板的外设接口功能图。
+RTG4开发套件主要包括的硬件功能如下：
+ 两个1GB DDR3同步动态随机存取存储器(SDRAM) 2GB SPI Flash PCI Express Gen1 接口1个 PCIe x4 接口 一对SMA连接器，用于测试全双工SERDES通道 两个带有HPC/LPC引脚排列的FMC连接器，用于扩展 用于10/100/1000以太网的RJ45接口 USB micro-AB连接器 SPI，GPIO的接口 FTDI编程器接口用于编程外部SPI Flash JTAG编程接口 用于应用程序编程和调试的RVI接口 Flashpro编程接口 用于调试的嵌入式跟踪宏(ETM)单元接口 用于用户应用的双列直插式封装(DIP)开关 按钮开关和LED 电流测量测试点  RTG4-DEV-KIT开发板的硬件框图
+从硬件框图上也能看到RTG4-DEV-KIT复杂的电源管理系统，12V的DC直流供电，通过DCDC/以及LDO分配到各个功能部分的供电。
+英特尔Stratix 10开发套件 Intel Stratix 10开发套件是包含各类软硬件的完整设计环境，用于评估Stratix 10 FPGA的功能。该套件可用于通过符合PCI-SIG的开发板来开发和测试PCI Express 3.0设计。使用这些开发板可开发和测试由DDR4、DDR3、QDR IV和RLDRAM III存储器组成的存储器子系统。通过使用FPGA夹层卡 (FMC) 连接器与FMC夹层卡连接，还可以开发模块化和可扩展设计。该套件支持JESD204B、Serial RapidIO、10Gbps以太网 (10GbE)、SONET、通用公共无线电接口 (CPRI)、OBSAI等诸多协议。
+英特尔Stratix 10开发套件硬件框图
+开发板板载的主要FPGA是Intel公司的Stratix 10系列产品，相比前一代产品成本提供2X性能和超低功耗，具有几个开创性的创新如新型的HyperFlex™和架构，能满足日益增长的带宽和处理性能，从而满足功率预算。嵌入硬件系统基于四核64位ARM Cortex-A53，采用Intel 14-nm Tri-Gate (FinFET)技术和混合性3D片上系统(SiP)技术，单片核多达550万和逻辑单元，多达96个全双工收发器，数据速率高达28.3Gbps，主要用在计算和存储，网络设备，光传输网络，广播，军用雷达，医疗设备，测试和测量以及5G无线设备，ASIC原型。
+ADS8-V1 评估板 确切的说，ADS8-V1 评估板并不是一块专为FPGA评估的板卡，而是为了支持ADI公司高速数据转换，当连接到指定的 ADI 高速 ADC 评估板时，ADS8-V1 可用作数据采集板。ADS8-V1 上的 FPGA 设计用于支持最高速 JESD204B 模数转换器，可充当数据接收器，同时 ADC 为数据发射器。
+ADS8-V1EBZ接口外设如下：
+ Xilinx Kintex Ultrascale XCKU040-3FFVA1156E FPGA 一(1)个FMC +连接器 一(1)个FMC +连接器支持二十(20)个16Gbps收发器 DDR4 SDRAM 简单的USB 3.0端口接口  ADI强大的数据采集评估板可以应用于航空航天和防务、电子监控和对抗、仪器仪表和测量、通信测试设备、信号发生器(通过射频传输音频)、5G领域等。
+REFLEX CES XpressVUP-LP9P REFLEX CES XpressVUP-LP9P是基于Virtex Ultrascale + VU9P FPGA的低配置PCIe网络处理FPGA板，专为HPC等网络应用而设计。该板提供2组DDR4，2组QDR2 +存储器和2个QSFP28网箱，用于多个10GbE / 40GbE / 100GbE网络解决方案。其主要的功能包括了：PCIe Gen3 x16、Xilinx Virtex UltraScale + VU9P FPGA、板载两个DDR4和两个QDR2 +独立组、两个QSFP28光纤笼用于多网络解决方案、具有16个通道，8 Gb/s链路速率的PCIe接口(Gen3)等。
+XpressVUP-LP9P技术规格 FPGA和配置模块  Xilinx Virtex UltraScale + 16nm FPGA：XCVU9P-L2FLGB2104E(生产) XCVU9P-L2FLGB2104E(生产) 2,6 M系统逻辑单元 270 Mb UltraRAM(UltraScale +提供高密度，双端口，同步存储器模块) 用于外部Xilinx USB电缆的JTAG连接器 双四SPI(x8)配置模式的2x Nor Flash  通讯接口  PCI Express x16(第1,2或3代) 2 x QSFP28四光纤笼(2 x 4 XCVR：每条链路28 Gb/ s)，支持10GbE / 40GbE / 100GbE QSFP28模块支持的其他协议  存储  板载DDR4,2x组64位+ 4位ECC，总共8GB 板载QDR-II +，2x存储区，18位，总共144Mbits  功率  最大100W 提供定制散热器  其他资源  板载可编程PLL振荡器(Si5345)，高度灵活和可配置的时钟发生器。 板载高精度振荡器为精确时间协议(PTP)以太网提供时钟精确20MHz-0.05ppm，同步协议标准化IEEE 1588 一个用于PPS(每秒脉冲)的同轴连接器，允许多个电子部件同步  REFLEX CES XpressVUP-LP9P硬件框图
+值得一提的是，XpressVUP在POWER9 CPU主机处理器(IBM)上支持CAPI 2.0，并且还支持IBM SNAP框架，只需很少的FPGA专业知识，SNAP框架允许应用工程师在服务器环境中快速创建基于FPGA的加速程序。它使用IBM CAPI 2.0接口，该接口可在标准PCIe物理通道上运行，但具有CPU和FPGA之间较低延迟和一致内存共享的优势。
+Digilent NetFPGA-SUME NetFPGA-SUME是Digilent，剑桥大学和斯坦福大学之间的合作项目，是高性能和高密度网络设计的理想平台。
+NetFPGA-SUME采用赛灵思Virtex-7 690T FPGA，支持30个13.1 GHz GTH收发器，四个SFP + 10Gb/s端口，五个独立的高速存储器组，由500MHz QDRII +和1866MT / s DDR3 SoDIMM器件构建，以及一个八通道第三代PCIe，可提供超大的吞吐量，并可支持大量高速数据流FPGA架构和存储器件，其它功能包括在FMC和QTH扩展连接器以及SATA端口上共展示20个收发器。
+NetFPGA-SUME的主要任务是为学生，研究人员和开发人员提供最先进的网络平台，无论是学习基础知识还是创建新的硬件和软件应用程序，该板可轻松支持四个10Gb/s以太网端口上的同时线速处理，并可在板上操作和处理数据。
+Digilent NetFPGA-SUME特征：  Xilinx Virtex-7 XC7V690T FFG1761-3 Xilinx CPLD XC2C512用于FPGA配置 PCIe Gen3 x8(8Gbps /通道) 两个512Mbits Micron StrataFlash(PC28F512G18A) 编程：赛灵思Vivado 设计套件 三个x36 72Mbits QDR II SRAM(CY7C25652KV18-500BZC) 两个4GB DDR3 SODIMM(MT8KTF51264Hz-1G9E1) 用于JTAG编程和调试的Micro USB连接器(与UART接口共享) 一根Micro USB线用于编程/ UART QTH连接器(8个RocketIO GTH收发器) 四个SFP +接口(4个RocketIO GTH收发器)，支持10Gbps 两个SATA-III端口 用户LED和按钮 一个HPC FMC连接器(10个RocketIO GTH收发器) 一个Pmod端口  总结 FPGA的强大还是在于其超灵活的可编程能力，随着人工智能越来越受市场的喜爱，无论是GPU还是专用的AI芯片都不可能像FPGA这样便于新进入这个领域的企业折腾、创新，带着这种与生俱来的优势，相信FPGA的春天还很漫长。
+原文连接: 5款超强大的FPGA开发板  
+]]></content>
+  </entry>
+  
+  <entry>
     <title>10道经典的嵌入式C语言题目</title>
     <url>/post/programming/ten-classical-embedded-c-language-examination-questions.html</url>
     <categories><category>Programming</category>
