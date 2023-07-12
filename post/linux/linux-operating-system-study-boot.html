@@ -490,7 +490,7 @@
 <p>BIOS程序会选择一个启动设备，并将控制权转交给启动扇区中的代码。主要工作即使用中断向量和中断服务程序完成BootLoader的加载，最终将boot.img加载至0X7C00的位置启动。Linux内核通过Boot Protocol定义如何实现该引导程序，有如GRUB 2和syslinux等具体实现方式，这里仅介绍GRUB2。</p>
 <h3 id="bootloader的工作">BootLoader的工作</h3>
 <p>boot.img由boot.S编译而成，512字节，安装在启动盘的第一个扇区，即MBR。由于空间有限，其代码十分简单，仅仅是起到一个引导的作用，指向后续的核心镜像文件，即core.img。core.img包括很多重要的部分，如lzma_decompress.img、diskboot.img、kernel.img等，结构如下图。</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux/linux-boot.png" alt="Linux Boot"></p>
+<p><img src="https://www.kontronn.com/imgs/post/linux-boot.png" alt="Linux Boot"></p>
 <p>整个加载流程如下：</p>
 <p>1、boot.img加载core.img的第一个扇区，即diskboot.img，对应代码为diskboot.S</p>
 <p>2、diskboot.img加载core.img的其他部分模块，先是解压缩程序 lzma_decompress.img，再往下是 kernel.img，最后是各个模块 module 对应的映像。这里需要注意，它不是 Linux 的内核，而是 grub 的内核。注意，lzma_decompress.img 对应的代码是 startup_raw.S，本来 kernel.img 是压缩过的，现在执行的时候，需要解压缩。</p>
