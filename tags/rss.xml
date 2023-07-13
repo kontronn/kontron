@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 11 Jul 2023 13:13:48 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jul 2023 11:28:21 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RS422</title>
+      <link>https://www.kontronn.com/tags/rs422/</link>
+      <pubDate>Thu, 13 Jul 2023 11:28:21 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/rs422/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RS485</title>
+      <link>https://www.kontronn.com/tags/rs485/</link>
+      <pubDate>Thu, 13 Jul 2023 11:28:21 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/rs485/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UART</title>
+      <link>https://www.kontronn.com/tags/uart/</link>
+      <pubDate>Thu, 13 Jul 2023 11:28:21 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/uart/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>FPGA</title>
       <link>https://www.kontronn.com/tags/fpga/</link>
