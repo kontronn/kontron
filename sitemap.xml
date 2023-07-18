@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.kontronn.com/categories/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/dns/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/dns-server-configuration-in-linux.html</loc>
+    <lastmod>2023-07-18T10:47:37-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/c&#43;&#43;/</loc>
     <lastmod>2023-07-16T02:12:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -12,32 +47,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-07-16T02:12:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/google/</loc>
     <lastmod>2023-07-16T02:12:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-07-16T02:12:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-07-16T02:12:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/programming/</loc>
-    <lastmod>2023-07-16T02:12:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2023-07-16T02:12:27-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -123,11 +138,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/boot/</loc>
-    <lastmod>2023-07-08T22:28:31-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2023-07-08T22:28:31-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

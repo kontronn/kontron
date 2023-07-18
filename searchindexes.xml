@@ -2,6 +2,29 @@
 <search>
   
   <entry>
+    <title>如何在Linux中搭建DNS服务</title>
+    <url>/post/linux/dns-server-configuration-in-linux.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>DNS</tag>
+    </tags>
+    <content type="html"><![CDATA[要在Linux系统上搭建DNS服务，你可以按照以下步骤进行操作：
+安装BIND软件包 sudo yum install bind bind-utils 配置主DNS服务器 打开/etc/named.conf文件，编辑DNS服务器的配置。根据你的域名和网络环境，修改以下示例配置为适当的值：
+options { listen-on port 53 { any; }; allow-query { any; }; recursion yes; }; zone &#34;example.com&#34; IN { type master; file &#34;/var/named/example.com.zone&#34;; allow-update { none; }; }; 创建主DNS区域文件 创建一个区域文件以存储DNS记录。在/var/named/目录下创建一个名为example.com.zone的文件，并添加相应的DNS记录。示例：
+$TTL 86400 @ IN SOA ns1.example.com. root.example.com. ( 2018010101 ; Serial 3600 ; Refresh 1800 ; Retry 604800 ; Expire 86400 ; Minimum TTL ) @ IN NS ns1.example.com. @ IN A 192.168.1.10 www IN A 192.168.1.20 配置反向解析 打开/etc/named.conf文件，并添加反向解析配置。示例：
+zone &#34;1.168.192.in-addr.arpa&#34; IN { type master; file &#34;/var/named/1.168.192.zone&#34;; allow-update { none; }; }; 创建反向解析区域文件 在/var/named/目录下创建一个名为1.168.192.zone的文件，用于反向解析。添加以下内容：
+$TTL 86400 @ IN SOA ns1.example.com. root.example.com. ( 2018010101 ; Serial 3600 ; Refresh 1800 ; Retry 604800 ; Expire 86400 ; Minimum TTL ) @ IN NS ns1.example.com. 10 IN PTR example.com. 20 IN PTR www.example.com. 设置防火墙规则 如果您的防火墙处于启用状态，请确保允许DNS流量通过
+sudo firewall-cmd --add-service=dns --permanent sudo firewall-cmd --reload 启动并启用DNS服务 sudo systemctl start named sudo systemctl enable named 现在，你的Linux系统上的DNS服务器就已经搭建完成了。您可以在其他设备上将DNS服务器设置为您的CentOS主机的IP地址，以使用该DNS服务器进行域名解析。
+请注意，在实际生产环境中，你可能需要更复杂的配置来满足网络需求，例如添加其他区域或配置转发等。
+DNS原理及解析流程 DNS是互联网中用于将域名解析为IP地址的系统。它充当了一个分布式数据库，将人类可读的域名映射到计算机可理解的IP地址。
+DNS的解析流程如下：
+ 用户在浏览器中输入一个域名，比如www.example.com 操作系统首先会检查本地缓存（称为本地DNS缓存），看是否已经有该域名的解析结果。如果有，则直接返回并跳至第8步。如果没有，继续进行后续步骤。 操作系统向预配置的本地DNS服务器发送一个DNS查询请求。这个本地DNS服务器通常由用户的ISP（互联网服务提供商）或者自定义的DNS服务器提供。 本地DNS服务器收到查询请求后，首先检查自己的缓存，如果存在对应的域名解析结果，直接返回给操作系统。如果没有，则继续进行后续步骤。 本地DNS服务器根据域名的顶级域（TLD）来选择合适的根域名服务器（Root DNS Server）发送查询请求。根域名服务器负责管理顶级域名服务器的地址信息。 根域名服务器返回给本地DNS服务器一个顶级域名服务器的地址。 本地DNS服务器再次向顶级域名服务器发送查询请求。顶级域名服务器负责管理对应顶级域下的权威域名服务器（Authoritative DNS Server）的地址信息。 本地DNS服务器收到权威域名服务器的地址后，向权威域名服务器发送最终的查询请求。 权威域名服务器收到查询请求后，在自己的数据中查找该域名的解析结果。 如果权威域名服务器找到了该域名的解析结果，它将返回给本地DNS服务器。 本地DNS服务器收到解析结果后，会将其缓存下来，并将解析结果返回给操作系统。 操作系统将解析结果传递给应用程序，例如浏览器。 应用程序利用解析结果中的IP地址与服务器建立连接，并完成后续的通信过程。 整个DNS解析流程可能涉及多次查询和响应，但由于DNS系统的分布式结构和缓存机制，大部分解析结果可以从本地DNS缓存或者本地DNS服务器的缓存中获取，从而提高解析速度和减轻DNS服务器的负载压力。  需要注意的是，DNS解析并非一次性完成的，DNS记录可能会发生变化，因此在某些情况下，需要等待DNS记录的刷新时间（TTL）过期后才能获取到最新的解析结果。
+原文连接: 如何在Linux中搭建DNS服务  
+]]></content>
+  </entry>
+  
+  <entry>
     <title>取代C++？谷歌开源编程语言Carbon</title>
     <url>/post/programming/google-open-source-programming-language-carbon.html</url>
     <categories><category>Programming</category>
