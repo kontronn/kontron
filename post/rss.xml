@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Jul 2023 10:47:37 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 10:31:07 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 超级漂亮的 Shell</title>
+      <link>https://www.kontronn.com/post/linux/beautiful-linux-shell.html</link>
+      <pubDate>Thu, 20 Jul 2023 10:31:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/beautiful-linux-shell.html</guid>
+      <description>&lt;p&gt;Linux/Unix 提供了很多种 Shell，为什么要这么多 Shell？&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>如何在Linux中搭建DNS服务</title>
       <link>https://www.kontronn.com/post/linux/dns-server-configuration-in-linux.html</link>
