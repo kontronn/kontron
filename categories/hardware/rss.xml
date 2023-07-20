@@ -6,7 +6,16 @@
     <description>Recent content in Hardware on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 13 Jul 2023 11:28:21 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 12:23:49 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式网络接口该怎么设计</title>
+      <link>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</link>
+      <pubDate>Thu, 20 Jul 2023 12:23:49 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</guid>
+      <description>&lt;p&gt;本篇文章是关于嵌入式网络接口的一些知识介绍。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>RS422/485接口电路设计要点</title>
       <link>https://www.kontronn.com/post/hardware/design-points-of-rs422-485-circuit.html</link>

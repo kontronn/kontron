@@ -3,12 +3,52 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-07-20T10:31:07-04:00</lastmod>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-07-20T10:31:07-04:00</lastmod>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/linux/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/mac/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/network/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/soc/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</loc>
+    <lastmod>2023-07-20T12:23:49-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -22,17 +62,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-07-20T10:31:07-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/shell/</loc>
-    <lastmod>2023-07-20T10:31:07-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2023-07-20T10:31:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -69,11 +99,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html</loc>
     <lastmod>2023-07-16T02:12:27-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2023-07-13T11:28:21-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -312,11 +337,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/soc/</loc>
-    <lastmod>2023-06-23T08:13:55-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</loc>
     <lastmod>2023-06-23T03:04:41-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -339,11 +359,6 @@
   </url><url>
     <loc>https://www.kontronn.com/tags/mmap/</loc>
     <lastmod>2023-06-22T11:11:12-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/linux/</loc>
-    <lastmod>2023-06-21T23:42:52-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

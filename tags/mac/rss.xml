@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MAC on Kontronn</title>
+    <link>https://www.kontronn.com/tags/mac/</link>
+    <description>Recent content in MAC on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 20 Jul 2023 12:23:49 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/mac/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式网络接口该怎么设计</title>
+      <link>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</link>
+      <pubDate>Thu, 20 Jul 2023 12:23:49 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</guid>
+      <description>&lt;p&gt;本篇文章是关于嵌入式网络接口的一些知识介绍。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
