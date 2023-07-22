@@ -182,9 +182,6 @@
     <li><a href="#安装-cudnn">安装 cuDNN</a></li>
     <li><a href="#确实安装是否成功">确实安装是否成功</a></li>
     <li><a href="#遇到的问题">遇到的问题</a></li>
-  </ul>
-
-  <ul>
     <li><a href="#博文部分内容参考">博文部分内容参考</a></li>
   </ul>
 </nav></div>
@@ -784,14 +781,14 @@ An error has occurred. See the log file
                           Recommends: libnvidia-gl-530:i386 <span style="color:#f92672">(=</span> 530.41.03-0ubuntu0.22.04.2<span style="color:#f92672">)</span>
 E: Unable to correct problems, you have held broken packages.
 </code></pre></div><p>解决办法，下面的方式进行了尝试，未解决。换了不带 open 的版本</p>
-<h1 id="更新你的软件包列表和已安装的软件包">更新你的软件包列表和已安装的软件包：</h1>
+<p>更新你的软件包列表和已安装的软件包：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt update
 sudo apt upgrade
-</code></pre></div><h1 id="尝试使用以下命令来修复可能存在的损坏软件包">尝试使用以下命令来修复可能存在的损坏软件包：</h1>
+</code></pre></div><p>尝试使用以下命令来修复可能存在的损坏软件包：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt --fix-broken install
-</code></pre></div><h1 id="使用以下命令来清理系统中已经安装的软件包的缓存">使用以下命令来清理系统中已经安装的软件包的缓存：</h1>
+</code></pre></div><p>使用以下命令来清理系统中已经安装的软件包的缓存：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt clean
-</code></pre></div><h1 id="尝试使用以下命令来删除已经损坏的软件包并重新安装">尝试使用以下命令来删除已经损坏的软件包并重新安装</h1>
+</code></pre></div><p>尝试使用以下命令来删除已经损坏的软件包并重新安装</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt remove nvidia-driver-530-open
 sudo apt autoremove
 sudo apt install nvidia-driver-530-open
