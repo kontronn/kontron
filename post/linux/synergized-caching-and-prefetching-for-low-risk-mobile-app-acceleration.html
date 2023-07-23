@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="Marauder-高效缓存和预取加速手机APP" />
+<meta itemprop="description" content="Marauder-高效缓存和预取加速手机APP" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Android,Marauder,Mobile App" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Marauder-高效缓存和预取加速手机APP" />
+<meta property="og:description" content="Marauder-高效缓存和预取加速手机APP" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-07-22 23:51:17 -0400 EDT" />
+<meta property="article:modified_time" content="2023-07-22 23:51:17 -0400 EDT" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html","permalink":"https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html","title":"Marauder-高效缓存和预取加速手机APP"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>Marauder-高效缓存和预取加速手机APP - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">31</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景问题">背景&amp;问题</a></li>
+    <li><a href="#动机">动机</a>
+      <ul>
+        <li><a href="#实验设置">实验设置</a></li>
+        <li><a href="#相关结论">相关结论</a></li>
+      </ul>
+    </li>
+    <li><a href="#设计">设计</a>
+      <ul>
+        <li><a href="#观察">观察</a></li>
+        <li><a href="#后台操作">后台操作</a></li>
+        <li><a href="#运行流程">运行流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验">实验</a>
+      <ul>
+        <li><a href="#应用程序加速">应用程序加速</a></li>
+      </ul>
+    </li>
+    <li><a href="#marauder性能深入分析">Marauder性能深入分析</a>
+      <ul>
+        <li><a href="#和先进方案对比">和先进方案对比</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">66</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2023-04-01T03:27:05-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="9276"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="63"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-07-22T23:51:17-04:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Marauder-高效缓存和预取加速手机APP">
+      <meta itemprop="description" content="Marauder-高效缓存和预取加速手机APP">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">Marauder-高效缓存和预取加速手机APP </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-07-22 23:51:17 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-07-22 23:51:17 -0400 EDT">2023-07-22</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/linux" itemprop="url" rel="index">
+      <span itemprop="name">Linux</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>147</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>本次解读的文章来自MobiSys‘21，研究如何高效加速移动应用程序响应，研究人员来自UCLA、密歇根大学以及普林斯顿大学。</p>
+<h2 id="背景问题">背景&amp;问题</h2>
+<p>移动应用程序已成为移动用户访问互联网服务的主要媒介，占智能手机用户关注时间的80%以上，手机应用成功的关键是较低的响应时间和用户感知的延迟。Android官方给出的报告显示用户对仅仅100毫秒量级的延迟反应消极，如果响应时间超过2-3秒，他们会放弃交互甚至删除应用。
+鉴于移动应用程序性能的重要性，许多工作都致力于提高它们的响应能力。很多研究认为网络传输延迟是导致高响应时间的主要原因，本文也基于此。目前，有两种主要的技术来减轻网络延迟对应用响应的负面影响：缓存和预取。原则上，两都非常有效，特别是考虑到用户在与应用程序交互时表现出的重复模式。然而，每一种都有基本的缺点，这些缺点限制了它们在实践中的使用和有效性。</p>
+<h2 id="动机">动机</h2>
+<h3 id="实验设置">实验设置</h3>
+<ol>
+<li>
+<p>实验负载：论文收集75个各种类别的Android App，关注其中的50个（使用流行的OkHttp缓存库）；</p>
+</li>
+<li>
+<p>用户交互模拟：论文使用了人形应用测试框架Humanoid app测试框架，它采用深度神经网络从实际用户轨迹中学习交互模式；</p>
+</li>
+<li>
+<p>运行设置：对每个应用程序考虑默认的APK，以及嵌入Marauder的变体两种情况，在Google Pixel 4和Samsung Galaxy Note 9上运行；随机选择每个应用程序的5个用户交互轨迹，并以𝛿分钟为间隔进行应用。根据之前对用户-应用程序交互的研究，论文考虑10分钟到1天的𝛿值；如果未说明，默认值为𝛿 = 60𝑚𝑖𝑛𝑠。实验过程网络环境包括家庭WiFi和LTE网络；</p>
+</li>
+<li>
+<p>性能基准：本文主要的性能指标是用户响应时间IRT（interaction response time），即用户执行屏幕点击以触发交互的时间与交互的最终屏幕完全呈现的时间之间的时间。（具体测量方法详见论文介绍）；</p>
+</li>
+</ol>
+<h3 id="相关结论">相关结论</h3>
+<ol>
+<li>现在的手机APP交互太慢：</li>
+</ol>
+<p>图 3显示应用程序和跟踪的交互响应时间 (IRT) 分布，IRT 值的中位数和第 90 个百分位数在 WiFi 网络上分别为 1.6 和 3.7 秒，在 LTE 网络上跃升至 2.9 和 6.7 秒。因此，交互响应时间经常超过用户愿意容忍的 2-3 秒。
+<img src="https://www.kontronn.com/imgs/post/Marauder-1.png" alt="应用程序和跟踪">
+<img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="应用程序和跟踪"></p>
+<ol start="2">
+<li>网络延迟是关键因素：</li>
+</ol>
+<p>移动应用程序的响应时间取决于内容获取过程中产生的网络延迟，以及在APK中解析/呈现该内容和其他代码的客户端计算延迟。对于每个交互，论文比较了有和没有网络延迟的IRT。如图4所示，网络延迟分别占WiFi和LTE中值交互IRT的38%和64%。</p>
+<ol start="3">
+<li>现有优化存在局限：</li>
+</ol>
+<p>上述实验中，应用程序采用默认运行模式，应用程序的APK或源服务器指定的任何缓存或预取都会被采用。然而，响应时间仍然过长。</p>
+<p>缓存的问题：现有的缓存要求开发人员为他们服务的每个资源显式设置一个TTL。然而，设置这样的TTL是困难的，因为每个资源的理想TTL随时间而变化。论文的实验中，50%资源的理想TTLs的标准偏差是2小时，在这种情况下，开发人员面临着权衡；</p>
+<p>预取的问题：应用程序对预取的支持通常选择获取大量内容的通用策略，其中大部分内容没有被使用。因此，尽管有潜在的加速，实际上预取在资源使用方面是非常浪费的。这种浪费会导致较高的通信成本，并且还会影响IRT加速，尤其是在带宽受限的设置中，其中明确请求的资源必须与不必要预取的资源竞争；</p>
+<h2 id="设计">设计</h2>
+<p>Marauder是一个移动应用程序加速框架，其目标是同时利用缓存和预取的能力，尽量回避它们的风险和局限性。Marauder的关键思想是使用明智的预取来最大化已经缓存的对象的效用(即缓存命中)，然后使用这些缓存的对象来指导即时预取(即在当前交互期间)。</p>
+<h3 id="观察">观察</h3>
+<p>观察一：论文发现为给定交互提取的文本文件（即 JSON、HTML、JavaScript、CSS 和 XML）直接嵌入了该交互所需的大多数非文本资源的列表，94%提取的非文本资源的URL可以从以前提取的文本文件中获得。所以，当应用程序解析和执行文本文件时，可以直接从应用程序的缓存中发出对任何引用文件的预取请求。这样，文本文件的早期解析和执行延迟会与被引用的非文本文件的网络获取延迟重叠。而且，这种JIT(just-in-time)的预取的风险会很低因为它只考虑直接列在文件中的资源，该文件被显式地请求并且将要被解析；</p>
+<p>观察二：论文观察到缓存资源的内容通常保持不变，尽管相应的 TTL 已过期（这发生在47% 的资源中），这表明现有缓存TTL 设置过于保守。所以可以通过预取即将到期的资源，在它们没有改变的情况下延长它们的TTL(从而提高它们的命中率)；</p>
+<p>观察三：论文发现给定文本文件引用的文件集通常在很长一段时间内保持稳定，即使文本内容发生变化也是如此。例如，中间文本文件的引用文件集在4小时内保持不变，尽管50%的文本文件仅在20分钟内保持不变。将此条件放宽到只有90%的引用文件未更改，将中位持续时间增加到9小时。所以可以通过在验证/更新不可缓存的文本文件并随后解析该文本文件时，对该文本文件所引用的文件发出预取请求，减少条件检查所带来的延迟。。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="观察"></p>
+<h3 id="后台操作">后台操作</h3>
+<ol>
+<li>
+<p>Cache Refresher：刷新缓存资源，以提高整体缓存命中率。对于缓存中具有非零TTL的每个资源(即，不包括标记为非缓存的资源)，Marauder添加一个计时器事件，该事件在到期时检查资源的内容是否没有改变，以及其TTL是否可以延长。按照上面的观察二，Marauder对文本和非文本文件执行不同的TTL扩展过程；</p>
+</li>
+<li>
+<p>JIT Prefetcher：促进文本文件引用的资源的在线预取。每当一个文本文件被添加到应用程序缓存时(即使它被标记为无缓存), Marauder 都会异步生成一个工作线程来解析相应文本文件的正文以搜索引用的URL。开发人员使用各种正则表达式和 LinkedIn URL 检测器库静态分析文本文件，以查找所有类似于 URL 的字符串；</p>
+</li>
+</ol>
+<h3 id="运行流程">运行流程</h3>
+<p>在用户交互期间，应用程序发出的请求正常访问缓存存在三种潜在的情况，每种情况都需要使用 Marauder 的不同工作流程。</p>
+<ol>
+<li>
+<p>对于第一次请求文本文件(即，它不在缓存中，甚至过期)，或者任何请求非文本文件但在应用程序缓存中未命中的请求，Marauder会立即通过网络发出请求。收到响应后，Marauder将内容发送到应用程序，将其添加到缓存中，如果它是文本文件，则开始后台任务以提取引用的资源；</p>
+</li>
+<li>
+<p>对于在应用程序缓存中命中的文本文件请求(根据缓存库的默认命中标准)，Marauder用相应的内容响应应用程序，并立即对该文本文件引用的所有文件发出异步预取请求(使用离线生成的列表)。预取请求首先通过应用程序缓存，确保已经缓存的资源不会被重新下载。为了发出预取请求，Marauder首先填充动态查询参数的值；</p>
+</li>
+<li>
+<p>对于在应用程序缓存中未命中但与标记为无缓存的条目相关的文本文件请求，Marauder会发出一个对文本文件的请求，然后发出对其所有被引用子节点的预取请求。如果文本文件在某些预取资源之前到达，Marauder会小心地将应用程序显式发出的后续请求排队，这些请求已经有一个未完成的预取请求。通过这种方式，Marauder避免了重复请求和带宽浪费；一旦相应的预取响应到达，队列中的请求就会得到服务；</p>
+</li>
+</ol>
+<h2 id="实验">实验</h2>
+<h3 id="应用程序加速">应用程序加速</h3>
+<p>图14 说明了与当前应用程序所采用的默认缓存和预取策略相比，Marauder能够降低交互响应时间(IRT)。例如，在LTE网络上，Marauder 将一半的应用程序的IRT提高了 19.8-27.4%（或 0.58-0.81 秒）；一半的应用程序的第 90 个百分位 IRT 改进为 29.7-43.5%（或 0.87-1.27 秒）。由于服务器的网络延迟较低，Marauder 在 WiFi 上的收益中位数和 90% 分别下降到 16.9-23.1% 和 26.1-33.2%。图 14 还显示，当用户会话之间的时间增加时，Marauder 的改进更加明显（即是前文的参数𝛿）。例如，在 LTE 上，随着𝛿 从 20 分钟增加到 4 小时，一半的应用程序的IRT 改进从 19.8% 增长到 24.4%。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="应用程序缓存"></p>
+<h2 id="marauder性能深入分析">Marauder性能深入分析</h2>
+<ol>
+<li>每个设计的效率：分别分析了JIT预取和Cache Refreshing的效果，后台缓存刷新以提高已缓存资源的命中率是 Marauder 收益最大的地方，在所考虑的 𝛿 值的中位数处提供 13.3-16.1% 的加速。相比之下，即时预取可提供 3.4-8.6% 的中值加速；</li>
+<li>互动案例的测试：Marauder 优化的有效性受目标特定交互中的加载模式的影响。为了更好地理解这些关系，实验分析了当前应用程序的交互，并确定了影响 Marauder 提供的加速幅度的三种主要模式；</li>
+</ol>
+<h3 id="和先进方案对比">和先进方案对比</h3>
+<p>论文将 Marauder 与三种加速方法进行了比较：Paloma预取系统，以及应用程序支持的最激进和保守的预取策略。</p>
+<h2 id="总结">总结</h2>
+<p>论文提出了一种移动应用程序加速系统Marauder，它综合利用缓存和预取技术，优化了TTL设置不当、缓存过时内容以及预取浪费带宽问题。同时，文章通过分析大量实验数据，得到了一些关键观察。相关实验设计非常巧妙值得学习。对缓存和预取这两种操作系统经典设计在应用程序加速领域做了深入分析，但是设计本身并不复杂。此外，从实现上来看，Marauder只是用上述优化的版本替换了大多数应用程序所依赖的缓存库，可以立即部署。</p>
+<p>源代码和实验数据访问 
+<a href="https://github.com/muralisr/marauder" title="https://github.com/muralisr/marauder" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    https://github.com/muralisr/marauder
+    <i class="fa fa-external-link-alt"></i>
+</a></p>
+<p>The End</p>
+<p>致谢</p>
+<p>感谢本次论文解读者，来自华东师范大学的博士生李文通，主要研究方向为跨设备资源共享、移动计算。</p>
+<p>
+<a href="https://www.vxworks.net/linux/1031-synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration" title="论文下载地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    论文下载地址
+    <i class="fa fa-external-link-alt"></i>
+</a></p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/android">
+    Android
+  </a>
+    <a href="/tags/marauder">
+    Marauder
+  </a>
+    <a href="/tags/mobile-app">
+    Mobile App
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      Marauder-高效缓存和预取加速手机APP
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html" title="Marauder-高效缓存和预取加速手机APP">https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/linux/how-to-setup-CUDA-environment-for-nvidia-3060.html" rel="prev" title="Nvidia 3060显卡 CUDA环境搭建">
+      Nvidia 3060显卡 CUDA环境搭建
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2023
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

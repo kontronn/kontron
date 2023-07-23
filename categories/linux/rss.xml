@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jul 2023 12:50:31 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 23:51:17 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Marauder-高效缓存和预取加速手机APP</title>
+      <link>https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html</link>
+      <pubDate>Sat, 22 Jul 2023 23:51:17 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html</guid>
+      <description>&lt;p&gt;本次解读的文章来自MobiSys‘21，研究如何高效加速移动应用程序响应，研究人员来自UCLA、密歇根大学以及普林斯顿大学。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Nvidia 3060显卡 CUDA环境搭建</title>
       <link>https://www.kontronn.com/post/linux/how-to-setup-CUDA-environment-for-nvidia-3060.html</link>
