@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Find on Kontronn</title>
+    <link>https://www.kontronn.com/tags/find/</link>
+    <description>Recent content in Find on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 24 Jul 2023 11:33:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/find/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>find使用xargs和exec执行效率比较</title>
+      <link>https://www.kontronn.com/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html</link>
+      <pubDate>Mon, 24 Jul 2023 11:33:10 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html</guid>
+      <description>在linux上测试在使用find命令进行批量操作时，xargs和exec两种方式那个效率更高。
+目的 在linux上测试在使用find命令进行批量操作时，xargs和exec两种方式那个效率更高。
+实验 实验准备 批量创建一批文件，用来做测试使用
+# 创建100个文件 [root@localhost a]# touch file{1..100} [root@localhost a]# ls file1 file13 file18 file22 file27 file31 file36 file40 file45 file5 file54 file59 file63 file68 file72 file77 file81 file86 file90 file95 file10 file14 file19 file23 file28 file32 file37 file41 file46 file50 file55 file6 file64 file69 file73 file78 file82 file87 file91 file96 file100 file15 file2 file24 file29 file33 file38 file42 file47 file51 file56 file60 file65 file7 file74 file79 file83 file88 file92 file97 file11 file16 file20 file25 file3 file34 file39 file43 file48 file52 file57 file61 file66 file70 file75 file8 file84 file89 file93 file98 file12 file17 file21 file26 file30 file35 file4 file44 file49 file53 file58 file62 file67 file71 file76 file80 file85 file9 file94 file99 # 修改前50个文件的文件属主和属组为jin [root@localhost a]# chown jin:jin file{1.</description>
+    </item>
+    
+  </channel>
+</rss>
