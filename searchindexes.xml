@@ -2,6 +2,21 @@
 <search>
   
   <entry>
+    <title>Linux系统内核概述</title>
+    <url>/post/linux/linux-share-file-folder-and-time-synchronization.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>NFS</tag>
+      <tag>NTP</tag>
+    </tags>
+    <content type="html"><![CDATA[本文讲解了主从服务器创建共享目录以及主从服务器实现时钟同步。
+目标：主从服务器创建共享目录。 安装并启动NFS 安装：yum install -y nfs-utils systemctl enable rpcbind #网络服务,负责在客户端和服务端之间建立联系。 systemctl enable nfs-server systemctl start rpcbind systemctl start nfs-server NFS服务端创建共享目录 所有服务器均创建目录：mkdir -p /opt/gao/test/file 修改配置文件：vi /etc/exports /opt/gao/test/file/ *(insecure,rw,sync,no_root_squash) :wq 重启NFS服务:systemctl restart nfs-server 查看配置路径键入：exportfs NFS客户端配置 查看主服务器可挂载目录：showmount -e 主服务器IP 修改文件：vi /etc/fsta 主服务器IP:/opt/gao/test/file /opt/gao/test/file/ nfs defaults,_netdev 0 0 :wq 挂载目录：mount -t nfs 主服务器IP:/opt/gao/test/file /opt/gao/test/file/ 测试连通性 任意一台服务器的/opt/gao/test/file目录下创建文件，去其他服务相同目录查看。
+目标：主从服务器实现时钟同步。 部署NTP服务 查看ntp和ntpdate安装情况：rpm -qa | grep ntp 安装ntp：yum -y install ntp 安装ntpdate：yum -y install ntpdate 设置时区：cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 配置NTP服务端 vim /etc/ntp.conf #注释以下内容 restrict default nomodify notrap nopeer noquery restrict ::1 # 新增下面内容 # 备注eg:191.169.6.156服务端所在网段为191.169.6.0 restrict default kod nomodify notrap nopeer noquery restrict -6 default kod nomodify notrap nopeer noquery restrict -6 ::1 restrict 191.169.6.0(服务端所在网段) mask 服务端子网掩码 server 127.127.1.0 prefer fudge 127.127.1.0 stratum 10 #执行命令 启动服务：service ntpd start 开机启动：chkconfig ntpd on 查看同步状态：ntpstat 配置NTP客户端 vim /etc/ntp.conf # 注释下面内容： restrict default nomodify notrap nopeer noquery restrict ::1 #新增下面内容： restrict default kod nomodify notrap nopeer noquery restrict -6 default kod nomodify notrap nopeer noquery restrict -6 ::1 server 191.169.6.156 preferservice ntpd stop chkconfig ntpd off 配置定时同步时间 crontab -e 输入：*/2 * * * * /usr/sbin/ntpdate NTP服务端IP &gt;&gt; /dev/null 硬件时钟与系统时钟同步：hwclock -w 各服务器键入date验证：date 原文连接： Linux共享目录和时钟同步  
+]]></content>
+  </entry>
+  
+  <entry>
     <title>find使用xargs和exec执行效率比较</title>
     <url>/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html</url>
     <categories><category>Linux</category>
