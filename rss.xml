@@ -6,7 +6,16 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 25 Jul 2023 09:57:02 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 29 Jul 2023 08:04:37 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C语言while(1) 和 for ( ; ; )的区别</title>
+      <link>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</link>
+      <pubDate>Sat, 29 Jul 2023 08:04:37 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</guid>
+      <description>&lt;p&gt;while(1) 和 for(;;) 它们不都是无限循环吗，作用应该一样啊，它们到底有什么区别？&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>状态机的三种实现方法</title>
       <link>https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html</link>

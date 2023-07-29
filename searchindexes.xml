@@ -2,6 +2,41 @@
 <search>
   
   <entry>
+    <title>C语言while(1) 和 for ( ; ; )的区别</title>
+    <url>/post/programming/ten-classical-embedded-c-language-examination-questions.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>C</tag>
+      <tag>Embedded</tag>
+    </tags>
+    <content type="html"><![CDATA[while(1) 和 for(;;) 它们不都是无限循环吗，作用应该一样啊，它们到底有什么区别？
+要回答这个问题，其实你各自编写一段while(1) 和 for(;;)的代码，编译对比一下代码大小和汇编文件，你就大概知道了。
+while(1)和for(;;)语法表达 这里先说一下while(1)和for(;;)语法表达式。
+while语法表达 while (表达式) { 语句 } 其中：
+ 表达式：是循环条件 语句：为循环体。  while语句的语义是：计算表达式的值，当值为真(非0)时， 执行循环体语句。其执行过程可用下图表示：
+for语法表达 for(表达式1; 表达式2; 表达式3) { 语句 } 它的执行过程如下：
+先求解表达式1 求解表达式2 若其值为真（非0），则执行for语句中指定的内嵌语句，然后执行下面第3）步； 若其值为假（0），则结束循环，转到第5）步。
+求解表达式3 转回上面第2）步继续执行。 循环结束，执行for语句下面的一个语句。 执行过程可用下图表示：
+while(1)和for(;;)异同点 这里先说一下结论，然后再验证验证结论。
+相同点 作用和效果都一样：都是实现无限循环的功能。
+不同点 while(1)：其中括号里面是一个条件，程序会判断真假。而括号里面的“1”永远是一个“真值”。
+其中，每一次循环，编译器都要判断常量1是不是等于零。
+for(;;)：这两个;;空语句，编译器一般会优化掉的，直接进入死循环。
+根据上面的描述，你可能会觉得：while(1) 比 for(;;) 要做更多事，汇编代码更多，代码量也更大。
+但事实是这样吗？下面验证一下。
+验证while(1)和for(;;)差异 我们编写分别两个文件for.c和while.c，然后分别生成汇编代码，看下情况。
+源代码 while.c：
+for.c：
+生成汇编 我们这里使用gcc编译器生成汇编，执行命令如下：
+while汇编代码：
+for汇编代码：
+你会发现，除了文件名不同，其余都相同。
+当然，这里额外说一下，不同代码、不同编译器，以及不同优化等级，可能最终结果有所差异。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>状态机的三种实现方法</title>
     <url>/post/programming/three-implementation-methods-of-state-machine.html</url>
     <categories><category>Programming</category>
