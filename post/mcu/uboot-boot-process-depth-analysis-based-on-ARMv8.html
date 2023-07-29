@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="ARMv8架构u-boot启动流程详细分析" />
+<meta itemprop="description" content="ARMv8架构u-boot启动流程详细分析" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="ARM,ARMv8,uboot" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="ARMv8架构u-boot启动流程详细分析" />
+<meta property="og:description" content="ARMv8架构u-boot启动流程详细分析" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-07-29 11:44:46 -0400 EDT" />
+<meta property="article:modified_time" content="2023-07-29 11:44:46 -0400 EDT" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"uboot-boot-process-depth-analysis-based-on-ARMv8.html","permalink":"https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html","title":"ARMv8架构u-boot启动流程详细分析"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>ARMv8架构u-boot启动流程详细分析 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">38</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a>
+      <ul>
+        <li><a href="#选择u-boot的理由">选择u-boot的理由：</a></li>
+      </ul>
+    </li>
+    <li><a href="#armv8-u-boot的启动">armv8 u-boot的启动</a></li>
+    <li><a href="#u-boot源码整体结构和一些编译配置方式">u-boot源码整体结构和一些编译配置方式</a>
+      <ul>
+        <li><a href="#编译配置方式">编译配置方式</a></li>
+        <li><a href="#u-boot源码结构">u-boot源码结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#u-boot-armv8链接脚本">u-boot armv8链接脚本</a>
+      <ul>
+        <li><a href="#u-bootlds">u-boot.lds</a></li>
+        <li><a href="#u-boot-spllds">u-boot-spl.lds</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2023-04-01T03:27:05-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="12505"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="83"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-07-29T11:44:46-04:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ARMv8架构u-boot启动流程详细分析">
+      <meta itemprop="description" content="ARMv8架构u-boot启动流程详细分析">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">ARMv8架构u-boot启动流程详细分析 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-07-29 11:44:46 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-07-29 11:44:46 -0400 EDT">2023-07-29</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/mcu" itemprop="url" rel="index">
+      <span itemprop="name">MCU</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>854</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>5分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>本文基于 armv8 架构来对 u-boot 进行启动流程分析，u-boot版本为2022-01。</p>
+<h2 id="概述">概述</h2>
+<p>首先引用wiki上的简介：u-boot 是一个主要用于嵌入式系统的引导加载程序，可以支持多种不同的计算机系统结构。</p>
+<p>u-boot最先是由德国DENX软件中心团队开发，后续众多有志于开放源码bootloader移植工作的嵌入式开发人员将各个不同系列嵌入式处理器的移植工作不断展开和深入，以支持了更多的嵌入式操作系统的装载与引导。</p>
+<h3 id="选择u-boot的理由">选择u-boot的理由：</h3>
+<p>开放源码；支持多种嵌入式操作系统内核的引导，如Linux、NetBSD, VxWorks, QNX, RTEMS, ARTOS, LynxOS, android；支持多个处理器系列，如PowerPC、ARM、x86、MIPS；</p>
+<p>较高的可靠性和稳定性；高度灵活的功能设置，适合U-Boot调试、操作系统不同引导要求、产品发布等；</p>
+<p>丰富的设备驱动源码，如串口、以太网、SDRAM、FLASH、LCD、NVRAM、EEPROM、RTC、键盘等；</p>
+<p>较为丰富的开发调试文档与强大的网络技术支持；</p>
+<p>基于以上理由本篇文章对现在主流的armv8架构的u-boot启动流程进行详细分析，以便所有人快速学习和理解u-boot的工作流程。</p>
+<h2 id="armv8-u-boot的启动">armv8 u-boot的启动</h2>
+<p>先看arm官网提供的一张图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/armv8-uboot-1.png" alt="ARMv8"></p>
+<p>上图详细概括了arm官方推荐的armv8的启动层次结构：</p>
+<p>官方将启动分为了BL1，BL2，BL31，BL32，BL33阶段，根据顺序，芯片启动后首先执行BL1阶段代码，接着验签启动BL2，BL2根据具体设计启动BL31或者BL33，BL32只有在有BL31时才可能会存在并被验签加载启动。</p>
+<p>armv8分为Secure World和Non-Secure World（Normal World），四种异常级别从高到低分别为EL3，EL2，EL1，EL0。</p>
+<p>Secure World就是可以执行可信的firmware和app，比如密码支付，指纹识别等一系列依赖安全保证的服务。Non-Secure World就是我们常见的u-boot，linux，qnx等裸机程序或者操作系统。</p>
+<p>EL3具有最高管理权限，负责安全监测和安全模式切换。EL2主要提供了对虚拟化的支持。EL1是一个特权模式，能够执行一些特权指令，用于运行各类操作系统，在安全模式则是可信任OS。EL0是无特权模式，所有APP应用都在EL0。</p>
+<p>上图中的BL1，BL2，BL31，BL32，BL33分别对应如下功能：</p>
+<p>BL1：是一切信任的根，一般就是固化在ROM中的一段启动加载代码，用于引导bl2，并对bl2进行验签保证可信任执行；</p>
+<p>BL2：一般是在flash中的一段可信安全启动代码，它的可信建立在bl1对它的验证，主要完成一些平台相关的初始化，比如对ddr的初始化等，并在完成初始化后寻找BL31或者BL33进行执行；如果找到了BL31则不会继续调用BL33，如果没有BL31则BL33必须有；</p>
+<p>BL31：BL31不像BL1和BL2是一次性运行的，它作为最后一道可信任固件存在，在系统运行时通过smc指令陷入EL3调用系统安全服务或者在Secure World和Non-Secure World之间进行切换；在完成BL31初始化后会去寻找BL32或者BL33进行验签后加载执行；</p>
+<p>BL32：OPTee OS + 安全app，它是一个可信安全的OS运行在EL1并在EL0启动可信任APP（上述的指纹验证等app），并在Trust OS运行完成后通过smc指令返回BL31，BL31切换到Non-Seucre World继续执行BL33；</p>
+<p>BL33：非安全固件，也就是我们常见的UEFI firmware或者u-boot也可能是直接启动Linux kernel；</p>
+<p>启动BL1，BL2，BL31，BL32则是一个完整的ATF信任链建立流程（ARM Trusted Firmware），像常见的PSCI（Power State Coordination Interface）功能则是在ATF的BL31上实现；</p>
+<p>最后一张图完整展示整个调用流程：</p>
+<p><img src="https://www.kontronn.com/imgs/post/armv8-uboot-2.png" alt="ARMv8"></p>
+<p>BL2根据是否存在BL31和BL32可选择性的加载不同firmware；</p>
+<p>综上所述，可知u-boot是一个运行在非安全世界的bootloader，负责加载各类操作系统，并提供丰富的驱动接口；并根据是否存在安全固件还可以进行不同的boot流程，如下。</p>
+<p>u-boot，u-boot-spl，u-boot-tpl的关系：对于一般嵌入式而言只需要一个u-boot作为bootloader即可，但是在小内存，或者有atf的情况下还可以有spl，tpl；</p>
+<p>spl：Secondary Program Loader，二级加载器</p>
+<p>tpl：Tertiary Program Loader，三级加载器</p>
+<p>出现spl和tpl的原因最开始是因为系统sram太小，rom无法在ddr未初始化的情况下一次性把所有代码从flash，emmc，usb等搬运到sram中执行，也或者是flash太小，无法完整放下整个u-boot来进行片上执行。</p>
+<p>所以u-boot又定义了spl和tpl，spl和tpl走u-boot完全相同的boot流程，不过在spl和tpl中大多数驱动和功能被去除了，根据需要只保留一部分spl和tpl需要的功能，通过CONFIG_SPL_BUILD和CONFIG_TPL_BUILD控制；</p>
+<p>一般只用spl就足够了，spl完成ddr初始化，并完成一些外设驱动初始化，比如usb，emmc，以此从其他外围设备加载u-boot，但是如果对于小系统spl还是太大了，则可以继续加入tpl，tpl只做ddr等的特定初始化保证代码体积极小，以此再次从指定位置加载spl，spl再去加载u-boot。</p>
+<p>从目前来看，spl可以取代上图中bl2的位置，或者bl1，根据具体厂商实现来决定，有一些芯片厂商会将spl固化在rom中，使其具有从emmc，usb等设备加载u-boot或者其他固件的能力。</p>
+<p>当然在有atf的情况下可以由atf加载u-boot，或者由spl加载atf，atf再去加载u-boot。甚至在快速启动的系统中可以直接由spl启动加载linux等操作系统而跳过启动u-boot；在上图中arm官方只是给出了一个建议的启动信任链，具体实现都需要芯片厂商来决定；</p>
+<p>后续分析启动流程中会在具有SPL和TPL的地方拓展它们的分叉执行路径尽量把SPL和TPL的功能也一并分析；</p>
+<h2 id="u-boot源码整体结构和一些编译配置方式">u-boot源码整体结构和一些编译配置方式</h2>
+<h3 id="编译配置方式">编译配置方式</h3>
+<p>u-boot使用了同Linux一样的编译配置方式，即使用kbuild系统来管理整体代码的配置和编译，通过defconfig来定制各种不同厂商的芯片bootloader二进制程序。编译只需要注意通过环境变量或者命令行参数的方式引入一个交叉编译工具即可：</p>
+<p>CROSS_COMPILE：定义交叉编译工具链，可以是aarch64-linux-gnu-，arm-none-eabi-或者ppc-linux-gnu-等等；u-boot有几个配置是需要由对应board配置的。</p>
+<p>SYS_ARCH，SYS_CPU，SYS_SOC，SYS_BOARD，SYS_VENDOR，SYS_CONFIG_NAME；一般在board/vendor/board/Kconfig中可全部定义，部分SYS_CPU，SYS_SOC也可以在arch/xxx/Kconfig中定义，根据这几个配置即可确定使用的cpu架构，厂商，板级信息，soc信息。</p>
+<p>Makefile会自动根据上述信息进入对应目录组织编译规则，一般如果没有自己对应的这些board信息，需要自己在对应目录建立这些Kconfig和在configs中建立defconfig。</p>
+<p>在configs目录中保存了uboot中所有支持的board配置，比如要使用rk3399的evb板的配置信息使用如下方式即可编译出来：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make CROSS_COMPILE<span style="color:#f92672">=</span>aarch64-linux-gnu- evb-rk3399_defconfig
+make
+</code></pre></div><p>如果没有对应的defconfig可以找一个与自己板级信息类似的defconfig生成一个.config，再通过menuconfig来完成自己board的配置，并最后通过savedefconfig保存为自己board的defconfig：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make CROSS_COMPILE<span style="color:#f92672">=</span>aarch64-linux-gnu- evb-rk3399_defconfig
+make menuconfig
+make savedefconfig
+cp defconfig configs/my_defconfig
+</code></pre></div><p>下面是evb rk3399的定义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">CONFIG_SYS_ARCH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;arm&#34;</span>
+CONFIG_SYS_CPU<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;armv8&#34;</span>
+CONFIG_SYS_SOC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rk3399&#34;</span>
+CONFIG_SYS_VENDOR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rockchip&#34;</span>
+CONFIG_SYS_BOARD<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;evb_rk3399&#34;</span>
+CONFIG_SYS_CONFIG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;evb_rk3399&#34;</span>
+</code></pre></div><p>根据CONFIG_SYS_BOARD的定义还会为每个源文件自动包含include/configs/xxxx.h头文件，evb rk3399则是include/configs/evb_rk3399.h头文件。这个头文件可在其中定义board的一些关键配置，系统的ram大小，环境变量的起始地址和大小，GIC基地址，时钟频率，是否开启看门狗等定义，可根据具体需求来定义。</p>
+<p>u-boot使用Kconfig和include/configs/xxx.h来灵活的确定u-boot编译流程及最终生成的文件。比如当定义CONFIG_SYS_CPU为&quot;armv8&quot;，CONFIG_SYS_ARCH为&quot;arm&quot;时，即确定了目标架构为armv8会自动根据Makefile进入对应目录进行编译链接。</p>
+<h3 id="u-boot源码结构">u-boot源码结构</h3>
+<p>这里只对一些常用的目录进行说明：</p>
+<ul>
+<li>arch：各种架构的启动初始化流程代码，链接脚本等均在此目录对应的架构中存放；</li>
+<li>board：包含了大部分厂商的board初始化代码，基本平台化相关的代码都在对应的board目录中，早期的一些board代码在arch/xxx/xxx-mach中，现在基本不会放在arch目录下面了；</li>
+<li>cmd：包含了大量实用的u-boot命令的实现，比如md，cp，cmp，tftp，fastboot，ext4load等命令的实现，我们也可以在此处添加自己实现的命令；</li>
+<li>common：包含了u-boot的核心初始化代码，包括board_f，board_r，spl等一系列代码；</li>
+<li>configs：包含了所有board的配置文件，可直接使用；</li>
+<li>drivers：大量驱动代码的存放处；</li>
+<li>dts：编译生成dtb，内嵌dtb到u-boot的编译规则定义目录；</li>
+<li>env：环境变量功能实现代码；</li>
+<li>fs：文件系统读写功能的实现，里面包含了各类文件系统的实现；</li>
+<li>include：所有公用头文件的存放路径；</li>
+<li>lib：大量通用功能实现，提供给各个模块使用；</li>
+<li>net：网络相关功能的实现；</li>
+<li>scripts：编译，配置文件的脚本文件存放处；</li>
+<li>tools：测试和实用工具的实现，比如mkimage的实现代码在此处；</li>
+</ul>
+<h2 id="u-boot-armv8链接脚本">u-boot armv8链接脚本</h2>
+<p>在进行源码分析之前，首先看看u-boot的链接脚本，通过链接脚本可以从整体了解一个u-boot的组成，并且可以在启动分析中知道某些逻辑是在完成什么工作。</p>
+<p>在armv8中，u-boot使用arch/arm/cpu/armv8/u-boot.lds进行链接。</p>
+<p>u-boot-spl和u-boot-tpl使用arch/arm/cpu/armv8/u-boot-spl.lds进行链接，因为每个board的情况可能不同，所以u-boot可以通过Kconfig来自定义u-boot-spl.lds和u-boot-tpl.lds。</p>
+<h3 id="u-bootlds">u-boot.lds</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/* SPDX-License-Identifier: GPL-2.0+ */</span>
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * (C) Copyright 2013
+</span><span style="color:#75715e"> * David Feng &lt;fenghua@phytium.com.cn&gt;
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * (C) Copyright 2002
+</span><span style="color:#75715e"> * Gary Jennejohn, DENX Software Engineering, &lt;garyj@denx.de&gt;
+</span><span style="color:#75715e"> */</span>
+
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;config.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/psci.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+OUTPUT_FORMAT(<span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>, <span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>, <span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>)
+OUTPUT_ARCH(aarch64)
+ENTRY(_start) <span style="color:#f92672">--------------------------------------------------------------------</span> (<span style="color:#ae81ff">1</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（1）首先定义了二进制程序的输出格式为&#34;elf64-littleaarch64&#34;，
+</span><span style="color:#75715e"> *    架构是&#34;aarch64&#34;，程序入口为&#34;_start&#34;符号；
+</span><span style="color:#75715e"> */</span>
+SECTIONS
+{
+<span style="color:#75715e">#ifdef CONFIG_ARMV8_SECURE_BASE -------------------------------------------------- (2)
+</span><span style="color:#75715e"></span><span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（2）ARMV8_SECURE_BASE是u-boot对PSCI的支持，在定义时可以将PSCI的文本段，
+</span><span style="color:#75715e"> *    数据段，堆栈段重定向到指定的内存，而不是内嵌到u-boot中。
+</span><span style="color:#75715e"> *    不过一般厂商实现会使用atf方式使其与bootloader分离，这个功能不常用；
+</span><span style="color:#75715e"> */</span>
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.rela._secure<span style="color:#f92672">*</span>) }
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span> . <span style="color:#f92672">=</span> <span style="color:#ae81ff">0x00000000</span>; <span style="color:#f92672">--------------------------------------------------------------</span> (<span style="color:#ae81ff">3</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（3）定义了程序链接的基地址，默认是0，通过配置CONFIG_SYS_TEXT_BASE可修改
+</span><span style="color:#75715e"> *    这个默认值。
+</span><span style="color:#75715e"> */</span>
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ .text :
+ {
+  <span style="color:#f92672">*</span>(.__image_copy_start) <span style="color:#f92672">---------------------------------------------------</span> (<span style="color:#ae81ff">4</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（4）__image_copy_start和__image_copy_end用于定义需要重定向的段，
+</span><span style="color:#75715e"> *    u-boot是一个分为重定向前初始化和重定向后初始化的bootloader，
+</span><span style="color:#75715e"> *    所以此处会定义在完成重定向前初始化后需要搬运到ddr中数据的起始地址和结束地址；
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> *    大多数时候u-boot是运行在受限的sram或者只读的flash上，
+</span><span style="color:#75715e"> *    u-boot为了启动流程统一会在ddr未初始化和重定位之前不去访问全局变量，
+</span><span style="color:#75715e"> *    但是又为了保证u-boot能够正常读写全局变量，内存，调用各类驱动能力，
+</span><span style="color:#75715e"> *    所以u-boot将启动初始化分为了两个部分，重定向前初始化board_f和
+</span><span style="color:#75715e"> *    重定向后初始化  board_r，在重定向之前完成一些必要初始化，
+</span><span style="color:#75715e"> *    包括可能的ddr初始化，然后通过__image_copy_start和__image_copy_end
+</span><span style="color:#75715e"> *    将u-boot搬运到ddr中，并在ddr中进行重定向后初始化，这个时候的u-boot就可以
+</span><span style="color:#75715e"> *    正常访问全局变量等信息了。
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> *    如果想要在board_f过程中读写一些全局变量信息该怎么办呢？
+</span><span style="color:#75715e"> *    u-boot通过定义global_data（gd）来完成此功能，
+</span><span style="color:#75715e"> *    后续在分析到时会详细讲解实现方式。
+</span><span style="color:#75715e"> */</span>
+  CPUDIR<span style="color:#f92672">/</span>start.o (.text<span style="color:#f92672">*</span>) <span style="color:#f92672">--------------------------------------------------</span> (<span style="color:#ae81ff">5</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（5）定义了链接程序的头部文本段，armv8就是
+</span><span style="color:#75715e"> *    arch/arm/cpu/armv8/start.S， 
+</span><span style="color:#75715e"> *    start.S中所有文本段将会链接到此段中并且段入口符号就是_start；
+</span><span style="color:#75715e"> */</span>
+ }
+
+ <span style="color:#75715e">/* This needs to come before *(.text*) */</span>
+ .efi_runtime : { <span style="color:#f92672">------------------------------------------------------------</span> (<span style="color:#ae81ff">6</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（6）在定义了efi运行时相关支持时才会出现使用的段，一般不用关心；
+</span><span style="color:#75715e"> */</span>
+        __efi_runtime_start <span style="color:#f92672">=</span> .;
+  <span style="color:#f92672">*</span>(.text.efi_runtime<span style="color:#f92672">*</span>)
+  <span style="color:#f92672">*</span>(.rodata.efi_runtime<span style="color:#f92672">*</span>)
+  <span style="color:#f92672">*</span>(.data.efi_runtime<span style="color:#f92672">*</span>)
+        __efi_runtime_stop <span style="color:#f92672">=</span> .;
+ }
+
+ .text_rest : <span style="color:#f92672">----------------------------------------------------------------</span> (<span style="color:#ae81ff">7</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（7）除了start.o，其他的所有文本段将会链接到此段中；
+</span><span style="color:#75715e"> */</span>
+ {
+  <span style="color:#f92672">*</span>(.text<span style="color:#f92672">*</span>)
+ }
+
+<span style="color:#75715e">#ifdef CONFIG_ARMV8_PSCI -------------------------------------------------------- (8)
+</span><span style="color:#75715e"></span><span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（8）同（2），是PSCI相关功能的支持，一般不会使用；
+</span><span style="color:#75715e"> */</span>
+ .__secure_start :
+<span style="color:#75715e">#ifndef CONFIG_ARMV8_SECURE_BASE
+</span><span style="color:#75715e"></span>  ALIGN(CONSTANT(COMMONPAGESIZE))
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span> {
+  KEEP(<span style="color:#f92672">*</span>(.__secure_start))
+ }
+
+<span style="color:#75715e">#ifndef CONFIG_ARMV8_SECURE_BASE
+</span><span style="color:#75715e">#define CONFIG_ARMV8_SECURE_BASE
+</span><span style="color:#75715e">#define __ARMV8_PSCI_STACK_IN_RAM
+</span><span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span> .secure_text CONFIG_ARMV8_SECURE_BASE :
+  AT(ADDR(.__secure_start) <span style="color:#f92672">+</span> SIZEOF(.__secure_start))
+ {
+  <span style="color:#f92672">*</span>(._secure.text)
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  __secure_svc_tbl_start <span style="color:#f92672">=</span> .;
+  KEEP(<span style="color:#f92672">*</span>(._secure_svc_tbl_entries))
+  __secure_svc_tbl_end <span style="color:#f92672">=</span> .;
+ }
+
+ .secure_data : AT(LOADADDR(.secure_text) <span style="color:#f92672">+</span> SIZEOF(.secure_text))
+ {
+  <span style="color:#f92672">*</span>(._secure.data)
+ }
+
+ .secure_stack ALIGN(ADDR(.secure_data) <span style="color:#f92672">+</span> SIZEOF(.secure_data),
+       CONSTANT(COMMONPAGESIZE)) (NOLOAD) <span style="color:#f92672">:</span>
+<span style="color:#75715e">#ifdef __ARMV8_PSCI_STACK_IN_RAM
+</span><span style="color:#75715e"></span>  AT(ADDR(.secure_stack))
+<span style="color:#75715e">#else
+</span><span style="color:#75715e"></span>  AT(LOADADDR(.secure_data) <span style="color:#f92672">+</span> SIZEOF(.secure_data))
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span> {
+  KEEP(<span style="color:#f92672">*</span>(.__secure_stack_start))
+
+  . <span style="color:#f92672">=</span> . <span style="color:#f92672">+</span> CONFIG_ARMV8_PSCI_NR_CPUS <span style="color:#f92672">*</span> ARM_PSCI_STACK_SIZE;
+
+  . <span style="color:#f92672">=</span> ALIGN(CONSTANT(COMMONPAGESIZE));
+
+  KEEP(<span style="color:#f92672">*</span>(.__secure_stack_end))
+ }
+
+<span style="color:#75715e">#ifndef __ARMV8_PSCI_STACK_IN_RAM
+</span><span style="color:#75715e"></span> . <span style="color:#f92672">=</span> LOADADDR(.secure_stack);
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+ .__secure_end : AT(ADDR(.__secure_end)) {
+  KEEP(<span style="color:#f92672">*</span>(.__secure_end))
+  LONG(<span style="color:#ae81ff">0x1d1071c</span>); <span style="color:#75715e">/* Must output something to reset LMA */</span>
+ }
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ .rodata : { <span style="color:#f92672">*</span>(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata<span style="color:#f92672">*</span>))) } <span style="color:#f92672">-------------------</span> (<span style="color:#ae81ff">9</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（9）所有仅读数据将会在这个段中对齐排序存放好；
+</span><span style="color:#75715e"> */</span>
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ .data : { <span style="color:#f92672">--------------------------------------------------------------------</span> (<span style="color:#ae81ff">10</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（10）所有数据段将会链接到此段中；
+</span><span style="color:#75715e"> */</span>
+  <span style="color:#f92672">*</span>(.data<span style="color:#f92672">*</span>)
+ }
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+
+ . <span style="color:#f92672">=</span> .;
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ .u_boot_list : { <span style="color:#f92672">-------------------------------------------------------------</span> (<span style="color:#ae81ff">11</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（11）u_boot_list段定义了系统中当前支持的所有命令和设备驱动，此段把散落在各个文件中
+</span><span style="color:#75715e"> *     通过U_BOOT_CMD的一系列拓展宏定义的命令和U_BOOT_DRIVER的拓展宏定义的设备驱动收集到一起，
+</span><span style="color:#75715e"> *     并按照名字排序存放，以便后续在命令行快速检索到命令并执行和检测注册的设备和设备树匹配
+</span><span style="color:#75715e"> *     probe设备驱动初始化；（设备驱动的probe只在定义了dm模块化驱动时有效）
+</span><span style="color:#75715e"> */</span>
+  KEEP(<span style="color:#f92672">*</span>(SORT(.u_boot_list<span style="color:#f92672">*</span>)));
+ }
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+
+ .efi_runtime_rel : {
+                __efi_runtime_rel_start <span style="color:#f92672">=</span> .;
+  <span style="color:#f92672">*</span>(.rel<span style="color:#f92672">*</span>.efi_runtime)
+  <span style="color:#f92672">*</span>(.rel<span style="color:#f92672">*</span>.efi_runtime.<span style="color:#f92672">*</span>)
+                __efi_runtime_rel_stop <span style="color:#f92672">=</span> .;
+ }
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+
+ .image_copy_end :
+ {
+  <span style="color:#f92672">*</span>(.__image_copy_end)
+ }
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+
+ .rel_dyn_start : <span style="color:#f92672">--------------------------------------------------------</span> (<span style="color:#ae81ff">12</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（12）一般u-boot运行时是根据定义的基地址开始执行，如果加载地址和链接地址
+</span><span style="color:#75715e"> *     不一致则会出现不能执行u-boot的问题。通过一个
+</span><span style="color:#75715e"> *     配置CONFIG_POSITION_INDEPENDENT即可打开地址无关功能，
+</span><span style="color:#75715e"> *     此选项会在链接u-boot时添加-PIE参数。此参数会在u-boot ELF文件中
+</span><span style="color:#75715e"> *     生成rela*段，u-boot通过读取此段中表的相对地址值与实际运行时地址值
+</span><span style="color:#75715e"> *     依次遍历进行修复当前所有需要重定向地址，使其可以实现地址无关运行；
+</span><span style="color:#75715e"> *     即无论链接基地址如何定义，u-boot也可以在任意ram地址
+</span><span style="color:#75715e"> *     运行（一般需要满足最低4K或者64K地址对齐）；
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> *     注意此功能只能在sram上实现，因为此功能会在运行时修改文本段数据段中的地址，
+</span><span style="color:#75715e"> *     如果此时运行在片上flash，则不能写flash，导致功能失效无法实现地址无关；
+</span><span style="color:#75715e"> */</span>
+ {
+  <span style="color:#f92672">*</span>(.__rel_dyn_start)
+ }
+
+ .rela.dyn : {
+  <span style="color:#f92672">*</span>(.rela<span style="color:#f92672">*</span>)
+ }
+
+ .rel_dyn_end :
+ {
+  <span style="color:#f92672">*</span>(.__rel_dyn_end)
+ }
+
+ _end <span style="color:#f92672">=</span> .;
+
+ . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+
+ .bss_start : { <span style="color:#f92672">--------------------------------------------------------</span> (<span style="color:#ae81ff">13</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（13）众所周知的bbs段；
+</span><span style="color:#75715e"> */</span>
+  KEEP(<span style="color:#f92672">*</span>(.__bss_start));
+ }
+
+ .bss : {
+  <span style="color:#f92672">*</span>(.bss<span style="color:#f92672">*</span>)
+   . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ }
+
+ .bss_end : {
+  KEEP(<span style="color:#f92672">*</span>(.__bss_end));
+ }
+
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynsym) } <span style="color:#f92672">--------------------------------------------</span> (<span style="color:#ae81ff">14</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（14）一些在链接时无用需要丢弃的段；
+</span><span style="color:#75715e"> */</span>
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynstr<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynamic<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.plt<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.interp<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.gnu<span style="color:#f92672">*</span>) }
+
+<span style="color:#75715e">#ifdef CONFIG_LINUX_KERNEL_IMAGE_HEADER ----------------------------------- (15)
+</span><span style="color:#75715e"></span><span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（15）在efi加载时会很有用，主要在u-boot的二进制头部添加了一些头部信息，
+</span><span style="color:#75715e"> *     包括大小端，数据段文本段大小等，以便于efi相关的加载器读取信息，
+</span><span style="color:#75715e"> *     此头部信息来自于Linux arm64的Image的头部信息；该头部也不属于u-boot的
+</span><span style="color:#75715e"> *     一部分只是被附加上去的；
+</span><span style="color:#75715e"> */</span>
+<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;linux-kernel-image-header-vars.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="u-boot-spllds">u-boot-spl.lds</h3>
+<p>此链接脚本是标准的spl链接脚本，还包含了u_boot_list段，如果对应自己board不需要命令行或者模块化驱动设备，只作为一个加载器则可以自定义更简略的链接脚本。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/* SPDX-License-Identifier: GPL-2.0+ */</span>
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> * (C) Copyright 2013
+</span><span style="color:#75715e"> * David Feng &lt;fenghua@phytium.com.cn&gt;
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * (C) Copyright 2002
+</span><span style="color:#75715e"> * Gary Jennejohn, DENX Software Engineering, &lt;garyj@denx.de&gt;
+</span><span style="color:#75715e"> *
+</span><span style="color:#75715e"> * (C) Copyright 2010
+</span><span style="color:#75715e"> * Texas Instruments, &lt;www.ti.com&gt;
+</span><span style="color:#75715e"> * Aneesh V &lt;aneesh@ti.com&gt;
+</span><span style="color:#75715e"> */</span>
+
+MEMORY { .sram : ORIGIN <span style="color:#f92672">=</span> IMAGE_TEXT_BASE, <span style="color:#f92672">----------------------------------------</span> (<span style="color:#ae81ff">1</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（1）\&gt;XXX 的形式可以将指定段放入XXX规定的内存中；一般u-boot-spl只有
+</span><span style="color:#75715e"> *    很小的可运行内存块，所以spl中会舍去大量不需要用的段只保留关键的
+</span><span style="color:#75715e"> *    文本段数据段等，并且通过&gt;.sram的形式将不在ddr初始化前用到的段定义到sdram中，
+</span><span style="color:#75715e"> *    后续只需在完成ddr初始化后将这些段搬运到ddr中即可，而不需要额外的
+</span><span style="color:#75715e"> *    地址修复逻辑，如下：有一个sram 0x18000-0x19000，
+</span><span style="color:#75715e"> *    一个sdram 0x80000000 - 0x90000000，
+</span><span style="color:#75715e"> *    那么通过&gt;.sram方式则map文件可能如下：
+</span><span style="color:#75715e"> *       0x18000 stext
+</span><span style="color:#75715e"> *       ...
+</span><span style="color:#75715e"> *       0x18100 sdata
+</span><span style="color:#75715e"> *       ...
+</span><span style="color:#75715e"> *       0x80000000 sbss
+</span><span style="color:#75715e"> *       ...
+</span><span style="color:#75715e"> */</span>
+  LENGTH <span style="color:#f92672">=</span> IMAGE_MAX_SIZE }
+MEMORY { .sdram : ORIGIN <span style="color:#f92672">=</span> CONFIG_SPL_BSS_START_ADDR,
+  LENGTH <span style="color:#f92672">=</span> CONFIG_SPL_BSS_MAX_SIZE }
+
+OUTPUT_FORMAT(<span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>, <span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>, <span style="color:#e6db74">&#34;elf64-littleaarch64&#34;</span>)
+OUTPUT_ARCH(aarch64)
+ENTRY(_start) <span style="color:#f92672">--------------------------------------------------------------------</span> (<span style="color:#ae81ff">2</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（2）同u-boot.lds一致，共用一套逻辑入口_start；
+</span><span style="color:#75715e"> */</span>
+SECTIONS
+{
+ .text : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  <span style="color:#f92672">*</span>(.__image_copy_start) <span style="color:#f92672">--------------------------------------------------</span> (<span style="color:#ae81ff">3</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（3）同样的，如果spl需要重定向则会使用此段定义，大多数情况下spl中会用上重定向；
+</span><span style="color:#75715e"> */</span>
+  CPUDIR<span style="color:#f92672">/</span>start.o (.text<span style="color:#f92672">*</span>)
+  <span style="color:#f92672">*</span>(.text<span style="color:#f92672">*</span>)
+ } <span style="color:#f92672">&gt;</span>.sram
+
+ .rodata : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  <span style="color:#f92672">*</span>(SORT_BY_ALIGNMENT(SORT_BY_NAME(.rodata<span style="color:#f92672">*</span>)))
+ } <span style="color:#f92672">&gt;</span>.sram
+
+ .data : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  <span style="color:#f92672">*</span>(.data<span style="color:#f92672">*</span>)
+ } <span style="color:#f92672">&gt;</span>.sram
+
+<span style="color:#75715e">#ifdef CONFIG_SPL_RECOVER_DATA_SECTION ---------------------------------------- (4)
+</span><span style="color:#75715e"></span><span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（4）SPL_RECOVER_DATA_SECTION段用于保存数据段数据，
+</span><span style="color:#75715e"> *    一些board在初始化时修改data段数据，并在后续某个阶段
+</span><span style="color:#75715e"> *    从此段中恢复data的原始数据；
+</span><span style="color:#75715e"> */</span>
+ .data_save : {
+  <span style="color:#f92672">*</span>(.__data_save_start)
+  . <span style="color:#f92672">=</span> SIZEOF(.data);
+  <span style="color:#f92672">*</span>(.__data_save_end)
+ } <span style="color:#f92672">&gt;</span>.sram
+<span style="color:#75715e">#endif
+</span><span style="color:#75715e"></span>
+ .u_boot_list : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  KEEP(<span style="color:#f92672">*</span>(SORT(.u_boot_list<span style="color:#f92672">*</span>)));
+ } <span style="color:#f92672">&gt;</span>.sram
+
+ .image_copy_end : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  <span style="color:#f92672">*</span>(.__image_copy_end)
+ } <span style="color:#f92672">&gt;</span>.sram
+
+ .end : {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  <span style="color:#f92672">*</span>(.__end)
+ } <span style="color:#f92672">&gt;</span>.sram
+
+ _image_binary_end <span style="color:#f92672">=</span> .;
+
+ .bss_start (NOLOAD) <span style="color:#f92672">:</span> {
+  . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+  KEEP(<span style="color:#f92672">*</span>(.__bss_start));
+ } <span style="color:#f92672">&gt;</span>.sdram <span style="color:#f92672">--------------------------------------------------------------</span> (<span style="color:#ae81ff">5</span>)
+<span style="color:#75715e">/*
+</span><span style="color:#75715e"> *（5）将bss段数据定义到&gt;.sdram中，即可在初始化ddr后直接对此段地址清零
+</span><span style="color:#75715e"> *    即可使用全局未初始化变量，并且不会带来副作用。
+</span><span style="color:#75715e"> */</span>
+
+ .bss (NOLOAD) <span style="color:#f92672">:</span> {
+  <span style="color:#f92672">*</span>(.bss<span style="color:#f92672">*</span>)
+   . <span style="color:#f92672">=</span> ALIGN(<span style="color:#ae81ff">8</span>);
+ } <span style="color:#f92672">&gt;</span>.sdram
+
+ .bss_end (NOLOAD) <span style="color:#f92672">:</span> {
+  KEEP(<span style="color:#f92672">*</span>(.__bss_end));
+ } <span style="color:#f92672">&gt;</span>.sdram
+
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.rela<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynsym) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynstr<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.dynamic<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.plt<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.interp<span style="color:#f92672">*</span>) }
+ <span style="color:#f92672">/</span>DISCARD<span style="color:#f92672">/</span> <span style="color:#f92672">:</span> { <span style="color:#f92672">*</span>(.gnu<span style="color:#f92672">*</span>) }
+}
+</code></pre></div><p>从上述的链接脚本可以看出，armv8的u-boot的启动是从arch/arm/cpu/armv8/start.S中的_start开始的，并在后续初始化中调用了很多链接脚本中定义的地址符号表。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/arm">
+    ARM
+  </a>
+    <a href="/tags/armv8">
+    ARMv8
+  </a>
+    <a href="/tags/uboot">
+    uboot
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      ARMv8架构u-boot启动流程详细分析
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html" title="ARMv8架构u-boot启动流程详细分析">https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/hardware/easy-to-understand-communication-principle.html" rel="prev" title="通俗易懂讲讲 通信原理">
+      通俗易懂讲讲 通信原理
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2023
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
