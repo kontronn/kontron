@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DDR4 on Kontronn</title>
+    <link>https://www.kontronn.com/tags/ddr4/</link>
+    <description>Recent content in DDR4 on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 06 Aug 2023 00:17:14 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr4/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR的工作原理</title>
+      <link>https://www.kontronn.com/post/hardware/ddr-working-principle.html</link>
+      <pubDate>Sun, 06 Aug 2023 00:17:14 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/ddr-working-principle.html</guid>
+      <description>&lt;p&gt;在本专栏中，我们将由浅入深地讲述如何利用FPGA开发DDR接口。首先，我们将回顾DDR协议的基本原理和工作机制；然后介绍FPGA开发DDR接口时需要用到的IP核及使用方法；随后，验证我们开发的接口功能是否正确；最后向大家介绍几种在
+FPGA中实用的DDR接口应用方法。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
