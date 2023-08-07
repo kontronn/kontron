@@ -16,6 +16,36 @@
   </entry>
   
   <entry>
+    <title>手把手教你在嵌入式设备中使用SQLite3</title>
+    <url>/post/linux/how-to-use-SQLite3-in-embedded-devices.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Linux</tag>
+      <tag>SQLite3</tag>
+    </tags>
+    <content type="html"><![CDATA[数据库是用来存储和管理数据的专用软件，使得管理数据更加安全，方便和高效。数据库对数据的管理的基本单位是表(table)，在嵌入式linux中有时候它也需要用到数据库，听起来好难，其实就是几个函数，掌握了就好。
+常见的数据库 大型数据库(大型机)Oracle(亿级)，中型数据库(分布式超大型)mysql(百万级)，轻型数据库(嵌入式设备)sqlite(万级)，访问数据库使用SQL语句，适用于所有的数据库。
+安装SQLite3 有C环境就可以调用sqlite
+直接用命令安装 sudo apt-get update sudo apt-get install sqlite3 直接编译源码 将源码拷贝到Ubuntu的非共享目录解压
+解压命令：
+tar zvxf sqlite-autoconf-3380500.tar.gz 配置
+cd sqlite-snapshot-201708031550 ./configure --prefix=/home/gec/sqlite 编译
+make 安装
+make install SQLite的使用 新建数据库文件
+sqlite3 数据库文件的路径 //打开/创建 //比如：sqlite3 first.db 基本操作命令 .exit/.quit -------- 退出数据库命令行 .help -------------- 帮助说明信息 .tables ------------ 查看当前数据库中所有的表 数据库访问的SQL语句 基本语法：
+所有的SQL语句都以分号(;)结束 不区分大小写 新建表格 create table 表名(字段名1 字段类型1,字段名2 字段类型2,字段名3 字段类型3,...); 比如： //创建一个stutbl的表，表中有3个字段 //分别是整数类型的学号id,字符串类型的name和整数类型的age create table zhiguoxin(id int,name char[20],age int); //不存在则创建 create table if not exists zhiguoxin(id int,name char[20],age int); //如果希望表中某个字段的内容不重复,可以用unique修饰该字段 create table if not exists zhiguoxin(id int unique,name char[20],age int); 删除表格 drop table 表名; //drop table zhiguoxin; 往表格中插入数据 insert into 表名 values(字段值1,字段值2,字段值3,....); //字段值如果是字符串,必须用&#39;&#39;(单引号)括起来 比如： insert into zhiguoxin values(1001,&#39;刘尧&#39;,18); insert into zhiguoxin values(1002,&#39;聂衍文&#39;,19); insert into zhiguoxin values(1003,&#39;杨佳晨&#39;,20); insert into zhiguoxin values(1004,&#39;冯华阳&#39;,21); 完成插入之后，zhiguoxin 的表格内容如下：
+id	name	age 1001	刘尧	18 1002	聂衍文	19 1003	杨佳晨	20 1004	冯华阳	21
+查询表中的数据 //查询表中的所有数据
+select * from 表名; //select * from zhiguoxin; 查看数据库 可以把first.db数据库文件拷贝至windows下，使用SQLite Developer打开即可看到。SQLite Developer下载地址
+https://mydown.yesky.com/pcsoft/443425.html 按条件查找  使用where指定查询条件  select * from zhiguoxin where id=1003;//查询id值为1003的条目 select * from zhiguoxin where age&gt;=19 and age&lt;21; select * from zhiguoxin where age&gt;=19 or age&lt;21; 指定查询的字段  select id,name,age from zhiguoxin;//只查询id,name,age的字段 使用where+like实现模糊查询  select * from zhiguoxin where name like &#39;刘%&#39;;//查找名字以刘开头的条目 使用order by实现查询结果按某个字段的值升序/降序输出  select * from zhiguoxin order by age desc;//按年龄降序排序 select * from zhiguoxin order by id asc; //按id升序排序 删除表中的条目 delete from 表名 where 条件;//删除所有符合条件的条目 比如： delete from zhiguoxin where id=1001; 更新(修改)表中的条目 update 表名 set 字段名1=字段值1,字段名2=字段值2... where 条件;//修改符合条件的条目 比如： update zhiguoxin set age=100 where id=1002; SQLite中字段类型 数字：
+int ------- 整型 smallint ---- 短整型 tinyint ----- 微型整数(0~255) bit --------- 0 or 1 float ------ 单精度浮点型 real ------- 双精度浮点型 字符串：
+char ---------- 非unicode定长字符串 &lt; 8000 varchar ------- 非unicode变长字符串 &lt; 8000 text ---------- 非unicode变长字符串 &lt; 2^32-1 nchar ---------- unicode定长字符串 &lt; 8000 nvarchar ------- unicode变长字符串 &lt; 8000 ntext ---------- unicode变长字符串 &lt; 2^32-1 SQLite的C语言访问接口 sqlite本身自带C语言访问接口，在C语言的环境下可以直接使用，使用这些接口的代码需要 sqlite的源码编译进可执行程序 或者 编译时链接sqlite的库。
+打开 sqlite3_open int sqlite3_open( const char *filename, /* 数据库的文件路径 */ sqlite3 **ppDb /* 输出参数：传出代表打开数据库的句柄 */ ); //成功返回SQLITE_OK,否则打开失败char ---------- 非unicode定长字符串 &lt; 8000 varchar ：非unicode变长字符串 &lt; 8000 text ：非unicode变长字符串 &lt; 2^32-1 nchar：unicode定长字符串 &lt; 8000 nvarchar : unicode变长字符串 &lt; 8000 ntext :unicode变长字符串 &lt; 2^32-1 关闭 sqlite3_close int sqlite3_close(sqlite3 *pDb); //传入要关闭的数据库的句柄 编译方法  直接编译源码  gcc sqlite3.c sqlite_test.c -pthread -ldl -o sqlite_test 链接sqlite3的动态库  gcc sqlite_test.c -pthread -ldl -lsqlite3 -L /home/gec/sqlite/lib -o sqlite_test //如果运行时找不到sqlite3的库，可以将编译出来的库文件拷贝到/usr/lib目录下(cp -r) 执行SQL语句的接口 sqlite3_exec int sqlite3_exec( sqlite3 *pDb, /* 打开的数据库的句柄 */ const char *sql, /* 要执行的SQL语句 */ int (*callback)(void *arg,int col,char **str,char **name), /* 回调函数,处理SQL语句执行返回的结果(查询),一条结果调用一次 arg - exec的第四个参数 col - 本条结果的字段数 str - 记录字段值的数组 name - 记录字段名的数组 回调函数必须返回SQLITE_OK */ void *arg, /* 传递给回调函数的第一个参数 */ char **errmsg /* 错误信息 */ ); //成功返回SQLITE_OK,否则执行失败 几个例子
+//连接数据库 int Connection_Sqlite3DataBase() { rc = sqlite3_open(&#34;./face_database/face.db&#34;, &amp;db); if (rc != SQLITE_OK) { fprintf(stderr, &#34;Can&#39;t open database: %s\n&#34;, sqlite3_errmsg(db)); sqlite3_close(db); exit(1); } else printf(&#34;You have opened a sqlite3 database named bind.db successfully!\nCongratulation! Have fun!\n&#34;); return 0; } //将图片插入到数据库 void insert_face_data_toDataBase(const char *name, MByte *face_feature, MInt32 featureSize) { sqlite3_prepare(db, &#34;insert into face_data_table(name,face_feature,feature_size) values (?,?,?);&#34;, -1, &amp;stmt, NULL); sqlite3_bind_text(stmt, 1, name, strlen(name), NULL); sqlite3_bind_blob(stmt, 2, face_feature, featureSize, NULL); sqlite3_bind_int(stmt, 3, featureSize); sqlite3_step(stmt); } ]]></content>
+  </entry>
+  
+  <entry>
     <title>Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心</title>
     <url>/post/news/Intel-driver-starts-to-collect-data-by-default.html</url>
     <categories><category>News</category>

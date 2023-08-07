@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 20 Jul 2023 12:23:49 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 12:49:40 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>手把手教你在嵌入式设备中使用SQLite3</title>
+      <link>https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html</link>
+      <pubDate>Mon, 07 Aug 2023 12:49:40 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html</guid>
+      <description>&lt;p&gt;数据库是用来存储和管理数据的专用软件，使得管理数据更加安全，方便和高效。数据库对数据的管理的基本单位是表(table)，在嵌入式linux中有时候它也需要用到数据库，听起来好难，其实就是几个函数，掌握了就好。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>嵌入式网络接口该怎么设计</title>
       <link>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</link>
