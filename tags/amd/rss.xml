@@ -6,7 +6,16 @@
     <description>Recent content in AMD on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Aug 2023 11:07:46 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/amd/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Aug 2023 12:26:33 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/amd/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心</title>
+      <link>https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html</link>
+      <pubDate>Mon, 07 Aug 2023 12:26:33 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html</guid>
+      <description>&lt;p&gt;Intel最近发布了101.4578 Beta测试版显卡驱动，重点支持Arc锐炫系列，但在常规更新之外，还有一个隐藏点。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
       <link>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</link>
