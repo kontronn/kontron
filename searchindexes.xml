@@ -2,6 +2,37 @@
 <search>
   
   <entry>
+    <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
+    <url>/post/news/AMD-next-generation-zen5-is-on-the-way.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>Zen5</tag>
+      <tag>AI</tag>
+      <tag>Intel</tag>
+      <tag>NVIDIA</tag>
+    </tags>
+    <content type="html"><![CDATA[AI硬件市场上，NVIDIA可谓呼风唤雨，旗下的A100、H100加速器炙手可热。
+Intel、AMD也都在积极投入相关产品，前者主要是GPU Max系列，后者主要是Instinct MI系列。
+不久前，AMD刚刚正式推出了MI300系列加速器，其中MX300X首次将Zen4 CPU、CDNA3 GPU架构合二为一，并集成多达128GB HBM3，MI300A则是纯GPU方案，配备192GB HBM3。
+据说还有MI300C、MI300P两种版本，前者是纯CPU架构，后者则是MI300X的精简版，规模砍半。
+按照规律，这一代产品发布了，下一代产品肯定已经在积极研发中了，但是能从CEO口中确认下一代的名字，还不多见。
+AMD CEO苏姿丰近日表示，AMD持续在AI方面投资，包括下一代MI400系列加速，以及再下一代、再下一代。
+苏姿丰还强调，AMD不但有极具竞争力的AI硬件路线图，还会在软件方面做出一些改变。
+她没有透露更具体的细节，猜测可能终于要大幅革新AMD ROCm开发框架了，不然永远打不过NVIDIA CUDA。
+不出意外的话，MI400系列应该会上Zen5 CPU、CDNA4 GPU两大新架构，既有CPU+GPU融合方案，也有纯GPU方案。
+传闻称，AMD正在开发全新的XSwitch高速互连总线技术，对标NVIDIA NVLink，这对于大规模HPC、AI运算来说是至关重要的。
+今年AI火爆全球，导致NVIDIA的AI显卡成为香饽饽，需求大涨之下价格也失控了，这几个月不时传出缺货涨价的消息，最夸张的说是H100这样的显卡涨到了50万一块，是原价的2倍。
+NVIDIA的AI显卡加价抢购，还有个重要原因是就是市场上没有什么可替代的产品，之前几乎是NVIDIA一家独大，好在下半年AMD的MI300系列AI加速卡就要上市了。
+为了跟NVIDIA抢市场，AMD这一波是准备充分了。
+在日前的财报会议上，CEO苏姿丰提到他们正在增加AI相关的支出，并且制定了AI战略，在AI硬件芯片及软件开发上下功夫。
+针对MI300芯片的产能担忧，苏姿丰提到尽管当前供应链依然吃紧，但他们已经包下了供应链的产能，包括AI芯片不可或缺的台积电CoWos封装及HBM显存等芯片产能。
+AMD表示从芯片制造到封装，以及零部件等，MI300系列显卡这次已经确保了充足的产能，在2023年4季度到2024年会大幅扩产，确保满足客户需求。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>DDR的工作原理</title>
     <url>/post/hardware/ddr-working-principle.html</url>
     <categories><category>Hardware</category>

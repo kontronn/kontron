@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AMD on Kontronn</title>
+    <link>https://www.kontronn.com/tags/amd/</link>
+    <description>Recent content in AMD on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 07 Aug 2023 11:07:46 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/amd/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
+      <link>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</link>
+      <pubDate>Mon, 07 Aug 2023 11:07:46 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</guid>
+      <description>&lt;p&gt;AI硬件市场上，NVIDIA可谓呼风唤雨，旗下的A100、H100加速器炙手可热。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
