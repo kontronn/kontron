@@ -2,6 +2,20 @@
 <search>
   
   <entry>
+    <title>欢迎加入 VxWorks 俱乐部！</title>
+    <url>/post/welcome-to-vxworks-club/</url>
+    <categories><category>Announce</category>
+    </categories>
+    <tags>
+      <tag>VxWorks</tag>
+      <tag>WindRiver</tag>
+    </tags>
+    <content type="html"><![CDATA[欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
+免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
+欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  ]]></content>
+  </entry>
+  
+  <entry>
     <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
     <url>/post/news/AMD-next-generation-zen5-is-on-the-way.html</url>
     <categories><category>News</category>
