@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Aug 2023 04:48:07 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 12:41:00 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Float Point</title>
+      <link>https://www.kontronn.com/tags/float-point/</link>
+      <pubDate>Tue, 08 Aug 2023 12:41:00 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/float-point/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://www.kontronn.com/tags/linux/</link>
+      <pubDate>Tue, 08 Aug 2023 12:41:00 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>FPGA</title>
       <link>https://www.kontronn.com/tags/fpga/</link>
@@ -40,15 +58,6 @@
       <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/zynq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://www.kontronn.com/tags/linux/</link>
-      <pubDate>Mon, 07 Aug 2023 12:49:40 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/linux/</guid>
       <description></description>
     </item>
     
