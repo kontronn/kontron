@@ -16,6 +16,40 @@
   </entry>
   
   <entry>
+    <title>ZYNQ 读写SD卡</title>
+    <url>/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</url>
+    <categories><category>FPGA</category>
+    </categories>
+    <tags>
+      <tag>FPGA</tag>
+      <tag>Xilinx</tag>
+      <tag>ZYNQ</tag>
+      <tag>SD</tag>
+    </tags>
+    <content type="html"><![CDATA[前言 本实验介绍如何使用Xilinx ZYNQ芯片在SD卡上读写文件。
+SD卡（Secure Digital Card）是一种常用的可移动存储设备，广泛应用于嵌入式系统中。它具有体积小、容量大、读写速度快、易于携带等特点，在数据存储和传输中发挥着重要的作用。
+Zynq芯片具有SD卡接口，通过该接口可以实现对SD卡的读写操作。SD卡接口通常是通过SPI（Serial Peripheral Interface）或SDIO（Secure Digital Input Output）协议实现的。SPI协议适用于低速的SD卡读写操作，而SDIO协议则适用于高速的读写操作。
+FatFs库 本实验是通过调用FatFs库来对SD卡进行读写。
+FatFs是一个开源的文件系统模块，提供了简单而灵活的接口，使嵌入式应用程序能够轻松地读取、写入和管理存储在FAT文件系统中的文件。
+FatFs支持FAT12、FAT16和FAT32三种主要的FAT文件系统类型，这些类型广泛应用于各种存储介质，如磁盘、SD卡和USB闪存驱动器等。它被广泛用于嵌入式系统中。
+FatFs的特点和功能包括：(1)轻量级和可移植性，它的核心代码非常精简，可以根据系统的需求进行裁剪和配置。它的接口设计独立于底层的存储介质和操作系统，因此可以轻松地移植到不同的平台上。(2)多种API函数，用于打开、关闭、读取、写入和管理文件以及目录操作。(3)支持长文件名。(4)可选的缓存机制，FatFs提供了可选的缓存机制，可以加快对存储介质的访问速度。(5) 可靠性和错误处理。
+Vivado工程的编写 我们使用的开发板为ZedBoard。
+  本实验使用的Vivado工程延用《ZYNQ 串口打印输出——FPGA Vitis篇》中使用的Vivado工程，大家可以查看该文章来了解Vivado工程的建立。
+  修改Vivado工程，勾选SD 0外设。
+  我们使用的开发板为ZedBoard，相关SD卡原理图如下图所示。  按照原理图的管脚连接方式，设置好MIO Configuration。
+ 保存设计，右键点击.bd文件，选择“Generate Output Products…”。
+  右键点击.bd文件，选择“Create HDL Wrapper…”。弹出的窗口中选择“Let Vivado manage wrapper and auto-update”，点击“OK”。
+  点击Vivado “Flow Navigator”一栏里的“Generate Bitstream”，等待Vivado生成好bit文件后，在菜单栏“File -&gt; Export -&gt; ExportHardware&hellip;”导出硬件信息(.xsa文件)，这里就包含了PS端的配置信息。该步骤如有疑问，可以参考以前的文章《ZYNQ串口打印输出——FPGA Vitis篇》。
+  Vitis工程的编写  点击 Vivado 菜单“Tools-&gt; Launch Vitis IDE”，启动 Vitis。 新建 Vitis平台工程。Vitis工程的建立可以参考以前的文章《ZYNQ串口打印输出——FPGA Vitis篇》。 新建 Vitis应用工程，创建一个名为“SD_DEMO_SDK”的工程，工程模板可以选择“Hello World”。 在工程平台的Board Support Package Settings里勾选上xilffs文件系统。注意是“standalone alone”模式下。  工程主要包含两个文件：main.c、bmp.h。  bmp.h里包含了各种不同像素图片的数据头定义。 main.c里包含3个函数：
+void genTestImage(u8 * imageSrc); void bmp_write(char * name, char *head_buf, char *data_buf); int main(void); 该工程示例是先通过genTestImage函数生成一张像素为640*480的彩条图片。然后再通过bmp_write函数将图片的数据头（*head_buf）以及图片数据本身（*data_buf）写入SD卡。
+ 编译工程，将工程下载到硬件板卡上，硬件板卡插上待写入数据的SD卡。
+  程序运行完后，串口会打印“sd card write done!”信息。
+  开发板断电，将SD卡插入到电脑上的读卡器。可以在文件游览器看到，此时SD卡上多了一个“COLOR.BMP”文件，打开该文件，可以发现正是我们用genTestImage函数生成一张像素为640*480的彩条图片。  实验小结 本实验介绍了如何通过调用FatFs库来加载SD卡、在SD卡上创建文件并写入文件。同理读取SD卡上文件是调用FatFs库的f_read函数。本工程的部分源码见附录A。该工程对应的完整源码可以在公众号输入ZYNQ_SD来获取工程的下载链接，工程采用的是Vivado2021.1版本。
+附录 A
+int main(void) { FRESULT rc; genTestImage(gImage_640x480); rc = f_mount(&amp;fatfs, &#34;0:/&#34;, 0); if (rc != FR_OK) { return 0 ; } bmp_write(&#34;color.bmp&#34;, (char *)&amp;BMODE_640x480, (char *)&amp;gImage_640x480) ; xil_printf(&#34;sd card write done! \n\r&#34;); return 0; } void genTestImage(u8 * imageSrc) { int total = 0; for (int idxRow = 0; idxRow &lt; 480; idxRow++) { for (int idxCol = 0; idxCol &lt; 640; idxCol++) { if ( idxCol &gt;= 0 &amp;&amp; idxCol &lt; 213) { *(imageSrc + (640*idxRow + idxCol)*3) = 0xFF; *(imageSrc + (640*idxRow + idxCol)*3 + 1) = 0x00; *(imageSrc + (640*idxRow + idxCol)*3 + 2) = 0x00; } else if ( idxCol &gt;= 213 &amp;&amp; idxCol &lt; 426) { *(imageSrc + (640*idxRow + idxCol)*3) = 0x00; *(imageSrc + (640*idxRow + idxCol)*3 + 1) = 0xFF; *(imageSrc + (640*idxRow + idxCol)*3 + 2) = 0x00; } else if ( idxCol &gt;= 426 &amp;&amp; idxCol &lt; 640) { *(imageSrc + (640*idxRow + idxCol)*3) = 0x00; *(imageSrc + (640*idxRow + idxCol)*3 + 1) = 0x00; *(imageSrc + (640*idxRow + idxCol)*3 + 2) = 0xFF; } total++; } } } void bmp_write(char * name, char *head_buf, char *data_buf) { short y,x; short Ximage; short Yimage; u32 iPixelAddr = 0; FRESULT res; unsigned int br; // File R/W count  memset(&amp;Write_line_buf, 0, 1920*3) ; res = f_open(&amp;fil, name, FA_CREATE_ALWAYS | FA_WRITE); if(res != FR_OK) { return ; } res = f_write(&amp;fil, head_buf, 54, &amp;br) ; if(res != FR_OK) { return ; } Ximage=(unsigned short)head_buf[19]*256+head_buf[18]; // bm_width  Yimage=(unsigned short)head_buf[23]*256+head_buf[22]; // bm_height  iPixelAddr = (Yimage-1)*Ximage*3 ; for(y = 0; y &lt; Yimage ; y++) { for(x = 0; x &lt; Ximage; x++) { Write_line_buf[x*3 + 0] = data_buf[x*3 + iPixelAddr + 0] ; Write_line_buf[x*3 + 1] = data_buf[x*3 + iPixelAddr + 1] ; Write_line_buf[x*3 + 2] = data_buf[x*3 + iPixelAddr + 2] ; } res = f_write(&amp;fil, Write_line_buf, Ximage*3, &amp;br) ; if(res != FR_OK) { return ; } iPixelAddr -= Ximage*3; } f_close(&amp;fil); } ]]></content>
+  </entry>
+  
+  <entry>
     <title>手把手教你在嵌入式设备中使用SQLite3</title>
     <url>/post/linux/how-to-use-SQLite3-in-embedded-devices.html</url>
     <categories><category>Linux</category>

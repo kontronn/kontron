@@ -6,7 +6,18 @@
     <description>Recent content in Xilinx on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 11 Jul 2023 13:13:48 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/xilinx/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 04:47:07 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/xilinx/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ZYNQ 读写SD卡</title>
+      <link>https://www.kontronn.com/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</link>
+      <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;本实验介绍如何使用Xilinx ZYNQ芯片在SD卡上读写文件。&lt;/p&gt;
+&lt;p&gt;SD卡（Secure Digital Card）是一种常用的可移动存储设备，广泛应用于嵌入式系统中。它具有体积小、容量大、读写速度快、易于携带等特点，在数据存储和传输中发挥着重要的作用。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>5款超强大的FPGA开发板</title>
       <link>https://www.kontronn.com/post/fpga/5-ultra-powerful-fpga-development-boards.html</link>

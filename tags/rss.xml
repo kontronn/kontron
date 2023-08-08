@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Aug 2023 12:49:40 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 04:47:07 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FPGA</title>
+      <link>https://www.kontronn.com/tags/fpga/</link>
+      <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/fpga/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SD</title>
+      <link>https://www.kontronn.com/tags/sd/</link>
+      <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/sd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xilinx</title>
+      <link>https://www.kontronn.com/tags/xilinx/</link>
+      <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/xilinx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ZYNQ</title>
+      <link>https://www.kontronn.com/tags/zynq/</link>
+      <pubDate>Tue, 08 Aug 2023 04:47:07 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/zynq/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>https://www.kontronn.com/tags/linux/</link>
@@ -404,15 +440,6 @@
     </item>
     
     <item>
-      <title>FPGA</title>
-      <link>https://www.kontronn.com/tags/fpga/</link>
-      <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/fpga/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Microsemi</title>
       <link>https://www.kontronn.com/tags/microsemi/</link>
       <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
@@ -427,15 +454,6 @@
       <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/stratix-10/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Xilinx</title>
-      <link>https://www.kontronn.com/tags/xilinx/</link>
-      <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/xilinx/</guid>
       <description></description>
     </item>
     
