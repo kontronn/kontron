@@ -382,12 +382,27 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/sd/</loc>
+    <lastmod>2023-07-11T13:13:48-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/stratix-10/</loc>
     <lastmod>2023-07-11T13:13:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/xilinx/</loc>
+    <lastmod>2023-07-11T13:13:48-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/zynq/</loc>
+    <lastmod>2023-07-11T13:13:48-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</loc>
     <lastmod>2023-07-11T13:13:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

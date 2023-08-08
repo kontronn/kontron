@@ -16,5 +16,16 @@
       <description>&lt;p&gt;随着人工智能、深度学习在市场越来越受欢迎，除了GPU、众多独角兽公司的AI专用芯片，FPGA同样是深度学习的热门平台之一。本文将给大家介绍5款强大到不可思议的FPGA开发板，当然价格也是高的离谱，肯能对于大多数工程师来说，这些属于求而不得的高端“玩具”。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>ZYNQ 读写SD卡</title>
+      <link>https://www.kontronn.com/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</link>
+      <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;本实验介绍如何使用Xilinx ZYNQ芯片在SD卡上读写文件。&lt;/p&gt;
+&lt;p&gt;SD卡（Secure Digital Card）是一种常用的可移动存储设备，广泛应用于嵌入式系统中。它具有体积小、容量大、读写速度快、易于携带等特点，在数据存储和传输中发挥着重要的作用。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
