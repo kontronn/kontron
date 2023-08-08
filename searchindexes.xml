@@ -16,6 +16,40 @@
   </entry>
   
   <entry>
+    <title>C++中fmt库的用法</title>
+    <url>/post/programming/fmt-lib-usage-in-c-plus-plus.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>C++</tag>
+      <tag>fmt</tag>
+    </tags>
+    <content type="html"><![CDATA[本来这篇文章应该接着介绍 memset 的，但是我暂时不想写那个主题。这次就写点新的东西。介绍一下 fmt 库。
+介绍与安装 {FMT} 是一个开源格式库，按照作者的说法，是提供快速和安全的 替代 C 的 stdio 和 C++ 的iostreams。
+项目地址：https://github.com/fmtlib/fmt
+下载最新版的 release 文件即可，将 fmt-10.0.0/include/fmt/core.h include 进来就完成了。其实还可以用 CMake 的，但是今天介绍的重点在语法，所以我就直接单文件 include 了。
+据说这个库进入了 C++ 20 当中，不清楚，毕竟我用的还是 C++ 11
+用法 最简单的输出就是 print
+#define FMT_HEADER_ONLY #include &#34;fmt-10.0.0/include/fmt/core.h&#34; int main() { fmt::print(&#34;Hello fmt!&#34;); } 这样其实和正常的 printf 没有什么区别？C++相对C的最大区别之一就是尽可能地追求typesafe，所以C++从一开始就在寻找替代printf系列函数的解决方案，于是从一开始就有了各种各样的ostream。typesafe是做到了，但是性能低下。三方库 fmt 就是想既解决 typesafe ，也想要一定的性能。
+参数替换 类似于 printf 的 % 占位符输出，fmt 使用大括号替代参数。
+fmt::print(&#34;Also {}&#34;,&#34;hello fmt!&#34;); 输出结果：
+Also hello fmt! 其实这种语法有点类似于 Vue.js 的设计。据说是未来的趋势。。。
+另一个有效的函数是 fmt::format，所以上面的输出也可以写成
+std::string hello_buffer = fmt::format(&#34;Also {}&#34;,&#34;hello fmt!&#34;); fmt::print(&#34;{}&#34;,hello_buffer); 另外，和 cout 一样，fmt 输出对参数是无关的。
+fmt::println(&#34;{}&#34;,4.12); 这样的也是可以正常输出的。
+参数格式设计 在大括号内可以对格式进行处理，printf 也有类似的功能，但据说 fmt 的功能更加全面？而且 fmt 利用 format 可以直接处理字符串，这点是 printf 没有的。
+但是网上针对这个库的文章很少。。。我也是第一次用，所以只能贴出我整理到的用法了。
+大括号的参数分为前后两部分，分别为为位置参数（arg_id）和格式化参数（format_spec）。前者用来显式声明参数在字符串中的位置，后者对值进行一定的格式化转换。（这两个是我翻译的，毕竟官网也没有这俩的中文翻译。。。）
+位置参数 官方对位置参数的解释是用正则表达式。。。
+replacement_field :: = &#34;{&#34;[arg_id][&#34;:&#34; format_spec] &#34;}&#34; arg_id :: = integer | identifier integer :: = digit + digit :: = &#34;0&#34;...&#34;9&#34; identifier :: = id_start id_continue* id_start :: = &#34;a&#34;...&#34;z&#34; | &#34;A&#34;...&#34;Z&#34; | &#34;_&#34; id_continue :: = id_start | digit 简单解释下吧 从0开始，然后1、2、3，等等
+fmt::println(&#34;{0} + {1} = {2}&#34;,2,3,5); //2 + 3 = 5 如果没有指定位置，默认从0往后排
+fmt::println(&#34;{} + {} = {}&#34;,2,3,5); //2 + 3 = 5 参数位置与值是一一对应的，所以可以交换顺序
+fmt::println(&#34;{1} + {2} = {0}&#34;,5,2,3); //2 + 3 = 5 如果你不想用数字，也可以用fmt::arg指定别名参数
+fmt::print(&#34;Hello, {name}! The answer is {number}. Goodbye, {name}.&#34;, fmt::arg(&#34;name&#34;, &#34;World&#34;), fmt::arg(&#34;number&#34;, 42)); //Hello, World! The answer is 42. Goodbye, World. 格式化参数 可选的arg_id放在format_spec的后面，其后是冒号'：'。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>浮点数比较问题</title>
     <url>/post/linux/floating-point-comparison-problem.html</url>
     <categories><category>Linux</category>

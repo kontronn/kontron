@@ -6,7 +6,16 @@
     <description>Recent content in C&#43;&#43; on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 16 Jul 2023 02:12:27 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c++/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Aug 2023 12:50:06 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c++/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;中fmt库的用法</title>
+      <link>https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html</link>
+      <pubDate>Tue, 08 Aug 2023 12:50:06 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html</guid>
+      <description>&lt;p&gt;本来这篇文章应该接着介绍 memset 的，但是我暂时不想写那个主题。这次就写点新的东西。介绍一下 fmt 库。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>取代C&#43;&#43;？谷歌开源编程语言Carbon</title>
       <link>https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html</link>
