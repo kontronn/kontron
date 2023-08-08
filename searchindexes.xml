@@ -16,6 +16,46 @@
   </entry>
   
   <entry>
+    <title>FPGA时序约束--实战篇</title>
+    <url>/post/fpga/fpga-timing-constraints.html</url>
+    <categories><category>FPGA</category>
+    </categories>
+    <tags>
+      <tag>FPGA</tag>
+      <tag>Xilinx</tag>
+    </tags>
+    <content type="html"><![CDATA[前面几篇文章介绍了“如何写时序约束”和“如何看懂时序约束报告”，这些知识点都是基础，可以知道设计的HDL代码不收敛的位置，但解决时序收敛问题更关键。
+ FPGA  时序不收敛，会出现很多随机性问题，上板测试大概率各种跑飞，而且不好调试定位原因，所以在上板测试前，先优化时序，再上板。
+今天我们就来唠一唠解决时序不收敛的问题，分享一些常用的解决办法和思路。
+模块运行时钟频率 设计模块前，需明确模块运行的最大时钟频率。
+不同时钟频率下，对应的时序约束最大延时是不一样的。
+比如100MHz时钟下运行的HDL逻辑，比200MHz时钟下的HDL逻辑，支持的组合逻辑层数多。
+根据最大时钟频率，来设计HDL代码的层级，时钟频率越高，插入寄存器要更多，增加流水线级数，减少过长的组合逻辑。
+HDL代码  HDL代码风格  优先参考FPGA开发软件提供的HDL Template，比如Vivado的language template。
+HDL代码逻辑优化  对于复杂的算法代码逻辑，需要结合FPGA并行计算和最小处理单位为bit的特性，对逻辑代码进行优化实现。
+明确变量最大的数据位宽。
+逻辑代码中，一些软件逻辑实现起来较复杂，尽量简化，删除掉一些不可能出现的情况。
+这部分代码逻辑，可能需要重复迭代几遍实现才行。
+组合逻辑层数  插入寄存器  将计算逻辑分成多个时钟周期实现，这是常用的时序优化方法，可以减少过多的组合逻辑层数，但会增加延时。
+这里以一个多路输入求和计算为例
+module sum( input clk, input [15:0] data_A, input [15:0] data_B, input [15:0] data_C, input [15:0] data_D, output [17:0] sum_o); always @(posedge clk) begin sum_o &lt;= data_A + data_B + data_C + data_D; end endmodule 增加寄存器后，改为
+module sum( input clk, input [15:0] data_A, input [15:0] data_B, input [15:0] data_C, input [15:0] data_D, output [17:0] sum_o); reg [16:0] sum0, sum1; always @(posedge clk) begin sum0 &lt;= data_A + data_B; sum1 &lt;= data_C + data_D; end always @(posedge clk) begin sum_o &lt;= sum0 + sum1; end endmodule 逻辑展平设计  优化代码中优先级译码电路逻辑，主要出现在IF/ELSE结构语句中，这样逻辑结构被展平，路径延迟得以缩短。
+IF ELSE结构语句存在明显的优先级，建议尽量用CASE语句来替代。
+防止变量被优化  HDL综合布线软件会根据实际情况，自动优化代码逻辑，可能存在将多个不同寄存器变量合并成一个寄存器变量的情况。
+对于不希望被优化的变量，可以在变量定义前，添加（* keep = &ldquo;ture&rdquo; *）
+高扇出 高扇出问题，原因是一个寄存器驱动后级数超过了它本身的驱动能力，导致延迟时间过大，不满足时序。
+ 使用max_fanout  在变量定义前，可以添加(* max_fanout = n *)，来设置变量的最大扇出数，超过这个扇出数，综合软件会自动复制多份变量。
+复位信号高扇出  复位信号是常见的高扇出问题，主要解决办法有：
+ 减少复位信号的使用，能使用使能信号控制的，就用使能信号。 对于大型模块，复位信号可以使用BUFG来驱动复位信号，可以增加复位信号的驱动能力  资源消耗 FPGA器件的整个工程资源消耗，不管是LUT还是BRAM等资源，建议不超过80%。
+一旦资源消耗超过80%，在布线综合时，就出现布线资源不够，导致出现布线拥塞，从而出现了时序不收敛的情况。
+布线拥塞也分为全局拥塞和局部拥塞，可能是高扇出信号过多，也可能是局部布线资源不够用，导致时序路径过长。
+ 优化代码逻辑，减少资源消耗。  在资源不够用的情况下，建议检查代码是否可优化，设置的RAM大小是否过大等等。
+使用替代资源实现  在FPGA中实现RAM时，可以根据整个资源的使用情况，考虑使用Distributed RAM、URAM等资源来减少BRAM的消耗。
+总结 本文分享了时序收敛的一些方法和思路，希望可以给大家带来一点启发。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>ZYNQ 读写SD卡</title>
     <url>/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html</url>
     <categories><category>FPGA</category>
