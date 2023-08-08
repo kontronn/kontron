@@ -66,8 +66,8 @@ IF ELSE结构语句存在明显的优先级，建议尽量用CASE语句来替代
       <tag>ZYNQ</tag>
       <tag>SD</tag>
     </tags>
-    <content type="html"><![CDATA[前言 本实验介绍如何使用Xilinx ZYNQ芯片在SD卡上读写文件。
-SD卡（Secure Digital Card）是一种常用的可移动存储设备，广泛应用于嵌入式系统中。它具有体积小、容量大、读写速度快、易于携带等特点，在数据存储和传输中发挥着重要的作用。
+    <content type="html"><![CDATA[SD卡（Secure Digital Card）是一种常用的可移动存储设备，广泛应用于嵌入式系统中。它具有体积小、容量大、读写速度快、易于携带等特点，在数据存储和传输中发挥着重要的作用。
+前言 本实验介绍如何使用Xilinx ZYNQ芯片在SD卡上读写文件。
 Zynq芯片具有SD卡接口，通过该接口可以实现对SD卡的读写操作。SD卡接口通常是通过SPI（Serial Peripheral Interface）或SDIO（Secure Digital Input Output）协议实现的。SPI协议适用于低速的SD卡读写操作，而SDIO协议则适用于高速的读写操作。
 FatFs库 本实验是通过调用FatFs库来对SD卡进行读写。
 FatFs是一个开源的文件系统模块，提供了简单而灵活的接口，使嵌入式应用程序能够轻松地读取、写入和管理存储在FAT文件系统中的文件。
