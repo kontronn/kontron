@@ -6,7 +6,16 @@
     <description>Recent content in AI on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Aug 2023 11:07:46 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ai/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Aug 2023 10:09:03 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ai/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>英伟达再度释放AI“炸弹”</title>
+      <link>https://www.kontronn.com/post/server/nvidia-launch-gh200-grace-hopper.html</link>
+      <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/server/nvidia-launch-gh200-grace-hopper.html</guid>
+      <description>&lt;p&gt;近日，在计算机图形学顶会SIGGRAPH 2023现场，英伟达再度释放深夜“炸弹”，大模型专用芯片迎来升级版本。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
       <link>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</link>
