@@ -111,7 +111,7 @@
     </li>
     <li class="menu-item menu-item-archives">
       <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">50</span>
+        <span class="badge">51</span>
       </a>
     </li>
     <li class="menu-item menu-item-commonweal">
@@ -182,7 +182,7 @@
   <nav class="site-state">
     <div class="site-state-item site-state-posts">
       <a href="/archives/">
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -194,7 +194,7 @@
     </div>
     <div class="site-state-item site-state-tags">
       <a href="/tags/">
-        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-count">101</span>
         <span class="site-state-item-name">标签</span>
       </a>
     </div>
@@ -260,15 +260,15 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="14792"></div>
+      <div class="item-count" id="wordsCount" data-count="14829"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="100"></div>
+      <div class="item-count" id="readTimes" data-times="101"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2023-08-17T10:09:03-04:00"></div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-09-23T23:01:22&#43;08:00"></div>
     </div>
   </div>
 </div>
@@ -333,7 +333,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2022-05-02 15:59:41 &#43;0800 &#43;0800" itemprop="dateCreated datePublished" datetime="2022-05-02 15:59:41 &#43;0800 &#43;0800">2022-05-02</time>
+  <time title="发表于：2022-05-02 15:59:41 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2022-05-02 15:59:41 &#43;0800 CST">2022-05-02</time>
 </span>
     
     
@@ -385,6 +385,84 @@
 </div>
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/mcu/difference-between-smt32-and-c51.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="简单分析STM32和51的区别">
+      <meta itemprop="description" content="简单分析STM32和51的区别">
+    </span>
+    <header class="post-header">
+       <h2 class="post-title" itemprop="name headline">
+  <a href="/post/mcu/difference-between-smt32-and-c51.html" itemprop="url" class="post-title-link">简单分析STM32和51的区别</a> </h2> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-09-23 23:01:22 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-09-23 23:01:22 &#43;0800 CST">2023-09-23</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/mcu" itemprop="url" rel="index">
+      <span itemprop="name">MCU</span>
+    </a>
+  </span>
+</span>
+  </div>
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  分享本文，简单分析STM32与51单片机的区别与取舍之处。
+单片微型计算机简称单片机，简单来说就是集CPU（运算、控制）、RAM（数据存储-内存）、ROM（程序存储）、输入输出设备（串口、并口等）和中断系统处于同一芯片的器件，在我们自己的个人电脑中，CPU、RAM、ROM、I/O这些都是单独的芯片，然后这些芯片被安装在一个主板上，这样就构成了我们的PC主板，进而组装成电脑，而单片机只是将这所有的集中在了一个芯片上而已。
+51单片机 应用最广泛的8位单片机当然也是初学者们最容易上手学习的单片机，最早由Intel推出，由于其典型的结构和完善的总线专用寄存器的集中管理，众多的逻辑位操作功能及面向控制的丰富的指令系统，堪称为一代“经典”，为以后的其它单片机的发展奠定了基础。
+51单片机特性 51单片机之所以成为经典，成为易上手的单片机主要有以下特点：
+从内部的硬件到软件有一套完整的按位操作系统，称作位处理器，处理对象不是字或字节而是位。不但能对片内某些特殊功能寄存器的某位进行处理，如传送、置位、清零、测试等，还能进行位的逻辑运算，其功能十分完备，使用起来得心应手。
+同时在片内RAM区间还特别开辟了一个双重功能的地址区间，使用极为灵活，这一功能无疑给使用者提供了极大的方便。
+乘法和除法指令，这给编程也带来了便利。很多的八位单片机都不具备乘法功能，作乘法时还得编上一段子程序调用，十分不便。
+51单片机缺点  AD、EEPROM等功能需要靠扩展，增加了硬件和软件负担 虽然I/O脚使用简单，但高电平时无输出能力，这也是51系列单片机的最大软肋 运行速度过慢，特别是双数据指针，如能改进能给编程带来很大的便利 51保护能力很差，很容易烧坏芯片  51单片机应用范围 目前在教学场合和对性能要求不高的场合大量被采用，使用最多的器件是8051、80C51。
+STM32单片 由ST厂商推出的STM32系列单片机，行业的朋友都知道，这是一款性价比超高的系列单片机，应该没有之一，功能及其强大。
+其基于专为要求高性能、低成本、低功耗的嵌入式应用专门设计的ARM Cortex-M内核，同时具有一流的外设：1μs的双12位ADC，4兆位/秒的UART，18兆位/秒的SPI等等，在功耗和集成度方面也有不俗的表现，当然和MSP430的功耗比起来是稍微逊色的一些，但这并不影响工程师们对它的热捧程度。
+STM32单片机特性 由STM32简单的结构和易用的工具再配合其强大的功能在行业中赫赫有名，其强大的功能主要表现在：
+ 内核：ARM32位Cortex-M3CPU，最高工作频率72MHz，1.25DMIPS/MHz，单周期乘法和硬件除法 存储器：片上集成32-512KB的Flash存储器。6-64KB的SRAM存储器 时钟、复位和电源管理：2.0-3.6V的电源供电和I/O接口的驱动电压。POR、PDR和可编程的电压探测器（PVD）。4-16MHz的晶振。内嵌出厂前调校的8MHz RC振荡电路。内部40 kHz的RC振荡电路。用于CPU时钟的PLL。带校准用于RTC的32kHz的晶振 调试模式：串行调试（SWD）和JTAG接口。最多高达112个的快速I/O端口、最多多达11个定时器、最多多达13个通信接口。  STM32使用最多的器件：  STM32F103系列 STM32 L1系列 STM32W系列  51单片机和STM32单片机的区别 51单片机是对所有兼容Intel8031指令系统的单片机的统称，这一系列的单片机的始祖是Intel的8031单片机，后来随着flash ROM技术的发展，8031单片机取得了长足的进展成为了应用最广泛的8bit单片机之一，他的代表型号就是ATMEL公司的AT89系列。
+STM32单片机则是ST（意法半导体）公司使用arm公司的cortex-M3为核心生产的32bit系列的单片机，他的内部资源（寄存器和外设功能）较8051、AVR和PIC都要多的多，基本上接近于计算机的CPU了，适用于手机、路由器等等。
+
+
+    </div>
+    <footer class="post-footer">
+      
+<div class="post-button">
+  <a class="btn" href="/post/mcu/difference-between-smt32-and-c51.html#more" rel="contents">
+    阅读全文 &raquo;
+  </a>
+</div>
+<div class="post-eof"></div>
+
+    </footer>
+  </article>
+</div>
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/server/nvidia-launch-gh200-grace-hopper.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
@@ -410,7 +488,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-17 10:09:03 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-17 10:09:03 -0400 EDT">2023-08-17</time>
+  <time title="发表于：2023-08-17 10:09:03 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-17 10:09:03 -0400 -0400">2023-08-17</time>
 </span>
     
     
@@ -476,7 +554,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-17 06:33:59 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-17 06:33:59 -0400 EDT">2023-08-17</time>
+  <time title="发表于：2023-08-17 06:33:59 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-17 06:33:59 -0400 -0400">2023-08-17</time>
 </span>
     
     
@@ -542,7 +620,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-12 11:54:28 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-12 11:54:28 -0400 EDT">2023-08-12</time>
+  <time title="发表于：2023-08-12 11:54:28 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-12 11:54:28 -0400 -0400">2023-08-12</time>
 </span>
     
     
@@ -608,7 +686,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 12:50:06 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-08 12:50:06 -0400 EDT">2023-08-08</time>
+  <time title="发表于：2023-08-08 12:50:06 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 12:50:06 -0400 -0400">2023-08-08</time>
 </span>
     
     
@@ -674,7 +752,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 12:41:00 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-08 12:41:00 -0400 EDT">2023-08-08</time>
+  <time title="发表于：2023-08-08 12:41:00 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 12:41:00 -0400 -0400">2023-08-08</time>
 </span>
     
     
@@ -740,7 +818,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 04:48:07 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-08 04:48:07 -0400 EDT">2023-08-08</time>
+  <time title="发表于：2023-08-08 04:48:07 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 04:48:07 -0400 -0400">2023-08-08</time>
 </span>
     
     
@@ -806,7 +884,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 04:47:07 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-08 04:47:07 -0400 EDT">2023-08-08</time>
+  <time title="发表于：2023-08-08 04:47:07 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 04:47:07 -0400 -0400">2023-08-08</time>
 </span>
     
     
@@ -872,7 +950,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-07 12:49:40 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-07 12:49:40 -0400 EDT">2023-08-07</time>
+  <time title="发表于：2023-08-07 12:49:40 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-07 12:49:40 -0400 -0400">2023-08-07</time>
 </span>
     
     
@@ -911,78 +989,13 @@
     </footer>
   </article>
 </div>
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心">
-      <meta itemprop="description" content="Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/news/Intel-driver-starts-to-collect-data-by-default.html" itemprop="url" class="post-title-link">Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-07 12:26:33 -0400 EDT" itemprop="dateCreated datePublished" datetime="2023-08-07 12:26:33 -0400 EDT">2023-08-07</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>Intel最近发布了101.4578 Beta测试版显卡驱动，重点支持Arc锐炫系列，但在常规更新之外，还有一个隐藏点。</p>
-
-
-    </div>
-    <footer class="post-footer">
-      
-<div class="post-button">
-  <a class="btn" href="/post/news/Intel-driver-starts-to-collect-data-by-default.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
-
-    </footer>
-  </article>
-</div>
 <nav class="pagination">
         <span class="page-number current">1</span>
         <a class="page-number" href="/post/page/2/">2</a>
         <a class="page-number" href="/post/page/3/">3</a>
         <a class="page-number" href="/post/page/4/">4</a>
         <a class="page-number" href="/post/page/5/">5</a>
+        <a class="page-number" href="/post/page/6/">6</a>
   <a class="extend next" rel="next" href="/post/page/2/">
     <i class="fa fa-angle-right"></i>
   </a>
