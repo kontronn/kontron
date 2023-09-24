@@ -16,6 +16,25 @@
   </entry>
   
   <entry>
+    <title>一个简单的MCU内存管理模块(附源码)</title>
+    <url>/post/mcu/a-simple-mcu-memory-management-module.html</url>
+    <categories><category>MCU</category>
+    </categories>
+    <tags>
+      <tag>STM32</tag>
+      <tag>Memory Management</tag>
+    </tags>
+    <content type="html"><![CDATA[现在非常多的的MCU性能都还不错，同时用户也会去扩展一些外部RAM，那么如何高效便捷的管理这些内存是一个重要话题。
+今天给大家分享一份源码：基于无操作系统的STM32单片机开发，功能强大，可申请到地址空间连续的不同大小的内存空间，且用户接口简单，使用方便。
+源码说明 源码包含memory.h 和 memory.c 两个文件（嵌入式C/C++代码的“标配”），其源码中包含重要的注释。
+ memory.h文件 ：包含结构体等定义，函数API申明等； memory.c文件 ：是实现内存管理相关API函数的原型。  头文件memory.h 头文件是相关的定义和申请：
+#ifndef __MEMORY_H__ #define __MEMORY_H__  #include &#34;stdio.h&#34;#include &#34;string.h&#34;#include &#34;includes.h&#34;//用户使用 typedef struct { void *addr; //申请到的内存的起始地址  uint32_t size; //申请到的内存的大小，按照块大小分配，大于等于申请大小  uint16_t tb; //申请表序号，申请内存时分配，释放内存时使用，用户不使用 }DMEM; //若返回空，则申请失败 DMEM *DynMemGet(uint32_t size); void DynMemPut(DMEM *pDmem); #endif //__MEMORY_H__ 这里的代码比较简单，也是常规的写法，重点是要理解结构体成员的含义。
+源文件memory.c 源文件主要就是实现内存管理的函数，源码比较多，这里才分为三部分。
+相关的定义 #include &#34;memory.h&#34; #define DMEM_BLOCK_SIZE 256 //内存块大小为256字节 #define DMEM_BLOCK_NUM 20 //内存块个数为20个 #define DMEM_TOTAL_SIZE (DMEM_BLOCK_SIZE*DMEM_BLOCK_NUM) //内存总大小  static uint8_t DMEMORY[DMEM_TOTAL_SIZE]; static DMEM_STATE DMEMS = {0}; typedef enum { DMEM_FREE = 0, DMEM_USED = 1, }DMEM_USED_ITEM; typedef struct { DMEM_USED_ITEM used; //使用状态  uint16_t blk_s; //起始块序号  uint16_t blk_num; //块个数 }DMEM_APPLY; typedef struct { DMEM_USED_ITEM tb_blk[DMEM_BLOCK_NUM]; DMEM tb_user[DMEM_BLOCK_NUM]; //用户申请内存信息  DMEM_APPLY tb_apply[DMEM_BLOCK_NUM]; //系统分配内存信息  uint16_t apply_num; //内存申请表占用数目  uint16_t blk_num; //内存块占用数目 }DMEM_STATE; 内存分配函数DynMemGet DMEM *DynMemGet(uint32_t size) { uint16_t loop = 0; uint16_t find = 0; uint16_t blk_num_want = 0; DMEM * user = NULL; DMEM_APPLY *apply = NULL; //申请内存大小不能为0  if(size == 0) { return NULL; } //申请内存不可超过总内存大小  if(size &gt; DMEM_TOTAL_SIZE) { return NULL; } //申请内存不可超过剩余内存大小  if(size &gt; (DMEM_BLOCK_NUM - DMEMS.blk_num) * DMEM_BLOCK_SIZE) { return NULL; } //申请表必须有空余  if(DMEMS.apply_num &gt;= DMEM_BLOCK_NUM) { return NULL; } //计算所需连续块的个数  blk_num_want = (size + DMEM_BLOCK_SIZE - 1) / DMEM_BLOCK_SIZE; //寻找申请表  for(loop = 0; loop &lt; DMEM_BLOCK_NUM; loop++) { if(DMEMS.tb_apply[loop].used == DMEM_FREE) { apply = &amp;DMEMS.tb_apply[loop]; //申请表已找到  user = &amp;DMEMS.tb_user[loop]; //用户表对应找到  user-&gt;tb = loop; //申请表编号记录  user-&gt;size = blk_num_want * DMEM_BLOCK_SIZE; //分配大小计算  break; } } //没有找到可用申请表，理论上是不会出现此现象的，申请表剩余已在上面校验  if(loop == DMEM_BLOCK_NUM) { return NULL; } //寻找连续内存块  for(loop = 0; loop &lt; DMEM_BLOCK_NUM; loop++) { if(DMEMS.tb_blk[loop] == DMEM_FREE) {//找到第一个空闲内存块  for(find = 1; (find &lt; blk_num_want) &amp;&amp; (loop + find &lt; DMEM_BLOCK_NUM); find ++) {//找到下一个空闲内存块  if(DMEMS.tb_blk[loop + find] != DMEM_FREE) {//发现已使用内存块  break; } } if(find &gt;= blk_num_want) {//寻找到的空闲内存块数目已经够用  user-&gt;addr = DMEMORY + loop * DMEM_BLOCK_SIZE; //计算申请到的内存的地址  apply-&gt;blk_s = loop; //记录申请到的内存块首序号  apply-&gt;blk_num = blk_num_want; //记录申请到的内存块数目  for(find = 0 ; find &lt; apply-&gt;blk_num; find++) { DMEMS.tb_blk[loop + find] = DMEM_USED; } apply-&gt;used = DMEM_USED; //标记申请表已使用  DMEMS.apply_num += 1; DMEMS.blk_num += blk_num_want; return user; } else {//寻找到的空闲内存块不够用，从下一个开始找  loop += find; } } } //搜索整个内存块，未找到大小适合的空间  return NULL; } 内存释放函数DynMemPut void DynMemPut(DMEM *user) { uint16_t loop = 0; //若参数为空，直接返回  if(NULL == user) { return; } //释放内存空间  for(loop = DMEMS.tb_apply[user-&gt;tb].blk_s; loop &lt; DMEMS.tb_apply[user-&gt;tb].blk_s + DMEMS.tb_apply[user-&gt;tb].blk_num; loop++) { DMEMS.tb_blk[loop] = DMEM_FREE; DMEMS.blk_num -= 1; } //释放申请表  DMEMS.tb_apply[user-&gt;tb].used = DMEM_FREE; DMEMS.apply_num -= 1; } 代码中包含注释，注释描述的比较清楚，也比较容易理解。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>STM32之GPIO点亮LED</title>
     <url>/post/mcu/STM32-gpio-led.html</url>
     <categories><category>MCU</category>

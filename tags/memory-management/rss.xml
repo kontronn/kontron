@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Memory Management on Kontronn</title>
+    <link>https://www.kontronn.com/tags/memory-management/</link>
+    <description>Recent content in Memory Management on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Sep 2023 18:50:17 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/memory-management/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个简单的MCU内存管理模块(附源码)</title>
+      <link>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</link>
+      <pubDate>Sun, 24 Sep 2023 18:50:17 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</guid>
+      <description>&lt;p&gt;现在非常多的的MCU性能都还不错，同时用户也会去扩展一些外部RAM，那么如何高效便捷的管理这些内存是一个重要话题。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
