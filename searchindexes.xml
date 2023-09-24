@@ -16,6 +16,32 @@
   </entry>
   
   <entry>
+    <title>STM32之GPIO点亮LED</title>
+    <url>/post/mcu/STM32-gpio-led.html</url>
+    <categories><category>MCU</category>
+    </categories>
+    <tags>
+      <tag>STM32</tag>
+      <tag>GPIO</tag>
+      <tag>LED</tag>
+    </tags>
+    <content type="html"><![CDATA[我们在基础部分讲了有关GPIO的方面，从这章开始我们进入模块的讲解，从最开始的LED灯到各种传感器模块进行。专栏预计25个章节。后续可能会不定时的增加。
+本专栏芯片为STM32F429
+对于工程的移植和新建这里不做讲解，对工程建立不懂得，请参考其他博客或者某些教程。
+本章使用到的是GPIO的输出功能，GPIO的内容这里不在说明，不理解或者其他原因请参看: https://www.vxbus.com  
+硬件设计 本实验以1个LED灯为例，本篇文章主要目的是理解GPIO输出。
+LED的正极通过1KΩ与3.3v连接，LED的阴极以单片机的GPIOC的13号引脚相连接。根据电路图，当PC13位输出低电平时，LED灯亮，输出为高时LED熄灭（亮和灭就是两端的电压差，当LED两端同时都是高电平时，没有电压差）。
+注：具体连接引脚请根据自己开发板上的电路原理图进行连接。
+软件设计 编程步骤 使能GPIO时钟（也就是RCC，这步是非常重要的。具体在那个总线上，请参考数据手册，本专栏芯片为STM32F429）
+设置对应于片上外设使用的GPIO工作模式
+在应用程序中读取引脚状态、控制引脚输出状态或使用复用功能完成特定功能。
+编程要点 使能GPIO时钟。调用函数RCC_AHB1PeriphClockCmd()。不同的外设调用的时钟使能函数可能不一样。
+初始化GPIO模式。调用函数GPIO_Init()。
+操作GPIO，设置引脚输出状态。调用函数GPIO_SetBits();或GPIO_ResetBits()或GPIO_ToggleBits()。
+代码实现 static void LED_Config(void) { GPIO_InitTypeDef GPIO_InitStructure; //GPIO_InitStructure用于存放GPIO的参数  /*开启LED相关的GPIO外设时钟*/ 第一步 RCC_AHB1PeriphClockCmd (RCC_AHB1Periph_GPIOC, ENABLE); //使能GPIOC的时钟  /*选择要控制的GPIO引脚*/ GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13; //设置引脚  *设置引脚模式为输出*/ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT; //设置模式  /*设置引脚速率为2MHz */ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz; //设置I/O输出速度  /*设置引脚的输出类型为推挽输出*/ GPIO_InitStructure.GPIO_OType = GPIO_OType_PP; //设置输出类型  /*设置引脚为上拉模式*/ GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; //设置上拉/下拉模式  /*调用库函数，使用上面配置的GPIO_InitStructure初始化GPIO*/ 第二步 GPIO_Init(GPIOC, &amp;GPIO_InitStructure); //根据参数初始化LED的GPIO  GPIO_WriteBit(GPIOC, GPIO_Pin_13, Bit_SET); //将LED默认状态设置为熄灭 } void InitLED(void) { LED_Config(); //配置LED的GPIO } * 函数名称：Contl_lLED * 函数功能：控制LED亮灭 * 输入参数：mode:1-点亮，0-熄灭 * 输出参数：void * 返 回 值：void * 创建日期： *********************************************************************************************************/ void Contl_lLED(u8 mode) { if(mode) { GPIO_WriteBit(GPIOC, GPIO_Pin_13, Bit_RESET); //点亮LED  } else { GPIO_WriteBit(GPIOC, GPIO_Pin_13, Bit_SET); //熄灭LED  } } void LED_ON_OF(u16 cnt) { static u16 time; //time  time++; //计数器的计数值加1  if(time &gt;= cnt) //计数器的计数值大于cnt  { time = 0; //重置计数器的计数值为0  //LED状态取反，实现LED闪烁  GPIO_WriteBit(GPIOC, GPIO_Pin_13, (BitAction)(1 - GPIO_ReadOutputDataBit(GPIOC, GPIO_Pin_13))); } } int main(void) { InitLED(); LED_ON_OF(300); } ]]></content>
+  </entry>
+  
+  <entry>
     <title>简单分析STM32和51的区别</title>
     <url>/post/mcu/difference-between-smt32-and-c51.html</url>
     <categories><category>MCU</category>
