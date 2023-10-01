@@ -6,7 +6,16 @@
     <description>Recent content in C on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 29 Jul 2023 08:04:37 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Oct 2023 18:51:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你了解C 和 C&#43;&#43; 标准库吗</title>
+      <link>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</link>
+      <pubDate>Sun, 01 Oct 2023 18:51:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</guid>
+      <description>&lt;p&gt;本文简要介绍编写 C/C++ 应用程序的领域，标准库的作用以及它是如何在各种操作系统中实现的。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C语言while(1) 和 for ( ; ; )的区别</title>
       <link>https://www.kontronn.com/post/programming/difference-while-1-and-for-loop.html</link>

@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="6个与戈登・摩尔相关的冷知识" />
-<meta itemprop="description" content="6个与戈登・摩尔相关的“冷知识" />
+<meta itemprop="name" content="你了解C 和 C&#43;&#43; 标准库吗" />
+<meta itemprop="description" content="你了解C 和 C&#43;&#43; 标准库吗" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Intel,Integrated Electronics,Gordon Moore" />
+<meta itemprop="keywords" content="C,C&#43;&#43;" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="6个与戈登・摩尔相关的冷知识" />
-<meta property="og:description" content="6个与戈登・摩尔相关的“冷知识" />
+<meta property="og:title" content="你了解C 和 C&#43;&#43; 标准库吗" />
+<meta property="og:description" content="你了解C 和 C&#43;&#43; 标准库吗" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-04-01 03:27:05 -0400 -0400" />
-<meta property="article:modified_time" content="2023-04-01 03:27:05 -0400 -0400" />
+<meta property="article:published_time" content="2023-10-01 18:51:43 &#43;0800 CST" />
+<meta property="article:modified_time" content="2023-10-01 18:51:43 &#43;0800 CST" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"6-trivia-about-Gordon-moore.html","permalink":"https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html","title":"6个与戈登・摩尔相关的冷知识"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"do-you-understand-c-and-c-plus-plus-standard-library.html","permalink":"https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html","title":"你了解C 和 C++ 标准库吗"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>6个与戈登・摩尔相关的冷知识 - Kontronn</title>
+  <title>你了解C 和 C&#43;&#43; 标准库吗 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -173,7 +173,20 @@
     <div class="sidebar-panel-container">
       
       <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents"></nav></div>
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#c-和-c-是如何制订的">C 和 C++ 是如何制订的</a></li>
+    <li><a href="#c-标准库">C 标准库</a></li>
+    <li><a href="#c-标准库-1">C++ 标准库</a></li>
+    <li><a href="#实现-cc-标准库">实现 C/C++ 标准库</a></li>
+    <li><a href="#gnulinux-版实现">GNU/Linux 版实现</a></li>
+    <li><a href="#mac-和-ios-版实现">Mac 和 iOS 版实现</a></li>
+    <li><a href="#windows-版实现">Windows 版实现</a></li>
+    <li><a href="#android-版实现">Android 版实现</a></li>
+    <li><a href="#我能使用不同版本的实现代码来替代默认实现吗">我能使用不同版本的实现代码来替代默认实现吗？</a></li>
+    <li><a href="#如果我们脱离了标准库怎么办">如果我们脱离了标准库怎么办？</a></li>
+  </ul>
+</nav></div>
       </div>
       
       <div class="site-overview-wrap sidebar-panel">
@@ -305,7 +318,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -315,11 +328,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="6个与戈登・摩尔相关的冷知识">
-      <meta itemprop="description" content="6个与戈登・摩尔相关的“冷知识">
+      <meta itemprop="name" content="你了解C 和 C&#43;&#43; 标准库吗">
+      <meta itemprop="description" content="你了解C 和 C&#43;&#43; 标准库吗">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">6个与戈登・摩尔相关的冷知识 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">你了解C 和 C&#43;&#43; 标准库吗 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -329,7 +342,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-04-01 03:27:05 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-04-01 03:27:05 -0400 -0400">2023-04-01</time>
+  <time title="发表于：2023-10-01 18:51:43 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-01 18:51:43 &#43;0800 CST">2023-10-01</time>
 </span>
     
     
@@ -339,8 +352,8 @@
   </span>
   <span class="post-meta-item-text">分类于：</span>
   <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
     </a>
   </span>
 </span>
@@ -351,7 +364,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>4</span>
+  <span class="post-meta-item-text">字数：</span><span>381</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -359,7 +372,7 @@
     <i class="far fa-clock"></i>
   </span>
   <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
+  <span>2分钟</span>
 </span>
 
     
@@ -370,7 +383,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/news/6-trivia-about-Gordon-moore.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -382,16 +395,72 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>英特尔的创始人戈登・摩尔于上周五（2023年3月24日）逝世，享年 94 岁，他的一生对计算机科学和半导体工业的发展做出了巨大的贡献。</p>
-<p><img src="https://www.kontronn.com/imgs/post/Gordon-Moore-1.png" alt="Gordon Moore"></p>
-<p>今天给大家分享6个与戈登・摩尔相关的“冷知识”。</p>
-<p><img src="https://www.kontronn.com/imgs/post/Gordon-Moore-2.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-3.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-4.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-5.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-6.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-7.png" alt="Gordon Moore">
-<img src="https://www.kontronn.com/imgs/post/Gordon-Moore-8.png" alt="Gordon Moore"></p>
+  <p>本文简要介绍编写 C/C++ 应用程序的领域，标准库的作用以及它是如何在各种操作系统中实现的。</p>
+<p>我已经接触 C++ 一段时间了，一开始就让我感到疑惑的是其内部结构：我所使用的内核函数和类从何而来？谁发明了它们？他们是打包在我系统中的某个地方吗？是否存在一份官方的 C++ 手册？</p>
+<p>在本文中，我将通过从 C 和 C++ 语言的本质到实际实现来尝试回答这些问题。</p>
+<h2 id="c-和-c-是如何制订的">C 和 C++ 是如何制订的</h2>
+<p>当我们谈论 C 和 C++ 时，实际上是指一组定义（程序）语言应该做些什么，如何表现，应该提供哪些功能的规则。C/C++ 的编译器为了处理 C/C++ 编写的源代码必须跟随着这些规则，并生成二进制应用程序。听起来非常接近于 HTML:浏览器遵循着一组指令，所以它们可以以明确的方式来渲染网页。</p>
+<p>与 HTML 一样，C 和 C++ 的规则都是理论上的。国际标准化组织(ISO)的一大群人每年都会聚集几次来讨论和定义语言规则。没错，C 和 C++ 是标准化的东西。他们最终都会得到一本官方的叫标准的书，你可以从他们的网站中购买。随着语言的发展新的 papers（指官方的叫标准的书）会被发布，每一次都定义一个新的标准。这就是为什么我们会有不同的 C 和 C++ 版本的原因：C99, C11, C++03, C++11, C++14 等等，数字与出版/发布年份相符。</p>
+<p>这些标准都市非常详细和有技术新的文档：我不会把它们当作手册。通常会分为两部分：</p>
+<ol>
+<li>
+<p>C/C++ 的功能和特性；</p>
+</li>
+<li>
+<p>C/C++ 的 API&ndash; 开发人员可以用于他们的 C/C++ 程序的一个类、函数和宏的集合。它也被称为标准库。</p>
+</li>
+</ol>
+<p>例如，这里有个来自于 C 标准库第一部分的摘选，它定义了 main 函数的结构：</p>
+<p><img src="https://www.kontronn.com/imgs/c-and-c-plus-plus-library.png" alt="C and C++"></p>
+<ol>
+<li>main 的定义，程序启动时调用的函数。</li>
+</ol>
+<p>这是另外一个来自与同样标准的摘录，描述了 CAPI 的成员 &ndash;fmin 函数：</p>
+<p><img src="https://www.kontronn.com/imgs/c-and-c-plus-plus-library-1.png" alt="C and C++"></p>
+<ol start="2">
+<li>在 math.h  文件中定义 min 函数。</li>
+</ol>
+<p>如你所见，几乎没涉及到代码。有人必须阅读标准并将其转换成计算机可以消化的东西。这是工作于编译器和（功能）实现上人们所做的：前者是一种可以读取和处理 C 和 C++ 源文件的工具，后者将标准库转换为代码。我们来深入了解一下。</p>
+<h2 id="c-标准库">C 标准库</h2>
+<p>C 标准库也称为 ISO C 库，是用于完成诸如输入/输出处理、字符串处理、内存管理、数学计算和许多其他操作系统服务等任务的宏、类型和函数的集合。它是在 C 标准中（例如 C11 标准）中定义的。其内容分布在不同的头文件中，比如上面我所提到的 math.h。</p>
+<h2 id="c-标准库-1">C++ 标准库</h2>
+<p>和 C 标准库的概念类似，但仅针对 C++。C++ 标准库是一组 C++ 模板类，它提供了通用的编程数据结构和函数，如链表、堆、数组、算法、迭代器和任何其他你可以想到的 C++ 组件。C++ 标准库也包含了 C 标准库，并在 C++ 标准中进行了定义（例如 C++ 11 标准）。</p>
+<h2 id="实现-cc-标准库">实现 C/C++ 标准库</h2>
+<p>我们从这里开始讨论真正的代码了。从事于标准库实现的开发者阅读官方的 ISO 规范并将其转化为代码。他们必须依赖其操作系统所提供的功能（读/写文件，分配内存，创建线程，&hellip;&hellip;所有这些被称为系统调用），因此每个平台都有其自己的标准库实现。有时它是系统内核的一部分，有时它是作为一个附加组件 - 编译器 - 必须单独下载。</p>
+<h2 id="gnulinux-版实现">GNU/Linux 版实现</h2>
+<p>GNU C 库，也称为 glibc, 是 C 标准库的 GNU 项目实现。并非所有的标准 C 函数都可以在 glibc 中找到：大多数数学函数实际上是在 libm 库中实现的，这是一个独立的库。</p>
+<p>至今，glibc 是 Linux 上使用最广泛的 C 库。然而，在 90 年代期间，有一段时间里，glibc 有一个竞争对手称为 Linux libc（或者简称 libc），它是由 glibc 1.x 的一个分支产生的。在一段时间里，Linux libc 是许多 Linux 发行版中的标准 C 库。</p>
+<p>经过多年的发展，glibc 竟然比 Linux libc 更具优势，并且所有使用它的 Linux 发行版都切换回了 glibc。所以，如果你在你的磁盘中找到一个名为 libc.so.6 的文件，请不要担心：它是现代版的 glibc。为了避免与之前的 Linux libc 版本混淆，版本号增加到了 6（他们无法将其命名为 glibc.so.6：所有Linux库都必须以 lib 前缀打头）。</p>
+<p>另一方面，C++ 标准库的实现位于 libstdc++ 或 GNU 标准 C++ 库中。这是一个正在进行的在 GNU/Linux 上实现标准 C++ 库的项目。一般来说，所有常规的 Linux 发行版都默认使用 libstdc++。</p>
+<h2 id="mac-和-ios-版实现">Mac 和 iOS 版实现</h2>
+<p>在 Mac 和 iOS 上，C 标准库的实现是 libSystem 的一部分，libSystem 是位于 /usr/lib/libSystem.dylib 中的核心库。LibSystem 包含其他组件，如数学库、线程库和其他底层实用程序。</p>
+<p>关于 C++ 标准库，在 OS X Mavericks（V10.9）之前的 Mac 上，libstdc++ 是默认选项。这在现代的基于 Linux 的系统上可以找到的同样的实现。自 OS X Mavericks 开始，Apple 切换到使用 libc++，这是 LLVM 项目——Mac 官方编译器框架——所引入的 GNU libstdc++ 标准库的替代。</p>
+<p>IOS 开发者可以使用 iOS SDK（软件开发工具包）来访问标准库，它是一系列允许创建移动应用程序的工具。</p>
+<h2 id="windows-版实现">Windows 版实现</h2>
+<p>在 Windows 上，标准库的实现一直严格限定在 Visual Studio 中，它是微软官方的编译器。他们通常称之为 C/C++ 运行时库（CRT），并且它涵盖了 c/c++ 二者的实现。</p>
+<p>在最开始，CRT 被实现为 CRTDLL.DLL 库（我猜，当时没有可用的 C++ 标准库）。从 Windows 95 开始，Microsoft 开始将其迁移到 MSVCRT [版本号] .DLL（MSVCR20.DLL，MSVCR70.DLL 等）之上，据推测也包含 C++ 标准库。在 1997 年，他们决定将文件名简化为  MSVCRT.DLL，这不幸导致了令人讨厌的DLL混乱。这就是为什么从 Visual Studio 7.0 版开始，他们切换回每个版本使用单独的 DLL 了。</p>
+<p>Visual Studio 2015 引入了深度的 CRT 重构。C/C++ 标准库的实现迁移到一个新库，Universal C 运行时库 (Universal CRT 或 UCRT)，编译为 UCRTBASE.DLL。UCRT 目前已经成为 Windows 组之一，从 Windows 10 开始作为操作系统的一部分提供。</p>
+<h2 id="android-版实现">Android 版实现</h2>
+<p>Bionic 是 Google 为其 Android 操作系统所编写的 C 标准库实现，它直接在底层使用。第三方开发者可以通过 Android 原生开发工具包（NDK）访问 Bionic，该工具集允许你使用 C 和 C++ 代码编写 Android 应用程序。</p>
+<p>在 C++ 端, NDK 提供了很多版本的实现：</p>
+<ul>
+<li>
+<p>libc++，从从 Lollipop 开始的官方安卓系统和现代 Mac 操作系统都将其作为 C++ 标准库使用。从 NDK 发布 17 版本开始，它将成为 NDK 中唯一可用的 C++ 标准库实现；</p>
+</li>
+<li>
+<p>gnustl，libstdc++ 的别名，这两者在 GNU/linux 是同一个库。这个库的已被弃用，它将在 NDK 发布 18 中删除；</p>
+</li>
+<li>
+<p>STLport，由 STLport 项目编写的 C++ 标准库的第三方实现，自 2008 年以来一直处于不活跃状态。与 gnustl 一样，STLport 将在 NDK 发布 18 中移除。</p>
+</li>
+</ul>
+<h2 id="我能使用不同版本的实现代码来替代默认实现吗">我能使用不同版本的实现代码来替代默认实现吗？</h2>
+<p>如果你正在使用资源非常有限的系统，则通常需要引用 C 标准库的不同实现。比如，uClibc-ng, musl libc 和 diet libc 等等，所有这些都适用于嵌入式 Linux 系统的开发，提供更小的二进制文件和更少的内存占用。</p>
+<p>C++ 标准库也有不同的实现版本：Apache C++ 标准库，uSTL 以及 EASTL 等等。后面两个实际上仅关注模板部分，而不是完整的库，并且他们是在速度优先的情况下开发的。Apache 版本的库注重的是可移植性。</p>
+<h2 id="如果我们脱离了标准库怎么办">如果我们脱离了标准库怎么办？</h2>
+<p>不使用标准库很简单：只要在你的程序中不引入它们的任何一个头文件，你的工作就完成了。然而，为了让这个操作更有意义一些，你需要通过一些提供的系统调用使用某种方法与操作系统互动。就像我之前说的，这就是标准库中的函数/方法在底层实现的时候所使用的。很可能你也会不得不调用这些方法来与硬件设备交互。</p>
+<p>如果对你来说这听起来很让人激动，有些人已经开始在网上尝试在不导入标准库的情况下创建工作流程。因为你依赖于一个特定操作系统所提供的函数，这种方式会丧失可移植性。然而通过使用这种艰难的方式，肯会让你学到更多，而且让你更好的理解当你所做的事情，即使是在使用高级库的时候。</p>
+<p>除了知识，当你在嵌入式操作系统上面工作的时候你不会想去引入标准库：因为代码不需要移植，在有限的内存中每个字节都很重要，这会让你更加精准的写代码。另一个使用背景就是 demoscene，在这里人们尽量有限的程序的二进制大小中去保留高质量的音视频——4K仍然不是最小值：一些 demoparties 使用 1K，256 字节，64 字节或者甚至 32 字节来竞争。在那里不允许使用标准库！</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -411,14 +480,11 @@
 
 <div class="post-tags">
   
-    <a href="/tags/intel">
-    Intel
+    <a href="/tags/c">
+    C
   </a>
-    <a href="/tags/integrated-electronics">
-    Integrated Electronics
-  </a>
-    <a href="/tags/gordon-moore">
-    Gordon Moore
+    <a href="/tags/c&#43;&#43;">
+    C&#43;&#43;
   </a>
 </div>
 
@@ -446,7 +512,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      6个与戈登・摩尔相关的冷知识
+      你了解C 和 C&#43;&#43; 标准库吗
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -454,7 +520,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html" title="6个与戈登・摩尔相关的冷知识">https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html" title="你了解C 和 C&#43;&#43; 标准库吗">https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -479,11 +545,15 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html" rel="next" title="三星电子研发出其首款支持CXL 2.0的CXL DRAM">
-      <i class="fa fa-chevron-left"></i> 三星电子研发出其首款支持CXL 2.0的CXL DRAM
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
     </a>
   </div>
   <div class="post-nav-prev post-nav-item">
+    <a href="/post/mcu/a-simple-mcu-memory-management-module.html" rel="prev" title="一个简单的MCU内存管理模块(附源码)">
+      一个简单的MCU内存管理模块(附源码)
+      <i class="fa fa-chevron-right"></i>
+    </a>
   </div>
 </div>
 

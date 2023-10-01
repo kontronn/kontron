@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Aug 2023 12:50:06 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Oct 2023 18:51:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>你了解C 和 C&#43;&#43; 标准库吗</title>
+      <link>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</link>
+      <pubDate>Sun, 01 Oct 2023 18:51:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</guid>
+      <description>&lt;p&gt;本文简要介绍编写 C/C++ 应用程序的领域，标准库的作用以及它是如何在各种操作系统中实现的。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C&#43;&#43;中fmt库的用法</title>
       <link>https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html</link>

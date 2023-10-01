@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Sep 2023 18:50:17 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Oct 2023 18:51:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://www.kontronn.com/tags/c/</link>
+      <pubDate>Sun, 01 Oct 2023 18:51:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://www.kontronn.com/tags/c&#43;&#43;/</link>
+      <pubDate>Sun, 01 Oct 2023 18:51:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Memory Management</title>
       <link>https://www.kontronn.com/tags/memory-management/</link>
@@ -130,15 +148,6 @@
       <pubDate>Sat, 12 Aug 2023 11:54:28 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/log/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C&#43;&#43;</title>
-      <link>https://www.kontronn.com/tags/c&#43;&#43;/</link>
-      <pubDate>Tue, 08 Aug 2023 12:50:06 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
     
@@ -319,15 +328,6 @@
       <pubDate>Sat, 29 Jul 2023 08:26:36 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/communication-principle/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://www.kontronn.com/tags/c/</link>
-      <pubDate>Sat, 29 Jul 2023 08:04:37 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c/</guid>
       <description></description>
     </item>
     
