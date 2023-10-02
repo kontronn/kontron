@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Oct 2023 18:51:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 02 Oct 2023 14:54:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MCU</title>
+      <link>https://www.kontronn.com/tags/mcu/</link>
+      <pubDate>Mon, 02 Oct 2023 14:54:47 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/mcu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>STM32</title>
+      <link>https://www.kontronn.com/tags/stm32/</link>
+      <pubDate>Mon, 02 Oct 2023 14:54:47 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/stm32/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>C</title>
       <link>https://www.kontronn.com/tags/c/</link>
@@ -31,15 +49,6 @@
       <pubDate>Sun, 24 Sep 2023 18:50:17 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/memory-management/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>STM32</title>
-      <link>https://www.kontronn.com/tags/stm32/</link>
-      <pubDate>Sun, 24 Sep 2023 18:50:17 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/stm32/</guid>
       <description></description>
     </item>
     
@@ -751,15 +760,6 @@
       <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/cpu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MCU</title>
-      <link>https://www.kontronn.com/tags/mcu/</link>
-      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/mcu/</guid>
       <description></description>
     </item>
     

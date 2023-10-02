@@ -111,7 +111,7 @@
     </li>
     <li class="menu-item menu-item-archives">
       <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">55</span>
+        <span class="badge">56</span>
       </a>
     </li>
     <li class="menu-item menu-item-commonweal">
@@ -182,7 +182,7 @@
   <nav class="site-state">
     <div class="site-state-item site-state-posts">
       <a href="/archives/">
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -260,15 +260,15 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="15751"></div>
+      <div class="item-count" id="wordsCount" data-count="15765"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="107"></div>
+      <div class="item-count" id="readTimes" data-times="108"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2023-10-01T18:51:43&#43;08:00"></div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-10-02T14:54:47&#43;08:00"></div>
     </div>
   </div>
 </div>
@@ -378,6 +378,79 @@
     </div>
     <footer class="post-footer">
       
+<div class="post-eof"></div>
+
+    </footer>
+  </article>
+</div>
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/mcu/how-to-select-stm32.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32怎么选型">
+      <meta itemprop="description" content="STM32怎么选型">
+    </span>
+    <header class="post-header">
+       <h2 class="post-title" itemprop="name headline">
+  <a href="/post/mcu/how-to-select-stm32.html" itemprop="url" class="post-title-link">STM32怎么选型</a> </h2> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-10-02 14:54:47 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-02 14:54:47 &#43;0800 CST">2023-10-02</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/mcu" itemprop="url" rel="index">
+      <span itemprop="name">MCU</span>
+    </a>
+  </span>
+</span>
+  </div>
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  什么是 STM32 STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。
+STM32属于一个微控制器，自带了各种常用通信接口，比如USART、I2C、SPI等，可接非常多的传感器，可以控制很多的设备。现实生活中，我们接触到的很多电器产品都有STM32的身影，比如智能手环，微型四轴飞行器，平衡车、移动POST机，智能电饭锅，3D打印机等等。下面我们以最近最为火爆的两个产品来讲解下，一个是手环，一个是飞行器。
+现在无人机非常火热，高端的无人机用STM32做不来，但是小型的四轴飞行器用STM32还是绰绰有余的。
+STM32 分类 STM32有很多系列，可以满足市场的各种需求，从内核上分有Cortex-M0、M3、M4和M7这几种，每个内核又大概分为主流、高性能和低功耗。具体如下表所示。
+单纯从学习的角度出发，可以选择F1和F4，F1代表了基础型，基于Cortex-M3内核，主频为72MHZ，F4代表了高性能，基于Cortex-M4内核，主频180M。之于F1，F4（429系列以上）除了内核不同和主频的提升外，升级的明显特色就是带了LCD控制器和摄像头接口，支持SDRAM，这个区别在项目选型上会被优先考虑。但是从大学教学和用户初学来说，还是首选F1系列，目前在市场上资料最多，产品占有量最多的就是F1系列的STM32。
+以STM32F103VET6来讲下STM32的命名方法，具体如下表所示。
+更详细的命名方法说明，见下图。
+选择合适的 MCU 了解了STM32的分类和命名方法之后，就可以根据项目的具体需求先大概选择哪类内核的MCU，普通应用，不需要接大屏幕的一般选择Cortex-M3内核的F1系列，如果要追求高性能，需要大量的数据运算，且需要外接RGB大屏幕的则选择Cortex-M4内核的F429系列。明确了大方向之后，接下来就是细分选型，先确定引脚，引脚多的功能就多，价格也贵，具体得根据实际项目中需要使用到什么功能，够用就好。确定好了引脚数目之后再选择FLASH大小，相同引脚数的MCU会有不同的FLASH大小可供选择，这个也是根据实际需要选择，程序大的就选择大点的FLASH，要是产品一量产，这些省下来的都是钱啊。有些月出货量以KK（百万数量级）为单位的产品，不仅是MCU，连电阻电容能少用就少用，更甚者连PCB的过孔的多少都有讲究。项目中的元器件的选型有很多学问。
+
+
+    </div>
+    <footer class="post-footer">
+      
+<div class="post-button">
+  <a class="btn" href="/post/mcu/how-to-select-stm32.html#more" rel="contents">
+    阅读全文 &raquo;
+  </a>
+</div>
 <div class="post-eof"></div>
 
     </footer>
@@ -903,72 +976,6 @@
       
 <div class="post-button">
   <a class="btn" href="/post/programming/fmt-lib-usage-in-c-plus-plus.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
-
-    </footer>
-  </article>
-</div>
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/floating-point-comparison-problem.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="浮点数比较问题">
-      <meta itemprop="description" content="浮点数比较问题">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/linux/floating-point-comparison-problem.html" itemprop="url" class="post-title-link">浮点数比较问题</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 12:41:00 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 12:41:00 -0400 -0400">2023-08-08</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/linux" itemprop="url" rel="index">
-      <span itemprop="name">Linux</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>在C语言中，使用浮点型进行比较可能会出现误差，那么究竟是什么原因呢？</p>
-
-
-    </div>
-    <footer class="post-footer">
-      
-<div class="post-button">
-  <a class="btn" href="/post/linux/floating-point-comparison-problem.html#more" rel="contents">
     阅读全文 &raquo;
   </a>
 </div>
