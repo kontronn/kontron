@@ -237,6 +237,19 @@ FPGA中实用的DDR接口应用方法。&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>最古老的Linux之一：活了30年仍在运行</title>
+      <link>https://www.kontronn.com/post/linux/Slackware-Linux-30th-anniversary.html</link>
+      <pubDate>Sat, 22 Jul 2023 10:02:27 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/Slackware-Linux-30th-anniversary.html</guid>
+      <description>&lt;p&gt;Slackware不是第一个
+&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;发行版，但它仍然是迄今为止最古老的且仍在运行的Linux发行版之一。本周，Slackware Linux将迎来其30周年生日。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>嵌入式网络接口该怎么设计</title>
       <link>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</link>
       <pubDate>Thu, 20 Jul 2023 12:23:49 -0400</pubDate>

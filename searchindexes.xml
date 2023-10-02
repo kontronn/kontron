@@ -1089,6 +1089,24 @@ sudo apt remove nvidia-driver-530-open sudo apt autoremove sudo apt install nvid
   </entry>
   
   <entry>
+    <title>最古老的Linux之一：活了30年仍在运行</title>
+    <url>/post/linux/Slackware-Linux-30th-anniversary.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Slackware</tag>
+    </tags>
+    <content type="html"><![CDATA[Slackware不是第一个 Linux  发行版，但它仍然是迄今为止最古老的且仍在运行的Linux发行版之一。本周，Slackware Linux将迎来其30周年生日。
+Slackware Linux以简单、稳定和安全著称，Slackware Linux主要由Slackware团队维护和开发，该团队由Slackware的创建者Patrick Volkerding领导。Slackware Linux的安装和使用相对较为繁琐，需要手动配置和安装软件包。但它也因此提供了更高的定制性和灵活性，用户可以根据自己的需求自由选择软件版本和配置。Slackware Linux的软件包管理方式较为独特，采用tar包和脚本的方式进行管理和安装。用户需要手动下载和安装所需的软件包，然后进行配置和编译。尽管相对于其他现代Linux发行版，Slackware Linux的界面和功能较为简单，但它的稳定性和安全性仍然吸引着一些用户。此外，Slackware Linux还支持多种硬件平台，包括x86、x64、ARM等。
+Slackware 1.0版本发布于1993年7月16日，当前最新的版本Slackware 15则在2021年进入测试阶段，并于去年初正式发布。与其他发行版相似，Slackware最初源自开发者对其他Linux发行版的不满，Debian比Slackware还要年轻一点。其实更早之前，MCC Interim Linux可以说是针对普通用户的第一个发行版，它的第一个候选版本0.97版本在1991年内核诞生几个月后就出现了，但是Interim缺乏许多今天已经具备的特性，例如包管理器。接着其他几个发行版紧随其后，特别是SLS（Softlanding Linux 系统）很快就激发了它的两个后代。正如已故的Debian Linux创始人Ian Murdock在1993年最初的声明中提到，他对SLS的不满激发了对Debian创造。
+Slackware Linux 最初是一个修复和改进SLS的项目，Slackware团队迄今为止仍在对其进行维护，不得不说团队成功地完成了它们最初的使命。目前Slackware Linux存在三种变体，同名形式仍然是x86-32系统，而Slackware64是面向64位x86设备的发行版，此外还有Arm64版本。
+令人惊讶的是，今天Slackware 15的安装界面与上世纪90年代并无不同，没有诸如图形引导之类的东西，看上去俨然似软件“古董”。它启动到登录提示符，然后您需要手动运行setup程序，并使用90年代DOS风格的文本模式菜单来勾选您想要安装的组件。默认情况下，它没有配置图形登录界面，甚至没有配置普通用户帐户，您需要键入startx并启动桌面，并预配置AMD Radeon显卡驱动程序，准备好连接到无线网络等等。
+Slackware 15并不是您想象中的那种轻量级的Linux发行版，运行完整更新将会填满您的16GB根分区。它具有在线存储库、自动依赖性解析以及您期望的那些21世纪发行版中拥有的花里胡哨的功能。
+尽管如此，今天的Slackware Linux实际上是一个名符其实的现代发行版，使用它的时候，不要因其过于简单的文本安装模式和、缺乏图形桌面等细节修饰而觉得自己仍活在上个世纪。我们无法确定Slackware的风格是否源于传统，亦或是有意为之（也许是为了吓跑烦人的新手），当然，也可能两者兼有之。如今，它比Alpine Linux或是Arch Linux等更年轻的发行版更容易安装，想起来就像BSD一样，哦，它也是无systemd的（即system daemon，是linux下的一种init软件）。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>嵌入式网络接口该怎么设计</title>
     <url>/post/hardware/how-to-design-embedded-network-interface.html</url>
     <categories><category>Hardware</category>

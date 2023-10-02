@@ -442,6 +442,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/slackware/</loc>
+    <lastmod>2023-07-22T10:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/Slackware-Linux-30th-anniversary.html</loc>
+    <lastmod>2023-07-22T10:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/mac/</loc>
     <lastmod>2023-07-20T12:23:49-04:00</lastmod>
     <changefreq>weekly</changefreq>
