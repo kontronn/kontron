@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="嵌入式网络接口该怎么设计" />
-<meta itemprop="description" content="嵌入式网络接口该怎么设计" />
+<meta itemprop="name" content="十年经验的大神谈如何学STM32嵌入式开发" />
+<meta itemprop="description" content="十年经验的大神谈如何学STM32嵌入式开发" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Network,Linux,SOC,MAC" />
+<meta itemprop="keywords" content="STM32,MCU" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="嵌入式网络接口该怎么设计" />
-<meta property="og:description" content="嵌入式网络接口该怎么设计" />
+<meta property="og:title" content="十年经验的大神谈如何学STM32嵌入式开发" />
+<meta property="og:description" content="十年经验的大神谈如何学STM32嵌入式开发" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-07-20 12:23:49 -0400 -0400" />
-<meta property="article:modified_time" content="2023-07-20 12:23:49 -0400 -0400" />
+<meta property="article:published_time" content="2023-10-05 16:15:55 &#43;0800 CST" />
+<meta property="article:modified_time" content="2023-10-05 16:15:55 &#43;0800 CST" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"how-to-design-embedded-network-interface.html","permalink":"https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html","title":"嵌入式网络接口该怎么设计"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"how-to-learn-stm32-embedded-development.html","permalink":"https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html","title":"十年经验的大神谈如何学STM32嵌入式开发"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>嵌入式网络接口该怎么设计 - Kontronn</title>
+  <title>十年经验的大神谈如何学STM32嵌入式开发 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -175,23 +175,26 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#嵌入式网络简介">嵌入式网络简介</a>
+    <li><a href="#理解嵌入式">理解嵌入式</a>
       <ul>
-        <li><a href="#嵌入式下的网络硬件接口">嵌入式下的网络硬件接口</a>
-          <ul>
-            <li><a href="#soc内部没有网络mac外设">SOC内部没有网络MAC外设</a></li>
-            <li><a href="#soc内部集成网络mac外设">SOC内部集成网络MAC外设</a></li>
-          </ul>
-        </li>
-        <li><a href="#miirmii接口">MII/RMII接口</a>
-          <ul>
-            <li><a href="#mii接口">MII接口</a></li>
-            <li><a href="#rmii接口">RMII接口</a></li>
-          </ul>
-        </li>
-        <li><a href="#mdio接口">MDIO接口</a></li>
-        <li><a href="#rj45接口">RJ45接口</a></li>
-        <li><a href="#phy芯片基础知识">PHY芯片基础知识</a></li>
+        <li><a href="#从硬件上说">从硬件上说</a></li>
+        <li><a href="#从软件上说">从软件上说</a></li>
+      </ul>
+    </li>
+    <li><a href="#嵌入式系统的分层">嵌入式系统的分层</a>
+      <ul>
+        <li><a href="#硬件层">硬件层</a></li>
+        <li><a href="#驱动层">驱动层</a></li>
+        <li><a href="#操作系统层">操作系统层</a></li>
+        <li><a href="#应用层">应用层</a></li>
+      </ul>
+    </li>
+    <li><a href="#从哪里入手嵌入式系统">从哪里入手嵌入式系统</a>
+      <ul>
+        <li><a href="#从硬件上入手arm">从硬件上入手ARM</a></li>
+        <li><a href="#从嵌入式系统的应用层如何入手">从嵌入式系统的应用层如何入手</a></li>
+        <li><a href="#芯片的选择">芯片的选择</a></li>
+        <li><a href="#成为高级嵌入式系统硬件工程师要具备的技能">成为高级嵌入式系统硬件工程师要具备的技能</a></li>
       </ul>
     </li>
   </ul>
@@ -327,7 +330,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -337,11 +340,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="嵌入式网络接口该怎么设计">
-      <meta itemprop="description" content="嵌入式网络接口该怎么设计">
+      <meta itemprop="name" content="十年经验的大神谈如何学STM32嵌入式开发">
+      <meta itemprop="description" content="十年经验的大神谈如何学STM32嵌入式开发">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">嵌入式网络接口该怎么设计 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">十年经验的大神谈如何学STM32嵌入式开发 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -351,7 +354,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-07-20 12:23:49 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-07-20 12:23:49 -0400 -0400">2023-07-20</time>
+  <time title="发表于：2023-10-05 16:15:55 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-05 16:15:55 &#43;0800 CST">2023-10-05</time>
 </span>
     
     
@@ -361,8 +364,8 @@
   </span>
   <span class="post-meta-item-text">分类于：</span>
   <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/hardware" itemprop="url" rel="index">
-      <span itemprop="name">Hardware</span>
+    <a href="/categories/mcu" itemprop="url" rel="index">
+      <span itemprop="name">MCU</span>
     </a>
   </span>
 </span>
@@ -373,7 +376,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>94</span>
+  <span class="post-meta-item-text">字数：</span><span>61</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -392,7 +395,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/hardware/how-to-design-embedded-network-interface.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/mcu/how-to-learn-stm32-embedded-development.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -404,92 +407,43 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>本篇文章是关于嵌入式网络接口的一些知识介绍。</p>
-<h2 id="嵌入式网络简介">嵌入式网络简介</h2>
-<h3 id="嵌入式下的网络硬件接口">嵌入式下的网络硬件接口</h3>
-<p>提起网络，我们一般想到的硬件就是“网卡”，现在网卡已经是通过一个芯片来完成了，嵌入式网络硬件分为两部分：MAC和PHY，大家都是通过看数据手册来判断一款SOC是否支持网络，如果一款芯片数据手册说自己支持网络，一般都是说的这款SOC内置MAC，MAC类似I2C控制器、SPI控制器一样的外设。</p>
-<p>但是光有MAC还不能直接驱动网络，还需要另外一个芯片：PHY，因此对于内置MAC的SOC，其外部必须搭配一个PHY芯片。内部没有MAC的SOC芯片，就需要使用外置的MAC+PHY一体芯片了，这里就要牵扯出常见的两个嵌入式网络硬件方案了。</p>
-<h4 id="soc内部没有网络mac外设">SOC内部没有网络MAC外设</h4>
-<p>对于内部没有MAC的SOC芯片，可以使用外置 MAC+PHY一体的网络芯片来实现网络功能。比如三星linux开发板里面用的最多的DM9000，DM9000对SOC提供了一个SRAM接口，SOC会以SRAM的方式操作DM9000。</p>
-<p>有些外置的网络芯片更强大，内部甚至集成了硬件TCP/IP协议栈，对外提供一个SPI接口，比如W5500。这个一般用于单片机领域，单片机通过SPI接口与W5500进行通信，由于W5500内置了硬件TCP/IP协议栈，因此单片机就不需要移植软件协议栈，直接通过SPI来操作W5500，简化了单片机联网方案。</p>
-<p>这种方案的优点就是让不支持网络的SOC能够另辟蹊径，实现网络功能，但是缺点就是网络效率不高，因为一般芯片内置的MAC会有网络加速引擎，比如网络专用DMA，网络处理效率会很高。而且此类芯片网速都不快，基本就是10/100M。另外，相比PHY芯片而言，此类芯片的成本也比较高，可选择比较少。</p>
-<p>SOC与外部MAC+PHY芯片的连接如图1-1所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-1.png" alt="嵌入式网络接口该怎么设计">
-图1-1 主控SOC与外置MAC+PHY芯片连接</p>
-<h4 id="soc内部集成网络mac外设">SOC内部集成网络MAC外设</h4>
-<p>我们一般说某个SOC支持网络，说的就是他内部集成网络MAC外设，此时我们还需要外接一个网络PHY芯片。。</p>
-<p>目前几乎所有支持网络的SOC都是内置MAC外设，比如STM32F4/F7/H7系列、NXP的I.MX系列，内部集成网络MAC的优点如下：</p>
-<p>1）内部MAC外设会有专用的加速模块，比如专用的DMA，加速网速数据的处理。</p>
-<p>2）网速快，可以支持10/100/1000M网速。</p>
-<p>3）外接PHY可选择性多，成本低。</p>
-<p>内部的MAC外设会通过MII或者RMII接口来连接外部的PHY芯片，MII/RMII接口用来传输网络数据。另外主控需要配置或读取PHY芯片，也就是读写PHY的内部寄存器，所以还需要一个控制接口，叫做MIDO，MDIO很类似IIC，也是两根线，一根数据线叫做MDIO，一根时钟线叫做MDC。</p>
-<p>SOC内部MAC外设与外部PHY芯片的连接如图1-2所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-2.png" alt="嵌入式网络接口该怎么设计">
-图1-2 内部MAC与外部PHY之间的连接</p>
-<p>大家在做项目的时候，如果要用到网络功能，强烈建议大家选择内部带有网络MAC外设的主控SOC！I.MX6ULL就有两个10M/100M的网络MAC外设，正点原子ALPHA开发板板载了两颗PHY芯片，型号为LAN8720。因此，本章节只讲解SOC内部MAC+外置PHY芯片这种方案。</p>
-<h3 id="miirmii接口">MII/RMII接口</h3>
-<p>前面我们说了，内部MAC通过MII/RMII接口来与外部的PHY芯片连接，完成网络数据传输，本节我们就来学习一下什么是MII和RMII接口。</p>
-<h4 id="mii接口">MII接口</h4>
-<p>MII全称是Media Independent Interface，直译过来就是介质独立接口，它是IEEE-802.3定义的以太网标准接口，MII接口用于以太网MAC连接PHY芯片，连接示意图如图1-3所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-3.png" alt="嵌入式网络接口该怎么设计">
-图1-3 MII接口</p>
-<p>MII接口一共有16根信号线，含义如下：</p>
-<ul>
-<li>TX_CLK：发送时钟，如果网速为100M的话时钟频率为25MHz，10M网速的话时钟频率为2.5MHz，此时钟由PHY产生并发送给MAC。</li>
-<li>TX_EN：发送使能信号。</li>
-<li>TX_ER：发送错误信号，高电平有效，表示TX_ER有效期内传输的数据无效。10Mpbs网速下TX_ER不起作用。</li>
-<li>TXD[3:0]：发送数据信号线，一共4根。</li>
-<li>RXD[3:0]：接收数据信号线，一共4根。</li>
-<li>RX_CLK：接收时钟信号，如果网速为100M的话时钟频率为25MHz，10M网速的话时钟频率为2.5MHz，RX_CLK也是由PHY产生的。</li>
-<li>RX_ER：接收错误信号，高电平有效，表示RX_ER有效期内传输的数据无效。10Mpbs网速下RX_ER不起作用。</li>
-<li>RX_DV：接收数据有效，作用类似TX_EN。</li>
-<li>CRS：载波侦听信号。</li>
-<li>COL：冲突检测信号。</li>
-</ul>
-<p>MII接口的缺点就是所需信号线太多，这还没有算MDIO和MDC这两根管理接口的数据线，因此MII接口使用已经越来越少了。</p>
-<h4 id="rmii接口">RMII接口</h4>
-<p>RMII全称是Reduced Media Independent Interface，翻译过来就是精简的介质独立接口，也就是MII接口的精简版本。RMII接口只需要7根数据线，相比MII直接减少了9根，极大的方便了板子布线，RMII接口连接PHY芯片的示意图如图1-4所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-4.png" alt="嵌入式网络接口该怎么设计">
-图1-4 RMII接口</p>
-<ul>
-<li>TX_EN：发送使能信号。</li>
-<li>TXD[1:0]：发送数据信号线，一共2根。</li>
-<li>RXD[1:0]：接收数据信号线，一共2根。</li>
-<li>CRS_DV：相当于MII接口中的RX_DV和CRS这两个信号的混合。</li>
-<li>REF_CLK：参考时钟，由外部时钟源提供， 频率为50MHz。这里与MII不同，MII的接收和发送时钟是独立分开的，而且都是由PHY芯片提供的。</li>
-<li>除了MII和RMII以外，还有其他接口，比如GMII、RGMII、SMII、SMII等，关于其他接口基本都是大同小异的，这里就不做讲解了。正点原子ALPAH开发板上的两个网口都是采用RMII接口来连接MAC与外部PHY芯片。</li>
-</ul>
-<h3 id="mdio接口">MDIO接口</h3>
-<p>MDIO全称是Management Data Input/Output，直译过来就是管理数据输入输出接口，是一个简单的两线串行接口，一根MDIO数据线，一根MDC时钟线。驱动程序可以通过MDIO和MDC这两根线访问PHY芯片的任意一个寄存器。MDIO接口支持多达32个PHY。同一时刻内只能对一个PHY进行操作，那么如何区分这32个PHY芯片呢？和IIC一样，使用</p>
-<p>器件地址即可。同一MDIO接口下的所有PHY芯片，其器件地址不能冲突，必须保证唯一，具体器件地址值要查阅相应的PHY数据手册。</p>
-<p>因此，MAC和外部PHY芯片进行连接的时候主要是MII/RMII和MDIO接口，另外可能还需要复位、中断等其他引脚。</p>
-<h3 id="rj45接口">RJ45接口</h3>
-<p>网络设备是通过网线连接起来的，插入网线的叫做RJ45座，如图1-5所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-5.png" alt="嵌入式网络接口该怎么设计">
-图1-5 RJ45座子</p>
-<p>RJ45座要与PHY芯片连接在一起，但是中间需要一个网络变压器，网络变压器用于隔离以及滤波等，网络变压器也是一个芯片，外形一般如图1-6所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-6.png" alt="嵌入式网络接口该怎么设计">
-图1-6 网络变压器</p>
-<p>但是现在很多RJ45座子内部已经集成了网络变压器，比如最常用的HR911105A就是内置网络变压器的RJ45座。内置网络变压器的RJ45座和不内置的引脚一样，但是一般不内置的RJ45座会短一点。</p>
-<p>因此，大家在画板的时候一定要考虑你所使用的RJ45座是否内置网络变压器，如果不内置的话就要自行添加网络变压器部分电路！同理，如果你所设计的硬件是需要内置网络变压器的RJ45座，肯定不能随便焊接一个不内置变压器的RJ45座，否则网络工作不正常！</p>
-<p>RJ45座子上一般有两个灯，一个黄色(橙色)，一个绿色，绿色亮的话表示网络连接正常，黄色闪烁的话说明当前正在进行网络通信。这两个灯由PHY芯片控制，PHY芯片会有两个引脚来连接RJ45座上的这两个灯。内部MAC+外部PHY+RJ45座(内置网络变压器)就组成了一个完整的嵌入式网络接口硬件，如图1-7所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-6.png" alt="嵌入式网络接口该怎么设计">
-图1-7 嵌入式网络硬件接口示意图</p>
-<h3 id="phy芯片基础知识">PHY芯片基础知识</h3>
-<p>PHY是IEEE 802.3规定的一个标准模块，前面说了，SOC可以对PHY进行配置或者读取PHY相关状态，这个就需要PHY内部寄存器去实现。PHY芯片寄存器地址空间为5位，地址 0~31共32个寄存器，IEEE定义了0~15这16个寄存器的功能，16~31这16个寄存器由厂商自行实现。</p>
-<p>也就是说不管你用的哪个厂家的PHY芯片，其中0~15这16个寄存器是一模一样的。仅靠这16个寄存器是完全可以驱动起PHY芯片的，至少能保证基本的网络数据通信，因此
-<a href="https://www.gaitpu.com/category/os/linux" title="Linux" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    Linux
-    <i class="fa fa-external-link-alt"></i>
-</a>内核有通用PHY驱动，按道理来讲，不管你使用的哪个厂家的PHY芯片，都可以使用Linux的这个通用PHY驱动来验证网络工作是否正常。</p>
-<p>事实上在实际开发中可能会遇到一些其他的问题导致Linux内核的通用PHY驱动工作不正常，这个时候就需要驱动开发人员去调试了。但是，随着现在的PHY芯片性能越来越强大，32个寄存器可能满足不了厂商的需求，因此很多厂商采用分页技术来扩展寄存器地址空间，以求定义更多的寄存器。</p>
-<p>这些多出来的寄存器可以用于实现厂商特有的一些技术，因此Linux内核的通用PHY驱动就无法驱动这些特色功能了，这个时候就需要PHY厂商提供相应的驱动源码了，所以大家也会在Linux内核里面看到很多具体的PHY芯片驱动源码。</p>
-<p>不管你的PHY芯片有多少特色功能，按道理来讲，Linux内核的通用PHY驱动是绝对可以让你这PHY芯片实现基本的网络通信，因此大家也不用担心更换PHY芯片以后网络驱动编写是不是会很复杂。</p>
-<p>IEEE802.3协议英文原版中的 “22.2.4 Management functions”章节，此章节对PHY的前16个寄存器功能进行了规定，如图1-8所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-network-interface-design-6.png" alt="嵌入式网络接口该怎么设计">
-图1-8 IEEE规定的前16个寄存器</p>
-<p>关于这16个寄存器的内容协议里面也进行了详细的讲解，这里就不分析了。大家可以找个具体的PHY芯片数据手册对比看一下，比如百M网络最常用的LAN8720A这个PHY，大家可以看一下LAN8720前面几个寄存器结构是否和图1-8中的一样。</p>
-<p>关于嵌入式Linux的网络接口设计就讲到这里。</p>
+  <p>本文描述了十年经验的大神谈如何学STM32嵌入式开发</p>
+<h2 id="理解嵌入式">理解嵌入式</h2>
+<h3 id="从硬件上说">从硬件上说</h3>
+<p>“嵌入”将基于CPU的处围器件，整合到CPU芯片内部，比如早期基于X86体系结构下的计算机，CPU只是有运算器和累加器的功能，一切芯片要造外部桥路来扩展实现，象串口之类的都是靠外部的16C550/2的串口控制器芯片实现，而目前的这种串口控制器芯片早已集成到CPU内部，还有PC机有显卡，而多数嵌入式处理器都带有LCD控制器，但其种意义上就相当于显卡。比较高端的ARM类Intel Xscale架构下的IXP网络处理器CPU内部集成PCI控制器，可配成支持4个PCI从设备或配成自身为CPI从设备;还集成3个NPE网络处理器引擎，其中两个对应于两个MAC地址， 可用于网关交换用，而另外一个NPE网络处理器引擎支持DSL，只要外面再加个PHY芯片即可以实现DSL上网功能。IXP系列最高主频可以达到 1.8G，支持2G内存，1G×10或10G×1的以太网口或Febre channel的光通道。IXP系列应该是目标基于ARM体系统结构下由intel进行整合后成Xscale内核的最高的处理器了。</p>
+<h3 id="从软件上说">从软件上说</h3>
+<p>嵌入就是在定制操作系统内核里将应用一并选入，编译后将内核下载到ROM中。而在定制操作系统内核时所选择的应用程序组 件就是完成了软件的“嵌入”，比如Win在内核定制时，会有相应选择，其中就是wordpad,PDF,MediaPlay等等选择，如果我们选择 了，在CE启动后，就可以在界面中找到这些东西，如果是以前PC上将的windows操作系统，多半的东西都需要我们得新再装。</p>
+<p>把软件内核或应用文件系统等东西烧到嵌入式系统硬件平台中的ROM中就实现了一个真正的“嵌入”。</p>
+<p>以上的定义是我在6、7年前给嵌入式系统下自话侧重于理解型的定义，书上的定义也有很多，但在“嵌入式”这个领域范围内，谁都不敢说自己的定义是十分确切的，包括那些专家学者们，历为毕竟嵌入式系统是计算机范畴下的一门综合性学科。</p>
+<h2 id="嵌入式系统的分层">嵌入式系统的分层</h2>
+<p>嵌入式系统分为4层，硬件层、驱动层、操作系统层和应用层。</p>
+<h3 id="硬件层">硬件层</h3>
+<p>硬件层是整个嵌入式系统的根本，如果现在单片机及接口这块很熟悉，并且能用C和汇编语言来编程的话，从嵌入式系统的硬件层走起来相对容易，硬件层也是驱动层的基础，一个优秀的驱动工程师是要能够看懂硬件的电路图和自行完成CPLD的逻辑设计的，同时还要对操作系统内核及其调度性相当的熟悉的。但硬件平台是基础，增值还要靠软件。</p>
+<p>硬件层比较适合于，电子、通信、自动化、机电一体、信息工程类专业的人来搞，需要掌握的专业基础知识有，单片机原理及接口_技术、微机原理及接口_技术、C语言。</p>
+<h3 id="驱动层">驱动层</h3>
+<p>驱动层这部分比较难，驱动工程师不仅要能看懂电路图还要能对操作系统内核十分的精通，以便其所写的驱动程序在系统调用时，不会独占操作系统时间片，而导致其它任务不能动行，不懂操作系统内核架构和实时调度性，没有良好的驱动编写风格，按大多数书上所说添加的驱动的方式，很多人都能做到，但可能连个初级的 驱动工程师的水平都达不到，这样所写的驱动在应用调用时就如同windows下我们打开一个程序运行后，再打开一个程序时，要不就是中断以前的程序，要不就是等上一会才能运行后来打开的程序。想做个好的驱动人员没有三、四年功底，操作系统内核不研究上几编，不是太容易成功的，但其工资在嵌入式系统四层中可 是最高的。</p>
+<p>嵌入式的驱动层比较适合于电子、通信、自动化、机电一体、信息工程类专业尤其是计算机偏体系结构类专业的人来搞，除硬件层所具备的基础学科外，还要对数据结构与算法、操作系统原理、编译原理都要十分精通了解。</p>
+<h3 id="操作系统层">操作系统层</h3>
+<p>对于操作系统层目前可能只能说是简单的移植，而很少有人来自已写操作系统，或者写出缺胳膊少腿的操作系统来，这部分工作大都由驱动工程师来完成。操作系统是负责系统任务的调试、磁盘和文件的管理，而嵌入式系统的实时性十分重要。据说，XP操作系统是微软投入300人用两年时间才搞定的，总时工时是600人年，中科院软件所自己的女娲Hopen操作系统估计也得花遇几百人年才能搞定。因此这部分工作相对来讲没有太大意义。</p>
+<h3 id="应用层">应用层</h3>
+<p>应用层相对来讲较为容易的，如果会在windows下如何进行编程接口函数调用，到操作系统下只是编译和开发环 境有相应的变化而已。如果涉及Jave方面的编程也是如此的。嵌入式系统中涉及算法的由专业算法的人来处理的，不必归结到嵌入式系统范畴内。但如果涉及嵌 入式系统下面嵌入式数据库、基于嵌入式系统的网络编程和基于某此应用层面的协议应用开发(比如基于SIP、H.323、Astrisk)方面又较为复杂， 并且有难度了。</p>
+<h2 id="从哪里入手嵌入式系统">从哪里入手嵌入式系统</h2>
+<h3 id="从硬件上入手arm">从硬件上入手ARM</h3>
+<p>一方面就是学习接口电路设计，另一方面就是学习汇编和C语言的板级编程。如果从软件上讲，就是要学习基于ARM处理器的操作系统层面 的驱动、移植了。这些对于初学都来说必须明确,要么从硬件着手开始学，要么从操作系统的熟悉到应用开始学，但不管学什么，只要不是纯的操作系统级以上基于 API的应用层的编程，硬件的寄存器类的东西还是要能看懂的，基于板级的汇编和C编程还是要会的。因此针对于嵌入式系统的硬件层和驱动程的人，ARM的接 口电路设计、ARM的C语言和汇编语言编程及调试开发环境还是需要掌握的。</p>
+<p>因此对于初学者必然要把握住方向，自己学习嵌入式系统的目标是什么，自己要在那一层面上走。然后再着手学习较好，与ARM相关的嵌入式系统的较为实际的两个层面硬件层和驱动层，不管学好了那一层都会很有前途的。</p>
+<h3 id="从嵌入式系统的应用层如何入手">从嵌入式系统的应用层如何入手</h3>
+<p>可能与ARM及其它体系相去较远，要着重研究基嵌入式操作系统的环境应用与相应开发工具链，比如WinCe操作系统下的EVC应用开发(与windows下的VC相类似)，如果想再有突破就往某些音视频类的协议上靠，比如VOIP领域的基于SIP或H.323协议的应用层开发，或是基于嵌入式网络数据库的开发等等。</p>
+<p>对于初学者来讲，要量力而行，不要认为驱动层工资高就把它当成方向了，要结合自身特点，嵌入式系统四个层面上那个层面上来讲都是有高人存在，当然高人也对应 的高工资，我是做硬件层的，以前每月工资中个人所得税要被扣上近3千大元，当然我一方面充当工程师的角色，一方面充当主管及人物的角色，两个职位我一个人 干，但上班时间就那些。硬件这方面上可能与我PK的人很少了，才让我拿到那么多的工资。</p>
+<h3 id="芯片的选择">芯片的选择</h3>
+<p>很多ARM初学者都希望有一套自己能用的系统，但他们住住会产生一种错误认识就是认为处理器版本越高、性能越高越好，就象很多人认为ARM9与ARM7好， 我想对于初学者在此方面以此入门还应该理智，开发系统的选择最终要看自己往嵌入式系统的那个方向上走，是做驱动开发还是应用，还是做嵌入式系统硬件层设计与板级测试。如果想从操作系统层面或应用层面上走，不管是驱动还是应用，那当然处理器性能越高越好了，但嵌入式系统这个东西自学，有十分大的困难，不是几个月或半年 或是一年二年能搞定的事。</p>
+<p>在某种意义上请，ARM7与9的差别就是在某些功能指令集上丰富了些，主频提高一些而已，就比如286和386。对于用户来讲可能觉查不到什么，只能是感觉速度有些快而已。</p>
+<p>ARM7比较适合于那些想从硬件层面上走的人，因为ARM7系列处理器内部带MMU的很少，而且比较好控制，就比如S3C44B0来讲，可以很容易将 Cache关了，而且内部接口寄存器很容易看明白，各种接口对于用硬件程序控制或AXD单步命令行指令都可以控制起来，基于51单片机的思想很容易能把他 搞懂，就当成个32位的单片机，从而消除很多51工程师想转为嵌入式系统硬件ARM开发工程师的困惑，从而不会被业界某此不是真正懂嵌入式烂公司带到操作 系统层面上去，让他们望而失畏，让业界更加缺少这方面的人才。</p>
+<p>而嵌入式系统不管硬件设计还是软件驱动方面都是十分注重接口这部分的，选择平台还要考察一个处理器的外部资源，你接触外部资源越多，越熟悉他们那你以后就业成功的机率就越高，这就是招聘时 所说的有无“相关技能”，因为一个人不可能在短短几年内把所有的处理器都接触一遍，而招聘单位所用的处理器就可能是我们完全没有见过的，就拿台湾数十家小公司(市价几千万)的公司生产的ARM类处理器，也很好用，但这些东西通用性太差，用这些处理器的公司就只能招有相关工作经验的人了，那什么是相关工作经 验，在硬件上讲的是外围接口设计，在软件上讲是操作系统方面相关接口驱动及应用开发经验。我从业近十年，2000年ARM出现，我一天始做ARM7,然后 直接跑到了Xscale(这个板本在ARM10-11之间)，一做就是五年，招人面试都不下数百人，在这些方面还是深有体会的。</p>
+<p>开发系统的选择，要看自己的未来从来目标方向、要看开发板接口资源、还要看业界的通用性。</p>
+<h3 id="成为高级嵌入式系统硬件工程师要具备的技能">成为高级嵌入式系统硬件工程师要具备的技能</h3>
+<p>就单纯信号来分为数字和模拟，模拟比较难搞，一般需要很长的经验积累，单单一个阻值或容值的精度不够就可能使信号偏差很大。因此年轻人搞的较少，随着技术的发展，出现了模拟电路数字化，比如手机的Modem射频模块，都采用成熟的套片，而当年国际上只有两家公司有此技术，自我感觉模拟功能不太强的人，不太适合搞这个，如果真能搞定到手机的射频模块，只要达到一般程度可能月薪都在15K以上。</p>
+<p>一个优秀的硬件工程师应该能够在没有参考方案的前提下设计出一个在成本和性能上更加优秀的产品，靠现有的方案，也要进行适当的可行性裁剪，但不是胡乱的来，我遇到一个工程师把方案中的5V变1.8V的DC芯片，直接更换成LDO，有时就会把CPU烧上几个。</p>
+<p>高级硬件件工程师技术技能都要具备那些东西哪，首先要掌握EDA设计的辅助工具类如Protel、ORCAD、PowperPCB、Maplux2、ISE、VDHL语言，要能用到这些工具画图画板做逻辑设计，再有就是接口设计审图能力，再者就是调试能力，如果能走到总体方案设计这块，那就基本上快成为资深工程师了。硬件是要靠经验，也要靠积累的，十年磨一剑，百年磨一针。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -509,17 +463,11 @@
 
 <div class="post-tags">
   
-    <a href="/tags/network">
-    Network
+    <a href="/tags/stm32">
+    STM32
   </a>
-    <a href="/tags/linux">
-    Linux
-  </a>
-    <a href="/tags/soc">
-    SOC
-  </a>
-    <a href="/tags/mac">
-    MAC
+    <a href="/tags/mcu">
+    MCU
   </a>
 </div>
 
@@ -547,7 +495,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      嵌入式网络接口该怎么设计
+      十年经验的大神谈如何学STM32嵌入式开发
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -555,7 +503,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html" title="嵌入式网络接口该怎么设计">https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html" title="十年经验的大神谈如何学STM32嵌入式开发">https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -580,13 +528,13 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/Slackware-Linux-30th-anniversary.html" rel="next" title="最古老的Linux之一：活了30年仍在运行">
-      <i class="fa fa-chevron-left"></i> 最古老的Linux之一：活了30年仍在运行
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
     </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/linux/beautiful-linux-shell.html" rel="prev" title="Linux 超级漂亮的 Shell">
-      Linux 超级漂亮的 Shell
+    <a href="/post/mcu/how-to-select-stm32.html" rel="prev" title="STM32怎么选型">
+      STM32怎么选型
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>

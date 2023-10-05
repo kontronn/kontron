@@ -8,41 +8,46 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/mcu/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/mcu/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/stm32/</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</loc>
-    <lastmod>2023-10-02T14:54:47+08:00</lastmod>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</loc>
+    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</loc>
     <lastmod>2023-10-02T14:54:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
