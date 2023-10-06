@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Oct 2023 13:21:08 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Oct 2023 17:23:54 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PCB</title>
+      <link>https://www.kontronn.com/tags/pcb/</link>
+      <pubDate>Fri, 06 Oct 2023 17:23:54 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/pcb/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Analyzer</title>
       <link>https://www.kontronn.com/tags/analyzer/</link>
@@ -490,15 +499,6 @@
       <pubDate>Mon, 24 Jul 2023 01:32:49 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/layout/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PCB</title>
-      <link>https://www.kontronn.com/tags/pcb/</link>
-      <pubDate>Mon, 24 Jul 2023 01:32:49 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/pcb/</guid>
       <description></description>
     </item>
     
