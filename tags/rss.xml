@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Oct 2023 16:15:55 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Oct 2023 11:39:39 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IIC</title>
+      <link>https://www.kontronn.com/tags/iic/</link>
+      <pubDate>Fri, 06 Oct 2023 11:39:39 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/iic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IIS</title>
+      <link>https://www.kontronn.com/tags/iis/</link>
+      <pubDate>Fri, 06 Oct 2023 11:39:39 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/iis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SPI</title>
+      <link>https://www.kontronn.com/tags/spi/</link>
+      <pubDate>Fri, 06 Oct 2023 11:39:39 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/spi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UART</title>
+      <link>https://www.kontronn.com/tags/uart/</link>
+      <pubDate>Fri, 06 Oct 2023 11:39:39 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/uart/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>MCU</title>
       <link>https://www.kontronn.com/tags/mcu/</link>
@@ -575,15 +611,6 @@
     </item>
     
     <item>
-      <title>UART</title>
-      <link>https://www.kontronn.com/tags/uart/</link>
-      <pubDate>Thu, 13 Jul 2023 11:28:21 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/uart/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Microsemi</title>
       <link>https://www.kontronn.com/tags/microsemi/</link>
       <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
@@ -796,15 +823,6 @@
       <pubDate>Thu, 22 Jun 2023 11:11:12 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/mmap/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SPI</title>
-      <link>https://www.kontronn.com/tags/spi/</link>
-      <pubDate>Wed, 21 Jun 2023 23:42:52 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/spi/</guid>
       <description></description>
     </item>
     

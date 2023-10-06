@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IIC on Kontronn</title>
+    <link>https://www.kontronn.com/tags/iic/</link>
+    <description>Recent content in IIC on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 06 Oct 2023 11:39:39 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/iic/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>常见总线：IIC、IIS、SPI、UART、JTAG、CAN、SDIO、GPIO</title>
+      <link>https://www.kontronn.com/post/hardware/usual-bus-protocol-introduction.html</link>
+      <pubDate>Fri, 06 Oct 2023 11:39:39 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/usual-bus-protocol-introduction.html</guid>
+      <description>本文介绍了常见的总线：IIC、IIS、SPI、UART、JTAG、CAN、SDIO、GPIO。
+IIC IIC(Inter－Integrated Circuit)总线是一种由PHILIPS公司开发的两线式串行总线，用于连接微控制器及其外围设备。I2C总线用两条线(SDA和SCL)在总线和装置之间传递信息，在微控制器和外部设备之间进行串行通讯或在主设备和从设备之间的双向数据传送。I2C是OD输出的，大部分I2C都是2线的（时钟和数据），一般用来传输控制信号。
+IIS I2S（Inter-IC Sound Bus）是飞利浦公司为数字音频设备之间的音频数据传输而制定的一种总线标准。I2S有3个主要信号：1.串行时钟SCLK，也叫位时钟，即对应数字音频的每一位数据，SCLK有1个脉冲。2.帧时钟LRCK，用于切换左右声道的数据。LRCK为“1”表示正在传输的是左声道的数据，为“0”则表示正在传输的是右声道的数据。3.串行数据SDATA，就是用二进制补码表示的音频数据。有时为了使系统间能够更好地同步，还需要另外传输一个信号MCLK，称为主时钟，也叫系统时钟（Sys Clock）。
+SPI SPI(Serial Peripheral Interface：串行外设接口);SPI是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在EEPROM,FLASH,实时时钟,AD转换器,还有数字信号处理器和数字信号解码器之间。SPI接口是以主从方式工作的,这种模式通常有一个主器件和一个或多个从器件,其接口包括以下四种信号：（1）MOSI – 主器件数据输出,从器件数据输入 （2）MISO – 主器件数据输入,从器件数据输出 （3）SCLK – 时钟信号,由主器件产生（4）/SS – 从器件使能信号,由主器件控制。
+UART UART(Universal Asynchronous Receiver Transmitter：通用异步收发器)。将由计算机内部传送过来的并行数据转换为输出的串行数据流。将计算机外部来的串行数据转换为字节，供计算机内部使用并行数据的器件使用。在输出的串行数据流中加入奇偶校验位，并对从外部接收的数据流进行奇偶校验。在输出数据流中加入启停标记，并从接收数据流中删除启停标记。处理由键盘或鼠标发出的中断信号（键盘和鼠标也是串行设备）。可以处理计算机与外部串行设备的同步管理问题。有一些比较高档的UART还提供输入输出数据的缓冲区。常用TXD，RXD，/RTS，/CTS。
+JTAG JTAG (Joint Test Action Group 联合测试行动小组)是一种国际标准测试协议（IEEE1149.1兼容），主要用于芯片内部测试。标准的JTAG接口是4线：TMS、TCK、TDI、TDO，分别为模式选择、时钟、数据输入和数据输出线。测试复位信号(TRST,一般以低电平有效)一般作为可选的第五个端口信号。一个含有JTAGDebug接口模块的CPU，只要时钟正常，就可以通过JTAG接口访问CPU的内部寄存器和挂在CPU总线上的设备，如FLASH，RAM，内置模块的寄存器，象UART，Timers，GPIO等等的寄存器。
+CAN CAN全称为“Controller Area Network”，即控制器局域网，是国际上应用最广泛的现场总线之一。最初，CAN被设计作为汽车环境中的微控制器通讯，在车载各电子控制装置ECU之 间交换信息，形成汽车电子控制网络。比如：发动机管理系统、变速箱控制器、仪表装备、电子主干系统中，均嵌入CAN控制装置。一个由CAN总线构成的单一网络中，理论上可以挂接无数个节点。实际应用中，节点数目受网络硬件的电气特性所限制。例如，当使用Philips P82C250作为CAN收发器时，同一网络中允许挂接110个节点。CAN 可提供高达1Mbit/s的数据传输速率，这使实时控制变得非常容易。另外，硬件的错误检定特性也增强了CAN的抗电磁干扰能力。
+SDIO SDIO是SD型的扩展接口，除了可以接SD卡外，还可以接支持SDIO接口的设备，插口的用途不止是插存储卡。支持 SDIO接口的PDA，笔记本电脑等都可以连接象GPS接收器，Wi-Fi或蓝牙适配器，调制解调器，局域网适配器，条型码读取器，FM无线电，电视接收 器，射频身份认证读取器，或者数码相机等等采用SD标准接口的设备。
+GPIO GPIO (General Purpose Input Output 通用输入/输出)或总线扩展器利用工业标准I²C、SMBus™或SPI™接口简化了I/O口的扩展。当微控制器或芯片组没有足够的I/O端口，或当系统 需要采用远端串行通信或控制时，GPIO产品能够提供额外的控制和监视功能。
+每个GPIO端口可通过软件分别配置成输入或输出。</description>
+    </item>
+    
+  </channel>
+</rss>

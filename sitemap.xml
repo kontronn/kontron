@@ -8,12 +8,52 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/iic/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/iis/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/spi/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/uart/</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/usual-bus-protocol-introduction.html</loc>
+    <lastmod>2023-10-06T11:39:39+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -27,17 +67,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/stm32/</loc>
-    <lastmod>2023-10-05T16:15:55+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2023-10-05T16:15:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -302,11 +332,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2023-08-06T00:17:14-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/sdram/</loc>
     <lastmod>2023-08-06T00:17:14-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -537,11 +562,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/uart/</loc>
-    <lastmod>2023-07-13T11:28:21-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/post/fpga/5-ultra-powerful-fpga-development-boards.html</loc>
     <lastmod>2023-07-11T13:13:48-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -733,11 +753,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html</loc>
-    <lastmod>2023-06-21T23:42:52-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/spi/</loc>
     <lastmod>2023-06-21T23:42:52-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
