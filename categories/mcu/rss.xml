@@ -6,7 +6,16 @@
     <description>Recent content in MCU on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Oct 2023 16:15:55 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Oct 2023 17:52:20 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32单片机开发中的RTOS</title>
+      <link>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</link>
+      <pubDate>Sat, 07 Oct 2023 17:52:20 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</guid>
+      <description>&lt;p&gt;很多STM32单片机初学者都是从裸机开始的，裸机确实也能开发出好的产品。但是，作为一个嵌入式软件工程师，况且用的并不是51那种低端单片机，如果只会用裸机开发产品，那肯定是不够的。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>十年经验的大神谈如何学STM32嵌入式开发</title>
       <link>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</link>

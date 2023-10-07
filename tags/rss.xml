@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Oct 2023 17:23:54 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Oct 2023 17:52:20 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RTSO</title>
+      <link>https://www.kontronn.com/tags/rtso/</link>
+      <pubDate>Sat, 07 Oct 2023 17:52:20 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/rtso/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>STM32</title>
+      <link>https://www.kontronn.com/tags/stm32/</link>
+      <pubDate>Sat, 07 Oct 2023 17:52:20 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/stm32/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>PCB</title>
       <link>https://www.kontronn.com/tags/pcb/</link>
@@ -103,15 +121,6 @@
       <pubDate>Thu, 05 Oct 2023 16:15:55 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/mcu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>STM32</title>
-      <link>https://www.kontronn.com/tags/stm32/</link>
-      <pubDate>Thu, 05 Oct 2023 16:15:55 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/stm32/</guid>
       <description></description>
     </item>
     
