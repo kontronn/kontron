@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Oct 2023 18:07:14 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Oct 2023 21:07:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Boot</title>
+      <link>https://www.kontronn.com/tags/boot/</link>
+      <pubDate>Sat, 07 Oct 2023 21:07:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NAT Server</title>
+      <link>https://www.kontronn.com/tags/nat-server/</link>
+      <pubDate>Sat, 07 Oct 2023 21:07:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/nat-server/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>C</title>
       <link>https://www.kontronn.com/tags/c/</link>
@@ -688,15 +706,6 @@
       <pubDate>Mon, 10 Jul 2023 09:22:33 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/struct/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Boot</title>
-      <link>https://www.kontronn.com/tags/boot/</link>
-      <pubDate>Sat, 08 Jul 2023 22:28:31 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/boot/</guid>
       <description></description>
     </item>
     
