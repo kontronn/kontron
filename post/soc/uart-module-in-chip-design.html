@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="efuse在soc中的重要作用" />
-<meta itemprop="description" content="efuse在soc中的重要作用" />
+<meta itemprop="name" content="芯片设计中的uart模块" />
+<meta itemprop="description" content="芯片设计中的uart模块" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="SOC,Efuse" />
+<meta itemprop="keywords" content="SOC,UART" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="efuse在soc中的重要作用" />
-<meta property="og:description" content="efuse在soc中的重要作用" />
+<meta property="og:title" content="芯片设计中的uart模块" />
+<meta property="og:description" content="芯片设计中的uart模块" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/hardware/the-important-role-of-efuse-in-soc.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/soc/uart-module-in-chip-design.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-10-06 13:11:10 &#43;0800 CST" />
-<meta property="article:modified_time" content="2023-10-06 13:11:10 &#43;0800 CST" />
+<meta property="article:published_time" content="2023-10-08 22:17:50 &#43;0800 CST" />
+<meta property="article:modified_time" content="2023-10-08 22:17:50 &#43;0800 CST" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"the-important-role-of-efuse-in-soc.html","permalink":"https://www.kontronn.com/post/hardware/the-important-role-of-efuse-in-soc.html","title":"efuse在soc中的重要作用"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"uart-module-in-chip-design.html","permalink":"https://www.kontronn.com/post/soc/uart-module-in-chip-design.html","title":"芯片设计中的uart模块"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>efuse在soc中的重要作用 - Kontronn</title>
+  <title>芯片设计中的uart模块 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -116,7 +116,7 @@
     </li>
     <li class="menu-item menu-item-archives">
       <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">65</span>
+        <span class="badge">66</span>
       </a>
     </li>
     <li class="menu-item menu-item-commonweal">
@@ -175,8 +175,9 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是-efuse">什么是 efuse?</a></li>
-    <li><a href="#efuse-的工作原理是什么">efuse 的工作原理是什么？</a></li>
+    <li><a href="#uart-模块的基本原理">UART 模块的基本原理</a></li>
+    <li><a href="#uart-模块的关键技术">UART 模块的关键技术</a></li>
+    <li><a href="#uart-模块在芯片设计中的应用">UART 模块在芯片设计中的应用</a></li>
   </ul>
 </nav></div>
       </div>
@@ -192,7 +193,7 @@
   <nav class="site-state">
     <div class="site-state-item site-state-posts">
       <a href="/archives/">
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -270,15 +271,15 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="16532"></div>
+      <div class="item-count" id="wordsCount" data-count="16590"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="118"></div>
+      <div class="item-count" id="readTimes" data-times="119"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2023-10-07T21:07:01&#43;08:00"></div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2023-10-08T22:17:50&#43;08:00"></div>
     </div>
   </div>
 </div>
@@ -310,7 +311,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/the-important-role-of-efuse-in-soc.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/soc/uart-module-in-chip-design.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -320,11 +321,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="efuse在soc中的重要作用">
-      <meta itemprop="description" content="efuse在soc中的重要作用">
+      <meta itemprop="name" content="芯片设计中的uart模块">
+      <meta itemprop="description" content="芯片设计中的uart模块">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">efuse在soc中的重要作用 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">芯片设计中的uart模块 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -334,7 +335,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-10-06 13:11:10 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-06 13:11:10 &#43;0800 CST">2023-10-06</time>
+  <time title="发表于：2023-10-08 22:17:50 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-08 22:17:50 &#43;0800 CST">2023-10-08</time>
 </span>
     
     
@@ -356,7 +357,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>82</span>
+  <span class="post-meta-item-text">字数：</span><span>58</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -375,7 +376,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/hardware/the-important-role-of-efuse-in-soc.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/soc/uart-module-in-chip-design.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -387,39 +388,31 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>在现代 SoC 设计中，efuse 是一种非常重要的技术，可以用于保护 SoC 中的敏感信息，防止黑客攻击和未经授权的访问。本文将介绍什么是 efuse，它在 SoC 设计中的应用以及它的优缺点。</p>
-<h2 id="什么是-efuse">什么是 efuse?</h2>
-<p>efuse 是一种可编程的存储器，用于存储 SoC 中的敏感信息，例如密钥、证书、序列号等。与传统的存储器不同，efuse 的编程是一次性的，一旦编程就无法更改。这种特性使得 efuse 非常适合用于存储需要保护的信息，因为它可以防止黑客通过修改存储器中的数据来破解 SoC 的安全性。</p>
-<h2 id="efuse-的工作原理是什么">efuse 的工作原理是什么？</h2>
-<p>efuse 通常由两部分组成：编程器和熔丝。编程器用于将数据编程到熔丝中，而熔丝则用于存储数据。当编程器将数据编程到熔丝中时，它会改变熔丝中的物理结构，从而使其不可更改。一旦熔丝被编程，它将永久保存数据，即使 SoC 失去电源，熔丝中的数据也不会丢失。</p>
-<p>在 SoC 设计中，efuse 通常被用于以下方面：</p>
+  <p>在芯片设计中，UART（Universal Asynchronous Receiver/Transmitter，通用异步接收/发送器）模块是一个非常重要的外设模块。</p>
+<p>UART模块负责处理芯片与外部设备之间的异步串行通信，广泛应用于各种嵌入式系统、微控制器和通信设备中。本文将详细介绍芯片设计中的UART模块及其关键技术。</p>
+<h2 id="uart-模块的基本原理">UART 模块的基本原理</h2>
+<p>UART 模块主要负责实现异步串行通信，它包括一个发送器（TX）和一个接收器（RX）。发送器将内部并行数据转换为串行数据，并按照一定的时序和速率发送到外部设备；接收器则从外部设备接收串行数据，并将其转换为并行数据，供内部系统使用。</p>
+<p>UART 模块的工作原理如下：</p>
 <ol>
-<li>
-<p>存储加密密钥：在许多安全应用中，加密密钥是必须保护的信息。使用 efuse 可以确保密钥不会被黑客访问或修改。</p>
-</li>
-<li>
-<p>存储序列号：每个 SoC 都有一个唯一的序列号，用于标识 SoC。使用 efuse 可以确保序列号不会被修改或伪造。</p>
-</li>
-<li>
-<p>存储证书：在安全应用中，证书用于验证 SoC 的身份。使用 efuse 可以确保证书不会被黑客攻击或修改。</p>
-</li>
-<li>
-<p>存储配置信息：efuse 还可以用于存储 SoC 的配置信息，例如 CPU 频率、内存大小等。这些信息可以在 SoC 启动时被读取，并根据需要进行更改。</p>
-</li>
+<li>并行数据输入：将内部并行数据输入到 UART 模块。</li>
+<li>数据位处理：UART 模块将并行数据的每个位进行处理，如添加起始位、数据位、校验位等。</li>
+<li>串行发送：将处理后的数据位按照一定的时序和速率发送给外部设备。</li>
+<li>串行接收：从外部设备接收串行数据，并将其转换为并行数据。</li>
+<li>数据位处理：UART 模块对接收到的并行数据进行处理，如校验位、数据位、停止位等。</li>
+<li>并行数据输出：将处理后的并行数据输出到内部系统。</li>
 </ol>
-<p>尽管 efuse 在 SoC 设计中非常有用，但它也有一些缺点：</p>
+<h2 id="uart-模块的关键技术">UART 模块的关键技术</h2>
 <ol>
-<li>
-<p>一次性编程：由于 efuse 是一次性编程的，因此如果在编程过程中出现错误，则必须丢弃整个 SoC。</p>
-</li>
-<li>
-<p>成本：efuse 通常比传统的存储器更昂贵，因此可能会增加 SoC 的成本。</p>
-</li>
-<li>
-<p>安全性：尽管 efuse 可以保护 SoC 中的敏感信息，但它本身也可能受到攻击。例如，黑客可以使用高功率的激光器来擦除 efuse 中的数据，或者使用特殊的攻击技术来破解 efuse 的安全性。</p>
-</li>
+<li>数据位：UART 模块支持不同的数据位，如 5 位、6 位、7 位或 8 位。数据位决定了通信速率和传输效率。</li>
+<li>停止位：UART 模块支持不同的停止位，如 1 位、2 位或 3 位。停止位用于标识一个数据帧的结束。</li>
+<li>校验位：UART 模块支持不同的校验位，如奇校验、偶校验、高位校验等。校验位用于检测数据传输过程中的错误。</li>
+<li>波特率：波特率是指每秒钟传输的位数，它决定了通信速率。UART 模块需要根据外部设备的波特率进行配置。</li>
+<li>中断处理：UART 模块支持中断处理，如接收中断、发送中断等。中断处理可以提高系统的实时性和响应速度。</li>
+<li>双向通信：UART 模块支持双向通信，既可以发送数据，也可以接收数据。</li>
 </ol>
-<p>在现代 SoC 设计中，efuse 是一种非常重要的技术，可以保护 SoC 中的敏感信息，防止黑客攻击和未经授权的访问。尽管它有一些缺点，但它仍然是一个非常有用的工具，可以用于保护 SoC 的安全性。</p>
+<h2 id="uart-模块在芯片设计中的应用">UART 模块在芯片设计中的应用</h2>
+<p>在芯片设计中，UART 模块广泛应用于各种嵌入式系统、微控制器和通信设备中。例如，在智能手机、平板电脑、路由器等设备中，UART 模块用于与外部传感器、显示器、Modem 等设备进行通信。此外，UART 模块还可以与其他通信接口（如 I2C、SPI、CAN 等）配合使用，实现更丰富的功能。</p>
+<p>UART 模块是芯片设计中的一个重要外设模块，它负责处理异步串行通信。通过掌握 UART 模块的基本原理和关键技术，设计人员可以为芯片提供高效、可靠的通信功能。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -442,8 +435,8 @@
     <a href="/tags/soc">
     SOC
   </a>
-    <a href="/tags/efuse">
-    Efuse
+    <a href="/tags/uart">
+    UART
   </a>
 </div>
 
@@ -471,7 +464,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      efuse在soc中的重要作用
+      芯片设计中的uart模块
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -479,7 +472,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/the-important-role-of-efuse-in-soc.html" title="efuse在soc中的重要作用">https://www.kontronn.com/post/hardware/the-important-role-of-efuse-in-soc.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/soc/uart-module-in-chip-design.html" title="芯片设计中的uart模块">https://www.kontronn.com/post/soc/uart-module-in-chip-design.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -504,13 +497,13 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html" rel="next" title="用协议分析仪直观理解USB传输的核心概念">
-      <i class="fa fa-chevron-left"></i> 用协议分析仪直观理解USB传输的核心概念
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
     </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/hardware/understand-the-importance-and-feature-of-inductors.html" rel="prev" title="认识电感器的重要作用与特性">
-      认识电感器的重要作用与特性
+    <a href="/post/linux/NAT-server-how-to.html" rel="prev" title="通过NAT Server从内网向外网提供服务">
+      通过NAT Server从内网向外网提供服务
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>
