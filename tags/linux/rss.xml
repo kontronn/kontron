@@ -43,5 +43,14 @@
       <description>&lt;p&gt;SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Linux内存管理 | ioremap</title>
+      <link>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</link>
+      <pubDate>Wed, 21 Jun 2023 23:42:52 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</guid>
+      <description>&lt;p&gt;ioremap是Linux内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

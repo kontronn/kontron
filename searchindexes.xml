@@ -2169,6 +2169,27 @@ void spi_unregister_master(struct spi_master *master) 功能 注销spi控制器�
   </entry>
   
   <entry>
+    <title>Linux内存管理 | ioremap</title>
+    <url>/post/linux/linux-memory-management-ioremap.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Linux</tag>
+      <tag>Memory</tag>
+      <tag>MMU</tag>
+    </tags>
+    <content type="html"><![CDATA[ioremap是Linux内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。
+ioremap的用法 ioremap函数接受两个参数：映射的起始物理地址和映射的内存区域大小，函数返回一个void类型的指针（虚拟地址）。
+void __iomem *addr = ioremap(phys_addr, size); 通过ioremap函数返回的指针，内核就可以访问这片映射的物理区域。
+u32 val = readl(addr); val |= (0x1 &lt;&lt; ENABLE_SHIFT); writel(val, addr); 操作完毕后，可以释放映射。
+iounmap(addr); ioremap的内部实现 和之前讲过的其他内存分配函数类似，ioremap首先要找到一段空闲的虚拟地址区域，然后建立虚拟地址到物理地址的映射。
+ioremap() 的虚拟地址从 vmalloc 区分配，这一点与vmalloc函数的实现一致。
+area = get_vm_area_caller(size, VM_IOREMAP, caller); 然后通过修改内核页表的方式将其映射到 I/O 地址空间。
+err = ioremap_page_range(addr, addr + size, phys_addr, prot); 与 vmalloc() 不同的是，ioremap() 并不需要通过伙伴系统去分配物理页，因为ioremap() 要映射的目标地址是IO地址，不是物理内存。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>什么是 nftables ? 它与 iptables 的区别是什么？</title>
     <url>/post/linux/difference-between-nftables-and-iptables.html</url>
     <categories><category>Linux</category>
