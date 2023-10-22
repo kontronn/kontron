@@ -6,7 +6,20 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Oct 2023 21:07:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Oct 2023 10:10:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux内存管理 | ioremap</title>
+      <link>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</link>
+      <pubDate>Sun, 22 Oct 2023 10:10:37 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</guid>
+      <description>&lt;p&gt;ioremap是
+&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>通过NAT Server从内网向外网提供服务</title>
       <link>https://www.kontronn.com/post/linux/NAT-server-how-to.html</link>
@@ -166,19 +179,6 @@
       
       <guid>https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html</guid>
       <description>&lt;p&gt;SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Linux内存管理 | ioremap</title>
-      <link>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</link>
-      <pubDate>Wed, 21 Jun 2023 23:42:52 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/post/linux/linux-memory-management-ioremap.html</guid>
-      <description>&lt;p&gt;ioremap是
-&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Linux
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。&lt;/p&gt;</description>
     </item>
     
     <item>
