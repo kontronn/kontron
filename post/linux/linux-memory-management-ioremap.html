@@ -270,7 +270,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="16640"></div>
+      <div class="item-count" id="wordsCount" data-count="16642"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -356,7 +356,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>50</span>
+  <span class="post-meta-item-text">字数：</span><span>52</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -387,7 +387,11 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>ioremap是Linux内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。</p>
+  <p>ioremap是
+<a href="https://www.gaitpu.com/category/os/linux" title="Linux" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Linux
+    <i class="fa fa-external-link-alt"></i>
+</a>内核中用于将IO物理地址映射到内核虚拟地址空间的函数，对于搭载Linux内核的ARM芯片来说，它通常用于访问芯片内部的寄存器。</p>
 <h2 id="ioremap的用法">ioremap的用法</h2>
 <p>ioremap函数接受两个参数：映射的起始物理地址和映射的内存区域大小，函数返回一个void类型的指针（虚拟地址）。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> __iomem <span style="color:#f92672">*</span>addr <span style="color:#f92672">=</span> ioremap(phys_addr, size);
