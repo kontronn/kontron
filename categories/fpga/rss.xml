@@ -6,7 +6,16 @@
     <description>Recent content in FPGA on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 08 Aug 2023 04:48:07 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/fpga/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Nov 2023 17:40:31 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/fpga/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>芯片设计中的DRAM</title>
+      <link>https://www.kontronn.com/post/fpga/DRAM-in-chip-design.html</link>
+      <pubDate>Mon, 06 Nov 2023 17:40:31 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/fpga/DRAM-in-chip-design.html</guid>
+      <description>&lt;p&gt;本文将介绍芯片设计中动态随机存取存储器（DRAM）的相关知识，包括其工作原理、分类以及在现代电子设备中的应用。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>FPGA时序约束--实战篇</title>
       <link>https://www.kontronn.com/post/fpga/fpga-timing-constraints.html</link>
