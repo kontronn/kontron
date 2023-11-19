@@ -6,7 +6,20 @@
     <description>Recent content in MCU on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Oct 2023 17:52:20 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 12:22:45 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式高级工程师10年经验总结</title>
+      <link>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</link>
+      <pubDate>Sun, 19 Nov 2023 12:22:45 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</guid>
+      <description>&lt;p&gt;本文是一位
+&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;嵌入式&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    嵌入式
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;高级工程师对10年工作经验的总结。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>STM32单片机开发中的RTOS</title>
       <link>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</link>
