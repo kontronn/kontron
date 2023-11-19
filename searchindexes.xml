@@ -16,6 +16,25 @@
   </entry>
   
   <entry>
+    <title>AMD下一代处理器进化！正式迈入3nm，混合使用三星4nm工艺</title>
+    <url>/post/soc/amd-next-generation-chips-will-use-3nm-and-4nm-manufacture-technology.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>CPU</tag>
+      <tag>GPU</tag>
+    </tags>
+    <content type="html"><![CDATA[ AMD  这几年的处理器和GPU芯片一直和台积电有着积极的合作，处理器和显卡都已经用上了台积电的5nm工艺。而从最新的报道来看，在下一代处理器，AMD很可能用上台积电的3nm工艺，不过具体是不是Zen 5现在还要打上一个问号，目前来看更大可能是Zen 5C这样的小核心会用上台积电最新的先进工艺。
+事实上在之前的AMD路线图中，在下一代Zen 5架构的处理器中，就已经明确表示有Zen 5和Zen 5C，就和当下有Zen 4以及Zen 4C两种架构一样。两者在IP架构部分其实区别并不大，只是规模和尺寸大小，功能部分其实差异不多，和Intel的大小核设计区别还是很大的。而在最新的了解的AMD下一代处理器IP所运用的制程技术中，则包括了台积电N3制程及三星4nm制程，这多少暴露了AMD的设计思路。
+过去AMD的路线图中，明确表示Zen 5和Zen 5C会使用4nm和3nm的制程，Zen 5明年就要发布，我们认为赶上台积电N3工艺的可能性不是太大，目前台积电主要是为苹果生产3nm的芯片。所以更可能是Zen 5采用台积电4nm工艺，而更晚发布对能耗要求更高的Zen 5C才会用上台积电的3nm工艺。
+先前就有传言表示，AMD在寻求和三星的合作，或许会把部分产能交给三星代工运用其4nm制程技术，但具体规模仍不确定。不过AMD不太可能让三星4nm代工任何重要的IP，所以或许会利用三星4nm进行试产或代工特定I/O晶片。如果是这样，那么未来Zen 5C的主芯片还是采用台积电的3nm，而I/O芯片则会使用三星4nm，类似于目前RDNA 3的设计。
+除此之外，Zen 4架构代号为Persephone、Zen 5代号为Nirvana、Zen 6代号为Morpheus。Zen4C代号为Dionysus，而Zen 5C代号则是Prometheus。AMD的Zen 5及Zen 5C核心架构是2024~2025年的重头戏，将运用于代号为Strix Point的笔记本处理器、Granite Ridge的桌机处理器）及Turin服务器处理器等系列的产品上。
+无论如何，明年我们会看到Intel和AMD在工艺上的双双进步，Intel的桌面处理器会进入到Intel 4时代，实际也就是Intel自己的7nm工艺；而AMD的新品则会在台积电4nm和3nm之间，届时两家公司的产品在性能部分相信都会有新的进展。而对于AMD用户的好消息是，至少内存和主板都不用更换，就能升级到新一代处理器上！
+]]></content>
+  </entry>
+  
+  <entry>
     <title>嵌入式高级工程师10年经验总结</title>
     <url>/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</url>
     <categories><category>MCU</category>

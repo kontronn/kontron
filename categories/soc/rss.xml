@@ -6,7 +6,20 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Oct 2023 20:55:44 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 13:17:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD下一代处理器进化！正式迈入3nm，混合使用三星4nm工艺</title>
+      <link>https://www.kontronn.com/post/soc/amd-next-generation-chips-will-use-3nm-and-4nm-manufacture-technology.html</link>
+      <pubDate>Sun, 19 Nov 2023 13:17:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/amd-next-generation-chips-will-use-3nm-and-4nm-manufacture-technology.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    AMD
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;这几年的处理器和GPU芯片一直和台积电有着积极的合作，处理器和显卡都已经用上了台积电的5nm工艺。而从最新的报道来看，在下一代处理器，AMD很可能用上台积电的3nm工艺，不过具体是不是Zen 5现在还要打上一个问号，目前来看更大可能是Zen 5C这样的小核心会用上台积电最新的先进工艺。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>梳理STM32芯片的内部架构</title>
       <link>https://www.kontronn.com/post/soc/STM32-chip-internal-architecture.html</link>

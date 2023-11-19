@@ -7,8 +7,48 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/amd/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/soc/amd-next-generation-chips-will-use-3nm-and-4nm-manufacture-technology.html</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-11-19T12:22:45+08:00</lastmod>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/cpu/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/gpu/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/soc/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -17,22 +57,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-11-19T12:22:45+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/mcu/</loc>
-    <lastmod>2023-11-19T12:22:45+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-11-19T12:22:45+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2023-11-19T12:22:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -63,11 +88,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/soc/</loc>
-    <lastmod>2023-10-22T20:55:44+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/soc/</loc>
     <lastmod>2023-10-22T20:55:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -414,11 +434,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html</loc>
     <lastmod>2023-08-07T12:49:40-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/amd/</loc>
-    <lastmod>2023-08-07T12:26:33-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -829,11 +844,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/mcu/basic-concept-of-micro-processor-unit.html</loc>
     <lastmod>2023-06-23T08:19:59-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/cpu/</loc>
-    <lastmod>2023-06-23T08:13:55-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

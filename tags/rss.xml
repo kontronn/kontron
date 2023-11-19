@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 12:22:45 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 13:17:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD</title>
+      <link>https://www.kontronn.com/tags/amd/</link>
+      <pubDate>Sun, 19 Nov 2023 13:17:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/amd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CPU</title>
+      <link>https://www.kontronn.com/tags/cpu/</link>
+      <pubDate>Sun, 19 Nov 2023 13:17:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/cpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GPU</title>
+      <link>https://www.kontronn.com/tags/gpu/</link>
+      <pubDate>Sun, 19 Nov 2023 13:17:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/gpu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Embedded</title>
       <link>https://www.kontronn.com/tags/embedded/</link>
@@ -400,15 +427,6 @@
       <pubDate>Mon, 07 Aug 2023 12:49:40 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/sqlite3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AMD</title>
-      <link>https://www.kontronn.com/tags/amd/</link>
-      <pubDate>Mon, 07 Aug 2023 12:26:33 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/amd/</guid>
       <description></description>
     </item>
     
@@ -877,15 +895,6 @@
       <pubDate>Fri, 23 Jun 2023 08:19:59 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/rom/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CPU</title>
-      <link>https://www.kontronn.com/tags/cpu/</link>
-      <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/cpu/</guid>
       <description></description>
     </item>
     
