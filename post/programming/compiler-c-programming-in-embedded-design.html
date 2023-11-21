@@ -537,7 +537,7 @@ logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</
 </span><span style="color:#75715e"></span> <span style="color:#75715e">//其他代码
 </span></code></pre></div><p>实际上，这是一个死循环。由于模块A头文件中声明变量TimerCount时漏掉了volatile限定符，在模块B中，变量TimerCount是被当作unsigned int类型变量。由于寄存器速度远快于RAM，编译器在使用非volatile限定变量时是先将变量从RAM中拷贝到寄存器中，如果同一个代码块再次用到该变量，就不再从RAM中拷贝数据而是直接使用之前寄存器备份值。</p>
 <p>代码while(TimerCount&lt;=TIMER_VALUE)中，变量TimerCount仅第一次执行时被使用，之后都是使用的寄存器备份值，而这个寄存器值一直为0，所以程序无限循环。下面的流程图说明了程序使用限定符volatile和不使用volatile的执行过程。</p>
-<p><img src="https://www.vxbus.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
+<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
 <p>为了更容易的理解编译器如何处理volatile限定符，这里给出未使用volatile限定符和使用volatile限定符程序的反汇编代码：</p>
 <ul>
 <li>没有使用关键字volatile，在keil MDK V4.54下编译，默认优化级别，如下所示（注意最后两行）：</li>
@@ -571,7 +571,7 @@ logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</
 <p>ARM架构下的编译器会频繁的使用堆栈，堆栈用于存储函数的返回值、AAPCS规定的必须保护的寄存器以及局部变量，包括局部数组、结构体、联合体和C++的类。默认情况下，堆栈的位置、初始值都是由编译器设置，因此需要对编译器的堆栈有一定了解。</p>
 <p>从堆栈中分配的局部变量的初值是不确定的，因此需要运行时显式初始化该变量。一旦离开局部变量的作用域，这个变量立即被释放，其它代码也就可以使用它，因此堆栈中的一个内存位置可能对应整个程序的多个变量。</p>
 <p>局部变量必须显式初始化，除非你确定知道你要做什么。下面的代码得到的温度值跟预期会有很大差别，因为在使用局部变量sum时，并不能保证它的初值为0。编译器会在第一次运行时清零堆栈区域，这加重了此类Bug的隐蔽性。</p>
-<p><img src="https://www.vxbus.com/imgs/post/embedded-c-compiler-2.png" alt="Embedded Design C Compiler"></p>
+<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-2.png" alt="Embedded Design C Compiler"></p>
 <p>由于一旦程序离开局部变量的作用域即被释放，所以下面代码返回指向局部变量的指针是没有实际意义的，该指针指向的区域可能会被其它程序使用，其值会被改变。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">
  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GetData</span>(<span style="color:#66d9ef">void</span>)  
@@ -585,7 +585,7 @@ logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</
 <p>PC-Lint由Gimpel Software公司开发，可以检查C代码的语法和语义并给出潜在的BUG报告。PC-Lint可以显著降低调试时间。</p>
 <p>目前公司ARM7和Cortex-M3内核多是使用Keil MDK编译器来开发程序，通过简单配置，PC-Lint可以被集成到MDK上，以便更方便的检查代码。MDK已经提供了PC-Lint的配置模板，所以整个配置过程十分简单，Keil MDK开发套件并不包含PC-Lint程序，在此之前，需要预先安装可用的PC-Lint程序，配置过程如下：</p>
 <h4 id="点击菜单tools---set-up-pc-lint">点击菜单Tools&mdash;Set-up PC-Lint…</h4>
-<p><img src="https://www.vxbus.com/imgs/post/embedded-c-compiler-3.png" alt="Embedded Design C Compiler"></p>
+<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-3.png" alt="Embedded Design C Compiler"></p>
 <pre><code>PC-Lint Include Folders：该列表路径下的文件才会被PC-Lint检查，此外，这些路径下的文件内使用#include包含的文件也会被检查；
 
 Lint Executable：指定PC-Lint程序的路径
@@ -752,7 +752,7 @@ ARM映象文件各组成部分在存储系统中的地址有两种：一种是�
 
 其实MDK编译器的输出文件中有一个“工程名.map”文件，里面记录了代码、变量、堆栈的存储位置，通过这个文件，可以查看使用的变量被分配到RAM的哪个位置。要生成这个文件，需要在Options for Targer窗口，Listing标签栏下，勾选Linker Listing前的复选框，如下图所示。
 </code></pre>
-<p><img src="https://www.vxbus.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
+<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
 <h3 id="默认情况下栈被分配到ram的哪个地方">默认情况下，栈被分配到RAM的哪个地方？</h3>
 <pre><code>MDK中，我们只需要在配置文件中定义堆栈大小，编译器会自动在RAM的空闲区域选择一块合适的地方来分配给我们定义的堆栈，这个地方位于RAM的那个地方呢？
 
