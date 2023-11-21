@@ -752,7 +752,7 @@ ARM映象文件各组成部分在存储系统中的地址有两种：一种是�
 
 其实MDK编译器的输出文件中有一个“工程名.map”文件，里面记录了代码、变量、堆栈的存储位置，通过这个文件，可以查看使用的变量被分配到RAM的哪个位置。要生成这个文件，需要在Options for Targer窗口，Listing标签栏下，勾选Linker Listing前的复选框，如下图所示。
 </code></pre>
-<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
+<p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-4.png" alt="Embedded Design C Compiler"></p>
 <h3 id="默认情况下栈被分配到ram的哪个地方">默认情况下，栈被分配到RAM的哪个地方？</h3>
 <pre><code>MDK中，我们只需要在配置文件中定义堆栈大小，编译器会自动在RAM的空闲区域选择一块合适的地方来分配给我们定义的堆栈，这个地方位于RAM的那个地方呢？
 
