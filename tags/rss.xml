@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 22:23:38 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Nov 2023 13:48:03 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://www.kontronn.com/tags/c/</link>
+      <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compiler</title>
+      <link>https://www.kontronn.com/tags/compiler/</link>
+      <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/compiler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embedded design</title>
+      <link>https://www.kontronn.com/tags/embedded-design/</link>
+      <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/embedded-design/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>AMD</title>
       <link>https://www.kontronn.com/tags/amd/</link>
@@ -130,15 +157,6 @@
       <pubDate>Sat, 07 Oct 2023 21:07:01 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/nat-server/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://www.kontronn.com/tags/c/</link>
-      <pubDate>Sat, 07 Oct 2023 18:07:14 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c/</guid>
       <description></description>
     </item>
     

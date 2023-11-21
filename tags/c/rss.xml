@@ -6,7 +6,16 @@
     <description>Recent content in C on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Oct 2023 18:07:14 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Nov 2023 13:48:03 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式开发中的C语言——编译器</title>
+      <link>https://www.kontronn.com/post/programming/compiler-c-programming-in-embedded-design.html</link>
+      <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/compiler-c-programming-in-embedded-design.html</guid>
+      <description>&lt;p&gt;如果你和一个优秀的程序员共事，你会发现他对他使用的工具非常熟悉，就像一个画家了解他的画具一样。&amp;mdash; 比尔.盖茨&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C语言的编译过程</title>
       <link>https://www.kontronn.com/post/programming/the-compile-process-of-c-languageg.html</link>
