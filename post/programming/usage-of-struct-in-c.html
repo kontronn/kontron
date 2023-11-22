@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="efuse在soc中的重要作用" />
-<meta itemprop="description" content="efuse在soc中的重要作用" />
+<meta itemprop="name" content="C语言中结构体struct的用法" />
+<meta itemprop="description" content="C语言中结构体struct的用法" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="SOC,Efuse" />
+<meta itemprop="keywords" content="C,Embedded,Struct" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="efuse在soc中的重要作用" />
-<meta property="og:description" content="efuse在soc中的重要作用" />
+<meta property="og:title" content="C语言中结构体struct的用法" />
+<meta property="og:description" content="C语言中结构体struct的用法" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/programming/usage-of-struct-in-c.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-10-06 13:11:10 &#43;0800 CST" />
-<meta property="article:modified_time" content="2023-10-06 13:11:10 &#43;0800 CST" />
+<meta property="article:published_time" content="2023-11-22 22:51:58 &#43;0800 CST" />
+<meta property="article:modified_time" content="2023-11-22 22:51:58 &#43;0800 CST" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"the-important-role-of-efuse-in-soc.html","permalink":"https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html","title":"efuse在soc中的重要作用"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"usage-of-struct-in-c.html","permalink":"https://www.kontronn.com/post/programming/usage-of-struct-in-c.html","title":"C语言中结构体struct的用法"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>efuse在soc中的重要作用 - Kontronn</title>
+  <title>C语言中结构体struct的用法 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -175,8 +175,11 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#什么是-efuse">什么是 efuse?</a></li>
-    <li><a href="#efuse-的工作原理是什么">efuse 的工作原理是什么？</a></li>
+    <li><a href="#定义结构体变量">定义结构体变量</a></li>
+    <li><a href="#结构体成员的获取与赋值">结构体成员的获取与赋值</a></li>
+    <li><a href="#结构体数组">结构体数组</a></li>
+    <li><a href="#结构体指针">结构体指针</a></li>
+    <li><a href="#位结构">位结构</a></li>
   </ul>
 </nav></div>
       </div>
@@ -310,7 +313,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/usage-of-struct-in-c.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -320,11 +323,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="efuse在soc中的重要作用">
-      <meta itemprop="description" content="efuse在soc中的重要作用">
+      <meta itemprop="name" content="C语言中结构体struct的用法">
+      <meta itemprop="description" content="C语言中结构体struct的用法">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">efuse在soc中的重要作用 </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">C语言中结构体struct的用法 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -334,7 +337,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-10-06 13:11:10 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-06 13:11:10 &#43;0800 CST">2023-10-06</time>
+  <time title="发表于：2023-11-22 22:51:58 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-11-22 22:51:58 &#43;0800 CST">2023-11-22</time>
 </span>
     
     
@@ -344,8 +347,8 @@
   </span>
   <span class="post-meta-item-text">分类于：</span>
   <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/soc" itemprop="url" rel="index">
-      <span itemprop="name">SOC</span>
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
     </a>
   </span>
 </span>
@@ -356,7 +359,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>82</span>
+  <span class="post-meta-item-text">字数：</span><span>236</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -364,7 +367,7 @@
     <i class="far fa-clock"></i>
   </span>
   <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
+  <span>2分钟</span>
 </span>
 
     
@@ -375,7 +378,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/soc/the-important-role-of-efuse-in-soc.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/usage-of-struct-in-c.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -387,39 +390,129 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>在现代 SoC 设计中，efuse 是一种非常重要的技术，可以用于保护 SoC 中的敏感信息，防止黑客攻击和未经授权的访问。本文将介绍什么是 efuse，它在 SoC 设计中的应用以及它的优缺点。</p>
-<h2 id="什么是-efuse">什么是 efuse?</h2>
-<p>efuse 是一种可编程的存储器，用于存储 SoC 中的敏感信息，例如密钥、证书、序列号等。与传统的存储器不同，efuse 的编程是一次性的，一旦编程就无法更改。这种特性使得 efuse 非常适合用于存储需要保护的信息，因为它可以防止黑客通过修改存储器中的数据来破解 SoC 的安全性。</p>
-<h2 id="efuse-的工作原理是什么">efuse 的工作原理是什么？</h2>
-<p>efuse 通常由两部分组成：编程器和熔丝。编程器用于将数据编程到熔丝中，而熔丝则用于存储数据。当编程器将数据编程到熔丝中时，它会改变熔丝中的物理结构，从而使其不可更改。一旦熔丝被编程，它将永久保存数据，即使 SoC 失去电源，熔丝中的数据也不会丢失。</p>
-<p>在 SoC 设计中，efuse 通常被用于以下方面：</p>
-<ol>
-<li>
-<p>存储加密密钥：在许多安全应用中，加密密钥是必须保护的信息。使用 efuse 可以确保密钥不会被黑客访问或修改。</p>
-</li>
-<li>
-<p>存储序列号：每个 SoC 都有一个唯一的序列号，用于标识 SoC。使用 efuse 可以确保序列号不会被修改或伪造。</p>
-</li>
-<li>
-<p>存储证书：在安全应用中，证书用于验证 SoC 的身份。使用 efuse 可以确保证书不会被黑客攻击或修改。</p>
-</li>
-<li>
-<p>存储配置信息：efuse 还可以用于存储 SoC 的配置信息，例如 CPU 频率、内存大小等。这些信息可以在 SoC 启动时被读取，并根据需要进行更改。</p>
-</li>
-</ol>
-<p>尽管 efuse 在 SoC 设计中非常有用，但它也有一些缺点：</p>
-<ol>
-<li>
-<p>一次性编程：由于 efuse 是一次性编程的，因此如果在编程过程中出现错误，则必须丢弃整个 SoC。</p>
-</li>
-<li>
-<p>成本：efuse 通常比传统的存储器更昂贵，因此可能会增加 SoC 的成本。</p>
-</li>
-<li>
-<p>安全性：尽管 efuse 可以保护 SoC 中的敏感信息，但它本身也可能受到攻击。例如，黑客可以使用高功率的激光器来擦除 efuse 中的数据，或者使用特殊的攻击技术来破解 efuse 的安全性。</p>
-</li>
-</ol>
-<p>在现代 SoC 设计中，efuse 是一种非常重要的技术，可以保护 SoC 中的敏感信息，防止黑客攻击和未经授权的访问。尽管它有一些缺点，但它仍然是一个非常有用的工具，可以用于保护 SoC 的安全性。</p>
+  <p>本文简要介绍了c语言中结构体Struct的用法。</p>
+<h2 id="定义结构体变量">定义结构体变量</h2>
+<p>下面举一个例子来说明怎样定义结构体变量。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> string 
+ { 
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+    <span style="color:#66d9ef">int</span> age; 
+    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+ }person;
+</code></pre></div><p>这个例子定义了一个结构名为string的结构体变量person。还可以省略变量名person，做如下定义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> string 
+ { 
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+    <span style="color:#66d9ef">int</span> age; 
+    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+ };  
+ <span style="color:#66d9ef">struct</span> string person;   <span style="color:#75715e">//定义结构名为string的结构体变量person
+</span></code></pre></div><p>定义多个具有相同形式的结构变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> string Liming, Liuqi, ...;
+</code></pre></div><p>有一种结构体常常出现在函数内部，省略结构名，则称之为无名结构，如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> 
+ { 
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+    <span style="color:#66d9ef">int</span> age; 
+    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+ } Liming, Liuqi;
+</code></pre></div><h2 id="结构体成员的获取与赋值">结构体成员的获取与赋值</h2>
+<p>结构是一个新的数据类型，结构成员的表示方式为:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构变量.成员名
+</code></pre></div><p>如果将&quot;结构变量.成员名&quot;看成一个整体，这样就可以像其他变量那样使用。</p>
+<p>下面这个例子定义了一个结构变量stu1，分别给name、age、group赋值，并打印输出。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
+{
+  <span style="color:#66d9ef">struct</span> 
+  {
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;  <span style="color:#75715e">//姓名
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> age;  <span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> group;  <span style="color:#75715e">//所在小组
+</span><span style="color:#75715e"></span>  } stu1;
+  <span style="color:#75715e">//给结构体成员赋值
+</span><span style="color:#75715e"></span>  stu1.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tom&#34;</span>;
+  stu1.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+  stu1.group <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>;
+  <span style="color:#75715e">//读取结构体成员的值
+</span><span style="color:#75715e"></span>  printf(<span style="color:#e6db74">&#34;%s的年龄是%d，在%c组</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, stu1.name, stu1.age, stu1.group);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="结构体数组">结构体数组</h2>
+<p>结构体数组就是具有相同结构类型的变量集合，假如要定义一个班级40个同学 的姓名、性别、年龄和住址, 可以定义成一个结构数组。如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span>
+ { 
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+    <span style="color:#66d9ef">int</span> age; 
+    <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
+ }student[<span style="color:#ae81ff">40</span>];
+</code></pre></div><p>结构体数组成员的访问是以数组元素为结构变量的, 其形式为:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构数组元素.成员名
+</code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">student[<span style="color:#ae81ff">0</span>].name 
+student[<span style="color:#ae81ff">30</span>].age
+</code></pre></div><h2 id="结构体指针">结构体指针</h2>
+<p>结构体指针由一个加在结构变量名前的*操作符来定义，定义一个结构体指针如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> string
+{ 
+   <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+   <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+   <span style="color:#66d9ef">int</span> age; 
+   <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
+}<span style="color:#f92672">*</span>student;
+</code></pre></div><p>使用结构体指针对结构体成员的访问与结构体变量对结构体成员的访问在表达方式不同。结构体指针对结构体成员的访问方式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构体指针名-&gt;结构体成员 
+</code></pre></div><p>给上面定义的结构体中name和age赋值的语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">strcpy(student<span style="color:#f92672">-&gt;</span>name, <span style="color:#e6db74">&#34;acket&#34;</span>); <span style="color:#75715e">//student-&gt;name就是(*student).name
+</span><span style="color:#75715e"></span>student<span style="color:#f92672">-&gt;</span>age<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>; 
+</code></pre></div><p>需要指出的是结构体指针是指向结构体的一个指针，即结构体中第一个成员的首地址，因此在使用之前应该对结构体指针初始化，即分配整个结构体长度的字节空间：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">student<span style="color:#f92672">=</span>(<span style="color:#66d9ef">struct</span> string<span style="color:#f92672">*</span>)malloc(size of (<span style="color:#66d9ef">struct</span> string));
+<span style="color:#75715e">//size of (struct string)是自动求取string结构体的字节长度
+</span></code></pre></div><p>malloc()函数定义了一个大小为结构体长度的内存区域，然后将其地址作为结构体指针返回。</p>
+<h2 id="位结构">位结构</h2>
+<p>位结构是一种特殊的结构体，位结构定义的一般形式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> <span style="color:#960050;background-color:#1e0010">位结构名</span>
+ { 
+    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
+    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
+ }<span style="color:#960050;background-color:#1e0010">位结构变量</span>;
+</code></pre></div><p>其中数据类型必须是int（unsigned或signed，但当成员长度为1时, 会被认为是unsigned类型），整型常数必须是0~15的非负整数，表示二进制位个数。变量名是选择项，可以不命名，下面定义了一个位结构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span>
+ { 
+    <span style="color:#66d9ef">unsigned</span> incon: <span style="color:#ae81ff">8</span>;    <span style="color:#75715e">/*incon占用低字节 的0~7共8位*/</span> 
+    <span style="color:#66d9ef">unsigned</span> txcolor: <span style="color:#ae81ff">4</span>;<span style="color:#75715e">/*txcolor占用高字节的0~3位共4位*/</span> 
+    <span style="color:#66d9ef">unsigned</span> bgcolor: <span style="color:#ae81ff">3</span>;<span style="color:#75715e">/*bgcolor占用高字节的4~6位共3位*/</span> 
+    <span style="color:#66d9ef">unsigned</span> blink: <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">/*blink占用高字节的第7位*/</span> 
+ }ch;
+</code></pre></div><p>位结构成员的访问与结构体成员的访问相同，访问位结构中的bgcolor成员可写成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">  ch.bgcolor
+</code></pre></div><p>举个例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> info
+{ 
+    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+    <span style="color:#66d9ef">int</span> age; 
+    <span style="color:#66d9ef">struct</span> addr address; 
+    <span style="color:#66d9ef">float</span> pay; 
+    <span style="color:#66d9ef">unsigned</span> state: <span style="color:#ae81ff">1</span>; 
+    <span style="color:#66d9ef">unsigned</span> pay: <span style="color:#ae81ff">1</span>; 
+}workers;
+</code></pre></div><p>上面结构体定义了工资的信息，其中有两个只有1位的位结构成员，表示工人的状态以及工资是否已发放。</p>
+<p>typedef定义结构体</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span>  person 
+{
+  <span style="color:#66d9ef">int</span> age ;
+  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sex;
+}student;
+student stu1; <span style="color:#75715e">//此处可以用student来定义一个结构体变量
+</span></code></pre></div><p>typedef的作用就相当于给struct person取了一个别名student。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -439,11 +532,14 @@
 
 <div class="post-tags">
   
-    <a href="/tags/soc">
-    SOC
+    <a href="/tags/c">
+    C
   </a>
-    <a href="/tags/efuse">
-    Efuse
+    <a href="/tags/embedded">
+    Embedded
+  </a>
+    <a href="/tags/struct">
+    Struct
   </a>
 </div>
 
@@ -471,7 +567,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      efuse在soc中的重要作用
+      C语言中结构体struct的用法
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -479,7 +575,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html" title="efuse在soc中的重要作用">https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/usage-of-struct-in-c.html" title="C语言中结构体struct的用法">https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -504,13 +600,13 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html" rel="next" title="用协议分析仪直观理解USB传输的核心概念">
-      <i class="fa fa-chevron-left"></i> 用协议分析仪直观理解USB传输的核心概念
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
     </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/hardware/understand-the-importance-and-feature-of-inductors.html" rel="prev" title="认识电感器的重要作用与特性">
-      认识电感器的重要作用与特性
+    <a href="/post/mcu/knowledge-on-mcu.html" rel="prev" title="新手必看的单片机知识">
+      新手必看的单片机知识
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>

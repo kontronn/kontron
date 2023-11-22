@@ -6,22 +6,40 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 21 Nov 2023 20:19:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 22:51:58 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C</title>
+      <link>https://www.kontronn.com/tags/c/</link>
+      <pubDate>Wed, 22 Nov 2023 22:51:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embedded</title>
+      <link>https://www.kontronn.com/tags/embedded/</link>
+      <pubDate>Wed, 22 Nov 2023 22:51:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Struct</title>
+      <link>https://www.kontronn.com/tags/struct/</link>
+      <pubDate>Wed, 22 Nov 2023 22:51:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/struct/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>MCS-48</title>
       <link>https://www.kontronn.com/tags/mcs-48/</link>
       <pubDate>Tue, 21 Nov 2023 20:19:37 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/mcs-48/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C</title>
-      <link>https://www.kontronn.com/tags/c/</link>
-      <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/c/</guid>
       <description></description>
     </item>
     
@@ -76,15 +94,6 @@
       <pubDate>Sun, 19 Nov 2023 13:17:01 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/gpu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Embedded</title>
-      <link>https://www.kontronn.com/tags/embedded/</link>
-      <pubDate>Sun, 19 Nov 2023 12:22:45 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/embedded/</guid>
       <description></description>
     </item>
     
@@ -787,15 +796,6 @@
       <pubDate>Tue, 11 Jul 2023 13:13:48 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/stratix-10/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Struct</title>
-      <link>https://www.kontronn.com/tags/struct/</link>
-      <pubDate>Mon, 10 Jul 2023 09:22:33 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/struct/</guid>
       <description></description>
     </item>
     

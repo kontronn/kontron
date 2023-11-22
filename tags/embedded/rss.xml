@@ -6,7 +6,16 @@
     <description>Recent content in Embedded on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 12:22:45 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/embedded/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 22:51:58 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/embedded/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C语言中结构体struct的用法</title>
+      <link>https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</link>
+      <pubDate>Wed, 22 Nov 2023 22:51:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</guid>
+      <description>&lt;p&gt;本文简要介绍了c语言中结构体Struct的用法。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>嵌入式高级工程师10年经验总结</title>
       <link>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</link>

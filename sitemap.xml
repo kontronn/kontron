@@ -7,13 +7,48 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/c/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-11-21T20:19:37+08:00</lastmod>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/embedded/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-11-21T20:19:37+08:00</lastmod>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/programming/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/struct/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-11-22T22:51:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -27,23 +62,8 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-11-21T20:19:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
-    <lastmod>2023-11-21T20:19:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/post/mcu/knowledge-on-mcu.html</loc>
     <lastmod>2023-11-21T20:19:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/c/</loc>
-    <lastmod>2023-11-21T13:48:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -53,11 +73,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/embedded-design/</loc>
-    <lastmod>2023-11-21T13:48:03+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/programming/</loc>
     <lastmod>2023-11-21T13:48:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -99,11 +114,6 @@
   </url><url>
     <loc>https://www.kontronn.com/tags/gpu/</loc>
     <lastmod>2023-11-19T13:17:01+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/embedded/</loc>
-    <lastmod>2023-11-19T12:22:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -753,11 +763,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</loc>
-    <lastmod>2023-07-10T09:22:33-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/struct/</loc>
     <lastmod>2023-07-10T09:22:33-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

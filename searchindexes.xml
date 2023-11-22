@@ -16,6 +16,42 @@
   </entry>
   
   <entry>
+    <title>C语言中结构体struct的用法</title>
+    <url>/post/programming/usage-of-struct-in-c.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>C</tag>
+      <tag>Embedded</tag>
+      <tag>Struct</tag>
+    </tags>
+    <content type="html"><![CDATA[本文简要介绍了c语言中结构体Struct的用法。
+定义结构体变量 下面举一个例子来说明怎样定义结构体变量。
+struct string { char name[8]; int age; char sex[2]; char depart[20]; float wage1, wage2, wage3, wage4, wage5; }person; 这个例子定义了一个结构名为string的结构体变量person。还可以省略变量名person，做如下定义：
+struct string { char name[8]; int age; char sex[2]; char depart[20]; float wage1, wage2, wage3, wage4, wage5; }; struct string person; //定义结构名为string的结构体变量person 定义多个具有相同形式的结构变量：
+struct string Liming, Liuqi, ...; 有一种结构体常常出现在函数内部，省略结构名，则称之为无名结构，如下：
+struct { char name[8]; int age; char sex[2]; char depart[20]; float wage1, wage2, wage3, wage4, wage5; } Liming, Liuqi; 结构体成员的获取与赋值 结构是一个新的数据类型，结构成员的表示方式为:
+结构变量.成员名 如果将&quot;结构变量.成员名&quot;看成一个整体，这样就可以像其他变量那样使用。
+下面这个例子定义了一个结构变量stu1，分别给name、age、group赋值，并打印输出。
+#include &lt;stdio.h&gt;int main() { struct { char *name; //姓名  int age; //年龄  char group; //所在小组  } stu1; //给结构体成员赋值  stu1.name = &#34;Tom&#34;; stu1.age = 18; stu1.group = &#39;A&#39;; //读取结构体成员的值  printf(&#34;%s的年龄是%d，在%c组\n&#34;, stu1.name, stu1.age, stu1.group); return 0; } 结构体数组 结构体数组就是具有相同结构类型的变量集合，假如要定义一个班级40个同学 的姓名、性别、年龄和住址, 可以定义成一个结构数组。如下所示：
+struct { char name[8]; char sex[2]; int age; char addr[40]; }student[40]; 结构体数组成员的访问是以数组元素为结构变量的, 其形式为:
+结构数组元素.成员名 例如：
+student[0].name student[30].age 结构体指针 结构体指针由一个加在结构变量名前的*操作符来定义，定义一个结构体指针如下：
+struct string { char name[8]; char sex[2]; int age; char addr[40]; }*student; 使用结构体指针对结构体成员的访问与结构体变量对结构体成员的访问在表达方式不同。结构体指针对结构体成员的访问方式为：
+结构体指针名-&gt;结构体成员 给上面定义的结构体中name和age赋值的语句：
+strcpy(student-&gt;name, &#34;acket&#34;); //student-&gt;name就是(*student).name student-&gt;age=18; 需要指出的是结构体指针是指向结构体的一个指针，即结构体中第一个成员的首地址，因此在使用之前应该对结构体指针初始化，即分配整个结构体长度的字节空间：
+student=(struct string*)malloc(size of (struct string)); //size of (struct string)是自动求取string结构体的字节长度 malloc()函数定义了一个大小为结构体长度的内存区域，然后将其地址作为结构体指针返回。
+位结构 位结构是一种特殊的结构体，位结构定义的一般形式为：
+struct 位结构名 { 数据类型 变量名: 整型常数; 数据类型 变量名: 整型常数; }位结构变量; 其中数据类型必须是int（unsigned或signed，但当成员长度为1时, 会被认为是unsigned类型），整型常数必须是0~15的非负整数，表示二进制位个数。变量名是选择项，可以不命名，下面定义了一个位结构：
+struct { unsigned incon: 8; /*incon占用低字节 的0~7共8位*/ unsigned txcolor: 4;/*txcolor占用高字节的0~3位共4位*/ unsigned bgcolor: 3;/*bgcolor占用高字节的4~6位共3位*/ unsigned blink: 1; /*blink占用高字节的第7位*/ }ch; 位结构成员的访问与结构体成员的访问相同，访问位结构中的bgcolor成员可写成：
+ch.bgcolor 举个例子
+struct info { char name[8]; int age; struct addr address; float pay; unsigned state: 1; unsigned pay: 1; }workers; 上面结构体定义了工资的信息，其中有两个只有1位的位结构成员，表示工人的状态以及工资是否已发放。
+typedef定义结构体
+typedef struct person { int age ; char *name; char *sex; }student; student stu1; //此处可以用student来定义一个结构体变量 typedef的作用就相当于给struct person取了一个别名student。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>新手必看的单片机知识</title>
     <url>/post/mcu/knowledge-on-mcu.html</url>
     <categories><category>MCU</category>
