@@ -6,7 +6,16 @@
     <description>Recent content in MCU on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 Nov 2023 11:01:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Nov 2023 20:19:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个超级精简高可移植的shell命令行C实现</title>
+      <link>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</link>
+      <pubDate>Thu, 23 Nov 2023 20:19:37 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</guid>
+      <description>&lt;p&gt;在嵌入式开发中,一般需要使用shell命令行来进行交互。在一些资源非常受限的平台比如8位单片机平台，则各种开源的shell框架都显得过于大和复杂。此时实现一个超级精简的shell命令行则显得很必要。我们这里就来实现一个，方便以后快速集成到任何平台中使用。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>STM32高阶应用--使用DFU方案实现固件升级</title>
       <link>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</link>
@@ -14,15 +23,6 @@
       
       <guid>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</guid>
       <description>&lt;p&gt;DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>一个超级精简高可移植的shell命令行C实现</title>
-      <link>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</link>
-      <pubDate>Tue, 21 Nov 2023 20:19:37 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</guid>
-      <description>&lt;p&gt;在嵌入式开发中,一般需要使用shell命令行来进行交互。在一些资源非常受限的平台比如8位单片机平台，则各种开源的shell框架都显得过于大和复杂。此时实现一个超级精简的shell命令行则显得很必要。我们这里就来实现一个，方便以后快速集成到任何平台中使用。&lt;/p&gt;</description>
     </item>
     
     <item>
