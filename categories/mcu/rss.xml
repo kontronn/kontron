@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>一个超级精简高可移植的shell命令行C实现</title>
+      <link>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</link>
+      <pubDate>Tue, 21 Nov 2023 20:19:37 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</guid>
+      <description>&lt;p&gt;在嵌入式开发中,一般需要使用shell命令行来进行交互。在一些资源非常受限的平台比如8位单片机平台，则各种开源的shell框架都显得过于大和复杂。此时实现一个超级精简的shell命令行则显得很必要。我们这里就来实现一个，方便以后快速集成到任何平台中使用。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>新手必看的单片机知识</title>
       <link>https://www.kontronn.com/post/mcu/knowledge-on-mcu.html</link>
       <pubDate>Tue, 21 Nov 2023 20:19:37 +0800</pubDate>
