@@ -16,6 +16,52 @@
   </entry>
   
   <entry>
+    <title>STM32高阶应用--使用DFU方案实现固件升级</title>
+    <url>/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</url>
+    <categories><category>MCU</category>
+    </categories>
+    <tags>
+      <tag>ARM</tag>
+      <tag>STM32</tag>
+      <tag>DFU</tag>
+    </tags>
+    <content type="html"><![CDATA[DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。
+什么是 DFU 不过内置DFU的芯片大部分型号都比较新，如果你用的型号没有内置DFU程序，没关系我们也可以通过CubeMX来快速生成和移植一个DFU功能程序到你的Flash中来使用。
+DFU方案完整的组件包括单片机DFU Demo代码、PC端升级程序、PC端Demo代码以及相关资料手册等。
+通过使用DFU方案，我们可以快速的集成升级功能到开发的产品中，同时还能够快速的开发与之配套的升级程序。
+使用CubeMX生成初始工程 由于官方提供的DFU例程并不多，我们很难找到现成的可已使用DFU程序，但是通过CubeMX我们可以很快速的配置和生成DFU的Bootloader，下面我们正式开始。
+ 新建CubeMX工程  首先选定好IC的型号，进入配置界面，由于只是Bootloader代码所以这里我们只需要配置USB功能和一个做Bootloader触发的引脚就可，其余的时钟等部分一切按照正常方式配置。
+设置USB引脚功能  设定USB模式为Device（HS还是FS并不影响DFU的功能，按照应用选择就可）。
+开启DFU组件  在MiddleWares中加入USB DFU组件
+设置DFU参数
+开启DFU组件后，CubeMX的程序设置窗口的MiddleWares中就会出现DFU程序设置按钮。
+点开它将APP加载的地址改为0x0800_c000，这个加载地址根据你实际的应用设置，目前我们选择让flash的前三个sector为Bootloader的区域。
+第二个全是字段的参数是用来在DFU连接升级软件式传输给软件用来获取Flash结构字符串数据，很好理解这个小协议的内容，点击设置后，下方的CubeMX的参数说明也写的很清晰，这里就不多说了。
+当然这些参数也在工程生成后在 usbd_conf.h 和 usbd_dfu_if.c 文件中修改。
+最后的设置  最后我们添加一个外部的按键作为触发单片机启动时进入DFU的方式，按键按下后就启动DFU模式，否则直接加载后方APP程序，这里选用PA0引脚，给它设置个User Label 就叫 USER_BTN_GPIO_Port。
+修改补全工程  实现 DFU 功能代码  打开 src 目录下的 usbd_dfu_if.c 文件补全其中的功能代码
+Flash 解锁
+uint16_t MEM_If_Init_HS(void) { HAL_FLASH_Unlock(); return (USBD_OK); } Flash 上锁
+uint16_t MEM_If_DeInit_HS(void) { HAL_FLASH_Lock(); return (USBD_OK); } Flash 擦除
+static uint32_t GetSector(uint32_t Address) { uint32_t sector = 0; if ((Address &lt; ADDR_FLASH_SECTOR_1) &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_0)) { sector = FLASH_SECTOR_0; } ...... } else if ((Address &lt; ADDR_FLASH_SECTOR_23) &amp;&amp; (Address &gt;= ADDR_FLASH_SECTOR_22)) { sector = FLASH_SECTOR_22; } else { sector = FLASH_SECTOR_23; } return sector; } uint16_t MEM_If_Erase_HS(uint32_t Add) { uint32_t startsector = 0; uint32_t sectornb = 0; /* Variable contains Flash operation status */ HAL_StatusTypeDef status; FLASH_EraseInitTypeDef eraseinitstruct; /* Get the number of sector */ startsector = GetSector(Add); eraseinitstruct.TypeErase = FLASH_TYPEERASE_SECTORS; eraseinitstruct.VoltageRange = FLASH_VOLTAGE_RANGE_3; eraseinitstruct.Sector = startsector; eraseinitstruct.NbSectors = 1; status = HAL_FLASHEx_Erase(&amp;eraseinitstruct, &amp;sectornb); if (status != HAL_OK) { return (USBD_FAIL); } return (USBD_OK); } Flash 写入
+uint16_t MEM_If_Write_HS(uint8_t *src, uint8_t *dest, uint32_t Len) { uint32_t i = 0; for (i = 0; i &lt; Len; i += 4) { /* Device voltage range supposed to be [2.7V to 3.6V], the operation will be done by byte */ if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, (uint32_t)(dest + i), *(uint32_t *)(src + i)) == HAL_OK) { /* Check the written value */ if (*(uint32_t *)(src + i) != *(uint32_t *)(dest + i)) { /* Flash content doesn&#39;t match SRAM content */ return (USBD_FAIL); } } else { /* Error occurred while writing data in Flash memory */ return (USBD_FAIL); } } return (USBD_OK); } Flash 读取
+uint8_t *MEM_If_Read_HS(uint8_t *src, uint8_t *dest, uint32_t Len) { /* Return a valid address to avoid HardFault */ uint32_t i = 0; uint8_t *psrc = src; for (i = 0; i &lt; Len; i++) { dest[i] = *psrc++; } /* Return a valid address to avoid HardFault */ return (uint8_t *)(dest); } 获取 Flash 擦写时间参数
+``c uint16_t MEM_If_GetStatus_HS(uint32_t Add, uint8_t Cmd, uint8_t buffer) { / USER CODE BEGIN 11 */ uint16_t time;
+ time = TimingTable[GetSector(Add)]; switch (Cmd) { case DFU_MEDIA_PROGRAM: buffer[1] = (uint8_t)time; buffer[2] = (uint8_t)(time &lt;&lt; 8); buffer[3] = 0; break; case DFU_MEDIA_ERASE: default: buffer[1] = (uint8_t)time; buffer[2] = (uint8_t)(time &lt;&lt; 8); buffer[3] = 0; break; } return (USBD_OK); /* USER CODE END 11 */  }
+usbd_dfu_if.h 文件添加的宏定义 ```c /* Define flash address */ // BLANK 1 #define ADDR_FLASH_SECTOR_0 0x08000000 #define ADDR_FLASH_SECTOR_1 0x08004000 #define ADDR_FLASH_SECTOR_2 0x08008000 #define ADDR_FLASH_SECTOR_3 0x0800C000 #define ADDR_FLASH_SECTOR_4 0x08010000 #define ADDR_FLASH_SECTOR_5 0x08020000 #define ADDR_FLASH_SECTOR_6 0x08040000 #define ADDR_FLASH_SECTOR_7 0x08060000 #define ADDR_FLASH_SECTOR_8 0x08080000 #define ADDR_FLASH_SECTOR_9 0x080A0000 #define ADDR_FLASH_SECTOR_10 0x080C0000 #define ADDR_FLASH_SECTOR_11 0x080E0000 // BLANK 2 #define ADDR_FLASH_SECTOR_12 0x08100000 #define ADDR_FLASH_SECTOR_13 0x08104000 #define ADDR_FLASH_SECTOR_14 0x08108000 #define ADDR_FLASH_SECTOR_15 0x0810C000 #define ADDR_FLASH_SECTOR_16 0x08110000 #define ADDR_FLASH_SECTOR_17 0x08120000 #define ADDR_FLASH_SECTOR_18 0x08140000 #define ADDR_FLASH_SECTOR_19 0x08160000 #define ADDR_FLASH_SECTOR_20 0x08180000 #define ADDR_FLASH_SECTOR_21 0x081A0000 #define ADDR_FLASH_SECTOR_22 0x081C0000 #define ADDR_FLASH_SECTOR_23 0x081E0000 /* Flash oprate time from datasheet page 128 */ #define FLASH_SECTOR_16KB_WRITE_ERASE_TIME 500 //500 usb frame,means 500ms #define FLASH_SECTOR_64KB_WRITE_ERASE_TIME 1100 #define FLASH_SECTOR_128KB_WRITE_ERASE_TIME 2000 修改Main文件  首先在main文件前添加几个用于加载APP程序的变量和函数定义
+typedef void (*pFunction)(void); pFunction JumpToApplication; uint32_t JumpAddress;1234 然后再 main 函数中加入 外部按键的判断、APP程序加载以及USB DFU初始化功能
+int main(void) { /* Reset of all peripherals, Initializes the Flash interface and the Systick. */ HAL_Init(); /* Configure the system clock */ SystemClock_Config(); /* Initialize all configured peripherals */ MX_GPIO_Init(); if (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) == GPIO_PIN_SET) { HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET); // For debug  /* Test if user code is programmed starting from address 0x0800C000 */ if (((*(__IO uint32_t *)USBD_DFU_APP_DEFAULT_ADD) &amp; 0x2FF80000) == 0x20000000) { HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET); // For debug  /* Jump to user application */ JumpAddress = *(__IO uint32_t *)(USBD_DFU_APP_DEFAULT_ADD + 4); JumpToApplication = (pFunction)JumpAddress; /* Reset of all peripherals */ HAL_DeInit(); /* Set interrupt vector to app code */ SCB-&gt;VTOR = USBD_DFU_APP_DEFAULT_ADD; /* Initialize user application&#39;s Stack Pointer */ __set_MSP(*(__IO uint32_t *)USBD_DFU_APP_DEFAULT_ADD); JumpToApplication(); } } MX_USB_DEVICE_Init(); while (1) { } } 编译程序下载进入单片机  使用DfuSe 从ST官网DfuSe的程序安装包，并安装。然后我们按下之前写的触发按键并复位单片机，让单片机初始 USB DFU 功能，这时如果你插着单片机的USB线，系统应该已经识别了。
+如果没有右键更新驱动程序，手动指定驱动搜索路径在DfuSe安装目录下的 \Bin\Driver 内。如果直接无法识别USB设备，建议在CubeMx配置完工程后就编译下载测试一下，看看是不是你在移植过程中哪里写错了。
+然后我们需要生成一个地址设定在0x0800_c000后的测试程序，就先编写一个 Blink LED 的程序吧，生成bin、hex或S19文件。
+然后我们打开DfuSe软件的Dfu file manager来生成DFU软件用的.dfu格式的文件。选择第一项，第二个是用来将.dfu反向变换回来的。
+大概的操作已经标在图片上了，操作比较简单就不做详细介绍了，记得把Address的地址改到偏移后的地址上否则下载会出错，其他参数可以不用修改。
+然后我们打开DfuSe程序，在Upgrade中选择生成好的blink.dfu文件，勾选校验功能，下载程序。成功后复位单片机，LED开始闪烁，移植成功。
+更多 仔细区看看DfuSe的安装目录，里面有DFU的资料文档，还有DFU的工程源代码，可以用来改写自己需要的DFU升级程序。
+参考资料 ST官网DfuSe
+http://www.stmicroelectronics.com.cn/content/st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-stm32080.html ]]></content>
+  </entry>
+  
+  <entry>
     <title>C语言中结构体struct的用法</title>
     <url>/post/programming/usage-of-struct-in-c.html</url>
     <categories><category>Programming</category>

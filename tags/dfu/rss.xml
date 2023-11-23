@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DFU on Kontronn</title>
+    <link>https://www.kontronn.com/tags/dfu/</link>
+    <description>Recent content in DFU on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 23 Nov 2023 11:01:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/dfu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32高阶应用--使用DFU方案实现固件升级</title>
+      <link>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</link>
+      <pubDate>Thu, 23 Nov 2023 11:01:07 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</guid>
+      <description>&lt;p&gt;DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
