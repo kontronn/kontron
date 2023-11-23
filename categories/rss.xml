@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>News</title>
+      <link>https://www.kontronn.com/categories/news/</link>
+      <pubDate>Fri, 17 Nov 2023 22:05:09 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/categories/news/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>FPGA</title>
       <link>https://www.kontronn.com/categories/fpga/</link>
       <pubDate>Mon, 06 Nov 2023 17:40:31 +0800</pubDate>
@@ -67,15 +76,6 @@
       <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>
       
       <guid>https://www.kontronn.com/categories/server/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>News</title>
-      <link>https://www.kontronn.com/categories/news/</link>
-      <pubDate>Mon, 07 Aug 2023 12:26:33 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/categories/news/</guid>
       <description></description>
     </item>
     

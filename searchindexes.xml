@@ -446,6 +446,24 @@ DSP硬件接口比较定型，如果不向驱动或是算法上靠拢，前途�
   </entry>
   
   <entry>
+    <title>Marvell再传裁员！同行争抢订单和人才</title>
+    <url>/post/news/marvell-announces-layoffs-again.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Marvell</tag>
+      <tag>NAND</tag>
+    </tags>
+    <content type="html"><![CDATA[集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。
+业界推断，虽然Marvell并非全面撤出NAND Flash控制IC业务，不过裁撤中国台湾的NAND Flash团队，表示存储业务仍较困难。
+据了解，目前原厂也在争夺NAND Flash控制IC市场，以自行开发或委外设计量产的模式进行，让面向企业端市场的Marvell运营受到影响，这也导致Marvell缩编相关团队。
+法人认为，Marvell裁撤中国台湾NAND Flash控制IC团队，群联受惠最大，不只有望抢下相关人才，还可扩大市占率，扩大相关企业用SSD控制IC出货量。
+近两年，Marvell不断传出裁员消息。2022年10月，Marvell裁撤了上海和成都分公司的大部分研发成员。今年5月，有消息称该公司计划在全球范围内裁撤约15%左右研发人员，约1000人，其中美国本土仅占5%左右，剩余大部分裁撤名额位于中国大陆。
+从全球控制芯片市场来看，三星占据约45%的市场份额；慧荣科技、群联电子、Marvell等厂商，合计占据约40%的市场份额。Marvell性能较好，一直是主控市场上性能的佼佼者，其SSD控制器基于NAND Edge LDPC引擎，支持在企业和超大规模数据中心环境中使用高性能和大容量的SSD，并兼容TLC、QLC和SLC存储器，数据安全及数据纠错能力领先。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>芯片设计中的DRAM</title>
     <url>/post/fpga/DRAM-in-chip-design.html</url>
     <categories><category>FPGA</category>

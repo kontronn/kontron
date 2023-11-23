@@ -6,7 +6,16 @@
     <description>Recent content in News on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 07 Aug 2023 12:26:33 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 17 Nov 2023 22:05:09 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Marvell再传裁员！同行争抢订单和人才</title>
+      <link>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</link>
+      <pubDate>Fri, 17 Nov 2023 22:05:09 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</guid>
+      <description>&lt;p&gt;集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心</title>
       <link>https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html</link>
