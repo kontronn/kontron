@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Nov 2023 20:34:15 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 09:50:13 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM</title>
+      <link>https://www.kontronn.com/tags/arm/</link>
+      <pubDate>Sun, 03 Dec 2023 09:50:13 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/arm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instruction Set</title>
+      <link>https://www.kontronn.com/tags/instruction-set/</link>
+      <pubDate>Sun, 03 Dec 2023 09:50:13 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/instruction-set/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>x86</title>
+      <link>https://www.kontronn.com/tags/x86/</link>
+      <pubDate>Sun, 03 Dec 2023 09:50:13 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/x86/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Chip Manufacturer</title>
       <link>https://www.kontronn.com/tags/chip-manufacturer/</link>
@@ -67,15 +94,6 @@
       <pubDate>Thu, 23 Nov 2023 18:10:54 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/chip/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ARM</title>
-      <link>https://www.kontronn.com/tags/arm/</link>
-      <pubDate>Thu, 23 Nov 2023 11:01:07 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/arm/</guid>
       <description></description>
     </item>
     

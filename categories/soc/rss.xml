@@ -6,7 +6,16 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Nov 2023 20:34:15 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 09:50:13 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>x86指令集和ARM指令集的区别</title>
+      <link>https://www.kontronn.com/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html</link>
+      <pubDate>Sun, 03 Dec 2023 09:50:13 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html</guid>
+      <description>&lt;p&gt;现代处理器的主要指令集架构（ISA）包括：x86指令集架构、RISC指令集架构。其中，x86可以划分为x86-32（英特尔）、x86-64（英特尔）、AMD64（AMD）等三种。RISC可以划分为ARM、MIPS、Alpha、RISC-V。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>关于芯片大厂裁员的几点思考</title>
       <link>https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</link>
