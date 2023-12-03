@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VMWare on Kontronn</title>
+    <link>https://www.kontronn.com/tags/vmware/</link>
+    <description>Recent content in VMWare on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 03 Dec 2023 14:40:44 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/vmware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>美芯片巨头全球大裁员,最新人数近3000!内部称或多达2万</title>
+      <link>https://www.kontronn.com/post/news/us-chip-giant-lays-off-employees-worldwide.html</link>
+      <pubDate>Sun, 03 Dec 2023 14:40:44 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/us-chip-giant-lays-off-employees-worldwide.html</guid>
+      <description>&lt;p&gt;集微网消息，博通公司斥资690亿美元收购VMware后进行裁员的官方数字上升至2838人，数据来自博通在美国多个州提交的WARN（工人调整和再培训通知）通知。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
