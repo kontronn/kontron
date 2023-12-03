@@ -6,7 +6,20 @@
     <description>Recent content in News on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 17 Nov 2023 22:05:09 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 10:01:56 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NVIDIA为中国打造特供RTX 4090D</title>
+      <link>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</link>
+      <pubDate>Sun, 03 Dec 2023 10:01:56 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</guid>
+      <description>&lt;p&gt;RTX 4090在国内遭到禁售，
+&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    NVIDIA
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;正在规划特供版本RTX 4090 D，性能降级以满足出口管制——D代表Dragon，因为明年是中国龙年。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Marvell再传裁员！同行争抢订单和人才</title>
       <link>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</link>
@@ -14,6 +27,15 @@
       
       <guid>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</guid>
       <description>&lt;p&gt;集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>英伟达再度释放AI“炸弹”</title>
+      <link>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</link>
+      <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</guid>
+      <description>&lt;p&gt;近日，在计算机图形学顶会SIGGRAPH 2023现场，英伟达再度释放深夜“炸弹”，大模型专用芯片迎来升级版本。&lt;/p&gt;</description>
     </item>
     
     <item>
