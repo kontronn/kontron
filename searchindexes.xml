@@ -24,7 +24,8 @@
       <tag>Embedded</tag>
       <tag>Framework</tag>
     </tags>
-    <content type="html"><![CDATA[Zorb简介 Zorb Framework是一个基于面向对象的思想来搭建一个轻量级的嵌入式框架。
+    <content type="html"><![CDATA[Zorb Framework是一个基于面向对象的思想来搭建一个轻量级的嵌入式框架。
+Zorb简介 Zorb Framework是一个基于面向对象的思想来搭建一个轻量级的嵌入式框架。
 搭建Zorb Framework的目的是为在不能运行Linux的芯片上快速开发应用，不用反复造轮子。
 Zorb Framework的初步设计功能有：
  时间系统功能zf_time 环形缓冲区功能zf_buffer 列表功能zf_list 状态机功能zf_fsm 事件功能zf_event 定时器功能zf_timer 任务功能zf_task  前6个功能，就可以实现纯事件驱动的程序，基本可以满足中小型嵌入式应用程序开发的需求。加上任务功能，是为了满足部分程序对实时性要求较高的需求。
