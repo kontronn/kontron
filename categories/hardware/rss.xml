@@ -6,7 +6,16 @@
     <description>Recent content in Hardware on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 06 Oct 2023 17:23:54 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Dec 2023 22:33:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>将AMD CPU 3D缓存当磁盘，性能碾压PCI-E 5.0 SSD</title>
+      <link>https://www.kontronn.com/post/hardware/use-AMD-CPU-3D-cache-as-solida-state-disk.html</link>
+      <pubDate>Thu, 21 Dec 2023 22:33:49 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/use-AMD-CPU-3D-cache-as-solida-state-disk.html</guid>
+      <description>&lt;p&gt;可能很多人都忘记了，过去有一些技术可以将内存当做磁盘，这样能达到很快的速度，像技嘉这样的厂商甚至推出了相应的软件。不过这个技术一直没有流行起来，一个是因为当时的内存容量大家都不够大，另外一个还是SSD发展起来之后，用内存当磁盘的意义就不大了。毕竟PCI-E 5.0的磁盘速度都达到15GB/s了。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>盘点优秀PCB工程师的好习惯</title>
       <link>https://www.kontronn.com/post/hardware/the-good-habits-of-excellent-PCB-engineers.html</link>
