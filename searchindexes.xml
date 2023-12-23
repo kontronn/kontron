@@ -16,6 +16,30 @@
   </entry>
   
   <entry>
+    <title>将 CPU 与 FPGA Fabrics 结合使用的案例</title>
+    <url>/post/fpga/example-of-using-cpu-and-fpga.html</url>
+    <categories><category>FPGA</category>
+    </categories>
+    <tags>
+      <tag>FPGA</tag>
+      <tag>eFPGA</tag>
+      <tag>CPU</tag>
+      <tag>Fabric</tag>
+    </tags>
+    <content type="html"><![CDATA[如何在规模效益下降时继续推动性能提升，本文就介绍一个将 CPU 与 FPGA Fabrics 结合使用的案例。
+鉴于半导体行业通过进一步缩小工艺几何尺寸在物理和经济上所能实现的目标已开始达到极限，缩小特征尺寸和增加晶体管数量已不再能达到以往的效果。取而代之的是，整个行业都在关注全新的系统架构，并通过重新思考如何在每个设备中完成任务来更好地利用现有硅片。当我们进入这个新的技术时代时，以 嵌入式   FPGA 的形式将 FPGA   结构与 CPU 集成成为一种极具吸引力的解决方案。
+虽然 FPGA 和 CPU 都使用内存和逻辑组合来保存和处理数据和指令，但两者之间存在重要的根本区别。中央处理器针对快速上下文切换进行了优化，而 FPGA 的配置速度较慢，但能以类似于硬连线电路的速度模拟数字逻辑。因此，CPU 擅长执行各种任务，而 FPGA 则擅长执行重复性（尤其是高度并行化）任务，这些任务重复执行数千次，偶尔才会重新定义。
+市场指标 有明显的证据表明，CPU 和 FPGA 技术的结合可以通过更紧密的集成带来真正的价值。这方面的第一个例子是英特尔公司斥资 167 亿美元收购 Altera 公司，用于加速数据中心功能。第二个例子是微软的 Catapult 计划，该计划表明，通过在每台服务器中集成 FPGA 来加速必应搜索、Azure 和 Microsoft 365，可以将数据中心服务器的计算能力提高一倍。这些例子表明，业界已经开始认识到 CPU 和 FPGA 异构架构的优势。这些类型的异构架构将不可避免地转移到同一设备上，FPGA 结构将作为 IP 块集成到 ASIC 中。
+迈入 eFPGA 时代 Achronix 现在是这一领域的主要推动者，它已经推出了嵌入式 FPGA IP，这些 IP 源自其早期以高性能和复杂路由架构著称的独立 FPGA 系列。Speedcore™ eFPGA IP 展示了将 FPGA 结构集成到 CPU/SoC 中的许多可能优势。下图显示了如何将 Speedcore IP 集成到 SoC 子系统中。
+图 1：SoC 子系统中的速核 eFPGA
+由于 eFPGA 位于同一设备上，信号无需经过 SerDes 和 PCIe 等协议编码。因此，延迟时间要低一个数量级。此外，由于片上互连的带宽更高，采用 eFPGA 结构的 SoC 比采用独立 FPGA 的 SoC 性能更高。
+集成 FPGA 结构还大大降低了功耗。由于在片上集成了 FPGA 结构，去除了时钟发生器、无源元件等一些辅助元件，因此这种功耗节省还延伸到了系统层面。
+分立 FPGA 的尺寸和性能范围是固定的，而 eFPGA IP 块中逻辑门和存储器之间的组合则不同，可以由客户自行定义，这样就能获得适当数量的 FPGA，以加速相应的功能。这种功能可确保在 SoC 中实现最佳的 CPU 大小与 FPGA 资源比，从而优化硅面积、功耗和成本。
+总之，毫无疑问，eFPGA 将成为未来几年的主要架构趋势。其优势实在是太引人注目了。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>tr, 一个非常实用的linux命令</title>
     <url>/post/linux/tr-a-useful-command-in-linux.html</url>
     <categories><category>Linux</category>

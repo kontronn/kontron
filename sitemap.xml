@@ -8,26 +8,56 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2023-12-22T21:05:32+08:00</lastmod>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/cpu/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/efpga/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/fabric/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/fpga/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/fpga/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2023-12-22T21:05:32+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
-    <lastmod>2023-12-22T21:05:32+08:00</lastmod>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2023-12-22T21:05:32+08:00</lastmod>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/fpga/example-of-using-cpu-and-fpga.html</loc>
+    <lastmod>2023-12-23T11:06:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2023-12-22T21:05:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -322,11 +352,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/cpu/</loc>
-    <lastmod>2023-11-19T13:17:01+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</loc>
     <lastmod>2023-11-19T12:22:45+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -338,11 +363,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/dram/</loc>
-    <lastmod>2023-11-06T17:40:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/fpga/</loc>
     <lastmod>2023-11-06T17:40:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -619,11 +639,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/linux/floating-point-comparison-problem.html</loc>
     <lastmod>2023-08-08T12:41:00-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/fpga/</loc>
-    <lastmod>2023-08-08T04:48:07-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
