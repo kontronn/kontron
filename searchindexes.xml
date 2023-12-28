@@ -16,6 +16,34 @@
   </entry>
   
   <entry>
+    <title>全球第二款24TB大硬盘诞生</title>
+    <url>/post/news/the-world-second-24TB-large-hard-drive-is-born.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Seagate</tag>
+      <tag>24TB</tag>
+      <tag>Exos X24</tag>
+    </tags>
+    <content type="html"><![CDATA[继银河Exos X24之后，希捷近日发布了全球第二款24TB超大容量的机械硬盘，这次隶属于SkyHawk AI酷鹰人工智能系列，主要面向边缘和安防领域的视频图像应用(VIA)。
+希捷酷鹰AI 24TB硬盘采用CMR传统磁记录技术，充氦设计，缓存512MB，最大数据传输率285MB/s，平均读写功耗7.8W，空闲功耗6.3W，待机功耗1.1W。
+该硬盘可智能适应用户的AI环境扩展，支持多达64路高清视频流、32路AI流，每秒可捕获最多120个AI实时事件、对比96个AI实时事件，支持10000小时的视频和分析。
+同时采用ImagePerfect AI固件，支持AI全天候安防，而且零丢帧。
+作为企业级解决方案，该硬盘具有极高的可靠性，平均故障间隔时间250万小时，最大写入负载550TB每年，是普通VIA硬盘的3倍、台式机硬盘的10倍，并提供长达5年有限质保、3年数据恢复服务。
+希捷还提供兼容NVR网络录像机系统的酷鹰健康管理（SkyHawk Health Management）功能，主动监测环境和使用条件，并在必要时提供预防措施建议。
+希捷酷鹰AI硬盘还有20TB、16TB、12TB等不同容量版本。
+银河Exos X24 24TB硬盘则是面向大规模企业级市场的，不但是行业首款商用24TB机械硬盘，单碟容量也提升到2.4TB，因此只需10张碟片就能达成，是迄今为止存储密度最高的硬盘。
+同样令人惊叹的是，银河X24并没有使用HAMR热辅助磁记录等新的存储技术，而依然是CMR传统磁记录，能达到如此密度和容量殊为不易，但也可能是真正的尽头了。
+银河X24依然是典型的3.5英寸硬盘，充氦封装，转速7200RPM，缓存512MB，接口可选SATA、SAS，待机功耗6.3W，最大功耗8.9W。
+性能方面，持续数据传输率高达285MB/s，4K QD16随机读写速度168/550 IOPS，平均延迟4.16ms，并增强缓存功能，比仅使用读写缓存的高出3倍。
+可靠性上，支持7 x 24全年不间断运行，年故障率0.35％，平均故障间隔时间250万小时，质保5年。
+安全方面支持Secure加密、自加密硬盘(SED)、自加密和即时擦除(SED-FIPS)、即时安全擦除(ISE)等等。
+希捷银河X24 24TB硬盘现已发货，将于12月面向渠道供货。
+希捷还预告，将把同样的底层技术平台应用于30TB以上容量硬盘，并加入HAMR技术，2024年初开始大规模量产。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>将 CPU 与 FPGA Fabrics 结合使用的案例</title>
     <url>/post/fpga/example-of-using-cpu-and-fpga.html</url>
     <categories><category>FPGA</category>
