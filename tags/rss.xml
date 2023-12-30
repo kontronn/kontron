@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 28 Dec 2023 15:29:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Dec 2023 10:06:35 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GPU</title>
+      <link>https://www.kontronn.com/tags/gpu/</link>
+      <pubDate>Sat, 30 Dec 2023 10:06:35 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/gpu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nvidia</title>
+      <link>https://www.kontronn.com/tags/nvidia/</link>
+      <pubDate>Sat, 30 Dec 2023 10:06:35 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/nvidia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RTX 4090D</title>
+      <link>https://www.kontronn.com/tags/rtx-4090d/</link>
+      <pubDate>Sat, 30 Dec 2023 10:06:35 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/rtx-4090d/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>24TB</title>
       <link>https://www.kontronn.com/tags/24tb/</link>
@@ -125,15 +152,6 @@
     </item>
     
     <item>
-      <title>Nvidia</title>
-      <link>https://www.kontronn.com/tags/nvidia/</link>
-      <pubDate>Wed, 13 Dec 2023 21:34:09 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/nvidia/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Embedded</title>
       <link>https://www.kontronn.com/tags/embedded/</link>
       <pubDate>Sun, 03 Dec 2023 17:38:16 +0800</pubDate>
@@ -193,15 +211,6 @@
       <pubDate>Sun, 03 Dec 2023 10:01:56 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/4090d/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GPU</title>
-      <link>https://www.kontronn.com/tags/gpu/</link>
-      <pubDate>Sun, 03 Dec 2023 10:01:56 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/gpu/</guid>
       <description></description>
     </item>
     

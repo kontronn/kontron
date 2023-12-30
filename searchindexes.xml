@@ -16,6 +16,38 @@
   </entry>
   
   <entry>
+    <title>中国合规RTX 4090D正式发布：性能只差5%</title>
+    <url>/post/news/China-compliant-RTX-4090D-officially-released-by-NVIDIA.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>NVIDIA</tag>
+      <tag>GPU</tag>
+      <tag>RTX 4090D</tag>
+    </tags>
+    <content type="html"><![CDATA[刚刚， NVIDIA  官网发布了针对中国市场定制的RTX 4090D——D就是传说中的Dragon，对应即将到来的中国龙年。
+RTX 4090D的设计和规格完全符合美国出口管制标准，可以在中国内地和港澳市场正常生产、销售。
+它牺牲了一部分规格和性能，但不多：
+核心芯片还是AD102，编号改为AD102-250。
+CUDA核心数量从16384个减少到14592个，核心基础频率反而从2235MHz小幅提高到2280MHz，加速频率则维持在2520MHz，只可惜不开放超频。
+显存维持不变，还是384-bit 24GB GDDR6X，等效频率21GHz。
+显卡总功耗设定从450W降低到425W，常规游戏功耗为302W，视频播放功耗为26W，空闲功耗为19W。
+游戏性能方面，根据NVIDIA官网图表，RTX 4090D相比于RTX 4090只损失了大约5％，几乎没有明显影响。
+RTX 4090D将从2024年1月起陆续上市，官方建议零售价12999元起，和当初RTX 4090首发时完全相同，其实很大程度上是汇率的影响。
+需要注意的是，RTX 4090D没有公版卡，将由各大AIC品牌厂商推出各自的非公版产品。等。
+另外，NVIDIA还在1月份陆续推出RTX 40 SUPER系列，RTX 4070 SUPER、RTX 4070 Ti SUPER、RTX 4080 SUEPR先后登场，构成新一代完整的龙年RTX 40家族布局。
+没想到，AMD也有新卡。
+RX 7600发布之后，AMD高管曾说过RDNA3家族到此为止不会有新卡了，但旅程显然没有结束，RX 7600 XT就要来了。
+据悉，RX 7600 XT将在1月22日开始的一周正式发布，最大可能是1月24日，也就是和RTX 4070 Ti SUPER基本同时，当然二者不是一个档次的产品。
+有趣的是，RX 7600 XT不会提供公版，只有非公版。
+RX 7600 XT的具体规格暂时不详，但是考虑到RX 7600已经使用了完整版的Navi 33芯片，没有提升空间，它显然不可能只是提升频率了事，几乎肯定会用更大的Navi 32芯片，进一步屏蔽规格。
+这大概可以解释为什么RX 7600已经发布了足足半年，RX 7600 XT才姗姗来迟——需要准备好足够数量的残次版Navi 32芯片，充分实现“废物”再利用。
+至于RX 7800、RX 7700，目前不在AMD的规划内，RX 7600 XT应该是明年上半年唯一的新品。
+RDNA4架构的下一代，如果顺利的话有望在明年下半年看到，支持PCIe 5.0，但不排除拖延到2025年。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>全球第二款24TB大硬盘诞生</title>
     <url>/post/news/the-world-second-24TB-large-hard-drive-is-born.html</url>
     <categories><category>News</category>
