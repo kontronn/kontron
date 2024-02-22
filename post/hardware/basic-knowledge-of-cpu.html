@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="一篇关于CPU的入门知识" />
+<meta itemprop="description" content="一篇关于CPU的入门知识" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="CPU" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="一篇关于CPU的入门知识" />
+<meta property="og:description" content="一篇关于CPU的入门知识" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/hardware/basic-knowledge-of-cpu.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-02-22 21:10:54 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-02-22 21:10:54 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"basic-knowledge-of-cpu.html","permalink":"https://www.kontronn.com/post/hardware/basic-knowledge-of-cpu.html","title":"一篇关于CPU的入门知识"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>一篇关于CPU的入门知识 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">96</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#cpu是什么">CPU是什么？</a></li>
+    <li><a href="#cpu实际做什么">CPU实际做什么？</a></li>
+    <li><a href="#cpu的内部结构">CPU的内部结构</a></li>
+    <li><a href="#cpu是寄存器的集合体">CPU是寄存器的集合体</a></li>
+    <li><a href="#计算机语言">计算机语言</a></li>
+    <li><a href="#汇编语言">汇编语言</a></li>
+    <li><a href="#程序计数器">程序计数器</a></li>
+    <li><a href="#条件分支和循环机制">条件分支和循环机制</a></li>
+    <li><a href="#标志寄存器">标志寄存器</a></li>
+    <li><a href="#函数调用机制">函数调用机制</a></li>
+    <li><a href="#通过地址和索引实现数组">通过地址和索引实现数组</a></li>
+    <li><a href="#cpu指令执行过程">CPU指令执行过程</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">96</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">149</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-05-02T15:59:41&#43;08:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="22702"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="167"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-02-22T21:10:54&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/basic-knowledge-of-cpu.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一篇关于CPU的入门知识">
+      <meta itemprop="description" content="一篇关于CPU的入门知识">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">一篇关于CPU的入门知识 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-02-22 21:10:54 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-02-22 21:10:54 &#43;0800 CST">2024-02-22</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>128</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/hardware/basic-knowledge-of-cpu.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>不管你玩硬件还是做软件，你的世界都少不了计算机最核心的 —— CPU。</p>
+<h2 id="cpu是什么">CPU是什么？</h2>
+<p>CPU与计算机的关系就相当于大脑和人的关系，它是一种小型的计算机芯片，通常嵌入在电脑的主板上。</p>
+<p>
+<a href="https://www.gaitpu.com/tag/cpu" title="CPU" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    CPU
+    <i class="fa fa-external-link-alt"></i>
+</a>的构建是通过在单个计算机芯片上放置数十亿个微型晶体管来实现。</p>
+<p>这些晶体管使它能够执行运行存储在系统内存中的程序所需的计算，所以，也可以说CPU决定了你电脑的计算能力。</p>
+<h2 id="cpu实际做什么">CPU实际做什么？</h2>
+<p>CPU的工作核心是从程序或应用程序中获取指令并且执行计算。</p>
+<p>这个过程一共有三个关键阶段：提取，解码和执行。</p>
+<p>CPU先从系统的RAM中提取指令，随后解码该指令的实际内容，最后再由CPU的相关部分执行该指令。</p>
+<h2 id="cpu的内部结构">CPU的内部结构</h2>
+<p>刚才提到了很多CPU的重要性，那么CPU的内部结构是什么呢？又是由什么组成的呢？</p>
+<p>下图展示了一般程序的运行流程（以C语言为例），一般来说，了解程序的运行流程是掌握程序运行机制的基础和前提。</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-1.jpeg" alt="CPU Procedure"></p>
+<p>在这个流程中，CPU负责解释和运行最终转换成机器语言的内容，CPU主要由两部分构成：控制单元和算数逻辑单元（ALU）。</p>
+<ul>
+<li>控制单元：从内存中提取指令并解码执行；</li>
+<li>算数逻辑单元（ALU）：处理算数和逻辑运算。</li>
+</ul>
+<p>CPU和内存都是由许多晶体管组成的电子部件，可以把它比作计算机的心脏和大脑。</p>
+<p>它能够接收数据输入、执行指令并且处理相关信息，它与输入/输出（I/O）设备进行通信，这些设备向 CPU 发送数据和从 CPU 接收数据。</p>
+<p>从功能上来看，CPU的内容是由寄存器、控制器、运算器和时钟四部分组成的，各个部分之间通电信号来连通。</p>
+<p>接下来简单介绍一下内存，为什么说到CPU需要讲一下内存呢？</p>
+<p>因为内存是与CPU进行沟通的桥梁，计算机中所有程序的运行都在内存中得到运行的。</p>
+<p>内存一般又被称为主存，它的作用是存放CPU中的运算数据，以及与硬盘等外部存储设备交换的数据。</p>
+<p>CPU会在计算机运转时，把需要运算的数据调到主存中进行运算。</p>
+<p>在运算完成之后，CPU将结果传送出来，主存的运行也决定了计算机的稳定运行。</p>
+<p>主存一般通过控制芯片与CPU相连，由可读写的元素构成，每个字节都有一个地址编号。</p>
+<p>CPU通过地址从主存中读取数据和指令，也可以根据地址写入数据，注意一点：当计算机关机时，内存中的指令和数据也会被清除。</p>
+<h2 id="cpu是寄存器的集合体">CPU是寄存器的集合体</h2>
+<p>在CPU的四个结构中，寄存器的重要性远远高于其余三个，为什么这么说？因为程序通常是把寄存器作为对象来进行描述的。</p>
+<p>而说到寄存器，就不得不说到汇编语言，说到汇编语言，就不得不说到高级语言，说起高级语言也就不得不提及语言的概念。</p>
+<h2 id="计算机语言">计算机语言</h2>
+<p>人和人之间最古老和直接的沟通媒介是语言，但是和计算机沟通，就必须按照计算机指令来交换，其中就涉及到语言的问题。</p>
+<p>最早，为了解决计算机和人类的交流的问题，出现了汇编语言。</p>
+<p>但是汇编语言晦涩难懂，所以又出现了像是C、C++、Java的这种高级语言，因此计算机语言一般分为低级语言和高级语言。</p>
+<p>使用高级语言编写的程序，经过编译转换成机器语言后才能运行，而汇编语言经过汇编器才能转换为机器语言。</p>
+<h2 id="汇编语言">汇编语言</h2>
+<p>我们先来看一段采用汇编语言表示的代码清单：</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-2.jpeg" alt="CPU Procedure"></p>
+<p>这是采用汇编语言编写程序的一部分，汇编语言采用助记符来编写程序，每个原本是电信号的机器语言指令会有一个与其对应的助记符。</p>
+<p>比如，mov,add分别是数据的存储（move）和相加（addition）的简写。</p>
+<p>汇编语言和机器语言一一对应，这点和高级语言不同，我们通常把汇编语言编写的程序转换为机器语言的这个过程，称之为汇编。</p>
+<p>与之相反，将机器语言转化为汇编语言的过程称之为反汇编。</p>
+<p>汇编语言可以帮助你理解计算机做了什么工作，机器语言级别的程序通过寄存器来处理，上面代码中的eax,ebp都是表示的寄存器，它们是CPU内部寄存器的名称。</p>
+<p>因此，可以说 CPU 是一系列寄存器的集合体。</p>
+<p>一般，在内存中的存储通过地址编号来表示，寄存器的种类是通过名字来区分。</p>
+<p>那些不同类型的CPU，其内部寄存器的种类、数量以及寄存器存储的数值范围也都是不同的。</p>
+<p>不过，根据功能的不同，我们可以将寄存器划分为下面几类：</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-3.jpeg" alt="CPU Procedure"></p>
+<p>其中，程序计数器、标志寄存器、累加寄存器、指令寄存器和栈寄存器只有一个，其他寄存器一般有好几个。</p>
+<h2 id="程序计数器">程序计数器</h2>
+<p>程序计数器是用来存储下一条指令所在单元的地址。</p>
+<p>程序在执行时，PC的初值作为程序第一条指令的地址，在顺序执行程序时，控制器先按照程序计数器所指出的指令地址，从内存中取出一条指令，随后分析和执行该指令，并同时将PC的值加1指向下一条要执行的指令。</p>
+<p>我们可以通过一个事例来仔细看一下程序计数器的执行过程：</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-4.jpeg" alt="CPU Procedure"></p>
+<p>这是一段进行相加的操作，程序启动，在经过编译解析后，会经由操作系统把硬盘中的程序复制到内存中。</p>
+<p>以上示例程序，就是将123和456执行相加的操作，随后将结果输出到显示器上，因为使用机器语言很难描述，所以这些都是经过翻译后的结果。</p>
+<p>事实上，每个指令和数据都有可能分布在不同的地址上，但是为了更好的说明，就把组成一条指令的内存和数据放在了一个内存地址上。</p>
+<p>地址0100是程序运行的起始位置，Windows等操作系统把程序从硬盘复制到内存以后，就会将程序计数器作为设定为起始位置0100，然后再执行程序，每次执行一条指令后，程序计数器的数值就会增加1，或者是直接指向下一条指令的地址。</p>
+<p>随后，CPU会根据程序计数器的数值，从内存中读取命令并且执行，换言之，程序计数器控制着程序的流程。</p>
+<h2 id="条件分支和循环机制">条件分支和循环机制</h2>
+<p>小伙伴们都学过高级语言，高级语言汇总的条件控制流程主要分为顺序执行、条件分支、循环判断三种。</p>
+<ul>
+<li>顺序执行是按照地址的内容顺序的执行命令。</li>
+<li>条件分支是根据条件执行任意地址的指令。</li>
+<li>循环是重复执行同一地址的指令。</li>
+</ul>
+<p>一般情况下，顺序执行的情况较简单，每次执行一条指令程序计数器的值就是+1。</p>
+<p>条件和循环分支会使得程序计数器的值指向任意的地址，这样一来，程序就可以返回到上一个地址来重复执行同一个指令，或者跳转到其它任意指令。</p>
+<p>下面，我们就以条件分支举例来说明程序的执行过程：</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-5.jpeg" alt="CPU Procedure"></p>
+<p>程序的开始过程和顺序流程是一样的，程序的顺序流程和开始过程相同。</p>
+<p>CPU从0100处就开始执行命令，在0100和0101中都是顺序执行，PC的值顺序+1，执行到0102地址的指令时，判断0106寄存器的数值大于0，跳转到0104地址的指令，再将数值输到显示器中，随后结束程序，0103的指令就被跳过了。</p>
+<p>这和我们程序中的if（）判断相同，在不满足条件的情况下，指令一般会直接跳过。</p>
+<p>因此，PC的执行过程没有直接+1，而是下一条指令的地址。</p>
+<h2 id="标志寄存器">标志寄存器</h2>
+<p>条件和循环分支会使用到 jump（跳转指令），会根据当前的指令来判断是否跳转，上面我们提到了标志寄存器，无论当前累加寄存器的运算结果是正数、负数还是零，标志寄存器都会将其保存。</p>
+<p>CPU在进行运算时，标志寄存器的数值会根据当前运算的结果自动设定，运算结果的正、负和零三种状态由标志寄存器的三个位表示。</p>
+<p>标志寄存器的第一个字节位、第二个字节位、第三个字节位各自的结果都为1时，分别代表着正数、零和负数。</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-6.jpeg" alt="CPU Procedure"></p>
+<p>CPU的执行机制比较有意思，假设累加寄存器中存储的XXX和通用寄存器中存储的YYY做比较，执行比较的背后，CPU的运算机制就会做减法运算。</p>
+<p>而无论减法运算的结果是正数、零还是负数，都会保存到标志寄存器中。</p>
+<p>结果为正表示 XXX 比 YYY 大，结果为零表示 XXX 和 YYY 相等，结果为负表示 XXX 比 YYY 小，程序比较的指令，实际上是在 CPU 内部做减法运算。</p>
+<h2 id="函数调用机制">函数调用机制</h2>
+<p>函数的调用和条件分支，循环机制有所不同，单纯的跳转指令无法实现函数的调用。</p>
+<p>函数的调用需要在函数内部处理后，处理流程在返回到函数调用点（函数调用指令的下一个地址）。</p>
+<p>函数的调用处理是通过把程序计数器的值设定成函数的存储地址来实现的。</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-7.jpeg" alt="CPU Procedure">
+<img src="https://www.kontronn.com/imgs/post/CPU-brief-8.jpeg" alt="CPU Procedure"></p>
+<h2 id="通过地址和索引实现数组">通过地址和索引实现数组</h2>
+<p>接下来是基址寄存器和变址寄存器，通过这两个寄存器，可以对主存上的特定区域进行划分，以此实现类似数组的操作。</p>
+<p>首先，可以用十六进制数将计算机内存上的 00000000 - FFFFFFFF 的地址划分出来。</p>
+<p>这样，凡是该范围的内存地址，只要有一个 32 位的寄存器，就可以查看全部地址。</p>
+<p>但是，要是想像数组那样，分割特定的内存区域以达到连续查看的目的的话，使用两个寄存器会更方便一些，比如，我们用两个寄存器来表示内存的值。</p>
+<p><img src="https://www.kontronn.com/imgs/post/CPU-brief-9.jpeg" alt="CPU Procedure"></p>
+<p>这种表示方式很像数组的构造，数组是指同样长度的数据，在内存中进行连续排列的数据构造。</p>
+<p>用数组名表示数组全部的值，通过索引来区分数组的各个数据元素，例如: a[0] - a[4]，[]内的 0 - 4 就是数组的下标。</p>
+<h2 id="cpu指令执行过程">CPU指令执行过程</h2>
+<p>那说了这么多，CPU到底是怎么一条条的执行指令的呢？几乎全部的冯·诺伊曼型计算机的CPU，工作都可以分为5个阶段：取指令、指令译码、执行指令、访存取数、结果写回。</p>
+<p>取指令阶段就是将内存中的指令读取到CPU中寄存器的过程，程序寄存器用于存储下一条指令所在的地址；</p>
+<ul>
+<li>在取指令完成后，立马进入指令译码阶段，在指令译码阶段，指令编码器按照预先的指令格式，对取回的指令进行拆分和解释，识别区分出不同的指令类别和各种获取操作数的方法；</li>
+<li>执行指令阶段的任务是完成指令所规定的各种操作，具体实现指令的功能；</li>
+<li>访问取数阶段的任务是：根据指令地址码，得到操作数在主存中的地址，并从主存中读取该操作数用于运算；</li>
+<li>结果写回阶段作为最后一个阶段，把执行指令阶段的运行结果数据“写回”到某种存储形式：结果数据经常被写到CPU的内部寄存器中，以便被后续的指令快速地存取。</li>
+</ul>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/cpu">
+    CPU
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      一篇关于CPU的入门知识
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/basic-knowledge-of-cpu.html" title="一篇关于CPU的入门知识">https://www.kontronn.com/post/hardware/basic-knowledge-of-cpu.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html" rel="prev" title="AMD Zen6架构继续飞跃！核显跨越下下代RDNA5">
+      AMD Zen6架构继续飞跃！核显跨越下下代RDNA5
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
