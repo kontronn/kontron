@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>PCIe on VxWorks 7</title>
-    <link>https://www.vxworks7.com/tags/pcie/</link>
-    <description>Recent content in PCIe on VxWorks 7</description>
+    <title>PCIe on Kontronn</title>
+    <link>https://www.kontronn.com/tags/pcie/</link>
+    <description>Recent content in PCIe on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 21 Dec 2022 08:50:10 -0500</lastBuildDate><atom:link href="https://www.vxworks7.com/tags/pcie/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2024 21:55:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcie/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>实测VxWorks响应PCIe中断的最小时间间隔</title>
-      <link>https://www.vxworks7.com/post/app/mininum-time-for-vxworks-response-pcie-interrupt.html</link>
-      <pubDate>Wed, 21 Dec 2022 08:50:10 -0500</pubDate>
+      <title>带你认识PCIe插槽！除了插显卡它还能插什么</title>
+      <link>https://www.kontronn.com/post/hardware/pcie-slot-introduction.html</link>
+      <pubDate>Thu, 22 Feb 2024 21:55:36 +0800</pubDate>
       
-      <guid>https://www.vxworks7.com/post/app/mininum-time-for-vxworks-response-pcie-interrupt.html</guid>
-      <description>&lt;p&gt;中断是外部事件通知操作系统的最常用手段。中断处理机制是计算机多任务环境运行的基础，是系统实时性的保证;VxWorks是美国Wind River公司于1983年设计开发的一种嵌入式实时操作系统。内核wind在任务调度、中断处理及网络处理等方面与其它嵌入式实时操作系统相比具有一定的优势。特别是其提供的微秒级的中断处理为VxWorks在嵌入式实时操作系统领域的旗舰地位奠定了基础。本文通过带有PCIe接口的FPGA开发板，在VxWorks6.8版本的操作系统环境下，实测一下VxWorks操作系统中断处理的最小时间间隔是否是传说中的微秒级。&lt;/p&gt;</description>
+      <guid>https://www.kontronn.com/post/hardware/pcie-slot-introduction.html</guid>
+      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+&lt;p&gt;关注我们的玩家或者经常接触台式机的玩家应该对
+&lt;a href=&#34;https://www.vxworks.net/component/tags/tag/pcie&#34; title=&#34;PCIe&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    PCIe
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;这个词不陌生，它经常出现在主板、显卡甚至是硬盘上。可以说它是你电脑里最重要的接口或通道之一，不过似乎很多人并不知道它是个什么东西，到底能够干什么，觉得它只能用来插显卡，但实际上它的用途非常广泛，今天就一起简单了解一下这个神秘的“PCIe”。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="带你认识PCIe插槽！除了插显卡它还能插什么" />
+<meta itemprop="description" content="带你认识PCIe插槽！除了插显卡它还能插什么" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="PCIe,PCIe Gen5" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="带你认识PCIe插槽！除了插显卡它还能插什么" />
+<meta property="og:description" content="带你认识PCIe插槽！除了插显卡它还能插什么" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/hardware/pcie-slot-introduction.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-02-22 21:55:36 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-02-22 21:55:36 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"pcie-slot-introduction.html","permalink":"https://www.kontronn.com/post/hardware/pcie-slot-introduction.html","title":"带你认识PCIe插槽！除了插显卡它还能插什么"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>带你认识PCIe插槽！除了插显卡它还能插什么 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">97</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#什么是pcie插槽">什么是PCIe插槽？</a></li>
+    <li><a href="#pcie有什么用">PCIe有什么用？</a></li>
+    <li><a href="#pcie时代的发展史">PCIe时代的发展史</a></li>
+    <li><a href="#为什么pcie有不同的长度">为什么PCIe有不同的长度？</a></li>
+    <li><a href="#除了插显卡还能插什么">除了插显卡，还能插什么？</a></li>
+    <li><a href="#结语">结语</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">151</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-05-02T15:59:41&#43;08:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="22822"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="168"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-02-22T21:55:36&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/pcie-slot-introduction.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="带你认识PCIe插槽！除了插显卡它还能插什么">
+      <meta itemprop="description" content="带你认识PCIe插槽！除了插显卡它还能插什么">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">带你认识PCIe插槽！除了插显卡它还能插什么 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-02-22 21:55:36 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-02-22 21:55:36 &#43;0800 CST">2024-02-22</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>120</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/hardware/pcie-slot-introduction.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <h2 id="前言">前言</h2>
+<p>关注我们的玩家或者经常接触台式机的玩家应该对
+<a href="https://www.vxworks.net/component/tags/tag/pcie" title="PCIe" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    PCIe
+    <i class="fa fa-external-link-alt"></i>
+</a>这个词不陌生，它经常出现在主板、显卡甚至是硬盘上。可以说它是你电脑里最重要的接口或通道之一，不过似乎很多人并不知道它是个什么东西，到底能够干什么，觉得它只能用来插显卡，但实际上它的用途非常广泛，今天就一起简单了解一下这个神秘的“PCIe”。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-1.jpeg" alt="PCIe Slot"></p>
+<h2 id="什么是pcie插槽">什么是PCIe插槽？</h2>
+<p>PCle的全称为PCI总线(PCI Express)， PCIe是计算机的一种高速总线，而总线就相当于计算机里的一条道路，提供给不同的设备和硬件进行数据交互。而最早的PCIe是2001年由Intel提出的，甚至在那时还不叫“PCIe”，而叫“3GIO”，用于替代PCI、PCI-X和AGP等老式总线。</p>
+<p>这么说你可能还不太明白，那我们找个主板看看就知道了，图片中圈起来的地方就是我们所说的PCIe插槽。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-2.jpeg" alt="PCIe Slot"></p>
+<h2 id="pcie有什么用">PCIe有什么用？</h2>
+<p>PCIe 接口通常用于将高性能外围设备连接到您的计算机。最常见的例子是你的显卡 (GPU) ，因为现代游戏、科学、工程和机器学习应用程序涉及处理大量数据。而PCIe能够很好的在CPU与GPU之间构筑桥梁，让它们能够数据交互。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-3.jpeg" alt="PCIe Slot"></p>
+<p>不过显卡也不是唯一能够接入PCIe插槽的设备，还有很多外设也能够利用PCIe插槽，下面我们会给各位详细解读。值得一提的是，PCIe也不是一成不变的，它也会升级迭代，毕竟最初的版本已经是2001年了，现在都3202年了，PCIe早就经过了几次迭代了。</p>
+<h2 id="pcie时代的发展史">PCIe时代的发展史</h2>
+<p>截至目前，PCIe插槽一共有多代标准，最超前的PCIe 6.0的规范已经在2022年1月22日发布，但目前仅停留在理论阶段，尚未有产品适用或者测试。</p>
+<p>别看PCIe现在风光无量，它的前身其实是ISA，在那个电脑没有标准化，各种硬件接口、协议不统一的时代，电脑上的硬件就由于六国纷争，我的硬件不兼容你的，你的硬件不支持我的，为了解决这种情况，当时业内统一了一个规格，就是ISA接口，也算得上是PCIe的爷爷了，它最早诞生在1981年，搭载在IBM的电脑上，并且一度统治了当时的PC领域。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-4.jpeg" alt="PCIe Slot"></p>
+<p>不过好景不长，作为初代数据总线，仅有8MB/s的传输速率，放在今天来看，U盘都快过它。因此ISA的传输速率很快就不能满足其他硬件的需求了，并且当时这款接口还有CPU占用率过高等问题，因此大家开始寻求ISA的继任者。</p>
+<p>所以PCI诞生了，PCI相较于ISA在带宽速率上有了不小的提升，32bit位宽下可以做到128MB/s，如果将数据位宽升级到64位，那速率还可以翻倍至256MB/s。并且做到了即插即用，就好像我们现在插显卡上主机一样，系统可以自动寻找相应的驱动程序。要知道在ISA那个年代，我们接入任何设备在ISA接口上还需要手动配置，相当麻烦。不过PCI总线也不是没有缺点，一个就是它采用共享总线设计，所以多设备容易造成抢带宽的情况，其次它也不支持热插拔。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-5.jpeg" alt="PCIe Slot"></p>
+<p>而我们今天的主角PCIe就是在PCI的基础上演变而来的，PCIe后缀上的e又叫Express，一看就知道是PCI的升级版。它与PCI的区别主要体现在总线类型不同、颜色不同、规格不同以及传输速率不同。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-6.jpeg" alt="PCIe Slot"></p>
+<p>目前PCIe规范已经发展出6个大版本，每一次大版本的进化，都能带来相比上一版本近乎于翻倍的带宽。第一个PCIe的正式规范也就是PCIe 1.0诞生于2003年，其信号速率为2.5GT/s，采用8b/10b编码方式，单通道单向带宽达到250MB/s，16通道双向带宽为8GB/s。该规范随后还发展出PCIe 1.0a和PCIe 1.1版本，虽然细节上有不少改进但是带宽并没有改变。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-7.jpeg" alt="PCIe Slot"></p>
+<p>PCIe 2.0规范则在2007年正式发布，其相比于PCIe 1.0规范最大的变化是信号速率翻倍至5GT/s，因此其带宽也跟随着一起翻倍，单通道单向带宽为500MB/s，16通道双向带宽为16GB/s。此外PCIe 2.0规范还将对应插槽的供电能力翻倍至最高150W的水平，但出于对兼容性以及主板供电压力等多方面的考虑，最终无论主板厂商、显卡厂商又或者其它PCIe设备的厂商，在产品开发时都是按照PCIe 1.0规范的供电要求也就是75W执行的，供电需求高于75W者一律配置外接供电，这个行业规则一直沿用至今。</p>
+<p>PCIe 3.0虽然是2010年发布的标准，但至今依旧很多设备在用，相比PCIe 2.0规范不仅信号速率提升至8GT/s，而且编码方式也改成了更高效的128b/130b模式，因此单通道单向带宽依然实现了接近翻倍的提升，达到985MB/s的水平，16通道双向带宽高达32GB/s。</p>
+<p>PCIe 4.0可以算作是目前的主流标准，其再一次实现了信号速率的翻倍，16通道双向带宽达到64GB/s的水平，PCIe 4.0将允许更快地传输正在GPU内存中加载的数据，并减少PCIe总线上的延迟。随着视频游戏的文件大小和图形复杂性不断增加，并且机器学习应用程序继续需要越来越大的数据集，PCIe 4.0将在提高帧速率和减少计算时间方面发挥重要作用。</p>
+<p>PCIe 5.0早早就在2019年就提出了，但是直到去年AMD的X670、B650等主板上市，才真正应用在硬件上，加上现在也逐渐有PCIe 5.0的固态硬盘现身，玩家才得以见到PCIe 5.0的性能。PCIe 5.0 最重要的一个特性——也是每个人都会关心的特性——是速度。PCIe 5.0 的速度是PCIe 4.0 的两倍，单向带宽高达约64GB/s，双向带宽高达128GB/s。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-8.jpeg" alt="PCIe Slot"></p>
+<p>值得一提的是，在数据传输中，PCIe 5.0还使用了从3.0标准时代所导入的NRZ 128b/130b编码技术，不再采用8bit/10bit的小包校验方式，转而采用了全新算法的128bit/130bit的大包校验方式以及全新的硬件加扰和解码模块等，其校验带宽开销从之前的20%降低至1.54%。即便是扣除损耗的带宽后，PCIe 5.0 X16、PCIe 5.0 X4接口下也能分别提供63.0 GB/s、15.75 GB/s的传输带宽。</p>
+<p>PCIe 6.0则是2022年才提出的标准，新鲜出炉。传输速度是PCIe 5.0的两倍，单向带宽高达约128GB/s，双向带宽高达256GB/s。面对数据传输量大幅成长，相比PCIe 5.0，PCIe 6.0强化传输频宽与能源使用效益，同时具备低延迟与减少频宽消耗的功能。</p>
+<p>至于7.0 版的PCIe规范，今年6月PCI-SIG敲定了 PCIe Gen7（PCIe 7.0）v0.3 版本的草案，届时它的数据传输速率将再次翻倍，达到单向带宽高达约256GB/s，双向带宽高达512GB/s。不过有一说一，家用PC在很多年内应该也用不上这样的速度，而PCIe 7.0的普及，那就更不知道要等到猴年马月了，毕竟现在5.0都还没普及。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-9.jpeg" alt="PCIe Slot"></p>
+<h2 id="为什么pcie有不同的长度">为什么PCIe有不同的长度？</h2>
+<p>PCIe接口的总线带宽是按长度划分的PCIe X1、PCIe X2、PCIe X4、PCIe X8、PCIe X16。虽然我们可以把任意长度的PCIe设备插到PCIe X1或者PCIe X16的插槽中去运行，但是这样很明显会造成一个问题，带宽要求小的设备会浪费PCIe X16的超大带宽，而带宽要求大的设备在PCIe X1插槽内又“吃不饱”。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-10.jpeg" alt="PCIe Slot"></p>
+<p>当然啦，有些玩家可能会说“我的主板上没有PCIe X1的插槽”，其实这也正常，在一些MATX、ITX甚至是旗舰主板上，由于空间布局的问题，导致PCIe X1插槽没有办法塞下，因此如果你想使用PCIe X1外设，在没有PCIe X1插槽的情况下，也是可以将较小的扩展卡安装在较大的插槽中，这仍然会工作得非常好。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-11.jpeg" alt="PCIe Slot"></p>
+<p>总的来说，PCIe区分不同长度是为了让各种设备都能够在合适的带宽下运行，并且不同长度的插槽所能承受的带宽不同，相同长度不同版本的PCIe所能承受的带宽也不一样。下面给大家盘点一下各个版本的PCIe下，不同插槽的带宽能够有多大的区别。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-12.jpeg" alt="PCIe Slot"></p>
+<p>从图中就可以看到，PCIe X1速度最慢，PCIe X2是X1的2倍，X4是X2的2倍，以此类推X16是X8的2倍。而每次PCIe版本的迭代也都在前代的速率基础上进行提升，几乎每一代都比上一代速度提升了一倍。而且PCIe是可以向下兼容的，PCIe 1.0的设备可以插到2.0接口上用，2.0的设备也可以插到1.0接口上用，只是不能发挥全部性能。</p>
+<h2 id="除了插显卡还能插什么">除了插显卡，还能插什么？</h2>
+<p>上面我们介绍到了，PCIe插槽有不同的长度，显卡往往插在PCIe X16的插槽上，那除了插显卡还能插什么呢？当然PCIe X16插槽也会用来接RAID阵列卡，因为其与CPU直连的特性，加上物理上距离更靠近CPU，因此显卡或RAID阵列卡在与CPU之间数据交互时，延迟会更低，性能也能更好的释放。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-13.jpeg" alt="PCIe Slot"></p>
+<p>PCIe X8的插槽在主板上大多也是PCIe X16插槽的形状，不过数据针脚只有一半是有效的，也就是说实际带宽只有真正的PCIex16插槽的一半。主要用来接M.2 NVME的扩展卡，毕竟在以前，主板的M.2接口不像现在的主板那么多，加上当时的固态价格也没有今天那么低，大家买硬盘都是省吃俭用，才用上了500G，甚至以前1T都是富哥才用得起的装备。因此想要在老主板上装更多的M.2固态就需要用这种扩展卡，并且只要协议版本和通道数量与硬盘保持一致，理论速度与板载M.2并无区别。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-14.jpeg" alt="PCIe Slot"></p>
+<p>与PCIe X8插槽一样，PCIe X4插槽为了兼容性，现在多数也是做成PCIe X16插槽的形式，或是扩展为M.2接口，用于安装M.2SSD、M.2无线网卡或者其它M.2接口设备。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-15.jpeg" alt="PCIe Slot"></p>
+<p>最后就是最万能的PCIe X1的这个短小精悍的插槽了，你几乎可以在网上买到所有想用它进行扩展转接的接口！比如安装USB 2.0/3.0扩展卡、安装千兆/2.5Gbps高速网卡、安装高性能声卡、扩展更多的SATA口、安装Wi-Fi网卡等等。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-16.jpeg" alt="PCIe Slot"></p>
+<p>PCIe除了插槽形式，它还可以作为通道的形式存在，我们最常用的M.2固态硬盘接口，表面上是M.2连接我们的固态硬盘，但起到数据传输作用的却是PCIe通道。简单的讲，M.2接口就是换了外形的PCIe接口。你看它的接口是不是很像缩小了的PCIe接口，这也是为什么我们老是能够听到PCIe 4.0固态硬盘、PCIe 5.0固态硬盘的原因。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-Slot-adapter-17.jpeg" alt="PCIe Slot"></p>
+<h2 id="结语">结语</h2>
+<p>虽然现在主流的应用还在PCIe 3.0和PCIe 4.0，但我们看到在有些数据中心，以及新的GPU、CPU，或固态硬盘都开始采用PCIe 5.0了。未来，PCIe 6.0乃至PCIe 7.0的出现，也势必让更多的硬件能够释放更强的性能。不过，按照目前的情况来看，PCIe 5.0更像是战未来的产品，虽然我们也说了有固态硬盘支持PCIe 5.0甚至是显卡也支持了PCIe 5.0，但是即便是PCIe 3.0也不会让目前的显卡的性能出现瓶颈。PCIe 5.0的出现更像是有了生态基础，给未来的硬件铺路，也是为了让现在的硬件能够适应忽然爆火的AIGC领域，毕竟现在的AI计算模型大得令人难以想象。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/pcie">
+    PCIe
+  </a>
+    <a href="/tags/pcie-gen5">
+    PCIe Gen5
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      带你认识PCIe插槽！除了插显卡它还能插什么
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/pcie-slot-introduction.html" title="带你认识PCIe插槽！除了插显卡它还能插什么">https://www.kontronn.com/post/hardware/pcie-slot-introduction.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/hardware/basic-knowledge-of-cpu.html" rel="prev" title="一篇关于CPU的入门知识">
+      一篇关于CPU的入门知识
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
