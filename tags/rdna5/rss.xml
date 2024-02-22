@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RDNA5 on Kontronn</title>
+    <link>https://www.kontronn.com/tags/rdna5/</link>
+    <description>Recent content in RDNA5 on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 22 Feb 2024 09:27:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rdna5/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD Zen6架构继续飞跃！核显跨越下下代RDNA5</title>
+      <link>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</link>
+      <pubDate>Thu, 22 Feb 2024 09:27:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</guid>
+      <description>&lt;p&gt;AMD的下一代Zen5 CPU架构还没来，Zen6的消息就已经多次传出，现在又提到了所集成的GPU核显，居然将会搭配同样下下一代的RDNA5。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

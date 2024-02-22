@@ -16,6 +16,37 @@
   </entry>
   
   <entry>
+    <title>AMD Zen6架构继续飞跃！核显跨越下下代RDNA5</title>
+    <url>/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>Zen6</tag>
+      <tag>RDNA5</tag>
+    </tags>
+    <content type="html"><![CDATA[AMD的下一代Zen5 CPU架构还没来，Zen6的消息就已经多次传出，现在又提到了所集成的GPU核显，居然将会搭配同样下下一代的RDNA5。
+据曝料，AMD正在同时研发Zen5、Zen6两代架构，其中Zen5的桌面版会继续集成RDNA2 GPU，移动版则会升级到RDNA3.5。
+Zen6的服务器版代号为Morpehus(古希腊神话梦神摩耳甫斯)，消费级版代号则是“Medusa”(美杜莎)。
+最新说法称，Medusa Zen6会进入新的2.5D互连封装技术，取代现在传统式多die互连的chiplet小芯片，从而提升传输带宽与性能。
+Zen6架构的锐龙还会集成RDNA5架构的GPU核显，这也意味着，尚未露面的RDNA4会被跳过去。
+至于为何这么做，尚不清楚，可能是RDNA4提升不够大，也可能是RDNA5的进展更快。
+有趣的是，就在不久前，微软关于Xbox主机的一份文档中，就提到了Zen6、Navi5——后者就是RDNA5家族。
+根据此前曝料，Zen6架构将会全面升级，制造工艺升级到CCD 2nm、IOD 3nm，CCD再次升级为原生32核心，IPC性能再提升10％，支持16通道内存，加入AI/ML FP16浮点指令等等。
+理论上，Zen6 EPYC可以做到庞大的256核心512线程！
+相关消息：
+AMD官方宣布，即将发布的Windows更新，会在任务管理器中增加新的监控标签，可显示锐龙8040系列处理器内置NPU AI引擎的使用情况。
+AMD 2023年初发布的锐龙7040系列，首次在x86处理器中加入了独立的NPU AI引擎，分担原本由CPU或GPU执行的部分AI推理任务，从而提高运行效率、延长电池寿命。
+2023年底，AMD又发布了升级版的锐龙8040系列，AI性能大幅提升60％，相关笔记本已经陆续发布上市。
+AMD也一直在与微软合作，在锐龙8040系列移动处理器上启用MCDM（微软计算驱动程序模型）。
+这是WDDM（Windows显示驱动程序模型）的衍生工具，面向NPU等非GPU、计算设备，使其够利用现有的GPU设备管理功能，包括调度、电源管理、内存管理、使用任务管理器等工具进行性能调试。
+MCDM作为基础层，可确保AI工作负载在NPU设备上的顺利执行。
+至于首发的锐龙7040系列是否也能在Windows任务管理器中监控NPU，暂时不详。
+Intel Meteor Lake酷睿Ultra处理器也集成了NPU AI引擎，并且已经抢先显示在Windows任务管理器中，命名为“Intel AI Boost”，可实时显示NPU利用率、内存占用等数据。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>中国合规RTX 4090D正式发布：性能只差5%</title>
     <url>/post/news/China-compliant-RTX-4090D-officially-released-by-NVIDIA.html</url>
     <categories><category>News</category>

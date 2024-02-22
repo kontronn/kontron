@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 30 Dec 2023 10:06:35 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Feb 2024 09:27:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>AMD Zen6架构继续飞跃！核显跨越下下代RDNA5</title>
+      <link>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</link>
+      <pubDate>Thu, 22 Feb 2024 09:27:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</guid>
+      <description>&lt;p&gt;AMD的下一代Zen5 CPU架构还没来，Zen6的消息就已经多次传出，现在又提到了所集成的GPU核显，居然将会搭配同样下下一代的RDNA5。&lt;/p&gt;</description>
     </item>
     
     <item>
