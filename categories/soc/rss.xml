@@ -6,7 +6,16 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Feb 2024 09:21:25 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Feb 2024 09:39:58 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS</title>
+      <link>https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html</link>
+      <pubDate>Fri, 23 Feb 2024 09:39:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html</guid>
+      <description>&lt;p&gt;算力也被称之为计算能力（Computing Power），算力既然是一种“能力”——即其执行计算任务的速度和效率，那么算力就会有大小的衡量指标，同时对于算力的衡量就需要依托于芯片的类别来进行，但是无论怎样算力是需要有一个基准的单位的，常见具体的请见下表：&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>全球首款，NPU&#43;GPU&#43;CPU三位一体AI加速！锐龙7 8700G实战AI应用体验</title>
       <link>https://www.kontronn.com/post/soc/NPU-GPU-CPU-trinity-AI-acceleration.html</link>

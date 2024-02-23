@@ -16,6 +16,44 @@
   </entry>
   
   <entry>
+    <title>来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS</title>
+    <url>/post/soc/computer-computing-power-unit-introduction.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Computing Power</tag>
+      <tag>TOPS</tag>
+      <tag>FLOPS</tag>
+      <tag>MIPS</tag>
+      <tag>DMIPS</tag>
+    </tags>
+    <content type="html"><![CDATA[算力也被称之为计算能力（Computing Power），算力既然是一种“能力”——即其执行计算任务的速度和效率，那么算力就会有大小的衡量指标，同时对于算力的衡量就需要依托于芯片的类别来进行，但是无论怎样算力是需要有一个基准的单位的，常见具体的请见下表：
+算力的计算方式 FLOPS FLOPS——（Floating Point Operations Per Second）来衡量算力通常以每秒钟可以执行的浮点运算次数。常见的FLOPS的计算算力单位根据数量级还有不同的表达，具体如下：
+ KFLOPS-kilo Floating Point Operations Per Second（千次浮点运算每秒） MFLOPS-Mega Floating Point Operations Per Second（百万次浮点运算每秒） GFLOPS-Giga Floating Point Operations Per Second（十亿次浮点运算每秒） TFLOPS-Tera Floating Point Operations Per Second（万亿次浮点运算每秒） PFLOPS-Peta Floating Point Operations Per Second（千万亿次浮点运算每秒）  FLOPS的计算方式：计算机的算力取决于处理器的性能、核心数量、频率以及并行计算能力等因素。一般来说，可以通过以下公式来计算处理器的FLOPS数值：算力 = 处理器核心数量 x 每个核心的频率 x 每个时钟周期的指令数量 x 每个指令的执行
+例如，如果一台处理器有4个核心，每个核心的频率为3.5 GHz，每个时钟周期执行4条指令，每条指令的执行时间为0.5纳秒，则该处理器的算力为：算力 = 4核 x 3.5 GHz x 4 x (0.5 ns) = 56 GFLOPS
+TOPS TOPS（Tera Operations Per Second）是指每秒进行的万亿次运算，是衡量人工智能（AI）处理器性能的重要指标，也是评估处理器在深度学习和神经网络推理任务中的计算能力的重要指标。
+计算TOPS的基本原理是根据处理器的时钟频率、每个时钟周期执行的指令数量以及每个指令的计算量来计算。一般来说，可以使用以下公式来计算处理器的TOPS：TOPS = 处理器时钟频率 x 每个时钟周期的指令数量 x 每个指令的计算量
+其中，处理器时钟频率表示处理器的工作频率，每个时钟周期的指令数量表示每个时钟周期处理器执行的指令数量，每个指令的计算量表示每个指令的浮点运算量。
+某些情况下我们也是通过TOPS/W来评价处理器算力的一个性能指标，表达的含义是在1W功耗的情况下处理器可以执行多少亿万次操作。
+MIPS MIPS（Million Instructions Per Second）是指每秒钟能够执行的指令数，单位为百万条指令每秒（Million Instructions Per Second）。
+计算MIPS的方法如下：
+ 首先，确定在一个特定时间段内处理器执行的总指令数（例如1秒内）。 将总指令数除以1,000,000（即1百万），得到每秒钟能够执行的指令数，即MIPS值。  举例说明：
+假设一个处理器在1秒钟内执行了总共500,000条指令，那么它的MIPS值为：
+MIPS = 500,000 / 1,000,000 = 0.5 MIPS这表示该处理器每秒钟能够执行0.5百万条指令。通过计算MIPS值，可以评估处理器的指令执行速度和性能表现，但是对于特定的应用场景和任务可能不是最准确的性能指标。
+DMIPS DMIPS（Dhrystone Million Instructions Per Second）是指每秒钟能够执行的Dhrystone基准测试指令数，单位为百万条指令每秒。Dhrystone是一种通用的CPU性能测试工具，DMIPS是基于Dhrystone测试结果计算得出的性能指标。DMIPS更适用于衡量通用处理器在特定测试条件下的性能，可以提供更具体的性能评估结果。
+计算DMIPS的方法如下：
+ 首先，进行Dhrystone基准测试，得到处理器在测试条件下执行的总指令数（例如1秒内）。 将总指令数除以1,000,000（即1百万），得到每秒钟能够执行的Dhrystone基准测试指令数，即DMIPS值。  举例说明：
+假设一个处理器在进行Dhrystone基准测试时，在1秒钟内执行了总共800,000条指令，那么它的DMIPS值为：
+DMIPS = 800,000 / 1,000,000 = 0.8 DM
+这表示该处理器在Dhrystone基准测试条件下，每秒钟能够执行0.8百万条指令。通过计算DMIPS值，可以评估处理器在特定测试条件下的性能现。
+Hash/ &ldquo;hash/s&quot;通常用来衡量计算机或网络设备的哈希计算速度，特别是在加密货币挖矿等领域常被使用。基本原理是通过计算机执行哈希函数并输出哈希值的速度来衡量设备的计算能力。
+哈希函数是一种将任意长度的输入数据（消息）转换为固定长度的输出数据（哈希值）的函数。在加密货币挖矿中，通常会使用哈希函数来寻找符合特定条件的哈希值，这需要大量的计算。
+计算&quot;hash/s&quot;的算力通常是通过以下步骤进行估算：
+ 选择哈希函数：确定要使用的哈希函数，如SHA-256（比特币挖矿中常用的哈希函数）。 执行哈希计算：在设备上执行哈希函数，将输入数据进行哈希运算，得到哈希值。 计算速度：记录设备在单位时间内执行哈希计算的次数，即&quot;hash/s&rdquo;。  例如，如果一个计算机在1秒内执行了100,000次SHA-256哈希计算，那么它的哈希计算速度就是100,000 hash/s。这个速度可以用来衡量设备的计算能力，特别是在加密货币挖矿等需要
+总结 ]]></content>
+  </entry>
+  
+  <entry>
     <title>全球首款，NPU+GPU+CPU三位一体AI加速！锐龙7 8700G实战AI应用体验</title>
     <url>/post/soc/NPU-GPU-CPU-trinity-AI-acceleration.html</url>
     <categories><category>SOC</category>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS" />
+<meta itemprop="description" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Computing Power,TOPS,FLOPS,MIPS,DMIPS" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS" />
+<meta property="og:description" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-02-23 09:39:58 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-02-23 09:39:58 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"computer-computing-power-unit-introduction.html","permalink":"https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html","title":"来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">99</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#算力的计算方式">算力的计算方式</a>
+      <ul>
+        <li><a href="#flops">FLOPS</a></li>
+        <li><a href="#tops">TOPS</a></li>
+        <li><a href="#mips">MIPS</a></li>
+        <li><a href="#dmips">DMIPS</a></li>
+        <li><a href="#hash">Hash/</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">99</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">157</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-05-02T15:59:41&#43;08:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="23041"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="170"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-02-23T09:39:58&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS">
+      <meta itemprop="description" content="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-02-23 09:39:58 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-02-23 09:39:58 &#43;0800 CST">2024-02-23</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/soc" itemprop="url" rel="index">
+      <span itemprop="name">SOC</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>128</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/soc/computer-computing-power-unit-introduction.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>算力也被称之为计算能力（Computing Power），算力既然是一种“能力”——即其执行计算任务的速度和效率，那么算力就会有大小的衡量指标，同时对于算力的衡量就需要依托于芯片的类别来进行，但是无论怎样算力是需要有一个基准的单位的，常见具体的请见下表：</p>
+<h2 id="算力的计算方式">算力的计算方式</h2>
+<p><img src="https://www.kontronn.com/imgs/post/Computing-Power-1.png" alt="Computer Computing Power"></p>
+<h3 id="flops">FLOPS</h3>
+<p>FLOPS——（Floating Point Operations Per Second）来衡量算力通常以每秒钟可以执行的浮点运算次数。常见的FLOPS的计算算力单位根据数量级还有不同的表达，具体如下：</p>
+<ul>
+<li>KFLOPS-kilo Floating Point Operations Per Second（千次浮点运算每秒）</li>
+<li>MFLOPS-Mega Floating Point Operations Per Second（百万次浮点运算每秒）</li>
+<li>GFLOPS-Giga Floating Point Operations Per Second（十亿次浮点运算每秒）</li>
+<li>TFLOPS-Tera Floating Point Operations Per Second（万亿次浮点运算每秒）</li>
+<li>PFLOPS-Peta Floating Point Operations Per Second（千万亿次浮点运算每秒）</li>
+</ul>
+<p>FLOPS的计算方式：计算机的算力取决于处理器的性能、核心数量、频率以及并行计算能力等因素。一般来说，可以通过以下公式来计算处理器的FLOPS数值：算力 = 处理器核心数量 x 每个核心的频率 x 每个时钟周期的指令数量 x 每个指令的执行</p>
+<p>例如，如果一台处理器有4个核心，每个核心的频率为3.5 GHz，每个时钟周期执行4条指令，每条指令的执行时间为0.5纳秒，则该处理器的算力为：算力 = 4核 x 3.5 GHz x 4 x (0.5 ns) = 56 GFLOPS</p>
+<h3 id="tops">TOPS</h3>
+<p>TOPS（Tera Operations Per Second）是指每秒进行的万亿次运算，是衡量人工智能（AI）处理器性能的重要指标，也是评估处理器在深度学习和神经网络推理任务中的计算能力的重要指标。</p>
+<p>计算TOPS的基本原理是根据处理器的时钟频率、每个时钟周期执行的指令数量以及每个指令的计算量来计算。一般来说，可以使用以下公式来计算处理器的TOPS：TOPS = 处理器时钟频率 x 每个时钟周期的指令数量 x 每个指令的计算量</p>
+<p>其中，处理器时钟频率表示处理器的工作频率，每个时钟周期的指令数量表示每个时钟周期处理器执行的指令数量，每个指令的计算量表示每个指令的浮点运算量。</p>
+<p>某些情况下我们也是通过TOPS/W来评价处理器算力的一个性能指标，表达的含义是在1W功耗的情况下处理器可以执行多少亿万次操作。</p>
+<h3 id="mips">MIPS</h3>
+<p>MIPS（Million Instructions Per Second）是指每秒钟能够执行的指令数，单位为百万条指令每秒（Million Instructions Per Second）。</p>
+<p>计算MIPS的方法如下：</p>
+<ol>
+<li>首先，确定在一个特定时间段内处理器执行的总指令数（例如1秒内）。</li>
+<li>将总指令数除以1,000,000（即1百万），得到每秒钟能够执行的指令数，即MIPS值。</li>
+</ol>
+<p>举例说明：</p>
+<p>假设一个处理器在1秒钟内执行了总共500,000条指令，那么它的MIPS值为：</p>
+<p>MIPS = 500,000 / 1,000,000 = 0.5 MIPS这表示该处理器每秒钟能够执行0.5百万条指令。通过计算MIPS值，可以评估处理器的指令执行速度和性能表现，但是对于特定的应用场景和任务可能不是最准确的性能指标。</p>
+<h3 id="dmips">DMIPS</h3>
+<p>DMIPS（Dhrystone Million Instructions Per Second）是指每秒钟能够执行的Dhrystone基准测试指令数，单位为百万条指令每秒。Dhrystone是一种通用的CPU性能测试工具，DMIPS是基于Dhrystone测试结果计算得出的性能指标。DMIPS更适用于衡量通用处理器在特定测试条件下的性能，可以提供更具体的性能评估结果。</p>
+<p>计算DMIPS的方法如下：</p>
+<ol>
+<li>首先，进行Dhrystone基准测试，得到处理器在测试条件下执行的总指令数（例如1秒内）。</li>
+<li>将总指令数除以1,000,000（即1百万），得到每秒钟能够执行的Dhrystone基准测试指令数，即DMIPS值。</li>
+</ol>
+<p>举例说明：</p>
+<p>假设一个处理器在进行Dhrystone基准测试时，在1秒钟内执行了总共800,000条指令，那么它的DMIPS值为：</p>
+<p>DMIPS = 800,000 / 1,000,000 = 0.8 DM</p>
+<p>这表示该处理器在Dhrystone基准测试条件下，每秒钟能够执行0.8百万条指令。通过计算DMIPS值，可以评估处理器在特定测试条件下的性能现。</p>
+<h3 id="hash">Hash/</h3>
+<p>&ldquo;hash/s&quot;通常用来衡量计算机或网络设备的哈希计算速度，特别是在加密货币挖矿等领域常被使用。基本原理是通过计算机执行哈希函数并输出哈希值的速度来衡量设备的计算能力。</p>
+<p>哈希函数是一种将任意长度的输入数据（消息）转换为固定长度的输出数据（哈希值）的函数。在加密货币挖矿中，通常会使用哈希函数来寻找符合特定条件的哈希值，这需要大量的计算。</p>
+<p>计算&quot;hash/s&quot;的算力通常是通过以下步骤进行估算：</p>
+<ol>
+<li>选择哈希函数：确定要使用的哈希函数，如SHA-256（比特币挖矿中常用的哈希函数）。</li>
+<li>执行哈希计算：在设备上执行哈希函数，将输入数据进行哈希运算，得到哈希值。</li>
+<li>计算速度：记录设备在单位时间内执行哈希计算的次数，即&quot;hash/s&rdquo;。</li>
+</ol>
+<p>例如，如果一个计算机在1秒内执行了100,000次SHA-256哈希计算，那么它的哈希计算速度就是100,000 hash/s。这个速度可以用来衡量设备的计算能力，特别是在加密货币挖矿等需要</p>
+<h2 id="总结">总结</h2>
+<p><img src="https://www.kontronn.com/imgs/post/Computing-Power-2.png" alt="Computer Computing Power"></p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/computing-power">
+    Computing Power
+  </a>
+    <a href="/tags/tops">
+    TOPS
+  </a>
+    <a href="/tags/flops">
+    FLOPS
+  </a>
+    <a href="/tags/mips">
+    MIPS
+  </a>
+    <a href="/tags/dmips">
+    DMIPS
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html" title="来区分一下这些算力单位：TOPS、FLOPS、MIPS、DMIPS">https://www.kontronn.com/post/soc/computer-computing-power-unit-introduction.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/soc/NPU-GPU-CPU-trinity-AI-acceleration.html" rel="prev" title="全球首款，NPU&#43;GPU&#43;CPU三位一体AI加速！锐龙7 8700G实战AI应用体验">
+      全球首款，NPU&#43;GPU&#43;CPU三位一体AI加速！锐龙7 8700G实战AI应用体验
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
