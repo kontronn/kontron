@@ -16,6 +16,27 @@
   </entry>
   
   <entry>
+    <title>AMD又发布一新品，还是Zen3架构的</title>
+    <url>/post/soc/amd-launch-Ryzen-5000XT-CPU-based-on-zen3.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>CPU</tag>
+      <tag>AM4</tag>
+      <tag>AM5</tag>
+    </tags>
+    <content type="html"><![CDATA[近期，AMD在北京举办的AI PC峰会上除了发布Zen5的新品，还表示对AM4平台的继续支持——宣布正在开发基于Zen 3架构的Ryzen 5000XT CPU，以更新其在中端市场的产品线。
+这一系列产品将继承并提升自2019年推出的Ryzen 3000XT系列，这些处理器相比原有的-X型号，提升了最大加速频率。当时该系列为了与Intel的Comet Lake处理器竞争而推出，目的在于夺回AMD当时正在丧失的市场份额。
+尽管AMD尚未正式公布新XT处理器的详细规格，但基于过去的情况，我们可以预期5000XT系列将在频率上相较非XT版本有所提升，而核心配置方面估计变动不大。
+AMD针对不同价格区间准备了多款SKU。值得注意的是，除了5000XT系列之外，还透露了中国特供版本Ryzen 8000 APU，包括Ryzen 7 8700F和Ryzen 5 8400F，详情请见《AMD发布两款新U，专供中国市场》。
+此外，AMD还证实华硕的X370主板可以通过刷华擎 B450的BIOS来支持Zen 3架构。这说明AMD还不想放弃AM4插槽，尽管AMD在2022年推出了AM5平台，但AM4平台凭借其较低的入门成本，仍然受到了追求性价比的玩家的欢迎。事实上，AMD在今年还推出了多款AM4平台的处理器，包括锐龙5 5700X3D和锐龙5 5600GT等，进一步丰富了AM4平台的产品线，满足了不同用户的需求。
+AM4和AM5是AMD的两代处理器插座，AM4插座采用了PGA设计，拥有1331个针脚，支持从Ryzen 1000系列到Ryzen 5000系列的处理器，覆盖了Zen到Zen 3的各种架构。这一插座设计主要面向入门用户以及希望在现有硬件基础上升级的用户，支持DDR4内存和最高PCIe 4.0的标准，为大多数日常使用和游戏需求提供了充足的支持。
+AM5转而采用LGA设计，提供1718个触点，这种设计不仅提升了处理器与主板间的联系稳定性，还增加了电路的复杂度，从而支持更高性能的处理器和技术。AM5插座原生支持基于Zen 4架构的处理器，如Ryzen 7000系列，并且首次将DDR5内存引入AMD平台，同时支持PCIe 5.0标准。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>三星推出Mach-1 AI芯片，挑战英伟达</title>
     <url>/post/news/samsung-launches-Mach-1-AI-chip-to-challenge-Nvidia.html</url>
     <categories><category>News</category>
