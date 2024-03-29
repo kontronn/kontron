@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 Mar 2024 17:30:40 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Mar 2024 22:08:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CentOS</title>
+      <link>https://www.kontronn.com/tags/centos/</link>
+      <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>https://www.kontronn.com/tags/debian/</link>
+      <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fedora</title>
+      <link>https://www.kontronn.com/tags/fedora/</link>
+      <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/fedora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://www.kontronn.com/tags/linux/</link>
+      <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://www.kontronn.com/tags/ubuntu/</link>
+      <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>DNF5</title>
       <link>https://www.kontronn.com/tags/dnf5/</link>
@@ -611,15 +656,6 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://www.kontronn.com/tags/linux/</link>
-      <pubDate>Sun, 22 Oct 2023 10:10:37 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Memory</title>
       <link>https://www.kontronn.com/tags/memory/</link>
       <pubDate>Sun, 22 Oct 2023 10:10:37 +0800</pubDate>
@@ -809,38 +845,11 @@
     </item>
     
     <item>
-      <title>Debian</title>
-      <link>https://www.kontronn.com/tags/debian/</link>
-      <pubDate>Thu, 17 Aug 2023 06:33:59 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/debian/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Fedora</title>
-      <link>https://www.kontronn.com/tags/fedora/</link>
-      <pubDate>Thu, 17 Aug 2023 06:33:59 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/fedora/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Mint</title>
       <link>https://www.kontronn.com/tags/mint/</link>
       <pubDate>Thu, 17 Aug 2023 06:33:59 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/mint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ubuntu</title>
-      <link>https://www.kontronn.com/tags/ubuntu/</link>
-      <pubDate>Thu, 17 Aug 2023 06:33:59 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/ubuntu/</guid>
       <description></description>
     </item>
     
