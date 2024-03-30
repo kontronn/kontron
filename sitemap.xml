@@ -8,17 +8,47 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-03-29T22:40:05+08:00</lastmod>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-03-29T22:40:05+08:00</lastmod>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/linux/</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/lts/</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-03-29T22:40:05+08:00</lastmod>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ubuntu/</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/which-version-of-ubuntu-is-more-stable-in-production-environment.html</loc>
+    <lastmod>2024-03-30T09:35:16+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -33,11 +63,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/soc/SoC-development-trends.html</loc>
-    <lastmod>2024-03-29T22:40:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-03-29T22:40:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -68,21 +93,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/fedora/</loc>
-    <lastmod>2024-03-29T22:08:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/linux/</loc>
-    <lastmod>2024-03-29T22:08:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
-    <lastmod>2024-03-29T22:08:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/ubuntu/</loc>
     <lastmod>2024-03-29T22:08:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
