@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Habit on Kontronn</title>
+    <link>https://www.kontronn.com/tags/habit/</link>
+    <description>Recent content in Habit on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 01 Apr 2024 16:43:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/habit/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>程序员的十大优秀编码习惯</title>
+      <link>https://www.kontronn.com/post/programming/top-10-best-coding-habits-for-programmers.html</link>
+      <pubDate>Mon, 01 Apr 2024 16:43:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/top-10-best-coding-habits-for-programmers.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/programming-tips.png&#34; alt=&#34;Programming Tips&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在C++编程的世界中，良好的编码习惯是提高代码质量、可维护性和可读性的关键。作为一名C++程序员，我们应该时刻关注并遵循这些优秀的编码习惯，让我们的代码更加清晰、高效。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
