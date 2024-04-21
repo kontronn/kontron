@@ -6,7 +6,17 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 30 Mar 2024 09:35:16 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Apr 2024 14:28:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>15 个最佳免费开源 Linux 文件管理器</title>
+      <link>https://www.kontronn.com/post/linux/15-best-free-open-source-linux-file-managers.html</link>
+      <pubDate>Sun, 21 Apr 2024 14:28:24 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/15-best-free-open-source-linux-file-managers.html</guid>
+      <description>&lt;p&gt;在 Linux 系统中，文件管理器是用户管理文件和目录的主要工具之一。而在众多的文件管理器中，开源社区提供了许多优秀的选择，它们免费、灵活，并且可以根据用户的需求进行定制。&lt;/p&gt;
+&lt;p&gt;本文将介绍其中的五个最佳免费开源 Linux 文件管理器：Krusader、nnn、Dolphin、Midnight Commander 和 Double Commander。每个文件管理器都有其独特的特点和功能，满足了不同用户的需求。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>生产环境中使用的Ubuntu哪个版本比较稳定</title>
       <link>https://www.kontronn.com/post/linux/which-version-of-ubuntu-is-more-stable-in-production-environment.html</link>

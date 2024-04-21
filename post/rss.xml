@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Apr 2024 14:08:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Apr 2024 14:28:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,16 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>15 个最佳免费开源 Linux 文件管理器</title>
+      <link>https://www.kontronn.com/post/linux/15-best-free-open-source-linux-file-managers.html</link>
+      <pubDate>Sun, 21 Apr 2024 14:28:24 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/15-best-free-open-source-linux-file-managers.html</guid>
+      <description>&lt;p&gt;在 Linux 系统中，文件管理器是用户管理文件和目录的主要工具之一。而在众多的文件管理器中，开源社区提供了许多优秀的选择，它们免费、灵活，并且可以根据用户的需求进行定制。&lt;/p&gt;
+&lt;p&gt;本文将介绍其中的五个最佳免费开源 Linux 文件管理器：Krusader、nnn、Dolphin、Midnight Commander 和 Double Commander。每个文件管理器都有其独特的特点和功能，满足了不同用户的需求。&lt;/p&gt;</description>
     </item>
     
     <item>
