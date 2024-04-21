@@ -23,7 +23,7 @@
     <tags>
       <tag>File Manager</tag>
     </tags>
-    <content type="html"><![CDATA[在 Linux 系统中，文件管理器是用户管理文件和目录的主要工具之一。而在众多的文件管理器中，开源社区提供了许多优秀的选择，它们免费、灵活，并且可以根据用户的需求进行定制。
+    <content type="html"><![CDATA[在 Linux   系统中，文件管理器是用户管理文件和目录的主要工具之一。而在众多的文件管理器中，开源社区提供了许多优秀的选择，它们免费、灵活，并且可以根据用户的需求进行定制。
 本文将介绍其中的五个最佳免费开源 Linux 文件管理器：Krusader、nnn、Dolphin、Midnight Commander 和 Double Commander。每个文件管理器都有其独特的特点和功能，满足了不同用户的需求。
 Krusader krusader.org Krusader 是一个功能强大的双面板文件管理器，使用了 KDE 开发工具包（KDE toolkit）。它提供了类似于 Norton Commander 的界面，允许用户在两个面板之间轻松地拖放文件和目录。Krusader 还具有强大的文件操作功能，例如复制、粘贴、重命名、打包和解包等。
 主要特点：
