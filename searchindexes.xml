@@ -25,7 +25,8 @@
       <tag>Vulnerability</tag>
       <tag>scanning</tag>
     </tags>
-    <content type="html"><![CDATA[OpenVAS OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。
+    <content type="html"><![CDATA[OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。
+OpenVAS OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。
  全面的漏洞分析工具，用于扫描服务器和网络设备。 检测开放端口、错误配置和漏洞。 生成详细的报告。 基于Nessus的开源版本，具有强大的功能和活跃的社区支持。  Nessus Nessus：Nessus是一款面向安全专业人士的工具，用于解决补丁、软件问题、恶意软件和广告软件删除。它支持多种操作系统和应用程序上的错误配置。Nessus具有广泛的漏洞库，可以识别各种漏洞类型。
  面向安全专业人士的工具。 解决补丁、软件问题、恶意软件和广告软件删除。 支持多种操作系统和应用程序上的错误配置。 广泛的漏洞库，可以识别各种漏洞类型。  Acunetix Acunetix：Acunetix是一款Web应用程序安全测试工具，用于扫描Web站点和应用程序中的漏洞。它能够检测SQL注入、跨站脚本等常见漏洞。Acunetix还提供了自动化扫描、漏洞修复建议和报告生成功能。
  Web应用程序安全测试工具。 扫描Web站点和应用程序中的漏洞。 检测SQL注入、跨站脚本等常见漏洞。 提供自动化扫描、漏洞修复建议和报告。  Skipfish Skipfish：Skipfish是一款主动的Web应用程序安全侦察工具，用于创建交互式站点地图并进行安全扫描。它具有高度定制的配置选项，可以根据需求进行调整。
@@ -45,7 +46,8 @@
       <tag>C++</tag>
       <tag>Temporary Object</tag>
     </tags>
-    <content type="html"><![CDATA[临时对象 Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。 但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。
+    <content type="html"><![CDATA[Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。
+临时对象 Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。 但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。
 产生的时机 那么，在什么情况下会产生临时对象呢？在不同的编译器和不同的标准下，可能都有所不同，下面就分析一下产生临时对象的具体场景：
 参数传递 一般值传递对象都会产生临时的对象：
 #include &lt;iostream&gt; class Teacher { public: Teacher() { std::cout &lt;&lt; &#34;call Teacher construct func,old_ default is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(int old) : old_(old) { std::cout &lt;&lt; &#34;call Teacher construct func,set old_ is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(const Teacher &amp;t) { std::cout &lt;&lt; &#34;call Teacher copy construct func&#34; &lt;&lt; std::endl; } ~Teacher() { std::cout &lt;&lt; &#34;call Teacher deconstruct func!&#34; &lt;&lt; std::endl; } public: int old_ = 10; }; void TestPars(Teacher t) { std::cout &lt;&lt; &#34;Teacher old is:&#34; &lt;&lt; t.old_ &lt;&lt; std::endl; } int main() { TestPars(11); return 0; } 注意，编译时如果版本太高需要进行限制，比如此工程的运行环境是C++17,需要使用禁用优化并限定版本编译：

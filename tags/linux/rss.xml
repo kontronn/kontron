@@ -14,7 +14,6 @@
       
       <guid>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/linux-vulnerability-scanning-1.webp&#34; alt=&#34;Linux Vulnerability Scanning&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;openvas&#34;&gt;OpenVAS&lt;/h2&gt;
 &lt;p&gt;OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。&lt;/p&gt;</description>
     </item>
     
