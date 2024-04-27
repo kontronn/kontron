@@ -6,7 +6,18 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 21 Apr 2024 14:28:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Apr 2024 19:39:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>8款非常好用的漏洞扫描工具</title>
+      <link>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</link>
+      <pubDate>Sat, 27 Apr 2024 19:39:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/linux-vulnerability-scanning-1.webp&#34; alt=&#34;Linux Vulnerability Scanning&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;openvas&#34;&gt;OpenVAS&lt;/h2&gt;
+&lt;p&gt;OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>15 个最佳免费开源 Linux 文件管理器</title>
       <link>https://www.kontronn.com/post/linux/15-best-free-open-source-linux-file-managers.html</link>

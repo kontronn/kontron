@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Apr 2024 19:31:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Apr 2024 19:39:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -19,15 +19,25 @@
     </item>
     
     <item>
+      <title>8款非常好用的漏洞扫描工具</title>
+      <link>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</link>
+      <pubDate>Sat, 27 Apr 2024 19:39:01 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/linux-vulnerability-scanning-1.webp&#34; alt=&#34;Linux Vulnerability Scanning&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;openvas&#34;&gt;OpenVAS&lt;/h2&gt;
+&lt;p&gt;OpenVAS：OpenVAS是一种全面的漏洞分析工具，用于扫描服务器和网络设备。它可以检测开放端口、错误配置和漏洞，并生成详细的报告。OpenVAS基于Nessus的开源版本，具有强大的功能和活跃的社区支持。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>C&#43;&#43;中的临时对象</title>
       <link>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</link>
       <pubDate>Sat, 27 Apr 2024 19:31:47 +0800</pubDate>
       
       <guid>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</guid>
-      <description>临时对象 Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。 但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。
-产生的时机 那么，在什么情况下会产生临时对象呢？在不同的编译器和不同的标准下，可能都有所不同，下面就分析一下产生临时对象的具体场景：
-参数传递 一般值传递对象都会产生临时的对象：
-#include &amp;lt;iostream&amp;gt; class Teacher { public: Teacher() { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher construct func,old_ default is:&amp;#34; &amp;lt;&amp;lt; old_ &amp;lt;&amp;lt; std::endl; } Teacher(int old) : old_(old) { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher construct func,set old_ is:&amp;#34; &amp;lt;&amp;lt; old_ &amp;lt;&amp;lt; std::endl; } Teacher(const Teacher &amp;amp;t) { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher copy construct func&amp;#34; &amp;lt;&amp;lt; std::endl; } ~Teacher() { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher deconstruct func!&amp;#34; &amp;lt;&amp;lt; std::endl; } public: int old_ = 10; }; void TestPars(Teacher t) { std::cout &amp;lt;&amp;lt; &amp;#34;Teacher old is:&amp;#34; &amp;lt;&amp;lt; t.</description>
+      <description>&lt;h2 id=&#34;临时对象&#34;&gt;临时对象&lt;/h2&gt;
+&lt;p&gt;Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。
+但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。&lt;/p&gt;</description>
     </item>
     
     <item>
