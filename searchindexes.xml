@@ -16,6 +16,38 @@
   </entry>
   
   <entry>
+    <title>C++中的临时对象</title>
+    <url>/post/programming/temporary-object-in-c-plus-plus.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>C++</tag>
+      <tag>Temporary Object</tag>
+    </tags>
+    <content type="html"><![CDATA[临时对象 Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。 但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。
+产生的时机 那么，在什么情况下会产生临时对象呢？在不同的编译器和不同的标准下，可能都有所不同，下面就分析一下产生临时对象的具体场景：
+参数传递 一般值传递对象都会产生临时的对象：
+#include &lt;iostream&gt; class Teacher { public: Teacher() { std::cout &lt;&lt; &#34;call Teacher construct func,old_ default is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(int old) : old_(old) { std::cout &lt;&lt; &#34;call Teacher construct func,set old_ is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(const Teacher &amp;t) { std::cout &lt;&lt; &#34;call Teacher copy construct func&#34; &lt;&lt; std::endl; } ~Teacher() { std::cout &lt;&lt; &#34;call Teacher deconstruct func!&#34; &lt;&lt; std::endl; } public: int old_ = 10; }; void TestPars(Teacher t) { std::cout &lt;&lt; &#34;Teacher old is:&#34; &lt;&lt; t.old_ &lt;&lt; std::endl; } int main() { TestPars(11); return 0; } 注意，编译时如果版本太高需要进行限制，比如此工程的运行环境是C++17,需要使用禁用优化并限定版本编译：
+g++ -std=c++11 -fno-elide-constructors -g -o test main.cpp 运行结果：
+call Teacher construct func,set old_ is:11 call Teacher copy construct func Teacher old is:10 call Teacher deconstruct func! call Teacher deconstruct func! 返回值 产生临时变量最容易就是在返回对象时：
+#include &lt;iostream&gt; class Teacher { public: Teacher() { std::cout &lt;&lt; &#34;call Teacher construct func,old_ default is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(int old) : old_(old) { std::cout &lt;&lt; &#34;call Teacher construct func,set old_ is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(const Teacher &amp;t) { std::cout &lt;&lt; &#34;call Teacher copy construct func&#34; &lt;&lt; std::endl; } ~Teacher() { std::cout &lt;&lt; &#34;call Teacher deconstruct func!&#34; &lt;&lt; std::endl; } public: int old_ = 10; }; Teacher GetTeacher() { Teacher t; return t; } int main() { //Teacher t1;  //GetTeacher() = t1;//OK，可以测试并想一下  Teacher t = GetTeacher();//注意：此处t不声明照样产生临时变量  return 0; } 运行结果：
+//注意：使用C++17编译器则始终是两个析构函数
+tempObject$ g++ -std=c++11 -fno-elide-constructors -g -o test main.cpp tempObject$ ./test call Teacher construct func,old_ default is:10 call Teacher deconstruct func! call Teacher deconstruct func! call Teacher deconstruct func! ###类型转换
+不同类型之间的隐式转换一般也可能产生临时对象 ：
+int main() { //Teacher tmp;  //tmp = 88;  Teacher tmp = 88; return 0; } 运行结果：
+call Teacher construct func,set old_ is:88 call Teacher copy construct func call Teacher deconstruct func! call Teacher deconstruct func! 这种情况和环境有比较大的关系，一般推荐是先声明对象变量，然后再用这个变量设置值，可在实际采用非优化的情况下，二者一致。
+中间计算结果 #include &lt;iostream&gt; class Teacher { public: Teacher() { std::cout &lt;&lt; &#34;call Teacher construct func,old_ default is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(int old) : old_(old) { std::cout &lt;&lt; &#34;call Teacher construct func,set old_ is:&#34; &lt;&lt; old_ &lt;&lt; std::endl; } Teacher(const Teacher &amp;t) { std::cout &lt;&lt; &#34;call Teacher copy construct func&#34; &lt;&lt; std::endl; } Teacher operator+(const Teacher &amp;t1) { Teacher t; t.old_ = old_ + t1.old_; return t; // return Teacher(old_ + t1.old_);  } ~Teacher() { std::cout &lt;&lt; &#34;call Teacher deconstruct func!&#34; &lt;&lt; std::endl; } public: int old_ = 10; }; void GetSum() { Teacher t1, t2, t3; Teacher t = t1 + t2 + t3; std::cout &lt;&lt; &#34;sum is:&#34; &lt;&lt; t.old_ &lt;&lt; std::endl; } int main() { GetSum(); std::cout &lt;&lt; &#34;cacl temp create!&#34; &lt;&lt; std::endl; return 0; } 运行结果：
+call Teacher construct func,old_ default is:10 call Teacher construct func,old_ default is:10 call Teacher construct func,old_ default is:10 call Teacher construct func,old_ default is:10 call Teacher construct func,old_ default is:10 call Teacher deconstruct func! sum is:30 call Teacher deconstruct func! call Teacher deconstruct func! call Teacher deconstruct func! call Teacher deconstruct func! cacl temp create! 函数const引用参数 这个也是隐式转换：
+void TestConstTmp(const std::string &amp;s) { std::cout &lt;&lt; &#34;tmp value:&#34; &lt;&lt; s &lt;&lt; std::endl; } int main() { char buf[] = &#34;this is test!&#34;; TestConstTmp(buf); return 0; } //或者
+void TestConstTmp(const Teacher &amp;t) { std::cout &lt;&lt; &#34;tmp value:&#34; &lt;&lt; t.old_ &lt;&lt; std::endl; } int main() { TestConstTmp1(88); return 0; } 不过这种在实际模拟中未能模拟出临时对象的现象，所以待验证。而且需要注意的是，必须是const &amp;方可。
+优化 优化的最基本方式 在上面提到过，优化最简单的方法便是使用更高标准的编译器，或者开启更高级别的优化选项。
+对于类型转换产生临时对象的优化可以声明显示构造和重载operator=来解决 对于返回值只要按RVO和NRVO（C++11）的约定即可优化 对于传参产生的临时对象，可以采用引用传参来优化 对于中间值计算及其它，可以在代码层面避免，比如不采用多于两上的连加，不使用隐式类型转换等等。 在STL库容器增加元素增加了emplace系列，用它来替换insert,push等，减少临时对象的产生。这也是一种标准进步后的库的进步。
+临时对象销毁 主要分两种情况，一种是做为引用的临时对象，其在绑定对象销毁时销毁；其它的非上述情况，则在作用域范围结束后销毁（指表达式的语句或者if,while等控制表达式的末尾）。
+总结 如果工程对效率要求不高，其实对临时对象的处理也不用费什么心思。赶哪的集用哪的斗，不用刻意非得怎么着才行。主打一个兼顾效率和开发的平衡，优化未必时时都是一个必选项。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>15 个最佳免费开源 Linux 文件管理器</title>
     <url>/post/linux/15-best-free-open-source-linux-file-managers.html</url>
     <categories><category>Linux</category>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Temporary Object on Kontronn</title>
+    <link>https://www.kontronn.com/tags/temporary-object/</link>
+    <description>Recent content in Temporary Object on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 27 Apr 2024 19:31:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/temporary-object/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;中的临时对象</title>
+      <link>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</link>
+      <pubDate>Sat, 27 Apr 2024 19:31:47 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</guid>
+      <description>临时对象 Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。 但是，临时对象又无法完全避免，所以，怎么控制并减少临时对象的产生就是一个技术活儿了。
+产生的时机 那么，在什么情况下会产生临时对象呢？在不同的编译器和不同的标准下，可能都有所不同，下面就分析一下产生临时对象的具体场景：
+参数传递 一般值传递对象都会产生临时的对象：
+#include &amp;lt;iostream&amp;gt; class Teacher { public: Teacher() { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher construct func,old_ default is:&amp;#34; &amp;lt;&amp;lt; old_ &amp;lt;&amp;lt; std::endl; } Teacher(int old) : old_(old) { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher construct func,set old_ is:&amp;#34; &amp;lt;&amp;lt; old_ &amp;lt;&amp;lt; std::endl; } Teacher(const Teacher &amp;amp;t) { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher copy construct func&amp;#34; &amp;lt;&amp;lt; std::endl; } ~Teacher() { std::cout &amp;lt;&amp;lt; &amp;#34;call Teacher deconstruct func!&amp;#34; &amp;lt;&amp;lt; std::endl; } public: int old_ = 10; }; void TestPars(Teacher t) { std::cout &amp;lt;&amp;lt; &amp;#34;Teacher old is:&amp;#34; &amp;lt;&amp;lt; t.</description>
+    </item>
+    
+  </channel>
+</rss>
