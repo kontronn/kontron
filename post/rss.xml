@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 30 Apr 2024 22:37:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 18:06:50 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>办公桌旁的大内存 Nvidia GH200：比您想象的更近</title>
+      <link>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</link>
+      <pubDate>Wed, 01 May 2024 18:06:50 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</guid>
+      <description>&lt;p&gt;研究微处理器的可能还记得，最初的 8086/8088 处理器没有浮点运算单元。主板上通常有一个额外的插座，用于选配 8087 数学协处理器。如今，CPU 已经没有可选的数学协处理器了。&lt;/p&gt;</description>
     </item>
     
     <item>

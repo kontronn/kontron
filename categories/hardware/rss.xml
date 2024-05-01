@@ -6,7 +6,16 @@
     <description>Recent content in Hardware on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 30 Apr 2024 22:37:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 18:06:50 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>办公桌旁的大内存 Nvidia GH200：比您想象的更近</title>
+      <link>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</link>
+      <pubDate>Wed, 01 May 2024 18:06:50 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</guid>
+      <description>&lt;p&gt;研究微处理器的可能还记得，最初的 8086/8088 处理器没有浮点运算单元。主板上通常有一个额外的插座，用于选配 8087 数学协处理器。如今，CPU 已经没有可选的数学协处理器了。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>为什么要使用LVDS或JESD204B标准</title>
       <link>https://www.kontronn.com/post/hardware/why-use-lvds-or-jesd204b-standards.html</link>

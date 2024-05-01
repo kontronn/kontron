@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nvidia GH200 on Kontronn</title>
+    <link>https://www.kontronn.com/tags/nvidia-gh200/</link>
+    <description>Recent content in Nvidia GH200 on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 01 May 2024 18:06:50 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nvidia-gh200/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>办公桌旁的大内存 Nvidia GH200：比您想象的更近</title>
+      <link>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</link>
+      <pubDate>Wed, 01 May 2024 18:06:50 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</guid>
+      <description>&lt;p&gt;研究微处理器的可能还记得，最初的 8086/8088 处理器没有浮点运算单元。主板上通常有一个额外的插座，用于选配 8087 数学协处理器。如今，CPU 已经没有可选的数学协处理器了。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -16,6 +16,40 @@
   </entry>
   
   <entry>
+    <title>办公桌旁的大内存 Nvidia GH200：比您想象的更近</title>
+    <url>/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>Nvidia GH200</tag>
+    </tags>
+    <content type="html"><![CDATA[研究微处理器的可能还记得，最初的 8086/8088 处理器没有浮点运算单元。主板上通常有一个额外的插座，用于选配 8087 数学协处理器。如今，CPU 已经没有可选的数学协处理器了。
+不过，SIMD 处理器（又称 GPU）还是有可选项的。众所周知，GPU 的数学处理速度（如矩阵运算）远远超过 CPU 主机。
+随着 Nvidia GH-200 处理器和 AMD MI300A APU 的推出，市场正在见证 &ldquo;8087 时刻&rdquo;&ndash;即 CPU 吸收外部性能硬件。Nvidia 和 AMD 都将 GPU 集成到了处理器中，其结果是 HPC 性能大幅跃升，为未来的发展埋下了伏笔。
+再见 PCI AMD 和 Nvidia 的 GPU 都依赖 PCI 总线与 CPU 通信。CPU 和 GPU 有两个不同的内存域，数据必须通过 PCI 接口从 CPU 域传输到 GPU 域（然后再返回）。
+使用 5 代 PCIe 总线全部 16 个通道的 GPU 的最大带宽约为 63GB/s。这一瓶颈将限制内存在 CPU 和 GPU 之间的传输。
+Nvidia GH200 通过 900GB/s 双向 NVLink-C2C 连接 Grace CPU 和 Hooper GPU。这样算下来，速度大约提高了 14 倍。此外，GH200 还带来了单个共享 CPU-GPU 内存域的优势。无需在 CPU 和 GPU 之间通过 PCI 总线移动数据。如图 1 所示，CPU 和 GPU 对所有内存都有一致的看法。CPU 内存高达 480GB LPDDR5X（带 ECC），GPU 有 96GB HBM3 或 144GB HBM3e。总的一致性（单域）内存为 576GB 至 624GB。
+图1. NVIDIA GH200 Grace Hopper超级芯片的逻辑概览 目前的 AMD Instinct MI300A APU 采用单内存域，CPU 和 GPU 之间使用 Infinity Fabric 相干共享 128GB HBM3 内存，包上峰值吞吐量为 5.3 TB/s。虽然 MI300A 目前不像 GH200 那样支持额外的 DDR 内存扩展，但 CXL 是未来需要记住的一个词。
+对于 GH200 和 MI300A，最突出的关键是 &ldquo;呈现单一内存域&rdquo;。在传统的 CPU-PCIe-GPU 组合中，GPU 内存量往往小于 CPU 内存量，数据必须在 PCIe 接口上分流。这两种新设计消除了这一瓶颈。单个大内存域对 HPC 一直具有吸引力，而 GenAI 的发展则加速了这一需求（即在内存中加载大型模型并使用 GPU 运行这些模型的能力）。对于传统的 GPU，GPU 内存的数量限制了模型的大小，因此需要采用分布式 GPU 方法。(注：GH200 可通过外部 NVLinks 连接，创建一个庞大的统一内存；例如，Nvidia-AWS NLV32 可提供高达 20 TB 的统一内存）。
+离个人办公桌并不遥远 技术发展的一个明确趋势是从昂贵的新市场向低成本的商品市场转变。高性能计算也不例外。随着市场的需求，从多核到高级内存，一切都已从高端市场转向 &ldquo;手机 &ldquo;市场。向单一内存域的转变就是这些变化之一。
+最近，在 Linux 基准网站 Phoronix 上，特级测试员 Michael Larabel 在 GH200 工作站上运行了 HPC 基准测试。该系统由德国 GPTshop.ai 提供。
+该系统塔式机箱如图 2 所示，配备了 GH200 Grace Hopper 超级芯片（内存总容量为 576G）、双 2000+ W 电源、QCT 主板以及 SSD 和 NVIDIA Bluefield/Connect-X 适配器等多种配置选项。一个有趣而实用的功能是，TDP 可以从 450W 编程到 1000W（CPU + GPU + 内存），这在非数据中心环境中应该很有用。此外，据报道，默认风冷噪音为 25 分贝。液冷也是一种选择。
+不过，台式超级工作站的价格并不便宜。目前上市的 GH200 576GB 型号起价为 47500 欧元（根据 Phoronix 的说法，由于欧盟以外地区不征收 19% 的增值税，因此这一价格相当于 4.1 万美元）。
+图2. GPTShop Nvidia GH200工作站内部视图。(源GPTshop.ai) 这个价格看似很高，但考虑到配备 80GB HBM2e 内存的 Nvidia H100 PCIe GPU 目前的市场价格在 3 万至 3.5 万美元之间。这还不包括为 GPU 供电和运行的主机系统。此外，用户还受到 80GB GPU 内存的限制，该内存通过 PCIe 总线与主内存域分离。
+GPTshop 工作站提供 576GB 的单域内存。HPC 和 GenAI 用户会发现这半 TB 的 CPU-GPU 内存很有吸引力。
+初步基准测试 由于 GPTshop 的帮助，Phoronix 可以远程运行几个基准测试。这些基准测试应被视为初步测试，而非最终性能测试。尤其是，这些基准测试仅使用 CPU，并未使用 Hopper A100 GPU。因此，基准测试结果并不完整。Phoronix 计划今后测试基于 GPU 的应用程序。
+据 Phoronix 称，Ubuntu 23.10 和 Linux 6.5 使用的是 GCC-13 作为编译器。类似的环境还用于测试同类处理器，包括英特尔至强可扩展处理器、AMD EPYC 和 Ampere Altra Max 处理器。完整列表可在 Phoronix 网站上找到。
+此外，没有基准运行的功耗数据。据 Phoronix 称，英伟达™（NVIDIA®）GH200 目前似乎没有在 Linux 下公开任何 RAPL/PowerCap/HWMON 接口，仅用于读取 GH200 功耗/能耗。系统上的 BMC 确实通过 Web 界面显示了整个系统的功耗，但没有通过 IPMI 显示功耗数据。
+尽管存在这些限制，但在 Nvidia 之外，我们还是首次在 GH200 上运行了一些重要的基准测试。
+优秀的 HPCG Phoronix 报告的第一个测试是标准 HPCG 内存带宽基准，如图 3 所示。
+图3. Nvidia GH200运行HPCG基准测试的结果(来源：Phoronix)  可以看出，GH200 Arm 的性能达到了可观的 42 GFLOPS，仅次于 Xeon Platinum 8380 2P（40 GFLOPS），略低于 EPYC 9654 Genoa 2P（44 GFLOPS）。值得注意的还有 72 核 Arm Grace CPU，其性能几乎是 Ampere Altra Max 128 核 Arm 处理器的两倍。
+GH200 在其他基准测试中表现出色。最令人印象深刻的结果如图 4 所示。使用 72 核 Arm GH200 运行的 NWChem（C240-Bucky Ball）以 1404 秒完成，仅次于领先的 128 核 Epyc 9554（2p）的 1323 秒。
+图4. Nvidia GH200运行NWChem基准测试的结果(来源：Phoronix) 未来发展 Nvidia GH200 和 AMD MI300A 引入了新的处理器架构。与集成8087 数学协处理器类似，高端 CPU 也开始集成 GPU（或 SIMD 处理单元）。不过，这种想法并非创新性的。AMD 自 2011 年起就在台式机/笔记本 APU 处理器中集成了适度的 GPU。虽然这些高端处理器可能被认为是 &ldquo;专业 &ldquo;的，因此价格昂贵，但随着时间的推移，人们对 GenAI 的巨大兴趣可能会推动这些设计进入商品价位。随着更多基准的出现，这一情况还将继续发展。
+此外，在办公桌旁配备一台个人高性能工作站，其内存足以运行一些最大的 LLM，也是一个重要的里程碑。更不用说运行许多大内存 GPU 优化 HPC 应用程序的能力了。数据中心和云计算仍将是当今的工作主力，但 &ldquo;拥有重启按钮 &ldquo;也是必须的。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>为什么要使用LVDS或JESD204B标准</title>
     <url>/post/hardware/why-use-lvds-or-jesd204b-standards.html</url>
     <categories><category>Hardware</category>
