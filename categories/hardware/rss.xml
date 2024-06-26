@@ -6,7 +6,16 @@
     <description>Recent content in Hardware on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 01 May 2024 18:06:50 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jun 2024 23:08:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>无惧抖动与串扰 还原信号完整性</title>
+      <link>https://www.kontronn.com/post/hardware/no-worries-about-jitter-and-crosstalk-restore-signal-integrity.html</link>
+      <pubDate>Wed, 26 Jun 2024 23:08:07 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/no-worries-about-jitter-and-crosstalk-restore-signal-integrity.html</guid>
+      <description>&lt;p&gt;信号链芯片的验证离不开抖动和眼图测量。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>办公桌旁的大内存 Nvidia GH200：比您想象的更近</title>
       <link>https://www.kontronn.com/post/hardware/a-big-memory-nvidia-gh200-next-to-your-desk-closer-than-you-think.html</link>

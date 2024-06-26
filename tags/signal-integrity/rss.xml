@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Signal Integrity on Kontronn</title>
+    <link>https://www.kontronn.com/tags/signal-integrity/</link>
+    <description>Recent content in Signal Integrity on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 26 Jun 2024 23:08:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/signal-integrity/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>无惧抖动与串扰 还原信号完整性</title>
+      <link>https://www.kontronn.com/post/hardware/no-worries-about-jitter-and-crosstalk-restore-signal-integrity.html</link>
+      <pubDate>Wed, 26 Jun 2024 23:08:07 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/no-worries-about-jitter-and-crosstalk-restore-signal-integrity.html</guid>
+      <description>&lt;p&gt;信号链芯片的验证离不开抖动和眼图测量。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
