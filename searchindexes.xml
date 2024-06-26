@@ -16,6 +16,31 @@
   </entry>
   
   <entry>
+    <title>大厂加速自研AI芯片：Nvidia主导地位受到挑战</title>
+    <url>/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</url>
+    <categories><category>AI</category>
+    </categories>
+    <tags>
+      <tag>GenAI</tag>
+      <tag>Nvidia</tag>
+      <tag>GPU</tag>
+      <tag>OpenAI</tag>
+    </tags>
+    <content type="html"><![CDATA[随着生成式人工智能（GenAI）热潮的兴起，大型科技公司对全球领先的高端图形处理器（GPU）制造商Nvidia的依赖性日益凸显。人工智能解决方案对专用芯片的需求激增助长了这种依赖。然而，这种依赖局面即将被打破。
+科技巨头如亚马逊、微软、谷歌和Meta正逐渐通过开发自家的AI芯片来降低对Nvidia的依赖。2023年9月，亚马逊宣布对人工智能研究公司Anthropic投资40亿美元，旨在加速其未来基础模型的研发，并推动AWS客户广泛应用这些模型。
+据悉，Anthropic已同意在其人工智能解决方案中采用亚马逊设计的AI芯片，这也是其获得这项巨额投资的关键因素之一。这一举措明确表明，亚马逊已在不断升级的人工智能竞赛中站稳脚跟。
+Meta Platforms，即Facebook的母公司，也正计划打造一款定制芯片，以推动其AI技术的发展，这家社交媒体领域的巨头正不断加强其计算资源，以支撑耗电且性能要求高的GenAI产品。
+随着Meta将其AI技术更广泛地整合到其社交平台中，对专用芯片的需求也随之增长。通过成功部署定制芯片，Meta有望在AI芯片采购和能源消耗方面节省数亿美元的开支。
+与此同时，其他科技巨头也在积极发展自身的计算技术。微软已经宣布推出其首款专为模型训练设计的定制AI芯片。谷歌的芯片设计团队也在利用谷歌服务器上运行的DeepMind AI来开发AI处理器。
+根据彭博社的报道，OpenAI的首席执行官Sam Altman正致力于筹集数十亿美元资金用于建立人工智能芯片工厂，Altman一直在与全球投资者以及某顶级但未公开的芯片制造商进行接洽，以制造专门用于AI的芯片。
+根据市场研究机构Gartner的预测，到2027年，全球人工智能芯片市场的规模将达到1400亿美元，这些芯片是聊天机器人和其他AI系统的核心需求，Nvidia正是凭借其在设计和制造专用芯片方面的专业技术，从而在AI芯片市场中占据了领导地位。尽管大型科技公司对Nvidia进行了大量投资，但由于这家芯片制造商并没有跟上市场需求，这也是推动这些科技巨头自主研发AI芯片的主要原因。
+Nvidia的H100等备受欢迎的人工智能芯片目前非常抢手且价格昂贵。Nvidia不仅承受着来自科技巨头的激烈竞争，而且还承受着必须不断提升AI芯片性能和效率的压力，以保持领先于其行业竞争者AMD和英特尔。为了巩固其市场领导地位，Nvidia推出了新一代的GH200 Grace Hopper芯片。据Nvidia宣称，这款新芯片的内存容量将是其广受欢迎的H100 GPU的三倍。
+值得注意的是，一些正在自主研发AI芯片的大型科技公司同时也是Nvidia的重要战略伙伴。尽管这些公司仍将依赖Nvidia的芯片来驱动它们大部分的AI系统，但它们的目标是减少对Nvidia的依赖。对于所有利益相关者而言，实现这种平衡十分具有挑战性。
+截至3月底，Nvidia的股价在今年已经上涨了近30%，去年Nvidia的市值曾一度飙升至1万亿美元，创下历史新高（5月最新市值2.2万亿美元）。然而，随着其主要客户开始自主研发AI芯片，这为Nvidia的长期收入增长带来了不确定性。随着GenAI用例的需求持续增长，AI芯片必将成为争夺AI领域主导地位的关键战场。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>无惧抖动与串扰 还原信号完整性</title>
     <url>/post/hardware/no-worries-about-jitter-and-crosstalk-restore-signal-integrity.html</url>
     <categories><category>Hardware</category>

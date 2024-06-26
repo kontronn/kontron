@@ -6,7 +6,16 @@
     <description>Recent content in GPU on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Feb 2024 09:21:25 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/gpu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jun 2024 23:26:32 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/gpu/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大厂加速自研AI芯片：Nvidia主导地位受到挑战</title>
+      <link>https://www.kontronn.com/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</link>
+      <pubDate>Wed, 26 Jun 2024 23:26:32 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</guid>
+      <description>&lt;p&gt;随着生成式人工智能（GenAI）热潮的兴起，大型科技公司对全球领先的高端图形处理器（GPU）制造商Nvidia的依赖性日益凸显。人工智能解决方案对专用芯片的需求激增助长了这种依赖。然而，这种依赖局面即将被打破。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>全球首款，NPU&#43;GPU&#43;CPU三位一体AI加速！</title>
       <link>https://www.kontronn.com/post/soc/NPU-GPU-CPU-trinity-AI-acceleration.html</link>
