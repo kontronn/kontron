@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="OpenBMC: coredump自动发现及调试实践" />
+<meta itemprop="description" content="OpenBMC: coredump自动发现及调试实践" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="OpenBMC" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="OpenBMC: coredump自动发现及调试实践" />
+<meta property="og:description" content="OpenBMC: coredump自动发现及调试实践" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-06-26 23:33:24 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-06-26 23:33:24 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"OpenBMC-coredump-automatic-discovery-and-debugging-practice.html","permalink":"https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html","title":"OpenBMC: coredump自动发现及调试实践"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>OpenBMC: coredump自动发现及调试实践 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">120</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a>
+      <ul>
+        <li><a href="#bmc-介绍">BMC 介绍</a></li>
+        <li><a href="#openbmc-简单介绍">OpenBMC 简单介绍</a></li>
+        <li><a href="#痛点">痛点</a></li>
+      </ul>
+    </li>
+    <li><a href="#coredump-自动发现及调试实践">coredump 自动发现及调试实践</a>
+      <ul>
+        <li><a href="#感知">感知</a></li>
+        <li><a href="#收集-coredump">收集 coredump</a>
+          <ul>
+            <li><a href="#日志收集">日志收集</a></li>
+            <li><a href="#日志上传">日志上传</a></li>
+            <li><a href="#日志告警">日志告警</a></li>
+          </ul>
+        </li>
+        <li><a href="#如何-debug-offline">如何 debug （Offline）</a>
+          <ul>
+            <li><a href="#准备-rootfs">准备 rootfs</a></li>
+            <li><a href="#启动-debug">启动 debug</a></li>
+          </ul>
+        </li>
+        <li><a href="#自动化">自动化</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">120</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-05-02T15:59:41&#43;08:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="26271"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="200"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-06-26T23:33:24&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenBMC: coredump自动发现及调试实践">
+      <meta itemprop="description" content="OpenBMC: coredump自动发现及调试实践">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">OpenBMC: coredump自动发现及调试实践 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-06-26 23:33:24 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-06-26 23:33:24 &#43;0800 CST">2024-06-26</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>345</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>2分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>BMC（Baseboard Management Controller）是一种服务器上的独立微控制器，BMC 在提供 7*24 的硬件监控和管理功能的同时，还承担着诸多关键职责，为整个系统的可靠性、管理性提供了基础支持。</p>
+<h2 id="背景">背景</h2>
+<h3 id="bmc-介绍">BMC 介绍</h3>
+<p>关键职责和功能：</p>
+<ul>
+<li>硬件监控与诊断：BMC 负责监控计算机硬件的状态，包括处理器、内存、存储、风扇、温度传感器等关键组件。通过实时监测，提供各组件的实时状态信息。</li>
+<li>散热管理：BMC 负责监控所有的部件板卡的部件温度， 动态的调整服务器系统的风扇转速。</li>
+<li>远程管理与控制：BMC 具备远程管理功能，允许运维人员无需物理接触硬件即可对系统进行监控和管理。通过 KVM ，查看和控制 server，  运维人员可以执行如开关机、重启、甚至是 OS 装机。</li>
+<li>事件日志与报警：BMC 记录系统事件日志，其中包括硬件错误、警告和其他重要事件。运维人员可以通过检查事件日志及时发现潜在问题。</li>
+<li>固件更新：BMC 提供服务器上大多数固件的远程更新， 包含 BIOS ， 多种 CPLD ， 电源， Retimer ， Box等&hellip;</li>
+</ul>
+<h3 id="openbmc-简单介绍">OpenBMC 简单介绍</h3>
+<p>OpenBMC 项目的目标是一个开放、灵活、可定制的开源BMC解决方案, 主要基于 Yocto  作为构建组件及 Systemd 和 D-Bus 作用应用层的基础组件。</p>
+<p><img src="https://www.kontronn.com/imgs/post/OpenBMC-Layer-1.png" alt="OpenBMC Layer"></p>
+<h3 id="痛点">痛点</h3>
+<p>在 7*24 小时监控的环境中，我们提供多种服务并应对各种硬件配置的挑战，在安全且稳定的基础上提供高效服务。在这个复杂的情境中，我们不可避免地面临着在线上极低概率下产生 coredump 的可能性，通常这些 coredump 会带来一些不可预测的后果。同时还会遇到一些难以复现的问题，这些问题会消耗大量的人力和时间成本，而且这些问题可能发生在无法直接访问的业务机器上。</p>
+<h2 id="coredump-自动发现及调试实践">coredump 自动发现及调试实践</h2>
+<p>面对故障无法及时发现、日志无法及时收集以及复现环境成本可能过高等痛点，STE 团队提出了一套集成化流程，即 coredump 感知、收集、上报以及自动化分析。这一流程的实施解决了上面提到的问题。通过该流程，我们能够更快速地检测故障，实时收集相关日志，并在需要时重现环境，大大降低了故障排查的难度和成本。整体流程的图示如下：</p>
+<p><img src="https://www.kontronn.com/imgs/post/OpenBMC-Layer-2.png" alt="OpenBMC Layer"></p>
+<h3 id="感知">感知</h3>
+<ul>
+<li>
+<p>systemd-coredump 是一个 systemd 提供的一个 daemon，用于配置 linux coredump 和监听 coredump 的生成。它通过感知异常终止的进程并收集相关的 coredump 文件。</p>
+</li>
+<li>
+<p>内部一个 daemon（debug-collector） ， 用于 watch coredump 产生， 主动触发 coredump 收集流程。</p>
+</li>
+</ul>
+<h3 id="收集-coredump">收集 coredump</h3>
+<p>在 BMC 固件内部， 监听到 coredump 事件产生之后， 会主动发起日志收集流程。主要包含工作包含：</p>
+<h4 id="日志收集">日志收集</h4>
+<ul>
+<li>coredump 文件：这是最关键的信息，包含了异常终止进程的内存快照。</li>
+<li>Journal 日志：包括核心转储进程的 PID 以及与其相关的所有系统日志。这有助于全面了解故障上下文。</li>
+<li>os-release 信息：指示固件版本，为问题溯源提供环境信息。</li>
+<li>其他日志：包括系统和应用程序的其他关键日志，为问题定位提供更多上下文。</li>
+</ul>
+<h4 id="日志上传">日志上传</h4>
+<p>等待所有日志收集完成， 打包所有日志并推送指定的服务器， 并标记日志为 coredump。</p>
+<h4 id="日志告警">日志告警</h4>
+<p>服务器接收到日志， 如果日志为 coredump， 将日志信息推送到告警平台。</p>
+<h3 id="如何-debug-offline">如何 debug （Offline）</h3>
+<h4 id="准备-rootfs">准备 rootfs</h4>
+<p>Legacy Solution：</p>
+<ul>
+<li>git clone 代码并且切换 coredump 发生的版本上。</li>
+<li>每次可能需要现场编译， 每次固件可能需要较长时间也可能因为编译环境的缺失/版本不兼容原因耗费一部分时间。</li>
+<li>根据 coredump 异常的组件， 查找依赖， 手动拷贝相关的 debug 依赖的文件。</li>
+</ul>
+<p>Current Solution：</p>
+<blockquote>
+IPK 包（ipk）是一种用于嵌入式 Linux 系统的软件包格式，通常用于嵌入式设备。这种软件包格式是用于轻量级 Linux 发行版的一种标准，具有简单、紧凑、易于管理的特点。
+Ipk/opkg 之于 debian 相当于 deb/apt 的关系。
+可以用 opkg 命令进行安装
+</blockquote>
+<p>将所有的包（包含 debug/src 包）准备为独立的 ipk 包:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">https://subscription.packtpub.com/book/iot-and-hardware/9781785281952/5/ch05lvl2sec44/ipk-packages
+</code></pre></div><p>Yocto 提供一种能力， 使得我们可以将所有的包（包含 debug/src 包）准备为独立的 ipk 包。并且可能根据编译依赖， 生成正确的依赖分析， 使得安装时能够自动安装依赖包。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">$ bitbake package-index
+</code></pre></div><p>随后可以正确的在 Yocto 目录 $BUILDDIR/tmp/deploy/ipk下找到对应的 ipk 包。</p>
+<ul>
+<li>每次编译将所有 ipk 包 推送至远程文件服务器中， 并持久化存储。</li>
+<li>将上述工作集成中 CI 中。</li>
+</ul>
+<h4 id="启动-debug">启动 debug</h4>
+<p>使用 GDB + 准备好的 rootfs + core file。</p>
+<h3 id="自动化">自动化</h3>
+<p>基于以上方案，  我们已经可以在本地环境， 使用一个集成的 debug_dump 的脚本集成 debug 工具。</p>
+<ul>
+<li>收到告警信息后， 包含 coredump 日志 所在的 日志 URI， 可以下载指定的日志地址。</li>
+<li>根据 coredump 日志包， 获取指定版本，待调试的 core 文件。</li>
+<li>根据 coredump 产生所属的 binary 文件， 分析所来源的 ipk 包。</li>
+<li>通过 opkg 命令， Install 指定的 ipk 包， 生成待调试的 rootfs</li>
+<li>启动 gdb 并调试</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">~ ./debug_dump.py -u https://&lt;path/to/your/ipk/source&gt;/bmc_dump/obmcdump_coredump_22_67.tar.gz
+
+INFO:debug_dump:Found core execfn /lib/systemd/systemd-journald
+INFO:debug_dump:Downloading from https://&lt;path/to/your/ipk/source&gt;/bmc_ipk/ipks.tar to /tmp/ipkdbg_n_zlxpd3/ipks.tar
+
+...
+Installing systemd <span style="color:#f92672">(</span>250.3<span style="color:#f92672">)</span> on root.
+Downloading file:///tmp/ipkdbg_n_zlxpd3/./ipk/arm1176jzs/systemd_250.3-r0_arm1176jzs.ipk.
+...
+
+Core was generated by <span style="color:#e6db74">`</span>/lib/systemd/systemd-journald<span style="color:#960050;background-color:#1e0010">&#39;</span>.
+Program terminated with signal SIGABRT, Aborted.
+<span style="color:#75715e">#0  __pthread_kill_internal (threadid=&lt;optimized out&gt;, signo=6) at pthread_kill.c:45</span>
+<span style="color:#ae81ff">45</span>      pthread_kill.c: No such file or directory.
+<span style="color:#75715e">#0  __pthread_kill_internal (threadid=&lt;optimized out&gt;, signo=6) at pthread_kill.c:45</span>
+<span style="color:#75715e">#1  0x76be7fd0 in __GI_raise (sig=sig@entry=6) at ../sysdeps/posix/raise.c:26</span>
+<span style="color:#75715e">#2  0x76bd2428 in __GI_abort () at abort.c:79</span>
+
+....
+
+</code></pre></div><p>接下来是进一步提高自动化的一些方法：将告警 bot 和 debug_dump 联动起来。</p>
+<ul>
+<li>Dump 分析服务：此服务接受 coredump 的日志链接， 接受到链接之后会执行 debug_dump 脚本进行分析。</li>
+<li>告警 Bot: 生成 Dump 分析服务的一键到达的链接， 展示在相关的卡片中， 用户点击相关链接即可一键分析。</li>
+<li>WebUI: 用户可点击一键分析链接之后，即可在浏览器中打开WebUI，自动执行debug_dump，并可在webshell中直接进行gdb分析。</li>
+</ul>
+<h2 id="总结">总结</h2>
+<p>通过这套流程，我们显著提升了 coredump 处理效率，减少了人力和时间成本，大幅提高了故障排查的速度和准确性。未来，我们将继续优化这一流程，确保在复杂的线上环境中提供高效稳定的服务, 我们未来的改进方向包括以下:</p>
+<ul>
+<li>智能化分析：引入机器学习算法，对历史 coredump 数据进行分析，提前预测潜在问题，进一步提升系统的稳定性和预防性维护能力。</li>
+<li>扩展自动化工具集：开发更完善的自动化调试工具，支持更多类型的故障和环境。</li>
+<li>实时监控与响应：提升实时监控能力，确保在第一时间发现并处理coredump事件，减少系统宕机时间，保障业务连续性。</li>
+<li>社区合作与反馈：积极参与 OpenBMC 社区，与其他开发者共享我们的经验和改进建议，吸收社区反馈，持续优化我们的解决方案。</li>
+</ul>
+<p>通过这些改进，我们相信能够进一步提高 OpenBMC 固件的稳定性和可靠性，为用户提供更优质的服务体验。同时，我们也期待与业界同行深入交流合作，共同推动 BMC 技术的发展与创新。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/openbmc">
+    OpenBMC
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      OpenBMC: coredump自动发现及调试实践
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html" title="OpenBMC: coredump自动发现及调试实践">https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html" rel="prev" title="大厂加速自研AI芯片：Nvidia主导地位受到挑战">
+      大厂加速自研AI芯片：Nvidia主导地位受到挑战
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

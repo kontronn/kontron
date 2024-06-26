@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Apr 2024 19:31:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jun 2024 23:33:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenBMC: coredump自动发现及调试实践</title>
+      <link>https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html</link>
+      <pubDate>Wed, 26 Jun 2024 23:33:24 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html</guid>
+      <description>&lt;p&gt;BMC（Baseboard Management Controller）是一种服务器上的独立微控制器，BMC 在提供 7*24 的硬件监控和管理功能的同时，还承担着诸多关键职责，为整个系统的可靠性、管理性提供了基础支持。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C&#43;&#43;中的临时对象</title>
       <link>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</link>
