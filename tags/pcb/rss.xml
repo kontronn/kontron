@@ -6,7 +6,16 @@
     <description>Recent content in PCB on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 09 Jul 2024 19:00:05 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcb/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 19:52:54 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcb/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MOS管烧了的原因</title>
+      <link>https://www.kontronn.com/post/hardware/the-reason-why-the-MOS-tube-burned-out.html</link>
+      <pubDate>Tue, 09 Jul 2024 19:52:54 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/the-reason-why-the-MOS-tube-burned-out.html</guid>
+      <description>&lt;p&gt;MOS 管可能会遭受与其他功率器件相同的故障，例如过电压（半导体的雪崩击穿）、过电流（键合线或者衬底熔化）、过热（半导体材料由于高温而分解）。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>电容触摸的基本知识与原理</title>
       <link>https://www.kontronn.com/post/hardware/basic-knowledge-and-principles-of-capacitive-touch.html</link>
