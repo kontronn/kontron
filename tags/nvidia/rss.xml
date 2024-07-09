@@ -6,7 +6,16 @@
     <description>Recent content in Nvidia on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Jun 2024 23:26:32 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nvidia/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 22:33:19 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nvidia/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>英伟达核心壁垒: CUDA</title>
+      <link>https://www.kontronn.com/post/hardware/cuda-nvidia-core-barrier.html</link>
+      <pubDate>Tue, 09 Jul 2024 22:33:19 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/cuda-nvidia-core-barrier.html</guid>
+      <description>&lt;p&gt;CUDA（Compute Unified Device Architecture），统一计算设备架构，英伟达推出的基于其GPU的通用高性能计算平台和编程模型。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>大厂加速自研AI芯片：Nvidia主导地位受到挑战</title>
       <link>https://www.kontronn.com/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</link>
