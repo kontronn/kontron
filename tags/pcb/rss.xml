@@ -6,7 +6,16 @@
     <description>Recent content in PCB on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 04 Mar 2024 23:15:48 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcb/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 19:00:05 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcb/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>电容触摸的基本知识与原理</title>
+      <link>https://www.kontronn.com/post/hardware/basic-knowledge-and-principles-of-capacitive-touch.html</link>
+      <pubDate>Tue, 09 Jul 2024 19:00:05 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/basic-knowledge-and-principles-of-capacitive-touch.html</guid>
+      <description>&lt;p&gt;电容式触摸感应，是一种通过电容的变化来检测手指接近或触及触摸表面的技术。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>不理解EMC，画不好PCB</title>
       <link>https://www.kontronn.com/post/hardware/understand-emc-deeply-will-help-pcb-layout.html</link>

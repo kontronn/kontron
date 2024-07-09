@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Jun 2024 23:33:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 19:00:05 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Layout</title>
+      <link>https://www.kontronn.com/tags/layout/</link>
+      <pubDate>Tue, 09 Jul 2024 19:00:05 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/layout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PCB</title>
+      <link>https://www.kontronn.com/tags/pcb/</link>
+      <pubDate>Tue, 09 Jul 2024 19:00:05 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/pcb/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>OpenBMC</title>
       <link>https://www.kontronn.com/tags/openbmc/</link>
@@ -337,24 +355,6 @@
       <pubDate>Mon, 04 Mar 2024 23:15:48 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/emc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Layout</title>
-      <link>https://www.kontronn.com/tags/layout/</link>
-      <pubDate>Mon, 04 Mar 2024 23:15:48 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/layout/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PCB</title>
-      <link>https://www.kontronn.com/tags/pcb/</link>
-      <pubDate>Mon, 04 Mar 2024 23:15:48 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/pcb/</guid>
       <description></description>
     </item>
     

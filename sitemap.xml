@@ -8,12 +8,42 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-06-26T23:33:24+08:00</lastmod>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-06-26T23:33:24+08:00</lastmod>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/layout/</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/pcb/</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/basic-knowledge-and-principles-of-capacitive-touch.html</loc>
+    <lastmod>2024-07-09T19:00:05+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -27,17 +57,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-06-26T23:33:24+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/programming/</loc>
-    <lastmod>2024-06-26T23:33:24+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-06-26T23:33:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -69,11 +89,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</loc>
     <lastmod>2024-06-26T23:26:32+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-06-26T23:08:07+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -328,16 +343,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/emc/</loc>
-    <lastmod>2024-03-04T23:15:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/layout/</loc>
-    <lastmod>2024-03-04T23:15:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/pcb/</loc>
     <lastmod>2024-03-04T23:15:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
