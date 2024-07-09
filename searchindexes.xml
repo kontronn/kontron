@@ -26,7 +26,7 @@
       <tag>GPU</tag>
       <tag>CUDA</tag>
     </tags>
-    <content type="html"><![CDATA[CUDA（Compute Unified Device Architecture），统一计算设备架构，英伟达推出的基于其GPU的通用高性能计算平台和编程模型。
+    <content type="html"><![CDATA[CUDA（Compute Unified Device Architecture），统一计算设备架构，英伟达推出的基于其 GPU  的通用高性能计算平台和编程模型。
 什么是CUDA 借助CUDA，开发者可以充分利用英伟达GPU的强大计算能力加速各种计算任务。
 &lsquo;软件生态的基石&rsquo;：CUDA构成了英伟达软件生态的基础，诸多前沿技术均基于CUDA构建。
 例如，TensorRT、Triton和Deepstream等，这些技术解决方案都是基于CUDA平台开发的，展示了CUDA在推动软件创新方面的强大能力。

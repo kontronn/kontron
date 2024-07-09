@@ -24,7 +24,11 @@
       <pubDate>Tue, 09 Jul 2024 22:33:19 +0800</pubDate>
       
       <guid>https://www.kontronn.com/post/hardware/cuda-nvidia-core-barrier.html</guid>
-      <description>&lt;p&gt;CUDA（Compute Unified Device Architecture），统一计算设备架构，英伟达推出的基于其GPU的通用高性能计算平台和编程模型。&lt;/p&gt;</description>
+      <description>&lt;p&gt;CUDA（Compute Unified Device Architecture），统一计算设备架构，英伟达推出的基于其
+&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;GPU&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    GPU
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;的通用高性能计算平台和编程模型。&lt;/p&gt;</description>
     </item>
     
     <item>
