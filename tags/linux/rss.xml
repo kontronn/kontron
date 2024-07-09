@@ -6,7 +6,20 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Apr 2024 19:39:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 22:02:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VXLAN: 彻底改变网络虚拟化</title>
+      <link>https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html</link>
+      <pubDate>Tue, 09 Jul 2024 22:02:24 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html</guid>
+      <description>&lt;p&gt;网络虚拟化技术已经成为数据中心和云计算环境的关键组件，从最早的虚拟局域网（VLAN）到如今的虚拟扩展局域网（VXLAN），每一步技术进步都在推动着网络基础设施的变革和创新。VXLAN作为一种先进的网络虚拟化技术，通过解决传统VLAN的局限性，实现了更高效、更灵活的网络管理，彻底改变了
+&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;数据中心&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    数据中心
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;和云计算环境中的网络架构。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>8款非常好用的漏洞扫描工具</title>
       <link>https://www.kontronn.com/post/linux/8-very-useful-vulnerability-scanning-tools.html</link>
