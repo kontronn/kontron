@@ -16,6 +16,40 @@
   </entry>
   
   <entry>
+    <title>Nessus 工具介绍与使用教程</title>
+    <url>/post/linux/Nessus-tool-introduction-and-use-tutorial.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Boot</tag>
+      <tag>Nessus</tag>
+      <tag>Hacker</tag>
+    </tags>
+    <content type="html"><![CDATA[Nessus 是一款广泛使用的网络漏洞扫描工具，由 Tenable Network Security 开发。
+工具介绍 Nessus能够帮助网络管理员和安全专业人员识别网络中的安全漏洞、配置错误和潜在的安全威胁。Nessus 提供全面的漏洞检测功能，包括操作系统漏洞、应用程序漏洞、配置审计和合规性检查等。
+功能与特点  广泛的漏洞库：Nessus 拥有一个庞大的漏洞数据库，能够检测数千种已知漏洞。 多平台支持：支持 Windows、Linux、macOS 等多种操作系统。 用户友好的界面：提供图形化界面，易于使用和理解。 定期更新：Nessus 的漏洞库和插件定期更新，以确保检测的及时性和准确性。 详细的报告：生成详细的扫描报告，帮助用户快速定位和修复漏洞。  使用教程 以下是使用 Nessus 进行漏洞扫描的详细教程。
+步骤一：安装 Nessus 在 Linux 上安装  下载 Nessus 安装包：  访问 Tenable 官网，选择适合您操作系统的版本并下载。
+安装 Nessus：  打开终端，导航到下载目录，运行以下命令进行安装：
+sudo dpkg -i Nessus-&lt;version&gt;-debian6_amd64.deb 启动 Nessus 服务：  sudo systemctl start nessusd.service 启用 Nessus 服务开机启动：  sudo systemctl enable nessusd.service 在 Windows 上安装 下载 Nessus 安装包： 访问 Tenable 官网，选择适合您操作系统的版本并下载。
+运行安装程序： 双击下载的安装程序，按照安装向导完成安装。
+启动 Nessus： 安装完成后，Nessus 会自动启动，并在浏览器中打开配置页面。
+步骤二：配置 Nessus 访问 Nessus 配置页面： 在浏览器中输入 https://localhost:8834 访问 Nessus 配置页面
+创建账户： 根据提示创建 Nessus 管理员账户。
+输入激活码： 输入从 Tenable 网站获取的激活码以激活 Nessus。
+插件更新： 激活后，Nessus 会自动下载和更新插件。等待更新完成。
+步骤三：创建扫描任务 登录 Nessus： 使用刚刚创建的账户登录 Nessus。
+创建新的扫描任务： 在控制面板中，点击左侧的“扫描”选项卡，然后点击“新建扫描”按钮。
+选择扫描模板： 根据需要选择合适的扫描模板。例如，选择“基本网络扫描”。
+配置扫描参数： 在弹出的配置页面中，输入扫描任务的名称、描述和目标 IP 地址。其他参数可以根据需要进行调整。
+保存并启动扫描： 配置完成后，点击“保存”按钮，然后在扫描任务列表中点击“启动”按钮开始扫描。
+步骤四：查看扫描结果 查看扫描进度： 在扫描任务列表中，可以查看扫描任务的进度和状态。
+查看扫描报告： 扫描完成后，点击扫描任务名称查看详细的扫描报告。报告中包含了发现的所有漏洞及其详细信息。
+导出扫描报告： 可以将扫描报告导出为多种格式（如 PDF、CSV 等），以便于共享和分析。
+总结 Nessus 是一款功能强大的网络漏洞扫描工具，通过其广泛的漏洞库和强大的扫描功能，能够帮助用户有效地识别和修复网络中的安全漏洞。通过本文的详细教程，您可以系统地学习如何安装、配置和使用 Nessus 进行漏洞扫描。在使用过程中，请务必遵守相关法律法规，仅在合法授权的情况下使用该工具。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>英伟达核心壁垒: CUDA</title>
     <url>/post/hardware/cuda-nvidia-core-barrier.html</url>
     <categories><category>AI</category>
