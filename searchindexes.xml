@@ -16,6 +16,38 @@
   </entry>
   
   <entry>
+    <title>Nvidia HGX B200主板上的NVLink Switch变化</title>
+    <url>/post/hardware/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</url>
+    <categories><category>AI</category>
+    </categories>
+    <tags>
+      <tag>NVLink</tag>
+      <tag>Switch</tag>
+      <tag>HGX B200</tag>
+      <tag>H100</tag>
+    </tags>
+    <content type="html"><![CDATA[在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从 H100  的4个减少到2个，并且在主板上的位置也发生了变化。
+第一代NVSwitch 第一代NVSwitch是随着Nvidia的DGX-2计算机的推出而引入的。第一代NVSwitch是一个拥有20亿晶体管、18个端口的NVLink switch。每个端口以50 GB/s的速度运行，Switch的总带宽为900 GB/s。该交换机允许最多九个设备中的任何一个被路由到其他九个设备中的任何一个。除了NVLink端口，交换机还有额外的控制和管理的I/O接口，包括x4 PCIe Gen 2管理端口、I²C和GPIO。
+DGX-2使用每块基板6个NVLink来创建GPU的全连接网络。
+DGX-2有两个基板，以fully connect所有16个V100 GPU。每个Switch有2个未使用的端口。这些端口可能会在涉及POWER9微处理器的配置中使用，因为这些微处理器原生支持NVLink 2.0。
+下图是Inspur NF5488M5 HGX 2 ，我们可以很清楚地看到NVSwitch的6个散热片。
+第二代NVSwitch 进入NVIDIA A100时代，NVSwitch的散热器变得更大，但整个HGX A100平台是由NVIDIA构建的，并预先组装后发送给供应商。
+下图是Inspur NF5488A5 NVIDIA HGX A100，我们可以看到6个NVSwitch散热片。
+第三代NVSwitch H100这一代，4个NVSwitch在基板的一侧。
+这是ASUS ESC N8A E12 NVIDIA HGX H100 。
+下面是Nvidia HGX H200，看上去与HGX H100的设计非常相似。
+第四代NVLink Switch 带着散热片的HGX B100
+发布会上的HGX B100图片
+注意观察，可以发现，在边缘侧的连接器附近是PCIe retimer，而不是NVSwitch了。
+从没有装散热片的HGX B200主板，可以看到NVLink Switch 芯片的安装位置。经Nvidia工作人员确认HGX B100的主板上的NVLink Switch芯片安装与B200的相同。
+在这里，我们可以看到PCIe Retimer从散热器中暴露出来。这些Retimer通常配备较小的散热器，因为它们的TDP大约在10-15W之间，具体取决于你讨论的是使用此尺寸的Astera Labs、Broadcom还是Marvell版本。
+引人注意的是，NVLink Switch位于主板中央，而不是边缘侧，并且只有2个，而不是上一代的4个。
+结论
+现在的NVLink Switch芯片体积更大，将它们移动到主板中央可能有助于减少迹线长度。这对于进行高速信号传输是有益的。此外，NVIDIA B200 GPUs的四个GPU集合在两侧，这样做，进一步减少了GPU到NVLink Switches的迹线长度。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>精讲网络速率测试工具iperf3使用</title>
     <url>/post/linux/detailed-introduction-to-iperf3-network-speed-test-tool.html</url>
     <categories><category>Linux</category>
