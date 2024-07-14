@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Jun 2024 23:33:24 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 00:44:44 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C/C&#43;&#43;宏中使用do-while包裹的优势</title>
+      <link>https://www.kontronn.com/post/programming/advantages-of-using-do-while-wrapper-in-CC&#43;&#43;-macros.html</link>
+      <pubDate>Mon, 15 Jul 2024 00:44:44 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/advantages-of-using-do-while-wrapper-in-CC&#43;&#43;-macros.html</guid>
+      <description>&lt;p&gt;在 C 和 C++ 编程中，宏（macro）是一种非常强大的工具。它们允许开发者编写简洁、高效的代码，减少重复。然而，使用宏时也可能会引发一些意料之外的问题。为了防止这些问题，开发者经常使用 do-while 包裹宏。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>OpenBMC: coredump自动发现及调试实践</title>
       <link>https://www.kontronn.com/post/programming/OpenBMC-coredump-automatic-discovery-and-debugging-practice.html</link>
