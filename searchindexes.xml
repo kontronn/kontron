@@ -16,6 +16,37 @@
   </entry>
   
   <entry>
+    <title>CXL Type 3内存扩展卡市场现状和趋势</title>
+    <url>/post/hardware/cxl-memory-expansion-industry-trend.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>CXL</tag>
+    </tags>
+    <content type="html"><![CDATA[今天和大家简要介绍一下CXL Type 3内存扩展卡形态、主机连接和扩展柜、CXL协议解码等相关知识。
+CXL Type 3内存扩展卡当前市场现状 CXL（Compute Express Link）Type 3内存扩展卡是近年来发展迅速的技术，旨在提供高性能和低延迟的内存扩展解决方案。以下是全球范围内CXL Type 3内存扩展卡的现状：
+  技术成熟度：CXL技术本身已经取得显著进展，特别是在CXL 2.0和即将推出的CXL 3.0规范中，这些规范进一步优化了内存池化和共享的能力。CXL Type 3内存扩展卡作为这一技术的具体应用，已经进入了试验和部署阶段。
+  市场接受度：目前，主要的服务器和数据中心厂商，如英特尔（Intel）、美光（Micron）、三星（Samsung）等，正在积极研发和推出基于CXL技术的内存扩展产品。大多数领先的数据中心和云服务提供商也在评估和测试这些产品，以提升其基础设施的灵活性和性能。
+  应用场景：CXL Type 3内存扩展卡主要应用于需要大容量内存和高带宽的场景，例如人工智能和机器学习、大数据处理、实时分析和虚拟化环境。这些应用对内存容量和性能的需求非常高，而CXL Type 3技术能够有效满足这些需求。
+  标准化和生态系统：CXL联盟（CXL Consortium）在推动CXL标准的制定和普及方面发挥了关键作用。越来越多的硬件和软件厂商加入了CXL联盟，共同推动CXL生态系统的发展。这种协作有助于加速CXL Type 3内存扩展卡的市场成熟度和普及度。
+  挑战与展望：尽管CXL Type 3内存扩展卡前景广阔，但也面临一些挑战，包括兼容性问题、成本因素以及市场推广的速度。随着技术的进一步成熟和行业的逐步接受，这些挑战有望得到解决。
+  总体而言，CXL Type 3内存扩展卡在全球范围内正处于快速发展和推广的阶段。各大厂商和数据中心都在积极测试和部署这项技术，以期在未来获得更高的计算和存储性能。
+截至2024年中，CXL（Compute Express Link）Type 3内存扩展卡市场呈现出显著的增长和创新趋势。这些扩展卡旨在提高数据中心的内存容量和带宽，以应对AI、高性能计算（HPC）和数据分析日益增长的需求。
+以下是当前市场的一些关键发展：
+ 三星的创新：  三星推出了CXL内存模块 - Box（CMM-B），可容纳多达8个CXL内存模块 - DRAM（CMM-D）设备，提供高达2TB的容量，带宽达到60GB/s，延迟极低。这一解决方案主要针对需要高内存容量的应用，如AI和内存数据库
+此外，三星与Supermicro和VMware等公司合作，开发可扩展和可组合的内存解决方案，并展示了如CXL内存模块 - Hybrid（CMM-H）等用于分层内存管理的新产品
+SMART Modular Technologies：  SMART Modular Technologies发布了CXL插入卡（CXA-4F1W和CXA-8F2W），支持DDR5 RDIMMs，容量高达4TB。这些卡旨在消除内存带宽瓶颈，并为服务器内存配置提供灵活性。
+市场增长：  CXL内存组件市场预计将快速增长，预计到2026年市场规模将超过20亿美元。CXL技术被认为是实现内存分解和共享的重要步骤，这将显著提高数据中心内存部署的效率。
+总体来看，CXL Type 3内存扩展卡市场由于数据密集型应用对更大内存容量和更高效内存利用的需求，正处于快速增长之中。像三星和SMART Modular Technologies这样的公司处于这一创新的前沿，提供先进的解决方案以满足现代计算环境不断发展的需求。
+CXL内存扩展卡形态 &lsquo;插卡&rsquo;：这是绝大多数厂家都支持的形态，一般采用PCIe Gen5 x16插卡。
+&lsquo;EDSFF&rsquo;：这个一般采用PCIe Gen5 x8 E3.S形态，Samsung, SK Hynix, Micron都提供这类的产品。
+CXL内存扩展卡如何连接主机 &lsquo;直接插入主机&rsquo;：插卡直接插入插槽，或者E3.S直接插入服务器前面板的E3.S背板（如果提供的话）。
+如果服务器不提供E3.S背板，那么需要将E3.S转接成插卡直接插入插槽，这一般会使用Serial Cables公司的PCIe Gen5 x8 E3.S/AIC转接卡。
+&lsquo;插入扩展柜后，然后通过线缆连接到主机&rsquo;：2024年下半年Q3/Q4会有支持插入CXL type 3内存扩展卡（10槽位）或者E3.S内存扩展卡（24槽位）的扩展柜，内部通过CXL switch下行连接所有的插卡/E3.S内存扩展卡，上行则通过Gen5 x16线缆连接到主机端的PCIe Gen5 switch卡或者Retimer卡。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>C/C++宏中使用do-while包裹的优势</title>
     <url>/post/programming/advantages-of-using-do-while-wrapper-in-CC++-macros.html</url>
     <categories><category>Programming</category>
