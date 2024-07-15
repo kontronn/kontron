@@ -6,7 +6,20 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 20:13:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jul 2024 23:13:38 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>盘一盘Linux技术灵魂人物</title>
+      <link>https://www.kontronn.com/post/linux/let-us-talk-about-linux-technical-soul.html</link>
+      <pubDate>Mon, 15 Jul 2024 23:13:38 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/let-us-talk-about-linux-technical-soul.html</guid>
+      <description>&lt;p&gt;在软件世界的宏伟教堂中，
+&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;以其开放源代码、强大效能和灵活性，赢得了一席之地。它不仅是技术的革新，更是一种文化的象征，背后，是一群令人敬仰的技术灵魂人物，他们用执着的信仰和创新的精神，推动了这个自由软件运动的进步。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>精讲网络速率测试工具iperf3使用</title>
       <link>https://www.kontronn.com/post/linux/detailed-introduction-to-iperf3-network-speed-test-tool.html</link>
