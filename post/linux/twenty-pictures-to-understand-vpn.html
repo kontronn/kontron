@@ -186,7 +186,14 @@
       </ul>
     </li>
     <li><a href="#vpn好在哪">VPN好在哪</a></li>
-    <li><a href="#vpn分几类">VPN分几类</a></li>
+    <li><a href="#vpn分几类">VPN分几类</a>
+      <ul>
+        <li><a href="#ipsec-vpn">IPSec VPN</a></li>
+        <li><a href="#gre-vpn">GRE VPN</a></li>
+        <li><a href="#l2tp-vpn">L2TP VPN</a></li>
+        <li><a href="#mpls-vpn">MPLS VPN</a></li>
+      </ul>
+    </li>
     <li><a href="#vpn用何处">VPN用何处</a></li>
   </ul>
 </nav></div>
@@ -466,7 +473,7 @@
 </ul>
 <p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-14.png" alt="VPN"></p>
 <p>工作在网络层和数据链路层的VPN又被称为三层VPN和二层VPN。</p>
-<p>&lsquo;IPSec VPN&rsquo;</p>
+<h3 id="ipsec-vpn">IPSec VPN</h3>
 <p>IPSec（IP Security） VPN一般部署在企业出口设备之间，通过加密与验证等方式，实现了数据来源验证、数据加密、数据完整性保证和抗重放等功能。</p>
 <p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-14.png" alt="VPN"></p>
 <ul>
@@ -475,17 +482,17 @@
 <li>数据完整性：接收方对接收的数据进行验证，以判定报文是否被篡改。</li>
 <li>抗重放：接收方拒绝旧的或重复的数据包，防止恶意用户通过重复发送捕获到的数据包所进行的攻击。</li>
 </ul>
-<p>&lsquo;GRE VPN&rsquo;</p>
+<h3 id="gre-vpn">GRE VPN</h3>
 <p>通用路由封装协议（General Routing Encapsulation，GRE）是一种三层VPN封装技术。</p>
 <p>GRE可以对某些网络层协议（如IPX、IPv4、IPv6等）的报文进行封装，使封装后的报文能够在另一种网络中（如IPv4）传输，从而解决了跨越异种网络的报文传输问题。</p>
 <p>GRE还具备封装组播报文的能力。由于动态路由协议中会使用组播报文，因此更多时候GRE会在需要传递组播路由数据的场景中被用到，这也是GRE被称为通用路由封装协议的原因。</p>
 <p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-15.png" alt="VPN"></p>
-<p>&lsquo;L2TP VPN&rsquo;</p>
+<h3 id="l2tp-vpn">L2TP VPN</h3>
 <p>L2TP是虚拟私有拨号网VPDN（Virtual Private Dial-up Network）隧道协议的一种，它扩展了点到点协议PPP的应用，是一种在远程办公场景中为出差员工或企业分支远程访问企业内网资源提供接入服务的VPN。</p>
 <p>L2TP组网架构中包括LAC（L2TP Access Concentrator，L2TP访问集中器）和LNS（L2TP Network Server，L2TP网络服务器）。</p>
 <p>LAC是网络上具有PPP和L2TP协议处理能力的设备。LAC负责和LNS建立L2TP隧道连接。</p>
 <p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-16.png" alt="VPN"></p>
-<p>&lsquo;MPLS VPN&rsquo;</p>
+<h3 id="mpls-vpn">MPLS VPN</h3>
 <p>MPLS是一种利用标签（Label）进行转发的技术，最初为了提高IP报文转发速率而被提出，现主要应用于VPN和流量工程、QoS等场景。</p>
 <p>MPLS VPN网络一般由运营商搭建，VPN用户购买VPN服务来实现用户网络之间的路由传递、数据互通等。</p>
 <p>基本的MPLS VPN网络架构由CE（Customer Edge）、PE（Provider Edge）和P（Provider）三部分组成。</p>
