@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network programming on Kontronn</title>
+    <link>https://www.kontronn.com/tags/network-programming/</link>
+    <description>Recent content in Network programming on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 17 Jul 2024 21:52:28 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/network-programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网络编程：解密 libcurl库</title>
+      <link>https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html</link>
+      <pubDate>Wed, 17 Jul 2024 21:52:28 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html</guid>
+      <description>&lt;p&gt;在这个信息化的时代，网络编程已经渗透到各行各业，从网页爬虫到远程服务器的交互，网络通信无处不在。对于 C++ 开发者来说，libcurl 无疑是一个强大的工具，它提供了一个简洁而灵活的接口来处理各种网络协议。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

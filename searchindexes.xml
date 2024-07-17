@@ -16,6 +16,50 @@
   </entry>
   
   <entry>
+    <title>网络编程：解密 libcurl库</title>
+    <url>/post/programming/network-programming-decrypting-the-libcurl-library.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>Network programming</tag>
+      <tag>libcurl</tag>
+    </tags>
+    <content type="html"><![CDATA[在这个信息化的时代，网络编程已经渗透到各行各业，从网页爬虫到远程服务器的交互，网络通信无处不在。对于 C++ 开发者来说，libcurl 无疑是一个强大的工具，它提供了一个简洁而灵活的接口来处理各种网络协议。
+什么是 libcurl？ libcurl 是一个开源的、跨平台的网络传输库，支持 HTTP、HTTPS、FTP、SMTP 等多种协议。它不仅可以用于简单的文件下载和上传，还能处理复杂的网络请求、响应解析等操作。libcurl 的设计初衷是为了让开发者能够轻松进行网络通信，而不必关心底层实现细节。
+为什么选择 libcurl？ 跨平台支持：libcurl 支持几乎所有主流操作系统，包括 Windows、macOS、Linux 等。你只需编写一次代码，就可以在多个平台上运行。
+丰富的协议支持：除了常见的 HTTP 和 HTTPS，libcurl 还支持 FTP、FTPS、SFTP、SMTP 等多种协议，满足不同场景的需求。
+高性能：libcurl 采用了高效的底层实现，能够处理高并发的网络请求。
+易用性：libcurl 提供了简单易用的 API，开发者可以快速上手，进行各种网络操作。
+libcurl 的基本使用 在实际使用 libcurl 进行网络编程时，我们通常会按照以下几个步骤进行：
+初始化：在使用 libcurl 之前，需要进行全局初始化。
+创建句柄：每次进行网络操作时，需要创建一个 CURL 句柄。
+设置选项：通过 curl_easy_setopt 函数设置 URL、请求类型、回调函数等选项。
+执行请求：调用 curl_easy_perform 函数执行请求，并获取响应结果。
+清理资源：完成网络操作后，释放资源，进行全局清理。
+以下是一个简单的示例代码，演示了如何使用 libcurl 发送 HTTP GET 请求并获取响应数据。
+#include &lt;iostream&gt;#include &lt;curl/curl.h&gt; // 回调函数，用于处理响应数据 size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) { ((std::string*)userp)-&gt;append((char*)contents, size * nmemb); return size * nmemb; } int main() { CURL* curl; CURLcode res; std::string readBuffer; curl_global_init(CURL_GLOBAL_DEFAULT); curl = curl_easy_init(); if(curl) { curl_easy_setopt(curl, CURLOPT_URL, &#34;http://www.example.com&#34;); curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback); curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;readBuffer); res = curl_easy_perform(curl); if(res != CURLE_OK) { fprintf(stderr, &#34;curl_easy_perform() failed: %s\n&#34;, curl_easy_strerror(res)); } else { std::cout &lt;&lt; readBuffer &lt;&lt; std::endl; } curl_easy_cleanup(curl); } curl_global_cleanup(); return 0; } 深入解析 HTTP 响应 在实际项目中，我们不仅需要发送请求，还需要处理服务器返回的响应，例如获取响应码、解析响应头等。libcurl 提供了多种方法来获取这些信息，使得我们可以轻松地进行后续处理。
+为了获取 HTTP 响应码和响应头，我们可以设置额外的选项和回调函数。例如，通过 curl_easy_getinfo 函数获取响应码，通过设置 CURLOPT_HEADERFUNCTION 回调函数处理响应头。以下代码展示了如何实现这些功能：
+#include &lt;iostream&gt;#include &lt;curl/curl.h&gt; size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) { ((std::string*)userp)-&gt;append((char*)contents, size * nmemb); return size * nmemb; } size_t HeaderCallback(char* buffer, size_t size, size_t nitems, void* userdata) { std::string header(buffer, size * nitems); std::cout &lt;&lt; &#34;Header: &#34; &lt;&lt; header &lt;&lt; std::endl; return size * nitems; } int main() { CURL* curl; CURLcode res; std::string readBuffer; curl_global_init(CURL_GLOBAL_DEFAULT); curl = curl_easy_init(); if(curl) { curl_easy_setopt(curl, CURLOPT_URL, &#34;http://www.example.com&#34;); curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback); curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;readBuffer); curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, HeaderCallback); res = curl_easy_perform(curl); if(res != CURLE_OK) { fprintf(stderr, &#34;curl_easy_perform() failed: %s\n&#34;, curl_easy_strerror(res)); } else { long response_code; curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &amp;response_code); std::cout &lt;&lt; &#34;HTTP Response Code: &#34; &lt;&lt; response_code &lt;&lt; std::endl; std::cout &lt;&lt; &#34;Response Data: &#34; &lt;&lt; readBuffer &lt;&lt; std::endl; } curl_easy_cleanup(curl); } curl_global_cleanup(); return 0; } 处理 POST 请求 除了 GET 请求，POST 请求也是非常常见的。在 POST 请求中，我们需要向服务器发送数据，libcurl 支持多种数据格式，例如 JSON、表单数据等。通过设置 CURLOPT_POSTFIELDS 选项，我们可以轻松发送 POST 数据。
+以下代码演示了如何使用 libcurl 发送一个简单的 POST 请求，并处理响应数据：
+#include &lt;iostream&gt;#include &lt;curl/curl.h&gt; size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) { ((std::string*)userp)-&gt;append((char*)contents, size * nmemb); return size * nmemb; } int main() { CURL* curl; CURLcode res; std::string readBuffer; curl_global_init(CURL_GLOBAL_DEFAULT); curl = curl_easy_init(); if(curl) { curl_easy_setopt(curl, CURLOPT_URL, &#34;http://www.example.com/post&#34;); curl_easy_setopt(curl, CURLOPT_POST, 1L); curl_easy_setopt(curl, CURLOPT_POSTFIELDS, &#34;name=test&amp;project=curl&#34;); curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback); curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;readBuffer); res = curl_easy_perform(curl); if(res != CURLE_OK) { fprintf(stderr, &#34;curl_easy_perform() failed: %s\n&#34;, curl_easy_strerror(res)); } else { std::cout &lt;&lt; readBuffer &lt;&lt; std::endl; } curl_easy_cleanup(curl); } curl_global_cleanup(); return 0; } libcurl 的高级特性 libcurl 提供了许多高级特性，可以满足复杂的网络通信需求。以下是几个常见的高级特性：
+SSL/TLS 加密：通过设置 CURLOPT_USE_SSL 和 CURLOPT_CAINFO 选项，可以启用 SSL/TLS 加密通信，确保数据传输的安全性。
+处理 Cookie：libcurl 支持 Cookie 的处理，可以通过设置 CURLOPT_COOKIE 和 CURLOPT_COOKIEFILE 选项来管理 Cookie。
+自定义请求头：通过设置 CURLOPT_HTTPHEADER 选项，可以添加自定义请求头，例如 User-Agent、Content-Type 等。
+多线程支持：libcurl 提供了 easy 和 multi 两种接口，multi 接口支持多线程并发请求，提高了网络操作的效率。
+实际案例应用 为了更好地理解 libcurl 的应用场景，我们来看一个实际的案例：通过 libcurl 实现一个简单的网页爬虫。
+需求分析 假设我们需要从一个新闻网站抓取最新的新闻标题，并将这些标题保存到本地文件中。这个任务包含以下几个步骤：
+发送 HTTP GET 请求获取网页内容。
+解析网页内容，提取新闻标题。
+将新闻标题保存到本地文件。
+实现步骤 发送 HTTP GET 请求：使用 libcurl 发送 GET 请求，获取网页内容。
+解析网页内容：使用正则表达式或其他解析工具提取新闻标题。
+保存数据：将提取的新闻标题保存到本地文件。
+实现代码 #include &lt;iostream&gt;#include &lt;fstream&gt;#include &lt;regex&gt;#include &lt;curl/curl.h&gt; size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) { ((std::string*)userp)-&gt;append((char*)contents, size * nmemb); return size * nmemb; } int main() { CURL* curl; CURLcode res; std::string readBuffer; std::ofstream outFile(&#34;news_titles.txt&#34;); curl_global_init(CURL_GLOBAL_DEFAULT); curl = curl_easy_init(); if(curl) { curl_easy_setopt(curl, CURLOPT_URL, &#34;http://www.newswebsite.com&#34;); curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback); curl_easy_setopt(curl, CURLOPT_WRITEDATA, &amp;readBuffer); res = curl_easy_perform(curl); if(res != CURLE_OK) { fprintf(stderr, &#34;curl_easy_perform() failed: %s\n&#34;, curl_easy_strerror(res)); } else { std::regex title_regex(&#34;&lt;h1 class=\&#34;title\&#34;&gt;(.*?)&lt;/h1&gt;&#34;); std::smatch matches; std::string::const_iterator searchStart(readBuffer.cbegin()); while (std::regex_search(searchStart, readBuffer.cend(), matches, title_regex)) { outFile &lt;&lt; matches[1] &lt;&lt; std::endl; searchStart = matches.suffix().first; } } curl_easy_cleanup(curl); } curl_global_cleanup(); outFile.close(); return 0; } 在这个示例中，我们使用 libcurl 获取网页内容，然后通过正则表达式提取新闻标题，并将其保存到本地文件中。这是 libcurl 在实际项目中的一个典型应用场景，展示了其强大的网络请求处理能力。
+总结 libcurl 是一个功能强大且灵活的网络通信库，适用于各种网络编程需求。从简单的 HTTP 请求到复杂的多协议支持，libcurl 都能轻松应对。在本文中，我们从 libcurl 的基础使用方法开始，逐步介绍了处理 HTTP 响应、发送 POST 请求和使用高级特性等内容，并通过实际案例展示了 libcurl 的应用场景。libcurl 的世界远不止于此，期待你在实际应用中发现更多的惊喜和可能性！
+]]></content>
+  </entry>
+  
+  <entry>
     <title>48.3亿！AMD宣布收购 Silo AI</title>
     <url>/post/hardware/AMD-acquires-Silo-AI.html</url>
     <categories><category>AI</category>
