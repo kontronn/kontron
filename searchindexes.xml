@@ -16,6 +16,22 @@
   </entry>
   
   <entry>
+    <title>48.3亿！AMD宣布收购 Silo AI</title>
+    <url>/post/hardware/AMD-acquires-Silo-AI.html</url>
+    <categories><category>AI</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>Silo AI</tag>
+    </tags>
+    <content type="html"><![CDATA[AMD公司宣布以大约6.65亿美元（约合人民币48.3亿元）的现金交易，收购了欧洲最大的私人AI实验室Silo AI。这一举措标志着AMD在 人工智能  领域的进一步拓展，并可能加强其在快速增长的AI硬件市场上与英伟达的竞争地位。
+Silo AI总部位于芬兰赫尔辛基，业务遍及欧美，拥有300多名AI科学家与工程师，专注于端到端 AI驱动解决方案，可以帮助客户在其产品、服务和运营中快速集成AI，安联、飞利浦、劳斯莱斯、联合利华等大型企业都是其客户。此次收购将使AMD获得Silo AI的主要产品SiloGen模型平台，以及与AMD有着良好合作的Poro、Viking等先进的开源大语言模型。
+AMD表示，Silo AI的加入将有助于推动其在人工智能领域的发展，并与英伟达展开更激烈的竞争。过去一年来，AMD已经连续投资了十几家AI公司，总额超过1.25亿美元，还收购了Mipsology、Nod.ai。预计这笔收购将在2024年下半年完成，届时Silo AI将成为AMD AI集团的一部分，而其首席执行官、联合创始人Peter Sarlin将继续领导团队。
+Peter Sarlin在一份声明中表示：“在Silo AI，我们的使命从一开始就是打造一家人工智能旗舰公司。”“今天的声明是我们与AMD联手塑造人工智能计算未来的合乎逻辑的下一步。”
+]]></content>
+  </entry>
+  
+  <entry>
     <title>什么是MD5</title>
     <url>/post/programming/introduction-to-message-digest-algorithm-5.html</url>
     <categories><category>Programming</category>

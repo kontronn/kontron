@@ -6,7 +6,20 @@
     <description>Recent content in AI on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 20:38:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/ai/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jul 2024 21:42:58 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/ai/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>48.3亿！AMD宣布收购 Silo AI</title>
+      <link>https://www.kontronn.com/post/hardware/AMD-acquires-Silo-AI.html</link>
+      <pubDate>Wed, 17 Jul 2024 21:42:58 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/AMD-acquires-Silo-AI.html</guid>
+      <description>&lt;p&gt;AMD公司宣布以大约6.65亿美元（约合人民币48.3亿元）的现金交易，收购了欧洲最大的私人AI实验室Silo AI。这一举措标志着AMD在
+&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;人工智能&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    人工智能
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;领域的进一步拓展，并可能加强其在快速增长的AI硬件市场上与英伟达的竞争地位。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Nvidia HGX B200主板上的NVLink Switch变化</title>
       <link>https://www.kontronn.com/post/hardware/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</link>
