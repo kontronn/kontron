@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 15 Jul 2024 00:44:44 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Jul 2024 19:27:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>什么是MD5</title>
+      <link>https://www.kontronn.com/post/programming/introduction-to-message-digest-algorithm-5.html</link>
+      <pubDate>Wed, 17 Jul 2024 19:27:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/introduction-to-message-digest-algorithm-5.html</guid>
+      <description>&lt;p&gt;MD5，全称为Message-Digest Algorithm 5，是一种广泛使用的加密哈希函数，可以生成一个128位（16字节）的哈希值（杂凑值），用于确保信息传输完整一致。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>C/C&#43;&#43;宏中使用do-while包裹的优势</title>
       <link>https://www.kontronn.com/post/programming/advantages-of-using-do-while-wrapper-in-CC&#43;&#43;-macros.html</link>

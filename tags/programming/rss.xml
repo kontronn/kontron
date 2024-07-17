@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Kontronn</title>
+    <link>https://www.kontronn.com/tags/programming/</link>
+    <description>Recent content in Programming on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 17 Jul 2024 19:27:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>什么是MD5</title>
+      <link>https://www.kontronn.com/post/programming/introduction-to-message-digest-algorithm-5.html</link>
+      <pubDate>Wed, 17 Jul 2024 19:27:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/introduction-to-message-digest-algorithm-5.html</guid>
+      <description>&lt;p&gt;MD5，全称为Message-Digest Algorithm 5，是一种广泛使用的加密哈希函数，可以生成一个128位（16字节）的哈希值（杂凑值），用于确保信息传输完整一致。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
