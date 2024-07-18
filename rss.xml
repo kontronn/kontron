@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Jul 2024 21:52:28 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 23:14:06 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,24 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>摩尔线程开发MTLink挑战英伟达NVLink技术</title>
+      <link>https://www.kontronn.com/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html</link>
+      <pubDate>Thu, 18 Jul 2024 23:14:06 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html</guid>
+      <description>在当今科技高速发展的时代， 数据中心  和 人工智能  （AI）运算的需求不断增加，推动了GPU技术的快速进步。英伟达（NVIDIA）作为GPU行业的领军企业，以其强大的硬件和软件解决方案在全球数据中心中占据了主导地位。然而，中国的GPU厂商摩尔线程（Moores Threads）正在迎头赶上，通过自主研发和技术创新，力图在全球市场中争得一席之地。
+英伟达的市场领先地位 英伟达在数据中心和AI运算领域的成功，得益于其高效的CUDA架构和NVLink互连技术。这些技术不仅提升了GPU的计算性能，还实现了大规模集群的横向扩展，使得英伟达的解决方案在高性能计算（HPC）和人工智能训练中表现卓越。通过不断优化硬件和软件，英伟达为数据中心提供了强大的计算能力，满足了日益增长的市场需求。
+摩尔线程的崛起 面对英伟达的强大竞争，我国的GPU厂商摩尔线程不甘示弱，积极投入研发，以应对市场需求。摩尔线程近期升级了其AI KUAE数据中心服务器，通过集成八个MTT S4000 GPU，并采用MTLink网络技术，实现了类似英伟达NVLink的互连能力。摩尔线程的GPU基于MUSA架构，拥有128个张量核心和48GB的GDDR6内存，带宽高达768GB/s。尽管与英伟达的顶级GPU相比，摩尔线程的产品在性能上仍有差距，但其在大规模集群中的潜力不小。
+技术创新与挑战 摩尔线程的技术创新不仅体现在硬件上，还在网络技术上有所突破。MTLink网络技术的推出，使得单个数据中心集群可以连接高达一万颗GPU，极大地提升了计算能力。然而，实际性能表现如何，仍取决于许多因素，包括硬件的优化程度、软件的兼容性以及数据中心的整体架构。
+摩尔线程的崛起并非一帆风顺。由于受到美国商务部的制裁，摩尔线程被列入实体清单，无法获得先进的制程技术。然而，这并未阻止摩尔线程在人工智能和数据中心领域的探索。尽管面临技术和市场的双重挑战，摩尔线程依然坚持自主研发，不断推出新的产品和解决方案。
+战略合作与市场拓展 为了进一步提升技术水平和市场竞争力，摩尔线程与移动、联通等主要电信商，以及中国能源建设集团、大数据科技有限公司建立了战略合作伙伴关系。通过这些合作，摩尔线程开发了三个新的运算集群，致力于提升我国在人工智能领域的技术能力。
+与此同时，摩尔线程近期完成了一轮总额达25亿人民币的融资。这笔资金将用于支持公司的扩张计划和技术研发，帮助摩尔线程在激烈的市场竞争中站稳脚跟。
+未来展望 尽管摩尔线程在技术和市场上面临诸多挑战，但其不断创新和坚持自主研发的精神，值得肯定。在全球科技竞争日益激烈的今天，摩尔线程的努力不仅是为了提升自身的市场地位，更是为了推动中国在高性能计算和人工智能领域的技术进步。
+未来，摩尔线程需要继续加强与产业链上下游的合作，充分利用自身的技术优势，提升产品的性能和可靠性。此外，摩尔线程还需要积极应对国际市场的竞争，通过不断优化产品和服务，赢得更多客户的认可和信任。
+摩尔线程在面对技术和市场的双重挑战时，展现出了顽强的毅力和创新的精神。通过不断的技术突破和市场拓展，摩尔线程有望在未来的全球GPU市场中占据一席之地，为推动人工智能和高性能计算的发展做出更大的贡献。</description>
     </item>
     
     <item>
