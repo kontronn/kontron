@@ -6,7 +6,16 @@
     <description>Recent content in ARM on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 03 Dec 2023 09:50:13 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Jul 2024 23:05:30 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cache的物理结构</title>
+      <link>https://www.kontronn.com/post/soc/the-physical-structure-of-the-cache.html</link>
+      <pubDate>Mon, 29 Jul 2024 23:05:30 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/the-physical-structure-of-the-cache.html</guid>
+      <description>&lt;p&gt;教材上通常介绍的cache就是直接映射，组相联和全相联。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>x86指令集和ARM指令集的区别</title>
       <link>https://www.kontronn.com/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html</link>
