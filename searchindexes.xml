@@ -16,6 +16,23 @@
   </entry>
   
   <entry>
+    <title>DRAM 灵敏放大器的基本操作</title>
+    <url>/post/hardware/basic-operation-of-DRAM-sensitive-plattoa.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>DRAM</tag>
+    </tags>
+    <content type="html"><![CDATA[DRAM 灵敏放大器是由两个交叉耦合的CMOS反相器组成的简单电路，因此它是一个SRAM单元。
+位线(BL) 最初被预充电到Vdd/2。在读取期间，位线的电压变化很小。如果位线的电压高于Vdd/2 (图a)，则n2 nMOS晶体管开始导通，并将预充电线拉低到“0”，这反过来又导致p1 pMOS晶体管导通。在一个小的延迟之后,BL被拉高，并且OUT=1。
+另一方面，如果位线的电压低于Vdd/2 (图b) ,(p2)pMOS晶体管开始导通，并将预充电线拉到“1”。这反过来又导致n1 nMOS晶体管导通。在一个小的延迟之后，BL被拉到“0”，并且OUT=0。
+因此，交叉连接的反相器产生的反馈放大了BL与预充电输入基准之间的小电压差,直到位线完全处于最低电压或最高电压。
+ DRAM   灵敏放大器的主要功能是当晶体管被接通，感应位线上微小电压摆动。放大器的第二个功能是在感应到位线上的电压后，恢复电容的值。
+打开晶体管允许存储电容与位线共享其存储的电荷。然而，共享存储电容电荷的过程使该DRAM cell放电，因此DRAM cell中的信息丢失，无法再次读取。但这些信息存储在感应放大器中，因为感应放大器的双稳态电路由两个交叉耦合的反相器组成。因此，只要电源电压存在，它就可以存储信息。因此，在感应之后，使用感应放大器将位值写回存储单元。这种操作称为预充电precharge。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>摩尔线程开发MTLink挑战英伟达NVLink技术</title>
     <url>/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html</url>
     <categories><category>AI</category>
