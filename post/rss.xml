@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Aug 2024 23:05:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Aug 2024 23:27:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,19 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>SRAM/DRAM单元的简单介绍</title>
+      <link>https://www.kontronn.com/post/hardware/a-brief-introduction-to-SRAM-DRAM-cells.html</link>
+      <pubDate>Sat, 03 Aug 2024 23:27:07 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/a-brief-introduction-to-SRAM-DRAM-cells.html</guid>
+      <description>&lt;p&gt;静态随机存取存储器(
+&lt;a href=&#34;https://www.kontronn.com&#34; title=&#34;静态RAM或SRAM&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    静态RAM或SRAM
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;)是一种使用双稳态元件存储1比特信息的存储器 (RAM) 。这种类型的内存被用作大多数cache的组件，因为它比其他内存结构(特别是DRAM) 有优越的性能，SRAM比DRAM速度更快，也更昂贵;通常用于CPU cache，而DRAM用于计算机的主存储器。&lt;/p&gt;</description>
     </item>
     
     <item>

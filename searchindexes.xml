@@ -16,6 +16,28 @@
   </entry>
   
   <entry>
+    <title>SRAM/DRAM单元的简单介绍</title>
+    <url>/post/hardware/a-brief-introduction-to-SRAM-DRAM-cells.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>SRAM</tag>
+      <tag>DRAM</tag>
+    </tags>
+    <content type="html"><![CDATA[静态随机存取存储器( 静态RAM或SRAM  )是一种使用双稳态元件存储1比特信息的存储器 (RAM) 。这种类型的内存被用作大多数cache的组件，因为它比其他内存结构(特别是DRAM) 有优越的性能，SRAM比DRAM速度更快，也更昂贵;通常用于CPU cache，而DRAM用于计算机的主存储器。
+典型的SRAM单元由六个MOS晶体管组成&ndash;形成两个交叉耦合的反相器(双稳态),两个接入nMOS作为开关，用于在读写操作期间控制双稳态元件的状态。下图显示了一个SRAM单元。
+SRAM单元中的每个位都存储在由四个晶体管组成的双稳态元件中，这些晶体管构成两个交叉耦合的反相器。只要持续供电，这种交叉耦合连接可以一直存储单个数据。
+SRAM cell还具有两条位线，第一位线 (BL) ,持有存储在cell中的相同值。第二位线 (BL)保持存储在cell中的值反相。
+当未选择字线 (WL) (WL=0)时，cell处于待机模式。将字线设置为逻辑高可以访问nMOS晶体管。这将cell与两条位线连接，并允许读取或写入cell。通过拉高WL和检测位线BL和BL处的电压差来读取SRAM cell。同样，通过在位线BL和BL上设置内容并拉高字线来写入SRAM cell。
+由于其一直存储信息的能力和SRAM cell的高速，它们被用于在微处理器中实现cache。此外，SRAM的主要优点是它使用与微处理器核心相同的制造工艺，简化了高速cache和CPU寄存器集成到 处理器芯片  上。另一方面，SRAM芯片的主要缺点是密度低和运行功耗高。这些缺点妨碍了主计算机存储器使用SRAM。
+SRAM单元不用于构建主存储器，相比之下，DRAM通常使用不同的制程，这对于逻辑电路来说不是最优的工艺，这使得CPU逻辑和DRAM的集成比CPU逻辑和SRAM的集成更加困难。但是DRAM体积更小、更便宜、耗电更少，这使得它们成为实现主存储器的更好选择。
+DRAM单元介绍 动态随机存取存储器(DRAM)基本上是用于所有芯片的主存储器。电脑为了在每个芯片上封装更多的存储比特，使用的DRAM cell仅由单个MOS晶体管(T) 和存储电容 (C)组成，如下图所示。
+cell中的数据可以通过位线(BL)读取或写入。与SRAM相反，DRAM将其内容存储为电容器C上的电荷。这样，DRAM单元比SRAM单元小得多。晶体管T作为存储电容器和位线之间的开关。字线 (WL)用于开关晶体管T开/关。从DRAM单元读取使电容器放电，从而破坏信息。
+即使我们不读取DRAM单元，电荷也会从电容中泄漏，因为cell晶体管并没有完全断开存储电容与位线之间的连接。即使晶体管被关闭，也有微小的电流从电容流到位线并放电电容。所以，充电动作(信息)必须每秒刷新几次。因此得名动态dynamic。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>英特尔2025 年工艺路线图</title>
     <url>/post/soc/intel-2025-process-roadmap.html</url>
     <categories><category>SOC</category>
