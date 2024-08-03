@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Jul 2024 21:52:28 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Aug 2024 07:10:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>谷歌不再支持 Golang</title>
+      <link>https://www.kontronn.com/post/programming/google-no-longer-supports-golang.html</link>
+      <pubDate>Sun, 04 Aug 2024 07:10:36 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/google-no-longer-supports-golang.html</guid>
+      <description>&lt;p&gt;Golang，又称 Go 语言，自 2009 年由 Google 发布以来，凭借其简洁的语法、高效的并发性能和强大的标准库，迅速成为云计算、网络编程、微服务等领域备受青睐的编程语言。然而，近期 Google 对其 Python 核心团队和 Flutter/Dart 团队的裁员引发了开发者社区的广泛关注，也不禁让人思考：如果有一天 Google 不再支持 Golang，Golang 的未来将会如何？&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>网络编程：解密 libcurl库</title>
       <link>https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html</link>
