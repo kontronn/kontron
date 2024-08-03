@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Aug 2024 18:09:48 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Aug 2024 23:05:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intel</title>
+      <link>https://www.kontronn.com/tags/intel/</link>
+      <pubDate>Sat, 03 Aug 2024 23:05:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/intel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>process</title>
+      <link>https://www.kontronn.com/tags/process/</link>
+      <pubDate>Sat, 03 Aug 2024 23:05:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Roadmap</title>
+      <link>https://www.kontronn.com/tags/roadmap/</link>
+      <pubDate>Sat, 03 Aug 2024 23:05:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/roadmap/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Container</title>
       <link>https://www.kontronn.com/tags/container/</link>
@@ -31,15 +58,6 @@
       <pubDate>Sat, 03 Aug 2024 18:09:48 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Intel</title>
-      <link>https://www.kontronn.com/tags/intel/</link>
-      <pubDate>Sat, 03 Aug 2024 17:52:06 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/intel/</guid>
       <description></description>
     </item>
     
@@ -1678,15 +1696,6 @@
       <pubDate>Fri, 23 Jun 2023 23:36:57 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/boot-up/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>process</title>
-      <link>https://www.kontronn.com/tags/process/</link>
-      <pubDate>Fri, 23 Jun 2023 23:36:57 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/process/</guid>
       <description></description>
     </item>
     
