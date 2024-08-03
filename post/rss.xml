@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Aug 2024 17:52:06 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Aug 2024 18:09:48 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>Containerd：下一代Linux容器技术</title>
+      <link>https://www.kontronn.com/post/linux/containerd-the-next-generation-of-linux-container-technology.html</link>
+      <pubDate>Sat, 03 Aug 2024 18:09:48 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/containerd-the-next-generation-of-linux-container-technology.html</guid>
+      <description>&lt;p&gt;在现代IT基础设施中，容器技术已经成为不可或缺的一部分。它不仅提高了应用的部署效率，还极大地改善了资源利用率。&lt;/p&gt;</description>
     </item>
     
     <item>
