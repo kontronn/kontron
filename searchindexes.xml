@@ -16,6 +16,34 @@
   </entry>
   
   <entry>
+    <title>RISC-V向量处理器设计概述</title>
+    <url>/post/soc/risc-v-vector-processor-design-overview.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>RISC-V</tag>
+    </tags>
+    <content type="html"><![CDATA[RISC-V Vector扩展（以下简称RVV）定义了RISC-V的向量指令集。本文基于RVV 1.0标准，介绍向量处理器设计时需要注意的一些问题。
+注：本文假定您已阅读过RVV 1.0标准。
+Configuration-setting 指令 Vsetvli（以及vsetivli/vsetvl）指令用来设定接下来的向量指令的vl和vtype值。这里vl和vtype都是向量CSR值，因此vsetvli指令会进行写CSR的操作。一般来说，vsetvli指令在标量核里执行，因为它不访问向量寄存器。
+对于顺序核来说，vsetvli先更新CSR，之后的向量指令再读取该CSR，没有任何问题。典型的顺序处理器的设计为：向量指令经过标量核的所有流水级后，再分发给向量核。这种架构下，vsetvli会在某一流水级更新vl和vtype CSR，这样之后的向量指令在同一流水级读取更新后的vl和vtype，然后被分发给向量核。这种顺序处理器的架构保证了每个向量指令都能读到正确的vl和vtype (但Fault-Only-First load除外，它可能会修改vl值)。
+对于乱序处理器，情况要复杂一些。Vsetvli和之后的向量指令可能会改变执行顺序。具体来说，向量指令和其对应的vsetvli指令之间存在关于vtype/vl的RAW依赖，向量指令和其后面的vsetvli指令存在关于vtype/vl的WAR依赖。RAW是true dependence，无法消除。但WAR是false dependence，可以通过对vtype/vl的renaming来消除。Vtype/vl的renaming和经典的寄存器renaming的原理是一致的。当然，Vtype/vl的物理寄存器的数量没必要太多，因为vsetvli指令密度一般要比向量指令密度小很多。
+EEW和EMUL SEW是vsetvli指令设定的元素位宽参考值，EEW指的是元素的实际位宽。一个向量指令可能包含两个源操作数和一个目的操作数，这三个操作数都有对应的EEW。例如，如果一个setvli指令设定了SEW值，它之后的vadd.vv指令的EEW等于SEW，它之后的widen指令vwadd.vv则包含两个源操作数EEW等于SEW，但目的EEW等于2*SEW。
+EMUL和LMUL的关系可参考EEW和SEW的关系。他们之间满足EEW/SEW = EMUL/LMUL。
+对于某些运算单元，需要考虑不同的SEW运算尽量复用同一个电路，以减少面积开销。例如乘法指令，一个64x64的乘法单元要能够处理2个32x32，4个16x16，以及8个8x8操作。
+Mask/tail Mask/tail的agnostic情况允许写全1或者保持原值。这里，“全1”指的是每一个比特都为1。
+对于顺序架构，agnostic保持原值是一种很自然的想法，只需在将运算结果vd写回寄存器时采用masked写回即可。注意，这种masked写回采用字节为基本单位即可，不需要以比特为基本单位。
+但对于乱序架构，agnostic写全1是更为普遍的做法。因为乱序架构中的重命名机制会导致原值和新值为不同的物理寄存器。Tail写原值的话，需要读取原值的物理寄存器，这相当于引入了新的RAW依赖。
+对于某些指令，其tail不受vta控制。例如integer compare指令，其tail总是采用agnostic。
+特别的，除了mask load指令，其他会产生mask result的指令（例如compare）在对于tail的处理上可以认为vl=VLMAX。更进一步，对于mask-logical等操作mask的指令，在tail的处理上可以认为vl=VLEN。详见标准文档。
+Vstart 对于运算（非load/store）指令，可以设定vstart始终为0，从而简化设计。
+当load/store异常发生时，vstart可能会被重置，并且进入异常处理程序。对于顺序处理器来说，当一条load/store向量指令无法确定是否会发生异常时，后面的指令不能写回寄存器（或者直接等待，不执行）。当异常发生时，需要冲刷流水线。对于乱序处理器，在异常处理进行重定向时修改vstart。
+对于vl值，Fault-Only-First load指令可能会修改vl，从而影响之后的指令。对于顺序处理器，当一条Fault-Only-First load指令无法确定是否会修改vl时，后面的向量指令需要等待。对于乱序处理器，一种可能的方案是当vl被修改后，重定向至受影响的指令，更新对应vl后重新执行。
+Illegal instruction 对于标准中描述为“reserved”的配置，可以报或者不报illegal instruction异常。如果参考Spike模拟器的话，其对”reserved”的情况基本都报了illegal instruction异常。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>SRAM/DRAM单元的简单介绍</title>
     <url>/post/hardware/a-brief-introduction-to-SRAM-DRAM-cells.html</url>
     <categories><category>Hardware</category>
