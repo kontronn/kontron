@@ -16,6 +16,23 @@
   </entry>
   
   <entry>
+    <title>华为下一代麒麟芯片或将采用统一内存架构</title>
+    <url>/post/soc/huawei-next-generation-kirin-chip.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Huawei</tag>
+      <tag>Kirin</tag>
+    </tags>
+    <content type="html"><![CDATA[华为下一代麒麟芯片或将采用统一内存架构
+华为或将借鉴苹果和英特尔的CPU策略，下一代麒麟CPU可能采用类似Apple M系列芯片和Intel Lunar Lake的封装技术。
+华为的下一代麒麟芯片据称将采用统一内存架构（Unified Memory Architecture, UMA），类似于苹果M系列芯片和英特尔Core Ultra系列CPU所采用的技术。这意味着华为将在下一代麒麟处理器中内置RAM，并使其对GPU和CPU可用。
+一位微博用户预测，这款麒麟CPU配备Taishan V130核心，其性能可与苹果M3相媲美，并指出：“这是专门为 AI终端产品  规划的芯片，其内存带宽是之前PC芯片的两倍。”在另一篇微博帖子中表示：“AI本地大型模型和推理速度由内存带宽决定，使用IC基板上的UMA统一内存-DRAM将比目前Windows系统中使用的芯片具有更强的协同性能。”
+这可能意味着华为正在开发一款旨在与高通Snapdragon X处理器竞争的芯片，后者具有45 TOPs的神经处理单元（NPU）。即便华为成功生产出可以与苹果和高通SoC在性能上匹敌的芯片，我们仍然不确定它是否能够使用微软的人工智能功能，尤其是Copilot+ PC品牌。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>谷歌不再支持 Golang</title>
     <url>/post/programming/google-no-longer-supports-golang.html</url>
     <categories><category>Programming</category>
