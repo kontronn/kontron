@@ -16,6 +16,34 @@
   </entry>
   
   <entry>
+    <title>嵌入式 C 语言的动态变长数组</title>
+    <url>/post/programming/embedded-c-dynamic-variable-length-array.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>Embedded C</tag>
+      <tag>Dynamic variable length</tag>
+    </tags>
+    <content type="html"><![CDATA[我们在编写 C 语言程序的时候，如果使用的编译器只支持 C89 标准，那么，在定义数组的时候，数组长度必须确定，例如：int arr[10]，因为数组是静态分配内存的，所以数组的长度必须要在编译时进行确定。
+当然，我们也可以采用指针变量和动态内存分配的方式，来模拟动态数组的行为，可以使用 malloc 或者 calloc 相关的函数，在程序运行时进行动态内存分配。
+示例代码如下：
+#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt; int main() { int *arr = NULL; int n = 10; // 动态分配数组  arr = (int *)malloc(n * sizeof(int)); if (arr == NULL)return -1; // 使用数组  for (int i = 0; i &lt; n; i++) { arr[i] = i; } // 打印数组内容  for (int i = 0; i &lt; n; i++) { printf(&#34;%d \mn &#34;, arr[i]); } // 释放内存  if(NULL != arr)free(arr); return 0; } 然而，除了使用 malloc 来模拟实现动态数组的功能之外，在 C 语言的 C99 标准里面，还引入了可变长数组（VLA）的概念，也就是说，可以允许数组的长度在程序运行时进行确定。
+示例代码如下：
+#include &lt;stdio.h&gt; int main() { int n = 0; printf(&#34;Enter the number of elements: &#34;); scanf(&#34;%d&#34;, &amp;n); // 创建一个VLA  int arr[n]; // 使用VLA  for (int i = 0; i &lt; n; i++) { arr[i] = i * i; } // 打印数组内容  for (int i = 0; i &lt; n; i++) { printf(&#34;%d \mn&#34;, arr[i]); } return 0; } C99 标准里面的可变长数组特性，它允许数组在运行时才确定大小，尤其是在处理大小不确定的数据集时，可变长数组（VLA）为程序员提供了更大的灵活性。
+使用可变长数组（VLA）的优势：
+  动态分配大小：使用可变长数组，可以根据实际需要，在程序运行时分配数组的带下，在处理不确定大小的数据集时，非常有用。
+  减少内存浪费：由于可变长数组是运行时才确定其大小的，因此可以避免在编译时分配固定内存，造成内存浪费。
+  但是，可变长数组（VLA）这种特性有利也有弊，在使用的时候需要注意一些潜在的问题。
+使用可变长数组的注意事项：
+  编译器兼容问题：不是所有的编译器都支持 C99 标准里面的VLA特性，并且可能需要特定的编译器标志位来启用。
+  程序可移植性：VLA特性在 C11 标准里面已经被进行标记，可能会在未来的 C 语言标准中移除，因此需要注意代码的可移植性。
+  栈溢出风险：VLA在程序运行时分配数组空间大小，其位于内存的栈区域，使用不当可能会导致栈溢出。
+  性能优化问题：编译器可能无法对VLA进行优化，其代码性能可能不如静态分配数组或使用malloc分配内存。
+  总的来说，可变长数组（VLA）特性，在编译时不确定数组大小，而是在程序运行时才确定，在使用时需要权衡其优缺点，并且注意潜在的风险。在某些情况下，使用VLA特性与动态内存 malloc 分配，可能会是一个不错的选择。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>华为下一代麒麟芯片或将采用统一内存架构</title>
     <url>/post/soc/huawei-next-generation-kirin-chip.html</url>
     <categories><category>SOC</category>
