@@ -16,6 +16,37 @@
   </entry>
   
   <entry>
+    <title>嵌入式Linux程序如何开机自启动</title>
+    <url>/post/linux/how-to-start-an-embedded-linux-program-automatically-at-boot-time.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Embedded Linux</tag>
+    </tags>
+    <content type="html"><![CDATA[在很多嵌入式系统中，由于可用资源较少，常常在系统启动后就直接让应用程序自动启动，以减少用户操作和节省资源。
+如何让自己的应用程序自动启动呢？
+自启动的三种方式 在Linux系统中，配置应用程序自动启动的方法有以下三种：
+通过/Linuxrc脚本直接启动 Linux内核一旦开始执行，它将通过驱动程序来初始化所有硬件设备，这个初始化过程可以在启动时的PC显示器上看到，每个驱动程序都打印一些相关信息。
+初始化完成后，通常调用的是init，通过loader调用init内的init=/app_program语句（通过loader向核心传入init=/program可以定制首先运行的程序）。
+比如在桌面Linux系统中，init进程会读取/etc/inittab文件，来决定执行级别和哪些脚本和命令。
+嵌入式应用开发中，可以根据实际情况决定是否使用标准的init执行方式，也许这个init是个静态程序，它能够完成我们的嵌入应用的特定任务，那完全不用考虑inittab了，在这里可以采用比较灵活的措施。
+在/etc/init.d下添加启动脚本 主要用来启动一些系统服务，根据runlevel执行rcx.d, 而在rcx.d中都会在最后调用rc.local
+一般情况下，大多数的Linux操作系统使用/etc/init.d/(或/etc/rc.d/init.d)下的脚本来配置应用程序的自动启动。
+例如，在某些Linux系统中，
+corn程序通过/etc/init.d/corn脚本启动，
+Apache通过/etc/init.d/httpd启动，
+syslogd通过/etc/init.d/syslogd启动，
+而sshd则通过/etc/init.d/sshd脚本启动。
+通常这些脚本通过来自特定rc.d目录的符号链接运行。
+为了配置从哪个rc.d目录运行脚本，Linux系统提供了许多不同的工具，同时也可以手工进行配置。
+Linux系统有一个包含所有实际启动脚本文件的目录。它可能是/etc/init.d，也可能是/etc/rc.d/rc.d。
+同时对应每个运行级别（runlevel）又有一个另外的目录，它们可能是/etc/rc2.d，也可能是/etc/rc.d/rc2.d。这些目录中的文件通常是指向实际脚本文件的符号链接。
+直接在/etc/rc.d/rc.local脚本中添加命令 在Linux系统中，有一个类似Windows系统中autoexec.bat的文件，它就是/etc/rc.d/rc.local，系统开机后自动运行用户的应用程序或启动系统服务的命令保存在开发板根文件系统的这个文件中。
+因此可以编辑rc.local文件，将要执行的程序（命令）添加到该文件夹中。Linux系统在启动后还未登录前，将自动执行该程序（命令），达到开机自动运行用户的应用程序的目的。
+运行级别 Linux系统有7个运行级别(runlevel)  运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动 运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆 运行级别2：多用户状态(没有NFS) 运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式 运行级别4：系统未使用，保留 运行级别5：X11控制台，登陆后进入图形GUI模式 运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动  运行级别的原理  在目录/etc/rc.d/init.d下有许多服务器脚本程序，一般称为服务(service)(注：自己常用的有/etc/init.d/network&hellip;) 在/etc/rc.d下有7个名为rcN.d的目录，对应系统的7个运行级别 rcN.d目录下都是一些符号链接文件，这些链接文件都指向init.d目录下的service脚本文件，命名规则为K+nn+服务名或S+nn+服务名，其中nn为两位数字。 系统会根据指定的运行级别进入对应的rcN.d目录，并按照文件名顺序检索目录下的链接文件   对于以K开头的文件，系统将终止对应的服务 对于以S开头的文件，系统将启动对应的服务   查看运行级别用：runlevel 进入其它运行级别用：init N 另外init0为关机，init 6为重启系统  linux系统开机流程  机器开机通电bios质检，质检通过后，bios会根据boot菜单，选择从硬盘启动。 读取硬盘中的MBR（主引导记录），加载引导程序（linux中是grub），grub程序会加载系统kernel和虚拟文件系统。 系统会运行init程序，该进程会读取/etc/inittab配置文件，决定运行级别，运行/etc/rc.d/rc.sysinit脚本对系统进行初始化，该脚本会设置系统时间，主机名，开启卷管理，以读写的方式重挂root文件系统，挂载本地文件系统，开启本地磁盘配额，开启交换空间。 运行该运行级别下的/etc/rc.d/rcN.d/下的脚本，开启系统服务进程。 读取/etc/rc.d/rc.local下的命令，并逐条运行。 启动虚拟终端，进入登录界面。 ]]></content>
+  </entry>
+  
+  <entry>
     <title>接地电阻为什么一般不大于4Ω</title>
     <url>/post/hardware/grounding-resistance-selection-tips.html</url>
     <categories><category>Hardware</category>

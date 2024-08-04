@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embedded Linux on Kontronn</title>
+    <link>https://www.kontronn.com/tags/embedded-linux/</link>
+    <description>Recent content in Embedded Linux on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 04 Aug 2024 23:16:21 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/embedded-linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>嵌入式Linux程序如何开机自启动</title>
+      <link>https://www.kontronn.com/post/linux/how-to-start-an-embedded-linux-program-automatically-at-boot-time.html</link>
+      <pubDate>Sun, 04 Aug 2024 23:16:21 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-to-start-an-embedded-linux-program-automatically-at-boot-time.html</guid>
+      <description>&lt;p&gt;在很多嵌入式系统中，由于可用资源较少，常常在系统启动后就直接让应用程序自动启动，以减少用户操作和节省资源。&lt;/p&gt;
+&lt;p&gt;如何让自己的应用程序自动启动呢？&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

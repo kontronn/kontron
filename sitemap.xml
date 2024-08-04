@@ -8,7 +8,37 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-08-04T23:03:38+08:00</lastmod>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/embedded-linux/</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/how-to-start-an-embedded-linux-program-automatically-at-boot-time.html</loc>
+    <lastmod>2024-08-04T23:16:21+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -18,21 +48,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-08-04T23:03:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-08-04T23:03:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-08-04T23:03:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-04T23:03:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -158,11 +173,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/linux/</loc>
-    <lastmod>2024-08-03T18:09:48+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2024-08-03T18:09:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
