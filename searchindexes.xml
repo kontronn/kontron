@@ -16,6 +16,23 @@
   </entry>
   
   <entry>
+    <title>使用Flatpak安装linux应用</title>
+    <url>/post/linux/install-linux-applications-using-flatpak.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Flatpak</tag>
+    </tags>
+    <content type="html"><![CDATA[所有 Linux   桌面都可以使用 Flathub 获取和分发应用。Flathub 由 Flatpak 驱动，让 Flathub 应用在几乎所有的 Linux 发行版上都能运行。
+安装Flatpak 各种Linux发行版安装Flatpak的设置说明：https://flathub.org/zh-Hans/setup
+在Ubuntu 18.10 (Cosmic Cuttlefish) 或之后的新版本上，只需要运行:
+sudo apt install flatpak 对于老点的版本需要先安装Flatpak的PPA源，再去安装
+sudo add-apt-repository ppa:flatpak/stable sudo apt update sudo apt install flatpak Flathub：Linux 应用商店 安装Flathub的存储库，之后就可以安装flathub上的应用了。
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 安装Linux应用 比如上一篇文章说的Kodi，就可以通过以下命令来安装
+flatpak install flathub tv.kodi.Kodi ]]></content>
+  </entry>
+  
+  <entry>
     <title>嵌入式Linux程序如何开机自启动</title>
     <url>/post/linux/how-to-start-an-embedded-linux-program-automatically-at-boot-time.html</url>
     <categories><category>Linux</category>

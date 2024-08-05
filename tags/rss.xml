@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 04 Aug 2024 23:16:21 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Aug 2024 22:48:35 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Flatpak</title>
+      <link>https://www.kontronn.com/tags/flatpak/</link>
+      <pubDate>Mon, 05 Aug 2024 22:48:35 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/flatpak/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Embedded Linux</title>
       <link>https://www.kontronn.com/tags/embedded-linux/</link>
