@@ -28,7 +28,11 @@
 &lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
     Linux
     &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 桌面都可以使用 Flathub 获取和分发应用。Flathub 由 Flatpak 驱动，让 Flathub 应用在几乎所有的 Linux 发行版上都能运行。&lt;/p&gt;</description>
+&lt;/a&gt; 桌面都可以使用 
+&lt;a href=&#34;https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html&#34; title=&#34;Flathub&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Flathub
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt; 获取和分发应用。Flathub 由 Flatpak 驱动，让 Flathub 应用在几乎所有的 Linux 发行版上都能运行。&lt;/p&gt;</description>
     </item>
     
     <item>
