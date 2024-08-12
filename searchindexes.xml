@@ -16,6 +16,24 @@
   </entry>
   
   <entry>
+    <title>DDR SDRAM 的读写timing</title>
+    <url>/post/hardware/ddr-sdram-read-and-write-timing.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>DDR</tag>
+      <tag>SDRAM</tag>
+    </tags>
+    <content type="html"><![CDATA[本文简要讲述了DDR SDRAM 的读写timing。
+Read burst 下图显示了CL = 2和BL = 4的read burst 的timing。
+在READ突发期间，有效数据在READ命令后的CL之后可用。每个后续的数据在下一个CLK和CLK#的交叉处有效。DDR SDRAM与输出数据一起驱动DQS。DQS上的初始LOW状态被称为read preamble；与最后一个数据输出重合的LOW状态被称为read postamble。完成read burst后，假设没有启动其他命令，DQ将变为High-Z。
+来自任何READ的数据都可以与后续READ命令的数据连起来。通过这种方式，可以保持数据的连续传输。新read的第一个数据紧跟着上一个read的最后一个数据。
+Write burst 下图显示了BL = 4的WRITE的时序。DQ上出现的输入数据被写入内存阵列。DQS和DM信号现在由内存控制器与数据一起传输。如果DM信号为LOW，则相应的输入数据将写入内存。如果DM信号被为HIGH，则忽略相应的输入数据，并且不会向该列位置WRITE。
+在WRITE期间，第一个有效的输入数据按照WRITE命令在DQS的第一个上升边沿寄存。后续数据在DQS的连续边缘上寄存。写入命令和第一个上升沿之间的DQS上的LOW状态被称为write preamble，最后一个输入数据元素之后的DQS上的LOW状态被称为write postamble。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>使用Flatpak安装linux应用</title>
     <url>/post/linux/install-linux-applications-using-flatpak.html</url>
     <categories><category>Linux</category>

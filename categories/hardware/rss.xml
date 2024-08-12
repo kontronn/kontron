@@ -6,7 +6,16 @@
     <description>Recent content in Hardware on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 04 Aug 2024 23:03:38 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Aug 2024 00:29:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/hardware/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR SDRAM 的读写timing</title>
+      <link>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</link>
+      <pubDate>Tue, 13 Aug 2024 00:29:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</guid>
+      <description>&lt;p&gt;本文简要讲述了DDR SDRAM 的读写timing。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>接地电阻为什么一般不大于4Ω</title>
       <link>https://www.kontronn.com/post/hardware/grounding-resistance-selection-tips.html</link>

@@ -6,7 +6,16 @@
     <description>Recent content in DDR on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 06 Aug 2023 00:17:14 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Aug 2024 00:29:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR SDRAM 的读写timing</title>
+      <link>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</link>
+      <pubDate>Tue, 13 Aug 2024 00:29:43 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</guid>
+      <description>&lt;p&gt;本文简要讲述了DDR SDRAM 的读写timing。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>DDR的工作原理</title>
       <link>https://www.kontronn.com/post/hardware/ddr-working-principle.html</link>
