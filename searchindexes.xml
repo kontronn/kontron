@@ -16,6 +16,35 @@
   </entry>
   
   <entry>
+    <title>Intel 13/14代酷睿稳定性补丁Linux实测</title>
+    <url>/post/soc/intel-13rd-14th-generation-core-stability-patch-linux-test.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>Core 13/14</tag>
+      <tag>Linux patch</tag>
+    </tags>
+    <content type="html"><![CDATA[Intel近期发布了0x129的微码补丁，旨在解决其13代和14代酷睿处理器的稳定性问题。
+在经过一系列的更新后，0x129补丁在Windows上的基准测试已经显示出积极的结果，而根据Phoronix的测试，该补丁在Linux平台上的表现也同样令人满意。
+Phoronix对0x129微码进行了188项基准测试，并与之前的0x125进行了对比。
+3DMark Wild Life Extreme测试中，新微代码没有显示出性能下降的迹象，反而在帧率上有了微小但可忽略的提升。
+7-Zip压缩、PyPerformance、PyBench、Cryptsetup和Perl基准测试等环境中，CPU的特定元素，无论是浮点单元(FPUs)还是指令集架构(ISA)，都得到了测试。
+从这些基准测试可以看出，14代和13代CPU在更新0x129后，在Linux平台上性能也几乎没有损失。
+然而，在WireGuard测试中却出现了性能下降11.8%，这种下降可能与新微码影响单线程性能有关，尽管影响并不大。
+Intel此前官方声明中曾强调，基于默认设置的内部测试显示，打补丁前后的性能波动在正常误差范围内，3DMark Time Spy、WebXPRT 4、CineBench R24、Blender 4.2.0等常见的基准测试项目均是如此。
+不过，少数测试子项会收到些许影响，比如WebXPRT Online Homework、PugetBench GPU Effects Score。
+游戏性能也几乎没有变化，包括《赛博朋克2077》、《古墓丽影：暗影》、《全面战争：战锤III－疯狂之镜》等等，还有《杀手3：达特摩尔》的变化略大一些。
+Intel还表示，产品发布时候承诺的睿频频率可以达到，但对比没有限制的超频性能，确实会有损失。
+其中，全核满负载应用会有一定的性能损失，比如视频编辑渲染等，而单核应用、游戏等不会吃满全核的应用，基本没有影响。
+为了获得最佳日常体验，Intel建议所有的13/14代酷睿用户使用推荐的默认设置。
+Intel当前的分析发现，由于电压升高，受影响处理器的多个核心的最低运行电压(Vmin)都会显著增加，而且会随着时间的推移而累积，导致整个处理器的最低电压升高。
+0x129版微代码更新后，会限制高于1.55V的电压请求，对于未出现不稳定现象的处理器可起到预防作用。
+Intel还确认，基于广泛深入的验证，所有的未来处理器都不会再受此问题影响。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>DDR SDRAM 的读写timing</title>
     <url>/post/hardware/ddr-sdram-read-and-write-timing.html</url>
     <categories><category>Hardware</category>
