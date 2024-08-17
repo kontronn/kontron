@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Aug 2024 23:13:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Aug 2024 21:12:10 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,16 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>PCI SIG 在 fms 2024 上演示了 PCIe 6.0 的互操作性</title>
+      <link>https://www.kontronn.com/post/hardware/pcisig-demonstrates-pcie-60-interoperability-at-fms-2024.html</link>
+      <pubDate>Sat, 17 Aug 2024 21:12:10 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/pcisig-demonstrates-pcie-60-interoperability-at-fms-2024.html</guid>
+      <description>&lt;p&gt;随着 PCIe 5.0 在数据中心和消费市场的部署不断升温，PCI-SIG 并没有闲着，而是已经开始着手让生态系统为 PCIe 规范的更新做好准备。&lt;/p&gt;
+&lt;p&gt;在 FMS 2024 上，一些供应商甚至在谈论具有 128 GT/s 功能的 PCIe 7.0，尽管 PCIe 6.0 甚至还没有开始出货。我们采访了 PCI-SIG，了解了其活动的最新进展，并讨论了 PCIe 生态系统的现状。&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -16,6 +16,27 @@
   </entry>
   
   <entry>
+    <title>PCI SIG 在 fms 2024 上演示了 PCIe 6.0 的互操作性</title>
+    <url>/post/hardware/pcisig-demonstrates-pcie-60-interoperability-at-fms-2024.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>PCIe</tag>
+      <tag>PCIe Gen6</tag>
+      <tag>PCIe Gen7</tag>
+    </tags>
+    <content type="html"><![CDATA[随着 PCIe 5.0 在数据中心和消费市场的部署不断升温，PCI-SIG 并没有闲着，而是已经开始着手让生态系统为 PCIe 规范的更新做好准备。
+在 FMS 2024 上，一些供应商甚至在谈论具有 128 GT/s 功能的 PCIe 7.0，尽管 PCIe 6.0 甚至还没有开始出货。我们采访了 PCI-SIG，了解了其活动的最新进展，并讨论了 PCIe 生态系统的现状。
+PCI-SIG 已向其成员提供了 PCIe 7.0 规范 (v 0.5)，并预计完整规范将于 2025 年某个时候正式发布。目标是使用 x16 链路实现 128 GT/s 数据速率和高达 512 GBps 的双向流量。与 PCIe 6.0 类似，此规范也将利用 PAM4 信号并保持向后兼容性。在起草过程中，还考虑了功率效率以及硅片面积。
+与之前的 NRZ 方案相比，转向 PAM4 信号传输会带来更高的误码率。这使得 PCIe 6.0 必须采用不同的纠错方案 - PCIe 6.0 的流量控制单元 (FLIT) 编码不是对可变长度数据包进行操作，而是对固定大小数据包进行操作，以帮助进行前向纠错。PCIe 7.0 保留了这些方面。
+PCIe 6.0 合规计划的集成商名单也有望在 2025 年公布，尽管初步测试已经在进行中。FMS 2024 演示中就体现了这一点，该演示涉及 Cadence 的 3nm 测试芯片（用于其 PCIe 6.0 IP 产品）以及 Teledyne Lecroy 的 PCIe 6.0 分析仪。这些时间表与前几代 PCIe 的规范完成日期和合规计划可用性保持一致。
+我们还收到了有关光学工作组的最新消息 - 虽然该工作组与光学技术无关，但它还打算开发特定于技术的形式因素，包括可插拔光学收发器、板载光学器件、共封装光学器件和光学 I/O。PCIe 6.0 规范的逻辑层和电气层正在得到增强，以适应新的光学 PCIe 标准化，这一过程也将在 PCIe 7.0 中完成，以配合该标准明年的发布。
+PCI-SIG 也有正在进行的布线计划。在消费者方面，我们看到 Thunderbolt 和外部 GPU 机箱的吸引力显著增加。然而，数据中心和企业系统也正在转向布线解决方案，因为很明显，将存储等组件与 CPU 和 GPU 分开更有利于热设计。此外，对于板载信号线来说，在较长的距离上保持信号完整性变得困难。计算系统内部的布线可以提供帮助。
+OCuLink 成为了一个不错的候选方案，并被广泛用作服务器系统的内部链路。它甚至出现在一些中国制造商的迷你电脑中，以面向消费市场的外部化身出现，尽管吸引力有限。随着速度的提高，广泛采用的外部 PCIe 外围设备标准（甚至系统内的连接组件）将变得势在必行。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Intel 13/14代酷睿稳定性补丁Linux实测</title>
     <url>/post/soc/intel-13rd-14th-generation-core-stability-patch-linux-test.html</url>
     <categories><category>SOC</category>

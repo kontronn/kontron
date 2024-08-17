@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Aug 2024 23:13:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Aug 2024 21:12:10 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PCIe</title>
+      <link>https://www.kontronn.com/tags/pcie/</link>
+      <pubDate>Sat, 17 Aug 2024 21:12:10 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/pcie/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PCIe Gen6</title>
+      <link>https://www.kontronn.com/tags/pcie-gen6/</link>
+      <pubDate>Sat, 17 Aug 2024 21:12:10 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/pcie-gen6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PCIe Gen7</title>
+      <link>https://www.kontronn.com/tags/pcie-gen7/</link>
+      <pubDate>Sat, 17 Aug 2024 21:12:10 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/pcie-gen7/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Intel</title>
       <link>https://www.kontronn.com/tags/intel/</link>
@@ -877,15 +904,6 @@
       <pubDate>Fri, 23 Feb 2024 09:21:25 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/ryzen/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PCIe</title>
-      <link>https://www.kontronn.com/tags/pcie/</link>
-      <pubDate>Thu, 22 Feb 2024 21:55:36 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/pcie/</guid>
       <description></description>
     </item>
     
