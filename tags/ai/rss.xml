@@ -51,6 +51,37 @@
     </item>
     
     <item>
+      <title>大型语言模型入门必知术语汇总</title>
+      <link>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</link>
+      <pubDate>Sat, 18 Nov 2023 22:19:49 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</guid>
+      <description>&lt;p&gt;在本文中，我将以一种非数据科学家易于理解的方式分解与LLM和AI相关的一些基本术语和概念。我将涵盖从神经网络到数据增强的所有内容，并为每个术语提供简单的解释和示例。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>揭穿四个常见的AI/ML数据存储迷思</title>
+      <link>https://www.kontronn.com/post/datacenter/busting-four-common-AI-ML-and-Data-Storage-Myths.html</link>
+      <pubDate>Fri, 06 Oct 2023 19:28:02 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/busting-four-common-AI-ML-and-Data-Storage-Myths.html</guid>
+      <description>&lt;p&gt;如今，消费者和商业用户在不知不觉中与人工智能和机器学习互动。从消费者的角度来看，这涉及从流媒体上观看喜爱的节目到随时叫车的车辆服务。从商业的角度来看，组织利用人工智能和机器学习来获得更好的洞察，支持其业务目标。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>数据中心的机架密度：何以见高峰</title>
+      <link>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</link>
+      <pubDate>Fri, 29 Sep 2023 22:06:12 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</guid>
+      <description>&lt;p&gt;人工智能（
+&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    AI
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;）和高性能计算（HPC）已将计算、存储容量和网络资源的需求推向了极限。更强大的芯片是推动机架密度不断提升的主要驱动力之一。仅仅十年前，平均处理器的功耗还不到100瓦，但如今它们的功耗已经达到了约500瓦。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>英伟达再度释放AI“炸弹”</title>
       <link>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</link>
       <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>

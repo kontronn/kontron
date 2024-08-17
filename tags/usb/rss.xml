@@ -20,5 +20,17 @@
 &lt;/a&gt;。在讲述USB传输前，有必要先了解下USB的几个基本概念。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>分享一种通信协议的应用编程原理和思路</title>
+      <link>https://www.kontronn.com/post/linux/communication-protocol-programming-principle-and-idea.html</link>
+      <pubDate>Mon, 19 Dec 2022 08:57:23 -0500</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/communication-protocol-programming-principle-and-idea.html</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;嵌入式开发过程中，&lt;code&gt;UART&lt;/code&gt;、 &lt;code&gt;CAN&lt;/code&gt;、 &lt;code&gt;USB&lt;/code&gt;等通信基本离不开通信协议。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面给大家分享一种通信协议（MAVLink）在应用编程中的编程原理和思路。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

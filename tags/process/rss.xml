@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>process on Kontronn</title>
+    <title>Process on Kontronn</title>
     <link>https://www.kontronn.com/tags/process/</link>
-    <description>Recent content in process on Kontronn</description>
+    <description>Recent content in Process on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 03 Aug 2024 23:05:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/process/rss.xml" rel="self" type="application/rss+xml" />
@@ -24,6 +24,15 @@
       
       <guid>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</guid>
       <description>&lt;p&gt;关于STM32的启动流程，网上有的资料在讨论几种boot模式，有的在回答启动文件的内容，在查阅了很多资料后，本文给出一个比较全面的总结和回答。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Linux 进程概念: 冯 • 诺依曼体系结构</title>
+      <link>https://www.kontronn.com/post/linux/linux-process-concept-von-neumann-architecture.html</link>
+      <pubDate>Sun, 19 Mar 2023 04:31:28 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-process-concept-von-neumann-architecture.html</guid>
+      <description>&lt;p&gt;在 1945 年冯诺依曼和其他计算机科学家们提出了计算机具体实现的报告，其遵循了[图灵机]的设计，而且还提出用电子元件构造计算机，并约定了用二进制进行计算和存储。&lt;/p&gt;</description>
     </item>
     
   </channel>

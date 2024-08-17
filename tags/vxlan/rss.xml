@@ -20,5 +20,14 @@
 &lt;/a&gt;和云计算环境中的网络架构。&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>VXLAN：数据中心网络的未来</title>
+      <link>https://www.kontronn.com/post/datacenter/vxlan-the-future-of-data-center.html</link>
+      <pubDate>Fri, 23 Jun 2023 11:46:30 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/vxlan-the-future-of-data-center.html</guid>
+      <description>&lt;p&gt;随着云计算和虚拟化技术的快速发展，数据中心网络正面临着越来越大的挑战。&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
