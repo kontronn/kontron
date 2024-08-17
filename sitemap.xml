@@ -8,16 +8,41 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ssh/</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/how-does-ssh-work.html</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
     <lastmod>2024-08-17T21:12:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -38,16 +63,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/pcie-gen7/</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-17T21:12:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -88,11 +103,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/flatpak/</loc>
-    <lastmod>2024-08-05T22:48:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2024-08-05T22:48:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

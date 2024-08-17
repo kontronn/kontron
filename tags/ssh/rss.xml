@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSH on Kontronn</title>
+    <link>https://www.kontronn.com/tags/ssh/</link>
+    <description>Recent content in SSH on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 17 Aug 2024 22:45:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ssh/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH 是如何工作的</title>
+      <link>https://www.kontronn.com/post/linux/how-does-ssh-work.html</link>
+      <pubDate>Sat, 17 Aug 2024 22:45:49 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-does-ssh-work.html</guid>
+      <description>&lt;p&gt;在计算机网络中，需要登录远程计算机。从历史上看，这是通过 Telnet（始于 20 世纪 60 年代末）和 rlogin（始于 20 世纪 80 年代）实现的。然而，这些早期的程序并不安全。SSH（Secure Shell）是为解决这些缺陷而创建的协议。它在不安全的网络上建立安全连接。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

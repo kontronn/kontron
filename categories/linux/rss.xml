@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 05 Aug 2024 22:48:35 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Aug 2024 22:45:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH 是如何工作的</title>
+      <link>https://www.kontronn.com/post/linux/how-does-ssh-work.html</link>
+      <pubDate>Sat, 17 Aug 2024 22:45:49 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-does-ssh-work.html</guid>
+      <description>&lt;p&gt;在计算机网络中，需要登录远程计算机。从历史上看，这是通过 Telnet（始于 20 世纪 60 年代末）和 rlogin（始于 20 世纪 80 年代）实现的。然而，这些早期的程序并不安全。SSH（Secure Shell）是为解决这些缺陷而创建的协议。它在不安全的网络上建立安全连接。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>使用Flatpak安装linux应用</title>
       <link>https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html</link>

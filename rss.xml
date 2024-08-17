@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Aug 2024 21:12:10 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Aug 2024 22:45:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>SSH 是如何工作的</title>
+      <link>https://www.kontronn.com/post/linux/how-does-ssh-work.html</link>
+      <pubDate>Sat, 17 Aug 2024 22:45:49 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-does-ssh-work.html</guid>
+      <description>&lt;p&gt;在计算机网络中，需要登录远程计算机。从历史上看，这是通过 Telnet（始于 20 世纪 60 年代末）和 rlogin（始于 20 世纪 80 年代）实现的。然而，这些早期的程序并不安全。SSH（Secure Shell）是为解决这些缺陷而创建的协议。它在不安全的网络上建立安全连接。&lt;/p&gt;</description>
     </item>
     
     <item>
