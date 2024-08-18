@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IOPS on Kontronn</title>
+    <link>https://www.kontronn.com/tags/iops/</link>
+    <description>Recent content in IOPS on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 18 Aug 2024 16:36:17 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/iops/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>硬盘IOPS简介</title>
+      <link>https://www.kontronn.com/post/storage/introduction-to-hard-drive-IOPS.html</link>
+      <pubDate>Sun, 18 Aug 2024 16:36:17 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/storage/introduction-to-hard-drive-IOPS.html</guid>
+      <description>&lt;p&gt;IOPS (Input/Output Per Second)即每秒的输入输出量(或读写次数)，是衡量磁盘性能的主要指标之一。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

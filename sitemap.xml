@@ -8,21 +8,46 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/hard-drive/</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/iops/</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/linux/</loc>
-    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/storage/</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/storage/introduction-to-hard-drive-IOPS.html</loc>
+    <lastmod>2024-08-18T16:36:17+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/linux/</loc>
     <lastmod>2024-08-17T22:45:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -33,11 +58,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/linux/how-does-ssh-work.html</loc>
-    <lastmod>2024-08-17T22:45:49+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-17T22:45:49+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -1064,11 +1084,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/news/NVIDIA-AI-chips-can-be-sold-to-China-with-one-condition.html</loc>
     <lastmod>2023-12-13T21:34:09+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/storage/</loc>
-    <lastmod>2023-12-12T15:31:47+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
