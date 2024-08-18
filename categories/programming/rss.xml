@@ -6,7 +6,16 @@
     <description>Recent content in Programming on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 04 Aug 2024 22:57:54 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Aug 2024 16:59:46 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/programming/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C&#43;&#43;函数返回值类型后置</title>
+      <link>https://www.kontronn.com/post/programming/c-plus-plus-function-return-value-type-postfix.html</link>
+      <pubDate>Sun, 18 Aug 2024 16:59:46 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/c-plus-plus-function-return-value-type-postfix.html</guid>
+      <description>&lt;p&gt;在C++的语法中，函数的返回值类型一直是函数声明的重要组成部分。然而，随着C++11及后续版本的引入，函数返回值类型后置（Trailing Return Type）的语法为开发者提供了新的可能。这种语法虽然看似是语法上的细微调整，却在现代C++的函数设计和代码可读性方面带来了显著的影响。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>嵌入式 C 语言的动态变长数组</title>
       <link>https://www.kontronn.com/post/programming/embedded-c-dynamic-variable-length-array.html</link>
