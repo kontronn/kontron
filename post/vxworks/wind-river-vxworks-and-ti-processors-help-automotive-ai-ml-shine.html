@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩" />
+<meta itemprop="description" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="VxWorks,AI/ML,ADAS" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩" />
+<meta property="og:description" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-08-19 22:02:08 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-08-19 22:02:08 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html","permalink":"https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html","title":"风河VxWorks搭档TI处理器助汽车AI/ML大放异彩"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>风河VxWorks搭档TI处理器助汽车AI/ML大放异彩 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">269</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#aiml在汽车嵌入式系统中的兴起">AI/ML在汽车嵌入式系统中的兴起</a></li>
+    <li><a href="#wind-river-vxworks-实时智能的基石">Wind River VxWorks ——实时智能的基石</a></li>
+    <li><a href="#德州仪器tda4vh-q1-赋能智能边缘计算">德州仪器TDA4VH-Q1 ——赋能智能边缘计算</a></li>
+    <li><a href="#在tda4vh-q1上运行的vxworks-推动汽车-aiml-创新">在TDA4VH-Q1上运行的VxWorks ——推动汽车 AI/ML 创新</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">269</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">368</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2021-06-03T11:52:18&#43;08:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="51261"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="415"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-08-19T22:02:08&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩">
+      <meta itemprop="description" content="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">风河VxWorks搭档TI处理器助汽车AI/ML大放异彩 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-08-19 22:02:08 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-08-19 22:02:08 &#43;0800 CST">2024-08-19</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/vxworks" itemprop="url" rel="index">
+      <span itemprop="name">VxWorks</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>35</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>在技术进步的大潮中，人工智能(AI)和机器学习(ML)已经成为一股革命性的力量，重新塑造着各个行业，同时拓展了我们曾经以为不可企及的新疆界。AI/ML与嵌入式系统的融合激发出了大量的商业机会，特别是在汽车和工业领域。嵌入式系统 开发人员可以从 VxWorks实时操作系统(RTOS)所具备的高确定性和高性能中大为受益，这套操作系统还具有高效的AI/ML集成功能，并且支持在云计算环境中进行开发、测试和部署——由此极大地加快了企业产品进入市场的速度。运行在德州仪器TDA4VH-Q1处理器之上的VxWorks，可以为开发人员提供极有价值的板上功能，包括集成化图形能力、AI加速功能和视频协处理功能。这种强强组合可以为高级驾驶辅助系统(ADAS)提供智能边缘计算支持。</p>
+<h2 id="aiml在汽车嵌入式系统中的兴起">AI/ML在汽车嵌入式系统中的兴起</h2>
+<p>嵌入式系统以紧凑的外形尺寸和专属的功能为特征，传统上依赖于确定性算法来执行各类任务。然而，汽车中的摄像头、雷达、激光雷达和超声波等传感器数量激增，加上对实时感知和决策的需求，推动了AI/ML的集成和应用。这些应用包括ADAS和其他用于目标检测的视频处理，以及边缘到云的应用场景，例如预测性维护、量身定制车辆保险、自主导航和其他尚未明确定义的车辆传感器数据预处理应用。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VxWorks-ADAS-1.png" alt="VxWorks ADAS"></p>
+<h2 id="wind-river-vxworks-实时智能的基石">Wind River VxWorks ——实时智能的基石</h2>
+<p>VxWorks可以推动AI/ML与嵌入式系统的无缝集成，它是部署最广泛且最值得信赖的RTOS，以其高度确定的性能、可扩展性、安全认证和设计质量而享誉业界，为在不同环境中部署关键任务应用提供了坚实的基础。它还可运行于Amazon云之上，与DevSecOps流水线集成，支持对Kubernetes编排的容器化部署。所有这些特色相结合，为嵌入式系统行业带来了一场极具划时代意义的变革，并使嵌入式系统开发团队能够显著缩短产品上市时间。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VxWorks-ADAS-2.png" alt="VxWorks ADAS"></p>
+<p>那么，VxWorks中都有哪些AI/ML支持呢?首先，集成了TensorFlow Lite开源深度学习框架，可以在资源受限环境中加速机器学习模型的实现。为了进行大规模数据处理，Pandas和NumPy等基于python的库可支持复杂的数学运算，以及复杂的数据操作和分析。</p>
+<h2 id="德州仪器tda4vh-q1-赋能智能边缘计算">德州仪器TDA4VH-Q1 ——赋能智能边缘计算</h2>
+<p>半导体在现代汽车技术中发挥着至关重要的作用，为汽车的功能和安全性做出了多方面的贡献。其中包括：电子控制单元(ECU)——管理和控制各种系统;车辆域控制器——在汽车架构中处理多种ECU功能;被动安全系统——如防抱死制动，以及牵引力控制;信息娱乐和网络互联;高级驾驶辅助系统。</p>
+<p>先进的高性能半导体，如德州仪器(TI) TDA4VH-Q1汽车片上系统(SoC)，具有集成化图形、人工智能加速和视频协处理等功能，可在ADAS应用中实现传感器融合和自主2/3层域控制。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VxWorks-ADAS-3.png" alt="VxWorks ADAS"></p>
+<p>TDA4VH-Q1是TI高性能处理器产品组合的组成部分，旨在满足汽车应用的严格要求，具有8个Arm® Cortex®-A72 CPU内核可用于应用程序处理，6个Arm® Cortex®-R5F协处理器可用于实时处理。集成化的深度学习加速功能可提供高效的机器学习推理,采用经过训练的机器学习模型,基于新的非可见数据进行预测/决策。此外，这款SoC还为边缘检测等计算机视觉任务提供了可配置的视觉加速部件，以及与传感器和外设无缝连接的高速接口。</p>
+<h2 id="在tda4vh-q1上运行的vxworks-推动汽车-aiml-创新">在TDA4VH-Q1上运行的VxWorks ——推动汽车 AI/ML 创新</h2>
+<p>VxWorks的更新节奏可确保开发者每年都可看到好几个重要版本，定期把最先进的SOC添加到稳定支持硬件列表之中，同时提供持续创新的RTOS功能。最新版本的VxWorks已于2024年3月初发布，其中带有TI的深度学习(TIDL)库——增加了对深度学习应用程序的支持，这也是TI深度学习算法加速软件生态系统的组成部分。TIDL库支持用户使用卷积神经网络(CNN)在TI设备上对预训练模型进行推理——这是一类深度神经网络，主要用于视觉图像分析。TIOVX——这是一套OpenVX标准的视觉应用软件实现，同时支持视频平台、优化、节能加速。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VxWorks-ADAS-4.png" alt="VxWorks ADAS"></p>
+<p>将VxWorks引入汽车技术可以实现众多不同的应用场景，例如:</p>
+<ul>
+<li>复杂的算法——用于ADAS和自动驾驶。</li>
+<li>先进的影像处理——面向高分辨率摄像头和环视系统，能够准确检测和识别车辆周围的物体和障碍物。</li>
+<li>周边设备集成——例如CAN(控制器局域网)、以太网、PCIe(外围组件互连Express)、 USB等，为汽车系统提供网络互联选项。</li>
+<li>汽车应用功能特性——确保系统的可靠性和安全性，包括功能安全机制、安全引导等。</li>
+<li>汽车级的可靠性——满足汽车行业的严格要求，包括温度、可靠性和质量标准。</li>
+</ul>
+<p>
+<a href="https://www.vxworks.net/news/1236-wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine" title="基于TDA4VH-Q1的VxWorks" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    基于TDA4VH-Q1的VxWorks
+    <i class="fa fa-external-link-alt"></i>
+</a>使开发人员能够创建人工智能解决方案，并且具备高性能、高可靠性和高安全性。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/vxworks">
+    VxWorks
+  </a>
+    <a href="/tags/ai/ml">
+    AI/ML
+  </a>
+    <a href="/tags/adas">
+    ADAS
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      风河VxWorks搭档TI处理器助汽车AI/ML大放异彩
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html" title="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩">https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/programming/high-quality-c-language-development-skills.html" rel="prev" title="高质量C语言的开发技巧">
+      高质量C语言的开发技巧
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

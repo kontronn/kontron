@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Aug 2024 18:08:14 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 22:02:08 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ADAS</title>
+      <link>https://www.kontronn.com/tags/adas/</link>
+      <pubDate>Mon, 19 Aug 2024 22:02:08 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/adas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AI</title>
+      <link>https://www.kontronn.com/tags/ai/</link>
+      <pubDate>Mon, 19 Aug 2024 22:02:08 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VxWorks</title>
+      <link>https://www.kontronn.com/tags/vxworks/</link>
+      <pubDate>Mon, 19 Aug 2024 22:02:08 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/vxworks/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>c</title>
       <link>https://www.kontronn.com/tags/c/</link>
@@ -832,15 +859,6 @@
       <pubDate>Wed, 27 Mar 2024 19:54:05 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/cpu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>AI</title>
-      <link>https://www.kontronn.com/tags/ai/</link>
-      <pubDate>Mon, 25 Mar 2024 22:23:13 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/ai/</guid>
       <description></description>
     </item>
     
@@ -3077,15 +3095,6 @@
     </item>
     
     <item>
-      <title>VxWorks</title>
-      <link>https://www.kontronn.com/tags/vxworks/</link>
-      <pubDate>Fri, 07 Oct 2022 05:35:25 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/vxworks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>VxWorks 6.8</title>
       <link>https://www.kontronn.com/tags/vxworks-6.8/</link>
       <pubDate>Fri, 07 Oct 2022 05:35:25 -0400</pubDate>
@@ -3289,6 +3298,15 @@
       <pubDate>Thu, 03 Jun 2021 11:52:18 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AI/ML</title>
+      <link>https://www.kontronn.com/tags/ai/ml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/ai/ml/</guid>
       <description></description>
     </item>
     

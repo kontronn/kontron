@@ -7,12 +7,52 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/c/</loc>
-    <lastmod>2024-08-18T18:08:14+08:00</lastmod>
+    <loc>https://www.kontronn.com/tags/adas/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ai/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/vxworks/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/vxworks/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/c/</loc>
     <lastmod>2024-08-18T18:08:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -22,22 +62,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-08-18T18:08:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-08-18T18:08:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/programming/</loc>
-    <lastmod>2024-08-18T18:08:14+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-18T18:08:14+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -809,11 +834,6 @@
   </url><url>
     <loc>https://www.kontronn.com/tags/cpu/</loc>
     <lastmod>2024-03-27T19:54:05+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/ai/</loc>
-    <lastmod>2024-03-25T22:23:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -3062,16 +3082,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/vxworks/</loc>
-    <lastmod>2022-10-07T05:35:25-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/vxworks/</loc>
-    <lastmod>2022-10-07T05:35:25-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/vxworks-6.8/</loc>
     <lastmod>2022-10-07T05:35:25-04:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -3269,6 +3279,10 @@
   </url><url>
     <loc>https://www.kontronn.com/post/markdown-syntax.html</loc>
     <lastmod>2021-06-03T11:52:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ai/ml/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
