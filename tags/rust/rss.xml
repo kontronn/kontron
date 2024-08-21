@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on Kontronn</title>
+    <link>https://www.kontronn.com/tags/rust/</link>
+    <description>Recent content in Rust on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 21 Aug 2024 22:06:51 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rust/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rust 为什么适合嵌入式开发</title>
+      <link>https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html</link>
+      <pubDate>Wed, 21 Aug 2024 22:06:51 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html</guid>
+      <description>&lt;p&gt;Rust 作为一门年轻的语言，聚焦与安全、并发、高性能等特点，号称能替代 C/C++，那么究竟有多少优点能值得我们来切换呢？本文将告诉你为什么 Rust 适合嵌入式开发。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 19 Aug 2024 22:02:08 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Aug 2024 22:06:51 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>Rust 为什么适合嵌入式开发</title>
+      <link>https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html</link>
+      <pubDate>Wed, 21 Aug 2024 22:06:51 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html</guid>
+      <description>&lt;p&gt;Rust 作为一门年轻的语言，聚焦与安全、并发、高性能等特点，号称能替代 C/C++，那么究竟有多少优点能值得我们来切换呢？本文将告诉你为什么 Rust 适合嵌入式开发。&lt;/p&gt;</description>
     </item>
     
     <item>
