@@ -6,7 +6,20 @@
     <description>Recent content in SSH on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Aug 2024 22:45:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ssh/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Aug 2024 20:20:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ssh/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux系统SSH免密认证的完整操作指南</title>
+      <link>https://www.kontronn.com/post/linux/a-complete-guide-to-SSH-password-free-authentication-in-Linux.html</link>
+      <pubDate>Sat, 24 Aug 2024 20:20:07 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/a-complete-guide-to-SSH-password-free-authentication-in-Linux.html</guid>
+      <description>&lt;p&gt;在
+&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;系统中，免密认证（Passwordless Authentication）可以通过多种方式实现，最常见的就是使用SSH密钥认证。本文将详细介绍如何在Linux系统中设置SSH免密登录，并提供具体的操作步骤示范。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SSH 是如何工作的</title>
       <link>https://www.kontronn.com/post/linux/how-does-ssh-work.html</link>
