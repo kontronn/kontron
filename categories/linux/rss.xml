@@ -6,7 +6,16 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Aug 2024 20:20:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Aug 2024 08:15:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shell脚本中的彩色输出</title>
+      <link>https://www.kontronn.com/post/linux/colored-output-in-shell-script.html</link>
+      <pubDate>Sun, 25 Aug 2024 08:15:36 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/colored-output-in-shell-script.html</guid>
+      <description>&lt;p&gt;Shell脚本是一种在Unix和Linux操作系统上用于自动化任务的强大工具。它可以执行各种命令、管理文件系统、处理文本和系统管理等。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux系统SSH免密认证的完整操作指南</title>
       <link>https://www.kontronn.com/post/linux/a-complete-guide-to-SSH-password-free-authentication-in-Linux.html</link>

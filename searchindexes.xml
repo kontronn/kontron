@@ -16,6 +16,26 @@
   </entry>
   
   <entry>
+    <title>Shell脚本中的彩色输出</title>
+    <url>/post/linux/colored-output-in-shell-script.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Shell</tag>
+    </tags>
+    <content type="html"><![CDATA[Shell脚本是一种在Unix和Linux操作系统上用于自动化任务的强大工具。它可以执行各种命令、管理文件系统、处理文本和系统管理等。
+为了提高脚本的可读性和用户交互体验，常常需要在终端中以不同颜色显示文本。
+本文将介绍如何在Shell脚本中使用echo命令显示彩色文本。
+使用ANSI转义码实现彩色输出 要在终端中实现彩色输出，我们可以使用ANSI转义码。这些转义码是一系列控制字符，用于改变终端文本的颜色和样式。以下是一些常用的ANSI转义码：
+ANSI转义码颜色列表 前景色（文本颜色）
+ 黑色：\033[30m 红色：\033[31m 绿色：\033[32m 黄色：\033[33m 蓝色：\033[34m 紫色：\033[35m 青色：\033[36m 白色：\033[37m  背景色
+ 黑色：\033[40m 红色：\033[41m 绿色：\033[42m 黄色：\033[43m 蓝色：\033[44m 紫色：\033[45m 青色：\033[46m 白色：\033[47m  示例脚本
+文章提供了一个示例脚本，定义了输出不同颜色文本和背景色的函数。以下是脚本的主要内容：
+#!/bin/bash  # 定义前景色输出函数 black_text(){ echo -e &#34;\033[30m $1\033[0m&#34; } red_text(){ echo -e &#34;\033[31m $1\033[0m&#34; } green_text(){ echo -e &#34;\033[32m $1\033[0m&#34; } yellow_text(){ echo -e &#34;\033[33m $1\033[0m&#34; } blue_text(){ echo -e &#34;\033[34m $1\033[0m&#34; } purple_text(){ echo -e &#34;\033[35m $1\033[0m&#34; } cyan_text(){ echo -e &#34;\033[36m $1\033[0m&#34; } white_text(){ echo -e &#34;\033[37m $1\033[0m&#34; } # 定义背景色输出函数 black_bg(){ echo -e &#34;\033[40m $1\033[0m&#34; } red_bg(){ echo -e &#34;\033[41m $1\033[0m&#34; } green_bg(){ echo -e &#34;\033[42m $1\033[0m&#34; } yellow_bg(){ echo -e &#34;\033[43m $1\033[0m&#34; } blue_bg(){ echo -e &#34;\033[44m $1\033[0m&#34; } purple_bg(){ echo -e &#34;\033[45m $1\033[0m&#34; } cyan_bg(){ echo -e &#34;\033[46m $1\033[0m&#34; } white_bg(){ echo -e &#34;\033[47m $1\033[0m&#34; } # 显示前景色 echo &#34;前景色示例：&#34; black_text &#34;这是黑色的文本&#34; red_text &#34;这是红色的文本&#34; green_text &#34;这是绿色的文本&#34; yellow_text &#34;这是黄色的文本&#34; blue_text &#34;这是蓝色的文本&#34; purple_text &#34;这是紫色的文本&#34; cyan_text &#34;这是青色的文本&#34; white_text &#34;这是白色的文本&#34; # 显示背景色 echo &#34;背景色示例：&#34; black_bg &#34;这是黑色背景的文本&#34; red_bg &#34;这是红色背景的文本&#34; green_bg &#34;这是绿色背景的文本&#34; yellow_bg &#34;这是黄色背景的文本&#34; blue_bg &#34;这是蓝色背景的文本&#34; purple_bg &#34;这是紫色背景的文本&#34; cyan_bg &#34;这是青色背景的文本&#34; white_bg &#34;这是白色背景的文本&#34; 在Shell脚本中使用彩色输出不仅可以提高脚本的可读性，还能在提示信息中突出重点，提高用户体验。通过结合使用echo命令和ANSI转义码，我们可以方便地在终端中实现各种彩色输出。希望本文对你了解和使用Shell脚本中的彩色输出有所帮助。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>思科取消独立的网络部门</title>
     <url>/post/news/cisco-to-slash-more-jobs-merge-networking-unit.html</url>
     <categories><category>News</category>
