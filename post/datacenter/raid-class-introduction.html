@@ -323,7 +323,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="50093"></div>
+      <div class="item-count" id="wordsCount" data-count="50165"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -409,7 +409,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>354</span>
+  <span class="post-meta-item-text">字数：</span><span>426</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -623,7 +623,13 @@
 | RAID 0 | 数据条带化，无冗余 | 提高存储性能，所有存储容量可用	| 无数据冗余，任意一个硬盘故障导致数据丢失 | 高性能但数据可靠性要求低的场景，如缓存和临时存储 |
 | RAID 1 | 数据镜像，每个数据块复制到两个或多个硬盘 | 提供高数据可靠性，快速数据恢复 | 存储效率低，只有50%存储容量可用 | 需要高数据可靠性的场景，如操作系统和关键业务数据 |
 | RAID 2 | 位级条带化，带海明码校验 | 高错误检测和纠错能力，提高存储性能 | 硬件复杂性高，存储效率低 | 科学计算、工程计算等对数据完整性要求高的场景 |
-| RAID 3 | 字节级条带化，带独立奇偶校验	| 提高存储性能，数据恢复能力强 | 写性能瓶颈，存储效率较低 | 顺序数据访问要求高的场景，如视频编辑和流媒体服务器 |</p>
+| RAID 3 | 字节级条带化，带独立奇偶校验	| 提高存储性能，数据恢复能力强 | 写性能瓶颈，存储效率较低 | 顺序数据访问要求高的场景，如视频编辑和流媒体服务器 |
+| RAID 4 | 块级条带化，带独立奇偶校验 | 提高存储性能，数据恢复能力强 | 写性能瓶颈，存储效率较低	| 数据读性能要求高但写性能要求较低的场景，如数据仓库和备份服务器 |
+| RAID 5 | 块级条带化，带分布式奇偶校验	| 高存储效率，提高读写性能，数据恢复能力强 | 写性能略低，数据恢复时间长	| 存储性能和数据保护要求高的场景，如文件服务器和数据库服务器 |
+| RAID 6 | 块级条带化，带双重分布式奇偶校验 | 极高的数据可靠性，高存储效率 | 写性能较低，实现复杂度高 | 数据可靠性要求极高的场景，如企业级存储系统和关键数据存储 |
+| RAID 10 | 条带化镜像 | 高数据可靠性，高存储性能，快速恢复 | 存储效率较低，仅50%存储容量可用 | 需要高性能和高数据可靠性的场景，如数据库服务器和虚拟化环境 |
+| RAID 50 | 分布式奇偶校验条带化 | 高存储性能，高存储效率，数据恢复能力强 | 实现复杂度高，恢复时间较长 | 高存储性能和数据冗余要求的场景，如企业级存储系统和数据仓库 |
+| RAID 60 | 双重分布式奇偶校验条带化 | 极高的数据可靠性，高存储性能，高存储效率	| 实现复杂度高，恢复时间较长 | 数据可靠性和存储性能要求极高的场景，如企业级存储系统和高性能计算 |</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
