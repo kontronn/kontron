@@ -323,7 +323,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="50106"></div>
+      <div class="item-count" id="wordsCount" data-count="50090"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -409,7 +409,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>367</span>
+  <span class="post-meta-item-text">字数：</span><span>351</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -622,123 +622,93 @@
 <thead>
 <tr>
 <th style="text-align:left">RAID 级别</th>
-<th style="text-align:center">工作原理</th>
-<th style="text-align:center">优点</th>
-<th style="text-align:center">缺点</th>
-<th style="text-align:center">适用场景</th>
+<th style="text-align:left">工作原理</th>
+<th style="text-align:left">优点</th>
+<th style="text-align:left">缺点</th>
+<th style="text-align:left">适用场景</th>
 <th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">RAID 0</td>
-<td style="text-align:center">数据条带化，无冗余</td>
-<td style="text-align:center">提高存储性能，所有存储容量可用</td>
-<td style="text-align:center">无数据冗余，任意一个硬盘故障导致数据丢失</td>
-<td style="text-align:center">高性能但数据可靠性要求低的场景，如缓存和临时存储</td>
+<td style="text-align:left">数据条带化，无冗余</td>
+<td style="text-align:left">提高存储性能，所有存储容量可用</td>
+<td style="text-align:left">无数据冗余，任意一个硬盘故障导致数据丢失</td>
+<td style="text-align:left">高性能但数据可靠性要求低的场景，如缓存和临时存储</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 1</td>
-<td style="text-align:center">数据镜像，每个数据块复制到两个或多个硬盘</td>
-<td style="text-align:center">提供高数据可靠性，快速数据恢复</td>
-<td style="text-align:center">存储效率低，只有50%存储容量可用</td>
-<td style="text-align:center">需要高数据可靠性的场景，如操作系统和关键业务数据</td>
+<td style="text-align:left">数据镜像，每个数据块复制到两个或多个硬盘</td>
+<td style="text-align:left">提供高数据可靠性，快速数据恢复</td>
+<td style="text-align:left">存储效率低，只有50%存储容量可用</td>
+<td style="text-align:left">需要高数据可靠性的场景，如操作系统和关键业务数据</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 2</td>
-<td style="text-align:center">位级条带化，带海明码校验</td>
-<td style="text-align:center">高错误检测和纠错能力，提高存储性能</td>
-<td style="text-align:center">硬件复杂性高，存储效率低</td>
-<td style="text-align:center">科学计算、工程计算等对数据完整性要求高的场景</td>
+<td style="text-align:left">位级条带化，带海明码校验</td>
+<td style="text-align:left">高错误检测和纠错能力，提高存储性能</td>
+<td style="text-align:left">硬件复杂性高，存储效率低</td>
+<td style="text-align:left">科学计算、工程计算等对数据完整性要求高的场景</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 3</td>
-<td style="text-align:center">字节级条带化，带独立奇偶校验</td>
-<td style="text-align:center">提高存储性能，数据恢复能力强</td>
-<td style="text-align:center">写性能瓶颈，存储效率较低</td>
-<td style="text-align:center">顺序数据访问要求高的场景，如视频编辑和流媒体服务器</td>
+<td style="text-align:left">字节级条带化，带独立奇偶校验</td>
+<td style="text-align:left">提高存储性能，数据恢复能力强</td>
+<td style="text-align:left">写性能瓶颈，存储效率较低</td>
+<td style="text-align:left">顺序数据访问要求高的场景，如视频编辑和流媒体服务器</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 4</td>
-<td style="text-align:center">块级条带化，带独立奇偶校验</td>
-<td style="text-align:center">提高存储性能，数据恢复能力强</td>
-<td style="text-align:center">写性能瓶颈，存储效率较低</td>
-<td style="text-align:center">数据读性能要求高但写性能要求较低的场景，如数据仓库和备份服务器</td>
+<td style="text-align:left">块级条带化，带独立奇偶校验</td>
+<td style="text-align:left">提高存储性能，数据恢复能力强</td>
+<td style="text-align:left">写性能瓶颈，存储效率较低</td>
+<td style="text-align:left">数据读性能要求高但写性能要求较低的场景，如数据仓库和备份服务器</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 5</td>
-<td style="text-align:center">块级条带化，带分布式奇偶校验</td>
-<td style="text-align:center">高存储效率，提高读写性能，数据恢复能力强</td>
-<td style="text-align:center">写性能略低，数据恢复时间长</td>
-<td style="text-align:center">存储性能和数据保护要求高的场景，如文件服务器和数据库服务器</td>
+<td style="text-align:left">块级条带化，带分布式奇偶校验</td>
+<td style="text-align:left">高存储效率，提高读写性能，数据恢复能力强</td>
+<td style="text-align:left">写性能略低，数据恢复时间长</td>
+<td style="text-align:left">存储性能和数据保护要求高的场景，如文件服务器和数据库服务器</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 6</td>
-<td style="text-align:center">块级条带化，带双重分布式奇偶校验</td>
-<td style="text-align:center">极高的数据可靠性，高存储效率</td>
-<td style="text-align:center">写性能较低，实现复杂度高</td>
-<td style="text-align:center">数据可靠性要求极高的场景，如企业级存储系统和关键数据存储</td>
+<td style="text-align:left">块级条带化，带双重分布式奇偶校验</td>
+<td style="text-align:left">极高的数据可靠性，高存储效率</td>
+<td style="text-align:left">写性能较低，实现复杂度高</td>
+<td style="text-align:left">数据可靠性要求极高的场景，如企业级存储系统和关键数据存储</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 10</td>
-<td style="text-align:center">条带化镜像</td>
-<td style="text-align:center">高数据可靠性，高存储性能，快速恢复</td>
-<td style="text-align:center">存储效率较低，仅50%存储容量可用</td>
-<td style="text-align:center">需要高性能和高数据可靠性的场景，如数据库服务器和虚拟化环境</td>
+<td style="text-align:left">条带化镜像</td>
+<td style="text-align:left">高数据可靠性，高存储性能，快速恢复</td>
+<td style="text-align:left">存储效率较低，仅50%存储容量可用</td>
+<td style="text-align:left">需要高性能和高数据可靠性的场景，如数据库服务器和虚拟化环境</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 50</td>
-<td style="text-align:center">分布式奇偶校验条带化</td>
-<td style="text-align:center">高存储性能，高存储效率，数据恢复能力强</td>
-<td style="text-align:center">实现复杂度高，恢复时间较长</td>
-<td style="text-align:center">高存储性能和数据冗余要求的场景，如企业级存储系统和数据仓库</td>
+<td style="text-align:left">分布式奇偶校验条带化</td>
+<td style="text-align:left">高存储性能，高存储效率，数据恢复能力强</td>
+<td style="text-align:left">实现复杂度高，恢复时间较长</td>
+<td style="text-align:left">高存储性能和数据冗余要求的场景，如企业级存储系统和数据仓库</td>
 <td></td>
 </tr>
 <tr>
 <td style="text-align:left">RAID 60</td>
-<td style="text-align:center">双重分布式奇偶校验条带化</td>
-<td style="text-align:center">极高的数据可靠性，高存储性能，高存储效率</td>
-<td style="text-align:center">实现复杂度高，恢复时间较长</td>
-<td style="text-align:center">数据可靠性和存储性能要求极高的场景，如企业级存储系统和高性能计算</td>
+<td style="text-align:left">双重分布式奇偶校验条带化</td>
+<td style="text-align:left">极高的数据可靠性，高存储性能，高存储效率</td>
+<td style="text-align:left">实现复杂度高，恢复时间较长</td>
+<td style="text-align:left">数据可靠性和存储性能要求极高的场景，如企业级存储系统和高性能计算</td>
 <td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>创建者</th>
-<th>模型</th>
-<th>年份</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Honda</td>
-<td>Accord</td>
-<td>2009</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Toyota</td>
-<td>Camry</td>
-<td>2012</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Hyundai</td>
-<td>Elantra</td>
-<td>2010</td>
 </tr>
 </tbody>
 </table>
