@@ -323,7 +323,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="50165"></div>
+      <div class="item-count" id="wordsCount" data-count="50158"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -409,7 +409,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>426</span>
+  <span class="post-meta-item-text">字数：</span><span>419</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -452,11 +452,11 @@
 <li>增强数据可靠性：通过数据冗余技术（如镜像和奇偶校验），在硬盘故障时仍能保持数据的完整性。</li>
 </ul>
 <p>RAID技术可以在硬件层面或软件层面实现。硬件RAID通常通过专用的RAID控制器来管理，而软件RAID则依靠操作系统或专用软件进行管理。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-1.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-1.png" alt="Raid Class"></p>
 <p>RAID概念最早由加州大学伯克利分校的三位研究人员David A. Patterson、Garth Gibson和Randy H. Katz在1987年的论文《A Case for Redundant Arrays of Inexpensive Disks (RAID)》中提出。这篇论文指出，通过使用廉价的磁盘驱动器并将它们组合成一个冗余阵列，可以显著提高存储系统的性能和可靠性。最初的RAID级别包括RAID 0到RAID 5，这些级别定义了不同的数据存储和保护方法。随着存储技术的发展，更多的RAID级别被引入，以满足不同的需求。</p>
 <h2 id="raid-0条带化">RAID 0：条带化</h2>
 <p>RAID 0是一种数据条带化（striping）技术，它将数据分成多个块，并将这些块分布在多个硬盘上。RAID 0不提供数据冗余，因此在数据保护方面较为薄弱，但它可以显著提高存储性能。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-2.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-2.png" alt="Raid Class"></p>
 <p>在RAID 0中，数据被分割成相等的块（通常称为条带），这些条带依次写入不同的硬盘。例如，如果有两个硬盘，数据块A的第一个部分写入硬盘1，第二部分写入硬盘2，依此类推。通过这种方式，读写操作可以并行进行，从而提高了存储性能。</p>
 <p>假设有一个4个硬盘的RAID 0阵列，每个数据块大小为64KB。当一个256KB的文件被写入RAID 0阵列时，文件会被分割成4个64KB的数据块。第一个64KB块被写入第一个硬盘，第二个64KB块被写入第二个硬盘，依此类推。这意味着在读取该文件时，4个硬盘可以同时读取各自的64KB块，从而提高了读取速度。</p>
 <h3 id="优点">优点</h3>
@@ -472,7 +472,7 @@
 <p>RAID 0适用于那些对性能要求极高但对数据保护要求较低的场景，例如视频编辑、临时数据存储、非关键应用程序和游戏等。</p>
 <h2 id="raid-1镜像">RAID 1：镜像</h2>
 <p>RAID 1是一种数据镜像（mirroring）技术，它将相同的数据同时写入两个或多个硬盘，以实现数据冗余。当一个硬盘发生故障时，可以从镜像硬盘中恢复数据。RAID 1提供了较高的数据可靠性，但在存储效率方面有所牺牲。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-3.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-3.png" alt="Raid Class"></p>
 <p>在RAID 1中，所有数据都会被完全复制到一个或多个额外的硬盘上。这样，每个硬盘上都存储有相同的数据。一旦一个硬盘发生故障，系统可以从另一个硬盘读取数据，从而保证数据的完整性和可用性。</p>
 <p>假设有一个2个硬盘的RAID 1阵列。当一个文件被写入RAID 1阵列时，该文件的每一个数据块都会被同时写入两个硬盘。如果硬盘1上的数据块发生损坏，可以从硬盘2上的镜像数据块中读取相同的数据，从而确保数据的完整性。</p>
 <h3 id="优点-1">优点</h3>
@@ -488,7 +488,7 @@
 <p>RAID 1适用于那些对数据保护要求极高的场景，例如关键数据存储、数据库存储、操作系统驱动器和其他需要高数据可靠性的应用程序。</p>
 <h2 id="raid-2位级条带化带海明码校验">RAID 2：位级条带化（带海明码校验）</h2>
 <p>RAID 2采用位级条带化（bit-level striping）并结合海明码（Hamming code）校验来实现数据冗余和错误检测。它使用专门的硬盘来存储校验码，可以提供较高的错误检测和纠错能力。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-4.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-4.png" alt="Raid Class"></p>
 <p>在RAID 2中，数据被分割为位级单位，然后分布到不同的硬盘上。同时，使用海明码校验生成校验位，这些校验位存储在专用的校验硬盘上。海明码是一种纠错码，可以检测和纠正单比特错误。</p>
 <p>假设有一个5个硬盘的RAID 2阵列，其中3个用于存储数据，2个用于存储校验码。数据被分割为位级单位后，依次写入3个数据硬盘中。海明码校验位根据数据位生成，并写入2个校验硬盘中。在读取数据时，可以通过海明码校验检测和纠正数据中的单比特错误。</p>
 <h3 id="优点-2">优点</h3>
@@ -504,7 +504,7 @@
 <p>RAID 2适用于那些对数据完整性要求极高的场景，例如科学计算、工程计算和高可靠性存储系统。</p>
 <h2 id="raid-3字节级条带化带独立奇偶校验">RAID 3：字节级条带化（带独立奇偶校验）</h2>
 <p>RAID 3使用字节级条带化（byte-level striping）并结合独立奇偶校验来实现数据冗余。它将数据分割为字节单位，并将这些字节分布到不同的硬盘上，同时使用一个专用硬盘存储奇偶校验数据。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-5.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-5.png" alt="Raid Class"></p>
 <p>在RAID 3中，数据被分割为字节单位，然后依次写入多个数据硬盘。同时，计算每个字节的奇偶校验位，并将这些奇偶校验位存储在一个专用的校验硬盘上。在读取数据时，奇偶校验硬盘可以用于检测和恢复损坏的数据。</p>
 <p>假设有一个4个硬盘的RAID 3阵列，其中3个用于存储数据，1个用于存储奇偶校验数据。数据被分割为字节单位后，依次写入3个数据硬盘中。奇偶校验位根据每个字节的数据计算，并写入奇偶校验硬盘中。在读取数据时，如果一个数据硬盘发生故障，可以通过奇偶校验数据恢复丢失的数据。</p>
 <h3 id="优点-3">优点</h3>
@@ -520,7 +520,7 @@
 <p>RAID 3适用于那些对顺序数据访问要求较高的场景，例如视频编辑、音频编辑和流媒体服务器。</p>
 <h2 id="raid-4块级条带化带独立奇偶校验">RAID 4：块级条带化（带独立奇偶校验）</h2>
 <p>RAID 4使用块级条带化（block-level striping）并结合独立奇偶校验来实现数据冗余。与RAID 3类似，RAID 4将数据分割为块单位，并将这些块分布到不同的硬盘上，同时使用一个专用硬盘存储奇偶校验数据。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-6.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-6.png" alt="Raid Class"></p>
 <p>在RAID 4中，数据被分割为块单位，然后依次写入多个数据硬盘。每个数据块都有对应的奇偶校验位，这些奇偶校验位存储在一个专用的校验硬盘上。在读取数据时，可以使用奇偶校验硬盘来检测和恢复损坏的数据。</p>
 <p>假设有一个5个硬盘的RAID 4阵列，其中4个用于存储数据，1个用于存储奇偶校验数据。数据被分割为块单位后，依次写入4个数据硬盘中。奇偶校验位根据每个数据块计算，并写入奇偶校验硬盘中。在读取数据时，如果一个数据硬盘发生故障，可以通过奇偶校验数据恢复丢失的数据。</p>
 <h3 id="优点-4">优点</h3>
@@ -536,7 +536,7 @@
 <p>RAID 4适用于那些对数据读性能要求较高但写性能要求较低的场景，例如数据仓库、备份服务器和大容量存储系统。</p>
 <h2 id="raid-5分布式奇偶校验">RAID 5：分布式奇偶校验</h2>
 <p>RAID 5采用块级条带化（block-level striping）并结合分布式奇偶校验来实现数据冗余。与RAID 4不同，RAID 5将奇偶校验数据分布在所有硬盘上，而不是集中存储在一个硬盘上。这种方式可以避免单一奇偶校验硬盘的性能瓶颈，提高了系统的整体性能。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-7.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-7.png" alt="Raid Class"></p>
 <p>在RAID 5中，数据被分割为块单位，并分布在多个硬盘上。每个数据块的奇偶校验位根据其他数据块计算，并分布在不同的硬盘上。这样，当一个硬盘发生故障时，可以通过奇偶校验数据恢复丢失的数据。</p>
 <p>假设有一个4个硬盘的RAID 5阵列，数据被分割为块单位并分布在硬盘1、硬盘2和硬盘3上。奇偶校验数据分布在硬盘4上。下一个数据块的奇偶校验位可能存储在硬盘3上，而数据块则分布在硬盘1、硬盘2和硬盘4上。这种分布方式可以避免奇偶校验硬盘的性能瓶颈。</p>
 <h2 id="优点-5">优点</h2>
@@ -553,7 +553,7 @@
 <p>RAID 5适用于那些对存储性能和数据保护都有较高要求的场景，例如文件服务器、数据库服务器和企业级存储系统。</p>
 <h2 id="raid-6双重分布式奇偶校验">RAID 6：双重分布式奇偶校验</h2>
 <p>RAID 6在RAID 5的基础上增加了第二层奇偶校验，从而提供更高的数据可靠性。RAID 6采用块级条带化并结合双重分布式奇偶校验，可以在两个硬盘同时发生故障时依然保持数据的完整性。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-8.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-8.png" alt="Raid Class"></p>
 <p>在RAID 6中，数据被分割为块单位，并分布在多个硬盘上。每个数据块的奇偶校验位根据其他数据块计算，并分布在不同的硬盘上。RAID 6有两层奇偶校验：P奇偶校验和Q奇偶校验。P奇偶校验和RAID 5的奇偶校验类似，而Q奇偶校验使用更复杂的算法来提供额外的数据保护。</p>
 <p>假设有一个5个硬盘的RAID 6阵列，数据被分割为块单位并分布在硬盘1、硬盘2和硬盘3上。P奇偶校验数据分布在硬盘4上，Q奇偶校验数据分布在硬盘5上。下一个数据块的P奇偶校验位和Q奇偶校验位会分布在不同的硬盘上。这种双重分布式奇偶校验可以在两个硬盘同时发生故障时恢复数据。</p>
 <h2 id="优点-6">优点</h2>
@@ -569,7 +569,7 @@
 <p>RAID 6适用于那些对数据可靠性要求极高的场景，例如企业级存储系统、数据库服务器和关键数据存储。</p>
 <h2 id="raid-10条带化镜像">RAID 10：条带化镜像</h2>
 <p>RAID 10（也称RAID 1+0）是一种将RAID 1和RAID 0结合起来的混合RAID级别。它首先将数据镜像到多个硬盘，然后将这些镜像硬盘组成一个RAID 0阵列。RAID 10同时提供了RAID 0的高性能和RAID 1的数据冗余。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-9.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-9.png" alt="Raid Class"></p>
 <p>在RAID 10中，数据首先被完全复制到一组镜像硬盘上，然后这些镜像硬盘被条带化，以提高存储性能。每个数据块被写入一个镜像组，然后在该组内进行条带化。</p>
 <p>假设有一个由4个硬盘组成的RAID 10阵列，数据首先被镜像到两个硬盘（硬盘1和硬盘2），然后条带化到另外两个镜像硬盘（硬盘3和硬盘4）。这意味着数据块A的副本被存储在硬盘1和硬盘3上，而数据块B的副本被存储在硬盘2和硬盘4上。</p>
 <h3 id="优点-7">优点</h3>
@@ -585,7 +585,7 @@
 <p>RAID 10适用于那些既需要高性能又需要高数据可靠性的场景，例如数据库服务器、虚拟化环境和高性能计算应用。</p>
 <h2 id="raid-50分布式奇偶校验条带化">RAID 50：分布式奇偶校验条带化</h2>
 <p>RAID 50（也称RAID 5+0）是一种将RAID 5和RAID 0结合起来的混合RAID级别。它首先将数据条带化并使用分布式奇偶校验（RAID 5）保护数据，然后将这些RAID 5阵列组成一个RAID 0阵列。RAID 50提供了较高的存储性能和数据冗余。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-10.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-10.png" alt="Raid Class"></p>
 <p>在RAID 50中，数据首先被分割为块单位，并使用分布式奇偶校验存储在多个RAID 5阵列中。然后，这些RAID 5阵列被条带化，以提高存储性能。每个RAID 5阵列都提供数据冗余，而RAID 0条带化提高了系统的整体性能。</p>
 <p>假设有一个由6个硬盘组成的RAID 50阵列，首先将硬盘分为两个RAID 5阵列，每个阵列包含3个硬盘。每个RAID 5阵列使用分布式奇偶校验保护数据，然后这两个RAID 5阵列被条带化组成一个RAID 0阵列。</p>
 <h3 id="优点-8">优点</h3>
@@ -602,7 +602,7 @@
 <p>RAID 50适用于那些需要高存储性能和数据冗余的场景，例如企业级存储系统、数据仓库和高性能计算应用。</p>
 <h2 id="raid-60双重分布式奇偶校验条带化">RAID 60：双重分布式奇偶校验条带化</h2>
 <p>RAID 60（也称RAID 6+0）是一种将RAID 6和RAID 0结合起来的混合RAID级别。它首先将数据条带化并使用双重分布式奇偶校验（RAID 6）保护数据，然后将这些RAID 6阵列组成一个RAID 0阵列。RAID 60提供了极高的数据可靠性和存储性能。</p>
-<p><img src="https://www.kontronn.com/imgs/Raid-level-11.png" alt="Raid Class"></p>
+<p><img src="https://www.kontronn.com/imgs/post/Raid-level-11.png" alt="Raid Class"></p>
 <p>在RAID 60中，数据首先被分割为块单位，并使用双重分布式奇偶校验存储在多个RAID 6阵列中。然后，这些RAID 6阵列被条带化，以提高存储性能。每个RAID 6阵列都提供双重数据冗余，而RAID 0条带化提高了系统的整体性能。</p>
 <p>假设有一个由8个硬盘组成的RAID 60阵列，首先将硬盘分为两个RAID 6阵列，每个阵列包含4个硬盘。每个RAID 6阵列使用双重分布式奇偶校验保护数据，然后这两个RAID 6阵列被条带化组成一个RAID 0阵列。</p>
 <h3 id="优点-9">优点</h3>
@@ -618,8 +618,8 @@
 </ul>
 <p>RAID 60适用于那些对数据可靠性和存储性能都有极高要求的场景，例如企业级存储系统、关键数据存储和高性能计算应用。</p>
 <h2 id="总结">总结</h2>
-<p>|  RAID 级别 | 工作原理	| 优点 | 缺点 | 适用场景 |</p>
-<p>|:&mdash;&ndash; |:&mdash;&ndash;:| :&mdash;-:| :&mdash;-: | :&mdash;-: | :&mdash;-: |
+<p>| RAID 级别 | 工作原理 | 优点 | 缺点 | 适用场景 |</p>
+<p>|:&mdash;&ndash; |:&mdash;&ndash;:|:&mdash;-:|:&mdash;-:|:&mdash;-:|:&mdash;-:|
 | RAID 0 | 数据条带化，无冗余 | 提高存储性能，所有存储容量可用	| 无数据冗余，任意一个硬盘故障导致数据丢失 | 高性能但数据可靠性要求低的场景，如缓存和临时存储 |
 | RAID 1 | 数据镜像，每个数据块复制到两个或多个硬盘 | 提供高数据可靠性，快速数据恢复 | 存储效率低，只有50%存储容量可用 | 需要高数据可靠性的场景，如操作系统和关键业务数据 |
 | RAID 2 | 位级条带化，带海明码校验 | 高错误检测和纠错能力，提高存储性能 | 硬件复杂性高，存储效率低 | 科学计算、工程计算等对数据完整性要求高的场景 |
