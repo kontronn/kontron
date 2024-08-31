@@ -272,6 +272,19 @@
     </item>
     
     <item>
+      <title>网络安全技术的演进</title>
+      <link>https://www.kontronn.com/post/datacenter/the-evolution-of-network-security.html</link>
+      <pubDate>Thu, 27 Jul 2023 05:47:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/the-evolution-of-network-security.html</guid>
+      <description>&lt;p&gt;自诞生以来，
+&lt;a href=&#34;https://www.gaitpu.com/category/data-center/network&#34; title=&#34;网络安全&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    网络安全
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;领域经历了重大变革，本文回顾了网络安全的历史，重点介绍了其中几个重要里程碑，包括防火墙、VPN、下一代防火墙（NGFW）、零信任模型等技术的发展。此外，文中还讨论了诸如人工智能驱动的安全性和安全访问服务边缘（SASE）等趋势。最后，探讨了通用人工智能（GenAI）对网络安全的影响。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>关于超级以太网，大佬有话要说</title>
       <link>https://www.kontronn.com/post/datacenter/the-boss-has-something-to-say-about-super-ethernet.html</link>
       <pubDate>Tue, 25 Jul 2023 11:36:04 -0400</pubDate>
