@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 22:07:26 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 22:44:19 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,25 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>RTOS正在缩小与Linux的差距</title>
+      <link>https://www.kontronn.com/post/linux/the-rtos-renaissance-closing-the-os-gap-with-linux-in-iot.html</link>
+      <pubDate>Sat, 31 Aug 2024 22:44:19 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/the-rtos-renaissance-closing-the-os-gap-with-linux-in-iot.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;RTOS&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    RTOS
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;与
+&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;的物联网设备操作系统之争已经持续了很多年。Linux以其强大的计算能力和丰富的软件生态，在需要复杂处理和软件支持的物联网设备上占据一席之地；RTOS凭借实时响应和资源节约的特性，在对实时性和资源占用有严格要求的场景中独领风骚。&lt;/p&gt;
+&lt;p&gt;如果时间倒回五年前，那时候IoT彻底火了，但大型科技公司在面对RTOS和Linux的抉择中，对RTOS不感兴趣，更加青睐Linux，并把它推成主流。不过，在最近一段时间，风评反转了，实时操作系统 （RTOS）在嵌入式IoT领域开始重新复兴。&lt;/p&gt;
+&lt;p&gt;在开源计划、大型科技公司支持、对低延迟和资源受限应用程序不断增长的需求的推动下，RTOS 正在迅速缩小与Linux的差距。很多开发人员发现，在选择操作系统时，规模并非越大越好，随着更多传感器在时间关键型的应用程序中上线，越来越多人发现RTOS有着改变边缘世界的力量。&lt;/p&gt;</description>
     </item>
     
     <item>

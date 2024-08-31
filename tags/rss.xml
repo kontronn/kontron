@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 22:07:26 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 22:44:19 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IoT</title>
+      <link>https://www.kontronn.com/tags/iot/</link>
+      <pubDate>Sat, 31 Aug 2024 22:44:19 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RTOS</title>
+      <link>https://www.kontronn.com/tags/rtos/</link>
+      <pubDate>Sat, 31 Aug 2024 22:44:19 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/rtos/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>LLM</title>
       <link>https://www.kontronn.com/tags/llm/</link>
