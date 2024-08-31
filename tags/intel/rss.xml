@@ -6,7 +6,20 @@
     <description>Recent content in Intel on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 15 Aug 2024 23:13:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/intel/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 18:08:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/intel/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>英特尔或出售晶圆厂</title>
+      <link>https://www.kontronn.com/post/news/intel-may-sell-its-wafer-fab.html</link>
+      <pubDate>Sat, 31 Aug 2024 18:08:12 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/intel-may-sell-its-wafer-fab.html</guid>
+      <description>8月30日消息，据知情人士透露，英特尔公司正与投资银行合作，帮助渡过公司56年历史上最困难的时期。
+知情人士说，该公司正在讨论各种可能的情况，包括拆分或出售其芯片制造业务，以及哪些工厂项目可能会被关闭。
+由于讨论是私下进行的，这些人士要求不具名。知情人士说，长期为英特尔服务的投行摩根士丹利和高盛集团一直在就各种可能性提供建议，其中可能还包括潜在的并购。上述知情人士说，这些方案预计将在9月份的董事会会议上宣布。
+据报道，按照英特尔的财报，英特尔第二季度晶圆代工营收季减2％，年增4％，亏损扩大到28.3亿美元，相当于18个月，合计亏损了123.3亿美元，折合人民币是880亿元左右。
+按照机构的数据，台积电每卖1片10000美元的晶圆，就赚4350美元，等于每片制造成本为5650美元，利润率高达43.5%。而英特尔每卖一片10000美元的晶圆，就要亏掉6550美元（约4.7万元），真的是妥妥的负担。</description>
+    </item>
+    
     <item>
       <title>Intel 13/14代酷睿稳定性补丁Linux实测</title>
       <link>https://www.kontronn.com/post/soc/intel-13rd-14th-generation-core-stability-patch-linux-test.html</link>
