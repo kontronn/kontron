@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 13 Jul 2024 20:38:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/h100/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nvidia HGX B200主板上的NVLink Switch变化</title>
-      <link>https://www.kontronn.com/post/hardware/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</link>
+      <link>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</link>
       <pubDate>Sat, 13 Jul 2024 20:38:29 +0800</pubDate>
       
-      <guid>https://www.kontronn.com/post/hardware/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</guid>
+      <guid>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</guid>
       <description>&lt;p&gt;在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从
 &lt;a href=&#34;https://www.gaitpu.com/tag/h100&#34; title=&#34;H100&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
     H100

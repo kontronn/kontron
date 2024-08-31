@@ -6,7 +6,20 @@
     <description>Recent content in LLM on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 18 Nov 2023 22:19:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/llm/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 22:07:26 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/llm/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM训练的存储需求：训练数据和检查点</title>
+      <link>https://www.kontronn.com/post/ai/a-checkpoint-on-checkpoints-in-llms.html</link>
+      <pubDate>Sat, 31 Aug 2024 22:07:26 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/ai/a-checkpoint-on-checkpoints-in-llms.html</guid>
+      <description>&lt;p&gt;LLM训练的存储需求主要涉及两个方面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;训练数据：用于更新模型权重和促进模型收敛。&lt;/li&gt;
+&lt;li&gt;检查点：将模型权重从GPU内存保存至持久化存储。&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
     <item>
       <title>大型语言模型入门必知术语汇总</title>
       <link>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</link>
