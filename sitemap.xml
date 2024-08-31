@@ -7,8 +7,43 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/amd/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/soc/AMD-Zen5-EYPC-9755-is-2-times-faster-than-Zen4-9754.html</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-08-31T18:08:12+08:00</lastmod>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/eypc/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/soc/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-31T18:14:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -17,22 +52,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-08-31T18:08:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/news/</loc>
-    <lastmod>2024-08-31T18:08:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-08-31T18:08:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-31T18:08:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -228,11 +248,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/tags/linux-patch/</loc>
-    <lastmod>2024-08-15T23:13:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/soc/</loc>
     <lastmod>2024-08-15T23:13:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -493,11 +508,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/hardware/AMD-acquires-Silo-AI.html</loc>
-    <lastmod>2024-07-17T21:42:58+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/amd/</loc>
     <lastmod>2024-07-17T21:42:58+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

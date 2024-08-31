@@ -16,6 +16,24 @@
   </entry>
   
   <entry>
+    <title>AMD Zen5 EYPC 9755 速度比前代Zen4 9754 快2倍</title>
+    <url>/post/soc/AMD-Zen5-EYPC-9755-is-2-times-faster-than-Zen4-9754.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>EYPC</tag>
+    </tags>
+    <content type="html"><![CDATA[根据最新的基准测试结果， AMD  即将发布的第五代EPYC Turin 旗舰型号 EPYC 9755 在多项指标上均表现优异，其性能相比前代产品有了大幅提升，尤其是在 7-Zip 压缩与解压缩测试中的表现更是超越了同样拥有 128 核心的 EPYC 9754，显示出 Zen 5 架构相较于 Zen 4C 架构的巨大优势。
+EPYC 9755 处理器基于 AMD 的 Zen 5 核心架构，拥有 128 个内核和 256 个线程。其基本时钟频率为 2.70 GHz，最高可提升至 4.10 GHz，频率较上一代产品提升了 11%。此外，该处理器配备了总计 650 MB 的缓存，包括 512 MB 的 L3 缓存、128 MB 的 L2 缓存和 10 MB 的 L1 缓存。与前代旗舰 EPYC 9654 相比，EPYC 9755 的缓存容量增加了 31%，而内核数量则从 96 个提升至 128 个。
+在 7-Zip 的基准测试中，EPYC 9755 的压缩测试得分为 346,000 KB/s，解压缩测试得分为 4,445,000 KB/s，平均得分为 394.705 GIPS。这个成绩表明，EPYC 9755 的整体性能较 EPYC 9754 提升了两倍以上，而后者的压缩和解压缩得分分别为 171,000 KB/s 和 2,221,000 KB/s。
+相比之下，EPYC 9754 作为 Bergamo 系列的旗舰芯片，采用 Zen 4C 核心架构，虽然同样拥有 128 个内核，但其性能远不及采用 Zen 5 架构的 EPYC 9755。这也说明了 AMD 在新一代 Zen 5 架构上的进步，使得同样核心数量的情况下，处理器性能得到了大幅度提升。
+AMD 的 EPYC “Turin”系列处理器计划于 2024 年 10 月 10 日发布，届时将与英特尔即将推出的 Xeon 6“6900P” 处理器展开竞争。值得注意的是，英特尔的这款处理器同样配备了 128 个 P 核，更高密度的 288 核版本预计要到 2025 年第一季度才会与 Sierra Forest“Xeon 6900E”一起推出。
+这次 AMD 的新一代 EPYC 处理器不仅在规格上有了大幅提升，更重要的是在实际应用中的性能表现得到了显著的提升，这将使其在高性能计算领域具有更强的竞争力。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>英特尔或出售晶圆厂</title>
     <url>/post/news/intel-may-sell-its-wafer-fab.html</url>
     <categories><category>News</category>

@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 18:08:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 18:14:26 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,19 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>AMD Zen5 EYPC 9755 速度比前代Zen4 9754 快2倍</title>
+      <link>https://www.kontronn.com/post/soc/AMD-Zen5-EYPC-9755-is-2-times-faster-than-Zen4-9754.html</link>
+      <pubDate>Sat, 31 Aug 2024 18:14:26 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/AMD-Zen5-EYPC-9755-is-2-times-faster-than-Zen4-9754.html</guid>
+      <description>&lt;p&gt;根据最新的基准测试结果，
+&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    AMD
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;即将发布的第五代EPYC Turin 旗舰型号 EPYC 9755 在多项指标上均表现优异，其性能相比前代产品有了大幅提升，尤其是在 7-Zip 压缩与解压缩测试中的表现更是超越了同样拥有 128 核心的 EPYC 9754，显示出 Zen 5 架构相较于 Zen 4C 架构的巨大优势。&lt;/p&gt;</description>
     </item>
     
     <item>
