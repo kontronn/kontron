@@ -16,6 +16,30 @@
   </entry>
   
   <entry>
+    <title>IBM发布了新一代处理器Telum II</title>
+    <url>/post/datacenter/IBM-releases-new-generation-processor-Telum-II.html</url>
+    <categories><category>DataCenter</category>
+    </categories>
+    <tags>
+      <tag>IBM</tag>
+      <tag>Telum II</tag>
+    </tags>
+    <content type="html"><![CDATA[IBM发布了新一代处理器Telum II，面向下一代IBM Z大型主机，可用于任务关键工作、 AI  负载。
+Telum II采用三星5HPP 5nm工艺制造，包含430亿个晶体管，集成了8个高性能核心，改进了分支预测、存储写回、寻址转换等。
+它的主频达5.5GHz，集成了36MB二级缓存(增加40％)、360MB三级缓存、2.88GB四级缓存——IBM处理器一向以海量多级缓存而闻名。
+它改进了内置的AI加速器，INT8整数精度算力24 TOPS，四倍于上代产品，并针对低延迟实时AI负载进行了优化，可以从任何一个核心中接手AI任务，而在完整配置下每个机柜的算力可达192 TOPS。
+Teum II
+Teum II
+2021年发布的初代Teum
+同时，IBM还发布了新的Spyre AI加速卡，三星5LPE 5nm工艺制造，260亿个晶体管，包括32个AI加速核心，架构上与Telum II内置加速器基本一致。
+它可以通过PCIe接入IBM Z主机的IO子系统，提供额外的AI加速。
+Teum II处理器、Spyre加速器都将于2025年上市。
+Teum II、Spyre加速卡
+Spyre加速卡
+]]></content>
+  </entry>
+  
+  <entry>
     <title>RTOS正在缩小与Linux的差距</title>
     <url>/post/linux/the-rtos-renaissance-closing-the-os-gap-with-linux-in-iot.html</url>
     <categories><category>Linux</category>
