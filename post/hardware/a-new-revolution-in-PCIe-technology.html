@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="PCIe技术的新革命" />
+<meta itemprop="description" content="PCIe技术的新革命" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="PCIe" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="PCIe技术的新革命" />
+<meta property="og:description" content="PCIe技术的新革命" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-08-31 17:53:42 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-08-31 17:53:42 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"a-new-revolution-in-PCIe-technology.html","permalink":"https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html","title":"PCIe技术的新革命"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>PCIe技术的新革命 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">267</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#铜缆pcie发展吃力光互连来接力">铜缆PCIe发展吃力，光互连来接力</a></li>
+    <li><a href="#厂商奋进pcie光互连近在咫尺">厂商奋进，PCIe光互连近在咫尺</a>
+      <ul>
+        <li><a href="#连接技术公司">连接技术公司</a></li>
+        <li><a href="#ip厂商新思科技--cadence">IP厂商：新思科技 &amp; Cadence</a></li>
+        <li><a href="#芯片厂商intel">芯片厂商：Intel</a></li>
+      </ul>
+    </li>
+    <li><a href="#pcie演进cxl光互连的突破">PCIe演进，CXL光互连的突破</a></li>
+    <li><a href="#写在最后">写在最后</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">267</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">353</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="50300"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="408"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-08-31T17:53:42&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="PCIe技术的新革命">
+      <meta itemprop="description" content="PCIe技术的新革命">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">PCIe技术的新革命 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-08-31 17:53:42 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-08-31 17:53:42 &#43;0800 CST">2024-08-31</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>210</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/hardware/a-new-revolution-in-PCIe-technology.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>在高速数据传输和计算需求日益增长的今天，
+<a href="https://www.vxworks.net/component/tags/tag/pcie" title="PCIe" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    PCIe
+    <i class="fa fa-external-link-alt"></i>
+</a>正在经历一场前所未有的光互联革命。2024年，光互连技术发展势头迅猛，多家厂商纷纷推出与PCIe相关的解决方案，加速了光互连在数据中心中的应用。光互连技术也越来越有望迅速从实验室走向数据中心，成为数据传输领域的中坚力量。</p>
+<!--moe-->
+<h2 id="铜缆pcie发展吃力光互连来接力">铜缆PCIe发展吃力，光互连来接力</h2>
+<p>PCI-Express（PCIe）自2000年诞生以来，凭借其高带宽、低延迟等优势，一直是计算机系统中不可或缺的互连标准。尽管PCIe卡的外形尺寸在过去二十年基本保持不变（很大程度上是为了确保向后和向前兼容性），但其信号传输速度却实现了飞跃式发展。从最初的PCIe 1.0到如今的PCIe 6.0和即将发布的PCIe 7.0，单个通道的传输速率已经提高了32倍，而PCI-SIG将在2025年通过PCIe 7.0将这一速度再次提高一倍，达到512GB/s。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-1.png" alt="PCIe Data Speed">
+PCIe数据速率的演变（来源 PCI-SIG）</p>
+<p>PCIe 7.0的创新还包括四级脉冲幅度调制 (PAM4)、轻量级前向纠错 (FEC)、循环冗余校验 (CRC) 和流量控制单元 (Flits)。PCIe 7.0 技术旨在成为人工智能/机器学习、数据中心、HPC、汽车、物联网和军事/航空航天等数据密集型市场的可扩展互连解决方案。</p>
+<p>就当下以及未来的发展来看，大语言模型的快速迭代离不开海量GPU集群的强劲支持。这个海量已经到了万卡集群级别，成为AI标配，万卡集群之间的互连通常是基于GPU上原生的PCIe接口。要达到PCIe 7.0及更高速度的数据传输，几乎无法通过PCIe标准的铜缆实现机架间数十米的传输，传统的电气 PCIe 接口在传输数据时受限于电缆和板上的电气特性，带宽和距离受限，传输距离通常约为一米，使用重定时器（retimer）（关于重定时器可以参看《一颗芯片的新战争》一文）或光学传输将成为唯一的实际解决方案。</p>
+<p>实际上，到PCIe 5.0 和 6.0标准时，铜缆就已经开始吃力了。这也是为什么PCI-SIG（PCIe标准的制定组织）在2024年5月1日宣布了新的CopprLink内部和外部电缆规范。CopprLink电缆规范具有相同的外形尺寸，可以提供32.0和 64.0 GT/s 的信号传输，并利用由SNIA维护的完善的行业标准连接器外形尺寸。但是CopprLink的传输距离仍然很有限，单个系统内仅为1米，机架到机架连接的最大可达 2米。</p>
+<p>再加上考虑到重定时器的使用既复杂、昂贵又耗电，而且有其局限性，因为每个链路只能使用两个重定时器。接下来，光互连将成为PCIe架构继续演进的重要一部分。</p>
+<p>这点可以从PCI-SIG的动作看出，2023年8月，PCI-SIG成立了一个光学工作组探索光学连接，计划采用多种光学技术来支持 PCIe，包括可插拔光收发器、板载光学器件、共封装光学器件和光学 I/O，标准化光纤上PCIe的工作和行为方式。光纤通信具有更长距离和更高数据速率的潜力，并且与日益耗电的铜线传输相比，可以显著降低功耗。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-2.png" alt="PCIe Data Speed">
+PCI-SIG布线工作分为三个不同的工作组：电气工作组 (EWG)、布线工作组 (CWG) 和光学工作组 (OWG)（图源：PCI-SIG）</p>
+<p>总的来说，PCI-SIG正在采取两条腿走路的策略：一方面在为 128.0 GT/s 的 PCIe 7.0 架构开发 CopprLink 电缆；另一方面，在积极推动PCIe光纤互连的工作，PCIe光互连对于将基于PCIe的GPU集群扩展到多个机架和行、提高AI模型性能和提高GPU利用率至关重要。PCI-SIG希望CopprLink电缆和光学互连能够相互补充。</p>
+<h2 id="厂商奋进pcie光互连近在咫尺">厂商奋进，PCIe光互连近在咫尺</h2>
+<p>在实现光互连的路上，已经有越来越多不同产业链的厂商参与进来，这为光互联的发展起到了很大的推动作用。</p>
+<h3 id="连接技术公司">连接技术公司</h3>
+<p>在2024年的光纤通信会议 (OFC) 大会上，Alphawave与多家光学供应商合作开展了一项非重定时光学研究，使用Alphawave PipeCORE PCIe 6.0子系统 IP（适用于PCIe和CXL）在评估板上运行，以驱动使用PCIe 6.0数据的光学系统，并始终实现小于 1×10 -9的 BER ，这至少是性能裕度的3个数量级。Alphawave是一家提供用于数据中心、通信和人工智能应用的高速连接技术，专注于开发和制造高速接口芯片和解决方案，如 PCIe、CXL 和 Ethernet连接器。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-3.png" alt="PCIe Data Speed">
+Alphawave评估板将64Gbps驱动至Nubis光学引擎（图源：Alphawave）</p>
+<p>6 月 11 日，专用连接解决方案厂商Astera Labs首次展示了数据中心 GPU 集群的端到端 PCIe 光纤传输技术。在演示中，他们组装了两种常见配置以扩展覆盖范围：从头节点到 GPU 集群，以及从头节点到远程分散的内存系统。系统通过单模光纤实现了全速率 PCIe传输，总带宽达到128GB/s，覆盖范围为 20 米。不过根据实际应用需求，该覆盖范围可以轻松扩展至 50 米或更长。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-4.png" alt="PCIe Data Speed">
+数据中心GPU集群端到端PCIe光纤传输的演示（图源：Astera Labs）</p>
+<h3 id="ip厂商新思科技--cadence">IP厂商：新思科技 &amp; Cadence</h3>
+<p>从最简单的构建块（如 GPIO）到最先进的高速接口，IP子系统是芯片制造生态系统的命脉。目前，新思科技和Cadence这两家业界领先的EDA公司正积极投入到PCIe 7.0光纤接口的研发中，力求为高速互联提供更具创新性的解决方案。</p>
+<p>新思科技和OpenLight在OFC 2024期间展示了世界上首个采用线性驱动方法的PCIe 7.0光纤数据速率演示。该演示展示了端到端链路 BER 性能比 FEC 阈值高出几个数量级，证明了以128Gbps PAM4运行的PCIe 7.0光纤的可行性。值得一提的是，新思科技推出了首个PCIe 7.0 IP，通过正在进行的互操作性演示和 PCIe 7.0 数据速率和基于光纤的 PCIe 6.x 的出色现场结果，有助于降低集成和风险，并使一次通过硅片成功成为可能。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-5.png" alt="PCIe Data Speed">
+PCIe 7.x/6.x光纤演示（图源：新思科技）</p>
+<p>Cadence在2024 年 PCI-SIG 开发者大会（PCI-SIG DevCon 2024）上演示了全球首个 PCIe 7.0 光纤连接方案。Cadence成功使用线性可插拔光学元件（LPO）演示了传输速度达128GT/s的光纤PCIe 7.0信号收发，无需DSP/Retimer。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-6.png" alt="PCIe Data Speed">
+（图片来源：Cadence）</p>
+<h3 id="芯片厂商intel">芯片厂商：Intel</h3>
+<p>英特尔是光互连的多年研究者，在2024 OFC上，英特尔推出了其首款与计算处理器共同封装的光输入/输出 (I/O) 芯片组，该芯片组支持 64 个 PCIe 5.0 通道，每个通道双向传输速度为 32 GT/s，总计4Tbps，使用光纤传输距离可达100米。而且其功耗很低，据英特尔称，该芯片组使用密集波分复用 (DWDM) 波长，每比特仅消耗5皮焦耳，比每比特消耗约 15 皮焦耳的可插拔光收发器模块节能得多。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-7.png" alt="PCIe Data Speed">
+（图片来源：英特尔）</p>
+<h2 id="pcie演进cxl光互连的突破">PCIe演进，CXL光互连的突破</h2>
+<p>虽然PCIe是一个出色的互连技术，但是近年来，随着AI和机器学习的迅猛发展，对计算、内存和互连都提出了新的要求，一种基于PCIe的全新的高速互连标准——CXL，正在成为AI时代的“运力”引擎。</p>
+<p>
+<a href="https://www.gaitpu.com/data-center/server/learn-about-high-speed-interconnection-technology-cxl" title="CXL（Compute Express Link）" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    CXL（Compute Express Link）
+    <i class="fa fa-external-link-alt"></i>
+</a>是由英特尔于2019年发起的一项开放性行业标准，可增强处理器、内存扩展和加速器之间的通信。CXL建立在PCIe框架之上，从技术上看，CXL是通过PCIe物理层传输信号，但在协议层面上引入了新的特性和改进，以显著提升系统中处理器、加速器和内存设备之间的数据交换效率和一致性，使得资源共享具有更低的延迟，减少了软件堆栈的复杂性，并降低了整体系统成本，为高性能计算和大规模数据处理提供了更为强大的支持。</p>
+<p>Rambus近期成功演示了CXL与光纤的无缝对接。Rambus利用Samtec Firefly光缆技术，将CXL端点设备与Viavi Xgig 6P4训练器连接，成功构建了一个远程“CXL内存扩展”模块。具体而言，Rambus的被测设备（DUT）搭载了CXL 2.0控制器，以四通道16 GT/s的速度运行。Viavi Xgig 6P4则模拟根复合设备，通过支持16 GT/s速率的Samtec Firefly PCUO G4光缆与DUT连接。测试结果表明，DUT在四倍速率下稳定运行，达到了预期性能。更重要的是，在设备发现阶段和CXL 2.0合规性测试中，DUT表现出色，顺利通过了所有标准测试。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-8.png" alt="PCIe Data Speed">
+Rambus 展示利用 CXL Over Optics 实现的先进数据中心功能(图源：Rambus)</p>
+<p>国内方面，2024年8月2日，曦智科技与紫光股份旗下新华三集团合作，成功将曦智科技片间光网络技术(Optical inter-chip Networking, oNET)应用于新华三集团CXL-O光互连解决方案，实现服务器作为主机读写挂载于CXL 2.0交换机后的内存资源，并顺利完成了相关带宽、延时和压力等测试内容。曦智科技自成立以来，专注于光电混合算力新范式，oNET是曦智科技原创核心技术之一。</p>
+<p>作为近几年才诞生的互联技术——CXL，发展迅速，据Yole Intelligence称，CXL市场预计从 2022年的170万美元增长到2026年的21亿美元，其中 70%（即 15 亿美元）将由 CXL 内存解决方案构成。</p>
+<p>值得一提的是，8月初，Kioxia（铠侠）推出了具有光学接口的宽带SSD，通过用光学接口取代电线接口，该 SSD 技术显著增加了计算和存储设备之间的物理距离，减少了接线，同时保持了能源效率和高信号质量。目前，Kioxia已经能够将存储驱动器放置在距离CPU最远40米的距离，但计划在未来将这一距离增加到100米。</p>
+<p><img src="https://www.kontronn.com/imgs/post/PCIe-technology-introduction-9.png" alt="PCIe Data Speed">
+来源：anandtech</p>
+<h2 id="写在最后">写在最后</h2>
+<p>长远来看，PCIe 架构在中长期内在各种高增长垂直领域依然展现出强大的增长潜力。根据 ABI Research 的《PCI Express市场垂直机会》报告，汽车和网络边缘领域为 PCIe 技术提供了最高的增长机会，预测期内的总潜在市场 (TAM) 和复合年增长率 (CAGR) 分别达到 53% 和 38%。</p>
+<p>汽车行业能够从 PCIe 技术的广泛应用中获得巨大价值，因为它可以整合电气/电子 (E/E) 系统，并帮助解决自动驾驶汽车在安全性和效率方面的挑战。而在数据中心等高性能应用领域，对新 PCIe 技术的需求将保持长期的持续增长。PCIe 技术的前向和后向兼容性为决策者提供了灵活性，缩短了价值实现时间并降低了部署风险，这也促使 AI 行业的采用率不断提升。除了性能之外，PCIe 技术的关键驱动因素还包括能效、安全性和“价值实现时间”。</p>
+<p>而PCIe的未来演进路线中，光学必然是一块重要的拼图。光学PCIe的发展契合了当前大数据、人工智能等领域对高性能计算的需求。在高速数据传输的需求驱动下，光学技术不仅在理论上展现出巨大潜力，更在实践中不断突破极限。随着更多厂商的加入和技术的不断演进，未来的数据互联将会迎来更加高效和高速的新时代。</p>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/pcie">
+    PCIe
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      PCIe技术的新革命
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html" title="PCIe技术的新革命">https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/datacenter/raid-class-introduction.html" rel="prev" title="RAID级别介绍">
+      RAID级别介绍
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

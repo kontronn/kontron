@@ -8,21 +8,41 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-08-28T22:24:32+08:00</lastmod>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/datacenter/</loc>
-    <lastmod>2024-08-28T22:24:32+08:00</lastmod>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-08-28T22:24:32+08:00</lastmod>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/pcie/</loc>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html</loc>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/datacenter/</loc>
     <lastmod>2024-08-28T22:24:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -33,11 +53,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/datacenter/raid-class-introduction.html</loc>
-    <lastmod>2024-08-28T22:24:32+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-08-28T22:24:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -177,17 +192,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/post/hardware/pcisig-demonstrates-pcie-60-interoperability-at-fms-2024.html</loc>
-    <lastmod>2024-08-17T21:12:10+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/pcie/</loc>
     <lastmod>2024-08-17T21:12:10+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

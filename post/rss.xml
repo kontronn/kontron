@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 28 Aug 2024 22:24:32 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Aug 2024 17:53:42 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,26 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>PCIe技术的新革命</title>
+      <link>https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html</link>
+      <pubDate>Sat, 31 Aug 2024 17:53:42 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html</guid>
+      <description>在高速数据传输和计算需求日益增长的今天， PCIe  正在经历一场前所未有的光互联革命。2024年，光互连技术发展势头迅猛，多家厂商纷纷推出与PCIe相关的解决方案，加速了光互连在数据中心中的应用。光互连技术也越来越有望迅速从实验室走向数据中心，成为数据传输领域的中坚力量。
+ 铜缆PCIe发展吃力，光互连来接力 PCI-Express（PCIe）自2000年诞生以来，凭借其高带宽、低延迟等优势，一直是计算机系统中不可或缺的互连标准。尽管PCIe卡的外形尺寸在过去二十年基本保持不变（很大程度上是为了确保向后和向前兼容性），但其信号传输速度却实现了飞跃式发展。从最初的PCIe 1.0到如今的PCIe 6.0和即将发布的PCIe 7.0，单个通道的传输速率已经提高了32倍，而PCI-SIG将在2025年通过PCIe 7.0将这一速度再次提高一倍，达到512GB/s。
+PCIe数据速率的演变（来源 PCI-SIG）
+PCIe 7.0的创新还包括四级脉冲幅度调制 (PAM4)、轻量级前向纠错 (FEC)、循环冗余校验 (CRC) 和流量控制单元 (Flits)。PCIe 7.0 技术旨在成为人工智能/机器学习、数据中心、HPC、汽车、物联网和军事/航空航天等数据密集型市场的可扩展互连解决方案。
+就当下以及未来的发展来看，大语言模型的快速迭代离不开海量GPU集群的强劲支持。这个海量已经到了万卡集群级别，成为AI标配，万卡集群之间的互连通常是基于GPU上原生的PCIe接口。要达到PCIe 7.0及更高速度的数据传输，几乎无法通过PCIe标准的铜缆实现机架间数十米的传输，传统的电气 PCIe 接口在传输数据时受限于电缆和板上的电气特性，带宽和距离受限，传输距离通常约为一米，使用重定时器（retimer）（关于重定时器可以参看《一颗芯片的新战争》一文）或光学传输将成为唯一的实际解决方案。
+实际上，到PCIe 5.0 和 6.0标准时，铜缆就已经开始吃力了。这也是为什么PCI-SIG（PCIe标准的制定组织）在2024年5月1日宣布了新的CopprLink内部和外部电缆规范。CopprLink电缆规范具有相同的外形尺寸，可以提供32.0和 64.0 GT/s 的信号传输，并利用由SNIA维护的完善的行业标准连接器外形尺寸。但是CopprLink的传输距离仍然很有限，单个系统内仅为1米，机架到机架连接的最大可达 2米。
+再加上考虑到重定时器的使用既复杂、昂贵又耗电，而且有其局限性，因为每个链路只能使用两个重定时器。接下来，光互连将成为PCIe架构继续演进的重要一部分。
+这点可以从PCI-SIG的动作看出，2023年8月，PCI-SIG成立了一个光学工作组探索光学连接，计划采用多种光学技术来支持 PCIe，包括可插拔光收发器、板载光学器件、共封装光学器件和光学 I/O，标准化光纤上PCIe的工作和行为方式。光纤通信具有更长距离和更高数据速率的潜力，并且与日益耗电的铜线传输相比，可以显著降低功耗。
+PCI-SIG布线工作分为三个不同的工作组：电气工作组 (EWG)、布线工作组 (CWG) 和光学工作组 (OWG)（图源：PCI-SIG）
+总的来说，PCI-SIG正在采取两条腿走路的策略：一方面在为 128.0 GT/s 的 PCIe 7.0 架构开发 CopprLink 电缆；另一方面，在积极推动PCIe光纤互连的工作，PCIe光互连对于将基于PCIe的GPU集群扩展到多个机架和行、提高AI模型性能和提高GPU利用率至关重要。PCI-SIG希望CopprLink电缆和光学互连能够相互补充。
+厂商奋进，PCIe光互连近在咫尺 在实现光互连的路上，已经有越来越多不同产业链的厂商参与进来，这为光互联的发展起到了很大的推动作用。
+连接技术公司 在2024年的光纤通信会议 (OFC) 大会上，Alphawave与多家光学供应商合作开展了一项非重定时光学研究，使用Alphawave PipeCORE PCIe 6.0子系统 IP（适用于PCIe和CXL）在评估板上运行，以驱动使用PCIe 6.0数据的光学系统，并始终实现小于 1×10 -9的 BER ，这至少是性能裕度的3个数量级。Alphawave是一家提供用于数据中心、通信和人工智能应用的高速连接技术，专注于开发和制造高速接口芯片和解决方案，如 PCIe、CXL 和 Ethernet连接器。</description>
     </item>
     
     <item>
