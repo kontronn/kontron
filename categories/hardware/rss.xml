@@ -13,22 +13,11 @@
       <pubDate>Sat, 07 Sep 2024 20:34:41 +0800</pubDate>
       
       <guid>https://www.kontronn.com/post/hardware/how-to-calculate-uart-rate.html</guid>
-      <description>1960年代，DEC（Digital Equipment Corp）公司的Gordon Bell采用大约50个分离元件设计了一个电路板，发明了 UART串口  。
-前言 时至今日，已经60多年，虽然在个人消费类电子产品中，UART已近乎绝迹；但在工业、科研、国防、航空/航天等领域，UART却无处不在。
-很多从事多年 嵌入式  开发的朋友居然还不会根据波特率计算UART的速率，下面和大家介绍一下计算方法。
-uart帧格式 要证明速率的计算，必须搞清楚uart数据帧格式
-其中各位的意义如下：
- 起始位：先发出一个逻辑 &amp;ldquo;0&amp;rdquo; 信号，表示传输字符的开始 数据位：可以是5~8位逻辑 &amp;ldquo;0&amp;rdquo; 或 &amp;ldquo;1&amp;rdquo;，如ASCII码（7位），扩展BCD码（8位），小端传输 校验位：数据位加上这一位后，使得 &amp;ldquo;1&amp;rdquo; 的位数应为偶数(偶校验)或奇数(奇校验) 停止位：它是一个字符数据的结束标志。可以是1位、1.5位、2位的高电平[通常为1位] 空闲位：处于逻辑&amp;quot;1&amp;quot;状态，表示当前线路上没有资料传送  例如我们传输数据0X33（00110011），那么对应的波形就是如下这样，因为是LSB在前，所以8位数据依次是11001100。
-由上图可得，
-假设没有奇偶校验位，停止位为1位 要传输1个字节（8个bit）数据， 那么实际硬件上需要传输10位（1个起始位，8个数据位，1个停止位）
-如果有奇偶校验位，停止位为1位 要传输1个字节（8个bit）数据， 那么实际硬件上需要传输11位（1个起始位，8个数据位，1个奇偶校验位，1个停止位）
-波特率、比特率 波特率 UART速率，也称为波特率，是指数据在串行通信中每秒钟传输的位数（包含起始位、数据位、校验位、停止位）。
-比如：115200波特率意思就是在二进制传输条件下每秒传输115200个比特。
-比特率 比特率也叫信息传输速率，单位时间传递的平均信息量或比特数（只包含有效的数据位）。
-比特率通常以bps（bits per second）表示。
-速率计算 比特率与波特率计算公式是：
-比如没有奇偶校验位，停止位为1位，波特率115200对应的比特率为
-比特率 = （115200*8 ）/(1个起始位 + 8个数据位 + 0个奇偶校验位 + 1个停止位) = 115200*8/10 = 11520*8 b/s 转换为字节 就是11520 B/s，即每秒传输11520个字节（帧） </description>
+      <description>&lt;p&gt;1960年代，DEC（Digital Equipment Corp）公司的Gordon Bell采用大约50个分离元件设计了一个电路板，发明了
+&lt;a href=&#34;https://www.vxworks.net/arm/1077-uart-communication&#34; title=&#34;UART串口&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    UART串口
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
