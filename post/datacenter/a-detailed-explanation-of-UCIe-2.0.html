@@ -276,7 +276,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="51315"></div>
+      <div class="item-count" id="wordsCount" data-count="51301"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -362,7 +362,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>442</span>
+  <span class="post-meta-item-text">字数：</span><span>428</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -395,11 +395,7 @@
       
   <p>因为摩尔定律的失效，半导体行业过去多年正在寻找提升芯片性能的方法，而Chiplet正在成为几乎所有巨头的共同目标。然而，因为Chiplet的理念是将芯片的不同功能模块变成一个die，如何保证这些die能够更通用地连接到一起就成为了行业的头等大事。</p>
 <p>于是，UCIe（ Universal Chiplet Interconnect Express ）便顺势成立。据介绍，UCIe是一种开放的行业架构标准，可在不同chiplet之间提供die-to-die之间的接口，解决物理芯片间 I/O 层、芯片间协议和软件堆栈问题。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-1.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-1.png" alt="UCIe 2.0">
 UCIe为die提供了标准接口</p>
 <p>而继之前的UCIe 1.0和UCIe 1.1之后，新的UCIe 2.0标准正式发布。</p>
 <h2 id="ucie-20发布">UCIe 2.0，发布</h2>
@@ -426,48 +422,24 @@ UCIe为die提供了标准接口</p>
 <p>在本文中，我们提供了实现广泛的、即插即用的基于小芯片的生态系统所需克服的挑战的示例。</p>
 <p>在分类芯片测试期间，虽然我们可以探测凸块，但无法对微凸块进行探测；尤其是当我们转向 25µ 凸块间距时。因此，我们必须创新，使用其他凸块。同样，我们应该能够在现场无缝管理维修或固件升级。</p>
 <p>对于在封装级别可控性和可观察性有限的Chiplet，调试提出了独特的挑战（例如，无法在封装内插入逻辑分析仪或示波器）。行业应如何处理 SiP 中芯片的可管理性？最重要的是，我们如何安全地解决这些问题？一些chiplets可能无法从封装引脚直接访问（见图 1a），这一事实使这些问题变得更加困难。我们还需要处理各种带宽需求。例如，不同的chiplets对扫描链、调试、可管理性等所需的带宽范围不同。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-2.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-2.png" alt="UCIe 2.0"></p>
 <p>我们对 UCIe 2.0 规范的方法是定义一个通用基础设施，该基础设施可在使用现有 IP 构建块（building blocks ）以及封装级别的外部接口的同时解决所有已确定的挑战。我们认为这些功能是互补的，我们的方法适用于现有 IP（甚至非 UCIe IP），并对 UCIe PHY 进行了增强。我们还使用外部封装引脚来访问芯片集，以通过规范中定义的桥接机制进行管理、调试或测试。这些接口和 IP 必须与封装上的 UCIe 2.0 链路无缝协作，以提供所需的外部和内部访问。图 1b 列出了不同接口可用的带宽，为 SiP 设计人员提供了多种选择。</p>
 <p>在 UCIe 2.0 规范中，可管理性是可选的。支持的机制包括发现chiplet集及其配置；初始化芯片集结构（initialization of chiplet structures）和参数（即串行 EEPROM 替换）；固件下载；电源和热管理；错误报告；遥测；检索日志和崩溃转储信息；测试和调试；启动和报告自检状态；以及芯片安全的各个方面。这些机制利用现有的适用行业标准，并且与chiplets上的底层协议无关。这些机制旨在跨来自不同供应商的chiplet工作，并支持特定于供应商的扩展。这些功能是可发现和可配置的，允许在 SiP 之间快速部署通用固件库。UCIe 可管理性所需的核心功能可以通过硬件和/或固件实现，从而提高灵活性。</p>
 <p>UCIe 2.0 可管理性基线架构（manageability baseline architecture，如图 2）定义了一种桥接功能，用于连接到外部接口（例如 SMBus 或 PCIe），从而实现封装外连接。每个chiplet组中的管理结构由多个管理元素组成，其中一个元素充当管理主管，负责发现、配置和协调 SiP 的整体管理，并充当可管理性信任根。</p>
 <p>UCIe 管理传输被定义为一种独立于媒体（media-independent）的协议，用于芯片组中管理实体之间以及 SiP 中芯片组之间的通信。安全机制被定义为根据功能提供所需的保护级别。定义了两种管理链路封装机制，以使用边带和主带传输 UCIe 管理传输数据包。UCIe 定义了最多八个独立的虚拟通道来提供服务质量，每个通道都具有有序或无序语义。数据包基于信用（credits）进行交换，信用最初是在链路训练期间协商的。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-3.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-3.png" alt="UCIe 2.0"></p>
 <p>UCIe DFx 架构 (UDA：UCIe DFx architecture) 包含测试、遥测和调试，并通过管理结构进行覆盖。UDA 基于每个chiplet内的 Hub-Spoke 模型（图 2）。每个chiplet都支持一个 DFx 管理中心 (DMH：DFx Management Hub )，这是一个管理元素，可充当访问芯片内测试、调试和遥测功能的网关。DMH 允许发现这些功能，并将与这些功能相关的管理传输数据包路由到各种连接的 DFx 管理“辐条”(DMS：DFx Management “Spokes” )。辐条（Spokes）是实现给定测试、调试或遥测功能的实体。一些示例包括扫描控制器、MEM BIST、SoC（片上系统）结构调试、跟踪协议引擎、核心调试、遥测等。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-4.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-4.png" alt="UCIe 2.0"></p>
 <p>架构配置寄存器（图 3）在现有寄存器之上具有 UCIe-wrapper，为软件提供了一个通用框架。对于系统级使用，可以根据 Spoke 的（UCIe 联盟分配的）供应商 ID (VID) 和（供应商分配的）Device ID (DID) 加载特定于供应商的驱动程序以支持每个独特的功能。UDA 的管理数据包可以作为内存访问协议数据包（例如，用于发现chiplet中的 DMH/DMS）和/或以供应商定义的 UCIe DFx 消息格式（例如，用于通过chiplet将调试信号发送到 PCIe 等封装引脚，以便使用逻辑分析仪进行观察）发送。图 4 演示了其他使用模型。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-5.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-5.png" alt="UCIe 2.0"></p>
 <p>虽然管理数据包可以在现有 UCIe 端口上进行时分复用，但 UCIe 2.0 还提供了添加专用 UCIe-S 端口以实现可管理性和 UDA 功能的额外功能。这些端口可以是简单的边带（sideband），以 4 个凸块或半宽 (x8) 提供 800 Mb/s/方向，或更高，UCIe-S 以 32 GT/s 的速度为每个 x8 提供 256 Gb/s/方向。</p>
 <h3 id="垂直集成芯片组可显著提高功率性能并采用-ucie-3d">垂直集成芯片组可显著提高功率性能，并采用 UCIe-3D</h3>
 <p>UCIe 联盟于 2022 年 3 月成立，我们发布了定义明确的 UCIe 1.0 规范，解决了平面连接（2D 和 2.5D）问题。我们认识到垂直集成的重要性，并表示我们打算研究 3D 芯片组。UCIe 2.0 规范通过完全定义的规范（涵盖平面和垂直连接）兑现了这一承诺。</p>
 <p>十多年来，随着封装内存和计算的商业化，提供垂直连接的 3D 互连芯片组的技术取得了显著进步，证实了需求的存在。现在是时候通过一系列选项来标准化接口，以满足生态系统中的各种需求。</p>
 <p>3D 封装技术（例如混合键合 (HB：Hybrid Bonding)）的最新趋势是大幅缩Chiplet之间的凸块间距。UCIe-3D 的目标是将凸块间距从 9 µm 缩小到 1 µm，甚至可能更低。3D 互连将Chiplet之间的距离缩小到几乎为 0。因此，互操作性需要限制在相同的凸块间距内。虽然这不是一种广泛的即插即用（即，凸块间距为 1 µm 的芯片只能与凸块间距为 1 µm 的另一个chiplet混合键合，而不能与凸块间距为 9 µm 的chiplet混合键合），但关键性能指标 (KPI：key performance indicator) 的改进（例如带宽密度、功率效率等）是巨大的。如表 1 所示。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-6.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-6.png" alt="UCIe 2.0"></p>
 <p>UCIe-3D 的第一大优势是带宽密度增加。这是双重优势。首先，减小的凸块间距（从 9 µm 降至 1µm 以下）意味着给定面积的导线数量与平方成反比；例如，将 2.5D 的 25 µm 与 3D 的 5 µm 进行比较，可得出相同面积的导线数量增加 25 倍；其次是面积本身。与 UCIe 2D/2.5D 相比，UCIe-3D 具有真实连接与海岸线消耗的优势。这意味着外围 PHY 上不会浪费任何面积，并且整个芯片组都可用于 3D 连接。</p>
-<p>
-<a href="https://www.kontronn.com/imgs/post/uCIe-2.0-7.png" title="UCIe 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    UCIe 2.0
-    <i class="fa fa-external-link-alt"></i>
-</a></p>
+<p><img src="https://www.kontronn.com/imgs/post/uCIe-2.0-7.png" alt="UCIe 2.0"></p>
 <p>图 5 显示了使用 UCIe-3D 连接的两个Chiplet组和九个片上网络控制器 (NOC)。要获得凸块间距缩放的好处，必须保持相关电路简单，限制凸块。随着带宽密度的增加，无需驱动更高的频率。如表 1 所示，即使在 4 GT/s 频率下，带宽密度也比 32 GT/s 的 UCIe 2.5D 提高了几个数量级（例如，凸块间距为 1 µm 的 UCIe-3D 为 300 TB/s/mm²，而凸块间距为 25 µm 的 UCIe-2.5D 为 1.35 TB/s/mm²）。为了适应减小的凸块间距，我们通过选择适当的误码率 (BER：bit error rate ) 消除了对 (反) 序列化、CRC、重放等的需求（如表 1 所示）。同样，ESD 保护电路必须先降低至 5V CDM，并从 3 µm 开始逐渐消除。</p>
 <p>UCIe-3D 的第二个主要优势是功耗更低。随着距离减小（~0），相关的电寄生效应也随之减小。随着 SoC 频率（&lt;= 4 GT/s），电路变得简单 - 由简单的逆变器组成。再加上频率降低，功耗甚至更低（至少低一个数量级）。</p>
 <h3 id="结论">结论</h3>
