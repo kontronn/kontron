@@ -16,6 +16,33 @@
   </entry>
   
   <entry>
+    <title>Marvell Teralynx 10 51.2Tbps 交换机</title>
+    <url>/post/datacenter/marvell-teralynx-10-51.2-tbps-switch.html</url>
+    <categories><category>DataCenter</category>
+    </categories>
+    <tags>
+      <tag>Marvell</tag>
+      <tag>Teralynx</tag>
+    </tags>
+    <content type="html"><![CDATA[随着 人工智能（AI）  技术的迅猛发展，对数据处理和传输的需求日益增加，网络基础设施也必须随之升级。
+Marvell Teralynx 10 作为一款51.2Tbps的交换机，正是为了满足这些高要求而诞生的。
+本文将深入探讨这款革命性的交换机内部结构和技术细节，揭示其在未来AI集群中的重要作用。
+2021年，Marvell收购了Innovium，这家公司以其Teralynx 7交换机闻名，后者具备32个400GbE端口和12.8Tbps的吞吐量。Innovium是当时最成功的初创公司之一，成功打入了超大规模数据中心市场。
+相比之下，英特尔在收购 Barefoot Networks  后未能达到预期效果，反而在2022年宣布退出以太网交换业务。博通在商用交换机芯片市场占据了重要地位，而Innovium/Marvell则在超大规模数据中心取得了显著进展。
+Marvell Teralynx 10 的技术细节 外部结构 从交换机的正面来看，Teralynx 10采用了一个2U机箱，正面布满了64个OSFP（Octal Small Form-factor Pluggable）端口，每个端口支持800Gbps的速率。每个接口都装有OSFP光学器件，这些器件比传统的QSFP+/QSFP28光学器件更大，并且配备了集成散热器，从而提高了散热效率。
+在交换机的右侧，可以看到管理和控制台端口，而在背面则是风扇和电源模块。为了支持这些高功率的光学器件和交换机芯片，Teralynx 10的电源额定功率超过2kW。
+内部结构 打开交换机，我们首先看到的是大型散热器，覆盖了Teralynx 10的核心芯片。这款芯片采用了5nm工艺，功耗高达500W。散热器的设计考虑到了芯片的高热量输出，确保在高负载下仍能保持稳定运行。
+在散热器下方是交换机的PCB板，这里布局了32个OSFP笼子，整个交换机内部共有64个OSFP笼子分布在两个块中。Teralynx 10的交换芯片位于OSFP笼子的后方，这个芯片是整个系统的核心，负责处理所有的数据传输任务。
+交换机还配备了基于Marvell Octeon的管理控制器，并且主配电板上还安装了一个M.2 SSD，用于存储管理数据。为了便于诊断和维护，交换机内部还留有PCIe插槽和10Gbase-T管理端口。
+冷却系统和产品迭代展望 Teralynx 10的冷却系统设计相对简单，但高效。机箱后部安装了四个风扇模块，这些风扇能够提供足够的气流，确保芯片和光学器件在高负载下也能保持低温运行。
+在Marvell的实验室中，Teralynx 10被放置在机架中，并与Keysight Ixia AresONE 800GbE测试设备连接。这些设备能够模拟800GbE的高负载网络流量，验证交换机在实际使用中的性能。
+在测试中，Teralynx 10表现出色，能够在多个端口上同时处理高带宽数据流，线路速率达到99.3%。
+随着AI技术的发展，数据中心对网络交换机的性能要求将越来越高。Marvell Teralynx 10凭借其51.2Tbps的高吞吐量和64个800GbE端口，完美契合了未来AI集群的需求。其先进的芯片工艺、强大的散热系统和灵活的管理控制器，确保了在高负载下的稳定性和高效性。
+小结 Marvell Teralynx 10不仅是一款技术先进的交换机，更是未来 数据中心  和AI集群的核心组件。随着更多新技术的引入，这款交换机将在未来几年内发挥越来越重要的作用。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>了解Linux定时任务Cron</title>
     <url>/post/linux/understanding-linux-scheduled-tasks-cron.html</url>
     <categories><category>Linux</category>
