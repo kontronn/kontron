@@ -7,17 +7,47 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-09-07T20:20:12+08:00</lastmod>
+    <loc>https://www.kontronn.com/tags/baud-rate/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/datacenter/</loc>
-    <lastmod>2024-09-07T20:20:12+08:00</lastmod>
+    <loc>https://www.kontronn.com/categories/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/uart/</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/how-to-calculate-uart-rate.html</loc>
+    <lastmod>2024-09-07T20:34:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/datacenter/</loc>
     <lastmod>2024-09-07T20:20:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -28,16 +58,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://www.kontronn.com/post/datacenter/marvell-teralynx-10-51.2-tbps-switch.html</loc>
-    <lastmod>2024-09-07T20:20:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-09-07T20:20:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-09-07T20:20:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -189,11 +209,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/news/intel-may-sell-its-wafer-fab.html</loc>
     <lastmod>2024-08-31T18:08:12+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-08-31T17:53:42+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -1714,11 +1729,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/fpga/DRAM-in-chip-design.html</loc>
     <lastmod>2023-11-06T17:40:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/uart/</loc>
-    <lastmod>2023-10-22T20:55:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Sep 2024 20:20:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 20:34:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baud Rate</title>
+      <link>https://www.kontronn.com/tags/baud-rate/</link>
+      <pubDate>Sat, 07 Sep 2024 20:34:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/baud-rate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UART</title>
+      <link>https://www.kontronn.com/tags/uart/</link>
+      <pubDate>Sat, 07 Sep 2024 20:34:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/uart/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Marvell</title>
       <link>https://www.kontronn.com/tags/marvell/</link>
@@ -1759,15 +1777,6 @@
       <pubDate>Mon, 06 Nov 2023 17:46:37 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/smartnic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>UART</title>
-      <link>https://www.kontronn.com/tags/uart/</link>
-      <pubDate>Sun, 22 Oct 2023 20:55:44 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/uart/</guid>
       <description></description>
     </item>
     

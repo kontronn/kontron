@@ -6,7 +6,16 @@
     <description>Recent content in Categories on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Sep 2024 20:20:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 20:34:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hardware</title>
+      <link>https://www.kontronn.com/categories/hardware/</link>
+      <pubDate>Sat, 07 Sep 2024 20:34:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/categories/hardware/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>DataCenter</title>
       <link>https://www.kontronn.com/categories/datacenter/</link>
@@ -49,15 +58,6 @@
       <pubDate>Sat, 31 Aug 2024 18:14:26 +0800</pubDate>
       
       <guid>https://www.kontronn.com/categories/soc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hardware</title>
-      <link>https://www.kontronn.com/categories/hardware/</link>
-      <pubDate>Sat, 31 Aug 2024 17:53:42 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/categories/hardware/</guid>
       <description></description>
     </item>
     

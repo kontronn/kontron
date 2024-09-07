@@ -111,7 +111,7 @@
     </li>
     <li class="menu-item menu-item-archives">
       <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">279</span>
+        <span class="badge">280</span>
       </a>
     </li>
     <li class="menu-item menu-item-commonweal">
@@ -182,7 +182,7 @@
   <nav class="site-state">
     <div class="site-state-item site-state-posts">
       <a href="/archives/">
-        <span class="site-state-item-count">279</span>
+        <span class="site-state-item-count">280</span>
         <span class="site-state-item-name">日志</span>
       </a>
     </div>
@@ -194,7 +194,7 @@
     </div>
     <div class="site-state-item site-state-tags">
       <a href="/tags/">
-        <span class="site-state-item-count">364</span>
+        <span class="site-state-item-count">365</span>
         <span class="site-state-item-name">标签</span>
       </a>
     </div>
@@ -260,15 +260,15 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="51804"></div>
+      <div class="item-count" id="wordsCount" data-count="51868"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="424"></div>
+      <div class="item-count" id="readTimes" data-times="425"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-09-07T20:20:12&#43;08:00"></div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-09-07T20:34:41&#43;08:00"></div>
     </div>
   </div>
 </div>
@@ -378,6 +378,87 @@
     </div>
     <footer class="post-footer">
       
+<div class="post-eof"></div>
+
+    </footer>
+  </article>
+</div>
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/how-to-calculate-uart-rate.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="如何计算串口的传输速率">
+      <meta itemprop="description" content="如何计算串口的传输速率">
+    </span>
+    <header class="post-header">
+       <h2 class="post-title" itemprop="name headline">
+  <a href="/post/hardware/how-to-calculate-uart-rate.html" itemprop="url" class="post-title-link">如何计算串口的传输速率</a> </h2> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-09-07 20:34:41 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-07 20:34:41 &#43;0800 CST">2024-09-07</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  1960年代，DEC（Digital Equipment Corp）公司的Gordon Bell采用大约50个分离元件设计了一个电路板，发明了 UART串口  。
+前言 时至今日，已经60多年，虽然在个人消费类电子产品中，UART已近乎绝迹；但在工业、科研、国防、航空/航天等领域，UART却无处不在。
+很多从事多年 嵌入式  开发的朋友居然还不会根据波特率计算UART的速率，下面和大家介绍一下计算方法。
+uart帧格式 要证明速率的计算，必须搞清楚uart数据帧格式
+其中各位的意义如下：
+ 起始位：先发出一个逻辑 &ldquo;0&rdquo; 信号，表示传输字符的开始 数据位：可以是5~8位逻辑 &ldquo;0&rdquo; 或 &ldquo;1&rdquo;，如ASCII码（7位），扩展BCD码（8位），小端传输 校验位：数据位加上这一位后，使得 &ldquo;1&rdquo; 的位数应为偶数(偶校验)或奇数(奇校验) 停止位：它是一个字符数据的结束标志。可以是1位、1.5位、2位的高电平[通常为1位] 空闲位：处于逻辑&quot;1&quot;状态，表示当前线路上没有资料传送  例如我们传输数据0X33（00110011），那么对应的波形就是如下这样，因为是LSB在前，所以8位数据依次是11001100。
+由上图可得，
+假设没有奇偶校验位，停止位为1位 要传输1个字节（8个bit）数据， 那么实际硬件上需要传输10位（1个起始位，8个数据位，1个停止位）
+如果有奇偶校验位，停止位为1位 要传输1个字节（8个bit）数据， 那么实际硬件上需要传输11位（1个起始位，8个数据位，1个奇偶校验位，1个停止位）
+波特率、比特率 波特率 UART速率，也称为波特率，是指数据在串行通信中每秒钟传输的位数（包含起始位、数据位、校验位、停止位）。
+比如：115200波特率意思就是在二进制传输条件下每秒传输115200个比特。
+比特率 比特率也叫信息传输速率，单位时间传递的平均信息量或比特数（只包含有效的数据位）。
+比特率通常以bps（bits per second）表示。
+速率计算 比特率与波特率计算公式是：
+比如没有奇偶校验位，停止位为1位，波特率115200对应的比特率为
+比特率 = （115200*8 ）/(1个起始位 + 8个数据位 + 0个奇偶校验位 + 1个停止位) = 115200*8/10 = 11520*8 b/s 转换为字节 就是11520 B/s，即每秒传输11520个字节（帧） 
+
+
+    </div>
+    <footer class="post-footer">
+      
+<div class="post-button">
+  <a class="btn" href="/post/hardware/how-to-calculate-uart-rate.html#more" rel="contents">
+    阅读全文 &raquo;
+  </a>
+</div>
 <div class="post-eof"></div>
 
     </footer>
@@ -933,72 +1014,6 @@
       
 <div class="post-button">
   <a class="btn" href="/post/ai/a-checkpoint-on-checkpoints-in-llms.html#more" rel="contents">
-    阅读全文 &raquo;
-  </a>
-</div>
-<div class="post-eof"></div>
-
-    </footer>
-  </article>
-</div>
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/news/samsung-takeover-of-nokia-mobile-would-show-futility-of-open-ran.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="三星或将斥资709亿收购诺基亚移动网络资产">
-      <meta itemprop="description" content="三星或将斥资709亿收购诺基亚移动网络资产">
-    </span>
-    <header class="post-header">
-       <h2 class="post-title" itemprop="name headline">
-  <a href="/post/news/samsung-takeover-of-nokia-mobile-would-show-futility-of-open-ran.html" itemprop="url" class="post-title-link">三星或将斥资709亿收购诺基亚移动网络资产</a> </h2> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2024-08-31 18:20:03 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-08-31 18:20:03 &#43;0800 CST">2024-08-31</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/news" itemprop="url" rel="index">
-      <span itemprop="name">News</span>
-    </a>
-  </span>
-</span>
-  </div>
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>周四，彭博社援引知情人士的话报道称，电信设备制造商诺基亚正在与韩国三星等公司就出售其移动网络业务部门进行谈判。彭博社称，诺基亚已考虑多种选择，包括撤资、出售部分或全部移动网络业务（价值可能高达 100 亿美元），以及与竞争对手合并。</p>
-
-
-    </div>
-    <footer class="post-footer">
-      
-<div class="post-button">
-  <a class="btn" href="/post/news/samsung-takeover-of-nokia-mobile-would-show-futility-of-open-ran.html#more" rel="contents">
     阅读全文 &raquo;
   </a>
 </div>
