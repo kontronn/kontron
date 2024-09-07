@@ -6,7 +6,16 @@
     <description>Recent content in DataCenter on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 23:27:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/datacenter/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 10:45:10 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/datacenter/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>详细解读UCIe 2.0</title>
+      <link>https://www.kontronn.com/post/datacenter/a-detailed-explanation-of-UCIe-2.0.html</link>
+      <pubDate>Sat, 07 Sep 2024 10:45:10 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/a-detailed-explanation-of-UCIe-2.0.html</guid>
+      <description>&lt;p&gt;因为摩尔定律的失效，半导体行业过去多年正在寻找提升芯片性能的方法，而Chiplet正在成为几乎所有巨头的共同目标。然而，因为Chiplet的理念是将芯片的不同功能模块变成一个die，如何保证这些die能够更通用地连接到一起就成为了行业的头等大事。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>IBM发布了新一代处理器Telum II</title>
       <link>https://www.kontronn.com/post/datacenter/IBM-releases-new-generation-processor-Telum-II.html</link>
