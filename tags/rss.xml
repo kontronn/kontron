@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 23:27:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 06 Sep 2024 21:34:09 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Altera</title>
+      <link>https://www.kontronn.com/tags/altera/</link>
+      <pubDate>Fri, 06 Sep 2024 21:34:09 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/altera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Intel</title>
+      <link>https://www.kontronn.com/tags/intel/</link>
+      <pubDate>Fri, 06 Sep 2024 21:34:09 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/intel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Marvell</title>
+      <link>https://www.kontronn.com/tags/marvell/</link>
+      <pubDate>Fri, 06 Sep 2024 21:34:09 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/marvell/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>IBM</title>
       <link>https://www.kontronn.com/tags/ibm/</link>
@@ -85,15 +112,6 @@
       <pubDate>Sat, 31 Aug 2024 18:14:26 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/eypc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Intel</title>
-      <link>https://www.kontronn.com/tags/intel/</link>
-      <pubDate>Sat, 31 Aug 2024 18:08:12 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/intel/</guid>
       <description></description>
     </item>
     
@@ -1435,15 +1453,6 @@
       <pubDate>Sat, 25 Nov 2023 20:34:15 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/gartner/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Marvell</title>
-      <link>https://www.kontronn.com/tags/marvell/</link>
-      <pubDate>Sat, 25 Nov 2023 20:34:15 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/marvell/</guid>
       <description></description>
     </item>
     
@@ -3046,15 +3055,6 @@
       <pubDate>Sat, 29 Oct 2022 07:53:45 -0400</pubDate>
       
       <guid>https://www.kontronn.com/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Altera</title>
-      <link>https://www.kontronn.com/tags/altera/</link>
-      <pubDate>Sat, 29 Oct 2022 06:53:45 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/altera/</guid>
       <description></description>
     </item>
     
