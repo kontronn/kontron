@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Sep 2024 21:15:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Sep 2024 21:37:05 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,19 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>三星：业界最薄封装LPDDR5X，仅厚0.65毫米</title>
+      <link>https://www.kontronn.com/post/soc/samsung-shrinks-lpddr5x-packaging-by-9-now-in-mass-production.html</link>
+      <pubDate>Mon, 09 Sep 2024 21:37:05 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/samsung-shrinks-lpddr5x-packaging-by-9-now-in-mass-production.html</guid>
+      <description>&lt;p&gt;最近，三星宣布开始量产业界最薄封装的12GB和16GB 
+&lt;a href=&#34;https://www.gaitpu.com/tag/ddr5&#34; title=&#34;LPDDR5X&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    LPDDR5X
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;模块。三星内存封装厚度约为0.65毫米，比标准的LPDDR5X封装薄0.06毫米(约9%)。三星电子预计，新的DRAM设备将用于制造更薄的智能手机，或通过改善内部气流来改善其性能。&lt;/p&gt;</description>
     </item>
     
     <item>

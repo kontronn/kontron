@@ -16,6 +16,23 @@
   </entry>
   
   <entry>
+    <title>三星：业界最薄封装LPDDR5X，仅厚0.65毫米</title>
+    <url>/post/soc/samsung-shrinks-lpddr5x-packaging-by-9-now-in-mass-production.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Samsung</tag>
+    </tags>
+    <content type="html"><![CDATA[最近，三星宣布开始量产业界最薄封装的12GB和16GB LPDDR5X  模块。三星内存封装厚度约为0.65毫米，比标准的LPDDR5X封装薄0.06毫米(约9%)。三星电子预计，新的DRAM设备将用于制造更薄的智能手机，或通过改善内部气流来改善其性能。
+根据其新闻稿，三星通过采用新的封装方法实现了这种超薄设计，如优化的 PCB  和 EMC  。此外还采用了优化的后覆工艺，进一步降低了封装的高度。新开发的DRAM封装不仅比以前的型号薄9%，而且耐热性提高了21.2%。
+更薄的LPDDR5X封装有助于增强智能手机内部的气流，显著改善热管理，从而实现更高的性能和更长的电池寿命。此外，更好的热管理有助于延长设备的使用寿命。
+三星电子内存产品规划常务副社长YongCheol Bae表示:“LPDDR5X DRAM不仅具有卓越的LPDDR性能，而且在超紧凑的封装中具有先进的热管理功能，为高性能设备上AI解决方案树立了新的标准。我们致力于通过与客户的密切合作不断创新，提供满足低功耗DRAM市场未来需求的解决方案。”
+虽然三星更薄的LPDDR5X DRAM封装有助于使智能手机更薄，但它们只是整体设计策略的一部分。其他组件，如更薄的保护玻璃、PCB和电池，在减少设备厚度方面发挥着相当重要的作用。与此同时，这些新的内存模块的主要好处可能是改善智能手机内部的气流。
+三星希望通过开发更紧凑的封装来进一步扩大其LPDDR5X产品阵容，包括6层24GB和8层32GB模块。使高容量dram更薄是一件重要的事情，但关于这些未来存储模块厚度的具体细节尚未披露。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux下的NFS服务器实战</title>
     <url>/post/linux/practical-application-of-nfs-server-under-linux.html</url>
     <categories><category>Linux</category>
