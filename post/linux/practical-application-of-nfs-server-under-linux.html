@@ -456,34 +456,16 @@ sudo chmod -R <span style="color:#ae81ff">777</span> /mnt/nfs
 <p>rw,sync,no_all_squash,root_squash,no_subtree_check:</p>
 </li>
 </ul>
-<ol>
-<li>
-<p>rw：表示目录读写权限，如果是ro表示只读。</p>
-</li>
-<li>
-<p>sync：数据写入磁盘模式。sync表示同步写入，数据会同步写入到内存和硬盘中，效率低，但可以保证数据一致性。相反 async为异步写入， 表示数据会先暂存于内存中，而非直接写入到硬盘中，效率高，但极端情况下无法保证数据一致性。</p>
-</li>
-<li>
-<p>all_squash: 无论访表示将客户端请求中的所有用户 ID (UIDs) 和组 ID (GIDs) 映射为 NFS 服务器上相同的 UIDs 和 GIDs。</p>
-</li>
-<li>
-<p>no_all_squash: 客户端请求中的用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组。</p>
-</li>
-<li>
-<p>root_squash: 将客户端root用户的请求映射到一个匿名的用户 ID (UID)/组 ID (GID)。</p>
-</li>
-<li>
-<p>no_root_squash：表示当客户机以root身份访问时赋予本地root权限，安全风险较大。</p>
-</li>
-<li>
-<p>no_subtree_check：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率。</p>
-</li>
-<li>
-<p>subtree_check：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限。</p>
-</li>
-<li>
-<p>导出共享给客户端</p>
-</li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">rw：表示目录读写权限，如果是ro表示只读
+sync：数据写入磁盘模式。sync表示同步写入，数据会同步写入到内存和硬盘中，效率低，但可以保证数据一致性。相反 async为异步写入， 表示数据会先暂存于内存中，而非直接写入到硬盘中，效率高，但极端情况下无法保证数据一致性
+all_squash: 无论访表示将客户端请求中的所有用户 ID (UIDs) 和组 ID (GIDs) 映射为 NFS 服务器上相同的 UIDs 和 GIDs
+no_all_squash: 客户端请求中的用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组
+root_squash: 将客户端root用户的请求映射到一个匿名的用户 ID (UID)/组 ID (GID)
+no_root_squash：表示当客户机以root身份访问时赋予本地root权限，安全风险较大
+no_subtree_check：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率
+subtree_check：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限
+</code></pre></div><ol start="4">
+<li>导出共享给客户端</li>
 </ol>
 <p>使用<code>exportfs</code>命令加载<code>exports</code>配置：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo exportfs -arv

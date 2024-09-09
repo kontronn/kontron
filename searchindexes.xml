@@ -38,16 +38,7 @@ sudo vi /etc/exports 将客户端信息添加到文件中：
   /mnt/nfs: 共享的目录路径。
   192.168.0.0/24: 设置可以访问的客户端网络；除了网段，也可以设置ip或者域名（client.test.com或者*.test.com），也可以用*允许所有客户端网络。
   rw,sync,no_all_squash,root_squash,no_subtree_check:
-    rw：表示目录读写权限，如果是ro表示只读。
-  sync：数据写入磁盘模式。sync表示同步写入，数据会同步写入到内存和硬盘中，效率低，但可以保证数据一致性。相反 async为异步写入， 表示数据会先暂存于内存中，而非直接写入到硬盘中，效率高，但极端情况下无法保证数据一致性。
-  all_squash: 无论访表示将客户端请求中的所有用户 ID (UIDs) 和组 ID (GIDs) 映射为 NFS 服务器上相同的 UIDs 和 GIDs。
-  no_all_squash: 客户端请求中的用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组。
-  root_squash: 将客户端root用户的请求映射到一个匿名的用户 ID (UID)/组 ID (GID)。
-  no_root_squash：表示当客户机以root身份访问时赋予本地root权限，安全风险较大。
-  no_subtree_check：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率。
-  subtree_check：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限。
-  导出共享给客户端
-  使用exportfs命令加载exports配置：
+  rw：表示目录读写权限，如果是ro表示只读 sync：数据写入磁盘模式。sync表示同步写入，数据会同步写入到内存和硬盘中，效率低，但可以保证数据一致性。相反 async为异步写入， 表示数据会先暂存于内存中，而非直接写入到硬盘中，效率高，但极端情况下无法保证数据一致性 all_squash: 无论访表示将客户端请求中的所有用户 ID (UIDs) 和组 ID (GIDs) 映射为 NFS 服务器上相同的 UIDs 和 GIDs no_all_squash: 客户端请求中的用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组 root_squash: 将客户端root用户的请求映射到一个匿名的用户 ID (UID)/组 ID (GID) no_root_squash：表示当客户机以root身份访问时赋予本地root权限，安全风险较大 no_subtree_check：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率 subtree_check：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限 导出共享给客户端  使用exportfs命令加载exports配置：
 sudo exportfs -arv 或者也可以重启 NFS 服务器：
 # ubuntu sudo systemctl restart nfs-kernel-server # centos systemctl resstart nfs 查看export列表：
 root@nfs:~# showmount -e localhost Export list for localhost: /mnt/nfs 10.210.0.0/16 配置防火墙规则 # 1. ubuntu。 ## 可以关闭防火墙 [root@nfs ~]# ufw disable Firewall stopped and disabled on system startup [root@nfs ~]# ufw status Status: inactive ## 或者ufw放行规则 sudo ufw allow nfs sudo ufw allow portmapper sudo ufw reload # 2. centos ## 关闭防火墙 systemctl stop firewalld;systemctl disable firewalld ## 或者配置防火墙规则 sudo firewall-cmd --permanent --add-service=nfs sudo firewall-cmd --permanent --add-service=rpc-bind sudo firewall-cmd --permanent --add-service=mountd sudo firewall-cmd --reload 按照端口放行：
