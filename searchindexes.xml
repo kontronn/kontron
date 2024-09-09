@@ -16,6 +16,52 @@
   </entry>
   
   <entry>
+    <title>Linux下的NFS服务器实战</title>
+    <url>/post/linux/practical-application-of-nfs-server-under-linux.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>NFS</tag>
+    </tags>
+    <content type="html"><![CDATA[本文记录了 Linux  下搭建使用NFS服务器的一般步骤，以ubuntu20.04和centos7.9操作进行记录。
+安装 NFS 服务器 运行以下命令安装 NFS 服务器
+# ubuntu下安装 sudo apt-get update sudo apt install nfs-kernel-server # 配置服务 sudo systemctl start nfs-kernel-server sudo systemctl enable --now nfs-kernel-server sudo systemctl status nfs-kernel-server # centos下载安装 sudo yum -y update sudo yum install nfs-utils # dnf安装类似 # 服务为nfs-server或者nfs sudo systemctl start nfs-server.service sudo systemctl enable nfs-server.service sudo systemctl status nfs-server.service # 确认nfs版本，输出的第二列 rpcinfo -p | grep nfs 说明：
+可以在 /etc/nfs.conf 找到 NFS 守护进程的配置文件，还可以在 /etc/nfsmount.conf 找到挂载的配置文件。
+需要注意的是，在标准的 NFS 配置中，主要的配置文件通常是 /etc/exports 用于 NFS 服务器的共享目录设置，而不是 /etc/nfs.conf。而客户端的配置通常涉及 /etc/fstab 或使用 mount 命令时指定选项，并没有一个专门的配置文件。
+创建并导出共享 NFS 客户端将在服务器机器上挂载一个目录，该目录有 NFS 服务器进行配置。
+ 运行以下命令来指定挂载文件夹名称（例如，/mnt/nfs）。  sudo mkdir -p /mnt/nfs 设置文件夹的权限。  sudo chown -R nobody: /mnt/nfs sudo chmod -R 777 /mnt/nfs 说明：
+如果是生产环境，建议按照最小权限进行设置，否则有安全隐患。
+配置NFS共享  Linux下nfs共享配置主要通过文件/etc/exports进行。配置语法：
+[共享的目录1] [主机名1或IP地址1(参数1,参数2,...)] [主机名2或IP地址2(参数1,参数2,...)] [共享的目录2] [主机名1或IP地址1(参数1,参数2,...)] [主机名2或IP地址2(参数3,参数4,...)] 编辑NFS的配置文件/etc/exports：
+sudo vi /etc/exports 将客户端信息添加到文件中：
+[root@nfs ~]# cat /etc/exports /mnt/nfs 10.210.0.0/16(rw,sync,no_all_squash,root_squash,no_subtree_check) 参数说明：
+  /mnt/nfs: 共享的目录路径。
+  192.168.0.0/24: 设置可以访问的客户端网络；除了网段，也可以设置ip或者域名（client.test.com或者*.test.com），也可以用*允许所有客户端网络。
+  rw,sync,no_all_squash,root_squash,no_subtree_check:
+    rw：表示目录读写权限，如果是ro表示只读。
+  sync：数据写入磁盘模式。sync表示同步写入，数据会同步写入到内存和硬盘中，效率低，但可以保证数据一致性。相反 async为异步写入， 表示数据会先暂存于内存中，而非直接写入到硬盘中，效率高，但极端情况下无法保证数据一致性。
+  all_squash: 无论访表示将客户端请求中的所有用户 ID (UIDs) 和组 ID (GIDs) 映射为 NFS 服务器上相同的 UIDs 和 GIDs。
+  no_all_squash: 客户端请求中的用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组。
+  root_squash: 将客户端root用户的请求映射到一个匿名的用户 ID (UID)/组 ID (GID)。
+  no_root_squash：表示当客户机以root身份访问时赋予本地root权限，安全风险较大。
+  no_subtree_check：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率。
+  subtree_check：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限。
+  导出共享给客户端
+  使用exportfs命令加载exports配置：
+sudo exportfs -arv 或者也可以重启 NFS 服务器：
+# ubuntu sudo systemctl restart nfs-kernel-server # centos systemctl resstart nfs 查看export列表：
+root@nfs:~# showmount -e localhost Export list for localhost: /mnt/nfs 10.210.0.0/16 配置防火墙规则 # 1. ubuntu。 ## 可以关闭防火墙 [root@nfs ~]# ufw disable Firewall stopped and disabled on system startup [root@nfs ~]# ufw status Status: inactive ## 或者ufw放行规则 sudo ufw allow nfs sudo ufw allow portmapper sudo ufw reload # 2. centos ## 关闭防火墙 systemctl stop firewalld;systemctl disable firewalld ## 或者配置防火墙规则 sudo firewall-cmd --permanent --add-service=nfs sudo firewall-cmd --permanent --add-service=rpc-bind sudo firewall-cmd --permanent --add-service=mountd sudo firewall-cmd --reload 按照端口放行：
+# nfs相关端口 [root@nfs ~]# rpcinfo -p localhost program vers proto port service 100000 4 tcp 111 portmapper 100000 3 tcp 111 portmapper 100000 2 tcp 111 portmapper 100000 4 udp 111 portmapper 100000 3 udp 111 portmapper 100000 2 udp 111 portmapper 100005 1 udp 20048 mountd 100005 1 tcp 20048 mountd 100005 2 udp 20048 mountd 100024 1 udp 48719 status 100024 1 tcp 37476 status 100005 2 tcp 20048 mountd 100005 3 udp 20048 mountd 100005 3 tcp 20048 mountd 100003 3 tcp 2049 nfs 100003 4 tcp 2049 nfs 100227 3 tcp 2049 nfs_acl 100003 3 udp 2049 nfs 100003 4 udp 2049 nfs 100227 3 udp 2049 nfs_acl 100021 1 udp 53709 nlockmgr 100021 3 udp 53709 nlockmgr 100021 4 udp 53709 nlockmgr 100021 1 tcp 37318 nlockmgr 100021 3 tcp 37318 nlockmgr 100021 4 tcp 37318 nlockmgr nfs除了固定的port111、2049外，还有其他服务如rpc.mounted等开启的不固定的端口，如果按照端口配置对防火墙来说就比较麻烦。为了解决这个问题，我们可以设置NFS服务的端口配置文件/etc/sysconfig/nfs，将下列内容的注释去掉，如果没有则添加：
+RQUOTAD_PORT=1001 LOCKD_TCPPORT=30001 LOCKD_UDPPORT=30002 MOUNTD_PORT=1002 保存后，将端口加入防护墙放行：
+# ufw sudo ufw allow proto tcp from any to any port 111 sudo ufw allow proto udp from any to any port 111 sudo ufw allow proto tcp from any to any port 2049 sudo ufw allow proto udp from any to any port 2049 sudo ufw reload # firewalld firewall-cmd --zone=public --add-port=111/tcp --add-port=111/udp --add-port=2049/tcp --add-port=2049/udp --add-port=1001/tcp --add-port=1001/udp --add-port=1002/tcp --add-port=1002/udp --add-port=30001/tcp --add-port=30002/udp --permanent firewall-cmd --reload 客户端挂载验证 nfs挂载需要安装nfs客户端：
+# ubuntu sudo apt-get install nfs-common # centos yum -y install nfs-utils # dnf安装类似 执行挂载命令：
+# 查看nfs共享的目录 [root@client ~]# showmount -e 10.210.10.209 Export list for 10.210.10.209: /mnt/nfs 10.210.0.0/16 # 挂载命令如下 mount -t nfs &lt;nfs-server-ip&gt;:/exports-dir /local-dir [root@client:~]# mkdir -p /mnt/nfs # -t配置fs类型，设置nfs或者nfs4 [root@client:~]# mount -t nfs 10.210.10.209:/mnt/nfs /mnt/nfs  [root@client ~]# sudo mount | grep -i nfs 10.210.10.209:/mnt/nfs on /mnt/nfs type nfs4 (rw,relatime,vers=4.1,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.210.10.220,local_lock=none,addr=10.210.10.209) # 测试读写 [root@client ~]# cd /mnt/nfs [root@dns nfs]# echo aaa &gt; test.txt [root@dns nfs]# cat test.txt aaa 配置重启系统自动挂载：
+[root@client ~]# cat /etc/fstab ... 10.210.10.209:/mnt/nfs /mnt/nfs nfs defaults,_netdev 0 0 [root@client ~]# mount -a 说明：
+参数_netdev表示延迟加载，等待网络服务启动后再挂载。
+相关命令 # 查看nfs版本及统计数据 nfsstat -s # 服务器端使用 nfsstat -c # 客户端使用 相关资料  How to configure NFS on Linux - Linux Tutorials - Learn Linux Configuration Learning NFS through server and client configuration | Enable Sysadmin (redhat.com)、 第 4 章 挂载 NFS 共享 | Red Hat Product Documentation ]]></content>
+  </entry>
+  
+  <entry>
     <title>什么是智算中心</title>
     <url>/post/datacenter/what-is-the-intelligent-computing-center.html</url>
     <categories><category>DataCenter</category>
