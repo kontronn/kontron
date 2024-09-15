@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GDDR on Kontronn</title>
+    <link>https://www.kontronn.com/tags/gddr/</link>
+    <description>Recent content in GDDR on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 15 Sep 2024 20:30:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/gddr/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDDR 和 DDR 内存之间有什么区别</title>
+      <link>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</link>
+      <pubDate>Sun, 15 Sep 2024 20:30:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</guid>
+      <description>&lt;p&gt;DDR 代表double data rate，GDDR 代表graphics double data rate。需要明确的是，DDR 和 GDDR 架构并不共享相同的速度、带宽等标准。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

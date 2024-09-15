@@ -7,6 +7,46 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/categories/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/ddr/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/gddr/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/hardware/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-09-15T20:30:52+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/agesa/</loc>
     <lastmod>2024-09-15T17:09:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -22,16 +62,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-09-15T17:09:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-09-15T17:09:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/openbmc/</loc>
     <lastmod>2024-09-15T17:09:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -42,17 +72,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-09-15T17:09:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/soc/</loc>
-    <lastmod>2024-09-15T17:09:31+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-09-15T17:09:31+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -94,11 +114,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/news/US-pushes-Nvidia-and-Apple-to-use-Intel-for-chip-manufacturing.html</loc>
     <lastmod>2024-09-15T17:04:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-09-15T10:17:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -559,11 +574,6 @@
   </url><url>
     <loc>https://www.kontronn.com/tags/linux-patch/</loc>
     <lastmod>2024-08-15T23:13:37+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/ddr/</loc>
-    <lastmod>2024-08-13T00:29:43+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

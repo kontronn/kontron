@@ -16,6 +16,27 @@
   </entry>
   
   <entry>
+    <title>GDDR 和 DDR 内存之间有什么区别</title>
+    <url>/post/hardware/difference-between-gddr-and-ddr.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>GDDR</tag>
+      <tag>DDR</tag>
+    </tags>
+    <content type="html"><![CDATA[DDR 代表double data rate，GDDR 代表graphics double data rate。需要明确的是，DDR 和 GDDR 架构并不共享相同的速度、带宽等标准。
+我们可以将它们归类为完全不同的技术，因为 DDR 是为 CPU开发的，而 GDDR 是为图形开发的。例如 GDDR6 SDRAM 代表graphics double data rate type 6, synchronous dynamic random-access memory，其中 SDRAM 是台式机（DDR4 和 DDR5）、笔记本电脑（LPDDR4 和 LPDDR5）和图形处理单元（GDDR6 以及 NVIDIA GPU 中的 GDDR6x）中使用的内存的基础。
+GDDR - 总线和带宽 GDDR 与 DDR 的主要区别在于内存总线大小和带宽。GDDR 是针对现代显卡使用的带宽进行优化的内存，例如 GDDR6 和 GDDR6X，使用在高端消费级 NVIDIA GPU（如 4090）中。GPU 处理大量重复和线性工作负载（如数学计算）以及并行传输数据；需要更大的位总线和更高的带宽来防止出现瓶颈。否则，我们的视觉图形图像将无法加载，或者依赖数据的 AI 训练。
+DDR - 速度与延迟 DDR 内存优先考虑较低的延迟而不是带宽。虽然仍能实现高速，但 DDR 的较低延迟对于执行需要快速访问内存的 CPU 任务（例如运行应用程序、管理操作系统、执行指令以及指示 GPU 计算哪些内容）非常重要。
+DDR5 是 CPU 内存的最新标准，其数据传输率可达 4800 至 8400 MT/s，DDR5 6400MT/s CL32。我们要重点关注 CL，它告诉我们内存的时序。
+CAS 延迟（列地址选通延迟）是指向内存发出读取命令和数据请求可供访问之间的时间延迟（以时钟周期为单位）。它是衡量模块速度和性能的更重要的时序参数之一。
+对于上述示例，CL32 表示模块在收到命令后需要 32 个时钟周期才能访问数据。CL 值越低（例如 CL16 和 CL15），通常被认为速度越快，可以提供更好的性能。值得注意的是，虽然 DDR4 RAM DIMM 的 CAS 延迟选项低至 CL16，DDR5 的最低 CAS 延迟 DIMM 为 CL30。不用担心！由于 DDR5 具有更高的频率/传输速率，因此有效延迟略大。
+   DDR 一代 CAS 延迟 频率 绝对延迟     DDR4 CL16 3200 MT/s 10ns   DDR4 CL18 3600 MT/s 10ns   DDR5 CL38 5200 MT/s 14.6ns   DDR5 CL40 6000 MT/s 13.3ns   DDR5 CL32 6400 MT/s 10ns    下一代内存 下面是关于内存技术趋势的预测，看起来 DDR5 和 GDDR6 超出了推断的性能预期！
+现在，DDR5 仍然相对较新，没有理由相信DDR6 即将发布。然而，GDDR6 已经存在了大约 5 年，三星已于 2023 年 7 月宣布推出首款 GDDR7 DRAM 产品，美光也将在 2024 年推出。三星的 GDDR7 声称可提供 1.5TB 带宽和每针 32GBps 的速度。这为下一代高性能 GPU 带来了什么？
+]]></content>
+  </entry>
+  
+  <entry>
     <title>AMD下一代 Zen 6 处理器将全面应用开源固件</title>
     <url>/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</url>
     <categories><category>SOC</category>

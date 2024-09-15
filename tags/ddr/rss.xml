@@ -6,7 +6,16 @@
     <description>Recent content in DDR on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 13 Aug 2024 00:29:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 20:30:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDDR 和 DDR 内存之间有什么区别</title>
+      <link>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</link>
+      <pubDate>Sun, 15 Sep 2024 20:30:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</guid>
+      <description>&lt;p&gt;DDR 代表double data rate，GDDR 代表graphics double data rate。需要明确的是，DDR 和 GDDR 架构并不共享相同的速度、带宽等标准。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>DDR SDRAM 的读写timing</title>
       <link>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</link>
