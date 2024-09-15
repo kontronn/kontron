@@ -396,9 +396,11 @@
 </a>和WAN之间。它通常放置在转发路径中，目的是让所有数据包都必须由防火墙检查，然后根据策略来决定是丢弃或允许这些数据包通过。例如：</p>
 <p><img src="https://www.kontronn.com/imgs/post/firewall-1.png" alt="防火墙基本原理"></p>
 <p>如上图，LAN有一台主机和一台交换机SW1。在右侧，有一台路由器R1连接到运营商的路由器ISP1。防火墙位于两者之间,这样就可以保证LAN的安全。路由器是可选的，主要是取决于所连的WAN。例如，如果您的 ISP 提供电缆，那么您可能有一个带有以太网连接的电缆调制解调器，也可以直接连接到您的防火墙。当它是无线连接时，您可能需要那里的路由器进行连接。如果您需要配置（高级）路由，如 BGP，您就需要路由器。大多数防火墙支持一些基本路由选项：静态路由、默认路由，有时还支持 RIP、OSPF 或 EIGRP 等路由协议。</p>
-<blockquote>
-我们在这里谈论硬件防火墙。还有软件防火墙，例如 [Microsoft Windows](https://www.vxworks.net/wince/1198-hyper-v-the-virtual-machine-software-that-comes-with-windows-10) 预装的防火墙。它具有与我们的硬件防火墙类似的功能。
-</blockquote>
+<p>我们在这里谈论硬件防火墙。还有软件防火墙，例如 
+<a href="https://www.vxworks.net/wince/1198-hyper-v-the-virtual-machine-software-that-comes-with-windows-10" title="Microsoft Windows" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Microsoft Windows
+    <i class="fa fa-external-link-alt"></i>
+</a> 预装的防火墙。它具有与我们的硬件防火墙类似的功能。</p>
 <h2 id="状态过滤">状态过滤</h2>
 <p>防火墙，如路由器，可以使用访问控制列表来检查源、目地址/端口号。然而，大多数路由器不会在过滤上花太多时间……当它们收到数据包时，就检查数据包的源目信息是否与访问控制列表中的条目匹配，如果匹配，它们会允许或丢弃该数据包。无论他们收到一个数据包还是数千个数据包，每个数据包都会单独处理，不进行跟踪之前是否检查过的数据包，这称为无状态过滤。</p>
 <p>与之相反的就是，有状态过滤。防火墙会跟踪所有入向和出向的连接。例如：</p>
