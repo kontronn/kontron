@@ -6,7 +6,20 @@
     <description>Recent content in PCIe on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 17:53:42 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcie/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 10:17:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pcie/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PCIe总线4种复位介绍</title>
+      <link>https://www.kontronn.com/post/hardware/introduction-to-4-types-of-PCIe-bus-reset.html</link>
+      <pubDate>Sun, 15 Sep 2024 10:17:37 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/introduction-to-4-types-of-PCIe-bus-reset.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.vxworks.net/bus-protocol/624-research-and-implementation-of-pci-express-flow-control-mechanism&#34; title=&#34;PCIe&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    PCIe
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;规范定义了四种类型的复位：冷复位、暖复位、热复位和FLR复位（Function Level Reset）。前三个是PCIe规范早期版本就已经定义的，称为传统复位（Conventional Reset）。随着PCIe 2.0规范修订而增加的Function Level Reset称为功能级复位。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>PCIe技术的新革命</title>
       <link>https://www.kontronn.com/post/hardware/a-new-revolution-in-PCIe-technology.html</link>

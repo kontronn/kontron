@@ -16,6 +16,36 @@
   </entry>
   
   <entry>
+    <title>PCIe总线4种复位介绍</title>
+    <url>/post/hardware/introduction-to-4-types-of-PCIe-bus-reset.html</url>
+    <categories><category>Hardware</category>
+    </categories>
+    <tags>
+      <tag>PCIe</tag>
+      <tag>Reset</tag>
+    </tags>
+    <content type="html"><![CDATA[ PCIe  规范定义了四种类型的复位：冷复位、暖复位、热复位和FLR复位（Function Level Reset）。前三个是PCIe规范早期版本就已经定义的，称为传统复位（Conventional Reset）。随着PCIe 2.0规范修订而增加的Function Level Reset称为功能级复位。
+传统复位（Conventional Reset） 传统复位包括Cold Reset、Warm Reset和Hot Reset三种复位，其中Cold Reset和Warm Reset统称为基本复位（Fundamental Reset）；而Hot Reset是非基本的复位方式，它是一种带内复位，来自上游设备，以包的形式通过链路向下游设备传达。
+基本复位使设备的状态机、硬件逻辑、端口状态和配置寄存器初始化为它们的默认状态，除了设备的那些能从辅电源Vaux汲取电能的粘性（sticky）配置寄存器（它们在主电源关闭的情况下靠辅电源Vaux仍处于工作状态）。
+冷复位 冷复位（Cold Reset）是指设备主电源打开后的结果，重启电源也会导致冷复位。
+暖复位 暖复位（Warm Rest）是在系统电源稳定的情况下（即不关闭／重加主电源），由硬件触发的复位，比如压下复位按钮。这种复位触发系统电源电路的POWERGOOD信号，进而引发复位。PCIe规范并未明确规定暖复位的产生机制。
+基本复位有以下两种生成的方法。
+一是通过边带信号PERST#产生基本复位。PERST#（PCI Express复位，低有效）是PCIe系统中的一个边带信号，用来传递复位信号。
+二是PCIe设备也可以不使用边带信号PERST#来复位自己的电路，而设计成在检测到主电源加电（或重加电）的情况下自己产生基本复位信号复位自身电路。
+下图是通过边带信号PERST#产生基本复位的一个例子。
+热复位 热复位也称为带内（In-band）复位，它不是由边带的复位信号产生的，而是通过发送TS1有序集在带内传播。热复位是由软件生成的复位，由上游向下游逐级传播，即只有根复合体RC和交换开关Switch能够产生热复位，端点不产生热复位。
+当PCIe设备出现某种异常的时候，可以使用软件手段对该设备进行热复位。
+软件通知热复位的方法：
+软件欲在根复合体或交换开关某端口上生成热复位时，向该端口配置空间头标区中桥控制寄存器的次级总线复位（Secondary Bus Reset）位写１，就会在相应端口物理层上生成Assert Hot Reset 位为１的TS1有序集，并向下传送。
+设备对热复位命令的响应：
+当设备接收到热复位后，链路训练状态机LTSSM会先进入Recovery状态， 然后进入Hot Reset状态，然后回到Detect状态，并重新开始链路初始化训练。PCIe设备的所有状态机，硬件逻辑，端口状态和配置寄存器（除了Sticky寄存器）都将被初始化为默认状态。
+FLR复位（Function Level Reset） FLR机制使软件能够以function粒度来复位设备。FLR复位主要针对的是支持多个function的PCIe设备（Multi-Fun PCIe Device），可以实现只对特定的Function复位，而其他的Function不受影响。
+FLR复位的实现是可选的(不是必需的)，但PCIe规范强烈建议使用。软件可以向Device Control Register中的Initiate Function Level Reset bit写1，来产生FLR，该function必须在100ms内完成FLR复位。
+FLR只复位对应Function的内部状态和寄存器，并不影响Sticky bits、有硬件初始化的值（Hardware-initialized bits）和链路专用寄存器。
+参考：  PCI Express Base Specification Revision 5.0 PCI、PCI-X和PCI Express的原理及体系结构 ]]></content>
+  </entry>
+  
+  <entry>
     <title>DRAM 和 SRAM 的区别是什么</title>
     <url>/post/hardware/difference-between-dram-and-sram.html</url>
     <categories><category>Hardware</category>
