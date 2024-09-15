@@ -2727,7 +2727,17 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/dmesg/</loc>
+    <lastmod>2023-07-08T22:04:43-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/grep/</loc>
+    <lastmod>2023-07-08T22:04:43-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/linux/linux-system-troubleshooting-using-dmesg.html</loc>
     <lastmod>2023-07-08T22:04:43-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

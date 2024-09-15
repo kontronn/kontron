@@ -2410,6 +2410,15 @@ FPGA中实用的DDR接口应用方法。&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Linux 利用 dmesg 进行系统故障排查</title>
+      <link>https://www.kontronn.com/post/linux/linux-system-troubleshooting-using-dmesg.html</link>
+      <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-system-troubleshooting-using-dmesg.html</guid>
+      <description>&lt;p&gt;在 Linux 系统管理中，及时准确地识别和解决系统问题至关重要。内核日志是诊断系统问题的重要资源之一，而 dmesg 命令则是获取这些日志的关键工具。本文将详细介绍 dmesg 的基本用法，并通过实际案例来展示如何利用该命令进行系统故障排查。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Linux三剑客（grep,sed,awk）</title>
       <link>https://www.kontronn.com/post/linux/linux-three-musketeers.html</link>
       <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
