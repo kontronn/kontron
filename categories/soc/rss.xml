@@ -6,7 +6,16 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Sep 2024 21:37:05 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 17:09:31 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD下一代 Zen 6 处理器将全面应用开源固件</title>
+      <link>https://www.kontronn.com/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</link>
+      <pubDate>Sun, 15 Sep 2024 17:09:31 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</guid>
+      <description>&lt;p&gt;AMD 近期宣布，将在未来的Zen 6 Ryzen 和 EPYC 处理器中应用开源固件项目openSIL，以提升透明度、安全性及开发能力。目前这一项目的进展顺利，预计将于2025-2026年取代现有的AGESA固件。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>三星：业界最薄封装LPDDR5X，仅厚0.65毫米</title>
       <link>https://www.kontronn.com/post/soc/samsung-shrinks-lpddr5x-packaging-by-9-now-in-mass-production.html</link>

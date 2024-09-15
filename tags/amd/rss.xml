@@ -6,7 +6,16 @@
     <description>Recent content in AMD on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 31 Aug 2024 18:14:26 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/amd/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 17:09:31 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/amd/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD下一代 Zen 6 处理器将全面应用开源固件</title>
+      <link>https://www.kontronn.com/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</link>
+      <pubDate>Sun, 15 Sep 2024 17:09:31 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</guid>
+      <description>&lt;p&gt;AMD 近期宣布，将在未来的Zen 6 Ryzen 和 EPYC 处理器中应用开源固件项目openSIL，以提升透明度、安全性及开发能力。目前这一项目的进展顺利，预计将于2025-2026年取代现有的AGESA固件。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>AMD Zen5 EYPC 9755 速度比前代Zen4 9754 快2倍</title>
       <link>https://www.kontronn.com/post/soc/AMD-Zen5-EYPC-9755-is-2-times-faster-than-Zen4-9754.html</link>

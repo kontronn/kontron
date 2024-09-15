@@ -16,6 +16,30 @@
   </entry>
   
   <entry>
+    <title>AMD下一代 Zen 6 处理器将全面应用开源固件</title>
+    <url>/post/soc/amd-next-generation-processor-will-fully-use-open-source-firmware.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>Zen6</tag>
+      <tag>Venice</tag>
+      <tag>openSIL</tag>
+      <tag>AGESA</tag>
+      <tag>uEFI</tag>
+      <tag>openBMC</tag>
+    </tags>
+    <content type="html"><![CDATA[AMD 近期宣布，将在未来的Zen 6 Ryzen 和 EPYC 处理器中应用开源固件项目openSIL，以提升透明度、安全性及开发能力。目前这一项目的进展顺利，预计将于2025-2026年取代现有的AGESA固件。
+openSIL项目于2023年启动，并在6月正式开源。该项目的目标是完全取代AMD在客户端和服务器处理器中的AGESA固件，并成为AMD固件生态系统的重要组成部分。根据AMD在德国举行的开源固件大会（OFSC 2024）上展示的最新进展，基于Zen 6架构的第六代EPYC &ldquo;Venice&rdquo; 以及Ryzen处理器将率先采用该固件。
+在项目的早期开发阶段，AMD已经将openSIL移植到一款主板上进行实验，并计划在Zen 6处理器推出时，首先将openSIL与现有的AGESA-v10固件同时使用，作为过渡期的解决方案。AGESA将在短期内继续与Zen 6处理器共存，但openSIL的应用会逐步扩大，最终在Zen 7 CPU发布时完全替代AGESA。
+AMD的开源固件战略不仅局限于openSIL，还包括对Coreboot和Tianocore项目的持续支持。Coreboot是一个广受欢迎的开源固件项目，而Tianocore则是与 UEFI  相关的开源项目。通过这些项目，AMD目标是减少对专有代码的依赖，促进社区协作，进一步提高固件的安全性和可开发性。
+openSIL项目的推出还标志着AMD在硬件透明性和开源社区参与方面的进更进一步。通过开源，开发者和社区成员可以共同参与固件的开发和创新。这种模式不仅增强了下一代处理器的安全性，还为第三方硬件制造商采用类似的开源固件提供了可能性。
+此外，AMD也在其他领域积极推行开源解决方案，例如Sound Open Firmware（用于音频管理的开源固件）、安全加密虚拟化固件（SEV）以及 openBMC（底板管理控制器软件）  。这些项目表明AMD正在全方位推动开源技术的普及，目标是打造一个更加透明、安全、协作的技术生态。
+openSIL的推出将成为AMD固件技术发展的一个重要里程碑，它不仅意味着固件开发的开放性提升，还预示着整个硬件行业可能向开源技术迈出更大一步。在未来几年内，随着Zen 6和Zen 7架构的逐步发布，AMD的开源计划有望带动业界的进一步发展与创新。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>美国推动英伟达和苹果让英特尔代工芯片</title>
     <url>/post/news/US-pushes-Nvidia-and-Apple-to-use-Intel-for-chip-manufacturing.html</url>
     <categories><category>News</category>
