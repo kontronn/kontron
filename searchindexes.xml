@@ -16,6 +16,24 @@
   </entry>
   
   <entry>
+    <title>美国推动英伟达和苹果让英特尔代工芯片</title>
+    <url>/post/news/US-pushes-Nvidia-and-Apple-to-use-Intel-for-chip-manufacturing.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>NVIDIA</tag>
+      <tag>Apple</tag>
+      <tag>Intel</tag>
+    </tags>
+    <content type="html"><![CDATA[美国商务部部长雷蒙多、英特尔首席执行官帕特•基辛格对美国依赖台积电生产先进工艺芯片表示失望。
+雷蒙多正在推动科技巨头 Nvidia  和Apple使用美国foundry厂生产人工智能芯片。除此之外，华盛顿对美国半导体行业的投资也比过去28年的总和还要多。
+英特尔正致力于成为foundry代工业务的顶级参与者之一，旨在与台积电和三星正面交手。据报道，英特尔正在考虑分拆其制造部门和其他非关键业务部门，类似于AMD在2008年分拆GlobalFoundries。
+许多领先的美国科技公司，如英伟达、AMD、苹果、亚马逊和谷歌，设计了他们的芯片，但使用台积电等foundry厂进行供应
+英伟达首席执行官黄仁勋表示，&ldquo;如果必要的话，我们的GPU制造可以改变工厂。如果我们不得不从一个工厂转移到另一个工厂，可能我们无法获得相同的性能或成本水平，但我们提供GPU供应也没问题。&rdquo;
+]]></content>
+  </entry>
+  
+  <entry>
     <title>PCIe总线4种复位介绍</title>
     <url>/post/hardware/introduction-to-4-types-of-PCIe-bus-reset.html</url>
     <categories><category>Hardware</category>
