@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 14 Sep 2024 22:21:28 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 10:10:15 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,15 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>DRAM 和 SRAM 的区别是什么</title>
+      <link>https://www.kontronn.com/post/hardware/difference-between-dram-and-sram.html</link>
+      <pubDate>Sun, 15 Sep 2024 10:10:15 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/difference-between-dram-and-sram.html</guid>
+      <description>&lt;p&gt;在快速发展的半导体技术世界中，DRAM （动态随机存取存储器） 和 SRAM （静态随机存取存储器） 仍然是现代计算系统中的关键组件。随着对更高性能、更低功耗和更大内存容量的需求增长，针对这些内存类型的 VLSI（超大规模集成）设计创新至关重要。&lt;/p&gt;</description>
     </item>
     
     <item>

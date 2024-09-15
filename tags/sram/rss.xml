@@ -6,7 +6,16 @@
     <description>Recent content in SRAM on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Aug 2024 23:27:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/sram/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Sep 2024 10:10:15 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/sram/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DRAM 和 SRAM 的区别是什么</title>
+      <link>https://www.kontronn.com/post/hardware/difference-between-dram-and-sram.html</link>
+      <pubDate>Sun, 15 Sep 2024 10:10:15 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/difference-between-dram-and-sram.html</guid>
+      <description>&lt;p&gt;在快速发展的半导体技术世界中，DRAM （动态随机存取存储器） 和 SRAM （静态随机存取存储器） 仍然是现代计算系统中的关键组件。随着对更高性能、更低功耗和更大内存容量的需求增长，针对这些内存类型的 VLSI（超大规模集成）设计创新至关重要。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>SRAM/DRAM单元的简单介绍</title>
       <link>https://www.kontronn.com/post/hardware/a-brief-introduction-to-SRAM-DRAM-cells.html</link>
