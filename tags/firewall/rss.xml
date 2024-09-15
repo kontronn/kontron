@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firewall on Kontronn</title>
+    <link>https://www.kontronn.com/tags/firewall/</link>
+    <description>Recent content in Firewall on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 15 Sep 2024 20:40:57 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/firewall/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>防火墙基本原理入门篇</title>
+      <link>https://www.kontronn.com/post/datacenter/introduction-to-firewall-basics.html</link>
+      <pubDate>Sun, 15 Sep 2024 20:40:57 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/introduction-to-firewall-basics.html</guid>
+      <description>&lt;p&gt;防火墙是可信和不可信网络之间的一道屏障，通常用在
+&lt;a href=&#34;https://www.gaitpu.com/category/data-center/network&#34; title=&#34;LAN&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    LAN
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;和WAN之间。它通常放置在转发路径中，目的是让所有数据包都必须由防火墙检查，然后根据策略来决定是丢弃或允许这些数据包通过。例如：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
