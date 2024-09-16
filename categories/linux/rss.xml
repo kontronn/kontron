@@ -6,7 +6,20 @@
     <description>Recent content in Linux on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 Sep 2024 12:06:23 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Sep 2024 12:22:48 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/linux/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux进程管理命令</title>
+      <link>https://www.kontronn.com/post/linux/linux-process-management-commands.html</link>
+      <pubDate>Mon, 16 Sep 2024 12:22:48 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/linux-process-management-commands.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.gaitpu.com/os/linux/how-to-select-the-three-big-linux-distribution&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;进程管理命令用于监控和控制系统中的进程，以确保系统资源的有效利用和稳定运行。通过如 ps、top 和 kill 等命令，用户可以查看进程状态、调整进程优先级以及终止不必要的进程。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Linux NTP服务安装配置详解</title>
       <link>https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html</link>

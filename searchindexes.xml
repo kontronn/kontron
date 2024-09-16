@@ -16,6 +16,18 @@
   </entry>
   
   <entry>
+    <title>Linux进程管理命令</title>
+    <url>/post/linux/linux-process-management-commands.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Process</tag>
+    </tags>
+    <content type="html"><![CDATA[ Linux  进程管理命令用于监控和控制系统中的进程，以确保系统资源的有效利用和稳定运行。通过如 ps、top 和 kill 等命令，用户可以查看进程状态、调整进程优先级以及终止不必要的进程。
+Linux进程管理命令  ps：显示当前运行的进程及其状态信息。 top：动态实时显示系统中进程的资源使用情况。 htop：增强版的 top，提供更友好的界面和交互功能。 kill：发送信号到指定进程，通常用于终止进程。 pkill：根据进程名称发送信号，便于批量管理进程。 nice：启动进程时设置其优先级，以影响其CPU资源分配。 renice：改变已运行进程的优先级。 pstree：以树状结构显示进程及其父子关系。 bg：将已暂停的进程放入后台运行。 fg：将后台进程恢复到前台运行。  Linux进程管理命令详细介绍  ps   简介：用于显示当前运行的进程及其状态信息，可以筛选和格式化输出。 示例：ps aux 显示所有用户的所有进程及其详细信息。  top   简介：动态实时显示系统中进程的资源使用情况，包括CPU和内存占用。 示例：top 进入交互界面，可以实时监控和管理进程。  htop   简介：增强版的 top，提供更友好的界面和交互功能，支持使用箭头键选择进程。 示例：htop 启动交互式进程查看器，用户可以方便地管理进程。  kill   简介：用于向指定进程发送信号，常用来终止进程。 示例：kill -9 PID 发送SIGKILL信号强制终止进程，PID 为进程ID。  pkill   简介：根据进程名称发送信号，便于批量管理进程。 示例：pkill firefox 终止所有名为 firefox 的进程。  nice   简介：启动进程时设置其优先级，以影响其CPU资源分配。 示例：nice -n 10 command 以较低优先级启动 command。  renice   简介：改变已运行进程的优先级，影响其CPU资源分配。 示例：renice 5 -p PID 将进程 PID 的优先级设置为5。  pstree   简介：以树状结构显示进程及其父子关系，便于查看进程层次结构。 示例：pstree 显示当前系统中所有进程的父子关系。  bg   简介：将已暂停的进程放入后台运行，继续执行。 示例：bg %1 将作业编号为1的进程放入后台运行。  fg   简介：将后台进程恢复到前台运行，使其可以与用户交互。 示例：fg %1 将作业编号为1的后台进程恢复到前台执行。 ]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux NTP服务安装配置详解</title>
     <url>/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html</url>
     <categories><category>Linux</category>
