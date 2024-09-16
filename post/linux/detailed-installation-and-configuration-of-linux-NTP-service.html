@@ -10,26 +10,26 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="Marauder-高效缓存和预取加速手机APP" />
-<meta itemprop="description" content="Marauder-高效缓存和预取加速手机APP" />
+<meta itemprop="name" content="Linux NTP服务安装配置详解" />
+<meta itemprop="description" content="Linux NTP服务安装配置详解" />
 <meta itemprop="datePublished" ZgotmplZ />
 <meta itemprop="dateModified" ZgotmplZ />
 <meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Android,Marauder,Mobile App" />
+<meta itemprop="keywords" content="NTP" />
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Marauder-高效缓存和预取加速手机APP" />
-<meta property="og:description" content="Marauder-高效缓存和预取加速手机APP" />
+<meta property="og:title" content="Linux NTP服务安装配置详解" />
+<meta property="og:description" content="Linux NTP服务安装配置详解" />
 <meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
 <meta property="og:image:width" content="312" />
 <meta property="og:image:height" content="312" />
 <meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html"/>
+<meta property="og:url" content="https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html"/>
 <meta property="og:site_name" content="Kontronn" />
 <meta property="og:locale" content="zh-CN"/>
 <meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-07-22 23:51:17 -0400 -0400" />
-<meta property="article:modified_time" content="2023-07-22 23:51:17 -0400 -0400" />
+<meta property="article:published_time" content="2024-09-16 12:06:23 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-09-16 12:06:23 &#43;0800 CST" />
 
 
   
@@ -44,7 +44,7 @@
       content: "~ 我可是有底线的哟 ~";
     }
   </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html","permalink":"https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html","title":"Marauder-高效缓存和预取加速手机APP"}</script>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"detailed-installation-and-configuration-of-linux-NTP-service.html","permalink":"https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html","title":"Linux NTP服务安装配置详解"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
     var script = document.createElement('script');
@@ -60,7 +60,7 @@
 
 
 
-  <title>Marauder-高效缓存和预取加速手机APP - Kontronn</title>
+  <title>Linux NTP服务安装配置详解 - Kontronn</title>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -175,31 +175,21 @@
       <div class="post-toc-wrap sidebar-panel">
         <div class="post-toc animated"><nav id="TableOfContents">
   <ul>
-    <li><a href="#背景问题">背景&amp;问题</a></li>
-    <li><a href="#动机">动机</a>
+    <li><a href="#安装ntp">安装ntp</a></li>
+    <li><a href="#修改ntp的配置文件">修改ntp的配置文件</a></li>
+    <li><a href="#创建日志文件">创建日志文件</a></li>
+    <li><a href="#启动服务">启动服务</a></li>
+    <li><a href="#查看状态">查看状态</a></li>
+    <li><a href="#安装配置ntp客户端">安装配置NTP客户端</a>
       <ul>
-        <li><a href="#实验设置">实验设置</a></li>
-        <li><a href="#相关结论">相关结论</a></li>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#修改配置文件">修改配置文件</a></li>
+        <li><a href="#创建日志文件-1">创建日志文件</a></li>
+        <li><a href="#先执行一次ntpdate时间同步">先执行一次ntpdate时间同步</a></li>
+        <li><a href="#启动ntpd">启动ntpd</a></li>
+        <li><a href="#检查状态">检查状态</a></li>
       </ul>
     </li>
-    <li><a href="#设计">设计</a>
-      <ul>
-        <li><a href="#观察">观察</a></li>
-        <li><a href="#后台操作">后台操作</a></li>
-        <li><a href="#运行流程">运行流程</a></li>
-      </ul>
-    </li>
-    <li><a href="#实验">实验</a>
-      <ul>
-        <li><a href="#应用程序加速">应用程序加速</a></li>
-      </ul>
-    </li>
-    <li><a href="#marauder性能深入分析">Marauder性能深入分析</a>
-      <ul>
-        <li><a href="#和先进方案对比">和先进方案对比</a></li>
-      </ul>
-    </li>
-    <li><a href="#总结">总结</a></li>
   </ul>
 </nav></div>
       </div>
@@ -333,7 +323,7 @@
       
   <div class="post-block">
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html">
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
       <meta itemprop="name" content="VxWorks OS">
@@ -343,11 +333,11 @@
       <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
     </span>
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Marauder-高效缓存和预取加速手机APP">
-      <meta itemprop="description" content="Marauder-高效缓存和预取加速手机APP">
+      <meta itemprop="name" content="Linux NTP服务安装配置详解">
+      <meta itemprop="description" content="Linux NTP服务安装配置详解">
     </span>
     <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">Marauder-高效缓存和预取加速手机APP </h1> <div class="post-meta-container">
+       <h1 class="post-title" itemprop="name headline">Linux NTP服务安装配置详解 </h1> <div class="post-meta-container">
   <div class="post-meta-items">
     
 
@@ -357,7 +347,7 @@
     <i class="far fa-calendar"></i>
   </span>
   <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-07-22 23:51:17 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-07-22 23:51:17 -0400 -0400">2023-07-22</time>
+  <time title="发表于：2024-09-16 12:06:23 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-16 12:06:23 &#43;0800 CST">2024-09-16</time>
 </span>
     
     
@@ -379,7 +369,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>147</span>
+  <span class="post-meta-item-text">字数：</span><span>370</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -387,7 +377,7 @@
     <i class="far fa-clock"></i>
   </span>
   <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
+  <span>2分钟</span>
 </span>
 
     
@@ -398,7 +388,7 @@
   <span class="post-meta-item-text">
   浏览：
   </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html"><i class="fa fa-sync fa-spin"></i></span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html"><i class="fa fa-sync fa-spin"></i></span>
 </span>
 
   </div>
@@ -410,98 +400,129 @@
     
     <div class="post-body  autonumber " itemprop="articleBody">
       
-  <p>本次解读的文章来自MobiSys‘21，研究如何高效加速移动应用程序响应，研究人员来自UCLA、密歇根大学以及普林斯顿大学。</p>
-<h2 id="背景问题">背景&amp;问题</h2>
-<p>移动应用程序已成为移动用户访问互联网服务的主要媒介，占智能手机用户关注时间的80%以上，手机应用成功的关键是较低的响应时间和用户感知的延迟。Android官方给出的报告显示用户对仅仅100毫秒量级的延迟反应消极，如果响应时间超过2-3秒，他们会放弃交互甚至删除应用。
-鉴于移动应用程序性能的重要性，许多工作都致力于提高它们的响应能力。很多研究认为网络传输延迟是导致高响应时间的主要原因，本文也基于此。目前，有两种主要的技术来减轻网络延迟对应用响应的负面影响：缓存和预取。原则上，两都非常有效，特别是考虑到用户在与应用程序交互时表现出的重复模式。然而，每一种都有基本的缺点，这些缺点限制了它们在实践中的使用和有效性。</p>
-<h2 id="动机">动机</h2>
-<h3 id="实验设置">实验设置</h3>
-<ol>
-<li>
-<p>实验负载：论文收集75个各种类别的Android App，关注其中的50个（使用流行的OkHttp缓存库）；</p>
-</li>
-<li>
-<p>用户交互模拟：论文使用了人形应用测试框架Humanoid app测试框架，它采用深度神经网络从实际用户轨迹中学习交互模式；</p>
-</li>
-<li>
-<p>运行设置：对每个应用程序考虑默认的APK，以及嵌入Marauder的变体两种情况，在Google Pixel 4和Samsung Galaxy Note 9上运行；随机选择每个应用程序的5个用户交互轨迹，并以𝛿分钟为间隔进行应用。根据之前对用户-应用程序交互的研究，论文考虑10分钟到1天的𝛿值；如果未说明，默认值为𝛿 = 60𝑚𝑖𝑛𝑠。实验过程网络环境包括家庭WiFi和LTE网络；</p>
-</li>
-<li>
-<p>性能基准：本文主要的性能指标是用户响应时间IRT（interaction response time），即用户执行屏幕点击以触发交互的时间与交互的最终屏幕完全呈现的时间之间的时间。（具体测量方法详见论文介绍）；</p>
-</li>
-</ol>
-<h3 id="相关结论">相关结论</h3>
-<ol>
-<li>现在的手机APP交互太慢：</li>
-</ol>
-<p>图 3显示应用程序和跟踪的交互响应时间 (IRT) 分布，IRT 值的中位数和第 90 个百分位数在 WiFi 网络上分别为 1.6 和 3.7 秒，在 LTE 网络上跃升至 2.9 和 6.7 秒。因此，交互响应时间经常超过用户愿意容忍的 2-3 秒。
-<img src="https://www.kontronn.com/imgs/post/Marauder-1.png" alt="应用程序和跟踪">
-<img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="应用程序和跟踪"></p>
-<ol start="2">
-<li>网络延迟是关键因素：</li>
-</ol>
-<p>移动应用程序的响应时间取决于内容获取过程中产生的网络延迟，以及在APK中解析/呈现该内容和其他代码的客户端计算延迟。对于每个交互，论文比较了有和没有网络延迟的IRT。如图4所示，网络延迟分别占WiFi和LTE中值交互IRT的38%和64%。</p>
-<ol start="3">
-<li>现有优化存在局限：</li>
-</ol>
-<p>上述实验中，应用程序采用默认运行模式，应用程序的APK或源服务器指定的任何缓存或预取都会被采用。然而，响应时间仍然过长。</p>
-<p>缓存的问题：现有的缓存要求开发人员为他们服务的每个资源显式设置一个TTL。然而，设置这样的TTL是困难的，因为每个资源的理想TTL随时间而变化。论文的实验中，50%资源的理想TTLs的标准偏差是2小时，在这种情况下，开发人员面临着权衡；</p>
-<p>预取的问题：应用程序对预取的支持通常选择获取大量内容的通用策略，其中大部分内容没有被使用。因此，尽管有潜在的加速，实际上预取在资源使用方面是非常浪费的。这种浪费会导致较高的通信成本，并且还会影响IRT加速，尤其是在带宽受限的设置中，其中明确请求的资源必须与不必要预取的资源竞争；</p>
-<h2 id="设计">设计</h2>
-<p>Marauder是一个移动应用程序加速框架，其目标是同时利用缓存和预取的能力，尽量回避它们的风险和局限性。Marauder的关键思想是使用明智的预取来最大化已经缓存的对象的效用(即缓存命中)，然后使用这些缓存的对象来指导即时预取(即在当前交互期间)。</p>
-<h3 id="观察">观察</h3>
-<p>观察一：论文发现为给定交互提取的文本文件（即 JSON、HTML、JavaScript、CSS 和 XML）直接嵌入了该交互所需的大多数非文本资源的列表，94%提取的非文本资源的URL可以从以前提取的文本文件中获得。所以，当应用程序解析和执行文本文件时，可以直接从应用程序的缓存中发出对任何引用文件的预取请求。这样，文本文件的早期解析和执行延迟会与被引用的非文本文件的网络获取延迟重叠。而且，这种JIT(just-in-time)的预取的风险会很低因为它只考虑直接列在文件中的资源，该文件被显式地请求并且将要被解析；</p>
-<p>观察二：论文观察到缓存资源的内容通常保持不变，尽管相应的 TTL 已过期（这发生在47% 的资源中），这表明现有缓存TTL 设置过于保守。所以可以通过预取即将到期的资源，在它们没有改变的情况下延长它们的TTL(从而提高它们的命中率)；</p>
-<p>观察三：论文发现给定文本文件引用的文件集通常在很长一段时间内保持稳定，即使文本内容发生变化也是如此。例如，中间文本文件的引用文件集在4小时内保持不变，尽管50%的文本文件仅在20分钟内保持不变。将此条件放宽到只有90%的引用文件未更改，将中位持续时间增加到9小时。所以可以通过在验证/更新不可缓存的文本文件并随后解析该文本文件时，对该文本文件所引用的文件发出预取请求，减少条件检查所带来的延迟。。</p>
-<p><img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="观察"></p>
-<h3 id="后台操作">后台操作</h3>
-<ol>
-<li>
-<p>Cache Refresher：刷新缓存资源，以提高整体缓存命中率。对于缓存中具有非零TTL的每个资源(即，不包括标记为非缓存的资源)，Marauder添加一个计时器事件，该事件在到期时检查资源的内容是否没有改变，以及其TTL是否可以延长。按照上面的观察二，Marauder对文本和非文本文件执行不同的TTL扩展过程；</p>
-</li>
-<li>
-<p>JIT Prefetcher：促进文本文件引用的资源的在线预取。每当一个文本文件被添加到应用程序缓存时(即使它被标记为无缓存), Marauder 都会异步生成一个工作线程来解析相应文本文件的正文以搜索引用的URL。开发人员使用各种正则表达式和 LinkedIn URL 检测器库静态分析文本文件，以查找所有类似于 URL 的字符串；</p>
-</li>
-</ol>
-<h3 id="运行流程">运行流程</h3>
-<p>在用户交互期间，应用程序发出的请求正常访问缓存存在三种潜在的情况，每种情况都需要使用 Marauder 的不同工作流程。</p>
-<ol>
-<li>
-<p>对于第一次请求文本文件(即，它不在缓存中，甚至过期)，或者任何请求非文本文件但在应用程序缓存中未命中的请求，Marauder会立即通过网络发出请求。收到响应后，Marauder将内容发送到应用程序，将其添加到缓存中，如果它是文本文件，则开始后台任务以提取引用的资源；</p>
-</li>
-<li>
-<p>对于在应用程序缓存中命中的文本文件请求(根据缓存库的默认命中标准)，Marauder用相应的内容响应应用程序，并立即对该文本文件引用的所有文件发出异步预取请求(使用离线生成的列表)。预取请求首先通过应用程序缓存，确保已经缓存的资源不会被重新下载。为了发出预取请求，Marauder首先填充动态查询参数的值；</p>
-</li>
-<li>
-<p>对于在应用程序缓存中未命中但与标记为无缓存的条目相关的文本文件请求，Marauder会发出一个对文本文件的请求，然后发出对其所有被引用子节点的预取请求。如果文本文件在某些预取资源之前到达，Marauder会小心地将应用程序显式发出的后续请求排队，这些请求已经有一个未完成的预取请求。通过这种方式，Marauder避免了重复请求和带宽浪费；一旦相应的预取响应到达，队列中的请求就会得到服务；</p>
-</li>
-</ol>
-<h2 id="实验">实验</h2>
-<h3 id="应用程序加速">应用程序加速</h3>
-<p>图14 说明了与当前应用程序所采用的默认缓存和预取策略相比，Marauder能够降低交互响应时间(IRT)。例如，在LTE网络上，Marauder 将一半的应用程序的IRT提高了 19.8-27.4%（或 0.58-0.81 秒）；一半的应用程序的第 90 个百分位 IRT 改进为 29.7-43.5%（或 0.87-1.27 秒）。由于服务器的网络延迟较低，Marauder 在 WiFi 上的收益中位数和 90% 分别下降到 16.9-23.1% 和 26.1-33.2%。图 14 还显示，当用户会话之间的时间增加时，Marauder 的改进更加明显（即是前文的参数𝛿）。例如，在 LTE 上，随着𝛿 从 20 分钟增加到 4 小时，一半的应用程序的IRT 改进从 19.8% 增长到 24.4%。</p>
-<p><img src="https://www.kontronn.com/imgs/post/Marauder-2.png" alt="应用程序缓存"></p>
-<h2 id="marauder性能深入分析">Marauder性能深入分析</h2>
-<ol>
-<li>每个设计的效率：分别分析了JIT预取和Cache Refreshing的效果，后台缓存刷新以提高已缓存资源的命中率是 Marauder 收益最大的地方，在所考虑的 𝛿 值的中位数处提供 13.3-16.1% 的加速。相比之下，即时预取可提供 3.4-8.6% 的中值加速；</li>
-<li>互动案例的测试：Marauder 优化的有效性受目标特定交互中的加载模式的影响。为了更好地理解这些关系，实验分析了当前应用程序的交互，并确定了影响 Marauder 提供的加速幅度的三种主要模式；</li>
-</ol>
-<h3 id="和先进方案对比">和先进方案对比</h3>
-<p>论文将 Marauder 与三种加速方法进行了比较：Paloma预取系统，以及应用程序支持的最激进和保守的预取策略。</p>
-<h2 id="总结">总结</h2>
-<p>论文提出了一种移动应用程序加速系统Marauder，它综合利用缓存和预取技术，优化了TTL设置不当、缓存过时内容以及预取浪费带宽问题。同时，文章通过分析大量实验数据，得到了一些关键观察。相关实验设计非常巧妙值得学习。对缓存和预取这两种操作系统经典设计在应用程序加速领域做了深入分析，但是设计本身并不复杂。此外，从实现上来看，Marauder只是用上述优化的版本替换了大多数应用程序所依赖的缓存库，可以立即部署。</p>
-<p>源代码和实验数据访问 
-<a href="https://github.com/muralisr/marauder" title="https://github.com/muralisr/marauder" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    https://github.com/muralisr/marauder
+  <p>网络对时服务NTP（全称Network Time Protocol）</p>
+<p>在 
+<a href="https://www.vxworks.net/linux/1231-compile-linux-kernel" title="Linux" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Linux
     <i class="fa fa-external-link-alt"></i>
-</a></p>
-<p>The End</p>
-<p>致谢</p>
-<p>感谢本次论文解读者，来自华东师范大学的博士生李文通，主要研究方向为跨设备资源共享、移动计算。</p>
-<p>
-<a href="https://www.vxworks.net/linux/1031-synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration" title="论文下载地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    论文下载地址
+</a> 系统中，通常使用 NTP (Network Time Protocol) 来同步系统时间。阿里云提供了公共的 NTP 服务器供用户使用。下面是一个典型的 <code>/etc/ntp.conf</code> 配置文件示例，用于配置 NTP 以连接到
+<a href="https://www.vxworks.net" title="阿里云" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    阿里云
     <i class="fa fa-external-link-alt"></i>
-</a></p>
+</a>提供的 NTP 服务器。</p>
+<p>先给一个完整的配置文件示例</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># /etc/ntp.conf</span>
+
+<span style="color:#75715e"># 以下是阿里云提供的公共 NTP 服务器地址：</span>
+server ntp1.aliyun.com prefer
+server ntp2.aliyun.com
+server ntp3.aliyun.com
+server ntp4.aliyun.com
+
+<span style="color:#75715e"># 下面是一些默认的 NTP 设置，您可以根据需要调整：</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># 指定 NTP 服务器的最小和最大 poll 时间间隔（单位为秒）</span>
+restrict default nomodify notrap nopeer noquery
+restrict -6 default kod notrap nomodify nopeer noquery
+restrict -4 default kod notrap nomodify nopeer noquery
+
+<span style="color:#75715e"># 如果您的网络环境中有路由器或防火墙，可能需要打开 UDP 123 端口</span>
+<span style="color:#75715e"># 并允许 NTP 流量通过。以下设置允许从本地网络进行同步：</span>
+restrict 192.168.122.0 mask 255.255.255.0 nomodify notrap
+
+<span style="color:#75715e"># 如果您希望从其他特定 IP 地址或子网同步时间，可以添加类似的 restrict 行</span>
+<span style="color:#75715e"># 例如：restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap</span>
+
+<span style="color:#75715e"># 允许广播更新（如果您的网络支持广播模式）</span>
+broadcast 224.0.1.1
+
+<span style="color:#75715e"># 允许 drift 文件被写入</span>
+filegen driftfile /var/lib/ntp/drift
+
+<span style="color:#75715e"># 如果您的网络环境需要，可以指定 drift 文件的权限和所有权</span>
+<span style="color:#75715e"># filegen driftfile /var/lib/ntp/drift perm 0644 iflag 0 oflag 0</span>
+
+<span style="color:#75715e"># 设置日志选项</span>
+logging <span style="color:#f92672">{</span>
+        <span style="color:#75715e"># 记录所有的调试信息（通常不需要这个级别的日志记录）</span>
+        <span style="color:#75715e"># debugtrace;</span>
+        <span style="color:#75715e"># 记录所有与包相关的错误</span>
+        <span style="color:#75715e"># packettrace;</span>
+        <span style="color:#75715e"># 记录所有警告信息</span>
+        <span style="color:#75715e"># warningtrace;</span>
+        <span style="color:#75715e"># 记录所有校正消息</span>
+        <span style="color:#75715e"># corrtag;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#75715e"># 以下是 NTP 的默认设置，通常不需要修改这些行</span>
+<span style="color:#75715e"># driftfile /var/lib/ntp/drift</span>
+<span style="color:#75715e"># statsdir /var/log/ntpstats</span>
+<span style="color:#75715e"># pidfile /var/run/ntpd.pid</span>
+<span style="color:#75715e"># logfile /var/log/ntp.log</span>
+
+
+<span style="color:#75715e">#配置完成后，可以通过以下命令重启 NTP 服务来应用更改：</span>
+<span style="color:#75715e">#systemctl restart ntpd</span>
+</code></pre></div><p>接下来我们展开讲讲。</p>
+<p>准备工作</p>
+<p>关闭防火墙、关闭selinux</p>
+<p>系统版本：CentOS7.x，</p>
+<p>NTP服务器IP：192.168.1.111，客户端IP：192.168.1.179</p>
+<p>安装配置NTP服务器端</p>
+<h2 id="安装ntp">安装ntp</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp -y</span>
+</code></pre></div><h2 id="修改ntp的配置文件">修改ntp的配置文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
+server 127.127.1.0 <span style="color:#75715e">#以本机作为时间服务器</span>
+fudge 127.127.1.0 startnum <span style="color:#ae81ff">10</span> <span style="color:#75715e">#设置服务器层级</span>
+restrict 127.0.0.1 <span style="color:#75715e"># 允许本机使用这个时间服务器</span>
+restrict 192.168.1.0 netmask 255.255.255.0 <span style="color:#75715e">#允许允许192.168.1.0/24网段的所有主机使用该时间服务器进行时间同步</span>
+driftfile /var/lib/ntp/ <span style="color:#75715e">#记录当前时间服务器，与上游服务器的时间差的文件</span>
+logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
+</code></pre></div><h2 id="创建日志文件">创建日志文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/lib/ntp/</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/lib/ntp/ntp.log</span>
+</code></pre></div><h2 id="启动服务">启动服务</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl enable ntpd</span>
+</code></pre></div><h2 id="查看状态">查看状态</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntp stat</span>
+synchronised to local net at stratum <span style="color:#ae81ff">6</span> time correct to within <span style="color:#ae81ff">11</span> ms polling server every <span style="color:#ae81ff">64</span> s
+<span style="color:#75715e">#synchronised：表示时间同步完成（ntp可以正常工作了）</span>
+<span style="color:#75715e">#unsynchronised：表示时间同步尚未完成</span>
+<span style="color:#75715e"># 或者用 ntpq -p查看状态</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p </span>
+remote refid st t when poll reach delay offset jitter
+<span style="color:#f92672">==============================================================================</span>
+*LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> .LOCL. <span style="color:#ae81ff">5</span> l <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">377</span> 0.000 0.000 0.000
+</code></pre></div><h2 id="安装配置ntp客户端">安装配置NTP客户端</h2>
+<h3 id="安装">安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp ntpdate -y</span>
+</code></pre></div><h3 id="修改配置文件">修改配置文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
+server 192.168.1.111 <span style="color:#75715e">#设置以192.168.1.111做为本机的时间服务器</span>
+restrict 127.0.0.1
+logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
+</code></pre></div><h3 id="创建日志文件-1">创建日志文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/log/ntp</span>
+<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/log/ntp/ntp.log</span>
+</code></pre></div><h3 id="先执行一次ntpdate时间同步">先执行一次ntpdate时间同步</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpdate 192.168.1.111</span>
+</code></pre></div><h3 id="启动ntpd">启动ntpd</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
+</code></pre></div><h3 id="检查状态">检查状态</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpstat</span>
+unsynchronised
+time server re-starting
+polling server every <span style="color:#ae81ff">8</span> s
+</code></pre></div><p>或者</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p</span>
+remote refid st t when poll reach delay offset jitter
+<span style="color:#f92672">==============================================================================</span>
+192.168.1.111 LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#ae81ff">6</span> u <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">1</span> 0.502 0.009 0.000
+</code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -521,14 +542,8 @@
 
 <div class="post-tags">
   
-    <a href="/tags/android">
-    Android
-  </a>
-    <a href="/tags/marauder">
-    Marauder
-  </a>
-    <a href="/tags/mobile-app">
-    Mobile App
+    <a href="/tags/ntp">
+    NTP
   </a>
 </div>
 
@@ -556,7 +571,7 @@
   <ul>
     <li class="post-copyright-title">
       <strong>文章标题：</strong>
-      Marauder-高效缓存和预取加速手机APP
+      Linux NTP服务安装配置详解
     </li>
     <li class="post-copyright-author">
       <strong>本文作者： </strong>
@@ -564,7 +579,7 @@
     </li>
     <li class="post-copyright-link"> 
       <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html" title="Marauder-高效缓存和预取加速手机APP">https://www.kontronn.com/post/linux/synergized-caching-and-prefetching-for-low-risk-mobile-app-acceleration.html</a>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html" title="Linux NTP服务安装配置详解">https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -589,13 +604,13 @@
 </div>
 <div class="post-nav">
   <div class="post-nav-next post-nav-item">
-    <a href="/post/datacenter/a-detailed-explanation-of-ipv4-and-ipv6-protocols.html" rel="next" title="一文详解IPv4与IPv6协议">
-      <i class="fa fa-chevron-left"></i> 一文详解IPv4与IPv6协议
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
     </a>
   </div>
   <div class="post-nav-prev post-nav-item">
-    <a href="/post/linux/how-to-setup-CUDA-environment-for-nvidia-3060.html" rel="prev" title="Nvidia 3060显卡 CUDA环境搭建">
-      Nvidia 3060显卡 CUDA环境搭建
+    <a href="/post/soc/chip-giants-collectively-hit-a-wall.html" rel="prev" title="芯片巨头，集体碰壁">
+      芯片巨头，集体碰壁
       <i class="fa fa-chevron-right"></i>
     </a>
   </div>

@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 Sep 2024 11:44:32 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Sep 2024 12:06:23 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,24 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>Linux NTP服务安装配置详解</title>
+      <link>https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html</link>
+      <pubDate>Mon, 16 Sep 2024 12:06:23 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html</guid>
+      <description>&lt;p&gt;网络对时服务NTP（全称Network Time Protocol）&lt;/p&gt;
+&lt;p&gt;在 
+&lt;a href=&#34;https://www.vxworks.net/linux/1231-compile-linux-kernel&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt; 系统中，通常使用 NTP (Network Time Protocol) 来同步系统时间。阿里云提供了公共的 NTP 服务器供用户使用。下面是一个典型的 &lt;code&gt;/etc/ntp.conf&lt;/code&gt; 配置文件示例，用于配置 NTP 以连接到
+&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;阿里云&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    阿里云
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;提供的 NTP 服务器。&lt;/p&gt;</description>
     </item>
     
     <item>
