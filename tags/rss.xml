@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Sep 2024 18:32:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 19:16:31 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian</title>
+      <link>https://www.kontronn.com/tags/debian/</link>
+      <pubDate>Tue, 17 Sep 2024 19:16:31 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MAC</title>
+      <link>https://www.kontronn.com/tags/mac/</link>
+      <pubDate>Tue, 17 Sep 2024 19:16:31 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/mac/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>DDR</title>
       <link>https://www.kontronn.com/tags/ddr/</link>
@@ -256,15 +274,6 @@
       <pubDate>Mon, 09 Sep 2024 21:04:42 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/intelligent-computing/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Debian</title>
-      <link>https://www.kontronn.com/tags/debian/</link>
-      <pubDate>Sun, 08 Sep 2024 16:31:04 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/debian/</guid>
       <description></description>
     </item>
     
@@ -2731,15 +2740,6 @@
       <pubDate>Sat, 22 Jul 2023 10:02:27 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/slackware/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MAC</title>
-      <link>https://www.kontronn.com/tags/mac/</link>
-      <pubDate>Thu, 20 Jul 2023 12:23:49 -0400</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/mac/</guid>
       <description></description>
     </item>
     
