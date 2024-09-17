@@ -400,23 +400,32 @@
     <div class="post-body  autonumber " itemprop="articleBody">
       
   <p>本文讲解了如何在
-<a href="" title="Linux系统下修改MAC地址" >
+<a href="https://www.kontronn.com/post/linux/how-to-modify-mac-address-in-linux.html" title="Linux系统下修改MAC地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
     Linux系统下修改MAC地址
-</a>。</p>
+    <i class="fa fa-external-link-alt"></i>
+</a></p>
 <ul>
-<li>系统环境： debian 12</li>
-<li>网卡型号： 此办法适用于Mellanox connectx的4/5/6/7代网卡</li>
+<li>系统环境： 
+<a href="https://www.vxworks.net/news/761-new-feature-for-the-new-release-edition-for-debian-10-buster" title="Debian 12" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Debian 12
+    <i class="fa fa-external-link-alt"></i>
+</a></li>
+<li>网卡型号： 此办法适用于
+<a href="https://www.vxworks.net/news/811-nvidia-acquire-mellanox-successfully" title="Mellanox" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Mellanox
+    <i class="fa fa-external-link-alt"></i>
+</a> connectx的4/5/6/7代网卡</li>
 <li>刷新方案： 刷新MAC地址需要安装MFT工具, mft-4.26.1-3-x86_64-deb.tgz</li>
 </ul>
 <h2 id="安装mft工具方法如下">安装mft工具方法如下：</h2>
 <h3 id="解压安装包">解压安装包</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~/mft# tar zxvf mft-4.26.1-3-x86_64-deb.tgz
-root@confluence:~/mft# cd mft-4.26.1-3-x86_64-deb/
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb# ls
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~/mft# tar zxvf mft-4.26.1-3-x86_64-deb.tgz
+root@vxworks:~/mft# cd mft-4.26.1-3-x86_64-deb/
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb# ls
 DEBS  install.sh  LICENSE.txt  old-mft-uninstall.sh  SDEBS  uninstall.sh
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb#
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb#
 </code></pre></div><h3 id="安装编译环境">安装编译环境</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~/mft/mft-4.26.1-3-x86_64-deb# apt install gcc make dkms
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb# apt install gcc make dkms
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
@@ -427,16 +436,16 @@ dkms: autoinstall <span style="color:#66d9ef">for</span> kernel: 6.1.0-18-amd64.
 Setting up linux-headers-amd64 <span style="color:#f92672">(</span>6.1.76-1<span style="color:#f92672">)</span> ...
 Processing triggers <span style="color:#66d9ef">for</span> man-db <span style="color:#f92672">(</span>2.11.2-2<span style="color:#f92672">)</span> ...
 Processing triggers <span style="color:#66d9ef">for</span> libc-bin <span style="color:#f92672">(</span>2.36-9+deb12u4<span style="color:#f92672">)</span> ...
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb#
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb#
 </code></pre></div><h3 id="安装mft工具">安装mft工具</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~/mft/mft-4.26.1-3-x86_64-deb# ./install.sh 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb# ./install.sh 
 -I- Removing mft external packages installed on the machine
 -I- Installing package: /root/mft/mft-4.26.1-3-x86_64-deb/SDEBS/kernel-mft-dkms_4.26.1-3_all.deb
 -I- Installing package: /root/mft/mft-4.26.1-3-x86_64-deb/DEBS/mft_4.26.1-3_amd64.deb
 -I- In order to start mst, please run <span style="color:#e6db74">&#34;mst start&#34;</span>.
 
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb# 
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb# mst status
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb# 
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb# mst status
 MST modules:
 ------------
     MST PCI module is not loaded
@@ -449,17 +458,16 @@ PCI Devices:
                              domain🚌dev.fn<span style="color:#f92672">=</span>0000:3b:00.0 addr.reg<span style="color:#f92672">=</span><span style="color:#ae81ff">88</span> data.reg<span style="color:#f92672">=</span><span style="color:#ae81ff">92</span> cr_bar.gw_offset<span style="color:#f92672">=</span>-1
                              Chip revision is: <span style="color:#ae81ff">00</span>
 
-root@confluence:~/mft/mft-4.26.1-3-x86_64-deb#
+root@vxworks:~/mft/mft-4.26.1-3-x86_64-deb#
 </code></pre></div><h2 id="刷新mac地址">刷新MAC地址</h2>
 <h3 id="关闭写保护">关闭写保护：</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~#flint -d /dev/mst/mt511_pciconf0 -ocr hw set Flash0.WriteProtected<span style="color:#f92672">=</span>Disabled
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~#flint -d /dev/mst/mt511_pciconf0 -ocr hw set Flash0.WriteProtected<span style="color:#f92672">=</span>Disabled
 </code></pre></div><h3 id="刷mac">刷MAC：</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~#flint -d /dev/mst/mt511_pciconf0 –mac 0000709CD1C9B5E8 –ocr sg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~#flint -d /dev/mst/mt511_pciconf0 –mac 0000709CD1C9B5E8 –ocr sg
 </code></pre></div><h3 id="重置fw">重置FW：</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@confluence:~#mlxfwreset –d /dev/mst/mt511_pciconf0 r
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks:~#mlxfwreset –d /dev/mst/mt511_pciconf0 r
 </code></pre></div><p>这样mac地址应该已经生效了，请重启再重新检查一下。</p>
 <p>注意：加粗部分根据实际情况修正，mst status可获取到实际的设备名称</p>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
