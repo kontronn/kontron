@@ -6,7 +6,20 @@
     <description>Recent content in DDR on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 Sep 2024 20:30:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 18:32:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR内存介绍</title>
+      <link>https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html</link>
+      <pubDate>Tue, 17 Sep 2024 18:32:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html</guid>
+      <description>&lt;p&gt;手机、笔记本电脑、云计算和网络等现代电子设计要求非常高的性能。除了处理器速度/性能外，
+&lt;a href=&#34;https://www.gaitpu.com/data-center/storage/introduction-to-various-memory-dimms&#34; title=&#34;存储器&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    存储器
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;在整体系统性能中起着非常关键的作用。双数据速率（DDR）存储器由于其低延迟、更大的存储空间和低功耗，一直是所有复杂设计的常见选择。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>GDDR 和 DDR 内存之间有什么区别</title>
       <link>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</link>

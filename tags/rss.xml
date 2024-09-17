@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Sep 2024 16:30:09 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 18:32:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR</title>
+      <link>https://www.kontronn.com/tags/ddr/</link>
+      <pubDate>Tue, 17 Sep 2024 18:32:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/tags/ddr/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Altera</title>
       <link>https://www.kontronn.com/tags/altera/</link>
@@ -94,15 +103,6 @@
       <pubDate>Sun, 15 Sep 2024 20:40:57 +0800</pubDate>
       
       <guid>https://www.kontronn.com/tags/firewall/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DDR</title>
-      <link>https://www.kontronn.com/tags/ddr/</link>
-      <pubDate>Sun, 15 Sep 2024 20:30:52 +0800</pubDate>
-      
-      <guid>https://www.kontronn.com/tags/ddr/</guid>
       <description></description>
     </item>
     
