@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Sep 2024 19:16:31 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Sep 2024 01:26:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,20 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>Intel研发全新x86架构: 能效、性能超AMD</title>
+      <link>https://www.kontronn.com/post/soc/new-core-architecture-for-intel-royal-cobra-core.html</link>
+      <pubDate>Fri, 20 Sep 2024 01:26:37 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/new-core-architecture-for-intel-royal-cobra-core.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.pudn.club/latest-news/amd-ryzen-9000-inter-core-latency-drops-by-58-percent/&#34; title=&#34;Intel Lunar Lake/Arrow Lake&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Intel Lunar Lake/Arrow Lake
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;都采用了新的Lion Cove P核架构、Skymont E核架构，表现可圈可点，而接下来，Intel还会继续研发一系列新的x86架构，追赶竞品。&lt;/p&gt;
+&lt;p&gt;比如说Nova Lake，目前看应该会和Panther Lake组成第三代酷睿Ultra 300系列，它将升级新的Royal P核架构，之后的Beast Lake会延续这一架构并升级，可视为1.1版。&lt;/p&gt;</description>
     </item>
     
     <item>

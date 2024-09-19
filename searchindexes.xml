@@ -16,6 +16,40 @@
   </entry>
   
   <entry>
+    <title>Intel研发全新x86架构: 能效、性能超AMD</title>
+    <url>/post/soc/new-core-architecture-for-intel-royal-cobra-core.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>Cobra</tag>
+    </tags>
+    <content type="html"><![CDATA[ Intel Lunar Lake/Arrow Lake  都采用了新的Lion Cove P核架构、Skymont E核架构，表现可圈可点，而接下来，Intel还会继续研发一系列新的x86架构，追赶竞品。
+比如说Nova Lake，目前看应该会和Panther Lake组成第三代酷睿Ultra 300系列，它将升级新的Royal P核架构，之后的Beast Lake会延续这一架构并升级，可视为1.1版。
+本来再往后还有一代大概，可称之为Royal 2.0版本，但已经取消了。
+根据某位Intel工程师的个人履历，Intel还在开发另一个全新的x86架构，代号“Cobra”(眼镜蛇)，其目标是比竞品更高的能效、更高的性能。
+但是关于它的具体细节暂时一无所知，可能会取代已取消的Royal 2.0？
+另外，经常曝料但不怎么靠谱的MLID曾经宣称，Royal 1.0架构还是没有超线程，1.1版本有可能重新支持，并将P核拆分为两个较小的核心，2.0版本则支持单核四线程。
+这就有点荒诞不羁了
+说到Arrow Lake，它在内存方面会有一个飞跃。
+近日，全何、阿斯加特、佰维相继宣布了超高频率的CUDIMM DDR5内存产品，有两家为9200MHz，阿斯加特最高达到了9600MHz，还放话将推出10GHz乃至更高频率的产品。
+有趣的是，三家放出的信息和截图中，都没有提及处理器平台，甚至刻意抹去了Windows任务管理器的大量信息。
+经过证实，所用平台既不是13/14代酷睿，也不是锐龙7000/9000，而是尚未发布的代号Arrow Lake-S的酷睿Ultra 200系列桌面版。
+据了解，酷睿Ultra 200可以支持8000-10000MHz频率的DDR5内存规格，不过必须是CUDIMM——它增加了时钟发生器，让内存频率、CPU频率解耦，从而能稳定跑在更高的内存频率上。
+同时，酷睿Ultra 200需要运行在Gear 2模式上进行分频，比如CUDIMM DDR5内存频率9600MHz(严格来说9600MT/s)，IO频率是4800MHz，内存控制器频率就是2.4GHz。
+至于普通的DIMM DDR5内存，13/14代酷睿支持到5600MHz，酷睿Ultra 200系列估计也就6400MHz左右。
+这无疑会遥遥领先AMD，佰维也提到9200MHz CUDIMM DDR5内存配合AMD EXPO，也只能跑到8200MHz。
+当然，AMD平台其实不需要太高频率，不分频情况下的最佳值为6400MHz，继续往上反而会降低游戏性能。
+另外，对于13/14代酷睿处理器的不稳定问题，Intel已经发布了更新以修复相关问题。
+据媒体报道，部分用户的问题仍未得到根本解决，为此Intel提供了RMA退换货服务，对一些用户的i9-13900K处理器进行了全额退款或免费升级至新一代的i9-14900K。
+有用户反馈称，Intel的RMA流程似乎并不严格审核是否真的遇到了稳定性问题，这使得一些几乎未遇到问题的用户也有机会获得退款或换新。
+用户@Pk_419在社交媒体上分享称，他将使用了两年且功能正常的i9-13900K处理器退回，并获得了599美元的全额退款，而Intel在这一过程中并未要求他提供任何关于不稳定问题的证明。
+Reddit上的另一位用户也报告称，他的i9-13900K因“严重”不稳定问题提交RMA后，仅用三天便顺利完成换新，并且换得的是一颗升级版型号——i9-14900K。
+Intel官方也提到，当13代CPU库存耗尽时，将会把13代CPU升级到更新的版本。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux系统下更改网卡MAC地址</title>
     <url>/post/linux/how-to-modify-mac-address-in-linux.html</url>
     <categories><category>Linux</category>
