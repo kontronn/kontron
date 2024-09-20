@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archive on Kontronn</title>
+    <link>https://www.kontronn.com/tags/archive/</link>
+    <description>Recent content in Archive on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 20 Sep 2024 21:34:23 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/archive/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 解压缩文件归档详解</title>
+      <link>https://www.kontronn.com/post/linux/how-to-decompress-file-archives-in-linux.html</link>
+      <pubDate>Fri, 20 Sep 2024 21:34:23 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/how-to-decompress-file-archives-in-linux.html</guid>
+      <description>&lt;p&gt;在
+&lt;a href=&#34;https://www.vxworks.net/linux/1215-how-to-force-a-user-to-change-their-password-in-linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;系统中，文件归档和解压缩是日常操作中非常常见的任务。本文将详细介绍如何在Linux环境下使用各种命令来处理文件归档和解压缩。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
