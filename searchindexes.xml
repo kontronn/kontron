@@ -16,6 +16,24 @@
   </entry>
   
   <entry>
+    <title>2025 版 Windows 来了</title>
+    <url>/post/news/windows-2025-is-coming.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Windows 2025</tag>
+    </tags>
+    <content type="html"><![CDATA[面向 Canary（金丝雀）频道预览体验成员
+微软推送 Windows   预览版更新 Build 27695
+Build 27XXX 系列面向 2025 版 Windows 系统构建
+主要变化   Windows 预览版 Canary 频道到期日期已更新为 2025 年 9 月 15 日。
+  Windows 预览版 Canary 频道新增系统安装预计时间。
+  用户设置「靠左」对齐 Windows 任务栏时小组件入口将移至系统托盘的左侧区域。  增强 Windows 本地管理员密码解决方案的安全性。  全新的 Windows 沙盒客户端开启预览。  拓展信息 Windows 沙盒：英文名称为 Windows Sandbox，提供了轻型桌面环境，可以安全地在隔离状态下测试应用，关闭后将删除所有应用。
+Windows 本地管理员密码解决方案：英文简称 Windows LAPS，英文全称 Windows Local Administrator Password Solution。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Intel研发全新x86架构: 能效、性能超AMD</title>
     <url>/post/soc/new-core-architecture-for-intel-royal-cobra-core.html</url>
     <categories><category>SOC</category>
