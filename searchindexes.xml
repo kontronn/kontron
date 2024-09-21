@@ -16,6 +16,27 @@
   </entry>
   
   <entry>
+    <title>英特尔回归本心，聚焦x86 CPU业务</title>
+    <url>/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>x86</tag>
+      <tag>CPU</tag>
+    </tags>
+    <content type="html"><![CDATA[最近这段时间里，英特尔一直在挣扎。
+英特尔CEO帕特基辛格向员工发布了一条关于英特尔下一阶段转型的信息。“有很多工作要做以提高效率、盈利能力和我们的市场竞争力”。帕特基辛格强调了3个关键要点：
+ 随着英特尔18A工艺即将推出，我们必须利用我们在Foundry的势头，并提高我们代工业务的资本效率。 我们必须继续采取紧急行动，以创建一个更具竞争力的成本结构，并实现我们上个月宣布的100亿美元的目标。哦，简单来说就是裁员，他们也会美化裁员这个事情。 我们必须重新聚焦我们强大的x86业务，推动人工智能战略，同时简化我们的产品组合，为英特尔客户和合作伙伴提供服务。&quot;  对于 英特尔foundry  而言，最近最关键的消息是，在美国政府的推动下(实锤美丽国的国企)亚马逊选择了英特尔foundry来制造定制芯片，价值数十亿美元。英特尔foundry将在英特尔18A上为AWS生产 人工智能芯片  。
+英特尔希望与AWS在英特尔18A、英特尔18AP和英特尔14A的上“深入合作”。
+根据《芯片法案》，英特尔还获得了高达30亿美元的资金，旨在扩大美国对尖端半导体的可信制造。(好吧，美国版信创市场)。
+作为唯一一家同时设计和制造尖端芯片的公司，美国一定会大力支持，确保其国内芯片供应链的安全。
+英特尔计划将其半导体子公司——英特尔foundry厂——作为英特尔内部的独立子公司。
+“子公司结构为我们的外部foundry客户和供应商提供了更清晰的分离和独立性。重要的是，它还使我们未来能够灵活地评估独立的资金来源，并优化资本结构，以最大限度地提高增长和创造股东价值。”
+]]></content>
+  </entry>
+  
+  <entry>
     <title>AMD顶级APU有名字了！显存可达96GB 真媲美移动版4070</title>
     <url>/post/soc/amd-top-apu-Strix-Halo-has-name-AI-max-300-series.html</url>
     <categories><category>SOC</category>
