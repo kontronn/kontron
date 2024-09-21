@@ -16,6 +16,45 @@
   </entry>
   
   <entry>
+    <title>AMD顶级APU有名字了！显存可达96GB 真媲美移动版4070</title>
+    <url>/post/soc/amd-top-apu-Strix-Halo-has-name-AI-max-300-series.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>AMD</tag>
+      <tag>Strix Halo</tag>
+      <tag>AI Max 300</tag>
+    </tags>
+    <content type="html"><![CDATA[ AMD  新一代Zen5移动平台已经发布了Strix Point也就是锐龙AI HX 300系列，明年初将发布更主流、更便宜的Krackan，还有顶级的Strix Halo，相信这是很多玩家最为期盼的，因为它将有着空前强大的规格。
+根据最新曝料，Strix Halo暂定名为锐龙AI Max 300系列，目前规划了三款型号：
+旗舰型号为“锐龙AI Max+ 395”，配备多达16个Zen5 CPU核心(可能8个Zen5、8个Zen5c)、40个RDNA3.5 GPU核心。
+次旗舰是“锐龙AI Max 390”，CPU核心减少到12个(可能4+8)，GPU核心仍然是40个。
+往下是“锐龙AI Max 385”，CPU核心继续减少到8个(或许4+4)，GPU核心也减少到32个。
+NPU方面暂无更进一步说法，只知道也是Strix Point同款的新一代XDNA 2，最高算力可能也在50 TOPS左右。
+相比之下，Strix Point最多只有12个CPU核心、16个GPU核心，后者完全不在一个级别上。
+之前有传闻称，Strix Halo的集显性能有望媲美移动版RTX 4060甚至是RTX 4070，令人难以置信。
+现在又多了一个证据：Strix Halo可以分配最多96GB内存作为集显的显存！
+当然，一般笔记本不会有这么大内存，64GB就基本天花板了，但可以看出Strix Halo在这方面是下了血本了，甚至完全可以替代当前市面上大量的RTX 4060游戏本，也给下一代RTX 50系列出了一个难题。
+另外，超大显存意味着，Strix Halo也非常适合做AI任务。
+另外，AMD锐龙5 7600X3D游戏处理器今日起正式在京东开卖，定价2199元，晒单还有机会赢取50元的京东E卡，等于到手价2149元，数量有限，先到先得。
+相比于2999元的锐龙7 7800X3D，新品便宜了足足三分之一，性价比、能效比更加突出。
+锐龙5 7600X3D虽然还是Zen4架构，但是凭借102MB大缓存，游戏性能依然超神，Zen5架构的锐龙9000系列都不是它的对手。
+根据外媒PCGH的测试，10款游戏综合下来，AMD锐龙5 7600X3D反超了12核心的锐龙9 7900X3D 4%，同时超过了所有的Zen5产品，最好的锐龙7 9700X也比它慢了大约6%。
+游戏功耗仅为48W，与锐龙5 7500F并列当下处理器第一。
+它拥有6核心12线程，6MB二级缓存，32MB原生三级缓存，64MB 3D堆叠缓存，主频虽然不是很高4.1-4.7GHz，但是热设计功耗也控制在65W。
+它还支持 PCIe 5.0  ，官方建议搭配DDR5-5200或更高频率的DDR5 EXPO内存，可一键超频，发挥平台最大潜力。
+这也是AM5平台的第一款六核心X3D产品，兼容600系列和未来的800系列主板，这一接口的寿命将持续到2027+年。
+哦对了，AMD还发布了一款汽车芯片——是的，AMD在收购赛灵思之后，在汽车领域也有了一席之地。
+AMD宣布推出AMD汽车车规级(XA)系列产品的最新成员“Artix UltraScale+ XA AU7P”，一款拥有超小尺寸、优化成本的车规标准FPGA芯片，针对高级驾驶辅助系统(ADAS)、数字座舱信息娱乐系统(IVI)进行了优化。
+咨询机构Yole Intelligence的数据显示，ADAS摄像头市场规模2023年估计为20亿美元，预计到2029年将达到27亿美元。
+AMD也已拥有完整的车载芯片和软件解决方案一站式服务，包括Artix UltraScale+、Zynq UltraScale+、Spartan 7、Zynq 7000，可以满足汽车行业对高性能计算加速、图形技术越来越迫切的需求。
+最新的这款Artix UltraScale+ XA AU7P采用9 x 9毫米封装，这是AMD 16nm工艺FPGA或自适应SoC产品线中最小的封装，非常适合摄像头视觉或车载显示应用。
+它还采用了芯片尺寸封装(chip-scale package)，可以显著提升I/O的路由/信号密度、提高焊点可靠性、增强电气性能。
+目前，客户已将新品设计到ADAS边缘设备中，比如热像仪、红外摄像头，可进行边缘传感器的数据采集、图像/视频处理，还能连接车载显示器，进一步增强信息娱乐功能。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux 解压缩文件归档详解</title>
     <url>/post/linux/how-to-decompress-file-archives-in-linux.html</url>
     <categories><category>Linux</category>

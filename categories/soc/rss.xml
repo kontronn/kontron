@@ -6,7 +6,20 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 20 Sep 2024 01:26:37 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 21 Sep 2024 10:19:42 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AMD顶级APU有名字了！显存可达96GB 真媲美移动版4070</title>
+      <link>https://www.kontronn.com/post/soc/amd-top-apu-Strix-Halo-has-name-AI-max-300-series.html</link>
+      <pubDate>Sat, 21 Sep 2024 10:19:42 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/amd-top-apu-Strix-Halo-has-name-AI-max-300-series.html</guid>
+      <description>&lt;p&gt;
+&lt;a href=&#34;https://www.gaitpu.com/embedded/asrock-rack-epyc3451d4u-2l2t2o8r-based-on-amd-epyc-embedded&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    AMD
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;新一代Zen5移动平台已经发布了Strix Point也就是锐龙AI HX 300系列，明年初将发布更主流、更便宜的Krackan，还有顶级的Strix Halo，相信这是很多玩家最为期盼的，因为它将有着空前强大的规格。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Intel研发全新x86架构: 能效、性能超AMD</title>
       <link>https://www.kontronn.com/post/soc/new-core-architecture-for-intel-royal-cobra-core.html</link>
