@@ -16,6 +16,30 @@
   </entry>
   
   <entry>
+    <title>Intel首次为CPU赋予真正“光的力量”</title>
+    <url>/post/soc/intel-xeon-6-soc-is-to-be-launched-in-2025.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>Xeon 6</tag>
+    </tags>
+    <content type="html"><![CDATA[Hot Chips 2024芯片大会上， Intel  展示了多项创新成果，包括 Lunar Lake酷睿处理器  、至强6处理器、Gaudi 3 AI极速器，以及光学计算互联(OCI) Chiplet。
+这是迄今行业最先进的光学计算整合方案，也是第一次将Intel处理器与OCI Chiplet完全整合封装在一起，并展示了实时数据传输。
+该方案在最长100米的光纤链接上，每个方向都支持64个传输通道，每个通道带宽为32Gbps，合计一共高达4Tbps。
+它可以满足 AI  、HPC基础架构对更高带宽、更低功耗、更远距离的需求。
+Intel表示，OCI Chiplet代表着高带宽互联技术的一次飞跃，为未来CPU、GPU集群互联的拓展提供了技术支撑。
+新的至强6 SoC代号Granite Rapids-D），预计将在2025年上半年推出，它不仅集成了Intel 3和Intel 4工艺技术，还在性能、能效和晶体管密度上实现了显著提升。
+至强6 SoC的架构设计包括基于Intel 3工艺的计算小芯片和基于Intel 4工艺的I/O小芯片，两者的结合使得这款SoC在多方面都展现出了卓越的性能。
+特别值得一提的是，它提供了多达32个PCIe 5.0通道，这将极大地增强数据传输的速率和带宽，满足高速计算和通信的需求。
+除了PCIe 5.0通道，至强6 SoC还支持多种内存选项，包括4通道和8通道内存配置，以及MCR DIMM高速内存。
+此外，它还具备16条PCIe 4.0通道和16个 CXL   2.0通道，以及可配置的双100Gb以太网口，为网络密集型应用提供了强大的支持。
+内置的加速器如Media Accelerator、QAT、DLB、vRAN Boost和DSA等，进一步增强了SoC的处理能力，特别是在AI和机器学习任务中。
+同时，SoC还支持面向边缘的增强功能，包括扩展工作温度范围和工业级可靠性，使其能够在恶劣的环境下稳定运行。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Intel 酷睿200 大战 AMD 锐龙200</title>
     <url>/post/soc/intel-core-200-vs-amd-ryzen-200.html</url>
     <categories><category>SOC</category>
