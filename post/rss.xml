@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 23 Sep 2024 01:01:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Sep 2024 00:56:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,32 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>uEFI BIOS简介</title>
+      <link>https://www.kontronn.com/post/hardware/introduction-to-uefi.html</link>
+      <pubDate>Tue, 24 Sep 2024 00:56:41 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/hardware/introduction-to-uefi.html</guid>
+      <description>本文简要介绍了uEFI BIOS的相关内容!
+前言 很难用一篇文章去完全的了解UEFI，这篇文章的目标是希望能让不了解的朋友看完后达到下面几个目标：
+ UEFI是什么：概念 UFEI用来干什么：应用 UEFI有些什么东西：架构 UEFI重点场景：启动 UEFI学习资料：推荐  通过这几个部分，咱们能一起搭建起一个关于UEFI简要知识框架。那么以后对哪些方面感兴趣，让我知道，咱们再一起学习一下，去继续丰富关于UEFI。
+UEFI是什么 这就不得不提提BIOS
+传统BIOS 为了更好地理解UEFI，我们首先需要回顾一下历史。自20世纪80年代以来，计算机一直在使用BIOS。
+当我们提到BIOS时，根据上下文的不同，它可能代表不同的含义：
+  BIOS标准：这是一个广泛的概念，指的是一种在计算机启动时初始化硬件并加载操作系统引导程序的标准接口。
+  具体的BIOS实现——即特定于主板的固件（“ASUS $motherboard_name BIOS”）：
+   这是由主板制造商编写或授权的代码。 当计算机开机时，硬件被设置为开始执行BIOS。这是CPU需要知道的全部内容，即CPU不需要了解驱动器、文件系统或操作系统。BIOS负责初始化硬件，加载引导加载程序（如GRUB或Windows Boot Manager），然后引导加载程序负责加载并启动操作系统。  简而言之，BIOS是计算机启动过程中的一个重要环节，它负责在操作系统加载之前初始化硬件，并为操作系统的启动提供必要的环境。而UEFI（统一可扩展固件接口）是BIOS的现代替代品，提供了更多的功能和更好的安全性。
+BIOS作为标准 作为一个标准，BIOS定义了以下内容：
+  一个硬编码的内存位置，计算机在开机时CPU将从该位置开始执行BIOS代码。
+  磁盘位置，操作系统制造商可以在这些位置放置其引导加载程序以启动其操作系统。
+   从硬盘和软盘读写数据（因此不是所有程序都需要直接处理IDE/SATA等总线） 读取键盘按键 =&amp;gt; BIOS是一个硬件抽象层。   应用程序接口（APIs）用于：
+  其他许多功能
+  通过这些方式，BIOS为以下对象提供了API：
+  操作系统制造商
+  CPU制造商
+   开发人员与操作系统的硬件抽象API进行交互，甚至操作系统本身也不使用太多的BIOS API（因为它们直接控制硬件以获得更高级别的访问权限，这样就很不安全了） 即使在DOS时代，应用程序开发人员也可能使用DOS API进行抽象，而不是直接使用BIOS。  应用程序开发人员。不过，现在这些API的使用已经不多了，因为：  BIOS作为实现 你可能熟悉更新主板BIOS的过程。待刷新的BIOS是特定于主板的（即不存在适用于所有主板的单一BIOS），因为BIOS的实现是特定于主板的。</description>
     </item>
     
     <item>

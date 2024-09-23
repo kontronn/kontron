@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="uEFI BIOS简介" />
+<meta itemprop="description" content="uEFI BIOS简介" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="uEFI,BIOS" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="uEFI BIOS简介" />
+<meta property="og:description" content="uEFI BIOS简介" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/hardware/introduction-to-uefi.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-09-24 00:56:41 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-09-24 00:56:41 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"introduction-to-uefi.html","permalink":"https://www.kontronn.com/post/hardware/introduction-to-uefi.html","title":"uEFI BIOS简介"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
+
+
+
+
+  <title>uEFI BIOS简介 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">312</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#uefi是什么">UEFI是什么</a>
+      <ul>
+        <li><a href="#传统bios">传统BIOS</a></li>
+        <li><a href="#bios作为标准">BIOS作为标准</a></li>
+        <li><a href="#bios作为实现">BIOS作为实现</a></li>
+        <li><a href="#bios的工作原理">BIOS的工作原理</a></li>
+        <li><a href="#传统bios的局限性">传统BIOS的局限性</a></li>
+        <li><a href="#传统bios启动过程">传统BIOS启动过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#bios-vs-uefi">BIOS VS UEFI</a></li>
+    <li><a href="#uefi">UEFI</a>
+      <ul>
+        <li><a href="#uefi概念">UEFI概念</a></li>
+        <li><a href="#efi-系统分区">EFI 系统分区</a></li>
+        <li><a href="#efi-变量">EFI 变量</a></li>
+        <li><a href="#efi-的启动过程">EFI 的启动过程</a></li>
+        <li><a href="#efi-变量的影响">EFI 变量的影响</a></li>
+        <li><a href="#efi变量是什么">EFI变量是什么？</a></li>
+        <li><a href="#为什么efi变量会影响驱动器和新主板的兼容性">为什么EFI变量会影响驱动器和新主板的兼容性？</a></li>
+        <li><a href="#linux-efi-stub是个啥">Linux EFI stub是个啥？</a></li>
+      </ul>
+    </li>
+    <li><a href="#uefi的架构">UEFI的架构</a></li>
+    <li><a href="#uefi启动">UEFI启动</a>
+      <ul>
+        <li><a href="#uefi-启动-flow-windos">UEFI 启动 Flow (Windos)</a></li>
+        <li><a href="#uefi-启动-flow-linux">UEFI 启动 Flow (Linux)</a>
+          <ul>
+            <li><a href="#bios--uefi">BIOS + UEFI</a></li>
+            <li><a href="#主引导记录master-boot-loader-mbr">主引导记录（Master Boot Loader, MBR）</a></li>
+            <li><a href="#引导加载程序boot-loader">引导加载程序（Boot Loader）</a></li>
+            <li><a href="#内核kernel">内核（Kernel）</a></li>
+            <li><a href="#初始ram磁盘-initramfs镜像">初始RAM磁盘-initramfs镜像</a></li>
+            <li><a href="#使用getty的命令行界面">使用Getty的命令行界面</a></li>
+            <li><a href="#systemd">systemd</a></li>
+            <li><a href="#x-windows系统">X Windows系统</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#uefi安全启动">UEFI安全启动</a></li>
+    <li><a href="#uefi的资料">UEFI的资料</a>
+      <ul>
+        <li><a href="#文档">文档</a></li>
+        <li><a href="#实操">实操</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">312</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">397</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="56598"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="466"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-09-24T00:56:41&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/introduction-to-uefi.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="uEFI BIOS简介">
+      <meta itemprop="description" content="uEFI BIOS简介">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">uEFI BIOS简介 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-09-24 00:56:41 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-24 00:56:41 &#43;0800 CST">2024-09-24</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>469</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>3分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/hardware/introduction-to-uefi.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>本文简要介绍了uEFI BIOS的相关内容!</p>
+<h2 id="前言">前言</h2>
+<p>很难用一篇文章去完全的了解UEFI，这篇文章的目标是希望能让不了解的朋友看完后达到下面几个目标：</p>
+<ul>
+<li>UEFI是什么：概念</li>
+<li>UFEI用来干什么：应用</li>
+<li>UEFI有些什么东西：架构</li>
+<li>UEFI重点场景：启动</li>
+<li>UEFI学习资料：推荐</li>
+</ul>
+<p>通过这几个部分，咱们能一起搭建起一个关于UEFI简要知识框架。那么以后对哪些方面感兴趣，让我知道，咱们再一起学习一下，去继续丰富关于UEFI。</p>
+<h2 id="uefi是什么">UEFI是什么</h2>
+<p>这就不得不提提BIOS</p>
+<h3 id="传统bios">传统BIOS</h3>
+<p>为了更好地理解UEFI，我们首先需要回顾一下历史。自20世纪80年代以来，计算机一直在使用BIOS。</p>
+<p>当我们提到BIOS时，根据上下文的不同，它可能代表不同的含义：</p>
+<ol>
+<li>
+<p>BIOS标准：这是一个广泛的概念，指的是一种在计算机启动时初始化硬件并加载操作系统引导程序的标准接口。</p>
+</li>
+<li>
+<p>具体的BIOS实现——即特定于主板的固件（“ASUS $motherboard_name BIOS”）：</p>
+</li>
+</ol>
+<ul>
+<li>这是由主板制造商编写或授权的代码。</li>
+<li>当计算机开机时，硬件被设置为开始执行BIOS。这是CPU需要知道的全部内容，即CPU不需要了解驱动器、文件系统或操作系统。BIOS负责初始化硬件，加载引导加载程序（如GRUB或Windows Boot Manager），然后引导加载程序负责加载并启动操作系统。</li>
+</ul>
+<p>简而言之，BIOS是计算机启动过程中的一个重要环节，它负责在操作系统加载之前初始化硬件，并为操作系统的启动提供必要的环境。而UEFI（统一可扩展固件接口）是BIOS的现代替代品，提供了更多的功能和更好的安全性。</p>
+<h3 id="bios作为标准">BIOS作为标准</h3>
+<p>作为一个标准，BIOS定义了以下内容：</p>
+<ol>
+<li>
+<p>一个硬编码的内存位置，计算机在开机时CPU将从该位置开始执行BIOS代码。</p>
+</li>
+<li>
+<p>磁盘位置，操作系统制造商可以在这些位置放置其引导加载程序以启动其操作系统。</p>
+</li>
+</ol>
+<ul>
+<li>从硬盘和软盘读写数据（因此不是所有程序都需要直接处理IDE/SATA等总线）</li>
+<li>读取键盘按键 =&gt; BIOS是一个硬件抽象层。</li>
+</ul>
+<ol start="3">
+<li>
+<p>应用程序接口（APIs）用于：</p>
+</li>
+<li>
+<p>其他许多功能</p>
+</li>
+</ol>
+<p>通过这些方式，BIOS为以下对象提供了API：</p>
+<ol>
+<li>
+<p>操作系统制造商</p>
+</li>
+<li>
+<p>CPU制造商</p>
+</li>
+</ol>
+<ul>
+<li>开发人员与操作系统的硬件抽象API进行交互，甚至操作系统本身也不使用太多的BIOS API（因为它们直接控制硬件以获得更高级别的访问权限，这样就很不安全了）</li>
+<li>即使在DOS时代，应用程序开发人员也可能使用DOS API进行抽象，而不是直接使用BIOS。</li>
+</ul>
+<ol start="3">
+<li>应用程序开发人员。不过，现在这些API的使用已经不多了，因为：</li>
+</ol>
+<h3 id="bios作为实现">BIOS作为实现</h3>
+<p>你可能熟悉更新主板BIOS的过程。待刷新的BIOS是特定于主板的（即不存在适用于所有主板的单一BIOS），因为BIOS的实现是特定于主板的。</p>
+<p>我并不完全了解制造商特有的所有内容，但我猜测不同主板的芯片组会有所不同，比如内存控制器的初始化和处理、内置图形处理器等。</p>
+<h3 id="bios的工作原理">BIOS的工作原理</h3>
+<p>x86 CPU被设计为从一个硬编码的内存位置（0xFFFFFFF0）开始执行代码。这个内存位置由主板的BIOS代码ROM提供支持。在电气上，很容易将不同的地址空间分开，其中某些位置从RAM读取，而某些位置则从BIOS ROM等读取。要更深入地了解这一概念在电气上的实现，请观看此视频。</p>
+<p>以下是一个过于简化的视图：
+<img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-1.png" alt="uEFI BIOS"></p>
+<p>BIOS负责实际启动你的操作系统。</p>
+<p>在BIOS设置中，你通常可以配置启动顺序，如CD-ROM、硬盘1、硬盘2等，以及它们的任何组合。BIOS会根据你的启动顺序偏好找到第一个可启动项。</p>
+<h3 id="传统bios的局限性">传统BIOS的局限性</h3>
+<p>由于引导加载程序大小的限制，大多数操作系统不得不使用复杂的链式启动过程。</p>
+<h3 id="传统bios启动过程">传统BIOS启动过程</h3>
+<p>对于硬盘来说，存在一个引导扇区。引导扇区，或者更具体地说，是主引导记录（MBR），它包含引导加载程序，并且其大小限制实际上是440字节，因此仅凭这个大小的引导加载程序绝对无法加载现代操作系统。</p>
+<p>通常，MBR中的引导加载程序会将控制权传递给活动分区的引导加载程序（VBR，卷引导记录），但它也有相同的大小限制。</p>
+<p>加载操作系统至少意味着引导加载程序必须从磁盘读取内核（Linux/Windows等）并将其控制权交给它。内核更加智能，能够理解各种文件系统，如NTFS/FAT等。</p>
+<p>但是，为了让引导加载程序从磁盘读取内核，**它必须知道如何遍历文件系统以访问内核。**因此，引导加载程序会从文件系统的根目录读取并链式加载一个“第二阶段”（这是一个更简单的任务）——一个可以更大、因此可以包含更复杂代码的文件。</p>
+<p>在Windows中，这个第二阶段过去被称为NTLDR（“NT加载程序”），它位于你的 C:驱动器的根目录下。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-2.png" alt="uEFI BIOS"></p>
+<p>以下是关于传统BIOS和旧版Windows版本的启动过程：</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-3.png" alt="uEFI BIOS"></p>
+<p>如你所见，有很多箭头——引导加载程序组件分布在各个地方。有三个不同的特定于Windows的位置用于开始加载实际的内核。只要其中一个组件出错，你就会得到一个无法启动的系统。</p>
+<p>Linux（链式GRUB）的情况也大致相同。</p>
+<p>搞了这么多的BIOS？你的标题是UEFI欸，你别着急，继续看。</p>
+<h2 id="bios-vs-uefi">BIOS VS UEFI</h2>
+<p>其实大家对BIOS不陌生，到这里呢，我们来对通过一个对比引出我们的主角UEFI。</p>
+<p>BIOS 代表基本输入输出系统（Basic Input/Output System），是我们在上述启动过程中提到的固件。</p>
+<p>它存储在可擦除可编程只读存储器（EPROM, Erasable Programmable Read-Only Memory）中，这使得制造商可以轻松地推送更新。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-4.png" alt="uEFI BIOS"></p>
+<p>BIOS 提供了许多辅助功能，这些功能允许读取附加存储设备的引导扇区并在屏幕上打印信息。您可以在启动过程的初始阶段通过按 Del、F2 或 F10 键来访问 BIOS。</p>
+<p>UEFI 代表统一可扩展固件接口（Unified Extensible Firmware Interface）。它与 BIOS 执行相同的任务，但有一个基本区别：它将所有关于初始化和启动的数据存储在 .efi 文件中，而不是存储在固件上。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-5.png" alt="uEFI BIOS"></p>
+<p>这个 .efi 文件存储在硬盘上一个名为 EFI 系统分区（EFI System Partition, ESP）的特殊分区中。这个 ESP 分区还包含引导加载程序。</p>
+<p>UEFI 被设计用来克服旧版 BIOS 的许多限制，包括：</p>
+<ul>
+<li>UEFI 支持高达 9 泽它字节（Zettabytes）的驱动器大小，而 BIOS 仅支持 2.2 太字节（Terabytes）。</li>
+<li>UEFI 提供更快的启动时间。</li>
+<li>UEFI 具有独立的驱动程序支持，而 BIOS 的驱动程序支持存储在 ROM 中，因此更新 BIOS 固件有点困难。</li>
+<li>UEFI 提供类似“安全启动”（Secure Boot）的安全功能，这可以防止计算机从未经授权/未签名的应用程序启动。这有助于防止 rootkit，但也会妨碍双系统启动，因为它将其他操作系统视为未签名的应用程序。目前，只有 Windows 和 Ubuntu 是已签名的操作系统（如果我有误，请告诉我）。</li>
+<li>UEFI 以 32 位或 64 位模式运行，而 BIOS 以 16 位模式运行。因此，UEFI 能够提供图形用户界面（GUI, Graphical User Interface），允许使用鼠标进行导航，而 BIOS 仅允许使用键盘进行导航。</li>
+</ul>
+<p>当然您可能不需要 UEFI</p>
+<p>尽管所有现代计算机都默认配备了 UEFI，但您可能选择使用 BIOS 而不是 UEFI 的原因有几个：</p>
+<ul>
+<li>如果您是初学者，并且不关心与任何类型的固件打交道，那么 BIOS 适合您。</li>
+<li>如果您每个硬盘或分区的容量小于 2TB，那么您可以使用 BIOS。</li>
+<li>BIOS 允许在不更改任何设置的情况下运行多个操作系统。从现代的角度来看，这可能是一个安全问题，但对用户来说没有麻烦。</li>
+<li>BIOS 向操作系统提供系统信息。因此，如果您的操作系统以 16 位模式运行，它不需要编写与硬件交互的代码。它可以直接使用 BIOS 提供的方法。否则，如果操作系统切换到 32 位或 64 位模式，则需要提供自己的与硬件交互的子程序。</li>
+<li>如果您更喜欢使用键盘和基于文本的界面而不是使用鼠标和图形用户界面的导航，那么 BIOS 适合您。</li>
+</ul>
+<p>UEFI 考虑到了这些限制，并提供了传统模式（Legacy mode）。在该模式下，您可以像拥有 BIOS 固件一样运行所有内容。但请记住，英特尔已宣布从 2020 年起将不再支持传统 BIOS。</p>
+<p>以下是一个简化的表格，展示了UEFI和BIOS之间的主要对比结果：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>UEFI</th>
+<th>BIOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本概念</td>
+<td>统一可扩展固件接口</td>
+<td>基本输入输出系统</td>
+</tr>
+<tr>
+<td>数据存储方式</td>
+<td>数据存储在非易失性存储器中，以.efi文件形式组织</td>
+<td>数据直接存储在ROM中</td>
+</tr>
+<tr>
+<td>启动速度</td>
+<td>更快，使用更高效的算法和数据结构</td>
+<td>较慢，受限于16位代码和存储限制</td>
+</tr>
+<tr>
+<td>硬盘容量支持</td>
+<td>支持高达9泽它字节的驱动器大小</td>
+<td>仅支持最大2.2太字节的硬盘</td>
+</tr>
+<tr>
+<td>用户界面</td>
+<td>提供图形用户界面（GUI），支持鼠标导航</td>
+<td>通常仅提供基于文本的界面，支持键盘导航</td>
+</tr>
+<tr>
+<td>安全功能</td>
+<td>支持安全启动（Secure Boot），防止未经授权/未签名的应用程序启动</td>
+<td>不具备或仅具备有限的安全功能</td>
+</tr>
+<tr>
+<td>代码模式</td>
+<td>以32位或64位模式运行</td>
+<td>以16位模式运行</td>
+</tr>
+<tr>
+<td>模块化与可扩展性</td>
+<td>支持模块化设计，易于更新和扩展</td>
+<td>较为封闭，更新和扩展较为困难</td>
+</tr>
+<tr>
+<td>未来支持</td>
+<td>逐渐成为主流，英特尔已宣布不再支持传统BIOS</td>
+<td>传统BIOS正在逐渐被UEFI取代</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>请注意，这个表格是对UEFI和BIOS之间主要区别的简化概述，并未涵盖所有细节。在实际应用中，两者之间可能还存在其他差异和特性。</p>
+</blockquote>
+<h2 id="uefi">UEFI</h2>
+<p>前面我们知道了由于传统BIOS的局限性，人们开发了一种新标准，称为UEFI（通常简称为“EFI”）。UEFI执行传统BIOS曾经执行过的相同任务（以及更多任务），但接口（标准，“API”）不同。</p>
+<p>我们现在有了一个专用的分区，它足够大，可以包含整个操作系统的引导加载程序，因此我们不必将多个部分连接在一起，而无需使用微小的引导扇区。</p>
+<p>UEFI还为我们提供了网络引导、安全启动等安全功能。</p>
+<blockquote>
+<p>UEFI 不是 BIOS</p>
+</blockquote>
+<p>有时使用的术语“UEFI BIOS”是不正确的（即使我的主板制造商华硕也使用它），因为 UEFI 和 BIOS 都是固件的子类型——即它们是独立、不同、独立的固件标准：</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-6.png" alt="uEFI BIOS"></p>
+<h3 id="uefi概念">UEFI概念</h3>
+<p>统一可扩展固件接口（UEFI）是一种现代固件接口，它取代了个人计算机上的传统BIOS（基本输入输出系统）。UEFI作为操作系统与计算机硬件组件之间的关键纽带，促进了初始化过程，并为操作系统与系统固件之间的交互提供了标准化方式。</p>
+<p>与旧版BIOS相比，UEFI提供了多项优势，包括支持更大容量的存储设备、更快的启动速度、增强的安全功能和更友好的用户界面。开发UEFI的主要动机之一是克服BIOS的局限性，并为固件开发提供一个更加灵活和可扩展的平台。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-7.png" alt="uEFI BIOS"></p>
+<p>为了更好地理解UEFI，我们可以考虑一个涉及计算机启动过程的例子。在配备UEFI固件的系统中，当计算机通电时，启动过程开始。UEFI固件控制系统并启动加电自检（POST），这是一个诊断过程，用于检查硬件组件的完整性。POST成功完成后，UEFI固件会查找可启动设备。</p>
+<p>在UEFI系统中，固件与UEFI启动管理器交互，后者是一个负责加载操作系统的软件组件。启动管理器会查阅UEFI启动变量，这些变量包含有关可用启动选项及其优先级的信息。这些变量存储在非易失性存储器中，用户或系统管理员可以对其进行修改以自定义启动配置。</p>
+<p>假设计算机在固态硬盘（SSD）上安装了操作系统。UEFI固件在启动管理器的帮助下，定位SSD上EFI系统分区（ESP）中存储的UEFI引导加载程序。UEFI引导加载程序是一个小程序，它了解文件系统并知道如何将操作系统内核加载到内存中。</p>
+<p>一旦UEFI引导加载程序加载了操作系统内核，控制权便转移给操作系统，并向用户呈现用户界面。在整个过程中，UEFI促进了硬件与软件之间的通信，确保了顺畅且高效的启动体验。</p>
+<p>因此，UEFI是一种关键的固件接口，为固件开发提供了标准化和可扩展的框架，从而实现了性能提升、对大容量存储设备的支持以及增强的安全功能。从BIOS到UEFI的转变标志着系统固件发展的一次重大进步。</p>
+<h3 id="efi-系统分区">EFI 系统分区</h3>
+<p>作为 Windows 用户，您可能已经注意到有一个神秘的“系统保留”分区：</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-8.png" alt="uEFI BIOS"></p>
+<p>这是 ESP（EFI 系统分区）——一个用于启动符合 EFI 的系统的分区。</p>
+<p>ESP 通常是一个采用 FAT32 格式化的分区，最小空间为 100MB，一些指南建议为 512MB。</p>
+<p>该分区包含 EFI 应用程序，这些应用程序通常位于自己的目录中。可能包含多个 EFI 应用程序，因为您可能安装了多个操作系统。在我的思维模型中，我将这些目录视为每个操作系统的“插槽”。</p>
+<p>如果您想的话，可以使用基本的 Linux 内置工具（如<code> mkfs.fat -F 32</code>）从头开始创建此分区。只需确保将分区类型设置为 EFI 系统即可！</p>
+<p>幸运的是，ESP 并不神奇——它只是一个包含文件的分区，并且某些文件路径具有特殊含义（如果未指示启动选择，则默认启动的 EFI 应用程序）。</p>
+<h3 id="efi-变量">EFI 变量</h3>
+<p>EFI（Extensible Firmware Interface，可扩展固件接口）是现代计算机系统中用来替代传统BIOS的一种新标准。在EFI的世界里，有一些特别的“变量”被存储在主板的非易失性随机访问存储器（NVRAM）中。这些变量就像是电脑的小记事本，存储着一些重要的设置和信息。</p>
+<p>其中，有一个特别重要的变量叫做“默认启动项”（“BootCurrent”），它就像是一个指针或者地址，指向了另一个变量。这个被指向的变量呢，其实就是一个具体的启动项，里面包含了要启动的EFI应用程序（比如操作系统）的完整路径，就像是你手机上的某个APP的存储位置一样。</p>
+<p>不仅如此，这些启动项变量还很贴心，它们还能额外存储一些参数，就像是你打开APP时可以设置的一些选项。对于Linux系统来说，有一个特别的EFI应用程序叫做EFI stub，它可以直接从EFI环境启动Linux内核，而不需要传统的引导加载程序（如GRUB）。在这个场景下，EFI变量里就会包含Linux内核启动时需要的一些命令行参数，比如指定根文件系统所在的分区。而如果使用GRUB这样的引导加载程序，这些参数就会写在GRUB的配置文件中，而不是EFI变量里。</p>
+<p>最棒的是，这些EFI变量是可以从操作系统内部直接修改的，这意味着，如果你想改变启动顺序或者添加新的启动项，不再需要像以前那样重启电脑，然后进入BIOS设置界面去操作了。你只需要在操作系统里找到相应的工具或命令，就可以轻松完成这些任务，大大简化了操作过程。</p>
+<h3 id="efi-的启动过程">EFI 的启动过程</h3>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-9.png" alt="uEFI BIOS"></p>
+<p>主板的固件基本上总是存储在闪存中（这样它就可以被升级）。EFI 变量的存储也需要闪存，因为如果它们不能被更改，那么它们就称不上是真正的“变量”。</p>
+<h3 id="efi-变量的影响">EFI 变量的影响</h3>
+<p>让我们用更简单的语言来解释关于EFI变量的一些关键点：</p>
+<h3 id="efi变量是什么">EFI变量是什么？</h3>
+<p>EFI（现在常被称为UEFI，即统一可扩展固件接口）变量是存储在计算机中的小数据块，它们包含了一些重要的设置和信息，比如启动时的配置参数、操作系统需要的特殊指令等。这些变量对于确保计算机和操作系统能够顺利启动和运行非常重要。</p>
+<h3 id="为什么efi变量会影响驱动器和新主板的兼容性">为什么EFI变量会影响驱动器和新主板的兼容性？</h3>
+<p>当你把一个硬盘（我们称之为驱动器）从一台电脑换到另一台时，可能会遇到问题。这是因为每台电脑的主板（负责计算机启动和硬件交互的核心部件）上都有自己的EFI变量。这些变量里可能包含了一些特定的设置或参数，是启动操作系统时必需的。如果新主板没有这些特定的设置，那么系统可能无法正常工作。</p>
+<h3 id="linux-efi-stub是个啥">Linux EFI stub是个啥？</h3>
+<p>Linux EFI stub是一个特殊的启动方式，它允许Linux内核直接作为EFI应用程序来启动，而不需要传统的启动加载器（如GRUB）。虽然这听起来很酷，但它需要一些额外的参数来告诉内核如何启动，这些参数就存储在EFI变量中。</p>
+<p>你可能会想，为什么不把所有的EFI变量都放在驱动器上的一个地方（比如ESP）呢？这样换电脑时不是更方便吗？但实际上，这样做会有安全风险，因为驱动器可以被随意更换，如果它决定了计算机的启动方式，那就可能被恶意利用。所以，EFI变量大部分还是存储在主板上的一个特殊区域（NVRAM），这样更安全。</p>
+<p>不同的主板制造商可能会用不同的方式来存储EFI变量，这意味着它们的格式可能不同。对于大多数用户来说，这不是问题，因为操作系统和EFI固件会处理这些细节。但是，如果你在虚拟机或特殊环境中工作，并需要手动设置这些变量，那就可能会遇到麻烦，因为你需要知道如何与特定主板的EFI固件交互。</p>
+<p>EFI变量是计算机启动过程中的重要部分，它们包含了启动系统所需的关键信息和设置。由于这些变量可能依赖于特定的主板和固件，所以在更换硬件或进行特殊配置时需要格外注意。对于大多数用户来说，这些变量是自动管理的，但了解它们的工作原理可以帮助你更好地理解和解决启动问题。</p>
+<h2 id="uefi的架构">UEFI的架构</h2>
+<p>UEFI的设计是建立在几个关键概念之上的：</p>
+<ol>
+<li>
+<p>利用现有的“表格式”接口：为了节省大家在操作系统和固件上已经投入的时间和资源，UEFI采用了许多现有的标准。这些标准在支持特定处理器的平台上很常见。如果你想要你的平台符合UEFI的标准，那么你就需要实现这些标准。简单来说，UEFI没有从头开始创造新的东西，而是把大家已经熟悉的、好用的东西整合了进来。（更多细节，你可以查看参考资料。）</p>
+</li>
+<li>
+<p>系统分区：系统分区就像是一个特殊的区域，它有一个特别的文件系统。这个区域可以让不同的公司或组织安全地共享数据，同时满足不同的需求。有了这个系统分区，我们可以在不增加太多额外存储空间需求的情况下，让平台变得更加强大和灵活。</p>
+</li>
+<li>
+<p>启动服务：启动服务就像是在启动电脑时提供的一些工具和接口，它们可以帮助我们更好地使用设备和系统功能。这些服务通过“句柄”和“协议”来与设备交互，这样我们就可以更容易地使用现有的BIOS代码，而不需要担心具体的实现细节。</p>
+</li>
+<li>
+<p>运行时服务：这些服务是在电脑正常运行时提供的。它们确保操作系统可以轻松地访问和使用平台的基本硬件资源。这些服务被设计成非常基础且必要的，以确保操作系统的稳定运行。</p>
+</li>
+</ol>
+<p>下面的图表展示了UEFI的主要部分，以及它们与平台硬件和操作系统软件之间的关系。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-10.png" alt="uEFI BIOS"></p>
+<p>本图展示了符合UEFI规范的系统各组件之间的交互，这些组件用于完成平台和操作系统的启动。</p>
+<p>平台固件能够从系统分区中获取操作系统加载程序映像。该规范支持多种大容量存储设备类型，包括磁盘、CD-ROM和DVD，以及通过网络进行远程启动。通过可扩展的协议接口，可以添加其他启动媒体类型。</p>
+<p>一旦启动，操作系统加载程序将继续引导完整的操作系统。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-11.png" alt="uEFI BIOS"></p>
+<p>第一段：UEFI让平台固件变得更加强大，方法是通过加载UEFI驱动程序和应用程序。一旦这些驱动程序和应用程序被加载，它们就可以使用UEFI提供的所有运行时和启动服务。这就像给你的电脑平台固件增加了很多新功能，而这些新功能都是按照UEFI的规则来运行的。你可以看看上面的启动顺序图，它展示了这一切是如何工作的。</p>
+<p>第二段：UEFI还做了一件很酷的事情，它把操作系统加载程序和平台固件的启动菜单合并成了一个统一的平台固件菜单。这样，你就可以在这个菜单里选择任何支持UEFI启动服务的启动介质上的任何分区上的UEFI操作系统加载程序。UEFI操作系统加载程序还可以在用户界面上显示多个选项，让你有更多的选择。而且，如果你还想用老式的启动方式（比如从A盘或C盘启动），UEFI也支持在平台固件启动菜单中加入这些选项。</p>
+<p>第三段：UEFI支持从包含UEFI操作系统加载程序或UEFI定义的系统分区的介质启动。如果你想从硬盘这样的块设备启动，那么UEFI要求必须有一个UEFI定义的系统分区。不过，UEFI并不会改变分区的第一个扇区，这意味着你可以创建一种既能在老式架构上启动，又能在UEFI平台上启动的介质。这样，无论你的电脑支持哪种启动方式，你都可以轻松地使用它。</p>
+<h2 id="uefi启动">UEFI启动</h2>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-12.png" alt="uEFI BIOS"></p>
+<p>UEFI 包含六个主要的启动步骤，这些步骤在平台的启动和初始化过程中都扮演着至关重要的角色。所有这些步骤加在一起，我们通常称之为“平台初始化”（Platform Initialization，简称 PI）。</p>
+<p>下面我会简要介绍每个阶段，希望能帮助您对这个过程有一个基本的了解。</p>
+<blockquote>
+<p>DXE 和 RT 这两个阶段，对于初学者比较重要。</p>
+</blockquote>
+<p>安全阶段（SEC）这是UEFI启动流程的首要阶段，主要用于：初始化一个临时的内存存储区域，作为系统信任链的起点，并向Pre-EFI初始化（PEI）阶段提供必要的信息。这个信任链的起点确保了在平台初始化（PI）过程中执行的任何代码都经过加密验证（即数字签名），从而建立一个“安全启动”的环境。</p>
+<p>Pre-EFI初始化阶段（PEI）这是启动流程的第二阶段，它仅利用CPU当前的资源来调度Pre-EFI初始化模块（PEIM）。这些模块负责执行关键的启动操作初始化，如内存初始化，同时也允许将控制权传递给驱动程序执行环境（DXE）。</p>
+<p>驱动程序执行环境（DXE）在DXE阶段，系统的大部分初始化工作都会发生。在PEI阶段，DXE操作所需的内存已经被分配和初始化。当控制权传递给DXE时，DXE调度器会被激活。调度器负责加载和执行硬件驱动程序、运行时服务和任何操作系统启动所需的启动服务。</p>
+<p>启动设备选择（BDS）一旦DXE调度器完成了所有DXE驱动程序的执行，控制权就会传递给BDS。这个阶段负责初始化控制台设备和任何剩余的必需设备。然后，它会加载并执行选定的启动项，为瞬态系统加载（TSL）阶段做准备。</p>
+<p>瞬态系统加载（TSL）在这个阶段，PI流程处于启动设备选择和将控制权移交给主操作系统之间的过渡阶段。此时，可能会调用一个应用程序（如UEFI shell），或者（更常见的是）运行一个引导加载程序来准备最终的操作系统环境。引导加载程序通常负责通过调用ExitBootServices()来终止UEFI启动服务。但是，操作系统本身也可以执行这一操作，比如带有CONFIG_EFI_STUB的Linux内核。</p>
+<p>运行时（RT）这是最后的阶段，也是操作系统接管系统的时刻。尽管此时UEFI的启动服务已经不再可用，但UEFI的运行时服务仍然保留给操作系统使用，例如用于查询和写入NVRAM中的变量。</p>
+<p>系统管理模式（SMM）SMM是一个与运行时阶段分开存在的模式，它可以在SMI（系统管理中断）被触发时进入。然而，在这个介绍中，我们不会深入讨论SMM。</p>
+<h3 id="uefi-启动-flow-windos">UEFI 启动 Flow (Windos)</h3>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-13.png" alt="uEFI BIOS"></p>
+<p>以下是Windows计算机启动的顺序阶段：</p>
+<ol>
+<li>预启动（PreBoot）</li>
+</ol>
+<p>计算机的固件启动加电自检（POST），并加载固件设置。当检测到有效的系统磁盘时，此预启动过程结束。固件读取主引导记录（MBR），然后启动Windows启动管理器。</p>
+<ol start="2">
+<li>Windows启动管理器</li>
+</ol>
+<p>Windows启动管理器在Windows启动分区上查找并启动Windows加载程序（Winload.exe）。</p>
+<ol start="3">
+<li>Windows操作系统加载程序</li>
+</ol>
+<p>加载启动Windows内核所必需的基本驱动程序，然后内核开始运行。</p>
+<ol start="4">
+<li>Windows NT操作系统内核</li>
+</ol>
+<p>内核将系统注册表配置单元和标记为BOOT_START的其他驱动程序加载到内存中。</p>
+<p>内核将控制权传递给会话管理器进程（Smss.exe），该进程初始化系统会话，并加载和启动未标记为BOOT_START的设备和驱动程序。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-14.png" alt="uEFI BIOS"></p>
+<p>从内核（ntoskrnl.exe）到执行LogonUi.exe（提示用户交互的进程）的Windows启动过程的简化版本。它被分为五个步骤。</p>
+<ol>
+<li>加载操作系统内核</li>
+<li>初始化内核</li>
+<li>启动子系统</li>
+<li>启动会话0</li>
+<li>启动会话1</li>
+</ol>
+<h3 id="uefi-启动-flow-linux">UEFI 启动 Flow (Linux)</h3>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-14.png" alt="uEFI BIOS"></p>
+<h4 id="bios--uefi">BIOS + UEFI</h4>
+<p>基本输入输出系统（BIOS）或统一可扩展固件接口（UEFI）是计算机开机时首先运行的程序，负责硬件的初始化以及从选定的启动设备加载引导加载程序。</p>
+<h4 id="主引导记录master-boot-loader-mbr">主引导记录（Master Boot Loader, MBR）</h4>
+<p>MBR是硬盘的第一个扇区，包含了用于加载操作系统引导加载程序（如GRUB）的指令。</p>
+<p>MBR（主引导记录）是硬盘的初始（主要）扇区，它标识了操作系统的位置，以完成启动过程。</p>
+<p>MBR的位置取决于您的硬件，它可能位于/dev/hda或/dev/sda。</p>
+<p>它是一个512字节的映像，包含代码以及一个简短的分区表，这些都有助于加载/执行GRUB（引导加载程序）。</p>
+<h4 id="引导加载程序boot-loader">引导加载程序（Boot Loader）</h4>
+<p>引导加载程序（如GRUB）负责加载操作系统内核到内存中。它允许用户选择启动哪个操作系统（如果安装了多个的话）。</p>
+<p>Linux有多个引导加载程序，其中最常见的是GRUB和LILO，而GRUB2是最新版本之一。</p>
+<p>当你启动计算机时，通常首先看到的是GRand Unified Boot loader（GRUB）。</p>
+<p>它由一个简单的菜单组成，该菜单使用键盘显示选项，以便你选择要启动的内核（如果你安装了多个内核映像）。</p>
+<p>在双系统启动时，GRUB2允许你选择要启动的操作系统。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-15.png" alt="uEFI BIOS"></p>
+<h4 id="内核kernel">内核（Kernel）</h4>
+<p>内核是操作系统的核心，负责管理硬件、提供基本服务（如进程调度、内存管理等），并作为用户程序与硬件之间的桥梁。</p>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-16.png" alt="uEFI BIOS"></p>
+<p>内核完全控制你系统中的一切，因此被称为操作系统的核心。</p>
+<p>内核是自解压的，并以压缩格式存储以节省空间。</p>
+<p>一旦选定的内核被加载到内存中并开始执行，它会在执行任何有用任务之前先解压自己。</p>
+<p>一旦由引导加载程序加载，内核会挂载根文件系统并初始化/sbin/init程序，该程序通常被称为init。</p>
+<h4 id="初始ram磁盘-initramfs镜像">初始RAM磁盘-initramfs镜像</h4>
+<p>initramfs是一个在内核启动过程中被挂载为根文件系统的临时内存文件系统。它包含了启动过程中内核所需的驱动程序和脚本。
+初始RAM磁盘是一个初始/临时的根文件系统，它在真正的根文件系统可用之前被挂载。</p>
+<p>这个initramfs映像嵌入在内核中，并包含挂载真正根文件系统所需的最小二进制文件、模块和程序。</p>
+<p>6️⃣ /sbin/init（也称为init）[父进程]</p>
+<p>init是系统启动后运行的第一个用户空间程序，它是所有其他用户空间进程的父进程。它负责启动系统上的其他进程，并根据配置文件（如/etc/inittab或systemd的配置）设置运行级别。</p>
+<p>一旦加载，init是内核首先执行的命令之一。</p>
+<p>这个程序管理剩余的启动过程，并为用户设置环境。</p>
+<p>基本上，在这个阶段，系统会执行在系统初始化期间所需的一切操作：检查文件系统、配置时钟、初始化串行端口等。</p>
+<p>除了启动系统外，init命令还有助于保持系统正常运行并正确关闭系统。</p>
+<h4 id="使用getty的命令行界面">使用Getty的命令行界面</h4>
+<p>Getty是一个用于打开文本登录会话的程序。在系统启动后，它会为每个终端或虚拟控制台启动一个登录会话。</p>
+<p>Getty是“get tty”（tty-电传打字机）的缩写，它是一个在主机上运行的UNIX程序，用于管理物理或虚拟终端。</p>
+<p>Getty会打开TTY行，设置它们的模式，打印登录提示符，获取用户名，然后为用户启动登录过程。</p>
+<p>之后，用户在通过身份验证后可以开始使用系统。</p>
+<h4 id="systemd">systemd</h4>
+<p>systemd是现代Linux系统上的系统和服务管理器，负责初始化系统、管理系统服务、启动守护进程等。它取代了传统的init系统，并提供了更丰富的功能和更好的性能。</p>
+<p>上述提到的顺序启动方法相当传统，属于UNIX的System V变体，之后发生了用systemd替代systemv这一有争议的事件。</p>
+<p>一方面，SysVinit（传统的init系统-System V）遵循顺序过程；另一方面，systemd则利用了现代多处理器/多核计算机的并行处理能力。</p>
+<blockquote>
+<p>注意：systemd在加载后由内核初始化，之后systemd启动所需的依赖项并处理其余部分。</p>
+</blockquote>
+<p>systemd通过同时/并行启动多个进程来简化启动过程并缩短启动时间。</p>
+<h4 id="x-windows系统">X Windows系统</h4>
+<p>X Windows系统（现在通常被称为X.org Server）是Linux上广泛使用的图形服务器，它负责显示图形用户界面（GUI）。在X Windows系统启动后，用户可以运行图形应用程序，并通过鼠标和键盘与系统进行交互。</p>
+<p>X Windows系统是一个开源的客户端-服务器系统，它实现了窗口化的图形用户界面（GUI）。</p>
+<p>它也被称为X；它为GUI环境提供了基本结构，包括在显示设备上绘制和移动窗口的能力，以及与鼠标和键盘通信的能力。</p>
+<p>Linux的启动过程非常灵活且不断改进，支持广泛的处理器和硬件平台。上述列出的所有内容并不一定完全准确地描述了您机器的启动过程；有些阶段甚至可以通过一些调整来跳过。</p>
+<p>到这里，你说我们这搞安全的不聊几句关于安全启动的，好像说不过去。</p>
+<h2 id="uefi安全启动">UEFI安全启动</h2>
+<p>安全启动、Windows与密钥管理</p>
+<p>UEFI（统一可扩展固件接口）规范核心定义了一个称为安全启动的固件执行认证流程。作为行业标准，安全启动详细规定了平台固件如何管理证书、验证固件，以及操作系统如何与此验证过程进行交互。</p>
+<p>安全启动基于公钥基础设施（PKI）流程，在允许任何模块执行前，先对其进行严格认证。这些模块广泛包括固件驱动程序、选项ROM、磁盘上的UEFI驱动程序、UEFI应用程序或UEFI引导加载程序。通过执行前的镜像认证机制，安全启动有效降低了如rootkit等预启动恶意软件攻击的风险。在Windows 8及更高版本中，微软依赖于UEFI安全启动作为其可信启动安全架构的关键组成部分，旨在为客户提升平台安全性。</p>
+<p>对于Windows 8及更高版本的客户端PC，以及Windows Server 2016，安全启动是强制要求的，这一规定明确体现在Windows硬件兼容性要求中。</p>
+<p>安全启动流程的工作原理简述如下（如图1所示）：</p>
+<ol>
+<li>
+<p>固件启动组件：固件首先验证操作系统加载程序（如Windows或其他受信任的操作系统）的可信度。</p>
+</li>
+<li>
+<p>Windows启动组件：包括BootMgr、WinLoad及Windows内核启动过程。这些组件会逐一验证各自组件的签名。任何未通过验证的组件将被阻止加载，并触发安全启动修复机制。</p>
+</li>
+<li>
+<p>防病毒与反恶意软件软件初始化：此阶段会检查这些软件是否拥有微软颁发的特殊签名，以确保其为受信任的关键启动驱动程序，并在启动过程中尽早启动。</p>
+</li>
+<li>
+<p>关键启动驱动程序初始化：WinLoad在执行安全启动验证时，会检查所有关键启动驱动程序的签名。</p>
+</li>
+<li>
+<p>其他操作系统初始化</p>
+</li>
+<li>
+<p>Windows登录屏幕</p>
+</li>
+</ol>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-17.png" alt="uEFI BIOS"></p>
+<p>UEFI安全启动的实施是微软自Windows 8.1以来引入的可信启动架构的重要一环。随着恶意软件漏洞利用技术的不断发展，将启动路径作为首选攻击向量的趋势日益明显。</p>
+<p>由于恶意软件能够阻止防病毒产品完全加载，从而使其失效，因此这类攻击尤为难以防范。然而，通过Windows可信启动架构及其与安全启动共同建立的信任根，客户可以确保在操作系统本身加载之前，仅有经过签名和认证的“已知良好”代码及引导加载程序能够执行，从而有效防止启动路径中的恶意代码执行。</p>
+<h2 id="uefi的资料">UEFI的资料</h2>
+<p>最后分享一点资料。资料太多，反而会选择困难症状，所以我就各推荐一个吧，用于系统学习、小部分了解、以及实际 操作。</p>
+<h3 id="文档">文档</h3>
+<ul>
+<li>UEFI/2.10：https://uefi.org/specs/UEFI/2.10/02_Overview.html</li>
+</ul>
+<h3 id="实操">实操</h3>
+<p><img src="https://www.kontronn.com/imgs/post/uEFI-BIOS-18.png" alt="uEFI BIOS"></p>
+<p>英特尔最初发布了原始EFI规范的开源实现，即EFI开发工具包（EDK）。在UEFI和PI的开发过程中，这个开源项目继续发展为EDK2。该项目的主要目标是针对固件开发人员开发、测试和调试UEFI驱动程序、可选ROM和应用程序。</p>
+<p>推荐的开发工具的简短列表：</p>
+<ul>
+<li>EDK2</li>
+</ul>
+<p>首先是EDK2项目，它被描述为“一个现代的、功能丰富的、跨平台的固件开发环境，用于[www.uefi.org]的UEFI和PI规范。”EDK2项目由许多同样为UEFI规范做出贡献的同一批人（以及社区志愿者）开发和维护。</p>
+<p>这非常有帮助，因为EDK2保证包含最新的UEFI协议（假设您使用的是主分支）。除此之外，还有无数高质量的项目供您参考。一个例子是开放虚拟机固件（OVMF）。这是一个旨在为虚拟机提供UEFI支持的项目，它的文档非常齐全。</p>
+<p>EDK2的一个主要缺点是第一次设置构建环境的过程——这是一个漫长而艰巨的过程，即使他们有“开始使用EDK2”指南尽可能简化这个过程，对于新手来说仍然可能感到困惑。</p>
+<ul>
+<li>VisualUefi</li>
+</ul>
+<p>VisualUefi项目旨在允许在Visual Studio内部进行EDK2开发。我们建议您开始开发时，使用EDK2命令行中的构建工具而不是这个项目，以让您熟悉平台。</p>
+<p>此外，VisualUefi提供的头文件和库是完整EDK2库的一个子集，因此您可能会发现您需要的不是所有东西都容易获取。然而，与EDK2相比，它的设置要简单得多，因此通常受到热衷于使用Visual Studio的用户的青睐。</p>
+<ul>
+<li>调试</li>
+</ul>
+<p>关于调试，有几个选项可供您选择，每个选项都有其优缺点。这些将在下面列出，您最喜欢哪一个由您自己决定。在本系列的第二部分中，我们将向您展示如何调试一个示例驱动程序，所以在此之前，您可能想要安装所有这些（或者一个也不安装！）以帮助您做出明智的决定：+ QEMU - 一个多平台模拟器（尽管在Linux上最好），由于它是一个模拟器而不是虚拟机，因此提供了最好的调试设施。它的设置相当复杂，而且与它的同类相比，它也相当慢。+ VirtualBox - 一个好的多平台解决方案，除了由于非易失性随机存取存储器（NVRAM）仿真相当差劲而遭受内存丢失的问题。+ VMware - 提供良好的性能和正确工作的NVRAM仿真。如果客户机和主机都是Windows，它与WinDbg配合使用进行TSL和RT阶段的调试效果非常好。</p>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/uefi">
+    uEFI
+  </a>
+    <a href="/tags/bios">
+    BIOS
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      uEFI BIOS简介
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/introduction-to-uefi.html" title="uEFI BIOS简介">https://www.kontronn.com/post/hardware/introduction-to-uefi.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/welcome-to-vxworks-club/" rel="next" title="欢迎加入 VxWorks 俱乐部！">
+      <i class="fa fa-chevron-left"></i> 欢迎加入 VxWorks 俱乐部！
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/soc/intel-xeon-6-soc-is-to-be-launched-in-2025.html" rel="prev" title="Intel首次为CPU赋予真正“光的力量”">
+      Intel首次为CPU赋予真正“光的力量”
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
