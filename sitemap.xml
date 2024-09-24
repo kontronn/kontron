@@ -7,32 +7,57 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/ai/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/categories/datacenter/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/hpc/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/llm/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</loc>
+    <lastmod>2024-09-25T00:05:33+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/bios/</loc>
     <lastmod>2024-09-24T00:56:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/</loc>
-    <lastmod>2024-09-24T00:56:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/categories/hardware/</loc>
-    <lastmod>2024-09-24T00:56:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/</loc>
-    <lastmod>2024-09-24T00:56:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/post/</loc>
-    <lastmod>2024-09-24T00:56:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/</loc>
     <lastmod>2024-09-24T00:56:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -262,11 +287,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/datacenter/</loc>
-    <lastmod>2024-09-15T20:40:57+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/firewall/</loc>
     <lastmod>2024-09-15T20:40:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -417,11 +437,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/ai/</loc>
-    <lastmod>2024-09-08T08:23:33+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
     <loc>https://www.kontronn.com/tags/data-center/</loc>
     <lastmod>2024-09-08T08:23:33+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -559,11 +574,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/linux/the-rtos-renaissance-closing-the-os-gap-with-linux-in-iot.html</loc>
     <lastmod>2024-08-31T22:44:19+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/llm/</loc>
-    <lastmod>2024-08-31T22:07:26+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -2234,11 +2244,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/linux/how-to-install-PHP5.4-through-yum.html</loc>
     <lastmod>2023-09-30T11:53:41+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/hpc/</loc>
-    <lastmod>2023-09-29T22:06:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
