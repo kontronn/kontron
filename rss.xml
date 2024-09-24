@@ -6,7 +6,7 @@
     <description>Recent content on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Sep 2024 00:17:20 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,20 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>Git 命令简介</title>
+      <link>https://www.kontronn.com/post/programming/introduction-to-git-commands.html</link>
+      <pubDate>Wed, 25 Sep 2024 00:17:20 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/programming/introduction-to-git-commands.html</guid>
+      <description>&lt;p&gt;Git 是一个功能强大的版本控制系统，允许开发人员跟踪变更、与他人协作并有效管理项目历史。&lt;/p&gt;
+&lt;p&gt;Git 由 Linus Torvalds 于 2005 年发明，用于支持 
+&lt;a href=&#34;https://www.vxworks.net/linux/1231-compile-linux-kernel&#34; title=&#34;Linux 内核&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Linux 内核
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;的开发。创建 Git 的主要动机是解决现有版本控制系统（VCS）的不足，并提供一个更强大、更高效、更灵活的源代码管理系统。&lt;/p&gt;</description>
     </item>
     
     <item>

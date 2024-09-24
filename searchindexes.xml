@@ -16,6 +16,34 @@
   </entry>
   
   <entry>
+    <title>Git 命令简介</title>
+    <url>/post/programming/introduction-to-git-commands.html</url>
+    <categories><category>Programming</category>
+    </categories>
+    <tags>
+      <tag>Git</tag>
+    </tags>
+    <content type="html"><![CDATA[Git 是一个功能强大的版本控制系统，允许开发人员跟踪变更、与他人协作并有效管理项目历史。
+Git 由 Linus Torvalds 于 2005 年发明，用于支持 Linux 内核  的开发。创建 Git 的主要动机是解决现有版本控制系统（VCS）的不足，并提供一个更强大、更高效、更灵活的源代码管理系统。
+Git 与其他版本控制工具的区别  分布式架构  集中式系统（如 CVS、Subversion）只有一个中央版本库，而 Git 则不同，它允许每个用户都拥有一个完整的版本库克隆。这种分散性意味着用户可以离线工作，系统对服务器中断也有很强的适应能力。
+ 数据完整性和安全性  Git 使用内容可寻址文件系统来存储其对象，确保所有数据都经过校验和处理，在不更改相应标识符的情况下无法更改。这种机制为防止数据损坏提供了强有力的保障。
+ 高效的分支和合并  Git 可以轻松创建、切换和合并分支。它的轻量级分支模型鼓励在独立分支中开发功能、修复和实验的工作流程。这与旧系统的分支和合并复杂且容易出错形成鲜明对比。
+ 速度  Git 的设计旨在快速执行。涉及历史记录的操作（如日志、归咎、差异）由于是在本地执行，因此速度特别快。与需要通过网络访问才能进行类似操作的旧版系统相比，这种速度是一项重大改进。
+ 内容跟踪  Git 跟踪的是内容变化，而不仅仅是文件变化。这意味着即使文件被移动或重命名，Git 仍能准确跟踪其历史记录。而其他一些 VCS 则无法做到这一点，它们只能通过文件路径来跟踪文件。
+ Snapshots vs. Deltas  Git 的存储模型基于给定时间点上整个版本库的快照，而不是一系列文件的差异（deltas）。这种模式更容易理解任何给定提交时的版本库状态，并简化了历史记录的表示。
+ Staging Area  Git 引入了暂存区（也称索引）的概念，允许用户通过选择特定的改动来准备提交。与一次性提交所有改动的系统相比，这一功能提供了对提交过程更精细的控制。
+Git 基本命令  初始化和克隆  git init： 在当前目录下初始化一个新的 Git 仓库。 git clone &lt;repository_url&gt;： 将远程服务器上的现有仓库克隆到本地计算机上。  暂存和提交  git add &lt;file&gt;: 为下一次提交暂存指定文件中的更改。 git commit -m “&lt;message&gt;”： 提交暂存的改动，并附上描述性信息。  分支  git branch &lt;branch_name&gt;： 用指定的名称创建一个新分支。 git checkout &lt;branch_name&gt;: 切换到指定的分支。 git merge &lt;branch_name&gt;： 将指定的分支合并到当前分支。  push 和 pull  git push： 将本地提交推送到远程仓库。 git pull： 从远程仓库抓取改动并整合到当前分支。 典型开发工作流程  创建分支  首先为您正在开发的功能或错误修复创建一个新分支。这样就能将您的修改与主代码库（通常是主分支或主分支）分开。
+git checkout -b feature/new-feature  开发和提交修改  进行修改并频繁提交，同时附上有意义的信息。这有助于跟踪历史并了解变更的来龙去脉。
+git add . git commit -m &#34;Add new feature implementation“  合并改动  功能完成并经过测试后，将改动合并回主分支。首先，切换到主分支，然后合并。
+git checkout main git merge feature/new-feature  推送修改  把主分支推送到远程仓库，与他人分享你的改动。
+git push origin main 冲突解决 当文件中的同一行在不同分支中被改动，Git 无法自动合并改动时，就会发生冲突。下面是解决冲突的方法：
+ 识别冲突  合并过程中发生冲突时，Git 会在文件中标记冲突区域。例如
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 这是原始内容。 ======= 这是来自另一个分支的新内容。 &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/new-feature  解决冲突  手动编辑文件以解决差异。选择一个版本，合并它们，或根据需要重写部分。
+ 将冲突标记为已解决  解决冲突后，将更改分阶段提交。
+git add &lt;文件 git commit -m &#34;Resolve merge conflict&#34; ]]></content>
+  </entry>
+  
+  <entry>
     <title>洞察之路变革：AI-HPC范式转移</title>
     <url>/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</url>
     <categories><category>DataCenter</category>
