@@ -6,7 +6,20 @@
     <description>Recent content in ARM on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 29 Jul 2024 23:05:30 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Sep 2024 15:29:04 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM也被报考虑收购英特尔部分业务</title>
+      <link>https://www.kontronn.com/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</link>
+      <pubDate>Sat, 28 Sep 2024 15:29:04 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</guid>
+      <description>&lt;p&gt;据报道，
+&lt;a href=&#34;https://www.vxworks.net/arm/1153-stability-analysis-for-64-bit-arm-platform-hung-task&#34; title=&#34;Arm&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Arm
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;敲开了英特尔的门，提出要购买该公司一半的芯片设计业务，而不是foundry或制造设施。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>cache的物理结构</title>
       <link>https://www.kontronn.com/post/soc/the-physical-structure-of-the-cache.html</link>
