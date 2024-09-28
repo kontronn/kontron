@@ -16,6 +16,24 @@
   </entry>
   
   <entry>
+    <title>RTX 5090和5080规格泄露</title>
+    <url>/post/ai/RTX-5090-and-5080-specs-leaked.html</url>
+    <categories><category>AI</category>
+    </categories>
+    <tags>
+      <tag>GPU</tag>
+      <tag>RTX 5090</tag>
+      <tag>RTX 5080</tag>
+    </tags>
+    <content type="html"><![CDATA[ NVIDIA   正在为游戏玩家推出下一代 GeForce RTX 50 系列显卡做准备，旗舰型号GeForce RTX 5090 和 RTX 5080 肯定是最受关注的。根据知名爆料者 Kopite7kimi 的最新消息，这两款显卡的规格差距很大，可能会对市场产生重要影响。
+首先来看 GeForce RTX 5090，它将成为该系列的旗舰产品，预计采用 PG144/145-SKU30 PCB 设计  ，并集成 GB202-300-A1 GPU 核心。该 GPU 将启用 170 个 SM（流多处理器），而总共设计有 192 个 SM。这意味着，RTX 5090 实际上启用的核心数量是 21,760 个。对比4090的启用核心数16,384，增加的幅度还是非常惊人的，绝对不是挤牙膏。再结合架构改进，预计会大幅提升性能。在内存方面，RTX 5090 配备 32 GB 的 GDDR7 VRAM，运行在 512 位接口上，内存速度可能在 28-32 Gbps 之间，带宽可达 1.792 或 2.00 TB/s。这将使其在处理高分辨率游戏和复杂图形时表现出色。此外，该显卡的额定功耗为 600W，虽然设计数值上看似较高，但实际游戏中的功耗预计会低得多。值得注意的是，公版Founders Edition RTX 5090 将配备双槽冷却器，确保散热性能与噪音控制。
+转到 GeForce RTX 5080，预计将基于 PG144/147-SKU45 PCB，采用完整的 GB203-400-A1 GPU 芯片，拥有 84 个 SM 和 10,752 个核心，较 RTX 5090 减少了 51%。与 RTX 4090 和 RTX 4080 之间的核心数量差异相比，这个差距更大，表明 RTX 5080 的整体性能将相对较低，或者换句话说，5080和5090的性能差距，要大于4080和4090。此外，RTX 5080 配备 16 GB 的 VRAM，采用 256 位总线接口，内存带宽在 896 GB/s 到 1,024 GB/s 之间，其额定功耗为 400W，这一点也能看出功耗和性能上的不同定位。
+尽管 RTX 5090 和 RTX 5080 的规格都令人期待，市场反应也十分重要。对于价格策略，NVIDIA 要好好想想。考虑到高端显卡这一赛道目前已没有对手（AMD放弃高端市场，Intel还不是玩家），所以降低5080规格，有可能会把价格进一步下探。这样维持5090旗舰形象和性能，5080往下摸一摸中高端玩家的钱包。上代4080定价1200美元，5080定价难说会低于这个数字，我们拭目以待。
+市场上已经有不少关于 RTX 5090 和 RTX 5080 的讨论和期待，尤其是在发布会临近之际。虽然当前的规格仍可能发生变化，我们必须耐心等待 NVIDIA 的官方公告。预计将在今年晚些时候或明年初发布更多信息。对于游戏爱好者来说，这一系列显卡的推出无疑将为他们的游戏体验带来新的提升与期待。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Linux 6.11版本发布</title>
     <url>/post/linux/linux-6.11-released.html</url>
     <categories><category>Linux</category>
@@ -3334,7 +3352,7 @@ $ bitbake package-index 随后可以正确的在 Yocto 目录 $BUILDDIR/tmp/depl
   
   <entry>
     <title>大厂加速自研AI芯片：Nvidia主导地位受到挑战</title>
-    <url>/post/hardware/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</url>
+    <url>/post/ai/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</url>
     <categories><category>AI</category>
     </categories>
     <tags>
