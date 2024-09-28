@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vim on Kontronn</title>
+    <title>vim on Kontronn</title>
     <link>https://www.kontronn.com/tags/vim/</link>
-    <description>Recent content in Vim on Kontronn</description>
+    <description>Recent content in vim on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 22 Dec 2023 14:53:03 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/vim/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Sep 2024 22:21:52 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/vim/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>优雅的Vim熟练之旅</title>
+      <link>https://www.kontronn.com/post/linux/elegant-vim-mastery-journey.html</link>
+      <pubDate>Sat, 28 Sep 2024 22:21:52 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/linux/elegant-vim-mastery-journey.html</guid>
+      <description>&lt;p&gt;本文详细介绍了
+&lt;a href=&#34;https://www.vxworks.net/linux/731-how-to-do-encryption-by-vim-for-files-in-linux&#34; title=&#34;Vim&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    Vim
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;编辑器的重要性和流行性，包括其历史、模式、安装、基本操作、撤销重做、搜索替换、标签、书签、分屏编辑、宏、自定义设置和进阶技巧。通过学习和实践，读者可以成为熟练的Vim用户，享受高效的文本编辑体验。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ss, 一个比netstat好用N倍的命令</title>
       <link>https://www.kontronn.com/post/linux/ss-a-command-that-is-much-easier-to-use-than-netstat.html</link>
