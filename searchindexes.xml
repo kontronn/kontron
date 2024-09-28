@@ -16,6 +16,19 @@
   </entry>
   
   <entry>
+    <title>Linux 6.11版本发布</title>
+    <url>/post/linux/linux-6.11-released.html</url>
+    <categories><category>Linux</category>
+    </categories>
+    <tags>
+      <tag>Linux 6.11</tag>
+    </tags>
+    <content type="html"><![CDATA[ Linux 6.11  版本的发布是Linux社区的一个重要里程碑，它不仅在实时计算、性能优化方面取得了显著进展，还在安全性上迈出了关键一步。
+实时计算与性能优化 io_uring子系统支持  Linux 6.11引入了io_uring子系统的增强功能，特别是支持了bind()和listen()操作。io_uring是一个高性能的IO框架，旨在减少系统调用开销并提高IO操作的效率。这一改进使得Linux在处理并发与异步任务时表现得更加出色，特别是在网络应用中，能够显著减少网络服务的响应时间，提升整体性能。  新锁定机制  针对实时内核的延迟问题，Linux 6.11采用了新的锁定机制。这一机制通过减少锁的竞争和等待时间，进一步降低了实时内核的延迟，使得Linux在高频交易、工业自动化等需要低延迟响应的场景中表现得更加优越。  安全性提升 Rust语言支持  Linux 6.11首次支持用Rust语言开发块驱动程序。Rust语言以其内存安全特性而闻名，使用Rust编写驱动程序可以有效减少常见的安全漏洞，如缓冲区溢出、空指针解引用等。这一举措不仅为开发者提供了新的选择，还大大提高了内核的安全性。  bucket slab分配器  Linux 6.11引入了专用bucket slab分配器，用于加固内核防御堆喷射（heap spraying）攻击。堆喷射攻击是一种常见的内存攻击手段，通过向堆内存区域注入恶意数据来破坏程序的正常运行。bucket slab分配器的加入，使得Linux在抵御此类攻击时更加稳健。  getrandom()的vDSO实现  Linux 6.11通过支持getrandom()的vDSO（虚拟动态共享对象）实现，优化了随机数生成的效率。这一改进对于需要强随机性的安全应用来说至关重要，如加密、身份验证等场景。更快的随机数生成速度意味着更高的安全性和更好的用户体验。  其他重要更新  文档与工具改进：Linux 6.11对内核文档进行了改进，包括对iomap子系统和内核配置选项的更新，有助于开发者更好地理解和使用内核特性。此外，还提高了构建内核所需的最小GNU Make版本，确保了内核构建过程中使用更现代的工具。 电源序列子系统：引入了新的电源序列子系统，确保系统设备按正确的顺序启动，提高了系统的稳定性和可靠性。 GPIO逻辑分析仪模块：增加了“sloppy逻辑分析仪”模块，可以将一组GPIO线转换为逻辑分析仪，有助于硬件开发和调试。 KVM改进：增加了对AMD SEV-SNP加密虚拟化机制的支持，提高了虚拟机的安全性。同时，引入了新的KVM ioctl()调用，允许在运行前预配置内存，优化了虚拟机的启动过程。  综上所述，Linux 6.11版本的发布是Linux社区在实时计算、性能优化及安全性方面的一次重要升级。它不仅为开发者提供了更多的选择和更强大的工具，还为用户带来了更安全、更高效的体验。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>佳能交付首款纳米光刻系统</title>
     <url>/post/soc/canon-delivers-first-nanoimprint-lithography-tool.html</url>
     <categories><category>SOC</category>
