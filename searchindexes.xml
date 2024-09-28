@@ -16,6 +16,23 @@
   </entry>
   
   <entry>
+    <title>佳能交付首款纳米光刻系统</title>
+    <url>/post/soc/intel-xeon-6-soc-is-to-be-launched-in-2025.html</url>
+    <categories><category>SOC</category>
+    </categories>
+    <tags>
+      <tag>Canon</tag>
+    </tags>
+    <content type="html"><![CDATA[佳能公司近日向德克萨斯电子研究所（TIE）交付了首台FPA-1200NZ2C纳米压印光刻系统，引起了业界的广泛关注。该设备无需传统的DUV或EUV光刻系统即可生产芯片，为半导体制造带来了新的可能性。
+由于纳米压印光刻技术（NIL）对许多芯片制造商来说尚属陌生，人们对这种新机器和方法持怀疑态度。TIE由德克萨斯大学纳米制造系统中心发展而来，该研究所得到了英特尔、恩智浦和三星等主要半导体公司的支持，并且最近获得了DARPA提供的14亿美元资助，用于为各领域领域构建多芯片3D处理器。
+在TIE，佳能的FPA-1200NZ2C系统将供联盟内的芯片制造商进行研发。这对目前主要使用DUV和EUV技术的英特尔、恩智浦和三星来说，是探索NIL技术的机会。通过对NIL功能的研究，这些公司可能会考虑在其工厂采用该技术。佳能对此次合作寄予厚望，目标是在未来三到五年内每年销售10到20台该设备。
+传统的DUV和EUV光刻系统利用光将光掩模上的电路图案投射到涂有抗蚀剂的晶圆上。而NIL则直接将印有电路设计的模具压印到抗蚀剂上，避免了对光学系统的需求。这种方法能够在一步中更精确地复制复杂设计，降低生产成本。不过光刻技术可以一次处理整个晶圆，NIL则是连续工作，速度可能较慢。根据佳能的说法，NIL目前能够生产5nm工艺的芯片，未来可能达到2nm节点。
+尽管NIL技术具有潜在优势，但在批量采用之前仍面临诸多困难。例如，如何在生产过程中将灰尘颗粒造成的缺陷降至最低，以及需要与其他公司合作开发兼容的新材料。此外，NIL与现有的DUV或EUV流程不兼容，无法轻易整合到现有制造过程中。因此，芯片制造商必须围绕NIL重新设计生产技术，这既昂贵又存在风险。
+佳能向TIE交付纳米压印光刻系统，标志着NIL技术迈出了关键一步。未来，这项技术能否被行业广泛接受，将取决于其在实际应用中的表现。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>ARM也被报考虑收购英特尔部分业务</title>
     <url>/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</url>
     <categories><category>SOC</category>

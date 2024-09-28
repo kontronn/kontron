@@ -6,7 +6,16 @@
     <description>Recent content in SOC on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 28 Sep 2024 15:29:04 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Sep 2024 15:37:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>佳能交付首款纳米光刻系统</title>
+      <link>https://www.kontronn.com/post/soc/intel-xeon-6-soc-is-to-be-launched-in-2025.html</link>
+      <pubDate>Sat, 28 Sep 2024 15:37:12 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/intel-xeon-6-soc-is-to-be-launched-in-2025.html</guid>
+      <description>&lt;p&gt;佳能公司近日向德克萨斯电子研究所（TIE）交付了首台FPA-1200NZ2C纳米压印光刻系统，引起了业界的广泛关注。该设备无需传统的DUV或EUV光刻系统即可生产芯片，为半导体制造带来了新的可能性。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>ARM也被报考虑收购英特尔部分业务</title>
       <link>https://www.kontronn.com/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</link>
