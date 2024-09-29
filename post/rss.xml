@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 29 Sep 2024 20:13:53 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Sep 2024 20:26:59 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/post/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>欢迎加入 VxWorks 俱乐部！</title>
       <link>https://www.kontronn.com/post/welcome-to-vxworks-club/</link>
@@ -16,6 +16,19 @@
       <description>欢迎来到 北南南北 文档站点！ 相关文章来源于 VxWorks 俱乐部  ，也可能发布于 AI 嵌入式开发  ，专注于技术分享和交流。
 免责声明 所有资源均来自网络，版权归原作者，如有侵权，请联系删除！
 欢迎投稿  欢迎广大网友投稿 欢迎加入网友微信群  </description>
+    </item>
+    
+    <item>
+      <title>博通对英特尔18A芯片制程工艺表示不满</title>
+      <link>https://www.kontronn.com/post/news/broadcom-is-dissatisfied-with-intel-18A-chip-process.html</link>
+      <pubDate>Sun, 29 Sep 2024 20:26:59 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/broadcom-is-dissatisfied-with-intel-18A-chip-process.html</guid>
+      <description>&lt;p&gt;近日，根据路透社报道，博通对英特尔18A芯片制程工艺表示不满。据说博通在过去几个月一直在测试
+&lt;a href=&#34;https://www.kontronn.com/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html&#34; title=&#34;英特尔的18A芯片工艺&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    英特尔的18A芯片工艺
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;，并于上个月收到了英特尔的晶圆。但是博通高层评估后认为，英特尔的芯片制程工艺尚未达到大规模量产的标准。&lt;/p&gt;</description>
     </item>
     
     <item>
