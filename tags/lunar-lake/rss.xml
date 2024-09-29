@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lunar Lake on Kontronn</title>
+    <link>https://www.kontronn.com/tags/lunar-lake/</link>
+    <description>Recent content in Lunar Lake on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 29 Sep 2024 20:47:23 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/lunar-lake/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>英特尔的Lunar Lake在大模型中表现出出色的AI推理能力</title>
+      <link>https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</link>
+      <pubDate>Sun, 29 Sep 2024 20:47:23 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</guid>
+      <description>&lt;p&gt;近日，英特尔的 Lunar Lake Core Ultra 9 288V 处理器在最新发布的 Meta LLaMA 3.2 模型上展示了令人瞩目的 AI 推理性能，令人惊喜。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

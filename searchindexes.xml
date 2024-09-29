@@ -16,6 +16,25 @@
   </entry>
   
   <entry>
+    <title>英特尔的Lunar Lake在大模型中表现出出色的AI推理能力</title>
+    <url>/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</url>
+    <categories><category>News</category>
+    </categories>
+    <tags>
+      <tag>Intel</tag>
+      <tag>Lunar Lake</tag>
+    </tags>
+    <content type="html"><![CDATA[近日，英特尔的 Lunar Lake Core Ultra 9 288V 处理器在最新发布的 Meta LLaMA 3.2 模型上展示了令人瞩目的 AI 推理性能，令人惊喜。
+Meta 刚刚推出了 LLaMA 3.2，为 AI 项目提供了更多的模型选择。最初的 LLaMA（大型语言模型 Meta AI）于去年 2 月发布，目的是通过响应查询来满足用户需求，但当时的参数数量仅限于 80 亿和 700 亿。如今，LLaMA 扩展到了新的参数规模，并全面支持英特尔的 AI 硬件平台。
+英特尔副总裁兼客户端 AI 与技术营销总经理 Robert Hallock 在 LinkedIn 上表示，英特尔 Lunar Lake Core Ultra 处理器在 LLaMA 3.2 上的表现令人印象深刻。旗舰级的英特尔酷睿 Ultra 9 288V “Lunar Lake” 处理器在处理 32 个输入Tokens时的延迟仅为 28.5 毫秒，而在处理 1024 个输入Tokens时延迟也仅为 31.4 毫秒，相当于每秒生成约 32-35 个令牌。
+Meta LLaMA 3.2 为基础的文本任务引入了额外的 10 亿和 30 亿参数的纯文本模型，这在最初的 3.0 版本中是没有的。最新版本还推出了一个 110 亿参数的多模态模型，能够处理更复杂的任务，例如解释图像、图表和图形。
+在实际应用中，英特尔 AI PC 用户可以运行视觉推理，分析和解释视觉数据，获得有意义的响应。例如，搭载内置 Arc 140V GPU 的英特尔酷睿 Ultra 9 288V “Lunar Lake” 处理器在 LLaMA 3.2 11B Vision Instruct 模型中，能够识别图像中的对象、分析元素并提供基于文本的解释。
+此外，英特尔一直在致力于开发名为 OpenVINO 的 AI 推理框架。该框架优化了英特尔硬件的性能，提高了 PC 和边缘设备的效率。英特尔的 AI 硬件还在英特尔酷睿平台上引入了神经处理单元（NPU），并在内置的英特尔 Arc GPU 上加入了英特尔 Xe 矩阵扩展加速。这些技术有助于英特尔 AI PC 实现更高的推理性能，特别是在 LLaMA 3.2 的 11B 模型中用于边缘图像推理。
+英特尔 Lunar Lake 平台与 Meta LLaMA 3.2 模型的结合，展示了在 AI 推理领域的巨大潜力。这不仅体现了英特尔在硬件和 AI 技术方面  的领先地位，也为未来更复杂的 AI 应用铺平了道路。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>Intel 18A芯片正式亮相</title>
     <url>/post/soc/intel-18A-chip-officially-unveiled.html</url>
     <categories><category>SOC</category>
