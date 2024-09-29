@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clearwater Forest on Kontronn</title>
+    <link>https://www.kontronn.com/tags/clearwater-forest/</link>
+    <description>Recent content in Clearwater Forest on Kontronn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 29 Sep 2024 20:37:14 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/clearwater-forest/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intel 18A芯片正式亮相</title>
+      <link>https://www.kontronn.com/post/soc/intel-18A-chip-officially-unveiled.html</link>
+      <pubDate>Sun, 29 Sep 2024 20:37:14 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/soc/intel-18A-chip-officially-unveiled.html</guid>
+      <description>&lt;p&gt;英特尔（Intel Corp.）即将推出Clearwater Forest Xeon系列处理器，外媒分析，这是该公司转型计划能否成功的关键，因为此乃首款采Intel 18A制程量产的芯片。不过该芯片可能需要等到明年下半年才能上市。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
