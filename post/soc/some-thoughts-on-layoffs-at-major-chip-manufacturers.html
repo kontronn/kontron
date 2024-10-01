@@ -1,598 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="关于芯片大厂裁员的几点思考" />
-<meta itemprop="description" content="关于芯片大厂裁员的几点思考" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Chip Manufacturer,Layoff,Gartner,Marvell,NAND" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="关于芯片大厂裁员的几点思考" />
-<meta property="og:description" content="关于芯片大厂裁员的几点思考" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-11-25 20:34:15 &#43;0800 CST" />
-<meta property="article:modified_time" content="2023-11-25 20:34:15 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"some-thoughts-on-layoffs-at-major-chip-manufacturers.html","permalink":"https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html","title":"关于芯片大厂裁员的几点思考"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>关于芯片大厂裁员的几点思考 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
 
-  <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+ 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
 
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
+
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#裁员背后的原因">裁员背后的原因</a></li>
-    <li><a href="#对中国半导体产业的影响">对中国半导体产业的影响</a></li>
-    <li><a href="#对全球半导体行业的影响">对全球半导体行业的影响</a></li>
-    <li><a href="#对于人才的建议">对于人才的建议</a></li>
-    <li><a href="#结语">结语</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
 
 
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
 
-    </header>
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=%e5%85%b3%e4%ba%8e%e8%8a%af%e7%89%87%e5%a4%a7%e5%8e%82%e8%a3%81%e5%91%98%e7%9a%84%e5%87%a0%e7%82%b9%e6%80%9d%e8%80%83&amp;url=https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="关于芯片大厂裁员的几点思考">
-      <meta itemprop="description" content="关于芯片大厂裁员的几点思考">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">关于芯片大厂裁员的几点思考 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-11-25 20:34:15 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-11-25 20:34:15 &#43;0800 CST">2023-11-25</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/soc" itemprop="url" rel="index">
-      <span itemprop="name">SOC</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>41</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>近年来，半导体产业经历了波诡云谲的变革。疫情时代，远程办公技术激增带来了行业的暂时繁荣，但随后，我们见证了这一波潮的退却。</p>
-<p>Gartner的数据指出，2023年全球半导体收入可能会收缩11.2%，与2022年度的小幅增长形成鲜明对照。不同于以往的周期性波动，这一次的下滑受到了市场动态和多重非市场因素的双重影响，包括疫情的持续冲击、地缘政治的复杂局势，以及劳动力市场的变动。这些因素综合作用，导致需求的减退和库存的积压，促使半导体企业普遍下修收入预期。</p>
-<p>在全球半导体市场格局的重塑过程中，行业内部的调整和重组已成为必然。面对长期的投资周期和巨额的资本及人力成本，不少企业选择裁员作为应对行业下行期的策略。</p>
-<p>进入2023年，裁员的消息依然甚嚣尘上。最近据报道，Graphcore宣布裁掉中国区大部分员工，并停止在华销售产品。</p>
-<p>在此之前，Marvell Technology宣布将裁减台湾NAND控制IC团队。Marvell主要提供NAND原厂开发Enterprise SSD控制芯片ASIC设计服务，收取NRE设计服务费。这已经是今年Marvell的多次裁员之一，2023年3月，Marvell宣布，由于全球半导体市场放缓，将裁撤其在中国的整个研发团队。当然不仅仅是国内地区，2023年4月4日，Marvell计划在其硅谷总部裁掉近100名员工，作为更广泛裁员计划的一部分。</p>
-<p>此外，还有高通、安森美、德州仪器、SiFive、imagination等大型芯片公司在今年也陆续发布了裁员计划。</p>
-<p>在这些大厂的裁员背后，除了下行周期的因素之外，还有许多值得深思的点。</p>
-<h2 id="裁员背后的原因">裁员背后的原因</h2>
-<p>其中一个关键因素是本土企业的快速崛起与日益激烈的市场竞争。近年来，国内半导体企业发展步伐很快，在不少市场取得了一定的成果。例如在Marvell所想要裁减的SSD控制IC市场，目前全球市场呈现Marvell、群联、慧荣三分天下局面；TI的MCU和电源芯片领域，都是竞争激烈之地。面对本土的企业竞争，这些厂商可能需要调整其市场策略和技术发展方向，以应对来自本土厂商的竞争压力。这可能包括资源的重新分配、市场重点的调整或产品线的优化。</p>
-<p>此外，高毛利率的追求和成本控制也是驱动裁员决策的经济逻辑。国际芯片厂商一般都看重高毛利，例如，德州仪器的毛利率在全球半导体行业中是相对较高的，约为64%。TI一直致力于提升毛利率，这主要通过采用成熟制程和提高生产效率来实现。比如将老旧的6英寸和8英寸晶圆厂转变为更高效的12英寸晶圆厂，以降低成本并提高产量。在维持毛利的同时，必须进行成本控制，这常常意味着舍弃不再盈利的业务。</p>
-<p>地缘政治和供应链考虑：国际政治环境的变化和供应链的稳定性也可能是影响这些芯片厂商在中国市场策略的因素之一。据业界人士指出，Marvell将原本大陆的研发资源转移改到越南设立研发中心，这反映了企业对地缘政治和成本的双重应对。</p>
-<h2 id="对中国半导体产业的影响">对中国半导体产业的影响</h2>
-<p>中国半导体产业面临的，则是一个多维度的影响局面。</p>
-<p>从短期影响来看，国际公司将一些研发部门裁撤或者缩减，可能导致中国在某些高端芯片技术领域的发展放缓，尤其是在那些高度依赖国际技术和知识产权的领域。此外，大规模裁员可能导致市场信心下降，对投资者和其他利益相关者的信心造成短期冲击。</p>
-<p>但是，这种裁员对中国的技术发展存在着长期机遇。国际公司的撤退可能促使中国加大对本土半导体行业的支持，鼓励自主研发和创新，减少对外依赖。同时，被裁撤的人才可能被国内的半导体公司吸纳，这为中国企业带来了高质量人才资源，有助于提升本土企业的技术能力和创新水平。</p>
-<p>这种外部压力可能会促使中国政府和企业加大在本土半导体技术的投资，特别是在基础研究和应用技术开发方面。这可能会加快中国从技术引进者向技术创新者的转变。</p>
-<h2 id="对全球半导体行业的影响">对全球半导体行业的影响</h2>
-<p>随着芯片大厂开始逐渐减弱在国内市场的研发重心，这可能会对全球半导体行业产生以下影响：</p>
-<ol>
-<li>全球供应链的重塑：</li>
-</ol>
-<p>供应链可能会出现重新配置，新的供应商和生产基地可能会在其他国家出现，如越南、非洲、马来西亚等地，以应对地缘政治风险和供应链的多元化需求。近年来，芯片大厂押注东南亚的案例不胜枚举。供应链的多元化也可能导致成本和效率上的变化，这可能影响全球半导体产品的价格和供应。</p>
-<ol start="2">
-<li>技术竞争和创新的加剧：</li>
-</ol>
-<p>全球范围内可能会出现技术竞争的加剧。如今的一个不争的事实是，各大半导体生产国和地区都可能加大对创新和研发的投入，以保持或提升在全球市场的竞争力。如来势汹汹的美国不仅拉拢台积电等晶圆代工厂赴美国建厂，近日还正在大力发展此前所忽视的先进封装产业，拨出30亿美元推动先进封装的发展，美国NIST主任表示要在十年内制造和封装世界上最先进的芯片；一向以存储产业为生的韩国半导体产业，开始重视Fabless的发展，韩国出现了不少一些新兴领域的Fabless芯片公司，如AI芯片领域、DPU领域等等；日本对2nm和1nm的激进布局，以及对台积电赴日的重视和真金白银的补助诚意。。。</p>
-<p>尤其是东南亚各国，正在紧紧抓住这波半导体发展机遇。如2023年11月的越南国际创新展上，越南军事工业和电信集团 (Viettel) 推出了首个5G芯片，这款5G DFE芯片系列每秒能够执行1,000万亿次计算，受到EDA公司Synopsys等信誉良好的合作伙伴的高度评价。</p>
-<h2 id="对于人才的建议">对于人才的建议</h2>
-<p>芯片大厂的裁员对国内的人才影响颇大，处于动荡之际，人心惶惶。对于在全球芯片行业变革中被裁减的人才，这一变化既带来了挑战，亦暗藏着新的职业机会。</p>
-<p>首先，这波芯片最坏的时期，已经熬过去。这点从消费电子的回暖可见一斑，手机相关芯片供应链已经逐渐看到客户端拉货潮。这个行业可能会经历起伏，但每一次低潮都是积累和跳跃的契机。</p>
-<p>其次，半导体人才荒还是整个产业面临的基本现状，所以人才自是不必过分担忧。在快速变化的半导体行业，不断学习和适应是成功的关键。被裁的人员可能一时面临着职业发展的不确定性。尽管他们拥有宝贵的行业经验和技术知识，但在当前市场环境下，重新找到合适的工作可能需要时间和努力。这些人才可能拥有高度专业化的技能，这些技能在其他相关领域，如新兴的科技行业、数据分析、人工智能等领域仍然具有很高的价值。</p>
-<p>半导体行业既是全球经济的重要支柱，也是科技创新的重要基础。随着全球经济的不断发展，半导体行业仍具有巨大的增长潜力。预计到2030年，全球市场规模将达到1万亿美元已经成为行业内的共识。而据国际数据公司（IDC）的最新预测，预计到明（2024）年，全球半导体市场将同比增长20.2%，达到6330亿美元，整个半导体市场正在朝着1万亿美元的目标稳步前进中。</p>
-<p>这一增长背后是智能手机、电动汽车、数据中心和物联网等领域的蓬勃发展，它们对先进半导体的需求日益增长。技术的快速进步要求半导体工程师和技术人员不断更新知识和技能。持续学习成为这一行业从业者的必要条件。</p>
-<p>虽然就业机会多，但这也意味着竞争非常激烈。市场的快速变化和技术的不断迭代使得半导体产业周期性波动，从业人员需要准备好面对行业的起伏。</p>
-<p>个人应对挑战的能力，企业的战略布局，以及国家的政策支持，将共同决定能否充分利用这一波澜壮阔的产业发展机遇。</p>
-<h2 id="结语">结语</h2>
-<p>在半导体产业的变革浪潮中，每个人都不能独善其身。半导体是一个快速发展且日新月异的领域，今天的前沿技术可能明天就成为过时的知识。永远保持学习的热情和好奇心是至关重要的。另外，要保持灵活和适应性，行业的变化可能导致某些岗位变得不再需要，但同时也会创造出新的机会。对变化保持开放的态度，并准备好接受和适应这些变化。</p>
-<p>总之，对于个人和企业来说，全面而周到的准备与战略部署，是把握这1万亿美元市场机遇、在竞争中取得领先的决定性因素。</p>
-<p>本文作者： 杜芹DQ</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
-  
-    <a href="/tags/chip-manufacturer">
-    Chip Manufacturer
-  </a>
-    <a href="/tags/layoff">
-    Layoff
-  </a>
-    <a href="/tags/gartner">
-    Gartner
-  </a>
-    <a href="/tags/marvell">
-    Marvell
-  </a>
-    <a href="/tags/nand">
-    NAND
-  </a>
-</div>
-
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
-
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
     </div>
   </div>
-</div>
-
-
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      关于芯片大厂裁员的几点思考
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html" title="关于芯片大厂裁员的几点思考">https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
-
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
-    
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html" rel="next" title="x86指令集和ARM指令集的区别">
-      <i class="fa fa-chevron-left"></i> x86指令集和ARM指令集的区别
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/datacenter/gpu-competitive-landscape-and-future-development-from-a-global-perspective.html" rel="prev" title="GPU市场分析：全球视野下的竞争格局与未来发展">
-      GPU市场分析：全球视野下的竞争格局与未来发展
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
-    </div>
-  </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -604,6 +337,17 @@
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

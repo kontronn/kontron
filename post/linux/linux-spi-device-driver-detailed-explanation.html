@@ -1,1358 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="Linux下SPI驱动详解" />
-<meta itemprop="description" content="Linux下SPI驱动详解" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Linux,SPI,Device Driver" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Linux下SPI驱动详解" />
-<meta property="og:description" content="Linux下SPI驱动详解" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-06-21 23:42:52 -0400 -0400" />
-<meta property="article:modified_time" content="2023-06-21 23:42:52 -0400 -0400" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-spi-device-driver-detailed-explanation.html","permalink":"https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html","title":"Linux下SPI驱动详解"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>Linux下SPI驱动详解 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
-
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
-  
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#spi总线">SPI总线</a>
-      <ul>
-        <li><a href="#spi总线概述">SPI总线概述</a></li>
-        <li><a href="#spi总线时序">SPI总线时序</a></li>
-        <li><a href="#spi总线传输模式">SPI总线传输模式</a></li>
-        <li><a href="#spi总线的优缺点">SPI总线的优缺点</a></li>
-      </ul>
-    </li>
-    <li><a href="#linux-spi-框架">Linux SPI 框架</a>
-      <ul>
-        <li><a href="#软件架构">软件架构</a></li>
-        <li><a href="#初始化及退出流程">初始化及退出流程</a>
-          <ul>
-            <li><a href="#注册spi控制器">注册spi控制器</a></li>
-            <li><a href="#注销spi控制器">注销spi控制器</a></li>
-          </ul>
-        </li>
-        <li><a href="#关键数据结构">关键数据结构</a>
-          <ul>
-            <li><a href="#spi_device">spi_device</a></li>
-            <li><a href="#spi_driver">spi_driver</a></li>
-            <li><a href="#struct-spi_master">struct spi_master</a></li>
-            <li><a href="#struct-spi_message-和spi_transfer">struct spi_message 和spi_transfer</a></li>
-            <li><a href="#spi_board_info">spi_board_info</a></li>
-          </ul>
-        </li>
-        <li><a href="#数据传输流程">数据传输流程</a>
-          <ul>
-            <li><a href="#数据准备">数据准备</a></li>
-            <li><a href="#数据传输">数据传输</a></li>
-          </ul>
-        </li>
-        <li><a href="#关键函数解析">关键函数解析</a>
-          <ul>
-            <li><a href="#spi_alloc_master">spi_alloc_master</a></li>
-            <li><a href="#spi_register_master">spi_register_master</a></li>
-            <li><a href="#spi_unregister_master">spi_unregister_master</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#实例demo">实例Demo</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
-
-
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
-
-    </header>
-    
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Linux下SPI驱动详解">
-      <meta itemprop="description" content="Linux下SPI驱动详解">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">Linux下SPI驱动详解 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-06-21 23:42:52 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-06-21 23:42:52 -0400 -0400">2023-06-21</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/linux" itemprop="url" rel="index">
-      <span itemprop="name">Linux</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>2516</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>12分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/linux/linux-spi-device-driver-detailed-explanation.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>SPI，是英语Serial Peripheral interface的缩写，顾名思义就是串行外围设备接口。</p>
-<h2 id="spi总线">SPI总线</h2>
-<h3 id="spi总线概述">SPI总线概述</h3>
-<p>SPI是Motorola首先在其MC68HCXX系列处理器上定义的。SPI接口主要应用在 EEPROM，FLASH，实时时钟，AD转换器，还有数字信号处理器和数字信号解码器之间。SPI，是一种高速的，全双工，同步的通信总线，并且在芯片的管脚上只占用四根线，节约了芯片的管脚，同时为PCB的布局上节省空间，提供方便，正是出于这种简单易用的特性，现在越来越多的芯片集成了这种通信协议。SPI总线的构成及信号类型如图1-1所示：</p>
-<ul>
-<li>MOSI – 主设备数据输出，从设备数据输入 对应MOSI master output slave input</li>
-<li>MISO – 主设备数据输入，从设备数据输出  对应MISO master input slave output</li>
-<li>CLK – 时钟信号，由主设备产生</li>
-<li>nCS  – 从设备使能信号，由主设备控制</li>
-</ul>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-1.png" alt="Linux SPI Device Driver 1">
-图1-1 SPI总线模型</p>
-<h3 id="spi总线时序">SPI总线时序</h3>
-<p>SPI接口在Master控制下产生的从设备使能信号和时钟信号，两个双向移位寄存器按位传输进行数据交换，传输数据高位在前（MSB first），低位在后。如下图所示，在CLK的下降沿上数据改变，上升沿一位数据被存入移位寄存器。</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-2.png" alt="Linux SPI Device Driver 2">
-图1-2 spi传输时序图</p>
-<p>在一个SPI时钟周期内，会完成如下操作：（1）Master通过MOSI线发送1位数据，同时Slave通过MOSI线读取这1位数据；（2）Slave通过MISO线发送1位数据，同时Master通过MISO线读取这1位数据。Master和Slave各有一个移位寄存器，如图1-3所示，而且这两个移位寄存器连接成环状。依照CLK的变化，数据以MSB first的方式依次移出Master寄存器和Slave寄存器，并且依次移入Slave寄存器和Master寄存器。当寄存器中的内容全部移出时，相当于完成了两个寄存器内容的交换。</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-3.png" alt="Linux SPI Device Driver 3"></p>
-<h3 id="spi总线传输模式">SPI总线传输模式</h3>
-<p>SPI总线传输一共有4种模式，这4种模式分别由时钟极性(CPOL，Clock Polarity)和时钟相位(CPHA，Clock Phase)来定义，其中CPOL参数规定了SCK时钟信号空闲状态的电平，CPHA规定了数据是在SCK时钟的上升沿被采样还是下降沿被采样。这四种模式的时序图如下图1-4所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-4.png" alt="Linux SPI Device Driver 4"></p>
-<ul>
-<li>模式0：CPOL= 0，CPHA=0。CLK串行时钟线空闲是为低电平，数据在SCK时钟的上升沿被采样，数据在CLK时钟的下降沿切换</li>
-<li>模式1：CPOL= 0，CPHA=1。CLK串行时钟线空闲是为低电平，数据在SCK时钟的下降沿被采样，数据在CLK时钟的上升沿切换</li>
-<li>模式2：CPOL= 1，CPHA=0。CLK串行时钟线空闲是为高电平，数据在SCK时钟的下降沿被采样，数据在CLK时钟的上升沿切换</li>
-<li>模式3：CPOL= 1，CPHA=1。CLK串行时钟线空闲是为高电平，数据在SCK时钟的上升沿被采样，数据在CLK时钟的下降沿切换 其中比较常用的模式是模式0和模式3。为了更清晰的描述SPI总线的时序，下面展现了模式0下的SPI时序图1-5：</li>
-</ul>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-5.png" alt="Linux SPI Device Driver 5">
-图1-5 mode0下的SPI时序图</p>
-<h3 id="spi总线的优缺点">SPI总线的优缺点</h3>
-<ul>
-<li>在点对点的通信中，SPI接口不需要进行寻址操作，且为全双工通信，显得简单高效。</li>
-<li>SPI接口没有指定的流控制，没有应答机制确认是否接收到数据。</li>
-</ul>
-<h2 id="linux-spi-框架">Linux SPI 框架</h2>
-<h3 id="软件架构">软件架构</h3>
-<p>Linux系统对spi设备具有很好的支持，linux系统下的spi驱动程序从逻辑上可以分为3个部分：</p>
-<ol>
-<li>spi核心（SPI Core）：SPI Core是Linux内核用来维护和管理spi的核心部分，SPI Core提供操作接口函数，允许一个spi master，spi driver和spi device初始化时在SPI Core中进行注册，以及退出时进行注销。</li>
-<li>spi控制器驱动（SPI Master Driver）：SPI Master针对不同类型的spi控制器硬件，实现spi总线的硬件访问操作。SPI Master通过接口函数向SPI Core注册一个控制器。</li>
-<li>spi设备驱动（SPI Device Driver）：SPI Driver是对应于spi设备端的驱动程序，通过接口函数向SPI Core进行注册，SPI Driver的作用是将spi设备挂接到spi总线上；Linux的软件架构图如图2-1所示：</li>
-</ol>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-6.png" alt="Linux SPI Device Driver 6">
-图2-1 spi软件架构图</p>
-<h3 id="初始化及退出流程">初始化及退出流程</h3>
-<h4 id="注册spi控制器">注册spi控制器</h4>
-<p>注册spi控制器到内核分为两个阶段：第一个阶段，使用spi_alloc_master,分配一个spi_master的空间，具体流程如图2-2所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-7.png" alt="Linux SPI Device Driver 7"></p>
-<p>第二阶段，使用spi_register_master将第一阶段分配的spi_master注册到内核中，具体流程如2-3所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-8.png" alt="Linux SPI Device Driver 8"></p>
-<h4 id="注销spi控制器">注销spi控制器</h4>
-<p>spi控制器注销的流程如图2-4所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-9.png" alt="Linux SPI Device Driver 9"></p>
-<h3 id="关键数据结构">关键数据结构</h3>
-<h4 id="spi_device">spi_device</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_device {
-        <span style="color:#66d9ef">struct</span> device         dev;      <span style="color:#75715e">/*spi控制器对应的device结构
-</span><span style="color:#75715e">        struct spi_master   *master;      /*设备使用的master结构，挂在哪个主控制器下*/</span>
-        u32                     max_speed_hz;   <span style="color:#75715e">/*通讯时钟最大频率*/</span>
-        u8                      chip_select;     <span style="color:#75715e">/*片选号，每个master支持多个spi_device  */</span> 
-        u8                      mode;
-<span style="color:#75715e">#define SPI_CPHA        0x01                    </span><span style="color:#75715e">/* clock phase */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_CPOL        0x02                    </span><span style="color:#75715e">/* clock polarity */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_MODE_0      (0|0)                   </span><span style="color:#75715e">/* (original MicroWire) */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_MODE_1      (0|SPI_CPHA)
-</span><span style="color:#75715e">#define SPI_MODE_2      (SPI_CPOL|0)
-</span><span style="color:#75715e">#define SPI_MODE_3      (SPI_CPOL|SPI_CPHA)
-</span><span style="color:#75715e">#define SPI_CS_HIGH     0x04                    </span><span style="color:#75715e">/* chipselect active high? */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_LSB_FIRST   0x08                    </span><span style="color:#75715e">/* per-word bits-on-wire */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_3WIRE       0x10                    </span><span style="color:#75715e">/* SI/SO signals shared */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_LOOP        0x20                    </span><span style="color:#75715e">/* loopback mode */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_NO_CS       0x40                    </span><span style="color:#75715e">/* 1 dev/bus, no chipselect */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_READY       0x80                    </span><span style="color:#75715e">/* slave pulls low to pause */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>        u8                      bits_per_word;    <span style="color:#75715e">/*每个字长的比特数，默认是8*/</span>
-        <span style="color:#66d9ef">int</span>                     irq;
-        <span style="color:#66d9ef">void</span>                    <span style="color:#f92672">*</span>controller_state; <span style="color:#75715e">/*控制器状态*/</span>
-        <span style="color:#66d9ef">void</span>                    <span style="color:#f92672">*</span>controller_data;   <span style="color:#75715e">/*控制器数据*/</span>
-        <span style="color:#66d9ef">char</span>                    modalias[SPI_NAME_SIZE]; <span style="color:#75715e">/* 设备驱动的名字 */</span>
-        <span style="color:#66d9ef">int</span>                     cs_gpio;        <span style="color:#75715e">/* chip select gpio */</span>
-
-        <span style="color:#75715e">/*
-</span><span style="color:#75715e">         * likely need more hooks for more protocol options affecting how
-</span><span style="color:#75715e">         * the controller talks to each chip, like:
-</span><span style="color:#75715e">         *  - memory packing (12 bit samples into low bits, others zeroed)
-</span><span style="color:#75715e">         *  - priority
-</span><span style="color:#75715e">         *  - drop chipselect after each word
-</span><span style="color:#75715e">         *  - chipselect delays
-</span><span style="color:#75715e">         *  - ...
-</span><span style="color:#75715e">         */</span>
-};
-</code></pre></div><p>spi_device代表一个外围spi设备，由master controller driver注册完成后扫描BSP中注册设备产生的设备链表并向spi_bus注册产生。在内核中，每个spi_device代表一个物理的spi设备。</p>
-<h4 id="spi_driver">spi_driver</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_driver {
-        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> spi_device_id <span style="color:#f92672">*</span>id_table; <span style="color:#75715e">/*支持的spi_device设备表*/</span>
-
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>probe)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi);
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>remove)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi);
-        <span style="color:#66d9ef">void</span>                    (<span style="color:#f92672">*</span>shutdown)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi);
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>suspend)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi, pm_message_t mesg);
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>resume)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi);
-        <span style="color:#66d9ef">struct</span> device_driver    driver;
-};
-</code></pre></div><p>spi_driver代表一个SPI protocol drivers，即外设驱动</p>
-<h4 id="struct-spi_master">struct spi_master</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_master {
-        <span style="color:#66d9ef">struct</span> device   dev;  <span style="color:#75715e">/*spi控制器对应的device结构*/</span>
-
-        <span style="color:#66d9ef">struct</span> list_head list;  <span style="color:#75715e">/*链表
-</span><span style="color:#75715e">
-</span><span style="color:#75715e">        /* other than negative (== assign one dynamically), bus_num is fully
-</span><span style="color:#75715e">         * board-specific.  usually that simplifies to being SOC-specific.
-</span><span style="color:#75715e">         * example:  one SOC has three SPI controllers, numbered 0..2,
-</span><span style="color:#75715e">         * and one board&#39;s schematics might show it using SPI-2.  software
-</span><span style="color:#75715e">         * would normally use bus_num=2 for that controller.
-</span><span style="color:#75715e">         */</span>
-        s16                     bus_num; <span style="color:#75715e">/*总线（或控制器编号）*/</span>
-
-        <span style="color:#75715e">/* chipselects will be integral to many controllers; some others
-</span><span style="color:#75715e">         * might use board-specific GPIOs.
-</span><span style="color:#75715e">         */</span>
-        u16                     num_chipselect; <span style="color:#75715e">/*片选数量*/</span>
-
-        <span style="color:#75715e">/* some SPI controllers pose alignment requirements on DMAable
-</span><span style="color:#75715e">         * buffers; let protocol drivers know about these requirements.
-</span><span style="color:#75715e">         */</span>
-        u16                     dma_alignment;
-
-        <span style="color:#75715e">/* spi_device.mode flags understood by this controller driver */</span>
-        u16                     mode_bits;   <span style="color:#75715e">/* master支持的设备模式 */</span>
-
-        <span style="color:#75715e">/* bitmask of supported bits_per_word for transfers */</span>
-        u32                     bits_per_word_mask;
-
-        <span style="color:#75715e">/* other constraints relevant to this driver */</span>
-        u16                     flags; <span style="color:#75715e">/*用于限定某些限制条件的标志位
-</span><span style="color:#75715e">#define SPI_MASTER_HALF_DUPLEX  BIT(0)          /* can&#39;t do full duplex */</span>
-<span style="color:#75715e">#define SPI_MASTER_NO_RX        BIT(1)          </span><span style="color:#75715e">/* can&#39;t do buffer read */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define SPI_MASTER_NO_TX        BIT(2)          </span><span style="color:#75715e">/* can&#39;t do buffer write */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-        <span style="color:#75715e">/* lock and mutex for SPI bus locking */</span>
-        spinlock_t              bus_lock_spinlock;
-        <span style="color:#66d9ef">struct</span> mutex            bus_lock_mutex;
-
-        <span style="color:#75715e">/* flag indicating that the SPI bus is locked for exclusive use */</span>
-        <span style="color:#66d9ef">bool</span>                    bus_lock_flag;
-
-        <span style="color:#75715e">/* Setup mode and clock, etc (spi driver may call many times).
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * IMPORTANT:  this may be called when transfers to another
-</span><span style="color:#75715e">         * device are active.  DO NOT UPDATE SHARED REGISTERS in ways
-</span><span style="color:#75715e">         * which could break those transfers.
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>setup)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi); <span style="color:#75715e">/*根据spi设备更新硬件配置。设置spi工作模式、时钟等*/</span>
-
-        <span style="color:#75715e">/* bidirectional bulk transfers
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * + The transfer() method may not sleep; its main role is
-</span><span style="color:#75715e">         *   just to add the message to the queue.
-</span><span style="color:#75715e">         * + For now there&#39;s no remove-from-queue operation, or
-</span><span style="color:#75715e">         *   any other request management
-</span><span style="color:#75715e">         * + To a given spi_device, message queueing is pure fifo
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">* + The master&#39;s main job is to process its message queue,
-</span><span style="color:#75715e">         *   selecting a chip then transferring data
-</span><span style="color:#75715e">         * + If there are multiple spi_device children, the i/o queue
-</span><span style="color:#75715e">         *   arbitration algorithm is unspecified (round robin, fifo,
-</span><span style="color:#75715e">         *   priority, reservations, preemption, etc)
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * + Chipselect stays active during the entire message
-</span><span style="color:#75715e">         *   (unless modified by spi_transfer.cs_change != 0).
-</span><span style="color:#75715e">         * + The message transfers use clock and SPI mode parameters
-</span><span style="color:#75715e">         *   previously established by setup() for this device
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">int</span>                     (<span style="color:#f92672">*</span>transfer)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi,
-                                                <span style="color:#66d9ef">struct</span> spi_message <span style="color:#f92672">*</span>mesg);   <span style="color:#75715e">/*添加消息到队列的方法，此函数不可睡眠。它的职责是安排发生的传送并且调用注册的回调函数complete()*/</span>
 
 
 
-        <span style="color:#75715e">/* called on release() to free memory provided by spi_master */</span>
-        <span style="color:#66d9ef">void</span>                    (<span style="color:#f92672">*</span>cleanup)(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi);<span style="color:#75715e">/*cleanup函数会在spidev_release函数中被调用，spidev_release被登记为spi dev的release函数。*/</span>
 
 
-        <span style="color:#75715e">/*
-</span><span style="color:#75715e">         * These hooks are for drivers that want to use the generic
-</span><span style="color:#75715e">         * master transfer queueing mechanism. If these are used, the
-</span><span style="color:#75715e">         * transfer() function above must NOT be specified by the driver.
-</span><span style="color:#75715e">         * Over time we expect SPI drivers to be phased over to this API.
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">bool</span>                      queued; 
-        <span style="color:#66d9ef">struct</span> kthread_worker  kworker; <span style="color:#75715e">/*用于管理数据传输消息队列的工作队列线程*/</span>
-        <span style="color:#66d9ef">struct</span> task_struct     <span style="color:#f92672">*</span>kworker_task;
-        <span style="color:#66d9ef">struct</span> kthread_work    pump_messages; <span style="color:#75715e">/*具体实现数据传输队列的工作队列*/</span>
-        spinlock_t               queue_lock;
-        <span style="color:#66d9ef">struct</span> list_head        queue; <span style="color:#75715e">/*该控制器的消息队列，所有等待传输的队列挂在该链表下*/</span>
-        <span style="color:#66d9ef">struct</span> spi_message     <span style="color:#f92672">*</span>cur_msg;<span style="color:#75715e">/*当前正在处理的消息队列*/</span>
-        <span style="color:#66d9ef">bool</span>                       busy; <span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">忙状态*/</span>
-        <span style="color:#66d9ef">bool</span>                       running; <span style="color:#75715e">/*正在跑*/</span>
-        <span style="color:#66d9ef">bool</span>                       rt; 
-
-        <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>prepare_transfer_hardware)(<span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>master); <span style="color:#75715e">/*回调函数，正式发起传输前会被调用，用于准备硬件资源*/</span>
-        <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>transfer_one_message)(<span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>master, <span style="color:#66d9ef">struct</span> spi_message <span style="color:#f92672">*</span>mesg); <span style="color:#75715e">/*单个消息的原子传输回调函数，队列中每个消息都会回调一次该回调来完成传输工作*/</span>
-      <span style="color:#66d9ef">int</span> (<span style="color:#f92672">*</span>unprepare_transfer_hardware)(<span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>master); <span style="color:#75715e">/*清理回调函数*/</span>
-        <span style="color:#75715e">/* gpio chip select */</span>
-        <span style="color:#66d9ef">int</span>                     <span style="color:#f92672">*</span>cs_gpios;
-};
-</code></pre></div><p>spi_master代表一个spi控制器。</p>
-<h4 id="struct-spi_message-和spi_transfer">struct spi_message 和spi_transfer</h4>
-<p>要完成和SPI设备的数据传输工作，我们还需要另外两个数据结构：spi_message和spi_transfer。</p>
-<p>spi_message包含了一个的spi_transfer结构序列，一旦控制器接收了一个spi_message，其中的spi_transfer应该按顺序被发送，并且不能被其它spi_message打断，所以我们认为spi_message就是一次SPI数据交换的原子操作。下面我们看看这两个数据结构的定义：</p>
-<p>struct spi_message ：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_message {
-        <span style="color:#66d9ef">struct</span> list_head        transfers;  <span style="color:#75715e">/*spi_transfer链表队列，此次消息的传输段队列，一个消息可以包含多个传输段。*/</span>
-
-        <span style="color:#66d9ef">struct</span> spi_device       <span style="color:#f92672">*</span>spi; <span style="color:#75715e">/*传输的目的设备*/</span>
-        <span style="color:#66d9ef">unsigned</span>                is_dma_mapped:<span style="color:#ae81ff">1</span>;  <span style="color:#75715e">/*如果为真，此次调用提供dma和cpu虚拟地址。*/</span>
-
-        <span style="color:#75715e">/* REVISIT:  we might want a flag affecting the behavior of the
-</span><span style="color:#75715e">         * last transfer ... allowing things like &#34;read 16 bit length L&#34;
-</span><span style="color:#75715e">         * immediately followed by &#34;read L bytes&#34;.  Basically imposing
-</span><span style="color:#75715e">         * a specific message scheduling algorithm.
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * Some controller drivers (message-at-a-time queue processing)
-</span><span style="color:#75715e">         * could provide that as their default scheduling algorithm.  But
-</span><span style="color:#75715e">         * others (with multi-message pipelines) could need a flag to
-</span><span style="color:#75715e">         * tell them about such special cases.
-</span><span style="color:#75715e">         */</span>
-
-        <span style="color:#75715e">/* completion is reported through a callback */</span>
-        <span style="color:#66d9ef">void</span>                    (<span style="color:#f92672">*</span>complete)(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>context);<span style="color:#75715e">/*异步调用完成后的回调函数*/</span>
-        <span style="color:#66d9ef">void</span>                    <span style="color:#f92672">*</span>context; <span style="color:#75715e">/*回调函数的参数*/</span>
-        <span style="color:#66d9ef">unsigned</span>                actual_length; <span style="color:#75715e">/*实际传输的长度*/</span>
-        <span style="color:#66d9ef">int</span>                     status; <span style="color:#75715e">/*该消息的发送结果，成功被置0，否则是一个负的错误码。*/</span>
-
-        <span style="color:#75715e">/* for optional use by whatever driver currently owns the
-</span><span style="color:#75715e">         * spi_message ...  between calls to spi_async and then later
-</span><span style="color:#75715e">         * complete(), that&#39;s the spi_master controller driver.
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">struct</span> list_head        queue;
-        <span style="color:#66d9ef">void</span>                    <span style="color:#f92672">*</span>state;
-};
-
-</code></pre></div><p>链表字段queue用于把该结构挂在代表控制器的spi_master结构的queue字段上，控制器上可以同时被加入多个spi_message进行排队。另一个链表字段transfers则用于链接挂在本message下的spi_tranfer结构。complete回调函数则会在该message下的所有spi_transfer都被传输完成时被调用，以便通知协议驱动处理接收到的数据以及准备下一批需要发送的数据。我们再来看看spi_transfer结构：spi_transfer</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_transfer {
-        <span style="color:#75715e">/* it&#39;s ok if tx_buf == rx_buf (right?)
-</span><span style="color:#75715e">         * for MicroWire, one buffer must be null
-</span><span style="color:#75715e">         * buffers must work with dma_*map_single() calls, unless
-</span><span style="color:#75715e">         *   spi_message.is_dma_mapped reports a pre-existing mapping
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span>     <span style="color:#f92672">*</span>tx_buf; <span style="color:#75715e">/*发送缓冲区*/</span>
-        <span style="color:#66d9ef">void</span>            <span style="color:#f92672">*</span>rx_buf; <span style="color:#75715e">/*接收缓冲区*/</span>
-        <span style="color:#66d9ef">unsigned</span>        len; <span style="color:#75715e">/*缓冲区长度，tx和rx的大小（字节数）。指它们各自的大小*/</span>
-
-        dma_addr_t      tx_dma; <span style="color:#75715e">/*tx的dma地址*/</span>
-        dma_addr_t      rx_dma;  <span style="color:#75715e">/*rx的dma地址*/</span>
  
-        <span style="color:#66d9ef">unsigned</span>        cs_change:<span style="color:#ae81ff">1</span>; <span style="color:#75715e">/*当前spi_transfer发送完成之后重新片选*/</span>
-        u8              bits_per_word; <span style="color:#75715e">/*每个字长的比特数，0代表使用spi_device中的默认值8*/</span>
-        u16             delay_usecs; <span style="color:#75715e">/*发送完成一个spi_transfer后的延时时间，此次传输结束和片选改变之间的延时，之后就会启动另一个传输或者结束整个消息*/</span>
-        u32             speed_hz; <span style="color:#75715e">/*通信时钟。如果是0，使用默认值*/</span>
-
-<span style="color:#75715e">#ifdef CONFIG_SPI_LOMBO
-</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> lombo_spi_operate_para <span style="color:#f92672">*</span>esop;
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-        <span style="color:#66d9ef">struct</span> list_head transfer_list; <span style="color:#75715e">/*用于链接到spi_message，用来连接的双向链接节点*/</span>
-
-};
-</code></pre></div><p>首先，transfer_list链表字段用于把该transfer挂在一个spi_message结构中，tx_buf和rx_buf提供了非dma模式下的数据缓冲区地址，len则是需要传输数据的长度，tx_dma和rx_dma则给出了dma模式下的缓冲区地址。原则来讲，spi_transfer才是传输的最小单位，之所以又引进了spi_message进行打包，我觉得原因是：有时候希望往spi设备的多个不连续的地址（或寄存器）一次性写入，如果没有spi_message进行把这样的多个spi_transfer打包，因为通常真正的数据传送工作是在另一个内核线程（工作队列）中完成的，不打包的后果就是会造成更多的进程切换，效率降低，延迟增加，尤其对于多个不连续地址的小规模数据传送而言就更为明显。</p>
-<h4 id="spi_board_info">spi_board_info</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_board_info {
-        <span style="color:#75715e">/* the device name and module name are coupled, like platform_bus;
-</span><span style="color:#75715e">         * &#34;modalias&#34; is normally the driver name.
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * platform_data goes to spi_device.dev.platform_data,
-</span><span style="color:#75715e">         * controller_data goes to spi_device.controller_data,
-</span><span style="color:#75715e">         * irq is copied too
-</span><span style="color:#75715e">         */</span>
-        <span style="color:#66d9ef">char</span>            modalias[SPI_NAME_SIZE]; <span style="color:#75715e">/*名字*/</span>
-
-        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">void</span>      <span style="color:#f92672">*</span>platform_data; <span style="color:#75715e">/*平台数据*/</span>
-        <span style="color:#66d9ef">void</span>            <span style="color:#f92672">*</span>controller_data; <span style="color:#75715e">/*控制器数据*/</span>
-        <span style="color:#66d9ef">int</span>             irq;
-
-        <span style="color:#75715e">/* slower signaling on noisy or low voltage boards */</span>
-        u32             max_speed_hz; <span style="color:#75715e">/*最大速率*/</span>
 
 
-        <span style="color:#75715e">/* bus_num is board specific and matches the bus_num of some
-</span><span style="color:#75715e">         * spi_master that will probably be registered later.
-</span><span style="color:#75715e">         *
-</span><span style="color:#75715e">         * chip_select reflects how this chip is wired to that master;
-</span><span style="color:#75715e">         * it&#39;s less than num_chipselect.
-</span><span style="color:#75715e">         */</span>
-        u16             bus_num; <span style="color:#75715e">/*spi总线编号*/</span>
-        u16             chip_select; <span style="color:#75715e">/*片选*/</span>
 
-        <span style="color:#75715e">/* mode becomes spi_device.mode, and is essential for chips
-</span><span style="color:#75715e">         * where the default of SPI_CS_HIGH = 0 is wrong.
-</span><span style="color:#75715e">         */</span>
-        u8              mode; <span style="color:#75715e">/*模式 */</span>
 
-        <span style="color:#75715e">/* ... may need additional spi_device chip config data here.
-</span><span style="color:#75715e">         * avoid stuff protocol drivers can set; but include stuff
-</span><span style="color:#75715e">         * needed to behave without being bound to a driver:
-</span><span style="color:#75715e">         *  - quirks like clock rate mattering when not selected
-</span><span style="color:#75715e">         */</span>
-};
-</code></pre></div><h3 id="数据传输流程">数据传输流程</h3>
-<p>整体的数据传输流程大致上是这样的:</p>
-<ol>
-<li>定义一个spi_message结构；</li>
-<li>用spi_message_init函数初始化spi_message；</li>
-<li>定义一个或数个spi_transfer结构，初始化并为数据准备缓冲区并赋值给spi_transfer相应的字段（tx_buf，rx_buf等）；</li>
-<li>通过spi_message_init函数把这些spi_transfer挂在spi_message结构下；</li>
-<li>如果使用同步方式，调用spi_sync()，如果使用异步方式，调用spi_async();(我调试外设时，只使用过spi_sync</li>
-</ol>
-<p>传输示意图如图2-5所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-10.png" alt="Linux SPI Device Driver 10"></p>
-<h4 id="数据准备">数据准备</h4>
-<h5 id="spi_message_init">spi_message_init</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spi_message_init</span>(<span style="color:#66d9ef">struct</span> spi_message <span style="color:#f92672">*</span>m)
-{
- memset(m, <span style="color:#ae81ff">0</span>, <span style="color:#66d9ef">sizeof</span> <span style="color:#f92672">*</span>m);
- INIT_LIST_HEAD(<span style="color:#f92672">&amp;</span>m<span style="color:#f92672">-&gt;</span>transfers);
-}
-</code></pre></div><p>初始化spi_message：清空message，初始化transfers链表头。</p>
-<h5 id="spi_message_add_tail">spi_message_add_tail</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">void</span>
-<span style="color:#a6e22e">spi_message_add_tail</span>(<span style="color:#66d9ef">struct</span> spi_transfer <span style="color:#f92672">*</span>t, <span style="color:#66d9ef">struct</span> spi_message <span style="color:#f92672">*</span>m)
-{
- list_add_tail(<span style="color:#f92672">&amp;</span>t<span style="color:#f92672">-&gt;</span>transfer_list, <span style="color:#f92672">&amp;</span>m<span style="color:#f92672">-&gt;</span>transfers);
-}
-</code></pre></div><p>将spi_transfer加入到spi_message的链表尾部。</p>
-<h4 id="数据传输">数据传输</h4>
-<p>SPI数据传输可以有两种方式：同步方式和异步方式。所谓同步方式是指数据传输的发起者必须等待本次传输的结束，期间不能做其它事情，用代码来解释就是，调用传输的函数后，直到数据传输完成，函数才会返回。而异步方式则正好相反，数据传输的发起者无需等待传输的结束，数据传输期间还可以做其它事情，用代码来解释就是，调用传输的函数后，函数会立刻返回而不用等待数据传输完成，我们只需设置一个回调函数，传输完成后，该回调函数会被调用以通知发起者数据传送已经完成。同步方式简单易用，很适合处理那些少量数据的单次传输。但是对于数据量大、次数多的传输来说，异步方式就显得更加合适。对于SPI控制器来说，要支持异步方式必须要考虑以下两种状况：</p>
-<ul>
-<li>对于同一个数据传输的发起者，既然异步方式无需等待数据传输完成即可返回，返回后，该发起者可以立刻又发起一个message，而这时上一个message还没有处理完。</li>
-<li>对于另外一个不同的发起者来说，也有可能同时发起一次message传输请求 首先分析spi_sync()接口的实现流程，如图2-6：</li>
-</ul>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-11.png" alt="Linux SPI Device Driver 11"></p>
-<p>其次分析spi_async_locked接口的实现流程，如图2-7所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-12.png" alt="Linux SPI Device Driver 12"></p>
-<p>spi_queued_transfer接口的实现流程如图3-8所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-13.png" alt="Linux SPI Device Driver 13"></p>
-<p>spi_pump_messages函数的处理流程如图3-9所示：</p>
-<p><img src="https://www.kontronn.com/imgs/post/linux-spi-device-driver-14.png" alt="Linux SPI Device Driver 14"></p>
-<p>图中transfer_one_message是spi控制器驱动要实现的，主要功能是处理spi_message中的每个spi_transfer。</p>
-<h3 id="关键函数解析">关键函数解析</h3>
-<h4 id="spi_alloc_master">spi_alloc_master</h4>
-<p>原型：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>spi_alloc_master(<span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>dev, <span style="color:#66d9ef">unsigned</span> size)
-</code></pre></div><p>功能：分配一个spi_master结构体指针。</p>
-<p>参数：dev:spi控制器device指针 size    ：分配的driver-private data大小</p>
-<p>返回值 ：成功，返回spi_master指针；否则返回NULL</p>
-<h4 id="spi_register_master">spi_register_master</h4>
-<p>原型：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> spi_register_master(<span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>master) 
-</code></pre></div><p>功能 注册spi控制器驱动到内核。</p>
-<p>参数 master：spi_master指针</p>
-<p>返回值 成功，返回0；否则返回错误码</p>
-<h4 id="spi_unregister_master">spi_unregister_master</h4>
-<p>原型：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">void</span> spi_unregister_master(<span style="color:#66d9ef">struct</span> spi_master <span style="color:#f92672">*</span>master) 
-</code></pre></div><p>功能 注销spi控制器驱动。</p>
-<p>参数 master：spi_master指针</p>
-<p>返回值 无</p>
-<h2 id="实例demo">实例Demo</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/types.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/kernel.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/delay.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/ide.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/init.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/module.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/errno.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/gpio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/cdev.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/device.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/of_gpio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/semaphore.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/timer.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/i2c.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/spi/spi.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/of.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/of_address.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/of_gpio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;linux/platform_device.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/mach/map.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/uaccess.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;asm/io.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;icm20608reg.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#75715e">/***************************************************************
-</span><span style="color:#75715e">Copyright © ALIENTEK Co., Ltd. 1998-2029. All rights reserved.
-</span><span style="color:#75715e">文件名  : icm20608.c
-</span><span style="color:#75715e">作者    : 左工
-</span><span style="color:#75715e">版本     : V1.0
-</span><span style="color:#75715e">描述     : ICM20608 SPI驱动程序
-</span><span style="color:#75715e">其他     : 无
-</span><span style="color:#75715e">论坛  : 
-</span><span style="color:#75715e">日志     : 初版V1.0 2019/9/2 左工创建
-</span><span style="color:#75715e">***************************************************************/</span>
-<span style="color:#75715e">#define ICM20608_CNT 1
-</span><span style="color:#75715e">#define ICM20608_NAME &#34;icm20608&#34;
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">struct</span> icm20608_dev {
- dev_t devid;    <span style="color:#75715e">/* 设备号   */</span>
- <span style="color:#66d9ef">struct</span> cdev cdev;   <span style="color:#75715e">/* cdev  */</span>
- <span style="color:#66d9ef">struct</span> class <span style="color:#f92672">*</span>class;  <span style="color:#75715e">/* 类   */</span>
- <span style="color:#66d9ef">struct</span> device <span style="color:#f92672">*</span>device;  <span style="color:#75715e">/* 设备   */</span>
- <span style="color:#66d9ef">struct</span> device_node <span style="color:#f92672">*</span>nd;  <span style="color:#75715e">/* 设备节点 */</span>
- <span style="color:#66d9ef">int</span> major;     <span style="color:#75715e">/* 主设备号 */</span>
- <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>private_data;   <span style="color:#75715e">/* 私有数据   */</span>
- <span style="color:#66d9ef">int</span> cs_gpio;    <span style="color:#75715e">/* 片选所使用的GPIO编号  */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> gyro_x_adc;  <span style="color:#75715e">/* 陀螺仪X轴原始值   */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> gyro_y_adc;  <span style="color:#75715e">/* 陀螺仪Y轴原始值  */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> gyro_z_adc;  <span style="color:#75715e">/* 陀螺仪Z轴原始值   */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> accel_x_adc;  <span style="color:#75715e">/* 加速度计X轴原始值  */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> accel_y_adc;  <span style="color:#75715e">/* 加速度计Y轴原始值 */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> accel_z_adc;  <span style="color:#75715e">/* 加速度计Z轴原始值  */</span>
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> temp_adc;  <span style="color:#75715e">/* 温度原始值    */</span>
-};
 
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> icm20608_dev icm20608dev;
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 从icm20608读取多个寄存器数据
-</span><span style="color:#75715e"> * @param - dev:  icm20608设备
-</span><span style="color:#75715e"> * @param - reg:  要读取的寄存器首地址
-</span><span style="color:#75715e"> * @param - val:  读取到的数据
-</span><span style="color:#75715e"> * @param - len:  要读取的数据长度
-</span><span style="color:#75715e"> * @return   : 操作结果
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">icm20608_read_regs</span>(<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev, u8 reg, <span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span>buf, <span style="color:#66d9ef">int</span> len)
-{
- <span style="color:#66d9ef">int</span> ret;
- <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> txdata[len];
- <span style="color:#66d9ef">struct</span> spi_message m;
- <span style="color:#66d9ef">struct</span> spi_transfer <span style="color:#f92672">*</span>t;
- <span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>)dev<span style="color:#f92672">-&gt;</span>private_data;
-
- gpio_set_value(dev<span style="color:#f92672">-&gt;</span>cs_gpio, <span style="color:#ae81ff">0</span>);    <span style="color:#75715e">/* 片选拉低，选中ICM20608 */</span>
- t <span style="color:#f92672">=</span> kzalloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> spi_transfer), GFP_KERNEL); <span style="color:#75715e">/* 申请内存 */</span>
-
- <span style="color:#75715e">/* 第1次，发送要读取的寄存地址 */</span>
- txdata[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> reg <span style="color:#f92672">|</span> <span style="color:#ae81ff">0x80</span>;  <span style="color:#75715e">/* 写数据的时候寄存器地址bit8要置1 */</span>
- t<span style="color:#f92672">-&gt;</span>tx_buf <span style="color:#f92672">=</span> txdata;   <span style="color:#75715e">/* 要发送的数据 */</span>
- t<span style="color:#f92672">-&gt;</span>len <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;     <span style="color:#75715e">/* 1个字节 */</span>
- spi_message_init(<span style="color:#f92672">&amp;</span>m);  <span style="color:#75715e">/* 初始化spi_message */</span>
- spi_message_add_tail(t, <span style="color:#f92672">&amp;</span>m);<span style="color:#75715e">/* 将spi_transfer添加到spi_message队列 */</span>
- ret <span style="color:#f92672">=</span> spi_sync(spi, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">/* 同步发送 */</span>
-
- <span style="color:#75715e">/* 第2次，读取数据 */</span>
- txdata[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xff</span>;   <span style="color:#75715e">/* 随便一个值，此处无意义 */</span>
- t<span style="color:#f92672">-&gt;</span>rx_buf <span style="color:#f92672">=</span> buf;   <span style="color:#75715e">/* 读取到的数据 */</span>
- t<span style="color:#f92672">-&gt;</span>len <span style="color:#f92672">=</span> len;    <span style="color:#75715e">/* 要读取的数据长度 */</span>
- spi_message_init(<span style="color:#f92672">&amp;</span>m);  <span style="color:#75715e">/* 初始化spi_message */</span>
- spi_message_add_tail(t, <span style="color:#f92672">&amp;</span>m);<span style="color:#75715e">/* 将spi_transfer添加到spi_message队列 */</span>
- ret <span style="color:#f92672">=</span> spi_sync(spi, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">/* 同步发送 */</span>
-
- kfree(t);         <span style="color:#75715e">/* 释放内存 */</span>
- gpio_set_value(dev<span style="color:#f92672">-&gt;</span>cs_gpio, <span style="color:#ae81ff">1</span>);   <span style="color:#75715e">/* 片选拉高，释放ICM20608 */</span>
-
- <span style="color:#66d9ef">return</span> ret;
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 向icm20608多个寄存器写入数据
-</span><span style="color:#75715e"> * @param - dev:  icm20608设备
-</span><span style="color:#75715e"> * @param - reg:  要写入的寄存器首地址
-</span><span style="color:#75715e"> * @param - val:  要写入的数据缓冲区
-</span><span style="color:#75715e"> * @param - len:  要写入的数据长度
-</span><span style="color:#75715e"> * @return    :   操作结果
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> s32 <span style="color:#a6e22e">icm20608_write_regs</span>(<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev, u8 reg, u8 <span style="color:#f92672">*</span>buf, u8 len)
-{
- <span style="color:#66d9ef">int</span> ret;
-
- <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> txdata[len];
- <span style="color:#66d9ef">struct</span> spi_message m;
- <span style="color:#66d9ef">struct</span> spi_transfer <span style="color:#f92672">*</span>t;
- <span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>)dev<span style="color:#f92672">-&gt;</span>private_data;
-
- t <span style="color:#f92672">=</span> kzalloc(<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">struct</span> spi_transfer), GFP_KERNEL); <span style="color:#75715e">/* 申请内存 */</span>
- gpio_set_value(dev<span style="color:#f92672">-&gt;</span>cs_gpio, <span style="color:#ae81ff">0</span>);   <span style="color:#75715e">/* 片选拉低 */</span>
-
- <span style="color:#75715e">/* 第1次，发送要读取的寄存地址 */</span>
- txdata[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> reg <span style="color:#f92672">&amp;</span> <span style="color:#f92672">~</span><span style="color:#ae81ff">0x80</span>; <span style="color:#75715e">/* 写数据的时候寄存器地址bit8要清零 */</span>
- t<span style="color:#f92672">-&gt;</span>tx_buf <span style="color:#f92672">=</span> txdata;   <span style="color:#75715e">/* 要发送的数据 */</span>
- t<span style="color:#f92672">-&gt;</span>len <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;     <span style="color:#75715e">/* 1个字节 */</span>
- spi_message_init(<span style="color:#f92672">&amp;</span>m);  <span style="color:#75715e">/* 初始化spi_message */</span>
- spi_message_add_tail(t, <span style="color:#f92672">&amp;</span>m);<span style="color:#75715e">/* 将spi_transfer添加到spi_message队列 */</span>
- ret <span style="color:#f92672">=</span> spi_sync(spi, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">/* 同步发送 */</span>
-
- <span style="color:#75715e">/* 第2次，发送要写入的数据 */</span>
- t<span style="color:#f92672">-&gt;</span>tx_buf <span style="color:#f92672">=</span> buf;   <span style="color:#75715e">/* 要写入的数据 */</span>
- t<span style="color:#f92672">-&gt;</span>len <span style="color:#f92672">=</span> len;    <span style="color:#75715e">/* 写入的字节数 */</span>
- spi_message_init(<span style="color:#f92672">&amp;</span>m);  <span style="color:#75715e">/* 初始化spi_message */</span>
- spi_message_add_tail(t, <span style="color:#f92672">&amp;</span>m);<span style="color:#75715e">/* 将spi_transfer添加到spi_message队列 */</span>
- ret <span style="color:#f92672">=</span> spi_sync(spi, <span style="color:#f92672">&amp;</span>m); <span style="color:#75715e">/* 同步发送 */</span>
-
- kfree(t);     <span style="color:#75715e">/* 释放内存 */</span>
- gpio_set_value(dev<span style="color:#f92672">-&gt;</span>cs_gpio, <span style="color:#ae81ff">1</span>);<span style="color:#75715e">/* 片选拉高，释放ICM20608 */</span>
- <span style="color:#66d9ef">return</span> ret;
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 读取icm20608指定寄存器值，读取一个寄存器
-</span><span style="color:#75715e"> * @param - dev:  icm20608设备
-</span><span style="color:#75715e"> * @param - reg:  要读取的寄存器
-</span><span style="color:#75715e"> * @return    :   读取到的寄存器值
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> <span style="color:#a6e22e">icm20608_read_onereg</span>(<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev, u8 reg)
-{
- u8 data <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
- icm20608_read_regs(dev, reg, <span style="color:#f92672">&amp;</span>data, <span style="color:#ae81ff">1</span>);
- <span style="color:#66d9ef">return</span> data;
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 向icm20608指定寄存器写入指定的值，写一个寄存器
-</span><span style="color:#75715e"> * @param - dev:  icm20608设备
-</span><span style="color:#75715e"> * @param - reg:  要写的寄存器
-</span><span style="color:#75715e"> * @param - data: 要写入的值
-</span><span style="color:#75715e"> * @return   :    无
-</span><span style="color:#75715e"> */</span> 
-
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">icm20608_write_onereg</span>(<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev, u8 reg, u8 value)
-{
- u8 buf <span style="color:#f92672">=</span> value;
- icm20608_write_regs(dev, reg, <span style="color:#f92672">&amp;</span>buf, <span style="color:#ae81ff">1</span>);
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 读取ICM20608的数据，读取原始数据，包括三轴陀螺仪、
-</span><span style="color:#75715e"> *     : 三轴加速度计和内部温度。
-</span><span style="color:#75715e"> * @param - dev : ICM20608设备
-</span><span style="color:#75715e"> * @return   : 无。
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">icm20608_readdata</span>(<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev)
-{
- <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> data[<span style="color:#ae81ff">14</span>];
- icm20608_read_regs(dev, ICM20_ACCEL_XOUT_H, data, <span style="color:#ae81ff">14</span>);
-
- dev<span style="color:#f92672">-&gt;</span>accel_x_adc <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">1</span>]); 
- dev<span style="color:#f92672">-&gt;</span>accel_y_adc <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">3</span>]); 
- dev<span style="color:#f92672">-&gt;</span>accel_z_adc <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">5</span>]); 
- dev<span style="color:#f92672">-&gt;</span>temp_adc    <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">7</span>]); 
- dev<span style="color:#f92672">-&gt;</span>gyro_x_adc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">9</span>]); 
- dev<span style="color:#f92672">-&gt;</span>gyro_y_adc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">11</span>]);
- dev<span style="color:#f92672">-&gt;</span>gyro_z_adc  <span style="color:#f92672">=</span> (<span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">short</span>)((data[<span style="color:#ae81ff">12</span>] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">|</span> data[<span style="color:#ae81ff">13</span>]);
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description  : 打开设备
-</span><span style="color:#75715e"> * @param - inode  : 传递给驱动的inode
-</span><span style="color:#75715e"> * @param - filp  : 设备文件，file结构体有个叫做privateate_data的成员变量
-</span><span style="color:#75715e"> *        一般在open的时候将private_data似有向设备结构体。
-</span><span style="color:#75715e"> * @return    : 0 成功;其他 失败
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">icm20608_open</span>(<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>inode, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>filp)
-{
- filp<span style="color:#f92672">-&gt;</span>private_data <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>icm20608dev; <span style="color:#75715e">/* 设置私有数据 */</span>
- <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description  : 从设备读取数据 
-</span><span style="color:#75715e"> * @param - filp  : 要打开的设备文件(文件描述符)
-</span><span style="color:#75715e"> * @param - buf  : 返回给用户空间的数据缓冲区
-</span><span style="color:#75715e"> * @param - cnt  : 要读取的数据长度
-</span><span style="color:#75715e"> * @param - offt  : 相对于文件首地址的偏移
-</span><span style="color:#75715e"> * @return    : 读取的字节数，如果为负值，表示读取失败
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> ssize_t <span style="color:#a6e22e">icm20608_read</span>(<span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>filp, <span style="color:#66d9ef">char</span> __user <span style="color:#f92672">*</span>buf, size_t cnt, loff_t <span style="color:#f92672">*</span>off)
-{
- <span style="color:#66d9ef">signed</span> <span style="color:#66d9ef">int</span> data[<span style="color:#ae81ff">7</span>];
- <span style="color:#66d9ef">long</span> err <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
- <span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>dev <span style="color:#f92672">=</span> (<span style="color:#66d9ef">struct</span> icm20608_dev <span style="color:#f92672">*</span>)filp<span style="color:#f92672">-&gt;</span>private_data;
-
- icm20608_readdata(dev);
- data[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>gyro_x_adc;
- data[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>gyro_y_adc;
- data[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>gyro_z_adc;
- data[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>accel_x_adc;
- data[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>accel_y_adc;
- data[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>accel_z_adc;
- data[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> dev<span style="color:#f92672">-&gt;</span>temp_adc;
- err <span style="color:#f92672">=</span> copy_to_user(buf, data, <span style="color:#66d9ef">sizeof</span>(data));
- <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description  : 关闭/释放设备
-</span><span style="color:#75715e"> * @param - filp  : 要关闭的设备文件(文件描述符)
-</span><span style="color:#75715e"> * @return    : 0 成功;其他 失败
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">icm20608_release</span>(<span style="color:#66d9ef">struct</span> inode <span style="color:#f92672">*</span>inode, <span style="color:#66d9ef">struct</span> file <span style="color:#f92672">*</span>filp)
-{
- <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-
-<span style="color:#75715e">/* icm20608操作函数 */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> file_operations icm20608_ops <span style="color:#f92672">=</span> {
- .owner <span style="color:#f92672">=</span> THIS_MODULE,
- .open <span style="color:#f92672">=</span> icm20608_open,
- .read <span style="color:#f92672">=</span> icm20608_read,
- .release <span style="color:#f92672">=</span> icm20608_release,
-};
-
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * ICM20608内部寄存器初始化函数 
-</span><span style="color:#75715e"> * @param   : 无
-</span><span style="color:#75715e"> * @return  : 无
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">icm20608_reginit</span>(<span style="color:#66d9ef">void</span>)
-{
- u8 value <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
  
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_PWR_MGMT_1, <span style="color:#ae81ff">0x80</span>);
- mdelay(<span style="color:#ae81ff">50</span>);
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_PWR_MGMT_1, <span style="color:#ae81ff">0x01</span>);
- mdelay(<span style="color:#ae81ff">50</span>);
-
- value <span style="color:#f92672">=</span> icm20608_read_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_WHO_AM_I);
- printk(<span style="color:#e6db74">&#34;ICM20608 ID = %#X</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, value); 
-
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_SMPLRT_DIV, <span style="color:#ae81ff">0x00</span>);  <span style="color:#75715e">/* 输出速率是内部采样率     */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_GYRO_CONFIG, <span style="color:#ae81ff">0x18</span>);  <span style="color:#75715e">/* 陀螺仪±2000dps量程     */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_ACCEL_CONFIG, <span style="color:#ae81ff">0x18</span>);  <span style="color:#75715e">/* 加速度计±16G量程      */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_CONFIG, <span style="color:#ae81ff">0x04</span>);   <span style="color:#75715e">/* 陀螺仪低通滤波BW=20Hz     */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_ACCEL_CONFIG2, <span style="color:#ae81ff">0x04</span>); <span style="color:#75715e">/* 加速度计低通滤波BW=21.2Hz    */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_PWR_MGMT_2, <span style="color:#ae81ff">0x00</span>);  <span style="color:#75715e">/* 打开加速度计和陀螺仪所有轴     */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_LP_MODE_CFG, <span style="color:#ae81ff">0x00</span>);  <span style="color:#75715e">/* 关闭低功耗       */</span>
- icm20608_write_onereg(<span style="color:#f92672">&amp;</span>icm20608dev, ICM20_FIFO_EN, <span style="color:#ae81ff">0x00</span>);  <span style="color:#75715e">/* 关闭FIFO      */</span>
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
 }
 
- <span style="color:#75715e">/*
-</span><span style="color:#75715e">  * @description     : spi驱动的probe函数，当驱动与
-</span><span style="color:#75715e">  *                    设备匹配以后此函数就会执行
-</span><span style="color:#75715e">  * @param - client  : spi设备
-</span><span style="color:#75715e">  * @param - id      : spi设备ID
-</span><span style="color:#75715e">  * 
-</span><span style="color:#75715e">  */</span> 
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">icm20608_probe</span>(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi)
-{
- <span style="color:#66d9ef">int</span> ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
- <span style="color:#75715e">/* 1、构建设备号 */</span>
- <span style="color:#66d9ef">if</span> (icm20608dev.major) {
-  icm20608dev.devid <span style="color:#f92672">=</span> MKDEV(icm20608dev.major, <span style="color:#ae81ff">0</span>);
-  register_chrdev_region(icm20608dev.devid, ICM20608_CNT, ICM20608_NAME);
- } <span style="color:#66d9ef">else</span> {
-  alloc_chrdev_region(<span style="color:#f92672">&amp;</span>icm20608dev.devid, <span style="color:#ae81ff">0</span>, ICM20608_CNT, ICM20608_NAME);
-  icm20608dev.major <span style="color:#f92672">=</span> MAJOR(icm20608dev.devid);
- }
-
- <span style="color:#75715e">/* 2、注册设备 */</span>
- cdev_init(<span style="color:#f92672">&amp;</span>icm20608dev.cdev, <span style="color:#f92672">&amp;</span>icm20608_ops);
- cdev_add(<span style="color:#f92672">&amp;</span>icm20608dev.cdev, icm20608dev.devid, ICM20608_CNT);
-
- <span style="color:#75715e">/* 3、创建类 */</span>
- icm20608dev.class <span style="color:#f92672">=</span> class_create(THIS_MODULE, ICM20608_NAME);
- <span style="color:#66d9ef">if</span> (IS_ERR(icm20608dev.class)) {
-  <span style="color:#66d9ef">return</span> PTR_ERR(icm20608dev.class);
- }
-
- <span style="color:#75715e">/* 4、创建设备 */</span>
- icm20608dev.device <span style="color:#f92672">=</span> device_create(icm20608dev.class, NULL, icm20608dev.devid, NULL, ICM20608_NAME);
- <span style="color:#66d9ef">if</span> (IS_ERR(icm20608dev.device)) {
-  <span style="color:#66d9ef">return</span> PTR_ERR(icm20608dev.device);
- }
-
- <span style="color:#75715e">/* 获取设备树中cs片选信号 */</span>
- icm20608dev.nd <span style="color:#f92672">=</span> of_find_node_by_path(<span style="color:#e6db74">&#34;/soc/aips-bus@02000000/spba-bus@02000000/ecspi@02010000&#34;</span>);
- <span style="color:#66d9ef">if</span>(icm20608dev.nd <span style="color:#f92672">==</span> NULL) {
-  printk(<span style="color:#e6db74">&#34;ecspi3 node not find!</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EINVAL;
- } 
-
- <span style="color:#75715e">/* 2、 获取设备树中的gpio属性，得到BEEP所使用的BEEP编号 */</span>
- icm20608dev.cs_gpio <span style="color:#f92672">=</span> of_get_named_gpio(icm20608dev.nd, <span style="color:#e6db74">&#34;cs-gpio&#34;</span>, <span style="color:#ae81ff">0</span>);
- <span style="color:#66d9ef">if</span>(icm20608dev.cs_gpio <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-  printk(<span style="color:#e6db74">&#34;can&#39;t get cs-gpio&#34;</span>);
-  <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span>EINVAL;
- }
-
- <span style="color:#75715e">/* 3、设置GPIO1_IO20为输出，并且输出高电平 */</span>
- ret <span style="color:#f92672">=</span> gpio_direction_output(icm20608dev.cs_gpio, <span style="color:#ae81ff">1</span>);
- <span style="color:#66d9ef">if</span>(ret <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) {
-  printk(<span style="color:#e6db74">&#34;can&#39;t set gpio!</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>);
- }
-
- <span style="color:#75715e">/*初始化spi_device */</span>
- spi<span style="color:#f92672">-&gt;</span>mode <span style="color:#f92672">=</span> SPI_MODE_0; <span style="color:#75715e">/*MODE0，CPOL=0，CPHA=0*/</span>
- spi_setup(spi);
- icm20608dev.private_data <span style="color:#f92672">=</span> spi; <span style="color:#75715e">/* 设置私有数据 */</span>
-
- <span style="color:#75715e">/* 初始化ICM20608内部寄存器 */</span>
- icm20608_reginit();  
- <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description     : spi驱动的remove函数，移除spi驱动的时候此函数会执行
-</span><span style="color:#75715e"> * @param - client  : spi设备
-</span><span style="color:#75715e"> * @return          : 0，成功;其他负值,失败
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">icm20608_remove</span>(<span style="color:#66d9ef">struct</span> spi_device <span style="color:#f92672">*</span>spi)
-{
- <span style="color:#75715e">/* 删除设备 */</span>
- cdev_del(<span style="color:#f92672">&amp;</span>icm20608dev.cdev);
- unregister_chrdev_region(icm20608dev.devid, ICM20608_CNT);
-
- <span style="color:#75715e">/* 注销掉类和设备 */</span>
- device_destroy(icm20608dev.class, icm20608dev.devid);
- class_destroy(icm20608dev.class);
- <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+.resp-sharing-button--twitter {
+  background-color: #55acee
 }
 
-<span style="color:#75715e">/* 传统匹配方式ID列表 */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> spi_device_id icm20608_id[] <span style="color:#f92672">=</span> {
- {<span style="color:#e6db74">&#34;alientek,icm20608&#34;</span>, <span style="color:#ae81ff">0</span>},  
- {}
-};
-
-<span style="color:#75715e">/* 设备树匹配列表 */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">struct</span> of_device_id icm20608_of_match[] <span style="color:#f92672">=</span> {
- { .compatible <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;alientek,icm20608&#34;</span> },
- { <span style="color:#75715e">/* Sentinel */</span> }
-};
-
-<span style="color:#75715e">/* SPI驱动结构体 */</span> 
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">struct</span> spi_driver icm20608_driver <span style="color:#f92672">=</span> {
- .probe <span style="color:#f92672">=</span> icm20608_probe,
- .remove <span style="color:#f92672">=</span> icm20608_remove,
- .driver <span style="color:#f92672">=</span> {
-   .owner <span style="color:#f92672">=</span> THIS_MODULE,
-      .name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;icm20608&#34;</span>,
-      .of_match_table <span style="color:#f92672">=</span> icm20608_of_match, 
-     },
- .id_table <span style="color:#f92672">=</span> icm20608_id,
-};
-     
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 驱动入口函数
-</span><span style="color:#75715e"> * @param   : 无
-</span><span style="color:#75715e"> * @return   : 无
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> __init <span style="color:#a6e22e">icm20608_init</span>(<span style="color:#66d9ef">void</span>)
-{
- <span style="color:#66d9ef">return</span> spi_register_driver(<span style="color:#f92672">&amp;</span>icm20608_driver);
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
 }
 
-<span style="color:#75715e">/*
-</span><span style="color:#75715e"> * @description : 驱动出口函数
-</span><span style="color:#75715e"> * @param   : 无
-</span><span style="color:#75715e"> * @return   : 无
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> __exit <span style="color:#a6e22e">icm20608_exit</span>(<span style="color:#66d9ef">void</span>)
-{
- spi_unregister_driver(<span style="color:#f92672">&amp;</span>icm20608_driver);
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
 }
 
-module_init(icm20608_init);
-module_exit(icm20608_exit);
-MODULE_LICENSE(<span style="color:#e6db74">&#34;GPL&#34;</span>);
-MODULE_AUTHOR(yikoulinux<span style="color:#e6db74">&#34;);</span>
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
 
-</code></pre></div>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
 
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
 
 
 
-    </div>
-    <footer class="post-footer">
-      
 
-<div class="post-tags">
-  
-    <a href="/tags/linux">
-    Linux
-  </a>
-    <a href="/tags/spi">
-    SPI
-  </a>
-    <a href="/tags/device-driver">
-    Device Driver
-  </a>
-</div>
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
 
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
 
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
+
     </div>
   </div>
-</div>
+</a>
 
 
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      Linux下SPI驱动详解
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html" title="Linux下SPI驱动详解">https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
 
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Linux%e4%b8%8bSPI%e9%a9%b1%e5%8a%a8%e8%af%a6%e8%a7%a3&amp;url=https://www.kontronn.com/post/linux/linux-spi-device-driver-detailed-explanation.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/linux-io-device-driver-mmap-operation.html" rel="next" title="Linux驱动IO篇——mmap操作">
-      <i class="fa fa-chevron-left"></i> Linux驱动IO篇——mmap操作
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/linux/difference-between-nftables-and-iptables.html" rel="prev" title="什么是 nftables ? 它与 iptables 的区别是什么？">
-      什么是 nftables ? 它与 iptables 的区别是什么？
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
     </div>
   </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -1364,6 +337,17 @@ MODULE_AUTHOR(yikoulinux<span style="color:#e6db74">&#34;);</span>
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

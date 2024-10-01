@@ -1,672 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="Rust 为什么适合嵌入式开发" />
-<meta itemprop="description" content="Rust 为什么适合嵌入式开发" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Rust,Embedded" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Rust 为什么适合嵌入式开发" />
-<meta property="og:description" content="Rust 为什么适合嵌入式开发" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2024-08-21 22:06:51 &#43;0800 CST" />
-<meta property="article:modified_time" content="2024-08-21 22:06:51 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"why-rust-is-suitable-for-embedded-development.html","permalink":"https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html","title":"Rust 为什么适合嵌入式开发"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>Rust 为什么适合嵌入式开发 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
-
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
-  
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#工具链">工具链</a></li>
-    <li><a href="#库的集成">库的集成</a></li>
-    <li><a href="#调试">调试</a></li>
-    <li><a href="#语言优势">语言优势</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
 
 
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
-
-    </header>
-    
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Rust 为什么适合嵌入式开发">
-      <meta itemprop="description" content="Rust 为什么适合嵌入式开发">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">Rust 为什么适合嵌入式开发 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
 
 
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2024-08-21 22:06:51 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-08-21 22:06:51 &#43;0800 CST">2024-08-21</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/programming" itemprop="url" rel="index">
-      <span itemprop="name">Programming</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>343</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>2分钟</span>
-</span>
 
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/programming/why-rust-is-suitable-for-embedded-development.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
+ 
 
 
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>Rust 作为一门年轻的语言，聚焦与安全、并发、高性能等特点，号称能替代 C/C++，那么究竟有多少优点能值得我们来切换呢？本文将告诉你为什么 Rust 适合嵌入式开发。</p>
-<p><img src="https://www.kontronn.com/imgs/post/Rust-for-embedded-1.png" alt="Rust Embedded"></p>
-<h2 id="工具链">工具链</h2>
-<ol>
-<li>轻松搭建各种不同类型的芯片编译环境，使用 cargo、rustup 等命令快速搭建新的环境。</li>
-<li>统一的编译、调试工具、下载工具, 如cargo build,cargo falsh,probe-rs等</li>
-<li>快速生成代码文档,cargo doc直接生成网页文档，能让新手快速了解整个项目的模块、接口框架。</li>
-<li>内置代码格式化工具 fmt，轻松就各个代码文件统一格式，标准规范，团队作战无需在吐槽队友的代码风格，cargo fmt 后格式都会统一好，新手无需学习新公司的编码格式规范，公司也无需过多培训编码格式规范。</li>
-</ol>
-<p><img src="https://www.kontronn.com/imgs/post/Rust-for-embedded-2.png" alt="Rust Embedded"></p>
-<h2 id="库的集成">库的集成</h2>
-<ol>
-<li>移植优势</li>
-</ol>
-<p>可移植性移植是嵌入式开发的一个大问题，每个工作可能或多或少会考虑一些模块的可移植性，想进来在不同框架不同平台上能够共有这些模块，避免重复造轮子。Rust 则提供了高效的方法来保证库能够轻松移植，避免库接口域业务接口杂糅到一起。trait 等特性让 Rust 的库能在不同的 CPU 如 ARM 或 RISV-V 甚至操作系统上方便得使用，无需过多关注库的文件数量、无需手动添加库的每个文件，仅仅只需在toml文件中添加库的名字、版本、开启所需的featues即可。在 Rust 中你可以轻松得将各种 IIC 的传感器库添加到自己的工程，很少花时间在适配上。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-go" data-lang="go">[<span style="color:#a6e22e">dependencies</span>]
-<span style="color:#a6e22e">panic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">halt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
-<span style="color:#a6e22e">ufmt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
-<span style="color:#a6e22e">nb</span> = <span style="color:#e6db74">&#34;1.1.0&#34;</span>
-<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span> = <span style="color:#e6db74">&#34;1.0&#34;</span>
-<span style="color:#a6e22e">pwm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pca9685</span> = <span style="color:#e6db74">&#34;1.0.0&#34;</span>
-<span style="color:#a6e22e">infrared</span> = <span style="color:#e6db74">&#34;0.14.1&#34;</span>
-<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">storage</span> = <span style="color:#e6db74">&#34;0.2&#34;</span>
 
-[<span style="color:#a6e22e">dependencies</span>.<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span><span style="color:#f92672">-</span><span style="color:#a6e22e">v0</span>]
-<span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;0.2.3&#34;</span>
-<span style="color:#f92672">package</span> = <span style="color:#e6db74">&#34;embedded-hal&#34;</span>
-</code></pre></div><ol start="2">
-<li>Rust 官方发布了许多标准的库，基于这些库能简化开发、指导用户完成统一的适配接口。Rust 社区也非常活跃，发布了大量的开源库。</li>
-</ol>
-<blockquote>
-As part of the Rust open source project, support for embedded systems is driven by a best-in-class open source community with support from commercial partners.
-</blockquote>
-<h2 id="调试">调试</h2>
-<p>Rust 生成的固件能使用 openocd 来轻松 gdb 调试，与 C/C++ 完全一样，单步、断电、查看等操作都支持。无需担心调试障碍。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break main
-Breakpoint <span style="color:#ae81ff">1</span> at 0x8000d18: file examples/hello.rs, line 15.
 
-<span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span>
-Continuing.
-Note: automatically using hardware breakpoints <span style="color:#66d9ef">for</span> read-only addresses.
 
-Breakpoint 1, main <span style="color:#f92672">()</span> at examples/hello.rs:15
-<span style="color:#ae81ff">15</span>          let mut stdout <span style="color:#f92672">=</span> hio::hstdout<span style="color:#f92672">()</span>.unwrap<span style="color:#f92672">()</span>;
-</code></pre></div><h2 id="语言优势">语言优势</h2>
-<ol>
-<li>内存安全优势。</li>
-</ol>
-<p>C/C++嵌入式工程师肯定知道，经常在编码完成后，烧录程序到芯片测试运行，经常会出现莫名的内存泄露、异常退出甚至死机的现象，这种内存问题有时非常难怕查，也许编码十分钟调试两小时。当然目前也有一些先进的工具用来辅助调试，如 ASan，Valgrind、Memcheck 等工具，但这些工具本身就需要复杂的调试手段，需要仔细查看日志才能得出结果，但是对于某些资源受限嵌入式设备，很难使用这些工具来辅助排查。对于新手来说学习这些工具的使用就让人头疼。而 Rust 天生保证内存安全，没有丰富的 Rust 经验很难写出能让内存异常的代码，是的你没听错，Rust 对于新手保护特别友好，需要有经验的人才能故意写出不安全的代码。Rust 的生命周期的约束使得实现内存安全而且零成本，也就是无需在时间和空间上浪费资源。</p>
-<ol start="2">
-<li>语法优势：语法中新的枚举，闭包、异步、流控、变量生命周期控制、安全宏等，基于这些基础语法能最方便、便捷的表达问题的逻辑，无需使用太多的技巧。让编程更加简洁和优雅。</li>
-</ol>
-<p>Rust 作为强类型的语言，但是在使用时无需过多指定变量类型，Rust 编译器会自动推导变量的类型，并基于生命周期的约束可以重复使用变量名，原理上保证使用这些语法就像 C 语言一样安全，但是用起来像 Python 一样方便。</p>
-<ol start="3">
-<li>线程安全，无畏并发</li>
-</ol>
-<blockquote>
-Rust makes it impossible to accidentally share state between threads. Use any concurrency approach you like and you’ll still get Rust’s strong guarantees
-</blockquote>
-<p>一般来说 Rust 与其他语言也会面临同一样的并发问题。对于嵌入式软件环境，包括：</p>
-<ul>
-<li>多线程</li>
-<li>多核处理器</li>
-<li>中断处理</li>
-</ul>
-<p>对于以上三种常见并发的问题，Rust 也提供了高效的解决方案，如定义原子类型、临界类型、互斥体防止被中断影响。同时也在编译期间检测多线程引起死锁风险，让风险扼杀在编译期间。目前已经有优秀的embassy,rtic等框架提供异步操作系统。</p>
-<ol start="4">
-<li>智能的编译提示，对于编译时的错误，给出详细的原因，对于有风险的代码段给出解决的意见，从代码编写阶段提高代码质量，无需在调试时去发现再优化，让程序员花给多的时间来考虑代码逻辑，业务逻辑，避免低效的调试过程。</li>
-<li>轻松衔接 C/C++的代码，零成本接口绑定</li>
-</ol>
-<blockquote>
-Integrate Rust into your existing C codebase or leverage an existing SDK to write a Rust application.
-</blockquote>
-<p>如果目前你的项目无法使用 Rust 来完成所有的模块，你也可以使用 FFF 机制来轻松绑定原项目的 C/C++接口，能够轻松与 C/C++互相操作。可以使用bindgen命令来轻松构建外部接口，也可在build.rs中编译 C/C++ 文件，也能 C/C++ 调用库文件如*.a。轻松集成。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">/* File: cool_bindings.rs */
-#[repr(C)]
-pub struct CoolStruct {
-    pub x: cty::c_int,
-    pub y: cty::c_int,
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
 }
 
-pub extern &#34;C&#34; fn cool_function(
-    i: cty::c_int,
-    c: cty::c_char,
-    cs: *mut CoolStruct
-);
-pub extern &#34;C&#34; fn cool_function( ... );
-
-extern crate cc;
-
-fn main() {
-    cc::Build::new()
-        .file(&#34;foo.c&#34;)
-        .compile(&#34;libfoo.a&#34;);
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
 }
-</code></pre></div><ol start="6">
-<li>底层控制能力</li>
-</ol>
-<p>Rust 也提供了接口能尽可能安全访问地访问底层接口，如 PAC 包用来抽象微控制器的外设寄存器的访问，能编译成高效的二进制代码且接口容易使用，用户无需太多关注寄存器各域的位置，只需聚焦于芯片手册来操作各域的值，不会出现移位错或写错的低级错误。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">#![no_std]
-#![no_main]
 
-extern crate panic_halt; // panic handler
-
-use cortex_m_rt::entry;
-use tm4c123x;
-
-#[entry]
-pub fn init() -&gt; (Delay, Leds) {
-    let cp = cortex_m::Peripherals::take().unwrap();
-    let p = tm4c123x::Peripherals::take().unwrap();
-
-    let pwm = p.PWM0;
-    pwm.ctl.write(|w| w.globalsync0().clear_bit());
-    // Mode = 1 =&gt; Count up/down mode
-    pwm._2_ctl.write(|w| w.enable().set_bit().mode().set_bit());
-    pwm._2_gena.write(|w| w.actcmpau().zero().actcmpad().one());
-    // 528 cycles (264 up and down) = 4 loops per video line (2112 cycles)
-    pwm._2_load.write(|w| unsafe { w.load().bits(263) });
-    pwm._2_cmpa.write(|w| unsafe { w.compa().bits(64) });
-    pwm.enable.write(|w| w.pwm4en().set_bit());
-}
-</code></pre></div>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-    <a href="/tags/rust">
-    Rust
-  </a>
-    <a href="/tags/embedded">
-    Embedded
-  </a>
-</div>
+}
 
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
 
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
     </div>
   </div>
-</div>
+</a>
 
 
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      Rust 为什么适合嵌入式开发
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html" title="Rust 为什么适合嵌入式开发">https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
 
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Rust%20%e4%b8%ba%e4%bb%80%e4%b9%88%e9%80%82%e5%90%88%e5%b5%8c%e5%85%a5%e5%bc%8f%e5%bc%80%e5%8f%91&amp;url=https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/a-complete-guide-to-SSH-password-free-authentication-in-Linux.html" rel="next" title="Linux系统SSH免密认证的完整操作指南">
-      <i class="fa fa-chevron-left"></i> Linux系统SSH免密认证的完整操作指南
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html" rel="prev" title="风河VxWorks搭档TI处理器助汽车AI/ML大放异彩">
-      风河VxWorks搭档TI处理器助汽车AI/ML大放异彩
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
     </div>
   </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -678,6 +337,17 @@ pub fn init() -&gt; (Delay, Leds) {
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

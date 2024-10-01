@@ -1,654 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="FPGA时序约束--实战篇" />
-<meta itemprop="description" content="FPGA时序约束--实战篇" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="FPGA,Xilinx" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="FPGA时序约束--实战篇" />
-<meta property="og:description" content="FPGA时序约束--实战篇" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/fpga/fpga-timing-constraints.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-08-08 04:48:07 -0400 -0400" />
-<meta property="article:modified_time" content="2023-08-08 04:48:07 -0400 -0400" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"fpga-timing-constraints.html","permalink":"https://www.kontronn.com/post/fpga/fpga-timing-constraints.html","title":"FPGA时序约束--实战篇"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>FPGA时序约束--实战篇 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
 
-  <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+ 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
 
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
+
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#模块运行时钟频率">模块运行时钟频率</a></li>
-    <li><a href="#hdl代码">HDL代码</a></li>
-    <li><a href="#组合逻辑层数">组合逻辑层数</a></li>
-    <li><a href="#高扇出">高扇出</a></li>
-    <li><a href="#资源消耗">资源消耗</a></li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
 
 
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
 
-    </header>
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/fpga/fpga-timing-constraints.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=FPGA%e6%97%b6%e5%ba%8f%e7%ba%a6%e6%9d%9f--%e5%ae%9e%e6%88%98%e7%af%87&amp;url=https://www.kontronn.com/post/fpga/fpga-timing-constraints.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/fpga/fpga-timing-constraints.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="FPGA时序约束--实战篇">
-      <meta itemprop="description" content="FPGA时序约束--实战篇">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">FPGA时序约束--实战篇 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-08-08 04:48:07 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-08 04:48:07 -0400 -0400">2023-08-08</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/fpga" itemprop="url" rel="index">
-      <span itemprop="name">FPGA</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>141</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/fpga/fpga-timing-constraints.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>前面几篇文章介绍了“如何写时序约束”和“如何看懂时序约束报告”，这些知识点都是基础，可以知道设计的HDL代码不收敛的位置，但解决时序收敛问题更关键。</p>
-<p>
-<a href="https://www.vxworks.net/fpga" title="FPGA" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    FPGA
-    <i class="fa fa-external-link-alt"></i>
-</a>时序不收敛，会出现很多随机性问题，上板测试大概率各种跑飞，而且不好调试定位原因，所以在上板测试前，先优化时序，再上板。</p>
-<p>今天我们就来唠一唠解决时序不收敛的问题，分享一些常用的解决办法和思路。</p>
-<h2 id="模块运行时钟频率">模块运行时钟频率</h2>
-<p>设计模块前，需明确模块运行的最大时钟频率。</p>
-<p>不同时钟频率下，对应的时序约束最大延时是不一样的。</p>
-<p>比如100MHz时钟下运行的HDL逻辑，比200MHz时钟下的HDL逻辑，支持的组合逻辑层数多。</p>
-<p>根据最大时钟频率，来设计HDL代码的层级，时钟频率越高，插入寄存器要更多，增加流水线级数，减少过长的组合逻辑。</p>
-<h2 id="hdl代码">HDL代码</h2>
-<ol>
-<li>HDL代码风格</li>
-</ol>
-<p>优先参考FPGA开发软件提供的HDL Template，比如Vivado的language template。</p>
-<p><img src="https://www.kontronn.com/imgs/post/fpga-timing-constraint.png" alt="FPGA Timing Constraint"></p>
-<ol start="2">
-<li>HDL代码逻辑优化</li>
-</ol>
-<p>对于复杂的算法代码逻辑，需要结合FPGA并行计算和最小处理单位为bit的特性，对逻辑代码进行优化实现。</p>
-<p>明确变量最大的数据位宽。</p>
-<p>逻辑代码中，一些软件逻辑实现起来较复杂，尽量简化，删除掉一些不可能出现的情况。</p>
-<p>这部分代码逻辑，可能需要重复迭代几遍实现才行。</p>
-<h2 id="组合逻辑层数">组合逻辑层数</h2>
-<ol>
-<li>插入寄存器</li>
-</ol>
-<p>将计算逻辑分成多个时钟周期实现，这是常用的时序优化方法，可以减少过多的组合逻辑层数，但会增加延时。</p>
-<p>这里以一个多路输入求和计算为例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">module <span style="color:#a6e22e">sum</span>(
-    input        clk,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
-    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum_o <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B <span style="color:#f92672">+</span> data_C <span style="color:#f92672">+</span> data_D;
-     end
-
-endmodule
-</code></pre></div><p>增加寄存器后，改为</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">module <span style="color:#a6e22e">sum</span>(
-    input        clk,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
-    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
-
-    reg [<span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum0, sum1;
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum0 <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B;
-        sum1 <span style="color:#f92672">&lt;=</span> data_C <span style="color:#f92672">+</span> data_D;
-     end
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum_o <span style="color:#f92672">&lt;=</span> sum0 <span style="color:#f92672">+</span> sum1;
-     end
-
-endmodule
-</code></pre></div><ol start="2">
-<li>逻辑展平设计</li>
-</ol>
-<p>优化代码中优先级译码电路逻辑，主要出现在IF/ELSE结构语句中，这样逻辑结构被展平，路径延迟得以缩短。</p>
-<p>IF ELSE结构语句存在明显的优先级，建议尽量用CASE语句来替代。</p>
-<ol start="3">
-<li>防止变量被优化</li>
-</ol>
-<p>HDL综合布线软件会根据实际情况，自动优化代码逻辑，可能存在将多个不同寄存器变量合并成一个寄存器变量的情况。</p>
-<p>对于不希望被优化的变量，可以在变量定义前，添加（* keep = &ldquo;ture&rdquo; *）</p>
-<h2 id="高扇出">高扇出</h2>
-<p>高扇出问题，原因是一个寄存器驱动后级数超过了它本身的驱动能力，导致延迟时间过大，不满足时序。</p>
-<ol>
-<li>使用max_fanout</li>
-</ol>
-<p>在变量定义前，可以添加(* max_fanout = n *)，来设置变量的最大扇出数，超过这个扇出数，综合软件会自动复制多份变量。</p>
-<ol start="2">
-<li>复位信号高扇出</li>
-</ol>
-<p>复位信号是常见的高扇出问题，主要解决办法有：</p>
-<ul>
-<li>减少复位信号的使用，能使用使能信号控制的，就用使能信号。</li>
-<li>对于大型模块，复位信号可以使用BUFG来驱动复位信号，可以增加复位信号的驱动能力</li>
-</ul>
-<h2 id="资源消耗">资源消耗</h2>
-<p>FPGA器件的整个工程资源消耗，不管是LUT还是BRAM等资源，建议不超过80%。</p>
-<p>一旦资源消耗超过80%，在布线综合时，就出现布线资源不够，导致出现布线拥塞，从而出现了时序不收敛的情况。</p>
-<p>布线拥塞也分为全局拥塞和局部拥塞，可能是高扇出信号过多，也可能是局部布线资源不够用，导致时序路径过长。</p>
-<ol>
-<li>优化代码逻辑，减少资源消耗。</li>
-</ol>
-<p>在资源不够用的情况下，建议检查代码是否可优化，设置的RAM大小是否过大等等。</p>
-<ol start="2">
-<li>使用替代资源实现</li>
-</ol>
-<p>在FPGA中实现RAM时，可以根据整个资源的使用情况，考虑使用Distributed RAM、URAM等资源来减少BRAM的消耗。</p>
-<h2 id="总结">总结</h2>
-<p>本文分享了时序收敛的一些方法和思路，希望可以给大家带来一点启发。</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
-  
-    <a href="/tags/fpga">
-    FPGA
-  </a>
-    <a href="/tags/xilinx">
-    Xilinx
-  </a>
-</div>
-
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
-
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
     </div>
   </div>
-</div>
-
-
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      FPGA时序约束--实战篇
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/fpga/fpga-timing-constraints.html" title="FPGA时序约束--实战篇">https://www.kontronn.com/post/fpga/fpga-timing-constraints.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
-
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
-    
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/floating-point-comparison-problem.html" rel="next" title="浮点数比较问题">
-      <i class="fa fa-chevron-left"></i> 浮点数比较问题
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html" rel="prev" title="ZYNQ 读写SD卡">
-      ZYNQ 读写SD卡
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
-    </div>
-  </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -660,6 +337,17 @@ endmodule
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

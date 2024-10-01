@@ -1,610 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="DDR内存介绍" />
-<meta itemprop="description" content="DDR内存介绍" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="DDR" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="DDR内存介绍" />
-<meta property="og:description" content="DDR内存介绍" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2024-09-17 18:32:41 &#43;0800 CST" />
-<meta property="article:modified_time" content="2024-09-17 18:32:41 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"introduction-to-ddr-memory.html","permalink":"https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html","title":"DDR内存介绍"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>DDR内存介绍 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
 
-  <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+ 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
 
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
+
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#内存系统简介">内存系统简介</a></li>
-    <li><a href="#内存类型">内存类型</a></li>
-    <li><a href="#sram和sdram的区别">SRAM和SDRAM的区别</a></li>
-    <li><a href="#ddr-ram有哪些不同类型">DDR RAM有哪些不同类型？</a>
-      <ul>
-        <li><a href="#第一代--ddr-sdram">第一代 – DDR SDRAM</a></li>
-        <li><a href="#第二代--ddr2-sdram">第二代 – DDR2 SDRAM</a></li>
-        <li><a href="#第三代--ddr3-sdram">第三代 – DDR3 SDRAM</a></li>
-        <li><a href="#第四代--ddr4-sdram">第四代 – DDR4 SDRAM</a></li>
-        <li><a href="#第五代-ddr5-sdram">第五代-DDR5 SDRAM</a></li>
-        <li><a href="#ddr5与ddr4的增强功能">DDR5与DDR4的增强功能</a></li>
-        <li><a href="#速度改进">速度改进：</a></li>
-        <li><a href="#较低的电压水平">较低的电压水平：</a></li>
-        <li><a href="#ddr5的电源架构介绍">DDR5的电源架构介绍：</a></li>
-        <li><a href="#通道架构ddr5的改进">通道架构DDR5的改进：</a></li>
-        <li><a href="#在ddr5中增强的突发长度到16">在DDR5中增强的突发长度到16：</a></li>
-        <li><a href="#支持更高容量的dram">支持更高容量的DRAM：</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
 
 
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
 
-    </header>
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=DDR%e5%86%85%e5%ad%98%e4%bb%8b%e7%bb%8d&amp;url=https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="DDR内存介绍">
-      <meta itemprop="description" content="DDR内存介绍">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">DDR内存介绍 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2024-09-17 18:32:41 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-17 18:32:41 &#43;0800 CST">2024-09-17</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/hardware" itemprop="url" rel="index">
-      <span itemprop="name">Hardware</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>78</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/hardware/introduction-to-ddr-memory.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>手机、笔记本电脑、云计算和网络等现代电子设计要求非常高的性能。除了处理器速度/性能外，
-<a href="https://www.gaitpu.com/data-center/storage/introduction-to-various-memory-dimms" title="存储器" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    存储器
-    <i class="fa fa-external-link-alt"></i>
-</a>在整体系统性能中起着非常关键的作用。双数据速率（DDR）存储器由于其低延迟、更大的存储空间和低功耗，一直是所有复杂设计的常见选择。</p>
-<p><img src="https://www.kontronn.com/imgs/post/DDR-Memory-1.png" alt="DDR Memory"></p>
-<h2 id="内存系统简介">内存系统简介</h2>
-<p>存储器是电子产品中的数据存储设备。他们存储已处理的信息/数据，并在提出要求时将其提供给控制器。存储器被分为主存储器和辅助存储器。</p>
-<p><img src="https://www.kontronn.com/imgs/post/DDR-Memory-2.png" alt="DDR Memory"></p>
-<h2 id="内存类型">内存类型</h2>
-<p>主存储器进一步分为随机存取存储器（RAM）和只读存储器（ROM）。RAM是一个易失性内存，电源关闭后数据将丢失。即使在电源关闭后，ROM内存也会保留数据。随着VLSI工艺的进步，内存结构、内存芯片密度、尺寸、速度和通信接口得到了很大改善。</p>
-<h2 id="sram和sdram的区别">SRAM和SDRAM的区别</h2>
-<p>RAM进一步分为SRAM和SDRAM。SRAM是静态RAM，SDRAM是同步动态RAM。两者之间的架构区别在于，DRAM每个内存位使用1个晶体管和1个电容器，而SRAM使用1个触发器（每个触发器触发器约6个晶体管）来形成一个位。由于与SRAM相比，SDRAM的访问时间稍慢。由于电容器/晶体管的尺寸比触发器小，与SRAM相比，SDRAM的内存密度更高。SDRAM是动态存储，因为电容器往往会随着时间的推移而放电，除非定期刷新，否则SDRAM不会保留存储的数据。</p>
-<p>SRAM一直是缓存cache的默认选择，因为它们速度非常快，访问时间非常短。它们驻留在处理器内部，也可以外部接口。cache充当外部RAM和处理器之间的缓冲区。cache存储经常使用的数据/指令，并在请求时立即向处理器提供。一般来说，cache减少了从主内存访问数据的平均时间。</p>
-<p>如前所述，SDRAM代表同步动态RAM，其中I/O、内部时钟和总线时钟是同步的。例如，PC133 I/O、内部时钟和总线时钟都是133MHz。单数据速率表示SDR SDRAM每个时钟周期只能读/写一次。</p>
-<h2 id="ddr-ram有哪些不同类型">DDR RAM有哪些不同类型？</h2>
-<p>对更高数据速率和更大数据密度的需求导致SDR演变为DDR概念。对更高数据速率和更大数据密度的需求导致SDR演变为DDR。在DDR SDRAM中，数据在两个边缘（正边缘和负边缘）进行时钟，这导致数据速率翻了一番。通过这种方式，与SDR SDRAM相比，DDR实现了更大的带宽；它在不增加时钟频率的情况下将传输速率翻了一番。</p>
-<p>在过去的几十年里，DDR技术提出了许多内存改进。DDR提供了许多增强功能，如提高操作速度，提高存储密度，降低功耗，并增加了CRC等错误检测功能，通过实现位反转概念来降低SSN噪声。</p>
-<h3 id="第一代--ddr-sdram">第一代 – DDR SDRAM</h3>
-<p>第一代DDR内存具有2位的预取缓冲区，是SDR SDRAM的两倍。内部时钟速度为133~200MHz，DDR1的传输速率为266至400MT/s（每秒百万传输）。DDR1集成电路于1998年在市场上发布。</p>
-<p><img src="https://www.kontronn.com/imgs/post/DDR-Memory-3.png" alt="DDR Memory"></p>
-<p>第一代双数据速率时序图</p>
-<h3 id="第二代--ddr2-sdram">第二代 – DDR2 SDRAM</h3>
-<p>DDR2的外部数据总线运行速度是DDR1 SDRAM的两倍。这是通过改进的总线信号来实现的。DDR2的预取缓冲区是4位，是DDR SDRAM的两倍。DDR2内存具有与DDR内存相同的内部时钟速度（133~200 MHz）。然而，DDR2内存提高了传输速率（533~800 MT/s）和I/O总线信号。DDR2-533和DDR2-800内存类型于2003年在市场上发布。</p>
-<h3 id="第三代--ddr3-sdram">第三代 – DDR3 SDRAM</h3>
-<p>DDR3的运行速度是DDR2的两倍。这是通过进一步改进总线信号来实现的。DDR3的预取缓冲区宽度为8位，是DDR2的两倍。DDR3内存的传输速率为800~1600 MT/s。DDR3在1.5V的低电压下工作，而DDR2的1.8V，则能耗降低了40%。DDR3有两个附加功能，即ASR（自动自刷新）和SRT（自刷新温度）。</p>
-<p>DDR3 IC于2007年在市场上发布。</p>
-<h3 id="第四代--ddr4-sdram">第四代 – DDR4 SDRAM</h3>
-<p>DDR4的运行速度是DDR3的两倍。DDR4在低工作电压（1.2V）和更高的传输速率下运行。DDR4的传输速率为2133~3200MT/s。DDR4增加了bank group技术。DDR4可以在时钟周期内处理4个数据，因此DDR4的效率优于DDR3。DDR4有一些附加功能，如DBI（数据总线反转）、数据总线上的CRC（循环冗余检查）和命令/地址奇偶校验。这些功能可以增强DDR4内存的信号完整性，并提高数据传输/访问的稳定性。DIMM上单个DRAM的独立编程可以更好地控制端接。</p>
-<p>DDR4 IC于2014年在市场上发布。</p>
-<h3 id="第五代-ddr5-sdram">第五代-DDR5 SDRAM</h3>
-<p>DDR5的运行速度是DDR4的两倍。DDR5的传输速率为3200~6400 MT/s。DDR5规范于2018年11月发布。</p>
-<h3 id="ddr5与ddr4的增强功能">DDR5与DDR4的增强功能</h3>
-<p><img src="https://www.kontronn.com/imgs/post/DDR-Memory-4.png" alt="DDR Memory"></p>
-<h3 id="速度改进">速度改进：</h3>
-<p>改进的时钟速度（1.6GHz至3.2GHz）
-提高数据速度（3.2Gbps到6.4 Gbps）
-包含决策反馈均衡（DFE）等新功能</p>
-<h3 id="较低的电压水平">较低的电压水平：</h3>
-<p>工作电压VDD从1.2V改为1.1V，这降低了功耗。另一方面，较低的VDD意味着噪声抗扰性的幅度较小。</p>
-<h3 id="ddr5的电源架构介绍">DDR5的电源架构介绍：</h3>
-<p>随着DDR5 DIMM的加入，电源管理从主板转移到DIMM本身。DDR5 DIMM具有12V电源管理IC，可实现更好的系统电源加载粒度，并有助于解决信号完整性和噪声问题。</p>
-<h3 id="通道架构ddr5的改进">通道架构DDR5的改进：</h3>
-<p>DDR4 DIMM有一个72位总线，包括64个数据位和8个ECC位（错误更正代码）。在DDR5中，每个DIMM将有两个40位通道（32个数据位和8个ECC位）。虽然数据宽度相同（共64位），但有两个较小的独立通道可以提高DDR内存访问效率。</p>
-<p>在DDR4中，RCD寄存时钟驱动器（RCD）每侧提供两个输出时钟。DDR5中的RCD每侧提供4个输出时钟，为每个通道提供一个独立的时钟。这提高了信号的完整性，并有助于我们解决由于减少VDD而出现的较低的噪声边距问题。</p>
-<h3 id="在ddr5中增强的突发长度到16">在DDR5中增强的突发长度到16：</h3>
-<p>DDR4突发长度为8，而对于DDR5，突发长度将延长到8和16。突发长度为16（BL16）允许单个突发访问64字节的数据，这提高了内存效率。</p>
-<h3 id="支持更高容量的dram">支持更高容量的DRAM：</h3>
-<p>DDR5缓冲芯片DIMM使系统设计人员能够在单芯片封装中使用高达64 Gb的DRAM的密度。DDR4在单模封装中提供16 Gb DRAM</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
-  
-    <a href="/tags/ddr">
-    DDR
-  </a>
-</div>
-
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
-
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
     </div>
   </div>
-</div>
-
-
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      DDR内存介绍
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html" title="DDR内存介绍">https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
-
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
-    
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/how-to-modify-mac-address-in-linux.html" rel="next" title="Linux系统下更改网卡MAC地址">
-      <i class="fa fa-chevron-left"></i> Linux系统下更改网卡MAC地址
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/news/intel-officially-announced-an-important-transformation.html" rel="prev" title="英特尔官宣重要转型：晶圆厂独立，出售Altera股份，延迟建厂">
-      英特尔官宣重要转型：晶圆厂独立，出售Altera股份，延迟建厂
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
-    </div>
-  </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -616,6 +337,17 @@
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

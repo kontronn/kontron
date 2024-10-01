@@ -1,861 +1,331 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="VXLAN: 彻底改变网络虚拟化" />
-<meta itemprop="description" content="VXLAN: 彻底改变网络虚拟化" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="Linux,VXLAN" />
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="VXLAN: 彻底改变网络虚拟化" />
-<meta property="og:description" content="VXLAN: 彻底改变网络虚拟化" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2024-07-09 22:02:24 &#43;0800 CST" />
-<meta property="article:modified_time" content="2024-07-09 22:02:24 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+
   
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"vxlan-revolutionizing-network-virtualization.html","permalink":"https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html","title":"VXLAN: 彻底改变网络虚拟化"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>VXLAN: 彻底改变网络虚拟化 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
 
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
 
-  <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
+ 
 
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
 
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
+
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#vxlan概述">VXLAN概述</a>
-      <ul>
-        <li><a href="#vxlan的技术特点">VXLAN的技术特点</a></li>
-        <li><a href="#vxlan的核心组件">VXLAN的核心组件</a></li>
-      </ul>
-    </li>
-    <li><a href="#vxlan的工作原理">VXLAN的工作原理</a>
-      <ul>
-        <li><a href="#vxlan架构">VXLAN架构</a>
-          <ul>
-            <li><a href="#vxlan隧道终结点vtep">VXLAN隧道终结点（VTEP）</a></li>
-            <li><a href="#vxlan网络标识符vni">VXLAN网络标识符（VNI）</a></li>
-          </ul>
-        </li>
-        <li><a href="#vxlan隧道与封装">VXLAN隧道与封装</a>
-          <ul>
-            <li><a href="#vxlan封装流程">VXLAN封装流程</a></li>
-            <li><a href="#vxlan解封装流程">VXLAN解封装流程</a></li>
-          </ul>
-        </li>
-        <li><a href="#vxlan的数据平面和控制平面">VXLAN的数据平面和控制平面</a>
-          <ul>
-            <li><a href="#数据平面">数据平面</a></li>
-            <li><a href="#控制平面">控制平面</a></li>
-          </ul>
-        </li>
-        <li><a href="#vxlan的优势">VXLAN的优势</a></li>
-      </ul>
-    </li>
-    <li><a href="#vxlan与传统网络虚拟化技术的比较">VXLAN与传统网络虚拟化技术的比较</a>
-      <ul>
-        <li><a href="#vlan的概述">VLAN的概述</a>
-          <ul>
-            <li><a href="#vlan的优点">VLAN的优点</a></li>
-            <li><a href="#vlan的局限性">VLAN的局限性</a></li>
-          </ul>
-        </li>
-        <li><a href="#vxlan与vlan的对比">VXLAN与VLAN的对比</a>
-          <ul>
-            <li><a href="#可扩展性">可扩展性</a></li>
-            <li><a href="#网络隔离">网络隔离</a></li>
-            <li><a href="#跨域通信">跨域通信</a></li>
-            <li><a href="#部署和兼容性">部署和兼容性</a></li>
-            <li><a href="#性能和效率">性能和效率</a></li>
-            <li><a href="#适用场景">适用场景</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#vxlan的部署方法">VXLAN的部署方法</a>
-      <ul>
-        <li><a href="#控制平面协议的配置">控制平面协议的配置</a></li>
-        <li><a href="#验证和测试">验证和测试</a></li>
-      </ul>
-    </li>
-    <li><a href="#vxlan的应用场景">VXLAN的应用场景</a>
-      <ul>
-        <li><a href="#数据中心的网络虚拟化">数据中心的网络虚拟化</a></li>
-        <li><a href="#云计算环境中的应用">云计算环境中的应用</a></li>
-        <li><a href="#企业网络的应用">企业网络的应用</a></li>
-        <li><a href="#物联网iot环境中的应用">物联网（IoT）环境中的应用</a></li>
-        <li><a href="#高性能计算hpc环境中的应用">高性能计算（HPC）环境中的应用</a></li>
-      </ul>
-    </li>
-    <li><a href="#总结">总结</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
 
 
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
 
-    </header>
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=VXLAN%3a%20%e5%bd%bb%e5%ba%95%e6%94%b9%e5%8f%98%e7%bd%91%e7%bb%9c%e8%99%9a%e6%8b%9f%e5%8c%96&amp;url=https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
     
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="VXLAN: 彻底改变网络虚拟化">
-      <meta itemprop="description" content="VXLAN: 彻底改变网络虚拟化">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">VXLAN: 彻底改变网络虚拟化 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2024-07-09 22:02:24 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-07-09 22:02:24 &#43;0800 CST">2024-07-09</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/linux" itemprop="url" rel="index">
-      <span itemprop="name">Linux</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>230</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>2分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/linux/vxlan-revolutionizing-network-virtualization.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>网络虚拟化技术已经成为数据中心和云计算环境的关键组件，从最早的虚拟局域网（VLAN）到如今的虚拟扩展局域网（VXLAN），每一步技术进步都在推动着网络基础设施的变革和创新。VXLAN作为一种先进的网络虚拟化技术，通过解决传统VLAN的局限性，实现了更高效、更灵活的网络管理，彻底改变了
-<a href="https://www.gaitpu.com" title="数据中心" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
-    数据中心
-    <i class="fa fa-external-link-alt"></i>
-</a>和云计算环境中的网络架构。</p>
-<p>网络虚拟化技术的初衷是为了提高网络资源的利用率，简化网络管理，并增强网络的灵活性和可扩展性。在早期，VLAN技术的引入使得网络管理员可以在物理网络基础上创建多个虚拟网络，从而实现网络资源的隔离和分配。然而，随着云计算、大数据等技术的迅猛发展，传统的VLAN技术逐渐暴露出了一些局限性，特别是在大规模数据中心环境中，VLAN技术面临着可扩展性差、网络隔离不彻底、跨域通信复杂等问题。</p>
-<p>为了解决上述问题，虚拟扩展局域网（VXLAN）应运而生。VXLAN由IETF（互联网工程任务组）提出，是一种基于隧道技术的网络虚拟化方案。与传统的VLAN不同，VXLAN利用UDP（用户数据报协议）进行数据封装，通过在现有的IP网络上建立虚拟隧道，将二层网络扩展到更大的范围，实现跨越多个物理网络的虚拟网络连接。</p>
-<p>VXLAN的核心理念是通过引入24位的VNI（VXLAN Network Identifier，VXLAN网络标识符），可以支持多达1600万个虚拟网络，远远超过了VLAN的4096个ID限制。这样一来，VXLAN不仅解决了VLAN的可扩展性问题，还提供了更细粒度的网络隔离和更高效的跨域通信能力。</p>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-1.png" alt="VXLAN Data Center"></p>
-<p>VXLAN的引入对于现代数据中心和云计算环境具有重要意义。首先，VXLAN的高可扩展性使得数据中心可以容纳更多的虚拟网络和租户，满足了大规模环境下的网络需求。其次，VXLAN利用现有的IP网络进行传输，无需对底层网络进行大规模改造，降低了部署成本和复杂性。最后，VXLAN通过VNI实现了有效的网络隔离，确保了多租户环境下的安全性和资源隔离。</p>
-<p>VXLAN不仅在技术层面上带来了革新，还推动了网络管理模式的变革。通过结合SDN（软件定义网络）等技术，VXLAN实现了网络资源的动态配置和管理，提升了网络的灵活性和可管理性。这使得网络管理员可以更加高效地管理和优化网络资源，满足不断变化的业务需求。</p>
-<h2 id="vxlan概述">VXLAN概述</h2>
-<p>VXLAN（Virtual Extensible LAN） 是一种网络虚拟化技术，由IETF（互联网工程任务组）提出，用于在大规模数据中心环境中实现虚拟网络的扩展和隔离。VXLAN利用隧道技术，通过在现有IP网络上建立虚拟隧道，将二层网络扩展到更大的范围，从而实现跨越多个物理网络的虚拟网络连接。</p>
-<p>随着云计算、大数据和物联网等技术的发展，数据中心的规模和复杂性不断增加。传统的网络架构和虚拟化技术在面对这种大规模环境时，逐渐暴露出了一些问题：</p>
-<ol>
-<li>VLAN ID限制：传统的VLAN技术最多只能支持4096个VLAN ID，无法满足大规模数据中心中大量虚拟网络的需求。</li>
-<li>网络隔离：在多租户环境中，需要更有效的网络隔离机制以确保安全性和资源隔离。传统VLAN的隔离方式在面对大规模租户时显得捉襟见肘。</li>
-<li>跨域通信：随着数据中心的扩展，网络需要支持跨越多个物理域的虚拟网络连接，传统VLAN在实现这一点时复杂度较高且效率较低。</li>
-<li>可扩展性：传统的二层网络在面对大规模扩展时，存在广播域过大、MAC地址表过载等问题，影响网络性能和稳定性。</li>
-</ol>
-<p>VXLAN的诞生是为了应对上述问题，并提供一种更灵活、高效的网络虚拟化解决方案。</p>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-2.png" alt="VXLAN Data Center"></p>
-<p>VXLAN通过以下方式解决了传统VLAN的局限性：</p>
-<ol>
-<li>大规模可扩展性：VXLAN引入了24位的VNI（VXLAN Network Identifier），可以支持多达1600万个虚拟网络，远远超过了VLAN的4096个ID限制。这使得VXLAN可以满足大规模数据中心中大量虚拟网络的需求。</li>
-<li>有效的网络隔离：VXLAN通过VNI实现了更细粒度的网络隔离，确保多租户环境下的安全性和资源隔离。每个虚拟网络都有一个唯一的VNI，不同VNI之间的流量是隔离的。</li>
-<li>跨域通信的简化：VXLAN利用现有的IP网络进行数据传输，通过在IP网络上建立虚拟隧道，实现了跨越多个物理网络的虚拟网络连接。这大大简化了跨域通信的复杂性，提高了网络的灵活性。</li>
-<li>优化的二层网络扩展：VXLAN通过隧道技术，将二层网络封装在UDP报文中，通过IP网络传输。这不仅解决了传统二层网络的广播域过大和MAC地址表过载问题，还提高了网络的可扩展性和稳定性。</li>
-</ol>
-<h3 id="vxlan的技术特点">VXLAN的技术特点</h3>
-<ol>
-<li>基于隧道的封装技术：VXLAN利用UDP进行封装，通过在IP网络上建立虚拟隧道，实现二层网络的扩展和隔离。VXLAN报文由外部IP头、UDP头、VXLAN头和以太网帧组成，通过IP网络进行传输。</li>
-<li>高效的跨域通信：VXLAN通过在现有IP网络上建立虚拟隧道，实现了跨越多个物理网络的虚拟网络连接。这使得数据中心可以在不同物理位置之间灵活地进行虚拟网络的部署和管理。</li>
-<li>支持多租户环境：VXLAN通过VNI实现了有效的网络隔离，确保多租户环境下的安全性和资源隔离。每个租户可以拥有独立的虚拟网络，互不干扰。</li>
-<li>兼容现有网络设备：VXLAN可以在现有的IP网络基础上运行，无需对底层网络进行大规模改造。大多数现代网络设备都支持VXLAN，通过简单的配置即可实现VXLAN功能。</li>
-</ol>
-<h3 id="vxlan的核心组件">VXLAN的核心组件</h3>
-<ol>
-<li>
-<p>VXLAN隧道终结点（VTEP）：VTEP是VXLAN的关键设备，用于终结和建立VXLAN隧道。每个VTEP都有一个唯一的IP地址，负责将本地二层帧封装为VXLAN报文，并通过IP网络传输到远端VTEP。VTEP在VXLAN网络中扮演着重要角色，负责报文的封装和解封装。</p>
-</li>
-<li>
-<p>VXLAN网络标识符（VNI）：VNI是VXLAN网络的标识符，每个虚拟网络都分配一个唯一的VNI，用于区分不同的虚拟网络。VNI的长度为24位，可以支持多达1600万个虚拟网络。</p>
-</li>
-</ol>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-3.png" alt="VXLAN Data Center"></p>
-<h2 id="vxlan的工作原理">VXLAN的工作原理</h2>
-<p>VXLAN（虚拟扩展局域网）通过在现有IP网络上建立虚拟隧道，将二层网络扩展到更大的范围，实现跨越多个物理网络的虚拟网络连接。理解VXLAN的工作原理对于其部署和管理至关重要。</p>
-<h3 id="vxlan架构">VXLAN架构</h3>
-<p>VXLAN的核心组件包括VXLAN隧道终结点（VTEP）和VXLAN网络标识符（VNI）。这些组件共同构建了VXLAN网络的基础架构。</p>
-<h4 id="vxlan隧道终结点vtep">VXLAN隧道终结点（VTEP）</h4>
-<p>VTEP是VXLAN的关键设备，用于终结和建立VXLAN隧道。每个VTEP都有一个唯一的IP地址，负责将本地二层帧封装为VXLAN报文，并通过IP网络传输到远端VTEP。VTEP在VXLAN网络中扮演着以下重要角色：</p>
-<ol>
-<li>
-<p>封装和解封装：VTEP将本地网络中的二层以太网帧封装为VXLAN报文，并在接收时解封装VXLAN报文，还原原始的以太网帧。</p>
-</li>
-<li>
-<p>隧道建立：VTEP通过IP网络建立VXLAN隧道，确保端到端的数据传输。</p>
-</li>
-</ol>
-<h4 id="vxlan网络标识符vni">VXLAN网络标识符（VNI）</h4>
-<p>VNI是VXLAN网络的标识符，每个虚拟网络都分配一个唯一的VNI，用于区分不同的虚拟网络。VNI长度为24位，可以支持多达1600万个虚拟网络，这远远超过了传统VLAN的4096个ID限制。</p>
-<h3 id="vxlan隧道与封装">VXLAN隧道与封装</h3>
-<p>VXLAN的工作原理基于隧道技术，将二层以太网帧封装在UDP报文中，通过IP网络进行传输。</p>
-<p>VXLAN报文的结构如下：</p>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-4.png" alt="VXLAN Data Center"></p>
-<ol>
-<li>外部IP头：用于在IP网络中传输VXLAN报文。外部IP头包含源IP地址和目的IP地址，分别对应源VTEP和目的VTEP的IP地址。</li>
-<li>UDP头：VXLAN使用UDP协议进行封装，默认使用端口4789。UDP头包含源端口和目的端口信息。</li>
-<li>VXLAN头：VXLAN头包含VNI，用于标识虚拟网络。VXLAN头结构如下：</li>
-</ol>
-<ul>
-<li>Flags：标志字段，指示VXLAN报文的属性。</li>
-<li>VNI：VXLAN网络标识符，用于标识虚拟网络。</li>
-</ul>
-<ol start="4">
-<li>以太网帧：原始的二层以太网帧，包括目标MAC地址、源MAC地址和以太网负载。</li>
-</ol>
-<p>以下是VXLAN封装和解封装的工作流程：</p>
-<h4 id="vxlan封装流程">VXLAN封装流程</h4>
-<ol>
-<li>数据帧发送：源设备发送一个二层以太网帧到本地网络。</li>
-<li>VTEP封装：本地VTEP接收到以太网帧，将其封装为VXLAN报文。封装过程包括添加VXLAN头、UDP头和外部IP头。</li>
-<li>报文传输：封装后的VXLAN报文通过IP网络传输到目的VTEP。IP网络可以是任意支持IP协议的网络，包括局域网、广域网和互联网。</li>
-</ol>
-<h4 id="vxlan解封装流程">VXLAN解封装流程</h4>
-<ol>
-<li>报文接收：目的VTEP接收到VXLAN报文，检查报文的外部IP头和UDP头。</li>
-<li>VTEP解封装：目的VTEP根据VXLAN头中的VNI，将VXLAN报文解封装，提取出原始的二层以太网帧。</li>
-<li>数据帧转发：解封装后的以太网帧被转发到目的网络中的目标设备，实现端到端的二层通信。</li>
-</ol>
-<h3 id="vxlan的数据平面和控制平面">VXLAN的数据平面和控制平面</h3>
-<p>VXLAN的工作原理可以分为数据平面和控制平面两个方面。</p>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-5.png" alt="VXLAN Data Center"></p>
-<h4 id="数据平面">数据平面</h4>
-<p>数据平面负责实际的数据传输，包括VXLAN报文的封装、传输和解封装。在数据平面上，VTEP设备执行以下任务：</p>
-<ol>
-<li>封装以太网帧：将本地二层以太网帧封装为VXLAN报文。</li>
-<li>传输VXLAN报文：通过IP网络传输封装后的VXLAN报文。</li>
-<li>解封装以太网帧：接收并解封装VXLAN报文，提取出原始的以太网帧。</li>
-</ol>
-<h4 id="控制平面">控制平面</h4>
-<p>控制平面负责VXLAN网络的管理和配置，包括VTEP设备之间的隧道建立、VNI的分配和维护、以及网络拓扑的管理。在控制平面上，常见的协议和技术包括：</p>
-<ol>
-<li>
-<p>BGP EVPN（边界网关协议虚拟私有网络）：BGP EVPN是一种常用的控制平面协议，用于在VXLAN网络中分发MAC地址和VNI信息。通过BGP EVPN，VTEP设备可以相互学习网络拓扑和虚拟网络的配置信息，实现自动化和动态化的网络管理。</p>
-</li>
-<li>
-<p>SDN（软件定义网络）控制器：SDN控制器可以用于集中管理VXLAN网络，通过南向接口与VTEP设备通信，实现集中化的网络配置和监控。</p>
-</li>
-</ol>
-<h3 id="vxlan的优势">VXLAN的优势</h3>
-<p>VXLAN作为一种先进的网络虚拟化技术，具有以下主要优势：</p>
-<ol>
-<li>高可扩展性：VXLAN通过引入24位的VNI，可以支持多达1600万个虚拟网络，显著提高了网络的可扩展性。</li>
-<li>灵活性和兼容性：VXLAN可以在现有的IP网络上运行，无需对底层网络进行大规模改造，降低了部署成本和复杂性。</li>
-<li>有效的网络隔离：VXLAN通过VNI实现细粒度的网络隔离，确保多租户环境的安全性和资源隔离。</li>
-<li>跨域通信的简化：VXLAN利用IP网络进行数据传输，通过在IP网络上建立虚拟隧道，实现了跨越多个物理网络的虚拟网络连接，简化了跨域通信的复杂性。</li>
-</ol>
-<h2 id="vxlan与传统网络虚拟化技术的比较">VXLAN与传统网络虚拟化技术的比较</h2>
-<p>VXLAN（虚拟扩展局域网）作为一种新兴的网络虚拟化技术，解决了传统网络虚拟化技术中的许多局限性。为了更好地理解VXLAN的优势和应用场景，下面将详细对比VXLAN与传统的网络虚拟化技术，特别是VLAN（虚拟局域网）。</p>
-<h3 id="vlan的概述">VLAN的概述</h3>
-<p>VLAN是一种通过网络设备（如交换机）将一个物理网络划分为多个逻辑网络的技术。这种技术允许在同一物理网络中创建多个独立的虚拟网络，实现网络资源的隔离和管理。</p>
-<p>VLAN通过在以太网帧中添加一个VLAN标识符（VLAN ID）来实现网络的划分。VLAN ID是12位的字段，可以支持最多4096个VLAN。每个VLAN代表一个独立的广播域，VLAN之间的通信需要通过三层设备（如路由器）进行。</p>
-<h4 id="vlan的优点">VLAN的优点</h4>
-<ol>
-<li>网络隔离：VLAN可以将同一物理网络中的不同部门或应用隔离开来，提高网络的安全性和管理性。</li>
-<li>简化网络管理：通过VLAN可以简化网络配置和管理，减少广播域的大小，提高网络性能。</li>
-<li>灵活性：VLAN可以灵活地添加、删除或修改网络配置，适应不同的网络需求。</li>
-</ol>
-<h4 id="vlan的局限性">VLAN的局限性</h4>
-<ol>
-<li>可扩展性差：VLAN ID只有12位，最多只能支持4096个VLAN，这在大规模数据中心和云计算环境中是远远不够的。</li>
-<li>跨域通信复杂：VLAN的广播域限制了跨越多个物理网络的虚拟网络连接，跨域通信需要复杂的配置和管理。</li>
-<li>网络隔离不彻底：在多租户环境中，VLAN的隔离机制不足以提供高效的网络隔离和安全性。</li>
-</ol>
-<h3 id="vxlan与vlan的对比">VXLAN与VLAN的对比</h3>
-<p>VXLAN在设计上克服了VLAN的许多局限性，提供了更高效、更灵活的网络虚拟化解决方案。</p>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-6.png" alt="VXLAN Data Center"></p>
-<h4 id="可扩展性">可扩展性</h4>
-<p>VLAN：最多支持4096个VLAN，无法满足大规模数据中心的需求。VXLAN：引入24位的VNI，可以支持多达1600万个虚拟网络，显著提高了网络的可扩展性。</p>
-<h4 id="网络隔离">网络隔离</h4>
-<p>VLAN：基于VLAN ID进行网络隔离，隔离粒度较粗，无法满足多租户环境下的高效隔离需求。VXLAN：通过VNI实现细粒度的网络隔离，确保多租户环境的安全性和资源隔离。</p>
-<h4 id="跨域通信">跨域通信</h4>
-<p>VLAN：跨域通信需要复杂的配置和管理，无法高效地实现跨越多个物理网络的虚拟网络连接。VXLAN：利用IP网络进行数据传输，通过建立虚拟隧道实现跨域通信，简化了配置和管理。</p>
-<h4 id="部署和兼容性">部署和兼容性</h4>
-<p>VLAN：需要对底层网络设备进行支持和配置，部署和扩展较为复杂。VXLAN：可以在现有IP网络上运行，无需对底层网络进行大规模改造，大多数现代网络设备都支持VXLAN，部署更加灵活和简便。</p>
-<h4 id="性能和效率">性能和效率</h4>
-<p>VLAN：在大规模环境中，广播域过大和MAC地址表过载会影响网络性能和稳定性。VXLAN：通过隧道技术和UDP封装，将二层网络流量封装在IP报文中传输，减少了广播域的大小，提高了网络性能和稳定性。</p>
-<h4 id="适用场景">适用场景</h4>
-<p>VLAN：适用于中小型网络或需要简单网络隔离的环境，如企业局域网、校园网等。VXLAN：适用于大规模数据中心、云计算环境和多租户环境，特别是需要高可扩展性和高效隔离的场景。</p>
-<h2 id="vxlan的部署方法">VXLAN的部署方法</h2>
-<p>VXLAN（虚拟扩展局域网）的部署涉及多个步骤和组件，包括网络设计、VTEP配置、控制平面协议的选择等。</p>
-<p>在部署VXLAN之前，需要进行详细的规划和准备工作，以确保部署过程顺利且高效。准备工作包括以下几个方面：</p>
-<ol>
-<li>网络拓扑设计：规划数据中心的网络拓扑结构，确定VTEP的位置和数量，以及IP网络的设计。</li>
-<li>设备支持检查：确保现有网络设备（如交换机、路由器、服务器）支持VXLAN功能，并且具备相应的硬件和软件版本。</li>
-<li>控制平面协议选择：选择适合的数据中心环境的控制平面协议，如BGP EVPN（边界网关协议虚拟私有网络）或SDN（软件定义网络）控制器。</li>
-<li>地址规划：规划VNI（VXLAN网络标识符）和IP地址分配方案，确保网络资源的合理利用和管理。</li>
-</ol>
-<p>VTEP是VXLAN的核心组件，负责VXLAN报文的封装和解封装。VTEP的配置主要包括以下步骤：</p>
-<ol>
-<li>创建VTEP接口：在支持VXLAN的设备上创建VTEP接口，并分配唯一的IP地址。</li>
-<li>配置VXLAN隧道：在VTEP设备上配置VXLAN隧道，指定远端VTEP的IP地址和对应的VNI。</li>
-<li>配置VNI与VLAN的映射：将VNI映射到本地的VLAN，确保本地网络流量能够正确封装为VXLAN报文。</li>
-</ol>
-<p>以下是一个典型的VTEP配置示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">interface VTEP1
-  ip address 192.168.1.1/24
-  vxlan encapsulation
-  vxlan vni <span style="color:#ae81ff">10001</span>
-  remote vtep 192.168.1.2
-  vlan <span style="color:#ae81ff">10</span>
-</code></pre></div><p>在这个示例中，VTEP1接口的IP地址为192.168.1.1，使用VNI 10001与远端VTEP（192.168.1.2）建立VXLAN隧道，并将本地的VLAN 10映射到VNI 10001。</p>
-<h3 id="控制平面协议的配置">控制平面协议的配置</h3>
-<p>控制平面协议负责VXLAN网络的管理和配置，包括MAC地址的学习和分发、VNI的分配等。常用的控制平面协议包括BGP EVPN和SDN控制器。</p>
-<p>BGP EVPN是一种常用的VXLAN控制平面协议，通过BGP（边界网关协议）分发VXLAN网络中的MAC地址和VNI信息。以下是BGP EVPN的配置步骤：</p>
-<ol>
-<li>启用BGP：在VTEP设备上启用BGP，并配置BGP邻居。</li>
-<li>配置EVPN地址族：在BGP配置中启用EVPN地址族，指定VNI和对应的VTEP。</li>
-<li>分发MAC地址和VNI信息：通过BGP EVPN分发VXLAN网络中的MAC地址和VNI信息，实现VTEP之间的网络拓扑学习。</li>
-</ol>
-<p>以下是一个BGP EVPN配置示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">router bgp <span style="color:#ae81ff">65000</span>
-  neighbor 192.168.1.2 remote-as <span style="color:#ae81ff">65000</span>
-  address-family l2vpn evpn
-    advertise-all-vni
-    advertise-macip
-  exit-address-family
-exit
-</code></pre></div><p>在这个示例中，配置了BGP邻居192.168.1.2，启用了EVPN地址族，并分发所有VNI和MAC地址信息。</p>
-<p>SDN控制器是一种集中化的网络管理工具，通过南向接口与VTEP设备通信，实现集中化的VXLAN网络配置和管理。以下是SDN控制器的配置步骤：</p>
-<ol>
-<li>部署SDN控制器：在数据中心中部署SDN控制器，确保其能够与所有VTEP设备通信。</li>
-<li>配置南向接口：在SDN控制器上配置南向接口，与VTEP设备建立通信连接。</li>
-<li>集中化管理和配置：通过SDN控制器实现VXLAN网络的集中化管理和配置，包括VNI分配、VXLAN隧道建立和MAC地址学习等。</li>
-</ol>
-<h3 id="验证和测试">验证和测试</h3>
-<p>在完成VXLAN的配置后，需要进行验证和测试，以确保网络的正常运行和性能。验证和测试包括以下几个方面：</p>
-<ol>
-<li>连通性测试：验证VTEP之间的连通性，确保VXLAN隧道的正常建立和数据传输。</li>
-<li>VNI映射验证：验证VNI与VLAN的映射，确保本地网络流量能够正确封装和解封装为VXLAN报文。</li>
-<li>性能测试：进行网络性能测试，评估VXLAN网络的延迟、带宽和可靠性。</li>
-<li>故障排除：在部署过程中遇到问题时，通过日志、监控工具和故障排除方法进行排查和解决。</li>
-</ol>
-<h2 id="vxlan的应用场景">VXLAN的应用场景</h2>
-<p>VXLAN（虚拟扩展局域网）作为一种先进的网络虚拟化技术，具有高可扩展性、灵活性和高效的网络隔离特性，因此在现代数据中心、云计算环境和企业网络中得到了广泛应用。</p>
-<h3 id="数据中心的网络虚拟化">数据中心的网络虚拟化</h3>
-<p>在现代数据中心中，虚拟化技术已经成为提高资源利用率和灵活性的重要手段。VXLAN通过在IP网络上建立虚拟隧道，将二层网络扩展到更大的范围，实现了跨越多个物理网络的数据中心网络虚拟化。</p>
-<ol>
-<li>多租户环境：在云服务提供商的数据中心，多个租户共享同一物理基础设施。VXLAN通过VNI实现租户间的网络隔离，确保不同租户的网络流量互不干扰，提高安全性。</li>
-<li>虚拟机迁移：在数据中心中，虚拟机的动态迁移是常见需求。VXLAN通过扩展二层网络，使得虚拟机可以在不同物理服务器之间自由迁移，而无需改变其IP地址和网络配置。</li>
-<li>大规模数据中心：传统VLAN的ID数量有限，无法满足大规模数据中心的需求。VXLAN通过24位的VNI支持多达1600万个虚拟网络，适用于大规模数据中心的网络虚拟化。</li>
-</ol>
-<p><img src="https://www.kontronn.com/imgs/post/vxlan-7.png" alt="VXLAN Data Center"></p>
-<h3 id="云计算环境中的应用">云计算环境中的应用</h3>
-<p>随着云计算的快速发展，数据中心网络面临着越来越高的扩展性和灵活性需求。VXLAN在云计算环境中的应用，主要体现在以下几个方面：</p>
-<ol>
-<li>弹性扩展：云计算平台需要根据需求动态分配计算和存储资源。VXLAN通过虚拟网络的弹性扩展，使得资源可以灵活调度和分配，提高资源利用率。</li>
-<li>混合云和多云部署：企业越来越多地采用混合云和多云策略。VXLAN通过在不同云环境之间建立虚拟隧道，实现了跨云的网络连接和数据流动，简化了混合云和多云部署的网络管理。</li>
-<li>自动化网络配置：云计算平台通常使用自动化工具进行资源管理和配置。VXLAN的配置和管理可以通过API和控制平面协议（如BGP EVPN）实现自动化，提高网络管理的效率和灵活性。</li>
-</ol>
-<h3 id="企业网络的应用">企业网络的应用</h3>
-<p>除了数据中心和云计算环境，VXLAN在企业网络中的应用也越来越广泛，主要体现在以下几个方面：</p>
-<ol>
-<li>分支机构互联：企业通常在不同地理位置有多个分支机构。VXLAN通过在IP网络上建立虚拟隧道，实现了分支机构之间的虚拟网络连接，确保数据的安全传输和网络的统一管理。</li>
-<li>远程办公支持：随着远程办公的普及，企业需要为远程员工提供安全可靠的网络连接。VXLAN通过在远程办公设备和企业内部网络之间建立虚拟隧道，实现了远程办公的无缝接入和安全通信。</li>
-<li>安全隔离：企业网络中不同部门和应用需要进行网络隔离，以确保安全性和资源独立性。VXLAN通过VNI实现细粒度的网络隔离，满足企业对网络安全和管理的要求。</li>
-</ol>
-<h3 id="物联网iot环境中的应用">物联网（IoT）环境中的应用</h3>
-<p>物联网设备的快速增长给网络带来了新的挑战，包括设备数量庞大、网络流量复杂以及安全性要求高等。VXLAN在物联网环境中的应用，主要体现在以下几个方面：</p>
-<ol>
-<li>大规模设备连接：物联网设备数量庞大，传统网络虚拟化技术难以满足其扩展性需求。VXLAN通过24位的VNI支持多达1600万个虚拟网络，可以满足大规模物联网设备的连接需求。</li>
-<li>设备隔离和安全：物联网设备通常分布在不同的物理位置，并且有不同的安全需求。VXLAN通过VNI实现设备之间的隔离，确保不同设备组的网络流量互不干扰，提高网络安全性。</li>
-<li>动态网络配置：物联网设备的网络需求动态变化，传统静态配置难以适应。VXLAN的配置和管理可以通过自动化工具和控制平面协议实现动态调整，满足物联网环境的灵活性需求。</li>
-</ol>
-<h3 id="高性能计算hpc环境中的应用">高性能计算（HPC）环境中的应用</h3>
-<p>高性能计算环境通常需要高速网络连接和大规模数据传输。VXLAN在高性能计算环境中的应用，主要体现在以下几个方面：</p>
-<ol>
-<li>高速网络连接：高性能计算节点之间需要高速、低延迟的网络连接。VXLAN通过在IP网络上建立虚拟隧道，实现了高速的二层网络扩展，满足高性能计算的网络需求。</li>
-<li>数据传输优化：高性能计算环境中的大规模数据传输对网络性能要求极高。VXLAN通过隧道技术和UDP封装，提高了数据传输的效率和稳定性。</li>
-<li>灵活的网络拓扑：高性能计算环境需要根据计算任务的需求灵活调整网络拓扑。VXLAN通过虚拟网络的灵活配置，实现了高性能计算环境中网络拓扑的动态调整和优化。</li>
-</ol>
-<h2 id="总结">总结</h2>
-<p>VXLAN（Virtual eXtensible Local Area Network）之所以被视作彻底改变了网络虚拟化，主要是因为它解决了传统网络虚拟化技术如VLAN的一些根本性限制，并引入了新的网络架构和操作模式，从而极大地增强了网络的灵活性、可扩展性和效率。</p>
-<p>传统VLAN技术最多支持4094个VLAN标识符（VLAN ID），这在小型网络中可能足够，但在大规模数据中心或云环境中则显得捉襟见肘。VXLAN通过使用24位的VXLAN Network Identifier (VNI)，可以支持高达16777216个逻辑网络，极大地提升了网络的可扩展性。</p>
-<p>VLAN受限于二层网络，当虚拟机跨越不同物理网络或子网时，传统的VLAN无法直接支持它们之间的通信。VXLAN通过在网络层（三层）之上封装二层帧，实现了跨三层网络的虚拟机通信，允许虚拟机在不同的物理位置之间自由迁移而不必更改其IP地址或MAC地址。</p>
-<p>由于VXLAN可以在现有的三层网络基础设施上运行，它减少了对专用硬件的需求，简化了网络设计，并且不需要对每个VLAN进行单独的路由配置。这降低了网络的复杂性，同时也减轻了网络管理员的负担。</p>
-<p>每个VXLAN网络都可以视为独立的二层隔离域，这意味着即使在共享的物理网络上，不同的VXLAN网络也能保持完全的隔离。这为租户提供了更好的安全性和隐私保护。</p>
-<p>通过VXLAN，数据中心可以更高效地利用物理网络资源，减少对昂贵的网络设备升级的需求，同时支持更多的虚拟网络，从而提高了整体的资源利用率和成本效益。</p>
-<p>VXLAN网络通常与软件定义网络（SDN）控制器协同工作，这使得网络配置和虚拟网络的创建、修改或删除可以自动化完成，进一步提高了网络的敏捷性和响应速度。</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-
-
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
-  
-    <a href="/tags/linux">
-    Linux
-  </a>
-    <a href="/tags/vxlan">
-    VXLAN
-  </a>
-</div>
-
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
-
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
     </div>
   </div>
-</div>
-
-
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      VXLAN: 彻底改变网络虚拟化
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html" title="VXLAN: 彻底改变网络虚拟化">https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
-
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
-    
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/hardware/cuda-nvidia-core-barrier.html" rel="next" title="英伟达核心壁垒: CUDA">
-      <i class="fa fa-chevron-left"></i> 英伟达核心壁垒: CUDA
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/hardware/the-reason-why-the-MOS-tube-burned-out.html" rel="prev" title="MOS管烧了的原因">
-      MOS管烧了的原因
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
-    </div>
-  </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+</a>
 
 
 
@@ -867,6 +337,17 @@ exit
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

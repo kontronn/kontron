@@ -1,646 +1,12 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
-<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
-<meta itemprop="name" content="图文详解PCB术语" />
-<meta itemprop="description" content="图文详解PCB术语" />
-<meta itemprop="datePublished" ZgotmplZ />
-<meta itemprop="dateModified" ZgotmplZ />
-<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
-<meta itemprop="keywords" content="PCB, Gold Plating, Silver Plating" />
-
-<meta property="og:type" content="article" />
-<meta property="og:title" content="图文详解PCB术语" />
-<meta property="og:description" content="图文详解PCB术语" />
-<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
-<meta property="og:image:width" content="312" />
-<meta property="og:image:height" content="312" />
-<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
-<meta property="og:url" content="https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html"/>
-<meta property="og:site_name" content="Kontronn" />
-<meta property="og:locale" content="zh-CN"/>
-<meta property="article:author" content="VxWorks OS" />
-<meta property="article:published_time" content="2023-07-22 12:12:08 -0400 -0400" />
-<meta property="article:modified_time" content="2023-07-22 12:12:08 -0400 -0400" />
-
-
-  
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
-  
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
-
-
-<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
-  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html","permalink":"https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html","title":"图文详解PCB术语"}</script>
-  <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', () => {
-    var script = document.createElement('script');
-      
-    script.charset = "UTF-8";
-    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
-    script.async   = "true"
-
-    document.head.appendChild(script);
-  });
-</script>
 
 
 
 
-  <title>图文详解PCB术语 - Kontronn</title>
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
-  <div class="headband"></div>
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner">
-<div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <h1 class="site-title">Kontronn</h1>
-      <i class="logo-line"></i>
-    </a>
-    
-      <p class="site-subtitle" itemprop="description">Embedded World</p>
-      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-      
-      <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-<nav class="site-nav">
-  <ul class="main-menu menu">
-    <li class="menu-item menu-item-home">
-      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
-      </a>
-    </li>
-    <li class="menu-item menu-item-about">
-      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
-      </a>
-    </li>
-    <li class="menu-item menu-item-flinks">
-      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
-      </a>
-    </li>
-    <li class="menu-item menu-item-archives">
-      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
-        <span class="badge">325</span>
-      </a>
-    </li>
-    <li class="menu-item menu-item-commonweal">
-      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
-      </a>
-    </li>
-    <li class="menu-item menu-item-search">
-      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
-      </a>
-    </li>
-  </ul>
-</nav>
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-    </div>
-  </div>
-
-      </div>
-      <div class="toggle sidebar-toggle" role="button">
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-  <span class="toggle-line"></span>
-</div>
-<aside class="sidebar">
-  
-  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-    <ul class="sidebar-nav">
-      <li class="sidebar-nav-toc">
-        文章目录
-      </li>
-      <li class="sidebar-nav-overview">
-        站点概览
-      </li>
-    </ul>
-    <div class="sidebar-panel-container">
-      
-      <div class="post-toc-wrap sidebar-panel">
-        <div class="post-toc animated"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#whats-a-pcb">What&rsquo;s a PCB?</a></li>
-    <li><a href="#composition组成">Composition(组成)</a></li>
-    <li><a href="#fr4">FR4</a></li>
-    <li><a href="#copper">Copper</a></li>
-    <li><a href="#soldermask阻焊">Soldermask(阻焊)</a></li>
-    <li><a href="#silkscreen丝印">Silkscreen(丝印)</a></li>
-    <li><a href="#terminology术语">Terminology(术语)</a></li>
-  </ul>
-</nav></div>
-      </div>
-      
-      <div class="site-overview-wrap sidebar-panel">
-<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
-      src="/imgs/hugo_next_avatar.png">
-  <p class="site-author-name" itemprop="name">VxWorks OS</p>
-  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-    <div class="site-state-item site-state-posts">
-      <a href="/archives/">
-        <span class="site-state-item-count">325</span>
-        <span class="site-state-item-name">日志</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-categories">
-      <a href="/categories/">
-        <span class="site-state-item-count">14</span>
-        <span class="site-state-item-name">分类</span>
-      </a>
-    </div>
-    <div class="site-state-item site-state-tags">
-      <a href="/tags/">
-        <span class="site-state-item-count">408</span>
-        <span class="site-state-item-name">标签</span>
-      </a>
-    </div>
-  </nav>
-</div>
-<div class="links-of-social site-overview-item animated">
-
-
-  <span class="links-of-social-item">
-    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
-    </a>
-  </span>
-  <span class="links-of-social-item">
-    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
-      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
-    </a>
-  </span>
-</div>
-<div class="cc-license animated" itemprop="license">
-  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
-    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
-  </a>
-</div>
-<div class="links-of-blogroll site-overview-item animated">
-  <div class="links-of-blogroll-title">
-    <i class="fa fa-globe fa-fw"></i>友情链接
-  </div>
-  <ul class="links-of-blogroll-list">
-    <li class="links-of-blogroll-item">
-      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
-    </li>
-    <li class="links-of-blogroll-item">
-      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
-    </li>
-  </ul>
-</div>
-      </div>
-    </div>
-   
-  </div>
-<div class="sidebar-card-widget">
-  <div class="item-headline">
-    <i class="fas fa-chart-line"></i>
-    <span>网站资讯</span>
-  </div>
-  <div class="siteinfo">
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
-      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
-    </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-user"></i>总访客数：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_uv"></div>
-      </div>
-      <div class="siteinfo-item">
-        <div class="item-name">
-          <i class="fas fa fa-eye"></i>页面浏览：
-        </div>
-        <div class="item-count" id="busuanzi_value_site_pv"></div>
-      </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
-      <div class="item-count" id="readTimes" data-times="483"></div>
-    </div>
-    <div class="siteinfo-item">
-      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
-      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
-    </div>
-  </div>
-</div>
-</aside>
-<div class="sidebar-dimmer"></div>
-
-    </header>
-    
-    <div class="tool-buttons" >
-  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
-    <i class="fas fa-comments"></i>
-  </a> 
-  <div id="switch-theme" class="button" title="深浅模式切换">
-    <i class="fas fa-adjust"></i>
-  </div> 
-  
-  <div class="back-to-top" role="button" title="返回顶部">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div> 
-</div>
-  <div class="reading-progress-bar"></div>
-  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-    <div class="main-inner post posts-expand">
-      
-  <div class="post-block">
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html">
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
-      <meta itemprop="name" content="VxWorks OS">
-    </span>
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VxWorks OS">
-      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
-    </span>
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="图文详解PCB术语">
-      <meta itemprop="description" content="图文详解PCB术语">
-    </span>
-    <header class="post-header">
-       <h1 class="post-title" itemprop="name headline">图文详解PCB术语 </h1> <div class="post-meta-container">
-  <div class="post-meta-items">
-    
-
-
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-calendar"></i>
-  </span>
-  <span class="post-meta-item-text">发表于：</span>
-  <time title="发表于：2023-07-22 12:12:08 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-07-22 12:12:08 -0400 -0400">2023-07-22</time>
-</span>
-    
-    
-<span class="post-meta-item">
-  <span class="post-meta-item-icon">
-    <i class="far fa-folder-open"></i>
-  </span>
-  <span class="post-meta-item-text">分类于：</span>
-  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-    <a href="/categories/hardware" itemprop="url" rel="index">
-      <span itemprop="name">Hardware</span>
-    </a>
-  </span>
-</span>
-  </div>
-  <div class="post-meta-items">
-    
-<span class="post-meta-item" title="字数">
-  <span class="post-meta-item-icon">
-    <i class="far fa-file-word"></i>
-  </span>
-  <span class="post-meta-item-text">字数：</span><span>177</span>
-</span>
-    
-<span class="post-meta-item" title="阅读">
-  <span class="post-meta-item-icon">
-    <i class="far fa-clock"></i>
-  </span>
-  <span class="post-meta-item-text">阅读：&asymp;</span>
-  <span>1分钟</span>
-</span>
-
-    
-<span class="post-meta-item" title="浏览">
-  <span class="post-meta-item-icon">
-    <i class="far fa-eye"></i>
-  </span>
-  <span class="post-meta-item-text">
-  浏览：
-  </span>
-  <span id="busuanzi_value_page_pv" data-path="/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html"><i class="fa fa-sync fa-spin"></i></span>
-</span>
-
-  </div>
-  
-</div>
-
-
-    </header>
-    
-    <div class="post-body  autonumber " itemprop="articleBody">
-      
-  <p>文章将会详细解释PCB的构成，以及在PCB的领域里面常用的一些术语，简要的组装方法，以及简介PCB的设计过程。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-1.png" alt="图文详解PCB术语"></p>
-<h2 id="whats-a-pcb">What&rsquo;s a PCB?</h2>
-<p>PCB(Printed circuit board)是一个最普遍的叫法，也可以叫做“printed wiring boards” 或者 “printed wiring cards”。在PCB出现之前，电路是通过点到点的接线组成的。这种方法的可靠性很低，因为随着电路的老化，线路的破裂会导致线路节点的断路或者短路。</p>
-<p>绕线技术是电路技术的一个重大进步，这种方法通过将小口径线材绕在连接点的柱子上，提升了线路的耐久性以及可更换性。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-2.png" alt="图文详解PCB术语"></p>
-<p>(1977年Z80计算机的绕线背板)</p>
-<p>当电子行业从真空管、继电器发展到硅半导体以及集成电路的时候，电子元器件的尺寸和价格也在下降。电子产品越来越频繁的出现在了消费领域，促使厂商去寻找更小以及性价比更高的方案。于是，PCB诞生了。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-3.png" alt="图文详解PCB术语"></p>
-<h2 id="composition组成">Composition(组成)</h2>
-<p>PCB看上去像多层蛋糕或者千层面&ndash;制作中将不同的材料的层，通过热量和粘合剂压制到一起。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-4.png" alt="图文详解PCB术语"></p>
-<p>从中间层开始吧。</p>
-<h2 id="fr4">FR4</h2>
-<p>PCB的基材一般都是玻璃纤维。大多数情况下，PCB的玻璃纤维基材一般就指&quot;FR4&quot;这种材料。&ldquo;FR4&quot;这种固体材料给予了PCB硬度和厚度。除了FR4这种基材外，还有柔性高温塑料(聚酰亚胺或类似)上生产的柔性电路板等等。</p>
-<p>你可能会发现有不同厚度的PCB;然而 SparkFun的产品的厚度大部分都是1.6mm(0.063'')。有一些产品也采用了其它厚度，比如 LilyPad、Arudino Pro Micro boards采用了0.8mm的板厚。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-5.png" alt="图文详解PCB术语"></p>
-<p>廉价的PCB和洞洞板(见上图)是由环氧树脂或酚这样的材料制成，缺乏 FR4那种耐用性，但是却便宜很多。当在这种板子上焊接东西时，将会闻到很大的异味。这种类型的基材，常常被用在很低端的消费品里面。酚类物质具有较低的热分解温度，焊接时间过长会导致其分解碳化，并且散发出难闻的味道。</p>
-<h2 id="copper">Copper</h2>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-6.png" alt="图文详解PCB术语">
-(露铜的PCB，无阻焊&amp;丝印)</p>
-<p>接下来介绍是很薄的铜箔层，生产中通过热量以及黏合剂将其压制倒基材上面。在双面板上，铜箔会压制到基材的正反两面。在一些低成本的场合，可能只会在基材的一面压制铜箔。当我们提及到”双面板“或者”两层板“的时候，指的是我们的千层面上有两层铜箔。当然，不同的PCB设计中，铜箔层的数量可能是1层这么少，或者比16层还多。</p>
-<p>铜层的厚度种类比较多，而且是用重量做单位的，一般采用铜均匀的覆盖一平方英尺的重量(盎司oz)来表示。大部分PCB的铜厚是1oz，但是有一些大功率的PCB可能会用到2oz或者3oz的铜厚。将盎司(oz)每平方英尺换算一下，大概是 35um或者1.4mil的铜厚。</p>
-<h2 id="soldermask阻焊">Soldermask(阻焊)</h2>
-<p>在铜层上面的是阻焊层。这一层让PCB看起来是绿色的(或者是SparkFun的红色)。阻焊层覆盖住铜层上面的走线，防止PCB上的走线和其他的金属、焊锡或者其它的导电物体接触导致短路。阻焊层的存在，使大家可以在正确的地方进行焊接 ，并且防止了焊锡搭桥。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-7.png" alt="图文详解PCB术语"></p>
-<p>在上图这个例子里，我们可以看到阻焊覆盖了PCB的大部分(包括走线)，但是露出了银色的孔环以及SMD焊盘，以方便焊接。</p>
-<p>一般来说，阻焊都是绿色的，但几乎所有的颜色可以用来做阻焊。SparkFun的板卡大部分是红色的，但是IOIO板卡用了白色，LilyPad板卡是紫色的。</p>
-<h2 id="silkscreen丝印">Silkscreen(丝印)</h2>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-8.png" alt="图文详解PCB术语"></p>
-<p>在阻焊层上面，是白色的丝印层。在PCB的丝印层上印有字母、数字以及符号，这样可以方便组装以及指导大家更好地理解板卡的设计。我们经常会用丝印层的符号标示某些管脚或者LED的功能等。</p>
-<p>丝印层是最最常见的颜色是白色，同样，丝印层几乎可以做成任何颜色。黑色，灰色，红色甚至是黄色的丝印层并不少见。然而，很少见到单个板卡上有多种丝印层颜色。</p>
-<h2 id="terminology术语">Terminology(术语)</h2>
-<p>现在你知道了PCB的结构组成，下面我们来看一下PCB相关的术语吧。
-孔环 &ndash; PCB上的金属化孔上的铜环。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-9.png" alt="图文详解PCB术语">
-<img src="https://www.kad8.com/imgs/post/PCB-Terminology-9-2.png" alt="图文详解PCB术语">
-Examples of annular rings. 孔环的例子</p>
-<p>DRC &ndash; 设计规则检查。一个检查设计是否包含错误的程序，比如，走线短路，走线太细，或者钻孔太小。</p>
-<p>钻孔命中 &ndash; 用来表示设计中要求的钻孔位置和实际的钻孔位置的偏差。钝钻头导致的不正确的钻孔中心是PCB制造里的普遍问题。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-10.png" alt="图文详解PCB术语">
-不是太准确的drill hit示意图</p>
-<p>(金)手指 &ndash; 在板卡边上裸露的金属焊盘，一般用做连接两个电路板。比如计算机的扩展模块的边缘、内存条以及老的游戏卡。</p>
-<p>邮票孔 &ndash; 除了V-Cut外，另一种可选择的分板设计方法。用一些连续的孔形成一个薄弱的连接点，就可以容易将板卡从拼版上分割出来。SparkFun的Protosnap板卡是一个比较好的例子。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-11.png" alt="图文详解PCB术语">
-ProtoSnap上的邮票孔使PCB能简单的弯折下来。</p>
-<p>焊盘 &ndash; 在PCB表面裸露的一部分金属，用来焊接器件。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-12.png" alt="图文详解PCB术语">
-<img src="https://www.kad8.com/imgs/post/PCB-Terminology-13.png" alt="图文详解PCB术语">
-上边是 插件焊盘，下边是贴片焊盘</p>
-<p>拼板 &ndash; 一个由很多可分割的小电路板组成的大电路板。自动化的电路板生产设备在生产小板卡的时候经常会出问题，将几个小板卡组合到一起，可以加快生产速度。</p>
-<p>钢网 &ndash; 一个薄金属模板(也可以是塑料)，在组装的时候，将其放在PCB上让焊锡透过某些特定部位。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-14.png" alt="图文详解PCB术语">
-钢网(原图挂了，自己找的配图)</p>
-<p>Pick-and-place - 将元器件放到线路板上的机器或者流程。</p>
-<p>平面 &ndash; 线路板上一段连续的铜皮。一般是由边界来定义，而不是 路径。也称作”覆铜“</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-15.png" alt="图文详解PCB术语">
-图示PCB上大部分地方没有走线，但是有地的覆铜</p>
-<p>金属化过孔 &ndash; PCB上的一个孔，包含孔环以及电镀的孔壁。金属化过孔可能是一个插件的连接点，信号的换层处，或者是一个安装孔。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-16.png" alt="图文详解PCB术语">
-FABFM PCB上的一个插件电阻。电阻的两个腿已经穿过了PCB的过孔。电镀的孔壁可以使PCB正反两面的走线连接到一起。</p>
-<p>Pogo pin &ndash; 一个弹簧支撑的临时接触点，一般用作测试或烧录程序。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-17.png" alt="图文详解PCB术语">
-有尖头的pogo pin, 在测试针床中用的很多。</p>
-<p>回流焊 &ndash; 将焊锡融化，使焊盘(SMD)和器件管脚连接到一起。</p>
-<p>丝印 &ndash; 在PCB板上的字母、数字、符号或者图形等。基本上每个板卡上只有一种颜色，并且分辨率相对比较低。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-18.png" alt="图文详解PCB术语">
-丝印指出了这个LED是电源指示灯。</p>
-<p>开槽 &ndash; 指的是PCB上任何不是圆形的洞。开槽可以电镀也可以不电镀。由于开槽需要额外的切割时间，有时会增加板卡的成本。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-19.png" alt="图文详解PCB术语">
-在ProtoSnap - Pro Mini板卡上的复杂开槽。同样有很多邮票孔。注意: 由于开槽的刀具是圆形的，开槽的边缘不能完全做成直角。</p>
-<p>锡膏层 &ndash; 在往PCB上放置元器件之前，会通过钢网在表贴器件的焊盘上形成的一定厚度的锡膏层。在回流焊过程中，锡膏融化，在焊盘和器件管脚间建立可靠的电气和机械连接。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-20.png" alt="图文详解PCB术语">
-在放置元器件之前，PCB上短暂的锡膏层，记得去了解一下钢网的定义。</p>
-<p>焊锡炉 &ndash; 焊接插件的炉子。一般里面有少量的熔融的焊锡，板卡在上面迅速的通过，就可以将暴露的管脚上锡焊接好。</p>
-<p>阻焊 &ndash; 为了防止短路、腐蚀以及其它问题，铜上面会覆盖一层保护膜。保护膜一般是绿色，也可能是其它颜色(SparkFun红色，Arduino蓝色，或者Apple黑色)。一般称作“阻焊”。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-21.png" alt="图文详解PCB术语">
-Solder mask covers up the signal traces but leaves the pads to solder to.阻焊覆盖了信号线，但是露出了焊盘以便于焊接。</p>
-<p>连锡 &ndash; 器件上的两个相连的管脚，被一小滴焊锡错误的连接到了一起。</p>
-<p>表面贴装 &ndash; 一种组装的方法，器件只需要简单的放在板卡上，不需要将器件管脚穿过板卡上的过孔。</p>
-<p>热焊盘 &ndash; 指的是连接焊盘到平面间的一段短走线。如果焊盘没有做恰当的散热设计，焊接时很难将焊盘加热到足够的焊接温度。不恰当的散热焊盘设计，会感觉焊盘比较黏，并且回流焊的时间相对比较长。(译者注，一般热焊盘做在插件与波峰焊接触的一面。不知道这个文章里面为什么会提到reflow，reflow主要要考虑的是热平衡，防止立碑。)</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-22.png" alt="图文详解PCB术语">
-在左边，焊盘通过两个短走线(热焊盘)连接到地平面。在右边，过孔直接连接到地平面，没有采用热焊盘。</p>
-<p>走线 &ndash; 在电路板上，一般连续的铜的路径。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-23.png" alt="图文详解PCB术语">
-一段连接复位点和板卡上其它地方的细走线。一个相对粗一点的走线连接了5V电源点。</p>
-<p>V-score &ndash; 将板卡进行一条不完全的切割，可以将板卡通过这条直线折断。(译者注：国内常叫做“V-CUT”)</p>
-<p>过孔 &ndash; 在板卡上的一个洞，一般用来将信号从一层切换到另外一层。塞孔指的是在过孔上覆盖阻焊，以防被焊接。连接器或者器件管脚过孔，因为需要焊接，一般不会进行塞孔。</p>
-<p><img src="https://www.kad8.com/imgs/post/PCB-Terminology-24.png" alt="图文详解PCB术语">
-同一个PCB上塞孔的正反两面。这个过孔将正面的信号，通过在板卡上的钻孔，传输到了背面。</p>
-<p>波峰焊 &ndash; 一个焊接插件器件的方法。将板卡匀速的通过一个产生稳定波峰的熔融焊锡炉，焊锡的波峰会将器件管脚和暴露的焊盘焊接到一起。</p>
-<p>简要的介绍一下如何设计自己的PCB板卡。</p>
-<p>Designing your own! 设计自己的!
-你希望开始设计自己的PCB吗。在PCB设计中的曲曲弯弯在这边说太复杂了。不过，如果你真的想开始，下面有几个要点。</p>
-<ul>
-<li>找到一个CAD的工具：在PCB设计的市场里，有很多低价或者免费的选择。当找一个工具的时候，可以考虑以下几点。</li>
-<li>论坛支持：有没有很多人使用这个工具?越多的人使用，你越容易找到你需要的器件的已经设计好的封装库。</li>
-<li>很容易用。如果不好用的话，你也不会用。</li>
-<li>性能：很多程序对设计有限制，比如层数，器件数，以及板卡尺寸等。大部分需要你去购买授权去升级性能。</li>
-<li>可抑制性：一些免费的程序不允许导出或者迁移到其它软件，将你限制在唯一的供应商上。可能软件的低价以及便捷性值得这样的付出，但有时候不太值得。</li>
-<li>去看看其他人的布板设计。开源硬件让这个事情越来越容易。</li>
-<li>练习，练习，还是练习。</li>
-<li>保持低的期望值。你设计的第一个板卡可能有很多问题，但是第20个可能就少很多，但是还会有一些问题。但是你很难将所有问题清除。</li>
-<li>原理图相当重要。尝试去设计一个没有好的原理图支持的PCB板卡是徒劳的。</li>
-</ul>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
-     crossorigin="anonymous"></script>
-
-<ins class="adsbygoogle"
-     style="display:inline-block;width:970px;height:90px"
-     data-ad-client="ca-pub-1543398821442998"
-     data-ad-slot="4140563281"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 
 
 
-    </div>
-    <footer class="post-footer">
-      
-
-<div class="post-tags">
-  
-    <a href="/tags/pcb-gold-plating-silver-plating">
-    PCB, Gold Plating, Silver Plating
-  </a>
-</div>
-
-<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
-<hr/>
-
-<div class="reward-container">
-  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
-  <button>赞赏</button>
-  <div class="post-reward">
-    <div class="post-reward-item">
-      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
-      <span>支付宝</span>
-    </div>
-    <div class="post-reward-item">
-      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
-      <span>微信</span>
-    </div>
-  </div>
-</div>
 
 
-<div class="post-copyright">
-  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
-  <ul>
-    <li class="post-copyright-title">
-      <strong>文章标题：</strong>
-      图文详解PCB术语
-    </li>
-    <li class="post-copyright-author">
-      <strong>本文作者： </strong>
-      VxWorks OS
-    </li>
-    <li class="post-copyright-link"> 
-      <strong>本文链接：</strong>
-       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html" title="图文详解PCB术语">https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>版权声明： </strong>
-      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
-    </li>
-  </ul>
-</div>
-
-  <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-  <div class="social-list">
-    
-    <div class="social-item">
-        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
-          <span class="icon">
-            <i class="fab fa-weixin"></i>
-          </span>
-          <span class="label">WeChat</span>
-        </a>
-      </div>
-  </div>
-</div>
-<div class="post-nav">
-  <div class="post-nav-next post-nav-item">
-    <a href="/post/linux/how-to-setup-CUDA-environment-for-nvidia-3060.html" rel="next" title="Nvidia 3060显卡 CUDA环境搭建">
-      <i class="fa fa-chevron-left"></i> Nvidia 3060显卡 CUDA环境搭建
-    </a>
-  </div>
-  <div class="post-nav-prev post-nav-item">
-    <a href="/post/news/UK-has-approved-broadcom-69-billion-takeover-of-VMware.html" rel="prev" title="芯片行业最大的收购，英国批准了">
-      芯片行业最大的收购，英国批准了
-      <i class="fa fa-chevron-right"></i>
-    </a>
-  </div>
-</div>
-
-    </footer>
-  </article>
-</div>
-<div id="comments" class="post-comments">
-  <div class="comment-head">
-    <div class="comment-headline">
-      <i class="fas fa-comments fa-fw"></i>
-      <span>评论交流</span>
-    </div>
-    <div class="comment-switch">
-      <span class="first-comment">Giscus</span>
-      <span class="switch-btn "></span>
-      <span class="second-comment">Waline</span>
-    </div>
-  </div>
-  <div class="comment-wrap">
-  
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="giscus-container"></div>
-    </div>
-    <div><div class="comment-loading">
-  <i class="fa fa-sync fa-spin"></i>
-</div><div class="waline-container"></div>
-    </div>
-  </div>
-</div>
-
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-
-<div class="copyright">
-  &copy;
-  <span itemprop="copyrightYear">
-    2010 - 2024
-  </span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
-</div>
-
-
-    </div>
-  </footer> 
-  
-  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
-
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -648,27 +14,323 @@ Solder mask covers up the signal traces but leaves the pads to solder to.阻焊�
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
-
+  
 
   
 
 
 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+<style>
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff !important;
+  margin: 0.5em
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   
-  <script type="text/javascript" src="https://unpkg.com/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+}
+
+.resp-sharing-button__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: middle
+}
+
+.resp-sharing-button--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+ 
+.resp-sharing-button__icon {
+  stroke: #fff;
+  fill: none
+}
+
+ 
+.resp-sharing-button__icon--solid,
+.resp-sharing-button__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee
+}
+
+.resp-sharing-button--twitter:hover {
+  background-color: #2795e9
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c
+}
+
+.resp-sharing-button--pinterest:hover {
+  background-color: #8c0615
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998
+}
+
+.resp-sharing-button--facebook:hover {
+  background-color: #2d4373
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C
+}
+
+.resp-sharing-button--tumblr:hover {
+  background-color: #222d3c
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500
+}
+
+.resp-sharing-button--reddit:hover {
+  background-color: #3a80c1
+}
+
+.resp-sharing-button--google {
+  background-color: #dd4b39
+}
+
+.resp-sharing-button--google:hover {
+  background-color: #c23321
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5
+}
+
+.resp-sharing-button--linkedin:hover {
+  background-color: #046293
+}
+
+.resp-sharing-button--email {
+  background-color: #777
+}
+
+.resp-sharing-button--email:hover {
+  background-color: #5e5e5e
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576
+}
+
+.resp-sharing-button--xing:hover {
+  background-color: #114c4c
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366
+}
+
+.resp-sharing-button--whatsapp:hover {
+  background-color: #1da851
+}
+
+.resp-sharing-button--hackernews {
+background-color: #FF6600
+}
+.resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
+
+.resp-sharing-button--vk {
+  background-color: #507299
+}
+
+.resp-sharing-button--vk:hover {
+  background-color: #43648c
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.resp-sharing-button--tumblr {
+  background-color: #35465C;
+  border-color: #35465C;
+}
+
+.resp-sharing-button--tumblr:hover,
+.resp-sharing-button--tumblr:active {
+  background-color: #222d3c;
+  border-color: #222d3c;
+}
+
+.resp-sharing-button--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.resp-sharing-button--email:hover,
+.resp-sharing-button--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.resp-sharing-button--pinterest {
+  background-color: #bd081c;
+  border-color: #bd081c;
+}
+
+.resp-sharing-button--pinterest:hover,
+.resp-sharing-button--pinterest:active {
+  background-color: #8c0615;
+  border-color: #8c0615;
+}
+
+.resp-sharing-button--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.resp-sharing-button--linkedin:hover,
+.resp-sharing-button--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.resp-sharing-button--reddit {
+  background-color: #ff4500;
+  border-color: #ff4500;
+}
+
+.resp-sharing-button--reddit:hover,
+.resp-sharing-button--reddit:active {
+  background-color: #ff5700;
+  border-color: #ff5700;
+}
+
+.resp-sharing-button--xing {
+  background-color: #1a7576;
+  border-color: #1a7576;
+}
+
+.resp-sharing-button--xing:hover
+.resp-sharing-button--xing:active {
+  background-color: #114C4C;
+  border-color: #114C4C;
+}
+
+.resp-sharing-button--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.resp-sharing-button--whatsapp:hover,
+.resp-sharing-button--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.resp-sharing-button--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.resp-sharing-button--hackernews:hover
+.resp-sharing-button--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}
+
+.resp-sharing-button--vk {
+  background-color: #507299;
+  border-color: #507299;
+}
+
+.resp-sharing-button--vk:hover
+.resp-sharing-button--vk:active {
+  background-color: #43648c;
+  border-color: #43648c;
+}
+
+.resp-sharing-button--telegram {
+  background-color: #54A9EB;
+}
+
+.resp-sharing-button--telegram:hover {
+  background-color: #4B97D1;
+}
+</style>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html" target="_blank" rel="noopener" aria-label="" title="Facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+
+
+
+    </div>
+  </div>
+</a>
+
+
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=%e5%9b%be%e6%96%87%e8%af%a6%e8%a7%a3PCB%e6%9c%af%e8%af%ad&amp;url=https://www.kontronn.com/post/hardware/detailed-explanation-of-PCB-terminology-with-pictures-and-texts.html" target="_blank" rel="noopener" aria-label="" title="Twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg>
+
+
+    
+    </div>
+  </div>
+</a>
 
 
 
 
 
-  <script type="text/javascript">
-    window.MathJax = {
-      tex: {
-        inlineMath: [["$", "$"]],
-      }
-    };
-  </script>
 
 
 
@@ -680,6 +342,12 @@ Solder mask covers up the signal traces but leaves the pads to solder to.阻焊�
 
 
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
