@@ -1,6 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="二十张图看懂VPN" />
+<meta itemprop="description" content="二十张图看懂VPN" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="VPN" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="二十张图看懂VPN" />
+<meta property="og:description" content="二十张图看懂VPN" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-07-16 19:53:36 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-07-16 19:53:36 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"twenty-pictures-to-understand-vpn.html","permalink":"https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html","title":"二十张图看懂VPN"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>二十张图看懂VPN - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#vpn是个啥">VPN是个啥</a></li>
+    <li><a href="#vpn咋工作">VPN咋工作</a></li>
+    <li><a href="#vpn关键技术">VPN关键技术</a>
+      <ul>
+        <li><a href="#隧道技术">隧道技术</a></li>
+        <li><a href="#身份认证">身份认证</a></li>
+        <li><a href="#数据加密">数据加密</a></li>
+        <li><a href="#数据验证">数据验证</a></li>
+      </ul>
+    </li>
+    <li><a href="#vpn好在哪">VPN好在哪</a></li>
+    <li><a href="#vpn分几类">VPN分几类</a>
+      <ul>
+        <li><a href="#ipsec-vpn">IPSec VPN</a></li>
+        <li><a href="#gre-vpn">GRE VPN</a></li>
+        <li><a href="#l2tp-vpn">L2TP VPN</a></li>
+        <li><a href="#mpls-vpn">MPLS VPN</a></li>
+      </ul>
+    </li>
+    <li><a href="#vpn用何处">VPN用何处</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="二十张图看懂VPN">
+      <meta itemprop="description" content="二十张图看懂VPN">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">二十张图看懂VPN </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-07-16 19:53:36 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-07-16 19:53:36 &#43;0800 CST">2024-07-16</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/linux" itemprop="url" rel="index">
+      <span itemprop="name">Linux</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>110</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/twenty-pictures-to-understand-vpn.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>近年来，随着家庭办公的普及，越来越多的公司发现了远程办公的各种优势，于是乎各大公司纷纷推行远程办公。</p>
+<p>在家远程办公的时候，不可避免地需要访问公司内网的数据资源。这个时候就不得不提今天的主角——VPN了。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-1.png" alt="VPN"></p>
+<h2 id="vpn是个啥">VPN是个啥</h2>
+<p>那什么是VPN？我们为什么要通过VPN来访问公司内网呢？</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-2.png" alt="VPN"></p>
+<p>别着急，今天文档君就来跟大家聊一聊VPN是如何为远程办公的信息安全保驾护航的。</p>
+<p>在讲VPN之前，我们先简单了解一下公司内网。</p>
+<p>所谓公司内网，就是公司内部建立的一个局域网。这个网络是封闭的，公司外面的黑客无法访问这个网络，这样公司内部的资料数据就是安全的。</p>
+<p>如果说因特网是一片广阔的天地，那公司内网就是被四面墙围起来的一个小房子，只有处在这个房子里的人才能够使用它的资源。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-3.png" alt="VPN"></p>
+<p>那在家远程办公，处于因特网中的你，要如何使用房子里的资源，又不泄露房子里的秘密信息呢？</p>
+<p>那就要悄咪咪地建立一条只有你知公司知的“秘密隧道”了。</p>
+<p>一开始大家想到的是专线，在总部和分部拉条专线，只传输自己的业务，但是这个专线的费用高昂，不是一般公司能够承受的，而且维护也很困难。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-4.png" alt="VPN"></p>
+<p>那么有没有物廉价美，更具有性价比的方案呢？</p>
+<p>有，那就是VPN。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-5.png" alt="VPN"></p>
+<p>VPN：（Virtual Private Network），学名虚拟专用网络，便可以帮你和公司之间搭建这么一条“秘密隧道”。当你通过VPN访问公司内网时，数据传递全部通过“秘密隧道”悄悄进行，这样就保证了你和公司之间的网络通讯是安全私密的。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-6.png" alt="VPN"></p>
+<p>但是这条隧道并不是真实存在的，而是通过数据加密技术封装出来的一条虚拟数据通信隧道，实际上它借用的还是互联网上的公共链路。</p>
+<p>VPN会对你和公司之间传递的数据进行加密处理，加密后的数据会在一条专用的数据链路上进行安全传输，如同架设了一个专用网络一样。所以VPN称为虚拟专用网络。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-7.png" alt="VPN"></p>
+<h2 id="vpn咋工作">VPN咋工作</h2>
+<p>那VPN具体是如何工作的呢？</p>
+<p>当开启VPN后，你访问公司内网的办公网站时，不再直接访问公司内网的服务器，而是去访问VPN服务器，并给VPN服务器发一条指令“我要访问办公网站”。</p>
+<p>VPN服务器接到指令后，代替你去访问办公网站，收到公司办公网站的内容后，再通过“秘密隧道”将内容回传给你，这样你就通过VPN成功访问到你需要的内网资源啦。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-8.png" alt="VPN"></p>
+<h2 id="vpn关键技术">VPN关键技术</h2>
+<h3 id="隧道技术">隧道技术</h3>
+<p>隧道技术其实就是对传输的报文进行封装，利用公网的建立专用的数据传输通道，从而完成数据的安全可靠性传输。</p>
+<p>隧道通过隧道协议实现。如GRE（Generic Routing Encapsulation）、L2TP（Layer 2 Tunneling Protocol）等。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-9.png" alt="VPN"></p>
+<h3 id="身份认证">身份认证</h3>
+<p>VPN网关对接入VPN的用户进行身份认证，保证接入的用户都是合法合规用户。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-10.png" alt="VPN"></p>
+<h3 id="数据加密">数据加密</h3>
+<p>将明文通过加密技术成密文，哪怕信息被获取了，也无法识别。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-11.png" alt="VPN"></p>
+<h3 id="数据验证">数据验证</h3>
+<p>通过数据验证技术验证报文的完整性和真伪进行检查，防止数据被篡改。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-12.png" alt="VPN"></p>
+<h2 id="vpn好在哪">VPN好在哪</h2>
+<p>了解了VPN的工作原理和关键技术，是时候总结一下它的优点了。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-13.png" alt="VPN"></p>
+<p>安全：通过数据加密，VPN可以防止数据在互联网传输中被窃听，被篡改。一般数据在互联网中是明文传输的，而数据加密技术则提高了数据的安全性，降低了公司机密信息在远程通信中被泄露的风险。</p>
+<p>成本低：VPN好用不贵！采用VPN可以达到与租用专线相同的效果，但所花费用要比租用专线低40%～60%。</p>
+<p>支持移动业务：支持出差时使用，VPN用户可在任何时间、任何地点的移动接入，能够满足不断增长的移动业务需求。</p>
+<p>可扩展性：VPN应用灵活，具有良好的可扩展性。如果企业想扩大VPN的容量和覆盖范围，只需改变一些配置，或增加几台设备、扩大服务范围。</p>
+<h2 id="vpn分几类">VPN分几类</h2>
+<p>根据VPN建设单位不同进行划分。</p>
+<ul>
+<li>租用运营商VPN专线搭建企业网络</li>
+</ul>
+<p>运营商的专线网络大多数都是使用的MPLS VPN，企业通过购买运营商提供的VPN专线服务实现总部和分部间的通信需求。VPN网关为运营商所有。</p>
+<ul>
+<li>企业自建VPN网络</li>
+</ul>
+<p>企业自己基于Internet自建vpn网络，常见的如IPsec VPN、GRE VPN、L2TP VPN。</p>
+<p>根据工作网络层次进行划分</p>
+<p>VPN可以按照工作层次进行划分：</p>
+<ul>
+<li>应用层：SSL VPN</li>
+<li>网络层：IPSEC VPN 、GRE VPN</li>
+<li>数据链路层：L2TP VPN、PPTP VPN</li>
+</ul>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-14.png" alt="VPN"></p>
+<p>工作在网络层和数据链路层的VPN又被称为三层VPN和二层VPN。</p>
+<h3 id="ipsec-vpn">IPSec VPN</h3>
+<p>IPSec（IP Security） VPN一般部署在企业出口设备之间，通过加密与验证等方式，实现了数据来源验证、数据加密、数据完整性保证和抗重放等功能。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-14.png" alt="VPN"></p>
+<ul>
+<li>数据来源验证：接收方验证发送方身份是否合法。</li>
+<li>数据加密：发送方对数据进行加密，以密文的形式在Internet上传送，接收方对接收的加密数据进行解密后处理或直接转发。</li>
+<li>数据完整性：接收方对接收的数据进行验证，以判定报文是否被篡改。</li>
+<li>抗重放：接收方拒绝旧的或重复的数据包，防止恶意用户通过重复发送捕获到的数据包所进行的攻击。</li>
+</ul>
+<h3 id="gre-vpn">GRE VPN</h3>
+<p>通用路由封装协议（General Routing Encapsulation，GRE）是一种三层VPN封装技术。</p>
+<p>GRE可以对某些网络层协议（如IPX、IPv4、IPv6等）的报文进行封装，使封装后的报文能够在另一种网络中（如IPv4）传输，从而解决了跨越异种网络的报文传输问题。</p>
+<p>GRE还具备封装组播报文的能力。由于动态路由协议中会使用组播报文，因此更多时候GRE会在需要传递组播路由数据的场景中被用到，这也是GRE被称为通用路由封装协议的原因。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-15.png" alt="VPN"></p>
+<h3 id="l2tp-vpn">L2TP VPN</h3>
+<p>L2TP是虚拟私有拨号网VPDN（Virtual Private Dial-up Network）隧道协议的一种，它扩展了点到点协议PPP的应用，是一种在远程办公场景中为出差员工或企业分支远程访问企业内网资源提供接入服务的VPN。</p>
+<p>L2TP组网架构中包括LAC（L2TP Access Concentrator，L2TP访问集中器）和LNS（L2TP Network Server，L2TP网络服务器）。</p>
+<p>LAC是网络上具有PPP和L2TP协议处理能力的设备。LAC负责和LNS建立L2TP隧道连接。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-16.png" alt="VPN"></p>
+<h3 id="mpls-vpn">MPLS VPN</h3>
+<p>MPLS是一种利用标签（Label）进行转发的技术，最初为了提高IP报文转发速率而被提出，现主要应用于VPN和流量工程、QoS等场景。</p>
+<p>MPLS VPN网络一般由运营商搭建，VPN用户购买VPN服务来实现用户网络之间的路由传递、数据互通等。</p>
+<p>基本的MPLS VPN网络架构由CE（Customer Edge）、PE（Provider Edge）和P（Provider）三部分组成。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-17.png" alt="VPN"></p>
+<p>各VPN的隧道身份认证、数据加密、验证参见下表。</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-18.png" alt="VPN"></p>
+<h2 id="vpn用何处">VPN用何处</h2>
+<p>以上三大亮点使VPN在企业中广受青睐。针对不同的需求，VPN还能提供更有针对性的应用场景。比如：</p>
+<ul>
+<li>远程接入VPN：用于异地办公的员工访问公司内网。</li>
+<li>内联网VPN：将企业总部和外地分公司通过虚拟专用网络连接在一起。</li>
+<li>外联网VPN：将一个公司与另一个公司的资源进行连接，与合作伙伴企业网构成外联网。</li>
+</ul>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-19.png" alt="VPN"></p>
+<p>VPN就像是连接公司内网和外部因特网的一个窗口，扩大了公司内网的边界，使远程办公的你我他也能安全放心地访问公司内网资源。这样的VPN谁能不爱呢！</p>
+<p><img src="https://www.kontronn.com/imgs/post/VPN-introduction-20.png" alt="VPN">
+有VPN为我们的远程办公安全保驾护航，相信未来我们人人都可以实现在家办公呢，到时候边撸猫边办公，想一想就美滋滋！</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/vpn">
+    VPN
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      二十张图看懂VPN
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html" title="二十张图看懂VPN">https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/programming/introduction-to-message-digest-algorithm-5.html" rel="next" title="什么是MD5">
+      <i class="fa fa-chevron-left"></i> 什么是MD5
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/linux/let-us-talk-about-linux-technical-soul.html" rel="prev" title="盘一盘Linux技术灵魂人物">
+      盘一盘Linux技术灵魂人物
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +957,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

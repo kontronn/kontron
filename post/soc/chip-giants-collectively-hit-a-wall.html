@@ -1,6 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="芯片巨头，集体碰壁" />
+<meta itemprop="description" content="芯片巨头，集体碰壁" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Intel,Nvidia,TSMC" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="芯片巨头，集体碰壁" />
+<meta property="og:description" content="芯片巨头，集体碰壁" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/soc/chip-giants-collectively-hit-a-wall.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-09-16 11:44:32 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-09-16 11:44:32 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"chip-giants-collectively-hit-a-wall.html","permalink":"https://www.kontronn.com/post/soc/chip-giants-collectively-hit-a-wall.html","title":"芯片巨头，集体碰壁"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>芯片巨头，集体碰壁 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#英伟达">英伟达</a></li>
+    <li><a href="#台积电">台积电</a></li>
+    <li><a href="#英特尔">英特尔</a></li>
+    <li><a href="#写在最后">写在最后</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/soc/chip-giants-collectively-hit-a-wall.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="芯片巨头，集体碰壁">
+      <meta itemprop="description" content="芯片巨头，集体碰壁">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">芯片巨头，集体碰壁 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-09-16 11:44:32 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-16 11:44:32 &#43;0800 CST">2024-09-16</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/soc" itemprop="url" rel="index">
+      <span itemprop="name">SOC</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>245</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>2分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/soc/chip-giants-collectively-hit-a-wall.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>1965 年 4 月，《电子学》杂志发表了
+<a href="https://www.vxworks.net/x86/1143-computer-hierarchical-architecture" title="英特尔" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    英特尔
+    <i class="fa fa-external-link-alt"></i>
+</a>联合创始人戈登·摩尔的一篇文章，其中指出：集成电路上可容纳的晶体管数目，约每隔两年便会增加一倍。</p>
+<p>这篇文章及其预测自此成为传奇，与大多数传奇一样，它在讲述和复述中经历了多次变化。媒体抓住了文章中关于半导体技术将开启电子集成新时代的论点，并将其提炼成多年来以多种形式呈现的格言。然而，无论以何种形式呈现，它始终被赋予同一个名字：摩尔定律。</p>
+<p>谁是摩尔定律最忠实的守护者？这个问题放在十年前，答案几乎是唯一的，除了戈登·摩尔联合创办的英特尔，又有谁能担得起这项责任呢？</p>
+<p><img src="https://www.kontronn.com/imgs/post/chip-giant-1.png" alt="Chip Giant"></p>
+<p>自1968年成立以来，英特尔一直与“缩小”一词密不可分。在最初的四十年里，这是一种高度赞扬。大约每两年，这家美国芯片先锋就会推出比前代体积减半的新型晶体管，更多的芯片能够装在几乎相同的硅片上，并以几乎相同的价格有利可图地出售。这使得英特尔在内存芯片市场占据了主导地位，而当“内存”在20世纪80年代商品化后，它又主导了推动PC革命的微处理器市场。</p>
+<p>但在十年后的今天，答案早已不唯一，摩尔定律的信徒越来越少，而英特尔也早已不是芯片行业的先锋，在连续两次灾难性的季度财报之后，英特尔市值已从1月份的超过2100亿美元萎缩至840亿美元，甚至低于其工厂和设备的价值，可以说在这家公司的几十年历史中，还从未有过如此艰难的时刻。</p>
+<p>新的问题来了，谁能真正继承摩尔定律呢？</p>
+<h2 id="英伟达">英伟达</h2>
+<p>英伟达似乎一直不认可由英特尔创始人提出的摩尔定律。</p>
+<p>早在2010年，英伟达首席科学家兼研究高级副总裁Bill Dally 在《福布斯》的一篇专栏文章中就强调了摩尔定律已死，他表示，并行计算才是未来半导体行业发展的未来。</p>
+<p>他认为，摩尔定律预测的 CPU 缩小现在已经不复存在，CPU 性能不再每 18 个月翻一番。这对许多依赖计算性能历史性增长的行业构成了严重威胁：</p>
+<p>公共机构需要更多的计算能力来预测危险的天气事件并分析长期气候变化；能源公司需要评估大量的地震和地质数据，以找到从现有储备中安全开采石油和天然气的新方法；制药研究人员需要增强计算能力来设计与特定细胞受体结合的药物分子；临床肿瘤学家需要更好、更快的医学成像来诊断癌症并确定治疗方法；心脏外科医生希望实时直观地评估受损组织，以确保他们的手术有效。</p>
+<p>他表示，行业迫切需要并行计算机的出现，它的一个基本优势是可以有效地将更多晶体管转化为更高的性能，处理器数量增加一倍可使许多程序的运行速度提高一倍，相比之下，串行 CPU 中晶体管数量增加一倍只能带来非常有限的性能提升——而能耗却非常高。</p>
+<p>更重要的是，并行计算机（如图形处理单元或 
+<a href="https://www.gaitpu.com/tag/gpu" title="GPU" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    GPU
+    <i class="fa fa-external-link-alt"></i>
+</a>）能够在当今能源受限的环境中持续扩展计算性能。每三年，英伟达可以将晶体管（和内核）的数量增加四倍。通过稍微降低每个内核的运行速度，从而提高效率，英伟达可以在相同的总功率下将性能提高三倍以上。</p>
+<p>简单概括来说，英特尔代表的CPU已经不是计算的未来，英伟达代表的GPU才是真正的未来，在当时来看，是非常激进非常有意思的一个观点。</p>
+<p>多年之后，在加州圣何塞举办的2018年GPU技术大会（GTC）上，英伟达首席执行官黄仁勋登台演讲之际，再次以自己的方式否认了一遍摩尔定律，他反复强调，由于技术的极端进步，GPU正遵循一条属于自己的法则。</p>
+<p>“现在有一条新的法则，”他说，“一条超级加速的法则。”而这条法则被后续追认为“黄氏定律”。</p>
+<p>GPU技术进步的速度有多快呢？在黄仁勋的主旨演讲中，他指出，如今英伟达的GPU比五年前快了25倍。如果按照摩尔定律的发展速度，它们的速度只会增加10倍。</p>
+<p>他随后通过另一个基准来说明GPU性能的提升：训练AlexNet的时间。AlexNet是一个使用1500万张图片进行训练的神经网络。他说，五年前，使用两块英伟达GTX 580显卡完成这一训练过程需要六天；而使用公司最新的硬件DGX-2，现在只需18分钟——快了500倍。</p>
+<p>黄仁勋明确指出，GPU需要一条自己的法则的原因在于：它们受益于多方面的同步进步：架构、互连、存储技术、算法等。“创新不仅仅在于芯片，”他说，“而是在整个技术栈上。</p>
+<p><img src="https://www.kontronn.com/imgs/post/chip-giant-2.png" alt="Chip Giant"></p>
+<p>而自2018年以来，黄仁勋一直重申他的观点，认为摩尔定律已经走到了尽头，经常将这一概念称为“已死”，并在今年早些时候告诉《连线》杂志：“我们必须抛弃摩尔定律，这样我们才能思考新的扩展方法。”</p>
+<p>有意思的事情来了，他极力推崇的黄氏定律并不像描述的那么美好，甚至是一种较为抽象的概念，黄仁勋并未提出一条有具体数字可循的定律，而英伟达首席科学家兼研究高级副总裁Bill Dally后续表示，从 2012 年 11 月到2020年 5 月，英伟达芯片在重要的 AI 计算领域的性能提升了 317 倍，平均每年提升一倍以上，Open AI 则表示，基于经典的人工智能图像识别测试，性能大约每一年半就会翻一番。</p>
+<p>总而言之，黄氏定律在英伟达的宣传中，比两年翻一倍的摩尔定律更快，甚至在最近探讨数据中心未来发展时，黄仁勋又重申了摩尔定律已经终结的观点。他认为，在未来10年中，现代化数据中心将会加速发展，并变得更加密集、节能。传统的每五年翻倍的速度已经结束，而大家所期待的每10年翻倍的情况也变得越来越困难。</p>
+<p>摩尔定律确实已经放缓，但黄氏定律能否取代它还要打一个大大的问号。</p>
+<p>事实上，英伟达的大部分性能改进都与节点转换密切相关。英伟达近期曾两次在没有节点转换的情况下显著提高了性能——第一次是从 Kepler 到 Maxwell，第二次是从 Volta 到 Turing。尽管英伟达擅长从同一节点榨取额外的性能，但也可以看到新工艺节点对英伟达整体性能的重要性。</p>
+<p>事实上，所谓的黄氏定律在相当程度上是由摩尔定律来推动的，如果没有晶体管密度的提升，就不会有更强大的GPU性能。如果摩尔定律遇到麻烦——无论是在晶体管缩放方面还是在定义不明确的性能改进方面，黄氏定律也会遇到麻烦，随着节点转换效益的下降，AI性能提升的速度也会放缓，而这也正是黄仁勋和英伟达自己在近两年鲜少提及自己定律的原因。</p>
+<p>另外，摩尔定律并不只是代表着晶体管密度的不断提升，其更大的意义在于以更低的价格获取更强大性能的芯片。简单来说，如果在相同面积的晶圆下生产同样规格的IC，随着制程技术的进步，每隔一年半，IC产出量就可增加一倍，换算为成本，即每隔一年半成本可降低五成，平均每年成本可降低三成多，而这也正是消费电子市场持续繁荣的关键之一。</p>
+<p>那么英伟达的黄氏定律呢？非营利研究机构 Epoch 发现，2006 年至 2021 年间，GPU 性价比（以 FLOPS/$ 为单位）每 2.5 年翻一番，比黄氏定律此前预测的要慢得多。</p>
+<p>Epoch使用 2006 年至 2021 年发布的 470 个图形处理单元 (GPU) 模型的数据集，发现每秒每美元的浮点运算量（以下称为每美元 FLOP/s）每约 2.5 年翻一番。对于任何时间点的顶级 GPU，发现改进速度较慢（每美元 FLOP/s 每 2.95 年翻一番），而对于通常用于 ML 研究中 GPU 模型，发现改进速度更快（每美元 FLOP/s 每 2.07 年翻一番）。</p>
+<p>从这一角度来看，黄氏定律或许是AI行业的福音，和让整个半导体行业受惠的摩尔定律有着非常大的差别，英伟达并不是继承摩尔定律的那一家公司。</p>
+<h2 id="台积电">台积电</h2>
+<p>巧的是，帮英伟达代工芯片的台积电，倒是对延续摩尔定律表现出了很大兴趣。</p>
+<p>早在1998年，台积电董事长张忠谋曾表示，摩尔定律在过去30年相当有效，未来10到15年应依然适用，他表示，半导体产业的特性是「山重水复疑无路」，但一个真相，却是「柳暗花明又一村」。</p>
+<p>而在2019年的Hot Chips 会议上，台积电研究副总裁Philip Wong更是在演讲中强调，摩尔定律不仅仍然有效，而且只要采用正确的技术手段，它在未来三十年内仍将有效。</p>
+<p>“它没有死，”他告诉与会者，“它没有放慢脚步，它甚至没有生病。”</p>
+<p>在Wong看来，维持摩尔定律的唯一重要因素是不断提高密度。尽管他承认时钟速度随着登纳德缩放定律的消亡而趋于稳定，但晶体管密度将带来更好的性能和能源效率。</p>
+<p>据 Wong 称，只要公司能够继续在更小的空间内提供更多晶体管并提高能效，这才是最重要的。短期内，这很可能以传统方式实现，即通过改进 CMOS 工艺技术，以便制造具有较小栅极长度的晶体管。</p>
+<p>而长期来看，二维缩放的放缓也不意味着密度的终结。他指出，即使在 Dennard 缩放定律终结之后，半导体制造领域也出现了许多创新，使密度保持上升趋势，特别是，应变硅和高 k 金属栅极技术的使用，随后是引入 3D 结构的 FinFET。</p>
+<p>Wong也强调了封装对于摩尔定律延续的重要性，短期内可以靠2.5D封装（事实上如今已经在大规模使用），而长期来看，真正的 3D 封装技术会带来芯片密度的继续提升。</p>
+<p>在Philip Wong，台积电不止一次强调了自己的主张：摩尔定律是一种象征，作为代工厂的它可以不完全遵循这一定律，但台积电一直在追逐这一定律所指明的方向。</p>
+<p><img src="https://www.kontronn.com/imgs/post/chip-giant-3.png" alt="Chip Giant"></p>
+<p>2024年7月，在接受 TechTechPotato 的Ian Cutress 采访时，台积电工艺技术负责人 Kevin Zhang 博士表示，只要整体进展顺利，他并不关心摩尔定律。</p>
+<p>“好吧，我的答案很简单——我不在乎，” Kevin Zhang说，“只要我们能继续推动技术扩展，我不在乎摩尔定律是否还存在。”</p>
+<p>他表示：“（观察家们）狭隘地基于二维缩放来定义摩尔定律，但这种情况已不复存在。看看我们行业的创新炒作，我们实际上仍在继续寻找不同的方法，将更多功能和能力集成到更小的外形尺寸中。我们继续实现更高的性能和更高的能效。因此从这个角度来看，我认为摩尔定律或技术缩放将继续下去。”</p>
+<p>当被问及台积电在渐进式工艺节点改进方面取得的成功时，他澄清说，他们的进步绝非微不足道。台积电强调，该代工厂从 5nm 到 3nm 级工艺节点的过渡使每代 PPA 改进超过 30%，未来会继续在主要节点之间进行较小但持续的改进，以使客户能够从每一代新技术中获益。</p>
+<p>台积电和英伟达对于摩尔定律持有两种截然不同的态度，前者尽全力想要延续下去，而后者却在不断否认，那么，到底谁才是对的那一位呢？不妨先来看看最初摩尔定律的发明者怎么说。</p>
+<h2 id="英特尔">英特尔</h2>
+<p>与处在上升期的台积电不同的是，英特尔这两年的的确确在走下坡路，但它似乎从未放弃延续摩尔定律的尝试。</p>
+<p>自2021 年上任 CEO以来，英特尔CEO基辛格就一直强调摩尔定律“依然健康”，他甚至表示，英特尔至少在 2031 年之前可以超越摩尔定律的速度，并推动“超级摩尔定律”，即利用Foveros 等 2.5D 和 3D 芯片封装技术来增加晶体管数量。</p>
+<p>2023年12月，在麻省理工学院的演讲中，基辛格被问及摩尔定律可能终结的问题，他表示“我们不再处于摩尔定律的黄金时代，现在的难度要大得多，所以我们现在可能每三年就会翻一番，所以我们肯定看到了放缓。”</p>
+<p>基辛格同时强调，尽管摩尔定律似乎放缓，但英特尔到 2030 年仍能制造出 1 万亿个晶体管的芯片，今天单个封装中最大的芯片拥有约 1000 亿个晶体管。这位首席执行官表示，有四个因素使这一目标成为可能：新的 RibbonFET 晶体管、PowerVIA 电源传输、下一代工艺节点和 3D 芯片堆叠。他在回答结束时说：“对于所有宣称我们已死的批评者来说……除非元素周期表耗尽，否则我们还没有完工。”</p>
+<p><img src="https://www.kontronn.com/imgs/post/chip-giant-4.png" alt="Chip Giant"></p>
+<p>而在今年的台北国际电脑展上，英特尔的主题演讲更是以人工智能重现联合创始人戈登·摩尔重复其最著名的名言之一开场：“任何已经做过的事情都可能被超越。”这是英特尔在追求微芯片霸主地位过程中发出的战斗口号，也是摩尔定律的象征之一。</p>
+<p>在演讲中，基辛格回顾了 1981 年英特尔 80286（一款包含 10 万个晶体管的 16 位微处理器）的问世，并强调现代芯片正在寻求容纳十亿个晶体管，预计到 2020 年，这个数字将达到一万亿。</p>
+<p>“与黄仁勋让你相信的不同，摩尔定律依然有效”，基辛格说道，他强调，作为领先的 PC 芯片提供商，英特尔将在 AI 的普及中发挥重要作用。</p>
+<p>倘若说台积电只是在摩尔定律上拼尽全力的话，英特尔似乎是为此压上了自己的身家性命。</p>
+<p>尽管英特尔近两个季度表现非常差，甚至于部分芯片都交给了台积电来代工，但它仍然没有放弃当初的设想，再次强调了在技术路线图中无数次出现的18A节点。</p>
+<p>让我们回顾一下技术细节，18A 是英特尔加速重回技术领先地位的路线图中排名第五的生产工艺。英特尔 7 已经在 Alder Lake 和 Raptor Lake CPU 中出现，而英特尔 4 刚刚在去年年底随着 Meteor Lake 芯片问世，已被放弃的20A，原计划Arrow Lake CPU 系列一起推出，而18A 节点预计将于 2025 年正式推出。</p>
+<p>据了解，首批采用 18A 工艺技术的产品将是代号为Panther Lake 的客户端 PC 处理器和 Clearwater Forest 的数据中心处理器。此外，英特尔代号为 Diamond Rapids 的 CPU 也将使用此节点。在外部客户中，微软确认计划将其用于处理器 ，美国国防部也将在其芯片中使用它，英特尔预计到 2025 年中期将有 8 个 18A 流片，包括内部和外部产品。</p>
+<p>“我把整个公司都押在了 18A 上。”基辛格表示，一切都取决于英特尔的 18A 工艺，这是公司有史以来最大的赌注，因为它也给英特尔的财务带来了巨大的压力。</p>
+<p>事实上，我们已经看到英特尔为了18A节点所付出的代价：糟糕的季度财报，一泻千里的股价，别说英伟达了，就连美国高露洁这家生产牙膏的公司市值都比英特尔来得高。</p>
+<p>在很多人看来，英特尔现在是一个鼻青眼肿的拳击手，18A就是它挥出的最后一拳。</p>
+<p>但值得庆幸的是，摩尔定律最初的守护者，依旧想要延续而不是否认它。</p>
+<h2 id="写在最后">写在最后</h2>
+<p>谁是摩尔定律真正的继承者？这个问题短时间内不会有看到答案的可能性，英伟达、台积电和英特尔谁才是正确的一方，我们同样没办法立马给出答案。</p>
+<p>但可以确定的是，只有最坚定的信念，才能笑到最后，亦如当年英特尔果断放弃内存，投身于微处理器的赛道一样，半导体行业唯一能够相信的，唯有真正先进的技术。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/intel">
+    Intel
+  </a>
+    <a href="/tags/nvidia">
+    Nvidia
+  </a>
+    <a href="/tags/tsmc">
+    TSMC
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      芯片巨头，集体碰壁
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/soc/chip-giants-collectively-hit-a-wall.html" title="芯片巨头，集体碰壁">https://www.kontronn.com/post/soc/chip-giants-collectively-hit-a-wall.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html" rel="next" title="Linux NTP服务安装配置详解">
+      <i class="fa fa-chevron-left"></i> Linux NTP服务安装配置详解
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/datacenter/introduction-to-firewall-basics.html" rel="prev" title="防火墙基本原理入门篇">
+      防火墙基本原理入门篇
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +917,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

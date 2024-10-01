@@ -1,6 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="风河Linux为何能在汽车智驾领域成为主流" />
+<meta itemprop="description" content="风河Linux为何能在汽车智驾领域成为主流" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Wind River Linux,Intelligent Drive" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="风河Linux为何能在汽车智驾领域成为主流" />
+<meta property="og:description" content="风河Linux为何能在汽车智驾领域成为主流" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-09-07 20:52:15 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-09-07 20:52:15 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html","permalink":"https://www.kontronn.com/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html","title":"风河Linux为何能在汽车智驾领域成为主流"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>风河Linux为何能在汽车智驾领域成为主流 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#智驾领域操作系统的基本要求">智驾领域操作系统的基本要求</a></li>
+    <li><a href="#linux的长短板">Linux的长短板</a></li>
+    <li><a href="#中兴力量的崛起">中兴力量的崛起</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="风河Linux为何能在汽车智驾领域成为主流">
+      <meta itemprop="description" content="风河Linux为何能在汽车智驾领域成为主流">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">风河Linux为何能在汽车智驾领域成为主流 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-09-07 20:52:15 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-07 20:52:15 &#43;0800 CST">2024-09-07</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/linux" itemprop="url" rel="index">
+      <span itemprop="name">Linux</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>78</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>汽车行业越来越认同这样一个理念：决定未来汽车价值的是以
+<a href="https://www.gaitpu.com" title="人工智能" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    人工智能
+    <i class="fa fa-external-link-alt"></i>
+</a>为核心的软件技术，而不再是传统的机械性能或硬件配置。一场围绕着智驾软件的竞争因此已经在更高更广层面展开，并且每一个汽车行业人都明白，这是一场不能输的战争，因为在软件定义汽车时代，汽车主要通过软件为用户提供价值。</p>
+<p>一辆今天的 “数字” 汽车所包含的代码量，甚至将要接近7亿行。这些智能驾驶底层软件的核心是其运行的操作系统，当
+<a href="https://www.gaitpu.com/category/os/linux" title="Linux操作系统" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Linux操作系统
+    <i class="fa fa-external-link-alt"></i>
+</a>成为汽车智驾领域的主流操作系统之后，其在汽车行业的地位也不断凸显。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-1.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>而回顾Linux操作系统发展的初期阶段，风河公司的
+<a href="https://www.vxworks.net" title="VxWorks" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    VxWorks
+    <i class="fa fa-external-link-alt"></i>
+</a>才是当时嵌入式市场的真正王者，只是因为
+<a href="https://www.vxworks.net/arm" title="ARM" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    ARM
+    <i class="fa fa-external-link-alt"></i>
+</a>、StrongARM、MIPS等多种架构的存在，才给了Linux生存和发展空间，让其作为“游击队”的角色而发展了起来。那么，从“游击队”到主流操作系统，Linux操作系统在汽车智驾领域又经历了怎样的演变呢?</p>
+<h2 id="智驾领域操作系统的基本要求">智驾领域操作系统的基本要求</h2>
+<p>智能汽车的代码量一直处于变化之中。如果回到2015年，当时一辆“数字”汽车软件代码量能只有1亿行,虽然这已经远高于Facebook、战斗机、人造卫星等高科技产品的代码量，但这个数字放在今天，却只能说是小巫见大巫。</p>
+<p>行业专家预测，到2025年,一辆智能汽车代码量预计将达到7亿行。这个数字相较于2022年的代码量，将要提升2.3倍。从中不难看出，智能汽车的代码量一直处于高速增长期，因此汽车行业对于高效开发能力的追求，可以说是达到了如饥似渴的程度。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-2.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>与智能汽车代码数量同步上升的，还有安全风险的高速同步上涨，因为每一行代码都有可能成为黑客的攻击点。自2022年上半年针对车联网平台的网络恶意行为突破百万之后，以汽车数据为核心的新安全问题给智能驾驶底层操作系统提出了更高安全性要求。</p>
+<p>操作系统在智能汽车生态中发挥着承上启下的作用，不仅负责智能汽车对内管理、对外交互，同时也负责对上构建繁荣生态环境、对下协调硬件资源。对汽车内部，操作系统的作用是管理，对用户操作系统则要起到交互的作用。因此，操作系统的稳定直接决定着汽车的表现。也正是因为这个原因，智驾领域同样将稳定性作为操作系统的重要考量因素。</p>
+<p>由此可见，安全、高效开发、稳定，就构成了智能汽车对于操作系统的基本要求，只有通过了这些门槛，才有可能在这个领域越走越顺。</p>
+<h2 id="linux的长短板">Linux的长短板</h2>
+<p>应对安全性、高效开发、稳定性等几个基本要求，Linux操作系统有着天然的优势。</p>
+<p>首先从高效开发的角度来看，Linux操作系统有多种程序语言与开发工具，对于不同的开发平台的接口和软件适配度将更好。此外，由于Linux内核大部分是用C语言编写，并采用可移植Unix标准应用程序接口，因此可以很好地支持车载智能汽车等相关嵌入式设备的控制。这些因素都为高效开发的实现提供了保障。</p>
+<p>再从稳定性视角来看，Linux是一个真正多任务多用户的操作系统，开发人员可以对自己需要的资源配置需求的权限，这种方式允许多应用程序在同一时间调用操作系统资源且互不影响。并且，由于Linux内的源代码是以标准的32位计算机来做的最佳设计，因此基本可以确保其系统的稳定性，不易宕机。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-3.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>然而，再比较下去，却会发现Linux中存在的一些安全短板。虽然Linux内部自带的防火墙、入侵检测和安全认证等工具也能在很多情况下满足对网络安全性的需求，但Linux却还是不可避免地表现出一些在智驾设计中的安全缺陷。</p>
+<p>首先是许可协议方面的麻烦，Linux采用的是Open Source/GPL2/3; Monolithic kernel。GPL协议允许将使用产品最大化地授权给用户，确保用户可以获得自由运行、复制、研究和改进的分发产品。因此， Linux允许开发社区工程师任意注入不稳定或存在一定bug的程序代码，可能导致系统的突然崩溃，自然无法满足功能安全需求。</p>
+<p>此外，从操作系统功能安全性来看，Linux这类操作系统相当于基于宏内核架构设计而成，其硬实时性问题及开源版本分支维护问题都相当明显，如果不经过深度定制和裁减，不可能满足功能安全中的暴露度、严重度、可控性要求。然而，深度定制对团队要求却极高，在这点上，对于智驾系统研发团队来说几乎是不可能做到。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-4.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>这还带来了另一个问题，Linux源码多达2500万行，一般智驾系统公司的项目开发团队不具备裁剪Linux的能力，整体鉴定难度较大，同时对软件架构师的要求也比较高，需要对Linux系统进行软件安全分析及设计过程难度就会加大。</p>
+<p>表面看来，Linux由于存在这些缺陷，不会在智能驾驶业界走得太远，但结果却是Linux操作系统依然是当前智能驾驶业界内部使用最为广泛的系统。要了解产生这种局面的原因，就得不聊聊开源产业中的中兴力量。</p>
+<h2 id="中兴力量的崛起">中兴力量的崛起</h2>
+<p>在开源运动的历史进程中，Eric S·Raymond所著的《大教堂与集市》无疑可以称得上是开源运动的《圣经》，甚至说它颠覆了传统的软件开发思路，影响了整个软件开发领域，也不为过。原因在于大家都喜欢“集市”带来的多样化与自由度，同时从用户的应用角度出发，却希望使用“大教堂式”的有质量保证和后期服务的产品。</p>
+<p>正是从这样的需求出发，帮助把开源产品从野外的自然水加工成可以直接饮用的矿泉水的公司，都取得了成功。同时，这些公司的成功又让开源产品一步步从“游击队”转化成主流“正规军”。在嵌入式开源软件领域，风河(Wind River)公司恰好就是这样一股让嵌入式Linux中兴的力量。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-5.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>相较于“集市”般的Linux社区，以稳健著称的风河公司却是“大教堂”一般的存在。创立于1981年的风河公司，最早产品就是为核电站这类重要设施提供实时控制软件，以后更是借助VxWorks深度参与了美国宇航局太空项目。以后，这种“集市”与“大教堂”风格的融合，更是让风河首款完全具备Linux文件系统的平台产品——2005年内置丰富网络中间件和应用组件的Linux版本网络设备平台(PNE)参考设计版本，一经问世就广受当时国内消费电子产品设计人员青睐。</p>
+<p>具体到汽车行业，Linux操作系统天然具备稳定、高效的能力，而风河公事凭借着自己稳健的流程控制能力和强大的技术实力，让应用于汽车行业的Linux操作系统变得安全而可控。</p>
+<p>经过多年的技术积累，风河完全有能力深度定制和裁减Linux操作系统，从而满足功能安全中的暴露度、严重度、可控性要求，也完全可以杜绝社区工程师注入不稳定代码的问题。因此，风河Linux使企业能够在专门构建的Linux操作系统上开发、部署和运行强大、可靠且安全的嵌入式解决方案。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-6.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>风河公司对于Linux操作系统的安全保障，我们可以从Wind River Studio Linux Services解决软件维护问题中一窥究竟。</p>
+<p>由于智能汽车性能的不断创新，底层控制软件始终处于高速开发进程中，开发团队因此而面临着开发和部署新功能的压力，但另一方面，软件的维护工作必须同步跟上，否则新的漏洞会不断出现，技术债会持续累积，未修复的安全问题最终会影响合规性、与最终客户签订的服务水平协议(SLA)以及按时为系统和设备部署新软件的能力。在这样的条件之下，Wind River Studio Linux Services却可以为用户的既有Linux或Yocto项目平台确保全生命周期安全。</p>
+<p>一家全球知名的网络设备供应商非常专注于创新，以至于在Linux平台的日常维护方面有所滞后，而且严重影响到发布新软件的能力，他们急需迅速发现并修复Linux操作系统中所有的严重安全风险。为此，风河公司为其提供全生命周期安全服务。我们在今天可以通过还原这个问题的解决过程，来体会风河技术工具的强大。</p>
+<p>通过Wind River Studio Linux Services，风河提供了CVE(通用漏洞披露)识别、CVE优先级、安全生命周期管理等服务。应用CVE扫描工具Wind River Studio Security Scanning，用户的既有Linux平台上被识别出超过1500个CVE，其中超过80个属于严重风险等级。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-7.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>在分析了CVE的真实影响之后，风河的技术专家与客户的工程师协作优先解决了需要立即关注的漏洞。接下来，在CVE被修复并且平台稳定的条件下，Wind River Studio的Linux团队开始负责提供平台的持续维护和管理。基于用户硬件的质量检查和测试，通过每日构建以确保对其操作系统平台和BSP进行持续性高质量修复。此外，Studio Linux Services团队还提供在线发布仪表板和报告，以便跟踪修复和进展，连同发布说明和工件，来捕获发布中修复的CVE和漏洞。</p>
+<p>最终，在软件维护瓶颈被突破之后，这家网络设备供应商的开发团队的创新能力得到了充分释放。并且这些工作应用Studio Security Lifecycle Assurance服务来完成，要比原来自行处理的方法节省了大量成本。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Wind-River-Linux-Intelligent-Driving-8.png" alt="Wind River Linux Intelligent Driving"></p>
+<p>当稳定性、高性能、安全性同时具备时，也就不难解释风河Linux在汽车行业一路顺利攻城拔寨的原因了。合众汽车选用风河Wind River Linux开发最新软件定义汽车平台、极氪选用风河Wind River Linux用于未来EEA开发、哪吒选用风河Wind River Linux开发智能域控制器XPC-S32G推进软件定义汽车。</p>
+<p>更为重要的，是风河在汽车行业没有仅仅止步于操作系统层面，也开始延伸到整个汽车基础架构软件领域，在先进的高性能计算、车辆内部及其与基础设施之间(V2X)各类网络以及高级驾驶辅助系统(ADAS)等领域越走越远。</p>
+<p>记得Linux操作系统在服务器端成功的原因吗?当Linux操作系统单打独斗时，用户会因为它缺少应用支持而和它保持距离;只有当LAMP支撑起一个生态时，Linux操作系统才开始了成长之旅。今天，当Linux操作系统在汽车行业成为主流之时，就可能依托强大的平台，实现更为迅速的开源生态成长。这可能才是如风河这样的Linux中兴力量让Linux操作系统变得更为健硕的终极原因。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/wind-river-linux">
+    Wind River Linux
+  </a>
+    <a href="/tags/intelligent-drive">
+    Intelligent Drive
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      风河Linux为何能在汽车智驾领域成为主流
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html" title="风河Linux为何能在汽车智驾领域成为主流">https://www.kontronn.com/post/linux/wind-river-linux-become-mainstream-in-the-field-of-intelligent-driving.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/ai/hbm-memory-chips-the-unsung-hero-of-the-ai-revolution.html" rel="next" title="HBM内存芯片: AI革命的无名英雄">
+      <i class="fa fa-chevron-left"></i> HBM内存芯片: AI革命的无名英雄
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/hardware/how-to-calculate-uart-rate.html" rel="prev" title="如何计算串口的传输速率">
+      如何计算串口的传输速率
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +895,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

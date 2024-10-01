@@ -1,6 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="取代C&#43;&#43;？谷歌开源编程语言Carbon" />
+<meta itemprop="description" content="取代C&#43;&#43;？谷歌开源编程语言Carbon" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Google,C&#43;&#43;,Carbon" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="取代C&#43;&#43;？谷歌开源编程语言Carbon" />
+<meta property="og:description" content="取代C&#43;&#43;？谷歌开源编程语言Carbon" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-07-16 02:12:27 -0400 -0400" />
+<meta property="article:modified_time" content="2023-07-16 02:12:27 -0400 -0400" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"google-open-source-programming-language-carbon.html","permalink":"https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html","title":"取代C++？谷歌开源编程语言Carbon"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>取代C&#43;&#43;？谷歌开源编程语言Carbon - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#carbon的设计理念和特性">Carbon的设计理念和特性</a></li>
+    <li><a href="#carbon语言将支持以下功能">Carbon语言将支持以下功能：</a></li>
+    <li><a href="#同时carbon语言的亮点包括如下">同时，Carbon语言的亮点包括如下：</a></li>
+    <li><a href="#为何不大力发展rust语言呢">为何不大力发展Rust语言呢？</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="取代C&#43;&#43;？谷歌开源编程语言Carbon">
+      <meta itemprop="description" content="取代C&#43;&#43;？谷歌开源编程语言Carbon">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">取代C&#43;&#43;？谷歌开源编程语言Carbon </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-07-16 02:12:27 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-07-16 02:12:27 -0400 -0400">2023-07-16</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>78</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/google-open-source-programming-language-carbon.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>号称替代C++，谷歌发布新的编程语言，已经过去了一年。去年7月，在多伦多举办的CppNorth大会上，谷歌宣布正式开源内部打造的编程语言Carbon，并称他是C++的继任者。</p>
+<p>谷歌的工程师认为呢，尽管C++仍然是性能关键性软件的主流编程语言，并且拥有庞大且不断增长的代码库。但同时呢，也存在着应用性较差，掌握难度大以及由于语言功能过于丰富而导致的混乱的问题。</p>
+<p>所以呢，他们决定自己开发一门语言来代替C++，于是呢，这个速度更快，并且可以和C++代码互相操作的新语言就应运而生了，Carbon编程语言已经在GitHub上开源了。</p>
+<p>其实呢，Google在编程语言方面确实还挺强的，之前开源的go long呢，目前已经是使用非常广泛的一个编程语言了，但是这次Carbon能否延续Go语言的传奇？目前下结论呢，还为时尚早，毕竟上一个号称代替C++的
+<a href="https://www.gaitpu.com/os/vxworks/using-rust-in-vxworks7" title="Rust" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    Rust
+    <i class="fa fa-external-link-alt"></i>
+</a>语言目前混的并不咋滴。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Google-Carbon-1.png" alt="Google Open Source Programming Language Carbon"></p>
+<p>在谈到为何要替代 C++ 时，谷歌工程师Carruth表示，C++作为长期以来构建性能关键应用的首选语言，它自身的很多问题困扰着现代开发人员。C++积累了数十年的技术负债，带有的很多过时实践都是其前身C语言的一部分。C++ 的维护者优先考虑向后兼容，以便继续支持广泛使用的项目，例如Linux及其包管理生态系统等。</p>
+<p>此外，C++语言的发展也受到了官僚委员会程序的阻碍，该程序以标准化而非设计为导向。这种做法导致很难添加新功能。C++在很大程度上处于一个隔绝的开发过程，其中可能经过数年才会做出一些重要决定。</p>
+<p>因此，Carruth希望通过更开放的社区主导环境来构建Carbon语言，并已开源。到2023年7月中旬，该项目已在GitHub上获得30.8k的Stars。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Google-Carbon-2.png" alt="Google Open Source Programming Language Carbon"></p>
+<h2 id="carbon的设计理念和特性">Carbon的设计理念和特性</h2>
+<p>谷歌希望在2022年年底推出Carbon的核心工作版本，即v0.1。Carbon将建立在现代编程原则的基础上，包含一个泛型系统，使开发人员不再需要为每个实例检查和再核对代码。</p>
+<p>C++ 语言中亟需的一个特性是内存安全。内存访问 bug是安全漏洞的罪魁祸首之一，Carbon 设计人员将探索追踪未初始化状态的更好方法、设计支持动态边界检查的 API和惯用语，并构建全面的默认debug构建模式。随着时间的推移，设计人员还计划构建一个安全的Carbon子集。</p>
+<h2 id="carbon语言将支持以下功能">Carbon语言将支持以下功能：</h2>
+<ul>
+<li>性能关键型软件；</li>
+<li>软件和语言演变；</li>
+<li>易于阅读、理解和编写的代码；</li>
+<li>实用的安全和测试机制；</li>
+<li>快速且可扩展的开发；</li>
+<li>现代操作系统平台、硬件架构和环境；</li>
+<li>与现有C++代码的互操作性和迁移</li>
+</ul>
+<h2 id="同时carbon语言的亮点包括如下">同时，Carbon语言的亮点包括如下：</h2>
+<ul>
+<li>Introducer关键字和简单语法；</li>
+<li>函数输入参数为只读值；</li>
+<li>指针提供间接访问和变体；</li>
+<li>使用表达式命名类型；</li>
+<li>软件包为root命名空间；</li>
+<li>通过包名导入APIs；</li>
+<li>用显式对象参数来声明方法；</li>
+<li>单继承、默认使用最终类；</li>
+<li>强大且经过定义检查的泛型；</li>
+<li>类型显式地实现接口。</li>
+</ul>
+<p>Carbon设计团队将着手创建一个内置包管理器，这在C++中非常欠缺。此外，团队还计划编写一些将C++代码迁移到Carbon代码的工具。下图左为C++代码，右为Carbon编写的相同函数：</p>
+<p><img src="https://www.kontronn.com/imgs/post/Google-Carbon-3.png" alt="Google Open Source Programming Language Carbon"></p>
+<h2 id="为何不大力发展rust语言呢">为何不大力发展Rust语言呢？</h2>
+<p>有人或许会问了：最近有专门为解决内存安全性能应用的需求而构建的Rust语言，为何不直接使用它呢？Carruth对此表示，如果Rust适合你，就继续使用。但是，将C++的生态系统转移到Rust非常困难。</p>
+<p>相比之下，Carbon是建立在已有C++生态系统之上，适合那些已经拥有大量C++代码库的开发人员，这些库很难转换到Rust。</p>
+<p><img src="https://www.kontronn.com/imgs/post/Google-Carbon-4.png" alt="Google Open Source Programming Language Carbon"></p>
+<p>目前 Carbon 语言的代码已完全开源。Chandler 表示，虽然 Carbon 诞生自谷歌内部，且目前的项目负责人主要（不完全）由谷歌员工组成，但它的目标是要成为一个 “独立且由社区驱动的开源项目”。</p>
+<p>如果你对 Carbon 感兴趣，可以下载源代码并在自己的设备上进行试验，或者通过 Compiler Explorer 直接在浏览器中体验 Carbon 编程语言。</p>
+<p>对于 Carbon 项目，有开发者透露了一些背景信息：2020 年 2 月，C++ 标准委员会就 “破坏 ABI 兼容性以保证性能” 提案进行了投票，这项工作主要由谷歌员工推动，但最终投票没有通过。因此，许多谷歌员工已经停止参与 C++ 的标准化工作，并辞去他们在委员会中的正式职务，clang 的开发工作也大大放缓。基于这些背景，再结合谷歌对 Carbon 设定的目标，这名开发者认为，谷歌确实希望把 Carbon 打造成替代 C++ 的语言。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/google">
+    Google
+  </a>
+    <a href="/tags/c&#43;&#43;">
+    C&#43;&#43;
+  </a>
+    <a href="/tags/carbon">
+    Carbon
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      取代C&#43;&#43;？谷歌开源编程语言Carbon
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html" title="取代C&#43;&#43;？谷歌开源编程语言Carbon">https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/datacenter/instinct-MI300-announced-by-amd.html" rel="next" title="AMD发布了最新款AI芯片Instinct MI300">
+      <i class="fa fa-chevron-left"></i> AMD发布了最新款AI芯片Instinct MI300
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/storage/could-nand-capacity-replace-hdds-by-2029.html" rel="prev" title="2029年前，NAND是否能够替代HDD">
+      2029年前，NAND是否能够替代HDD
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +890,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

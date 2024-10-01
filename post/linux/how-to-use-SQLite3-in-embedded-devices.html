@@ -1,6 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="手把手教你在嵌入式设备中使用SQLite3" />
+<meta itemprop="description" content="手把手教你在嵌入式设备中使用SQLite3" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Linux,SQLite3" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="手把手教你在嵌入式设备中使用SQLite3" />
+<meta property="og:description" content="手把手教你在嵌入式设备中使用SQLite3" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-08-07 12:49:40 -0400 -0400" />
+<meta property="article:modified_time" content="2023-08-07 12:49:40 -0400 -0400" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"how-to-use-SQLite3-in-embedded-devices.html","permalink":"https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html","title":"手把手教你在嵌入式设备中使用SQLite3"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>手把手教你在嵌入式设备中使用SQLite3 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见的数据库">常见的数据库</a></li>
+    <li><a href="#安装sqlite3">安装SQLite3</a>
+      <ul>
+        <li><a href="#直接用命令安装">直接用命令安装</a></li>
+        <li><a href="#直接编译源码">直接编译源码</a></li>
+      </ul>
+    </li>
+    <li><a href="#sqlite的使用">SQLite的使用</a>
+      <ul>
+        <li><a href="#基本操作命令">基本操作命令</a></li>
+        <li><a href="#数据库访问的sql语句">数据库访问的SQL语句</a></li>
+        <li><a href="#新建表格">新建表格</a></li>
+        <li><a href="#删除表格">删除表格</a></li>
+        <li><a href="#往表格中插入数据">往表格中插入数据</a></li>
+        <li><a href="#查询表中的数据">查询表中的数据</a></li>
+        <li><a href="#查看数据库">查看数据库</a></li>
+        <li><a href="#按条件查找">按条件查找</a></li>
+        <li><a href="#删除表中的条目">删除表中的条目</a></li>
+        <li><a href="#更新修改表中的条目">更新(修改)表中的条目</a></li>
+        <li><a href="#sqlite中字段类型">SQLite中字段类型</a></li>
+      </ul>
+    </li>
+    <li><a href="#sqlite的c语言访问接口">SQLite的C语言访问接口</a>
+      <ul>
+        <li><a href="#打开-sqlite3_open">打开 sqlite3_open</a></li>
+        <li><a href="#关闭-sqlite3_close">关闭 sqlite3_close</a></li>
+        <li><a href="#编译方法">编译方法</a></li>
+        <li><a href="#执行sql语句的接口-sqlite3_exec">执行SQL语句的接口 sqlite3_exec</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="手把手教你在嵌入式设备中使用SQLite3">
+      <meta itemprop="description" content="手把手教你在嵌入式设备中使用SQLite3">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">手把手教你在嵌入式设备中使用SQLite3 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-08-07 12:49:40 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-08-07 12:49:40 -0400 -0400">2023-08-07</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/linux" itemprop="url" rel="index">
+      <span itemprop="name">Linux</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>479</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>3分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/linux/how-to-use-SQLite3-in-embedded-devices.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>数据库是用来存储和管理数据的专用软件，使得管理数据更加安全，方便和高效。数据库对数据的管理的基本单位是表(table)，在嵌入式linux中有时候它也需要用到数据库，听起来好难，其实就是几个函数，掌握了就好。</p>
+<h2 id="常见的数据库">常见的数据库</h2>
+<p>大型数据库(大型机)Oracle(亿级)，中型数据库(分布式超大型)mysql(百万级)，轻型数据库(嵌入式设备)sqlite(万级)，访问数据库使用SQL语句，适用于所有的数据库。</p>
+<h2 id="安装sqlite3">安装SQLite3</h2>
+<p>有C环境就可以调用sqlite</p>
+<h3 id="直接用命令安装">直接用命令安装</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt-get update
+sudo apt-get install sqlite3
+</code></pre></div><h3 id="直接编译源码">直接编译源码</h3>
+<p>将源码拷贝到Ubuntu的非共享目录解压</p>
+<p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-1.png" alt="Linux Embedded SQLite3"></p>
+<p>解压命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">tar zvxf sqlite-autoconf-3380500.tar.gz
+</code></pre></div><p>配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cd sqlite-snapshot-201708031550
+./configure --prefix<span style="color:#f92672">=</span>/home/gec/sqlite
+</code></pre></div><p>编译</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make
+</code></pre></div><p>安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make install
+</code></pre></div><h2 id="sqlite的使用">SQLite的使用</h2>
+<p>新建数据库文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sqlite3 数据库文件的路径   //打开/创建
+//比如：sqlite3 first.db
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-2.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="基本操作命令">基本操作命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">.exit/.quit -------- 退出数据库命令行
+.help -------------- 帮助说明信息
+.tables ------------ 查看当前数据库中所有的表
+</code></pre></div><h3 id="数据库访问的sql语句">数据库访问的SQL语句</h3>
+<p>基本语法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">所有的SQL语句都以分号(;)结束
+不区分大小写
+</code></pre></div><h3 id="新建表格">新建表格</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">create table 表名<span style="color:#f92672">(</span>字段名1 字段类型1,字段名2 字段类型2,字段名3 字段类型3,...<span style="color:#f92672">)</span>;
+比如：
+//创建一个stutbl的表，表中有3个字段
+//分别是整数类型的学号id,字符串类型的name和整数类型的age
+create table zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+//不存在则创建
+create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+//如果希望表中某个字段的内容不重复,可以用unique修饰该字段
+create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int unique,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-3.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="删除表格">删除表格</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">drop table 表名;
+//drop table zhiguoxin;
+</code></pre></div><h3 id="往表格中插入数据">往表格中插入数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">insert into 表名 values<span style="color:#f92672">(</span>字段值1,字段值2,字段值3,....<span style="color:#f92672">)</span>;
+//字段值如果是字符串,必须用<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">(</span>单引号<span style="color:#f92672">)</span>括起来
+比如：
+insert into zhiguoxin values<span style="color:#f92672">(</span>1001,<span style="color:#e6db74">&#39;刘尧&#39;</span>,18<span style="color:#f92672">)</span>;
+insert into zhiguoxin values<span style="color:#f92672">(</span>1002,<span style="color:#e6db74">&#39;聂衍文&#39;</span>,19<span style="color:#f92672">)</span>;
+insert into zhiguoxin values<span style="color:#f92672">(</span>1003,<span style="color:#e6db74">&#39;杨佳晨&#39;</span>,20<span style="color:#f92672">)</span>;
+insert into zhiguoxin values<span style="color:#f92672">(</span>1004,<span style="color:#e6db74">&#39;冯华阳&#39;</span>,21<span style="color:#f92672">)</span>;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-4.png" alt="Linux Embedded SQLite3"></p>
+<p>完成插入之后，zhiguoxin 的表格内容如下：</p>
+<p>id	name	age
+1001	刘尧	18
+1002	聂衍文	19
+1003	杨佳晨	20
+1004	冯华阳	21</p>
+<h3 id="查询表中的数据">查询表中的数据</h3>
+<p>//查询表中的所有数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from 表名;
+//select * from zhiguoxin;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-5.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="查看数据库">查看数据库</h3>
+<p>可以把first.db数据库文件拷贝至windows下，使用SQLite Developer打开即可看到。SQLite Developer下载地址</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">https://mydown.yesky.com/pcsoft/443425.html
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-6.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="按条件查找">按条件查找</h3>
+<ol>
+<li>使用where指定查询条件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin where id<span style="color:#f92672">=</span>1003;//查询id值为1003的条目
+<span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> and age&lt;21;
+<span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> or age&lt;21;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-7.png" alt="Linux Embedded SQLite3"></p>
+<ol start="2">
+<li>指定查询的字段</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> id,name,age from zhiguoxin;//只查询id,name,age的字段
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-8.png" alt="Linux Embedded SQLite3"></p>
+<ol start="3">
+<li>使用where+like实现模糊查询</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin where name like <span style="color:#e6db74">&#39;刘%&#39;</span>;//查找名字以刘开头的条目
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-9.png" alt="Linux Embedded SQLite3"></p>
+<ol start="4">
+<li>使用order by实现查询结果按某个字段的值升序/降序输出</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin order by age desc;//按年龄降序排序
+<span style="color:#66d9ef">select</span> * from zhiguoxin order by id asc;  //按id升序排序
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-10.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="删除表中的条目">删除表中的条目</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">delete from 表名 where 条件;//删除所有符合条件的条目
+比如：
+delete from zhiguoxin where id=1001;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-11.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="更新修改表中的条目">更新(修改)表中的条目</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">update 表名 set 字段名1=字段值1,字段名2=字段值2... where 条件;//修改符合条件的条目
+比如：
+update zhiguoxin set age=100 where id=1002;
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-12.png" alt="Linux Embedded SQLite3"></p>
+<h3 id="sqlite中字段类型">SQLite中字段类型</h3>
+<p>数字：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">int ------- 整型
+smallint ---- 短整型
+tinyint ----- 微型整数(0~255)
+bit --------- 0 or 1
+float ------ 单精度浮点型
+real ------- 双精度浮点型
+</code></pre></div><p>字符串：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">char ---------- 非unicode定长字符串 &lt; 8000
+varchar ------- 非unicode变长字符串 &lt; 8000
+text ---------- 非unicode变长字符串 &lt; 2^32-1
+nchar ---------- unicode定长字符串 &lt; 8000
+nvarchar ------- unicode变长字符串 &lt; 8000
+ntext ---------- unicode变长字符串 &lt; 2^32-1
+</code></pre></div><h2 id="sqlite的c语言访问接口">SQLite的C语言访问接口</h2>
+<p>sqlite本身自带C语言访问接口，在C语言的环境下可以直接使用，使用这些接口的代码需要 sqlite的源码编译进可执行程序 或者 编译时链接sqlite的库。</p>
+<h3 id="打开-sqlite3_open">打开 sqlite3_open</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_open<span style="color:#f92672">(</span>
+  const char *filename,   /* 数据库的文件路径 */
+  sqlite3 **ppDb          /* 输出参数：传出代表打开数据库的句柄 */
+<span style="color:#f92672">)</span>;
+//成功返回SQLITE_OK,否则打开失败char ---------- 非unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
+varchar ：非unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
+text ：非unicode变长字符串 &lt; 2^32-1
+nchar：unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
+nvarchar : unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
+ntext :unicode变长字符串 &lt; 2^32-1
+</code></pre></div><h3 id="关闭-sqlite3_close">关闭 sqlite3_close</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_close<span style="color:#f92672">(</span>sqlite3 *pDb<span style="color:#f92672">)</span>;
+//传入要关闭的数据库的句柄
+</code></pre></div><h3 id="编译方法">编译方法</h3>
+<ol>
+<li>直接编译源码</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">gcc sqlite3.c sqlite_test.c -pthread -ldl -o sqlite_test
+</code></pre></div><ol start="2">
+<li>链接sqlite3的动态库</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">gcc sqlite_test.c -pthread -ldl -lsqlite3 -L /home/gec/sqlite/lib -o sqlite_test
+//如果运行时找不到sqlite3的库，可以将编译出来的库文件拷贝到/usr/lib目录下<span style="color:#f92672">(</span>cp -r<span style="color:#f92672">)</span>
+</code></pre></div><h3 id="执行sql语句的接口-sqlite3_exec">执行SQL语句的接口 sqlite3_exec</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_exec<span style="color:#f92672">(</span>
+  sqlite3 *pDb,                              /* 打开的数据库的句柄 */
+  const char *sql,                           /* 要执行的SQL语句 */
+  int <span style="color:#f92672">(</span>*callback<span style="color:#f92672">)(</span>void *arg,int col,char **str,char **name<span style="color:#f92672">)</span>,
+  /* 回调函数,处理SQL语句执行返回的结果<span style="color:#f92672">(</span>查询<span style="color:#f92672">)</span>,一条结果调用一次
+      arg - exec的第四个参数
+      col - 本条结果的字段数
+      str - 记录字段值的数组
+      name - 记录字段名的数组
+     回调函数必须返回SQLITE_OK */
+  void *arg,                                 /* 传递给回调函数的第一个参数 */
+  char **errmsg                              /* 错误信息 */
+<span style="color:#f92672">)</span>;
+//成功返回SQLITE_OK,否则执行失败
+</code></pre></div><p>几个例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">//连接数据库
+int Connection_Sqlite3DataBase<span style="color:#f92672">()</span>
+<span style="color:#f92672">{</span>
+    rc <span style="color:#f92672">=</span> sqlite3_open<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;./face_database/face.db&#34;</span>, &amp;db<span style="color:#f92672">)</span>;
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>rc !<span style="color:#f92672">=</span> SQLITE_OK<span style="color:#f92672">)</span>
+    <span style="color:#f92672">{</span>
+        fprintf<span style="color:#f92672">(</span>stderr, <span style="color:#e6db74">&#34;Can&#39;t open database: %s\n&#34;</span>, sqlite3_errmsg<span style="color:#f92672">(</span>db<span style="color:#f92672">))</span>;
+        sqlite3_close<span style="color:#f92672">(</span>db<span style="color:#f92672">)</span>;
+        exit<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>;
+    <span style="color:#f92672">}</span>
+    <span style="color:#66d9ef">else</span>
+        printf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;You have opened a sqlite3 database named bind.db successfully!\nCongratulation! Have fun!\n&#34;</span><span style="color:#f92672">)</span>;
+    <span style="color:#66d9ef">return</span> 0;
+<span style="color:#f92672">}</span>
+//将图片插入到数据库
+void insert_face_data_toDataBase<span style="color:#f92672">(</span>const char *name, MByte *face_feature, MInt32 featureSize<span style="color:#f92672">)</span>
+<span style="color:#f92672">{</span>
+    sqlite3_prepare<span style="color:#f92672">(</span>db, <span style="color:#e6db74">&#34;insert into face_data_table(name,face_feature,feature_size) values (?,?,?);&#34;</span>, -1, &amp;stmt, NULL<span style="color:#f92672">)</span>;
+    sqlite3_bind_text<span style="color:#f92672">(</span>stmt, 1, name, strlen<span style="color:#f92672">(</span>name<span style="color:#f92672">)</span>, NULL<span style="color:#f92672">)</span>;
+    sqlite3_bind_blob<span style="color:#f92672">(</span>stmt, 2, face_feature, featureSize, NULL<span style="color:#f92672">)</span>;
+    sqlite3_bind_int<span style="color:#f92672">(</span>stmt, 3, featureSize<span style="color:#f92672">)</span>;
+    sqlite3_step<span style="color:#f92672">(</span>stmt<span style="color:#f92672">)</span>;
+<span style="color:#f92672">}</span>
+</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-13.png" alt="Linux Embedded SQLite3"></p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/linux">
+    Linux
+  </a>
+    <a href="/tags/sqlite3">
+    SQLite3
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      手把手教你在嵌入式设备中使用SQLite3
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html" title="手把手教你在嵌入式设备中使用SQLite3">https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/fpga/read-and-write-sd-card-through-Xilinx-ZYNQ.html" rel="next" title="ZYNQ 读写SD卡">
+      <i class="fa fa-chevron-left"></i> ZYNQ 读写SD卡
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/news/Intel-driver-starts-to-collect-data-by-default.html" rel="prev" title="Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心">
+      Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +1051,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

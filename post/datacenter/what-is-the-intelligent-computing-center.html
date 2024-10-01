@@ -1,6 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="什么是智算中心" />
+<meta itemprop="description" content="什么是智算中心" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Intelligent Computing" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="什么是智算中心" />
+<meta property="og:description" content="什么是智算中心" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/datacenter/what-is-the-intelligent-computing-center.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-09-09 21:04:42 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-09-09 21:04:42 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"what-is-the-intelligent-computing-center.html","permalink":"https://www.kontronn.com/post/datacenter/what-is-the-intelligent-computing-center.html","title":"什么是智算中心"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>什么是智算中心 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#智算中心的定义">智算中心的定义</a></li>
+    <li><a href="#智算中心的重要组成部分">智算中心的重要组成部分</a>
+      <ul>
+        <li><a href="#高性能计算硬件">高性能计算硬件</a></li>
+        <li><a href="#高速网络连接">高速网络连接</a></li>
+        <li><a href="#先进的软件系统">先进的软件系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#智算中心的关键技术">智算中心的关键技术</a>
+      <ul>
+        <li><a href="#硬件基础设施">硬件基础设施</a></li>
+        <li><a href="#软件与算法">软件与算法</a></li>
+        <li><a href="#系统与网络">系统与网络</a></li>
+      </ul>
+    </li>
+    <li><a href="#智算中心的作用">智算中心的作用</a>
+      <ul>
+        <li><a href="#加速人工智能算法的训练">加速人工智能算法的训练</a></li>
+        <li><a href="#支持人工智能推理">支持人工智能推理</a></li>
+        <li><a href="#推动各行业智能化升级">推动各行业智能化升级</a></li>
+        <li><a href="#我国智算中心的发展现状">我国智算中心的发展现状</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/datacenter/what-is-the-intelligent-computing-center.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="什么是智算中心">
+      <meta itemprop="description" content="什么是智算中心">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">什么是智算中心 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-09-09 21:04:42 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-09-09 21:04:42 &#43;0800 CST">2024-09-09</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/datacenter" itemprop="url" rel="index">
+      <span itemprop="name">DataCenter</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>130</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/datacenter/what-is-the-intelligent-computing-center.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>在当今数字化高速发展的时代，智算中心如同一颗璀璨的新星，逐渐成为推动各行业智能化升级的关键力量。那么，究竟什么是智算中心呢？</p>
+<h2 id="智算中心的定义">智算中心的定义</h2>
+<p>智算中心即
+<a href="https://www.gaitpu.com" title="人工智能计算中心" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    人工智能计算中心
+    <i class="fa fa-external-link-alt"></i>
+</a>，是指专门为人工智能（AI）应用提供强大计算能力和数据存储的基础设施。它融合了大量的高性能计算设备、高速网络以及先进的软件系统，旨在为人工智能的训练和推理提供高效、稳定的计算环境。</p>
+<h2 id="智算中心的重要组成部分">智算中心的重要组成部分</h2>
+<h3 id="高性能计算硬件">高性能计算硬件</h3>
+<p>强大的服务器集群：由众多高性能服务器组成，这些服务器通常配备先进的处理器，如 
+<a href="https://www.gaitpu.com/ai/a-brief-comparison-of-nvidia-a100-h100-l40s-and-h200" title="GPU" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    GPU
+    <i class="fa fa-external-link-alt"></i>
+</a>（图形处理器）、
+<a href="https://www.gaitpu.com" title="TPU" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    TPU
+    <i class="fa fa-external-link-alt"></i>
+</a>（张量处理单元）等，能够快速处理大规模的计算任务。</p>
+<p>高速存储设备：包括固态硬盘（SSD）和高速内存，以确保数据能够快速读取和写入，满足人工智能算法对数据的高吞吐量需求。</p>
+<h3 id="高速网络连接">高速网络连接</h3>
+<p>低延迟网络：智算中心内部采用高速网络架构，如 InfiniBand 或以太网等，确保数据在服务器之间的快速传输，减少计算过程中的延迟。</p>
+<p>与外部网络的高速连接：为了方便数据的获取和传输，智算中心通常与互联网或其他数据中心建立高速连接，以便获取大规模的数据集和与其他机构进行合作。</p>
+<h3 id="先进的软件系统">先进的软件系统</h3>
+<p>人工智能框架：如 TensorFlow、PyTorch 等，这些框架提供了丰富的算法库和工具，方便开发者进行人工智能模型的训练和部署。</p>
+<p>资源管理软件：用于管理计算资源的分配和调度，确保不同的人工智能任务能够高效地利用计算资源。</p>
+<p>数据管理软件：负责数据的存储、预处理和管理，确保数据的质量和可用性。</p>
+<p>除此之外，智算中心的安全至关重要。</p>
+<p>在硬件方面，需加强服务器集群和存储设备的物理安全防护，严格控制机房访问权限，防止设备被非法接触。同时，硬件自身应具备安全机制，如加密存储等，保障数据安全。对于网络连接，要部署专业安全设备，防范网络攻击。</p>
+<p>在软件层面，人工智能框架等应及时更新漏洞，严格用户权限管理。数据管理软件要通过加密、访问控制等手段保护数据安全。此外，还需建立完善的安全管理制度，确保智算中心稳定运行和数据安全。</p>
+<h2 id="智算中心的关键技术">智算中心的关键技术</h2>
+<h3 id="硬件基础设施">硬件基础设施</h3>
+<p>AI 芯片：AI 芯片是专门为加速 AI 计算而设计的硬件，它能够与 AI 算法协同工作，以满足对算力的极高需求。其架构丰富多样，包括 GPU（图形处理器），擅长并行计算，在深度学习领域应用广泛；FPGA（现场可编程门阵列），具有高灵活性，适用于定制化的加速任务；ASIC（专用集成电路），针对特定任务进行优化，能效比高；还有类脑架构芯片，模拟人脑神经元结构设计，适用于某些特定类型的 AI 计算。</p>
+<p>AI 服务器：作为智算中心的关键组成部分，AI 服务器通常采用 CPU+AI 加速芯片的异构架构，通过集成多颗 AI 加速芯片来实现高计算性能。NVLink 和 OAM 等高速互联架构被广泛应用，以提高服务器内部的通信效率。</p>
+<p>AI 集群：由多台 AI 服务器构成的大规模计算系统，主要用于支持大规模模型的训练和推理。通过优化计算、网络和存储资源的配置，可实现高性能、可扩展的计算能力。例如，华为的昇腾 AI 集群就是高性能 AI 集群的代表之一，具有较快的训练速度和较长的稳定训练周期。</p>
+<h3 id="软件与算法">软件与算法</h3>
+<p>AI 大模型：超大规模智能模型是利用大量数据训练而成，具有更强的泛化能力和广泛的应用场景。主要分为语言大模型，专注于文本生成、翻译、问答等自然语言处理任务；视觉大模型，专注于图像分类、目标检测、视频理解等计算机视觉任务；以及多模态大模型，能够结合文本、图像、音频等多种类型数据进行处理任务。</p>
+<p>分布式计算框架：如 TensorFlow 和 PyTorch 等框架，主要用于构建和训练大规模深度学习模型。它们提供易于使用的编程接口，并具备支持分布式训练的能力。</p>
+<h3 id="系统与网络">系统与网络</h3>
+<p>高性能计算集群：由多台高性能服务器组成，通过高速网络连接，实现大规模并行计算。采用 InfiniBand 或 RDMA 技术，可实现低延迟、高带宽的通信。</p>
+<p>容器化技术：如 Docker 和 Kubernetes，用于简化应用程序的部署和管理过程。能够使开发者快速打包、部署和运行应用，同时确保应用在不同环境之间的一致性和隔离性。</p>
+<p>软件定义网络（SDN）：SDN 技术允许网络管理员通过集中式的控制器来管理和配置网络资源，从而实现灵活的流量调度和优化。</p>
+<p>边缘计算：在数据产生地附近处理数据，可减少延迟，提高响应速度。对于实时性和交互性要求高的应用尤为重要，它能降低数据中心与终端用户之间的通信延迟。</p>
+<h2 id="智算中心的作用">智算中心的作用</h2>
+<h3 id="加速人工智能算法的训练">加速人工智能算法的训练</h3>
+<p>大规模数据处理：智算中心能够处理海量的数据集，为人工智能算法提供丰富的训练数据，从而提高模型的准确性和泛化能力。</p>
+<p>高效计算：凭借强大的计算能力，智算中心可以在较短的时间内完成复杂的人工智能算法训练，大大缩短了模型的开发周期。</p>
+<h3 id="支持人工智能推理">支持人工智能推理</h3>
+<p>实时响应：在实际应用中，智算中心能够快速响应人工智能模型的推理请求，实现实时决策和智能控制。</p>
+<p>高并发处理：可以同时处理多个推理请求，满足大规模应用场景的需求。</p>
+<h3 id="推动各行业智能化升级">推动各行业智能化升级</h3>
+<p>医疗领域：智算中心可以帮助医生进行疾病诊断、医学影像分析等，提高医疗效率和准确性。</p>
+<p>交通领域：实现智能交通管理、自动驾驶等，改善交通拥堵和安全性。</p>
+<p>金融领域：进行风险评估、欺诈检测等，提升金融服务的质量和安全性。</p>
+<h3 id="我国智算中心的发展现状">我国智算中心的发展现状</h3>
+<p>建设规模不断扩大：目前，智算中心已成为数字经济高质量发展的重要支撑，据媒体报道显示，目前全国已有超过 40 个城市布局智算中心。各级政府、运营商、互联网企业等纷纷启动建设计划。例如，2024 年 8 月底，国内最大的智算中心将在哈尔滨投用，中国移动黑龙江公司在哈尔滨智算中心共计部署 1.8 万张 AI 加速卡，集群建设完成后，可提供算力 6.6EFlops。</p>
+<p>政策支持力度大：国家和地方政府出台了一系列政策推动智算中心的发展。如 2023 年 10 月，工业和信息化部等六部门印发的《算力基础设施高质量发展行动计划》，对我国的算力、运载力、存力建设和应用赋能做出了目标指引。此后，上海、深圳、北京等重点城市和地区也结合本地需求制定了相关政策。此外，地方政府还通过发放 “算力券” 等补贴算力建设的方式助力产业发展。</p>
+<p>市场需求持续增长：随着人工智能在互联网、金融、政务、电信和制造等领域的应用渗透度明显提升，人工智能技术将更加深入地应用到行业场景中，智能算力进一步带动产业发展，成为拉动 GDP 增长的关键力量。根据中金公司 2024 年 3 月 22 日研报，随着智能算力市场需求的不断攀升，大模型的发展和 AIGC 应用的落地丰富了人工智能的应用场景，企业加码 AI 技术开发和投入，IDC 预计未来三年内中国智能算力需求的复合年增长率（CAGR）将达到 48%。</p>
+<p>技术水平不断提升：我国在 AI 芯片、服务器、集群等关键技术领域不断取得突破，部分技术达到国际先进水平。同时，也在积极探索液冷等新技术，以提高散热效率、降低能耗，推动智算中心的绿色发展。例如，智算中心采用液冷技术能有效提高散热效率，提升芯片工作稳定性并降低 PUE 值，随着液冷技术的不断成熟、成本逐渐下降。曙光数创副总裁兼CTO张鹏曾对媒体表示，“液冷的趋势很明显。我个人判断，未来5年液冷渗透率大概率会到30%甚至更高。不过，液冷也不会完全替代风冷。风冷还是有很多优势，如维护和可靠性等。尤其在一些功率比较低的情况下，没必要上液冷，所以两者是并存的。”</p>
+<p>然而，我国智算中心的发展也面临一些挑战，如算力资源的合理分配、算力成本的优化控制、算力安全和数据隐私保护等，同时，目前的算力闲置率较高，资源浪费问题需要得到重视，并且算力中心比较分散，较难形成协同运转。</p>
+<p>总之，智算中心作为人工智能时代的关键基础设施，将在推动各行业智能化升级、促进经济发展和社会进步方面发挥越来越重要的作用。随着技术的不断进步，智算中心的性能将不断提升，应用场景也将不断拓展，为我们带来更加智能、便捷的生活和工作体验。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/intelligent-computing">
+    Intelligent Computing
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      什么是智算中心
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/datacenter/what-is-the-intelligent-computing-center.html" title="什么是智算中心">https://www.kontronn.com/post/datacenter/what-is-the-intelligent-computing-center.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/linux/practical-application-of-nfs-server-under-linux.html" rel="next" title="Linux下的NFS服务器实战">
+      <i class="fa fa-chevron-left"></i> Linux下的NFS服务器实战
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/linux/how-to-select-the-three-big-linux-distribution.html" rel="prev" title="Linux三大发行版，该如何选择">
+      Linux三大发行版，该如何选择
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +915,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

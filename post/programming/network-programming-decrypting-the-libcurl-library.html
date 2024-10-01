@@ -1,6 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="网络编程：解密 libcurl库" />
+<meta itemprop="description" content="网络编程：解密 libcurl库" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="Network programming,libcurl" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="网络编程：解密 libcurl库" />
+<meta property="og:description" content="网络编程：解密 libcurl库" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2024-07-17 21:52:28 &#43;0800 CST" />
+<meta property="article:modified_time" content="2024-07-17 21:52:28 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"network-programming-decrypting-the-libcurl-library.html","permalink":"https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html","title":"网络编程：解密 libcurl库"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>网络编程：解密 libcurl库 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是-libcurl">什么是 libcurl？</a></li>
+    <li><a href="#为什么选择-libcurl">为什么选择 libcurl？</a></li>
+    <li><a href="#libcurl-的基本使用">libcurl 的基本使用</a></li>
+    <li><a href="#深入解析-http-响应">深入解析 HTTP 响应</a></li>
+    <li><a href="#处理-post-请求">处理 POST 请求</a></li>
+    <li><a href="#libcurl-的高级特性">libcurl 的高级特性</a></li>
+    <li><a href="#实际案例应用">实际案例应用</a>
+      <ul>
+        <li><a href="#需求分析">需求分析</a></li>
+        <li><a href="#实现步骤">实现步骤</a></li>
+        <li><a href="#实现代码">实现代码</a></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="网络编程：解密 libcurl库">
+      <meta itemprop="description" content="网络编程：解密 libcurl库">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">网络编程：解密 libcurl库 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2024-07-17 21:52:28 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2024-07-17 21:52:28 &#43;0800 CST">2024-07-17</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>538</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>3分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/network-programming-decrypting-the-libcurl-library.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>在这个信息化的时代，网络编程已经渗透到各行各业，从网页爬虫到远程服务器的交互，网络通信无处不在。对于 C++ 开发者来说，libcurl 无疑是一个强大的工具，它提供了一个简洁而灵活的接口来处理各种网络协议。</p>
+<h2 id="什么是-libcurl">什么是 libcurl？</h2>
+<p>libcurl 是一个开源的、跨平台的网络传输库，支持 HTTP、HTTPS、FTP、SMTP 等多种协议。它不仅可以用于简单的文件下载和上传，还能处理复杂的网络请求、响应解析等操作。libcurl 的设计初衷是为了让开发者能够轻松进行网络通信，而不必关心底层实现细节。</p>
+<h2 id="为什么选择-libcurl">为什么选择 libcurl？</h2>
+<p>跨平台支持：libcurl 支持几乎所有主流操作系统，包括 Windows、macOS、Linux 等。你只需编写一次代码，就可以在多个平台上运行。</p>
+<p>丰富的协议支持：除了常见的 HTTP 和 HTTPS，libcurl 还支持 FTP、FTPS、SFTP、SMTP 等多种协议，满足不同场景的需求。</p>
+<p>高性能：libcurl 采用了高效的底层实现，能够处理高并发的网络请求。</p>
+<p>易用性：libcurl 提供了简单易用的 API，开发者可以快速上手，进行各种网络操作。</p>
+<h2 id="libcurl-的基本使用">libcurl 的基本使用</h2>
+<p>在实际使用 libcurl 进行网络编程时，我们通常会按照以下几个步骤进行：</p>
+<p>初始化：在使用 libcurl 之前，需要进行全局初始化。</p>
+<p>创建句柄：每次进行网络操作时，需要创建一个 CURL 句柄。</p>
+<p>设置选项：通过 curl_easy_setopt 函数设置 URL、请求类型、回调函数等选项。</p>
+<p>执行请求：调用 curl_easy_perform 函数执行请求，并获取响应结果。</p>
+<p>清理资源：完成网络操作后，释放资源，进行全局清理。</p>
+<p>以下是一个简单的示例代码，演示了如何使用 libcurl 发送 HTTP GET 请求并获取响应数据。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 回调函数，用于处理响应数据
+</span><span style="color:#75715e"></span>size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    CURL<span style="color:#f92672">*</span> curl;
+    CURLcode res;
+    std<span style="color:#f92672">::</span>string readBuffer;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl <span style="color:#f92672">=</span> curl_easy_init();
+    <span style="color:#66d9ef">if</span>(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+
+        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
+        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
+        } <span style="color:#66d9ef">else</span> {
+            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="深入解析-http-响应">深入解析 HTTP 响应</h2>
+<p>在实际项目中，我们不仅需要发送请求，还需要处理服务器返回的响应，例如获取响应码、解析响应头等。libcurl 提供了多种方法来获取这些信息，使得我们可以轻松地进行后续处理。</p>
+<p>为了获取 HTTP 响应码和响应头，我们可以设置额外的选项和回调函数。例如，通过 curl_easy_getinfo 函数获取响应码，通过设置 CURLOPT_HEADERFUNCTION 回调函数处理响应头。以下代码展示了如何实现这些功能：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+}
+
+size_t <span style="color:#a6e22e">HeaderCallback</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> buffer, size_t size, size_t nitems, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userdata) {
+    std<span style="color:#f92672">::</span>string header(buffer, size <span style="color:#f92672">*</span> nitems);
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Header: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> header <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nitems;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    CURL<span style="color:#f92672">*</span> curl;
+    CURLcode res;
+    std<span style="color:#f92672">::</span>string readBuffer;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl <span style="color:#f92672">=</span> curl_easy_init();
+    <span style="color:#66d9ef">if</span>(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+        curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, HeaderCallback);
+
+        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
+        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">long</span> response_code;
+            curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, <span style="color:#f92672">&amp;</span>response_code);
+            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;HTTP Response Code: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> response_code <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Response Data: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="处理-post-请求">处理 POST 请求</h2>
+<p>除了 GET 请求，POST 请求也是非常常见的。在 POST 请求中，我们需要向服务器发送数据，libcurl 支持多种数据格式，例如 JSON、表单数据等。通过设置 CURLOPT_POSTFIELDS 选项，我们可以轻松发送 POST 数据。</p>
+<p>以下代码演示了如何使用 libcurl 发送一个简单的 POST 请求，并处理响应数据：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    CURL<span style="color:#f92672">*</span> curl;
+    CURLcode res;
+    std<span style="color:#f92672">::</span>string readBuffer;
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl <span style="color:#f92672">=</span> curl_easy_init();
+    <span style="color:#66d9ef">if</span>(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com/post&#34;</span>);
+        curl_easy_setopt(curl, CURLOPT_POST, <span style="color:#ae81ff">1L</span>);
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, <span style="color:#e6db74">&#34;name=test&amp;project=curl&#34;</span>);
+
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+
+        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
+        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
+        } <span style="color:#66d9ef">else</span> {
+            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="libcurl-的高级特性">libcurl 的高级特性</h2>
+<p>libcurl 提供了许多高级特性，可以满足复杂的网络通信需求。以下是几个常见的高级特性：</p>
+<p>SSL/TLS 加密：通过设置 CURLOPT_USE_SSL 和 CURLOPT_CAINFO 选项，可以启用 SSL/TLS 加密通信，确保数据传输的安全性。</p>
+<p>处理 Cookie：libcurl 支持 Cookie 的处理，可以通过设置 CURLOPT_COOKIE 和 CURLOPT_COOKIEFILE 选项来管理 Cookie。</p>
+<p>自定义请求头：通过设置 CURLOPT_HTTPHEADER 选项，可以添加自定义请求头，例如 User-Agent、Content-Type 等。</p>
+<p>多线程支持：libcurl 提供了 easy 和 multi 两种接口，multi 接口支持多线程并发请求，提高了网络操作的效率。</p>
+<h2 id="实际案例应用">实际案例应用</h2>
+<p>为了更好地理解 libcurl 的应用场景，我们来看一个实际的案例：通过 libcurl 实现一个简单的网页爬虫。</p>
+<h3 id="需求分析">需求分析</h3>
+<p>假设我们需要从一个新闻网站抓取最新的新闻标题，并将这些标题保存到本地文件中。这个任务包含以下几个步骤：</p>
+<p>发送 HTTP GET 请求获取网页内容。</p>
+<p>解析网页内容，提取新闻标题。</p>
+<p>将新闻标题保存到本地文件。</p>
+<h3 id="实现步骤">实现步骤</h3>
+<p>发送 HTTP GET 请求：使用 libcurl 发送 GET 请求，获取网页内容。</p>
+<p>解析网页内容：使用正则表达式或其他解析工具提取新闻标题。</p>
+<p>保存数据：将提取的新闻标题保存到本地文件。</p>
+<h3 id="实现代码">实现代码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fstream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+    CURL<span style="color:#f92672">*</span> curl;
+    CURLcode res;
+    std<span style="color:#f92672">::</span>string readBuffer;
+    std<span style="color:#f92672">::</span>ofstream outFile(<span style="color:#e6db74">&#34;news_titles.txt&#34;</span>);
+
+    curl_global_init(CURL_GLOBAL_DEFAULT);
+    curl <span style="color:#f92672">=</span> curl_easy_init();
+    <span style="color:#66d9ef">if</span>(curl) {
+        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.newswebsite.com&#34;</span>);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+
+        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
+        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
+        } <span style="color:#66d9ef">else</span> {
+            std<span style="color:#f92672">::</span>regex title_regex(<span style="color:#e6db74">&#34;&lt;h1 class=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">title</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;(.*?)&lt;/h1&gt;&#34;</span>);
+            std<span style="color:#f92672">::</span>smatch matches;
+            std<span style="color:#f92672">::</span>string<span style="color:#f92672">::</span>const_iterator searchStart(readBuffer.cbegin());
+
+            <span style="color:#66d9ef">while</span> (std<span style="color:#f92672">::</span>regex_search(searchStart, readBuffer.cend(), matches, title_regex)) {
+                outFile <span style="color:#f92672">&lt;&lt;</span> matches[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+                searchStart <span style="color:#f92672">=</span> matches.suffix().first;
+            }
+        }
+
+        curl_easy_cleanup(curl);
+    }
+    curl_global_cleanup();
+    outFile.close();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>在这个示例中，我们使用 libcurl 获取网页内容，然后通过正则表达式提取新闻标题，并将其保存到本地文件中。这是 libcurl 在实际项目中的一个典型应用场景，展示了其强大的网络请求处理能力。</p>
+<h2 id="总结">总结</h2>
+<p>libcurl 是一个功能强大且灵活的网络通信库，适用于各种网络编程需求。从简单的 HTTP 请求到复杂的多协议支持，libcurl 都能轻松应对。在本文中，我们从 libcurl 的基础使用方法开始，逐步介绍了处理 HTTP 响应、发送 POST 请求和使用高级特性等内容，并通过实际案例展示了 libcurl 的应用场景。libcurl 的世界远不止于此，期待你在实际应用中发现更多的惊喜和可能性！</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/network-programming">
+    Network programming
+  </a>
+    <a href="/tags/libcurl">
+    libcurl
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      网络编程：解密 libcurl库
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html" title="网络编程：解密 libcurl库">https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html" rel="next" title="摩尔线程开发MTLink挑战英伟达NVLink技术">
+      <i class="fa fa-chevron-left"></i> 摩尔线程开发MTLink挑战英伟达NVLink技术
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/hardware/AMD-acquires-Silo-AI.html" rel="prev" title="48.3亿！AMD宣布收购 Silo AI">
+      48.3亿！AMD宣布收购 Silo AI
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +1045,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

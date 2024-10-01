@@ -1,6 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="用协议分析仪直观理解USB传输的核心概念" />
+<meta itemprop="description" content="用协议分析仪直观理解USB传输的核心概念" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="USB,Analyzer" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="用协议分析仪直观理解USB传输的核心概念" />
+<meta property="og:description" content="用协议分析仪直观理解USB传输的核心概念" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-10-06 13:21:08 &#43;0800 CST" />
+<meta property="article:modified_time" content="2023-10-06 13:21:08 &#43;0800 CST" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"understand-usb-transition-core-concept-by-using-protocol-analyze.html","permalink":"https://www.kontronn.com/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html","title":"用协议分析仪直观理解USB传输的核心概念"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>用协议分析仪直观理解USB传输的核心概念 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#几个基本概念">几个基本概念</a>
+      <ul>
+        <li><a href="#usb主机host">USB主机（Host）</a></li>
+        <li><a href="#usb设备device">USB设备（Device）</a></li>
+        <li><a href="#usb枚举">USB枚举</a></li>
+        <li><a href="#usb配置configuration">USB配置（Configuration）</a></li>
+        <li><a href="#usb接口interface">USB接口（Interface）</a></li>
+        <li><a href="#usb端点endpoint">USB端点（Endpoint）</a></li>
+      </ul>
+    </li>
+    <li><a href="#usb传输usb事务与usb包">USB传输、USB事务与USB包</a></li>
+    <li><a href="#控制传输">控制传输</a></li>
+    <li><a href="#中断传输">中断传输</a></li>
+    <li><a href="#批量传输">批量传输</a></li>
+    <li><a href="#同步传输">同步传输</a></li>
+    <li><a href="#usb包">USB包</a></li>
+    <li><a href="#usb帧与微帧">USB帧与微帧</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用协议分析仪直观理解USB传输的核心概念">
+      <meta itemprop="description" content="用协议分析仪直观理解USB传输的核心概念">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">用协议分析仪直观理解USB传输的核心概念 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-10-06 13:21:08 &#43;0800 CST" itemprop="dateCreated datePublished" datetime="2023-10-06 13:21:08 &#43;0800 CST">2023-10-06</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/hardware" itemprop="url" rel="index">
+      <span itemprop="name">Hardware</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>83</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>本文内容是基于
+<a href="https://www.vxworks.net/component/tags/tag/usb" title="USB 2.0" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+    USB 2.0
+    <i class="fa fa-external-link-alt"></i>
+</a>。在讲述USB传输前，有必要先了解下USB的几个基本概念。</p>
+<h2 id="几个基本概念">几个基本概念</h2>
+<p>本文内容是基于USB 2.0。在讲述USB传输前，有必要先了解下USB的几个基本概念。</p>
+<h3 id="usb主机host">USB主机（Host）</h3>
+<p>每一次传输都是主机发起的，不管是发送数据还是接收数据。</p>
+<h3 id="usb设备device">USB设备（Device）</h3>
+<p>设备会响应主机的请求，每个设备的内部固件中都会存有设备描述符来表明设备的基本信息，比如厂家ID、产品ID、配置数目、接口和端点信息等。</p>
+<h3 id="usb枚举">USB枚举</h3>
+<p>主机识别到有设备接入后，会发起枚举，读取设备的描述符信息后配置设备。</p>
+<h3 id="usb配置configuration">USB配置（Configuration）</h3>
+<p>一个设备有一个或者多个配置，主机可以通知设备选用哪个配置，但一个设备当前只能有一种生效的配置。</p>
+<h3 id="usb接口interface">USB接口（Interface）</h3>
+<p>简单地说，一个接口表示一种功能，比如说这个设备既有虚拟串口功能，也有虚拟网口功能，可能还有大容量存储（U盘）功能。当然一个功能并不都是严格对应一个接口，有些功能可能需要两个以上的接口，这里为了简化描述，暂不深究。</p>
+<h3 id="usb端点endpoint">USB端点（Endpoint）</h3>
+<p>端点简称EP，一个接口配置有一个或者多个端点。端点是主机和设备之间通信的部件，数据是从某个端点发送出去或者接收进来的。端点是有方向的，方向是基于主机侧来定义的，OUT方向是指从主机传出，IN是指传入主机。</p>
+<h2 id="usb传输usb事务与usb包">USB传输、USB事务与USB包</h2>
+<p>USB传输由主机发起，任何时刻整个USB体系内仅允许一个数据包在传输。</p>
+<p>USB传输有4种类型，控制传输、中断传输、批量传输和同步传输，每种传输有不同的适用场景。</p>
+<p>传输由事务构成，事务类型有SETUP事务、DATA IN事务、DATA OUT事务，SETUP事务主要往设备发送控制命令，DATA IN事务主要从设备读取数据，DATA OUT事务主要往设备发送数据。每个事务采用“令牌包”-“数据包”-“握手包”的三段式传输机制（同步传输没有握手包）。</p>
+<p>包是USB总线上数据传输的最小单位，其中的PID字段指明了包的类型。令牌包有IN/OUT/SETUP/SOF四种。前三种“令牌包”都含有指定数据包去向或者来源的设备地址和端点，从而保证了只有一个设备对总线上的数据包/令牌包作出响应。“握手包”表示了传输的成功与否。“数据包”承载实际数据。</p>
+<p>USB传输、事务、包是从不同层次上去说明一次数据交互的三个概念。一次传输包含多个事务，一个事务包含多个包。直接看一下USB协议分析仪的抓包示例，可能更清楚一些：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-1.png" alt="USB Analyzer"></p>
+<h2 id="控制传输">控制传输</h2>
+<p>控制传输是一种可靠的传输，所有USB设备都必须支持的一种传输方式，主机在枚举设备的过程中就是通过端点0进行控制传输。一次控制传输可分为三个阶段：</p>
+<p>第一阶段为建立阶段，通过SETUP事务指定了此次控制传输的请求类型；</p>
+<p>第二阶段为数据阶段，也有些请求没有数据阶段；</p>
+<p>第三阶段为状态阶段，通过一次IN/OUT事务表明请求是否成功完成。</p>
+<p>下图是通过USB协议分析仪抓取U盘的某次控制传输，对应的是枚举阶段获取设备描述符：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-2.png" alt="USB Analyzer"></p>
+<p>Control SETUP事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-3.png" alt="USB Analyzer"></p>
+<p>Control IN事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-4.png" alt="USB Analyzer"></p>
+<p>Control OUT事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-5.png" alt="USB Analyzer"></p>
+<h2 id="中断传输">中断传输</h2>
+<p>中断传输是一种可靠的传输，主机通过固定的间隔对中断端点进行查询，如果设备有数据则往主机回送数据，否则回送NAK。同样的，如果主机要发送数据，设备没有准备好接收，也会回送NAK。</p>
+<p>下图是通过USB协议分析仪抓取的USB camera的某次中断传输（control数据，非图像数据）：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-6.png" alt="USB Analyzer"></p>
+<p>Interrupt IN事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-7.png" alt="USB Analyzer"></p>
+<h2 id="批量传输">批量传输</h2>
+<p>批量传输是一种可靠的传输，但延迟没有保证，它尽量利用可以利用的带宽来完成传输，适合数据量比较大的传输。高速批量端点的最大包长度为 512。</p>
+<p>对于批量输出，如果设备收到的数据包正确，并有足够的空间保存数据，那么设备会返回ACK握手包或NYET握手包（只有高速模式才有NYET握手包，它表示本次数据接收成功，但是没有能力接收下一次传输）。如果设备收到的数据包正确，但是没有足够的空间保存数据：设备返回NAK握手包。主机收到NAK，延时一段时间后，再重新进行批量输出。</p>
+<p>对于批量输入，如果设备没有准备好数据，则回送NAK，否则回送数据包。</p>
+<p>批量传输由一个或者多个IN / OUT事务组成，下图是抓取的U盘某次批量传输：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-8.png" alt="USB Analyzer"></p>
+<p>Bulk OUT事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-9.png" alt="USB Analyzer"></p>
+<h2 id="同步传输">同步传输</h2>
+<p>同步传输是一种实时的、不可靠的传输，不支持错误重发机制。高速同步端点的最大包长度为1024。</p>
+<p>常规情况下，一个微帧内仅允许一次同步事务传输；但是，高速高带宽端点最多可以在一个微帧内进行三次同步事务传输，传输高达3072字节的数据，这个特性对数据量较大的设备比如USB camera的性能表现有很重要的影响。</p>
+<p>下图是抓取的USB Camera的某次同步传输：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-10.png" alt="USB Analyzer"></p>
+<p>Isoch IN事务展开图：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-11.png" alt="USB Analyzer"></p>
+<h2 id="usb包">USB包</h2>
+<p>USB包由SOP（包起始域）、SYNC（同步域）、Packet Content（包内容）、EOP（包结束域）四部分组成，其中SOP、SYNC、EOP为所有包共有的域，Packet Content由PID、地址、帧号、数据、CRC组成，注意这只是一个通用构成，不同类型的包，Packet Content的构成会有一些区别。</p>
+<p>USB包按大类分为令牌包、数据包、握手包和帧首包，每个大类里面还有具体类型，比如令牌类有OUT/IN/SETUP等，数据类有DATA0/DATA1等，包的类型由Packet Content中的PID指定。这里不罗列所有类型的包，只抓取几个有代表性的包来看看。</p>
+<p>下图是抓取的某个SETUP包的Packet Content：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-12.png" alt="USB Analyzer"></p>
+<p>下图是抓取的某个SOF包的Packet Content：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-13.png" alt="USB Analyzer"></p>
+<p>下图是抓取的某个DATA1包的Packet Content：</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-14.png" alt="USB Analyzer"></p>
+<h2 id="usb帧与微帧">USB帧与微帧</h2>
+<p>USB帧与微帧属于USB传输中时间基准的概念。低速和全速下每个帧时长为1ms，高速下每个帧又分为8个微帧，每个微帧时长为125us。USB 2.0 规范上有详细描述，如下图所示。</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-15.png" alt="USB Analyzer"></p>
+<p>在每一个帧（微帧）的起始点，会发送一个SOF包（帧起始包），帧起始包之后可以是输出（OUT）、输入（IN）、建立（SETUP）等令牌包，或者没有包。数据的传输在每个帧（微帧）内进行，如果没有数据要传输，则SOF包发送完毕之后，总线进入空闲状态。</p>
+<p><img src="https://www.kontronn.com/imgs/post/USB-Protocol-Analyze-16.png" alt="USB Analyzer"></p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/usb">
+    USB
+  </a>
+    <a href="/tags/analyzer">
+    Analyzer
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      用协议分析仪直观理解USB传输的核心概念
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html" title="用协议分析仪直观理解USB传输的核心概念">https://www.kontronn.com/post/hardware/understand-usb-transition-core-concept-by-using-protocol-analyze.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/hardware/the-good-habits-of-excellent-PCB-engineers.html" rel="next" title="盘点优秀PCB工程师的好习惯">
+      <i class="fa fa-chevron-left"></i> 盘点优秀PCB工程师的好习惯
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/soc/the-important-role-of-efuse-in-soc.html" rel="prev" title="efuse在soc中的重要作用">
+      efuse在soc中的重要作用
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +926,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,6 +1,661 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="状态机的三种实现方法" />
+<meta itemprop="description" content="状态机的三种实现方法" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="State Machine" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="状态机的三种实现方法" />
+<meta property="og:description" content="状态机的三种实现方法" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-07-25 09:57:02 -0400 -0400" />
+<meta property="article:modified_time" content="2023-07-25 09:57:02 -0400 -0400" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"three-implementation-methods-of-state-machine.html","permalink":"https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html","title":"状态机的三种实现方法"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>状态机的三种实现方法 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#switchcase-法">switch—case 法</a>
+      <ul>
+        <li><a href="#程序清单-list4--">「程序清单 List4  ：」</a></li>
+      </ul>
+    </li>
+    <li><a href="#表格驱动法">表格驱动法</a>
+      <ul>
+        <li><a href="#程序清单-list7">「程序清单 List7：」</a></li>
+        <li><a href="#程序清单list8">「程序清单List8：」</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数指针法">函数指针法</a></li>
+    <li><a href="#小节">小节</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="状态机的三种实现方法">
+      <meta itemprop="description" content="状态机的三种实现方法">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">状态机的三种实现方法 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-07-25 09:57:02 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-07-25 09:57:02 -0400 -0400">2023-07-25</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/programming" itemprop="url" rel="index">
+      <span itemprop="name">Programming</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>676</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>4分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/programming/three-implementation-methods-of-state-machine.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>这次我们一起来学习C语言实现状态机的三种方法解析。</p>
+<p>状态机的实现无非就是 3 个要素：状态、事件、响应。转换成具体的行为就 3 句话。</p>
+<ul>
+<li>发生了什么事？</li>
+<li>现在系统处在什么状态？</li>
+<li>在这样的状态下发生了这样的事，系统要干什么？</li>
+</ul>
+<p>用 C 语言实现状态机主要有 3 种方法：switch—case 法、表格驱动法、函数指针法。</p>
+<h2 id="switchcase-法">switch—case 法</h2>
+<p>状态用 switch—case 组织起来， 将事件也用switch—case 组织起来， 然后让其中一个 switch—case 整体插入到另一个 switch—case 的每一个 case 项中  。</p>
+<h3 id="程序清单-list4--">「程序清单 List4  ：」</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">switch</span> (StateVal) {
+<span style="color:#66d9ef">case</span> S0:
+    <span style="color:#66d9ef">switch</span> (EvntID) {
+    <span style="color:#66d9ef">case</span> E1:
+        action_S0_E1();         <span style="color:#75715e">/*S0 状态下 E1 事件的响应 */</span>
+        StateVal <span style="color:#f92672">=</span> new state value;     <span style="color:#75715e">/*状态迁移，不迁移则没有此行 */</span>
+        <span style="color:#66d9ef">break</span>;
+    <span style="color:#66d9ef">case</span> E2:
+        action_S0_E2();         <span style="color:#75715e">/*S0 状态下 E2 事件的响应 */</span>
+        StateVal <span style="color:#f92672">=</span> new state value;
+        <span style="color:#66d9ef">break</span>;
+    ... ... <span style="color:#66d9ef">case</span> Em:
+        action_S0_Em();         <span style="color:#75715e">/*S0 状态下 Em 事件的响应 */</span>
+        StateVal <span style="color:#f92672">=</span> new state value;
+        <span style="color:#66d9ef">break</span>;
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+        <span style="color:#66d9ef">break</span>;
+    }
+    <span style="color:#66d9ef">break</span>;
+<span style="color:#66d9ef">case</span> S1:
+    ... ... <span style="color:#66d9ef">break</span>;
+... ... <span style="color:#66d9ef">case</span> Sn:
+    ... ... <span style="color:#66d9ef">break</span>;
+<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">break</span>;
+}
+</code></pre></div><p>上面的伪代码示例只是通用的情况，实际应用远没有这么复杂。虽然一个系统中事件可能有很多种，但在实际应用中，许多事件可能对某个状态是没有意义的。</p>
+<p>例如在程序清单 List4中，如果 E2、······ Em 对处在 S0 状态下的系统没有意义，那么在 S0 的 case 下有关事件E2、······ Em 的代码根本没有必要写,状态 S0 只需要考虑事件 E1 的处理就行了。</p>
+<p>既然是两个 switch—case 之间的嵌套， 那么就有一个谁嵌套谁的问题， 所以说 switch—case法有两种写法：状态嵌套事件和事件嵌套状态。这两种写法都可以， 各有利弊， 至于到底选用哪种方式就留给设计人员根据具体情况自行决断吧。</p>
+<p>关于 switch—case 法还有最后一点要说明， 因为 switch—case 的原理是从上到下挨个比较，越靠后，查找耗费的时间就越长，所以要注意状态和事件在各自的 switch 语句中的安排顺序，不推荐程序清单 List4 那样按顺序号排布的方式。出现频率高或者实时性要求高的状态和事件的位置应该尽量靠前。</p>
+<h2 id="表格驱动法">表格驱动法</h2>
+<p>如果说 switch—case 法是线性的，那么表格驱动法则是平面的。表格驱动法的实质就是将状态和事件之间的关系固化到一张二维表格里，把事件当做纵轴，把状态当做横轴，交点[Sn , Em]则是系统在 Sn 状态下对事件 Em 的响应。</p>
+<p><img src="https://www.kontronn.com/imgs/post/State-Machine.png" alt="State Machine"></p>
+<p>如图 4， 我把表格中的 Node_SnEm 叫做状态机节点， 状态机节点 Node_SnEm 是系统在 Sn状态下对事件 Em 的响应。这里所说的响应包含两个方面：输出动作和状态迁移。状态机节点一般是一个类似程序清单 List5 中的结构体变量 。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> fsm_node
+{
+    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt);
+    INT8U u8NxtStat;
+};
+</code></pre></div><p>程序清单 List5 中的这个结构体有两个成员：fpAction 和 u8NxtStat。fpAction 是一个函数指针， 指向一个形式为 void func(void * pEvnt)的函数， func 这个函数是对状态转移中动作序列的标准化封装。</p>
+<p>也就是说， 状态机在状态迁移的时候， 不管输出多少个动作、操作多少个变量、调用多少个函数，这些行为统统放到函数 func 中去做。</p>
+<p>把动作封装好了之后，再把封装函数 func 的地址交给函数指针 fpAction，这样，想要输出动作，只需要调用函数指针 fpAction 就行了。</p>
+<p>再看看上面的 func 函数，会发现函数有一个形参 pEvnt，这是一个类型为 void * 的指针， 在程序实际运行时指向一个能存储事件的变量，通过这个指针我们就能获知关于事件的全部信息，这个形参是很有必要的。事件一般包括两个属性：事件的类型和事件的内容。</p>
+<p>例如一次按键事件，我们不仅要知道这是一个按键事件，还要知道按下的到底是哪个键。事件的类型和状态机当前的状态可以让我们在图 4 的表格中迅速定位，确定该调用哪个动作封装函数， 但是动作封装函数要正确响应事件还需要知道事件的内容是什么， 这也就是形参pEvnt 的意义。</p>
+<p>由于事件的多样性，存储事件内容的数据格式不一定一样，所以就把 pEvnt 定义成了 void * 型，以增加灵活性。有关 fpAction 的最后一个问题：如果事件 Em 对状态 Sn 没有意义，那么状态机节点Node_SnEm 中的 fpAction 该怎么办？我的答案是：那就让它指向一个空函数呗！前面不是说过么，什么也不干也叫响应。</p>
+<p>u8NxtStat 存储的是状态机的一个状态值。我们知道， 状态机响应事件要输出动作， 也就是调用函数指针 fpAction 所指向的那个封装函数， 函数调用完毕后程序返回主调函数， 状态机对事件的响应就算结束了， 下一步就要考虑状态迁移的问题了。</p>
+<p>可能要保持本状态不变， 也可能要迁移到一个新的状态，该如何抉择呢？u8NxtStat 存储的状态就是状态机想要的答案！</p>
+<p>图 4 的这张表格反映在 C 语言代码里就是一个二维数组，第 1 维就是状态机的状态，第 2维就是统一分类的事件，而数组的元素则是程序清单 List5 中的结构体常量。如果程序中使用表格驱动法，还需要注意一些特别的事项。要将状态当做表格的横轴，那么就要求状态值集合必须满足以下条件：</p>
+<p>(1) 该集合是一个递增的等差整数数列</p>
+<p>(2) 该数列初值为 0</p>
+<p>(3) 该数列等差值为 1</p>
+<p>“事件” 作为纵轴，其特点和要求与用来做横轴的“状态” 完全一致。在 C 语言提供的数据类型中， 没有比枚举更符合以上要求的可选项了， 极力推荐将状态集合和事件类型集合做成枚举常量。表格驱动法的优点：调用接口统一 ，定位快速。</p>
+<p>表格驱动法屏蔽了不同状态下处理各个事件的差异性，因此可以将处理过程中的共性部分提炼出来，做成标准统一的框架式代码，形成统一的调用接口。根据程序清单 List5 中的状态机节点结构体，做成的框架代码如程序清单 List6 所示。</p>
+<p>表格驱动法查找目标实际上就是一次二维数组的寻址操作，所以它的平均效率要远高于switch—case 法。</p>
+<p>###「程序清单 List6  ：」</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">struct</span> fsm_node g_arFsmDrvTbl[][]; <span style="color:#75715e">/*状态机驱动表格*/</span>
+INT8U u8CurStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*状态暂存*/</span>
+INT8U u8EvntTyp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*事件类型暂存*/</span>
+<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">/*事件变量地址暂存*/</span>
+<span style="color:#66d9ef">struct</span> fsm_node stNodeTmp <span style="color:#f92672">=</span> {NULL, <span style="color:#ae81ff">0</span>}; <span style="color:#75715e">/*状态机节点暂存*/</span>
+u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="color:#75715e">/*读取当前状态*/</span>
+u8EvntTyp <span style="color:#f92672">=</span> get_cur_evnt_typ(); <span style="color:#75715e">/*读取当前触发事件类型*/</span>
+pEvnt <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)get_cur_evnt_ptr(); <span style="color:#75715e">/*读取事件变量地址*/</span>
+stNodeTmp <span style="color:#f92672">=</span> g_arFsmDrvTbl[u8CurStat ][u8EvntTyp ];<span style="color:#75715e">/*定位状态机节点*/</span>
+stNodeTmp.fpAction(pEvnt ); <span style="color:#75715e">/*动作响应*/</span>
+set_cur_state(stNodeTmp.u8NxtStat); <span style="color:#75715e">/*状态迁移*/</span>
+.....
+</code></pre></div><p>表格驱动法好则好矣，但用它写出来的程序还有点儿小问题，我们先来看看按照表格驱动法写出来的程序有什么特点 。</p>
+<p>前面说过，表格驱动法可以把状态机调度的部分做成标准统一的框架代码，这个框架适用性极强， 不管用状态机来实现什么样的应用， 框架代码都不需要做改动， 我们只需要根据实际应用场合规划好状态转换图，然后将图中的各个要素(状态、事件、动作、迁移，有关“条件”要素一会儿再说)用代码实现就行了，我把这部分代码称作应用代码。</p>
+<p>在应用代码的.c 文件中， 你会看到一个声明为 const 的二维数组， 也就是图 4 所示的状态驱动表格， 还会看到许多彼此之间毫无关联的函数， 也就是前面提到的动作封装函数。这样的一份代码， 如果手头上没有一张状态转换图， 让谁看了也会一头雾水， 这样的格式直接带来了代码可读性差的问题。</p>
+<p>如果我们想给状态机再添加一个状态，反映到代码上就是给驱动表格再加一列内容，同时也要新添加若干个动作封装函数。如果驱动表格很大， 做这些工作是很费事儿的， 而且容易出错。如果不小心在数组中填错了位置， 那么程序跑起来就和设计者的意图南辕北辙了，</p>
+<p>远没有在 switch—case 法中改动来得方便、安全。上面说的只是小瑕疵， 其实最让我不爽的是表格驱动法不能使用Extended State Machine(对这个词组还有印象吧？)！Extended State Machine 的最大特点就是状态机响应事件之前先判断条件，根据判定结果选择执行哪些动作，转向哪个状态。</p>
+<p>也就是说，系统在状态 Sn 下发生了事件 Em 后，转向的状态不一定是唯一的，这种灵活性是 Extended State Machine 的最有价值的优点。</p>
+<p>回过头来看看程序清单 List5 中给出的状态机节点结构体，如果系统在状态 Sn 下发生了事件 Em， 状态机执行完 fpAction 所给出的动作响应之后， 必须转到 u8NxtStat 指定的状态。</p>
+<p>表格驱动法的这个特性直接杜绝了 Extended State Machine 在表格驱动法中应用的可能性， 所以表格驱动法的代码实现中不存在“条件” 这个状态机要素。ESM，你是如此的优秀，我怎么舍得抛弃你 ？！</p>
+<p>再看图 4 所示的表格驱动法示例图，如果我们把表格中的代表事件的纵轴去掉，只留下代表状态的横轴，将一列合并成一格，前文提到的问题是不是能得到解决呢？不错！这就是失传江湖多年的《葵花宝典》 ——阉割版表格驱动法 ！！</p>
+<p>阉割版表格驱动法，又名压缩表格驱动法，一维状态表格与事件 switch—case 的合体。压缩表格驱动法使用了一维数组作为驱动表格，数组的下标即是状态机的各个状态。</p>
+<p>表格中的元素叫做压缩状态机节点， 节点的主要内容还是一个指向动作封装函数的函数指针， 只不过这个动作封装函数不是为某个特定事件准备的， 而是对所有的事件都有效的。</p>
+<p>节点中不再强制指定状态机输出动作完毕后所转向的状态， 而是让动作封装函数返回一个状态， 并把这个状态作为状态机新的状态。</p>
+<p>压缩表格驱动法的这个特点， 完美的解决了 Extended State Machine 不能在表格驱动法中使用的问题 。</p>
+<p>程序清单 List7 中的示例代码包含了压缩状态机节点结构体和状态机调用的框架代码。</p>
+<h3 id="程序清单-list7">「程序清单 List7：」</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> fsm_node <span style="color:#75715e">/*压缩状态机节点结构体*/</span>
+{
+ INT8U (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt); <span style="color:#75715e">/*事件处理函数指针*/</span>
+ INT8U u8StatChk; <span style="color:#75715e">/*状态校验*/</span>
+};
+......
+u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="color:#75715e">/*读取当前状态*/</span>
+......
+<span style="color:#66d9ef">if</span>(stNodeTmp.u8StatChk <span style="color:#f92672">==</span> u8CurStat )
+{
+ u8CurStat <span style="color:#f92672">=</span> stNodeTmp.fpAction(pEvnt ); <span style="color:#75715e">/*事件处理*/</span>
+ set_cur_state(u8CurStat ); <span style="color:#75715e">/*状态迁移*/</span>
+}
+<span style="color:#66d9ef">else</span>
+{
+ state_crash(u8CurStat ); <span style="color:#75715e">/*非法状态处理*/</span>
+}
+.....
+</code></pre></div><p>对照程序清单 List5，就会发现程序清单 List7 中 struct fsm_node 结构体的改动之处。首先， fpAction 所指向函数的函数形式变了，动作封装函数 func 的模样成了这样的了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">INT8U <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> pEvnt);
+</code></pre></div><p>现在的动作封装函数 func 是要返回类型为 INT8U 的返回值的，这个返回值就是状态机要转向的状态， 也就是说， 压缩表格驱动法中的状态机节点不负责状态机新状态的确定， 而把这项任务交给了动作封装函数 func， func 返回哪个状态， 状态机就转向哪个状态。</p>
+<p>新状态由原来的常量变成了现在的变量，自然要灵活许多。上面说到现在的动作封装函数 func 要对当前发生的所有的事件都要负责， 那么 func 怎么会知道到底是哪个事件触发了它呢？看一下 func 的形参 void * pEvnt 。</p>
+<p>在程序清单 List5 中我们提到过，这个形参是用来向动作封装函数传递事件内容的，但是从前文的叙述中我们知道， pEvnt 所指向的内存包含了事件的所有信息， 包括事件类型和事件内容 ， 所以通过形参 pEvnt ， 动作封装函数 func 照样可以知道事件的类型。</p>
+<p>程序清单 List7 中 struct fsm_node 结构体还有一个成员 u8StatChk ， 这里面存储的是状态机 的一个状态，干什么用的呢？玩 C 语言数组的人都知道，要严防数组寻址越界。</p>
+<p>要知道，压缩表格驱动法的驱动表格是一个以状态值为下标的一维数组， 数组元素里面最重要的部分就是一个个动作封装函数的地址。</p>
+<p>函数地址在单片机看来无非就是一段二进制数据， 和内存中其它的二进制数据没什么两样，不管程序往单片机 PC 寄存器里塞什么值，单片机都没意见。假设程序由于某种意外而改动了存储状态机当前状态的变量，使变量值变成了一个非法状态。</p>
+<p>再发生事件时， 程序就会用这个非法的状态值在驱动表格中寻址， 这时候就会发生内存泄露，程序拿泄露内存中的未知数据当函数地址跳转，不跑飞才怪！</p>
+<p>为了防止这种现象的发生， 压缩状态机节点结构体中又添加了成员 u8StatChk 。u8StatChk中存储的是压缩状态机节点在一维驱动表格的位置， 例如某节点是表格中的第 7 个元素， 那么这个节点的成员 u8StatChk 值就是 6。</p>
+<p>看一下程序清单 List7 中的框架代码示例， 程序在引用函数指针 fpAction 之前， 先检查当前状态和当前节点成员 u8CurStat 的值是否一致，一致则认为状态合法，事件正常响应，如果不一致，则认为当前状态非法，转至意外处理，最大限度保证程序运行的安全。当然，如果泄露内存中的数据恰好和 u8CurStat 一致，那么这种方法真的就回天乏力了。</p>
+<p>还有一个方法也可以防止状态机跑飞，如果状态变量是枚举，那么框架代码就可以获知状态值的最大值， 在调用动作封装函数之前判断一下当前状态值是否在合法的范围之内， 同样能保证状态机的安全运行。</p>
+<p>压缩表格驱动法中动作封装函数的定义形式我们已经知道了，函数里面到底是什么样子的呢？程序清单 List8 是一个标准的示例。</p>
+<h3 id="程序清单list8">「程序清单List8：」</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">INT8U <span style="color:#a6e22e">action_S0</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt)
+{
+ INT8U u8NxtStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+ INT8U u8EvntTyp <span style="color:#f92672">=</span> get_evnt_typ(pEvnt);
+ <span style="color:#66d9ef">switch</span>(u8EvntTyp )
+ {
+  <span style="color:#66d9ef">case</span> E1:
+   action_S0_E1(); <span style="color:#75715e">/*事件 E1 的动作响应*/</span>
+   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
+   <span style="color:#66d9ef">break</span>;
+   ......
+  <span style="color:#66d9ef">case</span> Em:
+   action_S0_Em(); <span style="color:#75715e">/*事件 Em 的动作响应*/</span>
+   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
+   <span style="color:#66d9ef">break</span>;
+  <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+   ; <span style="color:#75715e">/*不相关事件处理*/</span>
+   <span style="color:#66d9ef">break</span>;
+ }
+ <span style="color:#66d9ef">return</span> u8NxtStat ; <span style="color:#75715e">/*返回新状态*/</span>
+}
+</code></pre></div><p>从程序清单 List8 可以看出， 动作封装函数其实就是事件 switch—case 的具体实现。函数根据形参 pEvnt 获知事件类型， 并根据事件类型选择动作响应， 确定状态机迁移状态， 最后将新的状态作为执行结果返回给框架代码。</p>
+<p>有了这样的动作封装函数， Extended State Machine 的应用就可以完全不受限制了！到此，有关压缩表格驱动法的介绍就结束了。</p>
+<p>个人认为压缩表格驱动法是相当优秀的，它既有表格驱动法的简洁、高效、标准，又有 switch—case 法的直白、灵活、多变，相互取长补短，相得益彰。</p>
+<h2 id="函数指针法">函数指针法</h2>
+<p>上面说过，用 C 语言实现状态机主要有 3 种方法(switch—case 法、表格驱动法、函数指针法)， 其中函数指针法是最难理解的， 它的实质就是把动作封装函数的函数地址作为状态来看待。不过，有了之前压缩表格驱动法的铺垫，函数指针法就变得好理解了，因为两者本质上是相同的。</p>
+<p>压缩表格驱动法的实质就是一个整数值(状态机的一个状态)到一个函数地址(动作封装函数)的一对一映射， 压缩表格驱动法的驱动表格就是全部映射关系的直接载体。在驱动表格中通过状态值就能找到函数地址，通过函数地址同样能反向找到状态值。</p>
+<p>我们用一个全局的整型变量来记录状态值，然后再查驱动表格找函数地址，那干脆直接用一个全局的函数指针来记录状态得了，还费那劳什子劲干吗？！这就是函数指针法的前世今生。</p>
+<p>用函数指针法写出来的动作封装函数和程序清单 List8 的示例函数是很相近的， 只不过函数的返回值不再是整型的状态值， 而是下一个动作封装函数的函数地址， 函数返回后， 框架代码再把这个函数地址存储到全局函数指针变量中。</p>
+<p>相比压缩表格驱动法，在函数指针法中状态机的安全运行是个大问题，我们很难找出一种机制来检查全局函数指针变量中的函数地址是不是合法值。如果放任不管， 一旦函数指针变量中的数据被篡改，程序跑飞几乎就不可避免了。</p>
+<h2 id="小节">小节</h2>
+<p>有关状态机的东西说了那么多，相信大家都已经感受到了这种工具的优越性，状态机真的是太好用了！其实我们至始至终讲的都是有限状态机(Finite State Machine 现在知道为什么前面的代码中老是有 fsm 这个缩写了吧！)， 还有一种比有限状态机更 NB 更复杂的状态机， 那就是层次状态机(Hierarchical State Machine 一般简写为 HSM)。</p>
+<p>通俗的说，系统中只存在一个状态机的叫做有限状态机，同时存在多个状态机的叫做层次状态机(其实这样解释层次状态机有些不严谨， 并行状态机也有多个状态机， 但层次状态机各个状态机之间是上下级关系，而并行状态机各个状态机之间是平级关系)。</p>
+<p>层次状态机是一种父状态机包含子状态机的多状态机结构，里面包含了许多与面向对象相似的思想， 所以它的功能也要比有限状态机更加强大， 当一个问题用有限状态机解决起来有些吃力的时候， 就需要层次状态机出马了。</p>
+<p>层次状态机理论我理解得也不透彻， 就不在这里班门弄斧了，大家可以找一些有关状态机理论的专业书籍来读一读。要掌握状态机编程，理解状态机(主要指有限状态机)只是第一步，也是最简单的一步，更重要的技能是能用状态机这个工具去分析解剖实际问题：划分状态、 提取事件、 确定转换关系、规定动作等等，形成一张完整的状态转换图，最后还要对转换图进行优化，达到最佳。</p>
+<p>把实际问题变成了状态转换图， 工作的一大半就算完成了， 这个是具有架构师气质的任务，剩下的问题就是按照状态图编程写代码了，这个是具有代码工特色的工作。</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/state-machine">
+    State Machine
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      状态机的三种实现方法
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html" title="状态机的三种实现方法">https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/datacenter/predictability-on-unpredictable-flash-storage-with-a-light-neural-network.html" rel="next" title="聊聊闪存存储的延迟可预测性">
+      <i class="fa fa-chevron-left"></i> 聊聊闪存存储的延迟可预测性
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/linux/linux-share-file-folder-and-time-synchronization.html" rel="prev" title="Linux系统内核概述">
+      Linux系统内核概述
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +1006,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

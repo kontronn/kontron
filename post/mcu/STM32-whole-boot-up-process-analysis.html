@@ -1,6 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
+<meta name="generator" content="Hugo 0.92.2" />
+<link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/imgs/icons/favicon_32_32_next.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/imgs/icons/apple_touch_icon_next.png">
+<meta itemprop="name" content="STM32的完整启动流程分析" />
+<meta itemprop="description" content="STM32的完整启动流程分析" />
+<meta itemprop="datePublished" ZgotmplZ />
+<meta itemprop="dateModified" ZgotmplZ />
+<meta itemprop="image" content="https://www.kontronn.com/imgs/VxWorks_7_logo.png" />
+<meta itemprop="keywords" content="STM32,boot up,process" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="STM32的完整启动流程分析" />
+<meta property="og:description" content="STM32的完整启动流程分析" />
+<meta property="og:image" content="/imgs/VxWorks_7_logo.png" />
+<meta property="og:image:width" content="312" />
+<meta property="og:image:height" content="312" />
+<meta property="og:image:type" content="image/jpeg/png/svg/jpg" />
+<meta property="og:url" content="https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html"/>
+<meta property="og:site_name" content="Kontronn" />
+<meta property="og:locale" content="zh-CN"/>
+<meta property="article:author" content="VxWorks OS" />
+<meta property="article:published_time" content="2023-06-23 23:36:57 -0400 -0400" />
+<meta property="article:modified_time" content="2023-06-23 23:36:57 -0400 -0400" />
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
+  
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/animate.css@3.1.1/animate.min.css" />
+
+
+<link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
+  <style type="text/css">
+    .post-footer, .flinks-list-footer hr:after {
+      content: "~ 我可是有底线的哟 ~";
+    }
+  </style>
+  <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"STM32-whole-boot-up-process-analysis.html","permalink":"https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html","title":"STM32的完整启动流程分析"}</script>
+  <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', () => {
+    var script = document.createElement('script');
+      
+    script.charset = "UTF-8";
+    script.src     = "https:\/\/busuanzi.ibruce.info\/busuanzi\/2.3\/busuanzi.pure.mini.js";
+    script.async   = "true"
+
+    document.head.appendChild(script);
+  });
+</script>
 
 
 
+
+  <title>STM32的完整启动流程分析 - Kontronn</title>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage"  class="use-motion" >
+  <div class="headband"></div>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+<div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Kontronn</h1>
+      <i class="logo-line"></i>
+    </a>
+    
+      <p class="site-subtitle" itemprop="description">Embedded World</p>
+      <img class="custom-logo-image" src="/imgs/VxWorks_7_logo.png" alt="Kontronn">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+      
+      <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+    <li class="menu-item menu-item-home">
+      <a href="/" class="hvr-icon-pulse " rel="section"><i class="fa fa-home hvr-icon"></i>首页
+      </a>
+    </li>
+    <li class="menu-item menu-item-about">
+      <a href="/about.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-user hvr-icon"></i>关于
+      </a>
+    </li>
+    <li class="menu-item menu-item-flinks">
+      <a href="/flinks.html" class="hvr-icon-pulse " rel="section"><i class="fa fa-thumbs-up hvr-icon"></i>友情链接
+      </a>
+    </li>
+    <li class="menu-item menu-item-archives">
+      <a href="/archives/" class="hvr-icon-pulse " rel="section"><i class="fa fa-archive hvr-icon"></i>归档
+        <span class="badge">325</span>
+      </a>
+    </li>
+    <li class="menu-item menu-item-commonweal">
+      <a href="https://www.vxworks.net" class="hvr-icon-pulse " rel="section"><i class="fa fa-heartbeat hvr-icon"></i>赞助商
+      </a>
+    </li>
+    <li class="menu-item menu-item-search">
+      <a role="button" class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+    </div>
+  </div>
+
+      </div>
+      <div class="toggle sidebar-toggle" role="button">
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+  <span class="toggle-line"></span>
+</div>
+<aside class="sidebar">
+  
+  <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-toc">
+        文章目录
+      </li>
+      <li class="sidebar-nav-overview">
+        站点概览
+      </li>
+    </ul>
+    <div class="sidebar-panel-container">
+      
+      <div class="post-toc-wrap sidebar-panel">
+        <div class="post-toc animated"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#根据boot引脚决定三种启动模式">根据boot引脚决定三种启动模式</a></li>
+    <li><a href="#启动后bootloader做了什么">启动后bootloader做了什么？</a></li>
+    <li><a href="#bootloader中对内存的搬移和初始化">bootloader中对内存的搬移和初始化</a></li>
+    <li><a href="#ispiapicp三种烧录方式">ISP、IAP、ICP三种烧录方式</a></li>
+  </ul>
+</nav></div>
+      </div>
+      
+      <div class="site-overview-wrap sidebar-panel">
+<div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="VxWorks OS"
+      src="/imgs/hugo_next_avatar.png">
+  <p class="site-author-name" itemprop="name">VxWorks OS</p>
+  <div class="site-description" itemprop="description">Where there is embedded, there is VxWorks.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+    <div class="site-state-item site-state-posts">
+      <a href="/archives/">
+        <span class="site-state-item-count">325</span>
+        <span class="site-state-item-name">日志</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">
+      <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-tags">
+      <a href="/tags/">
+        <span class="site-state-item-count">408</span>
+        <span class="site-state-item-name">标签</span>
+      </a>
+    </div>
+  </nav>
+</div>
+<div class="links-of-social site-overview-item animated">
+
+
+  <span class="links-of-social-item">
+    <a href="https://github.com/" title="Github → https://github.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fab fa-github fa-fw  hvr-icon "></i>Github
+    </a>
+  </span>
+  <span class="links-of-social-item">
+    <a href="https://www.zhihu.com/" title="知乎 → https://www.zhihu.com/" rel="noopener" class="hvr-icon-pulse" target="_blank">
+      <i class="fa fa-book fa-fw  hvr-icon "></i>知乎
+    </a>
+  </span>
+</div>
+<div class="cc-license animated" itemprop="license">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank" title="共享知识">
+    <img src="/imgs/cc/small/by_nc_sa.svg" alt="共享知识">
+  </a>
+</div>
+<div class="links-of-blogroll site-overview-item animated">
+  <div class="links-of-blogroll-title">
+    <i class="fa fa-globe fa-fw"></i>友情链接
+  </div>
+  <ul class="links-of-blogroll-list">
+    <li class="links-of-blogroll-item">
+      <a href="https://www.gaitpu.com" title="https://www.gaitpu.com" target="_blank">Google AI TPU</a>
+    </li>
+    <li class="links-of-blogroll-item">
+      <a href="https://www.vxworks.net" title="https://www.vxworks.net" target="_blank">VxWorks俱乐部</a>
+    </li>
+  </ul>
+</div>
+      </div>
+    </div>
+   
+  </div>
+<div class="sidebar-card-widget">
+  <div class="item-headline">
+    <i class="fas fa-chart-line"></i>
+    <span>网站资讯</span>
+  </div>
+  <div class="siteinfo">
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa-solid fa-calendar-check"></i>已运行：</div>
+      <div class="item-count" id="runTimes" data-publishdate="2022-01-20T05:40:25-04:00"></div>
+    </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-user"></i>总访客数：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_uv"></div>
+      </div>
+      <div class="siteinfo-item">
+        <div class="item-name">
+          <i class="fas fa fa-eye"></i>页面浏览：
+        </div>
+        <div class="item-count" id="busuanzi_value_site_pv"></div>
+      </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
+      <div class="item-count" id="wordsCount" data-count="58317"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
+      <div class="item-count" id="readTimes" data-times="483"></div>
+    </div>
+    <div class="siteinfo-item">
+      <div class="item-name"><i class="fa fa-clock-rotate-left"></i>最后更新于：</div>
+      <div class="item-count" id="last-push-date" data-lastpushdate="2024-10-01T08:43:29&#43;08:00"></div>
+    </div>
+  </div>
+</div>
+</aside>
+<div class="sidebar-dimmer"></div>
+
+    </header>
+    
+    <div class="tool-buttons" >
+  <a id="goto-comments" class="button goto-comments" href="#comments"  title="直达评论">
+    <i class="fas fa-comments"></i>
+  </a> 
+  <div id="switch-theme" class="button" title="深浅模式切换">
+    <i class="fas fa-adjust"></i>
+  </div> 
+  
+  <div class="back-to-top" role="button" title="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div> 
+</div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+    <div class="main-inner post posts-expand">
+      
+  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/imgs/hugo_next_avatar.png">
+      <meta itemprop="name" content="VxWorks OS">
+    </span>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VxWorks OS">
+      <meta itemprop="description" content="Where there is embedded, there is VxWorks.">
+    </span>
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32的完整启动流程分析">
+      <meta itemprop="description" content="STM32的完整启动流程分析">
+    </span>
+    <header class="post-header">
+       <h1 class="post-title" itemprop="name headline">STM32的完整启动流程分析 </h1> <div class="post-meta-container">
+  <div class="post-meta-items">
+    
+
+
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-calendar"></i>
+  </span>
+  <span class="post-meta-item-text">发表于：</span>
+  <time title="发表于：2023-06-23 23:36:57 -0400 -0400" itemprop="dateCreated datePublished" datetime="2023-06-23 23:36:57 -0400 -0400">2023-06-23</time>
+</span>
+    
+    
+<span class="post-meta-item">
+  <span class="post-meta-item-icon">
+    <i class="far fa-folder-open"></i>
+  </span>
+  <span class="post-meta-item-text">分类于：</span>
+  <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+    <a href="/categories/mcu" itemprop="url" rel="index">
+      <span itemprop="name">MCU</span>
+    </a>
+  </span>
+</span>
+  </div>
+  <div class="post-meta-items">
+    
+<span class="post-meta-item" title="字数">
+  <span class="post-meta-item-icon">
+    <i class="far fa-file-word"></i>
+  </span>
+  <span class="post-meta-item-text">字数：</span><span>64</span>
+</span>
+    
+<span class="post-meta-item" title="阅读">
+  <span class="post-meta-item-icon">
+    <i class="far fa-clock"></i>
+  </span>
+  <span class="post-meta-item-text">阅读：&asymp;</span>
+  <span>1分钟</span>
+</span>
+
+    
+<span class="post-meta-item" title="浏览">
+  <span class="post-meta-item-icon">
+    <i class="far fa-eye"></i>
+  </span>
+  <span class="post-meta-item-text">
+  浏览：
+  </span>
+  <span id="busuanzi_value_page_pv" data-path="/post/mcu/STM32-whole-boot-up-process-analysis.html"><i class="fa fa-sync fa-spin"></i></span>
+</span>
+
+  </div>
+  
+</div>
+
+
+    </header>
+    
+    <div class="post-body  autonumber " itemprop="articleBody">
+      
+  <p>关于STM32的启动流程，网上有的资料在讨论几种boot模式，有的在回答启动文件的内容，在查阅了很多资料后，本文给出一个比较全面的总结和回答。</p>
+<h2 id="根据boot引脚决定三种启动模式">根据boot引脚决定三种启动模式</h2>
+<p><img src="https://www.kontronn.com/imgs/post/stm32-whole-boot-up-process-analysis-1.png" alt="STM32 Boot Up Process 1"></p>
+<p>复位后，在 SYSCLK 的第四个上升沿锁存 BOOT 引脚的值。BOOT0 为专用引脚，而 BOOT1 则与 GPIO 引脚共用。一旦完成对 BOOT1 的采样，相应 GPIO 引脚即进入空闲状态，可用于其它用途。BOOT0与BOOT1引脚的不同值指向了三种启动方式：</p>
+<ol>
+<li>
+<p>从主Flash启动。主Flash指的是STM32的内置Flash。选择该启动模式后，内置Flash的起始地址将被重映射到0x00000000地址，代码将在该处开始执行。一般我们使用JTAG或者SWD模式下载调试程序时，就是下载到这里面，重启后也直接从这启动。</p>
+</li>
+<li>
+<p>从系统存储器启动。系统储存器指的是STM32的内置ROM，选择该启动模式后，内置ROM的起始地址将被重映射到0x00000000地址，代码在此处开始运行。ROM中有一段出厂预置的代码，这段代码起到一个桥的作用，允许外部通过UART/CAN或USB等将代码写入STM32的内置Flash中。这段代码也被称为ISP(In System Programing)代码，这种烧录代码的方式也被称为ISP烧录。关于ISP、ICP和IAP之间的区别将在后续章节中介绍。</p>
+</li>
+<li>
+<p>从嵌入式SRAM中启动。显然，该方法是在STM32的内置SRAM中启动，选择该启动模式后，内置SRAM的起始地址将被重映射到0x00000000地址，代码在此处开始运行。这种模式由于烧录程序过程中不需要擦写Flash，因此速度较快，适合调试，但是掉电丢失。</p>
+</li>
+</ol>
+<p>总结：上面的每一种启动方式我都描述了“xxx的起始地址被重映射到了0x00000000地址，从而代码从xxx开始启动”，如下图是STM32F4xx中文参考手册中的图，可以看到类似的表述。同时，在下图中也展示了STM32F4xx中统一编址下，各内存的地址分配，注意一点，即使相应的内存被映射到了0x00000000起始的地址，通过其原来地址依然是可以访问的。</p>
+<p><img src="https://www.kontronn.com/imgs/post/stm32-whole-boot-up-process-analysis-2.png" alt="STM32 Boot Up Process 2"></p>
+<h2 id="启动后bootloader做了什么">启动后bootloader做了什么？</h2>
+<p>根据BOOT引脚确定了启动方式后，处理器进行的第二大步就是开始从0x00000000地址处开始执行代码，而该处存放的代码正是bootloader。</p>
+<p>bootloader，也可以叫启动文件，无论性能高下，结构简繁，价格贵贱，每一种微控制器(处理器)都必须有启动文件，启动文件的作用便是负责执行微控制器从“复位”到“开始执行main函数”中间这段时间(称为启动过程)所必须进行的工作。最为常见的51，AVR或MSP430等微控制器当然也有对应启动文件，但开发环境往往自动完整地提供了这个启动文件，不需要开发人员再行干预启动过程，只需要从main函数开始进行应用程序的设计即可。同样，STM32微控制器，无论是keiluvision4还是IAR EWARM开发环境，ST公司都提供了现成的直接可用的启动文件。</p>
+<p>网上有很多资料分析了STM32的启动文件的内容，在此我只进行简单的表述。启动文件中首先会定义堆栈，定义中断/异常向量表，而其中只实现了复位的异常处理函数Reset_Handler，该函数内容如下(STM32F4XX，IAR编译器)，可以看到其主要执行了SystemInit和__iar_program_start两个函数，其主要功能除了初始化时钟，FPU等，还会执行一个重要功能，那就是内存的搬移、初始化操作。 这是我想重点介绍的内容，同时也会回答一个疑问，就是如果从Flash启动的话，代码究竟是运行在哪儿的？在我之前接触ARM9、CortexA系列的时候，一般都是把代码搬到内部的SRAM或者外部DDR中执行的，STM32是如何呢？答案下一小节揭晓。</p>
+<p><img src="https://www.kontronn.com/imgs/post/stm32-whole-boot-up-process-analysis-3.png" alt="STM32 Boot Up Process 3"></p>
+<h2 id="bootloader中对内存的搬移和初始化">bootloader中对内存的搬移和初始化</h2>
+<p>本节针对程序在内置Flash中启动的情况进行分析。</p>
+<p><img src="https://www.kontronn.com/imgs/post/stm32-whole-boot-up-process-analysis-4.png" alt="STM32 Boot Up Process 4"></p>
+<p>我们知道烧录的镜像文件中包含只读代码段.text，已初始化数据段.data和未初始化的或者初始化为0的数据段.bss。代码段由于是只读的，所以是可以一直放在Flash中，CPU通过总线去读取代码执行就OK，但是.data段和.bss段由于会涉及读写为了，为了更高的读写效率是要一定搬到RAM中执行的，因此bootloader会执行很重要的一步，就是会在RAM中初始化.data和.bss段，搬移或清空相应内存区域。</p>
+<p>因此我们知道，当启动方式选择的是从内置Flash启动的时候，代码依旧是在Flash中执行，而数据则会被拷贝到内部SRAM中，该过程是由bootloader完成的。bootloader在完成这些流程之后，就会将代码交给main函数开始执行用户代码。</p>
+<ul>
+<li>
+<p>现在让我们思考一个问题，PC机在运行程序的时候将程序从外存（硬盘）中，调入到RAM中运行，CPU从RAM中读取程序和数据；而单片机的程序则是固化在Flash中，CPU运行时直接从Flash中读取程序，从RAM中读取数据，那么PC机能从Flash之类的存储介质中直接读代码执行吗？</p>
+</li>
+<li>
+<p>答案是不行。因为x86构架的CPU是基于冯.诺依曼体系的，即数据和程序存储在一起，而且PC机的RAM资源相当丰富，从几十M到几百M甚至是几个G，客观上能够承受大量的程序数据。但是单片机的构架大多是哈弗体系的，即程序和数据分开存储，而且单片的片内RAM资源是相当有限的，内部的RAM过大会带来成本的大幅度提高。</p>
+</li>
+</ul>
+<h2 id="ispiapicp三种烧录方式">ISP、IAP、ICP三种烧录方式</h2>
+<p>虽然这个小节稍稍偏题，但是由于上面在3中启动方式中介绍过了ISP烧录，因此一并在此介绍剩下的两种烧录方式。</p>
+<ol>
+<li>
+<p>ICP(In Circuit Programing)。在电路编程，可通过CPU的Debug Access Port 烧录代码，比如ARM Cortex的Debug Interface主要是SWD(Serial Wire Debug)或JTAG(Joint Test Action Group)；</p>
+</li>
+<li>
+<p>ISP(In System Programing)。在系统编程，可借助MCU厂商预置的Bootloader 实现通过板载UART或USB接口烧录代码。</p>
+</li>
+<li>
+<p>IAP(In Applicating Programing)。在应用编程，由开发者实现Bootloader功能，比如STM32存储映射Code分区中的Flash本是存储用户应用程序的区间（上电从此处执行用户代码），开发者可以将自己实现的Bootloader存放到Flash区间，MCU上电启动先执行用户的Bootloader代码，该代码可为用户应用程序的下载、校验、增量/补丁更新、升级、恢复等提供支持，如果用户代码提供了网络访问功能，IAP 还能通过无线网络下载更新代码，实现OTA空中升级功能。</p>
+</li>
+<li>
+<p>IAP和ISP 的区别。</p>
+</li>
+</ol>
+<ul>
+<li>ISP程序一般是芯片厂家提供的。IAP一般是用户自己编写的</li>
+<li>ISP一般支持的烧录方式有限，只有串口等。IAP就比较灵活，可以灵活的使用各种通信协议烧录</li>
+<li>isp一般需要芯片进行一些硬件上的操作才行，IAP全部工作由程序完成，不需要去现场</li>
+<li>isp一般只需要按格式将升级文件通过串口发送就可以。IAP的话控制相对麻烦，如果是OTA的话还需要编写后台的。</li>
+<li>注意，这里介绍的bootloader功能显然跟之前介绍的启动文件bootloader有所区别，其目的是为了能接受外部镜像进行烧录，而不是为了运行普通用户程序。</li>
+</ul>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
+     crossorigin="anonymous"></script>
+
+<ins class="adsbygoogle"
+     style="display:inline-block;width:970px;height:90px"
+     data-ad-client="ca-pub-1543398821442998"
+     data-ad-slot="4140563281"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+    </div>
+    <footer class="post-footer">
+      
+
+<div class="post-tags">
+  
+    <a href="/tags/stm32">
+    STM32
+  </a>
+    <a href="/tags/boot-up">
+    boot up
+  </a>
+    <a href="/tags/process">
+    process
+  </a>
+</div>
+
+<div class="addthis_inline_share_toolbox" style="text-align: center;"></div>
+<hr/>
+
+<div class="reward-container">
+  <div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div>
+  <button>赞赏</button>
+  <div class="post-reward">
+    <div class="post-reward-item">
+      <img src="/imgs/ali-pay.png" alt="VxWorks OS - 支付宝">
+      <span>支付宝</span>
+    </div>
+    <div class="post-reward-item">
+      <img src="/imgs/wechat-pay.png" alt="VxWorks OS - 微信">
+      <span>微信</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="post-copyright">
+  <img src="/imgs/cc/cc.svg" width="75" height="75" align="right" />
+  <ul>
+    <li class="post-copyright-title">
+      <strong>文章标题：</strong>
+      STM32的完整启动流程分析
+    </li>
+    <li class="post-copyright-author">
+      <strong>本文作者： </strong>
+      VxWorks OS
+    </li>
+    <li class="post-copyright-link"> 
+      <strong>本文链接：</strong>
+       <a id="post-cr-link" href="https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html" title="STM32的完整启动流程分析">https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target='_blank' href='https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh'>BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</div>
+
+  <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+  <div class="social-list">
+    
+    <div class="social-item">
+        <a target="_blank" class="social-link" href="/imgs/wechat_channel.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+<div class="post-nav">
+  <div class="post-nav-next post-nav-item">
+    <a href="/post/news/intel-announces-sale-of-stake-IMS.html" rel="next" title="英特尔宣布，出售设备公司股份">
+      <i class="fa fa-chevron-left"></i> 英特尔宣布，出售设备公司股份
+    </a>
+  </div>
+  <div class="post-nav-prev post-nav-item">
+    <a href="/post/news/what-is-the-era-of-big-data.html" rel="prev" title="什么是大数据时代">
+      什么是大数据时代
+      <i class="fa fa-chevron-right"></i>
+    </a>
+  </div>
+</div>
+
+    </footer>
+  </article>
+</div>
+  
 
 
 
@@ -351,3 +900,73 @@ background-color: #FF6600
 
 
 
+<div id="comments" class="post-comments">
+  <div class="comment-head">
+    <div class="comment-headline">
+      <i class="fas fa-comments fa-fw"></i>
+      <span>评论交流</span>
+    </div>
+    <div class="comment-switch">
+      <span class="first-comment">Giscus</span>
+      <span class="switch-btn "></span>
+      <span class="second-comment">Waline</span>
+    </div>
+  </div>
+  <div class="comment-wrap">
+  
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="giscus-container"></div>
+    </div>
+    <div><div class="comment-loading">
+  <i class="fa fa-sync fa-spin"></i>
+</div><div class="waline-container"></div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+
+<div class="copyright">
+  &copy;
+  <span itemprop="copyrightYear">
+    2010 - 2024
+  </span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">VxWorks OS</span>
+</div>
+
+
+    </div>
+  </footer> 
+  
+  <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
+
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
