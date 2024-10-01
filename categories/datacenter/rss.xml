@@ -6,7 +6,20 @@
     <description>Recent content in DataCenter on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/datacenter/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 08:43:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/datacenter/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR 带宽演进</title>
+      <link>https://www.kontronn.com/post/datacenter/DDR-bandwidth-evolution.html</link>
+      <pubDate>Tue, 01 Oct 2024 08:43:29 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/DDR-bandwidth-evolution.html</guid>
+      <description>&lt;p&gt;与DDR4相比，
+&lt;a href=&#34;https://www.vxworks.net/news/886-samsung-ddr5-512gb-module-sampling&#34; title=&#34;DDR5&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    DDR5
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;内存模块支持更高的容量，允许在计算机系统中进行更大的内存配置。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>洞察之路变革：AI-HPC范式转移</title>
       <link>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</link>

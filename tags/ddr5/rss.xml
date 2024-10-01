@@ -6,7 +6,20 @@
     <description>Recent content in DDR5 on Kontronn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 06 Aug 2023 00:17:14 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr5/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 08:43:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr5/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDR 带宽演进</title>
+      <link>https://www.kontronn.com/post/datacenter/DDR-bandwidth-evolution.html</link>
+      <pubDate>Tue, 01 Oct 2024 08:43:29 +0800</pubDate>
+      
+      <guid>https://www.kontronn.com/post/datacenter/DDR-bandwidth-evolution.html</guid>
+      <description>&lt;p&gt;与DDR4相比，
+&lt;a href=&#34;https://www.vxworks.net/news/886-samsung-ddr5-512gb-module-sampling&#34; title=&#34;DDR5&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
+    DDR5
+    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
+&lt;/a&gt;内存模块支持更高的容量，允许在计算机系统中进行更大的内存配置。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>DDR的工作原理</title>
       <link>https://www.kontronn.com/post/hardware/ddr-working-principle.html</link>

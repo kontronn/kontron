@@ -16,6 +16,22 @@
   </entry>
   
   <entry>
+    <title>DDR 带宽演进</title>
+    <url>/post/datacenter/DDR-bandwidth-evolution.html</url>
+    <categories><category>DataCenter</category>
+    </categories>
+    <tags>
+      <tag>DDR4</tag>
+      <tag>DDR5</tag>
+    </tags>
+    <content type="html"><![CDATA[与DDR4相比， DDR5  内存模块支持更高的容量，允许在计算机系统中进行更大的内存配置。
+与DDR4相比， DDR5  进一步将内存电压降低到1.1V，从而降低了功耗。DDR5 DIMM还在内存模块本身上引入了一个新的电压调节器模块（VRM），允许更精确的功率输送控制，并可能降低整个系统功耗。
+DDR5内存包括增强可靠性和数据完整性的功能，例如改进的纠错功能和端接（ODT）端口，以最大限度地减少信号反射并提高信号完整性。
+与之前的DDR版本不同，每个DDR5 DIMM有两个独立的通道。早期的DIMM只有一个通道和一个Command/Address总线，控制整个内存模块及其64条数据线。DDR5 DIMM上的两个子通道都有自己的命令/地址总线，控制32条数据线，总共64条数据线。减少的数据总线宽度由双倍的最小burst长度16（也因为16N预取）来补偿，它保留了64字节的最小访问大小，这与现代微处理器使用的缓存行大小相匹配。
+]]></content>
+  </entry>
+  
+  <entry>
     <title>英特尔的Lunar Lake在大模型中表现出出色的AI推理能力</title>
     <url>/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</url>
     <categories><category>News</category>
