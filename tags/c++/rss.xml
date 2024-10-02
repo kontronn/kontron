@@ -4,72 +4,58 @@
     <title>C&#43;&#43; on Kontronn</title>
     <link>https://www.kontronn.com/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Aug 2024 16:59:46 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/c++/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 Aug 2024 16:59:46 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/c++/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;函数返回值类型后置</title>
       <link>https://www.kontronn.com/post/programming/c-plus-plus-function-return-value-type-postfix.html</link>
       <pubDate>Sun, 18 Aug 2024 16:59:46 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/c-plus-plus-function-return-value-type-postfix.html</guid>
       <description>&lt;p&gt;在C++的语法中，函数的返回值类型一直是函数声明的重要组成部分。然而，随着C++11及后续版本的引入，函数返回值类型后置（Trailing Return Type）的语法为开发者提供了新的可能。这种语法虽然看似是语法上的细微调整，却在现代C++的函数设计和代码可读性方面带来了显著的影响。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>C/C&#43;&#43;宏中使用do-while包裹的优势</title>
       <link>https://www.kontronn.com/post/programming/advantages-of-using-do-while-wrapper-in-CC&#43;&#43;-macros.html</link>
       <pubDate>Mon, 15 Jul 2024 00:44:44 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/advantages-of-using-do-while-wrapper-in-CC&#43;&#43;-macros.html</guid>
       <description>&lt;p&gt;在 C 和 C++ 编程中，宏（macro）是一种非常强大的工具。它们允许开发者编写简洁、高效的代码，减少重复。然而，使用宏时也可能会引发一些意料之外的问题。为了防止这些问题，开发者经常使用 do-while 包裹宏。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>C&#43;&#43;中的临时对象</title>
       <link>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</link>
       <pubDate>Sat, 27 Apr 2024 19:31:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</guid>
       <description>&lt;p&gt;Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>程序员的十大优秀编码习惯</title>
       <link>https://www.kontronn.com/post/programming/top-10-best-coding-habits-for-programmers.html</link>
       <pubDate>Mon, 01 Apr 2024 16:43:01 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/top-10-best-coding-habits-for-programmers.html</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/programming-tips.png&#34; alt=&#34;Programming Tips&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在C++编程的世界中，良好的编码习惯是提高代码质量、可维护性和可读性的关键。作为一名C++程序员，我们应该时刻关注并遵循这些优秀的编码习惯，让我们的代码更加清晰、高效。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/programming-tips.png&#34; alt=&#34;Programming Tips&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;在C++编程的世界中，良好的编码习惯是提高代码质量、可维护性和可读性的关键。作为一名C++程序员，我们应该时刻关注并遵循这些优秀的编码习惯，让我们的代码更加清晰、高效。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>你了解C 和 C&#43;&#43; 标准库吗</title>
       <link>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</link>
       <pubDate>Sun, 01 Oct 2023 18:51:43 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/do-you-understand-c-and-c-plus-plus-standard-library.html</guid>
       <description>&lt;p&gt;本文简要介绍编写 C/C++ 应用程序的领域，标准库的作用以及它是如何在各种操作系统中实现的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>C&#43;&#43;中fmt库的用法</title>
       <link>https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html</link>
       <pubDate>Tue, 08 Aug 2023 12:50:06 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html</guid>
       <description>&lt;p&gt;本来这篇文章应该接着介绍 memset 的，但是我暂时不想写那个主题。这次就写点新的东西。介绍一下 fmt 库。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>取代C&#43;&#43;？谷歌开源编程语言Carbon</title>
       <link>https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html</link>
       <pubDate>Sun, 16 Jul 2023 02:12:27 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/google-open-source-programming-language-carbon.html</guid>
       <description>&lt;p&gt;号称替代C++，谷歌发布新的编程语言，已经过去了一年。去年7月，在多伦多举办的CppNorth大会上，谷歌宣布正式开源内部打造的编程语言Carbon，并称他是C++的继任者。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

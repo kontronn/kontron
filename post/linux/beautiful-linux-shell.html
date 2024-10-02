@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-20 10:31:07 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"beautiful-linux-shell.html","permalink":"https://www.kontronn.com/post/linux/beautiful-linux-shell.html","title":"Linux 超级漂亮的 Shell"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -293,7 +289,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -415,8 +411,8 @@
 <h2 id="zsh-介绍">zsh 介绍</h2>
 <h3 id="linux-shell">Linux shell</h3>
 <p>那我问你，你同类型的衣服怎么有那么多件？花色，质地还不一样。写程序比买衣服复杂多了，而且程序员往往负责把复杂的事情搞简单，简单的事情搞复杂。牛程序员看到不爽的 Shell，就会自己重新写一套，慢慢形成了一些标准，常用的 Shell 有这么几种，sh、bash、csh 等，想知道你的系统有几种 shell，可以通过以下命令查看：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cat/etc/shells
-</code></pre></div><p>显示如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat/etc/shells
+</span></span></code></pre></div><p>显示如下：</p>
 <p><img src="https://www.kontronn.com/imgs/post/linux-shell-2.png" alt="Linux Shell"></p>
 <h3 id="zsh-简介">zsh 简介</h3>
 <p>Zsh 是一个 Linux 下强大的 shell, 由于大多数 Linux 产品安装，以及默认使用bash shell, 但是丝毫不影响极客们对 zsh 的热衷, 几乎每一款 Linux 产品都包含有 zsh，通常可以用 apt-get、urpmi 或 yum 等包管理器进行安装</p>
@@ -440,40 +436,40 @@
 <h2 id="安装-zsh">安装 zsh</h2>
 <h3 id="安装-zsh-1">安装 zsh</h3>
 <p>对于一般的 Ubuntu 系统，配置好正确的源之后，就能直接键入以下命令安装：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt-get install zsh
-</code></pre></div><h3 id="配置-zsh">配置 zsh</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install zsh
+</span></span></code></pre></div><h3 id="配置-zsh">配置 zsh</h3>
 <p><code>zsh</code>的配置是一门大学问，这里不赘述，直接给出一个配置文件，大家可以下载后放入 zsh 配置文档直接使用。（我的一个法国朋友手配的，相当顺手）</p>
 <p>把<code>.zshrc</code>拷贝到相应用户的<code>home</code>目录即可(也可以把你的<code>bash</code>的配置文件(~/.bash_prorile 或者 ~/.profile 等) 给拷贝到<code>zsh</code>的配置文件<code>~/.zshrc</code>里，因为<code>zsh</code>兼容<code>bash</code>)</p>
 <h3 id="取代bash设为默认shell">取代bash，设为默认shell</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo usermod -s /bin/zsh username
-</code></pre></div><p>或者</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">chsh -s /bin/zsh
-chsh -s <span style="color:#e6db74">`</span>whichzsh<span style="color:#e6db74">`</span>
-</code></pre></div><p>如果要切换回去 bash：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">chsh -s /bin/bash
-</code></pre></div><p>当然你实在不愿意把 zsh 当成默认的 shell, 而又想使用它, 那么你可以每次进入是都使用zsh进入, 而输入exit退出</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo usermod -s /bin/zsh username
+</span></span></code></pre></div><p>或者</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chsh -s /bin/zsh
+</span></span><span style="display:flex;"><span>chsh -s <span style="color:#e6db74">`</span>whichzsh<span style="color:#e6db74">`</span>
+</span></span></code></pre></div><p>如果要切换回去 bash：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chsh -s /bin/bash
+</span></span></code></pre></div><p>当然你实在不愿意把 zsh 当成默认的 shell, 而又想使用它, 那么你可以每次进入是都使用zsh进入, 而输入exit退出</p>
 <p><img src="https://www.kontronn.com/imgs/post/linux-shell-3.png" alt="Linux Shell"></p>
 <h3 id="安装oh-my-zsh">安装oh-my-zsh</h3>
 <p>直接用 zsh 会很麻烦，因为 zsh 功能很强大但是太复杂，所以需要 oh-my-zsh 来将它简单化</p>
 <h4 id="直接用-git-从-github-上面下载包">直接用 git 从 github 上面下载包</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-</code></pre></div><h4 id="备份已有的-zshrc-替换-zshrc">备份已有的 zshrc, 替换 zshrc</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cp ~/.zshrc ~/.zshrc.orig
-cp~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-</code></pre></div><h4 id="直接使用脚本安装">直接使用脚本安装</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cd oh-my-zsh/tools
-./install.sh
-</code></pre></div><p>你可以直接直接使用如下命令安装</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><p>其本质就是下载并执行了 github 上的 install.sh 脚本, 该脚本位于oh-my-zsh/tools/install.sh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+</span></span></code></pre></div><h4 id="备份已有的-zshrc-替换-zshrc">备份已有的 zshrc, 替换 zshrc</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp ~/.zshrc ~/.zshrc.orig
+</span></span><span style="display:flex;"><span>cp~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+</span></span></code></pre></div><h4 id="直接使用脚本安装">直接使用脚本安装</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd oh-my-zsh/tools
+</span></span><span style="display:flex;"><span>./install.sh
+</span></span></code></pre></div><p>你可以直接直接使用如下命令安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p>其本质就是下载并执行了 github 上的 install.sh 脚本, 该脚本位于oh-my-zsh/tools/install.sh</p>
 <h4 id="配置主题">配置主题</h4>
 <p>oh-my-zsh 集成了大量的主题, 位于oh-my-zsh/theme</p>
 <p>配置主题, 可以通过修改~/.zshrc中的环境变量ZSH_THEME来完成</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;agnoster&#34;</span> <span style="color:#75715e"># (this is one of the fanc yones)</span>
-</code></pre></div><p>如果你觉得主题太多你可以选择使用随机模式, 来由系统随机选择</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;random&#34;</span><span style="color:#75715e">#(...please let it be pie... please be some pie..)</span>
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/linux-shell-4.png" alt="Linux Shell"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;agnoster&#34;</span> <span style="color:#75715e"># (this is one of the fanc yones)</span>
+</span></span></code></pre></div><p>如果你觉得主题太多你可以选择使用随机模式, 来由系统随机选择</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ZSH_THEME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;random&#34;</span><span style="color:#75715e">#(...please let it be pie... please be some pie..)</span>
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/linux-shell-4.png" alt="Linux Shell"></p>
 <p>详细的主题信息, 可以参见 zsh 主题介绍</p>
 <h4 id="配置插件">配置插件</h4>
 <p>修改～/.zshrc中plugins</p>
@@ -481,14 +477,14 @@ cp~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 <p>详细的插件信息, 可以参见 zsh 插件 Plugins 介绍</p>
 <h4 id="更新-oh-my-zsh">更新 oh-my-zsh</h4>
 <p>默认情况下, 您将被提示检查每几周的升级. 如果你想我 ZSH 自动升级本身没有提示你, 修改 <code>~/.zshrc</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">disable_update_prompt=true
-
-禁用自动升级, 修改~/.zshrc
-
-disable_auto_update=true
-
-当然你也可以选择手动更新
-</code></pre></div><p>如果你想在任何时间点升级（也许有人刚刚发布了一个新的插件，你不想等待一个星期？) 你只需要运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>disable_update_prompt=true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>禁用自动升级, 修改~/.zshrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>disable_auto_update=true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>当然你也可以选择手动更新
+</span></span></code></pre></div><p>如果你想在任何时间点升级（也许有人刚刚发布了一个新的插件，你不想等待一个星期？) 你只需要运行：</p>
 <p>upgrade_oh_my_zsh</p>
 <h4 id="卸载-oh-my-zsh">卸载 oh-my-zsh</h4>
 <p>如果你想卸载oh-my-zsh, 只需要执行uninstall_oh_my_zsh zsh， 从命令行运行，这将删除本身和恢复你以前的 bash 或者 zsh 配置。</p>
@@ -635,7 +631,7 @@ disable_auto_update=true
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -643,7 +639,7 @@ disable_auto_update=true
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

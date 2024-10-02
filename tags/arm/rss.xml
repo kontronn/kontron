@@ -4,74 +4,51 @@
     <title>ARM on Kontronn</title>
     <link>https://www.kontronn.com/tags/arm/</link>
     <description>Recent content in ARM on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 28 Sep 2024 15:29:04 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Sep 2024 15:29:04 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/arm/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ARM也被报考虑收购英特尔部分业务</title>
       <link>https://www.kontronn.com/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</link>
       <pubDate>Sat, 28 Sep 2024 15:29:04 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/arm-is-also-reported-to-be-considering-acquiring-part-of-intel-business.html</guid>
-      <description>&lt;p&gt;据报道，
-&lt;a href=&#34;https://www.vxworks.net/arm/1153-stability-analysis-for-64-bit-arm-platform-hung-task&#34; title=&#34;Arm&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Arm
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;敲开了英特尔的门，提出要购买该公司一半的芯片设计业务，而不是foundry或制造设施。&lt;/p&gt;</description>
+      <description>&lt;p&gt;据报道，&#xA;&lt;a href=&#34;https://www.vxworks.net/arm/1153-stability-analysis-for-64-bit-arm-platform-hung-task&#34; title=&#34;Arm&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Arm&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;敲开了英特尔的门，提出要购买该公司一半的芯片设计业务，而不是foundry或制造设施。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>cache的物理结构</title>
       <link>https://www.kontronn.com/post/soc/the-physical-structure-of-the-cache.html</link>
       <pubDate>Mon, 29 Jul 2024 23:05:30 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/the-physical-structure-of-the-cache.html</guid>
       <description>&lt;p&gt;教材上通常介绍的cache就是直接映射，组相联和全相联。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>x86指令集和ARM指令集的区别</title>
       <link>https://www.kontronn.com/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html</link>
       <pubDate>Sun, 03 Dec 2023 09:50:13 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/the-difference-between-Arm-instruction-set-and-X86-instruction-set.html</guid>
-      <description>&lt;p&gt;现代处理器的主要指令集架构（ISA）包括：
-&lt;a href=&#34;https://www.vxworks.net/x86&#34; title=&#34;x86&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    x86
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;指令集架构、RISC指令集架构。其中，x86可以划分为x86-32（英特尔）、x86-64（英特尔）、AMD64（AMD）等三种。RISC可以划分为
-&lt;a href=&#34;https://www.vxworks.net/arm&#34; title=&#34;ARM&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    ARM
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;、MIPS、Alpha、RISC-V。&lt;/p&gt;</description>
+      <description>&lt;p&gt;现代处理器的主要指令集架构（ISA）包括：&#xA;&lt;a href=&#34;https://www.vxworks.net/x86&#34; title=&#34;x86&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    x86&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;指令集架构、RISC指令集架构。其中，x86可以划分为x86-32（英特尔）、x86-64（英特尔）、AMD64（AMD）等三种。RISC可以划分为&#xA;&lt;a href=&#34;https://www.vxworks.net/arm&#34; title=&#34;ARM&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    ARM&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;、MIPS、Alpha、RISC-V。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32高阶应用--使用DFU方案实现固件升级</title>
       <link>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</link>
       <pubDate>Thu, 23 Nov 2023 11:01:07 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</guid>
       <description>&lt;p&gt;DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ARM服务器在信创市场能突围吗</title>
       <link>https://www.kontronn.com/post/datacenter/arm-server-in-information-technology-industry.html</link>
       <pubDate>Sun, 30 Jul 2023 02:48:02 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/arm-server-in-information-technology-industry.html</guid>
       <description>&lt;p&gt;近几年随着中美脱钩加速，在信息技术领域频频遇到美国卡脖子情况。为保障技术自主可控，信创产业必要性愈发凸显。信创作为一项国家战略，发展信创是为了解决本质安全的问题。本质安全也就是说，把它变成中国自己可掌控、可研究、可发展、可生产的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ARMv8架构u-boot启动流程详细分析</title>
       <link>https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html</link>
       <pubDate>Sat, 29 Jul 2023 11:44:46 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html</guid>
       <description>&lt;p&gt;本文基于 armv8 架构来对 u-boot 进行启动流程分析，u-boot版本为2022-01。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,17 +4,16 @@
     <title>DSP on Kontronn</title>
     <link>https://www.kontronn.com/categories/dsp/</link>
     <description>Recent content in DSP on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Jan 2023 08:34:16 -0500</lastBuildDate><atom:link href="https://www.kontronn.com/categories/dsp/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Jan 2023 08:34:16 -0500</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/categories/dsp/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>什么是DSP</title>
       <link>https://www.kontronn.com/post/dsp/what-is-dsp.html</link>
       <pubDate>Sun, 01 Jan 2023 08:34:16 -0500</pubDate>
-      
       <guid>https://www.kontronn.com/post/dsp/what-is-dsp.html</guid>
       <description>&lt;p&gt;嵌入式工程师都知道什么是CPU、MCU，还有一位成员——DSP，DSP到底是什么？&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

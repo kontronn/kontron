@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-07-17 21:52:28 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"network-programming-decrypting-the-libcurl-library.html","permalink":"https://www.kontronn.com/post/programming/network-programming-decrypting-the-libcurl-library.html","title":"网络编程：解密 libcurl库"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -282,7 +278,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -368,7 +364,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>538</span>
+  <span class="post-meta-item-text">字数：</span><span>544</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -415,123 +411,123 @@
 <p>执行请求：调用 curl_easy_perform 函数执行请求，并获取响应结果。</p>
 <p>清理资源：完成网络操作后，释放资源，进行全局清理。</p>
 <p>以下是一个简单的示例代码，演示了如何使用 libcurl 发送 HTTP GET 请求并获取响应数据。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">// 回调函数，用于处理响应数据
-</span><span style="color:#75715e"></span>size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
-    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
-    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
-}
-
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-    CURL<span style="color:#f92672">*</span> curl;
-    CURLcode res;
-    std<span style="color:#f92672">::</span>string readBuffer;
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    curl <span style="color:#f92672">=</span> curl_easy_init();
-    <span style="color:#66d9ef">if</span>(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
-
-        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
-        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
-        } <span style="color:#66d9ef">else</span> {
-            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-        }
-
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><h2 id="深入解析-http-响应">深入解析 HTTP 响应</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 回调函数，用于处理响应数据
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">size_t</span> nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+</span></span><span style="display:flex;"><span>    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">append</span>((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    CURL<span style="color:#f92672">*</span> curl;
+</span></span><span style="display:flex;"><span>    CURLcode res;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string readBuffer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_init</span>(CURL_GLOBAL_DEFAULT);
+</span></span><span style="display:flex;"><span>    curl <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(curl) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_perform</span>(curl);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">curl_easy_strerror</span>(res));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_cleanup</span>(curl);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_cleanup</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="深入解析-http-响应">深入解析 HTTP 响应</h2>
 <p>在实际项目中，我们不仅需要发送请求，还需要处理服务器返回的响应，例如获取响应码、解析响应头等。libcurl 提供了多种方法来获取这些信息，使得我们可以轻松地进行后续处理。</p>
 <p>为了获取 HTTP 响应码和响应头，我们可以设置额外的选项和回调函数。例如，通过 curl_easy_getinfo 函数获取响应码，通过设置 CURLOPT_HEADERFUNCTION 回调函数处理响应头。以下代码展示了如何实现这些功能：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
-    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
-    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
-}
-
-size_t <span style="color:#a6e22e">HeaderCallback</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> buffer, size_t size, size_t nitems, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userdata) {
-    std<span style="color:#f92672">::</span>string header(buffer, size <span style="color:#f92672">*</span> nitems);
-    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Header: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> header <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nitems;
-}
-
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-    CURL<span style="color:#f92672">*</span> curl;
-    CURLcode res;
-    std<span style="color:#f92672">::</span>string readBuffer;
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    curl <span style="color:#f92672">=</span> curl_easy_init();
-    <span style="color:#66d9ef">if</span>(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
-        curl_easy_setopt(curl, CURLOPT_HEADERFUNCTION, HeaderCallback);
-
-        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
-        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
-        } <span style="color:#66d9ef">else</span> {
-            <span style="color:#66d9ef">long</span> response_code;
-            curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, <span style="color:#f92672">&amp;</span>response_code);
-            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;HTTP Response Code: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> response_code <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Response Data: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-        }
-
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><h2 id="处理-post-请求">处理 POST 请求</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">size_t</span> nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+</span></span><span style="display:flex;"><span>    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">append</span>((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">HeaderCallback</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span> buffer, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">size_t</span> nitems, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userdata) {
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string <span style="color:#a6e22e">header</span>(buffer, size <span style="color:#f92672">*</span> nitems);
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Header: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> header <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nitems;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    CURL<span style="color:#f92672">*</span> curl;
+</span></span><span style="display:flex;"><span>    CURLcode res;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string readBuffer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_init</span>(CURL_GLOBAL_DEFAULT);
+</span></span><span style="display:flex;"><span>    curl <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(curl) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_HEADERFUNCTION, HeaderCallback);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_perform</span>(curl);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">curl_easy_strerror</span>(res));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">long</span> response_code;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">curl_easy_getinfo</span>(curl, CURLINFO_RESPONSE_CODE, <span style="color:#f92672">&amp;</span>response_code);
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;HTTP Response Code: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> response_code <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Response Data: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_cleanup</span>(curl);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_cleanup</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="处理-post-请求">处理 POST 请求</h2>
 <p>除了 GET 请求，POST 请求也是非常常见的。在 POST 请求中，我们需要向服务器发送数据，libcurl 支持多种数据格式，例如 JSON、表单数据等。通过设置 CURLOPT_POSTFIELDS 选项，我们可以轻松发送 POST 数据。</p>
 <p>以下代码演示了如何使用 libcurl 发送一个简单的 POST 请求，并处理响应数据：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
-    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
-    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
-}
-
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-    CURL<span style="color:#f92672">*</span> curl;
-    CURLcode res;
-    std<span style="color:#f92672">::</span>string readBuffer;
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    curl <span style="color:#f92672">=</span> curl_easy_init();
-    <span style="color:#66d9ef">if</span>(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com/post&#34;</span>);
-        curl_easy_setopt(curl, CURLOPT_POST, <span style="color:#ae81ff">1L</span>);
-        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, <span style="color:#e6db74">&#34;name=test&amp;project=curl&#34;</span>);
-
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
-
-        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
-        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
-        } <span style="color:#66d9ef">else</span> {
-            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-        }
-
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><h2 id="libcurl-的高级特性">libcurl 的高级特性</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">size_t</span> nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+</span></span><span style="display:flex;"><span>    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">append</span>((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    CURL<span style="color:#f92672">*</span> curl;
+</span></span><span style="display:flex;"><span>    CURLcode res;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string readBuffer;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_init</span>(CURL_GLOBAL_DEFAULT);
+</span></span><span style="display:flex;"><span>    curl <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(curl) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.example.com/post&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_POST, <span style="color:#ae81ff">1L</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_POSTFIELDS, <span style="color:#e6db74">&#34;name=test&amp;project=curl&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_perform</span>(curl);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">curl_easy_strerror</span>(res));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> readBuffer <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_cleanup</span>(curl);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_cleanup</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="libcurl-的高级特性">libcurl 的高级特性</h2>
 <p>libcurl 提供了许多高级特性，可以满足复杂的网络通信需求。以下是几个常见的高级特性：</p>
 <p>SSL/TLS 加密：通过设置 CURLOPT_USE_SSL 和 CURLOPT_CAINFO 选项，可以启用 SSL/TLS 加密通信，确保数据传输的安全性。</p>
 <p>处理 Cookie：libcurl 支持 Cookie 的处理，可以通过设置 CURLOPT_COOKIE 和 CURLOPT_COOKIEFILE 选项来管理 Cookie。</p>
@@ -549,50 +545,50 @@ size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9
 <p>解析网页内容：使用正则表达式或其他解析工具提取新闻标题。</p>
 <p>保存数据：将提取的新闻标题保存到本地文件。</p>
 <h3 id="实现代码">实现代码</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fstream&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, size_t size, size_t nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
-    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span>append((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
-    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
-}
-
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
-    CURL<span style="color:#f92672">*</span> curl;
-    CURLcode res;
-    std<span style="color:#f92672">::</span>string readBuffer;
-    std<span style="color:#f92672">::</span>ofstream outFile(<span style="color:#e6db74">&#34;news_titles.txt&#34;</span>);
-
-    curl_global_init(CURL_GLOBAL_DEFAULT);
-    curl <span style="color:#f92672">=</span> curl_easy_init();
-    <span style="color:#66d9ef">if</span>(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.newswebsite.com&#34;</span>);
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
-        curl_easy_setopt(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
-
-        res <span style="color:#f92672">=</span> curl_easy_perform(curl);
-        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
-            fprintf(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, curl_easy_strerror(res));
-        } <span style="color:#66d9ef">else</span> {
-            std<span style="color:#f92672">::</span>regex title_regex(<span style="color:#e6db74">&#34;&lt;h1 class=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">title</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;(.*?)&lt;/h1&gt;&#34;</span>);
-            std<span style="color:#f92672">::</span>smatch matches;
-            std<span style="color:#f92672">::</span>string<span style="color:#f92672">::</span>const_iterator searchStart(readBuffer.cbegin());
-
-            <span style="color:#66d9ef">while</span> (std<span style="color:#f92672">::</span>regex_search(searchStart, readBuffer.cend(), matches, title_regex)) {
-                outFile <span style="color:#f92672">&lt;&lt;</span> matches[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
-                searchStart <span style="color:#f92672">=</span> matches.suffix().first;
-            }
-        }
-
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-    outFile.close();
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><p>在这个示例中，我们使用 libcurl 获取网页内容，然后通过正则表达式提取新闻标题，并将其保存到本地文件中。这是 libcurl 在实际项目中的一个典型应用场景，展示了其强大的网络请求处理能力。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;fstream&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;regex&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;curl/curl.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">size_t</span> <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> contents, <span style="color:#66d9ef">size_t</span> size, <span style="color:#66d9ef">size_t</span> nmemb, <span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> userp) {
+</span></span><span style="display:flex;"><span>    ((std<span style="color:#f92672">::</span>string<span style="color:#f92672">*</span>)userp)<span style="color:#f92672">-&gt;</span><span style="color:#a6e22e">append</span>((<span style="color:#66d9ef">char</span><span style="color:#f92672">*</span>)contents, size <span style="color:#f92672">*</span> nmemb);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> size <span style="color:#f92672">*</span> nmemb;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    CURL<span style="color:#f92672">*</span> curl;
+</span></span><span style="display:flex;"><span>    CURLcode res;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>string readBuffer;
+</span></span><span style="display:flex;"><span>    std<span style="color:#f92672">::</span>ofstream <span style="color:#a6e22e">outFile</span>(<span style="color:#e6db74">&#34;news_titles.txt&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_init</span>(CURL_GLOBAL_DEFAULT);
+</span></span><span style="display:flex;"><span>    curl <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_init</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(curl) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_URL, <span style="color:#e6db74">&#34;http://www.newswebsite.com&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_setopt</span>(curl, CURLOPT_WRITEDATA, <span style="color:#f92672">&amp;</span>readBuffer);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_easy_perform</span>(curl);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(res <span style="color:#f92672">!=</span> CURLE_OK) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">fprintf</span>(stderr, <span style="color:#e6db74">&#34;curl_easy_perform() failed: %s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#a6e22e">curl_easy_strerror</span>(res));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>regex <span style="color:#a6e22e">title_regex</span>(<span style="color:#e6db74">&#34;&lt;h1 class=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">title</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&gt;(.*?)&lt;/h1&gt;&#34;</span>);
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>smatch matches;
+</span></span><span style="display:flex;"><span>            std<span style="color:#f92672">::</span>string<span style="color:#f92672">::</span>const_iterator <span style="color:#a6e22e">searchStart</span>(readBuffer.<span style="color:#a6e22e">cbegin</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span> (std<span style="color:#f92672">::</span><span style="color:#a6e22e">regex_search</span>(searchStart, readBuffer.<span style="color:#a6e22e">cend</span>(), matches, title_regex)) {
+</span></span><span style="display:flex;"><span>                outFile <span style="color:#f92672">&lt;&lt;</span> matches[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+</span></span><span style="display:flex;"><span>                searchStart <span style="color:#f92672">=</span> matches.<span style="color:#a6e22e">suffix</span>().first;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">curl_easy_cleanup</span>(curl);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">curl_global_cleanup</span>();
+</span></span><span style="display:flex;"><span>    outFile.<span style="color:#a6e22e">close</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在这个示例中，我们使用 libcurl 获取网页内容，然后通过正则表达式提取新闻标题，并将其保存到本地文件中。这是 libcurl 在实际项目中的一个典型应用场景，展示了其强大的网络请求处理能力。</p>
 <h2 id="总结">总结</h2>
 <p>libcurl 是一个功能强大且灵活的网络通信库，适用于各种网络编程需求。从简单的 HTTP 请求到复杂的多协议支持，libcurl 都能轻松应对。在本文中，我们从 libcurl 的基础使用方法开始，逐步介绍了处理 HTTP 响应、发送 POST 请求和使用高级特性等内容，并通过实际案例展示了 libcurl 的应用场景。libcurl 的世界远不止于此，期待你在实际应用中发现更多的惊喜和可能性！</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
@@ -741,7 +737,7 @@ size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -749,7 +745,7 @@ size_t <span style="color:#a6e22e">WriteCallback</span>(<span style="color:#66d9
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

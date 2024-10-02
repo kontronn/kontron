@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-08 21:39:54 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"how-to-configure-ipv4-and-ipv6.html","permalink":"https://www.kontronn.com/post/linux/how-to-configure-ipv4-and-ipv6.html","title":"如何在 Linux 中配置 IPv4 和 IPv6 地址"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -282,7 +278,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -402,51 +398,51 @@
   <p>IPv4和IPv6是Internet上常用的两种IP地址协议。在Linux系统中，您可以通过配置网络接口来设置IPv4和IPv6地址。本文将详细介绍如何在Linux中配置IPv4和IPv6地址。</p>
 <h2 id="步骤-1确定网络接口">步骤 1：确定网络接口</h2>
 <p>在开始配置IP地址之前，您需要确定要配置的网络接口。执行以下命令来列出当前系统上的网络接口：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ifconfig -a
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/IPv4-IPv6-1.png" alt="如何在 Linux 中配置 IPv4 和 IPv6 地址">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ifconfig -a
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/IPv4-IPv6-1.png" alt="如何在 Linux 中配置 IPv4 和 IPv6 地址">
 该命令将显示所有可用的网络接口及其相关信息。确定要配置的网络接口的名称，例如<code>eth0</code>或<code>enp0s3</code>。</p>
 <h2 id="步骤-2配置-ipv4-地址">步骤 2：配置 IPv4 地址</h2>
 <p>###临时配置</p>
 <p>要临时配置IPv4地址，可以使用ifconfig命令。执行以下命令来设置IPv4地址：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo ifconfig &lt;interface&gt; &lt;ipv4_address&gt; netmask &lt;netmask&gt;
-</code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，<netmask>替换为子网掩码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ifconfig &lt;interface&gt; &lt;ipv4_address&gt; netmask &lt;netmask&gt;
+</span></span></code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，<netmask>替换为子网掩码。</p>
 <p>例如，要将IP地址为192.168.1.10，子网掩码为255.255.255.0的IPv4地址分配给eth0接口，执行以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0
-</code></pre></div><h3 id="永久配置">永久配置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0
+</span></span></code></pre></div><h3 id="永久配置">永久配置</h3>
 <p>要永久配置IPv4地址，您需要编辑网络接口的配置文件。执行以下命令来打开配置文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo nano /etc/network/interfaces
-</code></pre></div><p>在文件中找到要配置的接口部分，添加以下行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">auto &lt;interface&gt;
-iface &lt;interface&gt; inet static
-    address &lt;ipv4_address&gt;
-    netmask &lt;netmask&gt;
-    gateway &lt;gateway_address&gt;
-</code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，<netmask>替换为子网掩码，&lt;gateway_address&gt;替换为网关地址。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/network/interfaces
+</span></span></code></pre></div><p>在文件中找到要配置的接口部分，添加以下行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>auto &lt;interface&gt;
+</span></span><span style="display:flex;"><span>iface &lt;interface&gt; inet static
+</span></span><span style="display:flex;"><span>    address &lt;ipv4_address&gt;
+</span></span><span style="display:flex;"><span>    netmask &lt;netmask&gt;
+</span></span><span style="display:flex;"><span>    gateway &lt;gateway_address&gt;
+</span></span></code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv4_address&gt;替换为您要分配的IPv4地址，<netmask>替换为子网掩码，&lt;gateway_address&gt;替换为网关地址。</p>
 <p>保存文件并关闭文本编辑器。然后，执行以下命令以使更改生效：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo systemctl restart networking
-</code></pre></div><p>现在，您的Linux系统将使用配置的IPv4地址。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart networking
+</span></span></code></pre></div><p>现在，您的Linux系统将使用配置的IPv4地址。</p>
 <h2 id="步骤-3配置-ipv6-地址">步骤 3：配置 IPv6 地址</h2>
 <h3 id="临时配置">临时配置</h3>
 <p>要临时配置IPv6地址，可以使用ifconfig命令。执行以下命令来设置IPv6地址：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo ifconfig &lt;interface&gt; inet6 add &lt;ipv6_address&gt;/&lt;prefix_length&gt;
-</code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ifconfig &lt;interface&gt; inet6 add &lt;ipv6_address&gt;/&lt;prefix_length&gt;
+</span></span></code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。</p>
 <p>例如，要将IPv6地址为2001:0db8:85a3:0000:0000:8a2e:0370:7334，前缀长度为64的IPv6地址分配给eth0接口，执行以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo ifconfig eth0 inet6 add 2001:0db8:85a3:0000:0000:8a2e:0370:7334/64
-</code></pre></div><h3 id="永久配置-1">永久配置</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ifconfig eth0 inet6 add 2001:0db8:85a3:0000:0000:8a2e:0370:7334/64
+</span></span></code></pre></div><h3 id="永久配置-1">永久配置</h3>
 <p>要永久配置IPv6地址，您需要编辑网络接口的配置文件。执行以下命令来打开配置文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo nano /etc/network/interfaces
-</code></pre></div><p>在文件中找到要配置的接口部分，添加以下行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">iface &lt;interface&gt; inet6 static
-    address &lt;ipv6_address&gt;/&lt;prefix_length&gt;
-</code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo nano /etc/network/interfaces
+</span></span></code></pre></div><p>在文件中找到要配置的接口部分，添加以下行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iface &lt;interface&gt; inet6 static
+</span></span><span style="display:flex;"><span>    address &lt;ipv6_address&gt;/&lt;prefix_length&gt;
+</span></span></code></pre></div><p>将<interface>替换为要配置的网络接口的名称，&lt;ipv6_address&gt;替换为您要分配的IPv6地址，&lt;prefix_length&gt;替换为前缀长度。</p>
 <p>保存文件并关闭文本编辑器。然后，执行以下命令以使更改生效：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo systemctl restart networking
-</code></pre></div><p>现在，您的Linux系统将使用配置的IPv6地址。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo systemctl restart networking
+</span></span></code></pre></div><p>现在，您的Linux系统将使用配置的IPv6地址。</p>
 <h3 id="步骤-4验证配置">步骤 4：验证配置</h3>
 <p>要验证IPv4和IPv6地址的配置是否成功，可以执行以下命令来查看网络接口的IP地址信息：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ifconfig &lt;interface&gt;
-将&lt;interface&gt;替换为您配置的网络接口的名称。该命令将显示指定接口的IP地址信息，包括IPv4和IPv6地址。
-</code></pre></div><h2 id="结论">结论</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ifconfig &lt;interface&gt;
+</span></span><span style="display:flex;"><span>将&lt;interface&gt;替换为您配置的网络接口的名称。该命令将显示指定接口的IP地址信息，包括IPv4和IPv6地址。
+</span></span></code></pre></div><h2 id="结论">结论</h2>
 <p>通过本文的指导，您已经学会了在Linux中配置IPv4和IPv6地址的详细步骤。根据您的网络需求，您可以临时或永久地配置这些地址。</p>
 <p>具体的配置方式可能因Linux发行版和版本而有所不同。本文提供了一般的配置方法，但如果您的系统有特定的要求或网络环境，请参考相关文档或咨询系统管理员。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
@@ -592,7 +588,7 @@ iface &lt;interface&gt; inet static
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -600,7 +596,7 @@ iface &lt;interface&gt; inet static
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

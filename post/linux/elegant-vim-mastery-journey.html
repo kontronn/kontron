@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-09-28 22:21:52 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"elegant-vim-mastery-journey.html","permalink":"https://www.kontronn.com/post/linux/elegant-vim-mastery-journey.html","title":"优雅的Vim熟练之旅"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -347,7 +343,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -519,22 +515,22 @@ Vim具有丰富的功能和高度可定制性。它支持多种编辑模式（�
 <ul>
 <li>Debian/Ubuntu：使用 apt 命令进行安装</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt update
-sudo apt install vim
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update
+</span></span><span style="display:flex;"><span>sudo apt install vim
+</span></span></code></pre></div><ul>
 <li>CentOS/Fedora：使用 yum 命令进行安装</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo yum install vim
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo yum install vim
+</span></span></code></pre></div><ul>
 <li>Arch Linux/Manjaro：使用 pacman 命令进行安装</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo pacman -S vim
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S vim
+</span></span></code></pre></div><ul>
 <li>验证安装： 安装完成后，可以在终端中输入以下命令验证Vim是否成功安装：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vim --version
-<span style="color:#75715e"># 如果安装成功，将显示Vim的版本信息和其他相关信息。</span>
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim --version
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果安装成功，将显示Vim的版本信息和其他相关信息。</span>
+</span></span></code></pre></div><ol start="4">
 <li>配置Vim（可选）：一旦安装完成，可以根据个人偏好对Vim进行配置。Vim具有丰富的自定义选项和插件支持。可以编辑Vim的配置文件（通常称为.vimrc），以调整编辑器的外观、键映射、插件等设置。这些可以在Vim的官方文档和用户社区中找到更多有关Vim配置的信息和资源。</li>
 </ol>
 <p>安装完成后，可以通过在终端（命令行）中输入&quot;vim&quot;命令来启动Vim编辑器。然后就可以开始使用Vim进行文本编辑了！请记住，Vim有一个学习曲线，如果是新手，可能需要一些时间去熟悉和掌握Vim的特性和编辑命令。</p>
@@ -544,79 +540,78 @@ sudo apt install vim
 <ol>
 <li>显示行号：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set number
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set number
+</span></span></code></pre></div><ol start="2">
 <li>启用语法高亮：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">syntax enable
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>syntax enable
+</span></span></code></pre></div><ol start="3">
 <li>设置制表符展开的空格数：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><ol start="4">
 <li>设置继承一个制表符所占用的空格数：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set shiftwidth<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
-</code></pre></div><ol start="5">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set shiftwidth<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><ol start="5">
 <li>使用空格代替制表符进行缩进：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set expandtab
-</code></pre></div><ol start="6">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set expandtab
+</span></span></code></pre></div><ol start="6">
 <li>启用自动缩进：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set autoindent
-</code></pre></div><ol start="7">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set autoindent
+</span></span></code></pre></div><ol start="7">
 <li>启用搜索时忽略大小写：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set ignorecase
-</code></pre></div><ol start="8">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set ignorecase
+</span></span></code></pre></div><ol start="8">
 <li>显示匹配的括号：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set showmatch
-</code></pre></div><ol start="9">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set showmatch
+</span></span></code></pre></div><ol start="9">
 <li>开启实时搜索（在输入时即时匹配）：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set incsearch
-</code></pre></div><ol start="10">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set incsearch
+</span></span></code></pre></div><ol start="10">
 <li>设置状态栏显示行号和列号：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set ruler
-</code></pre></div><p>这些只是一小部分常见的配置选项，可以根据自己的喜好进一步定制。完成编辑后，请保存 .vimrc 文件并重新启动 Vim，以使配置生效。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set ruler
+</span></span></code></pre></div><p>这些只是一小部分常见的配置选项，可以根据自己的喜好进一步定制。完成编辑后，请保存 .vimrc 文件并重新启动 Vim，以使配置生效。</p>
 <p>注意：Vim 的配置选项非常丰富，可以通过查阅 Vim 的官方文档或其他资源来了解更多的配置选项和定制方式。此外，还有许多开源的 Vim 配置文件（如 “vimrc”）可供参考和使用。</p>
 <p>示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#34; 基本设置
-</span><span style="color:#e6db74">set number            &#34;</span> 显示行号
-set tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>         <span style="color:#e6db74">&#34; 设置制表符展开的空格数
-</span><span style="color:#e6db74">set shiftwidth=4      &#34;</span> 设置继承一个制表符所占用的空格数
-set expandtab         <span style="color:#e6db74">&#34; 使用空格代替制表符进行缩进
-</span><span style="color:#e6db74">set autoindent        &#34;</span> 启用自动缩进
-set ignorecase        <span style="color:#e6db74">&#34; 搜索时忽略大小写
-</span><span style="color:#e6db74">set showmatch         &#34;</span> 显示匹配的括号
-set incsearch         <span style="color:#e6db74">&#34; 实时搜索
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">&#34;</span> 显示设置
-syntax enable         <span style="color:#e6db74">&#34; 启用语法高亮
-</span><span style="color:#e6db74">set background=dark   &#34;</span> 设置背景为暗色（适用于暗色主题）
-set cursorline        <span style="color:#e6db74">&#34; 高亮当前行
-</span><span style="color:#e6db74">set relativenumber    &#34;</span> 相对行号，显示相对于当前行的行号
-set wrap              <span style="color:#e6db74">&#34; 自动折行显示长行
-</span><span style="color:#e6db74">set linebreak         &#34;</span> 在单词之间断行
-
-<span style="color:#e6db74">&#34; 快捷键映射
-</span><span style="color:#e6db74">map &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;    &#34;</span> 绑定 F3 键打开/关闭目录树插件 NERDTree
-map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; 绑定 Ctrl + n 打开 NERDTree 并定位到当前文件
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">&#34;</span> 插件管理相关
-<span style="color:#e6db74">&#34; ...
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">&#34;</span> 其他自定义设置
-<span style="color:#e6db74">&#34; ...
-</span><span style="color:#e6db74">
-</span></code></pre></div><h2 id="vim的基本操作">Vim的基本操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#34; 基本设置
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set number            &#34;</span> 显示行号
+</span></span><span style="display:flex;"><span>set tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>         <span style="color:#e6db74">&#34; 设置制表符展开的空格数
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set shiftwidth=4      &#34;</span> 设置继承一个制表符所占用的空格数
+</span></span><span style="display:flex;"><span>set expandtab         <span style="color:#e6db74">&#34; 使用空格代替制表符进行缩进
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set autoindent        &#34;</span> 启用自动缩进
+</span></span><span style="display:flex;"><span>set ignorecase        <span style="color:#e6db74">&#34; 搜索时忽略大小写
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set showmatch         &#34;</span> 显示匹配的括号
+</span></span><span style="display:flex;"><span>set incsearch         <span style="color:#e6db74">&#34; 实时搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> 显示设置
+</span></span><span style="display:flex;"><span>syntax enable         <span style="color:#e6db74">&#34; 启用语法高亮
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set background=dark   &#34;</span> 设置背景为暗色（适用于暗色主题）
+</span></span><span style="display:flex;"><span>set cursorline        <span style="color:#e6db74">&#34; 高亮当前行
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set relativenumber    &#34;</span> 相对行号，显示相对于当前行的行号
+</span></span><span style="display:flex;"><span>set wrap              <span style="color:#e6db74">&#34; 自动折行显示长行
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set linebreak         &#34;</span> 在单词之间断行
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34; 快捷键映射
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">map &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;    &#34;</span> 绑定 F3 键打开/关闭目录树插件 NERDTree
+</span></span><span style="display:flex;"><span>map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; 绑定 Ctrl + n 打开 NERDTree 并定位到当前文件
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> 插件管理相关
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34; ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;</span> 其他自定义设置
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34; ...
+</span></span></span></code></pre></div><h2 id="vim的基本操作">Vim的基本操作</h2>
 <h3 id="运行vim和退出vim">运行Vim和退出Vim</h3>
 <p>要运行 Vim，可以在命令行中输入以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vim
-</code></pre></div><p>这将启动 Vim 编辑器，并打开一个空白文档供编辑。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim
+</span></span></code></pre></div><p>这将启动 Vim 编辑器，并打开一个空白文档供编辑。</p>
 <p>一旦进入 Vim，将进入正常模式（Normal Mode）。在正常模式下，可以执行各种操作，例如移动光标、插入文本、删除文本等。</p>
 <p>退出 Vim：</p>
 <ul>
@@ -867,7 +862,7 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <li>跳转到书签：</li>
 </ol>
 <ul>
-<li>在命令行模式下，按下'（单引号）键，然后输入书签名来跳转到相应的书签。</li>
+<li>在命令行模式下，按下&rsquo;（单引号）键，然后输入书签名来跳转到相应的书签。</li>
 <li>例如，要跳转到之前设置的 a 书签，可以输入&rsquo;a。</li>
 </ul>
 <p>注意，书签名区分大小写，并且它们只在当前打开的文件中有效。如果需要在不同的文件中保存书签，可以使用全局标记替代书签。</p>
@@ -1002,24 +997,24 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <p>添加自定义快捷键：在打开的配置文件中，使用下面的语法来添加自定义快捷键：</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nnoremap &lt;快捷键&gt; &lt;命令&gt;
-</code></pre></div><p>&lt;快捷键&gt; 是想要设置的快捷键，例如 Ctrl+C、F5 等。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nnoremap &lt;快捷键&gt; &lt;命令&gt;
+</span></span></code></pre></div><p>&lt;快捷键&gt; 是想要设置的快捷键，例如 Ctrl+C、F5 等。
 &lt;命令&gt; 是要执行的Vim命令，例如 :w（保存）、:q（退出）等。</p>
 <p>例如，要将快捷键 Ctrl+C 映射到保存文件的命令，可以添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nnoremap &lt;C-c&gt; :w&lt;CR&gt;
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nnoremap &lt;C-c&gt; :w&lt;CR&gt;
+</span></span></code></pre></div><ol start="3">
 <li>添加自定义命令：在打开的配置文件中，使用下面的语法来添加自定义命令：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">command! 命令名  命令定义
-</code></pre></div><p>命令名 是希望定义的命令的名称。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>command! 命令名  命令定义
+</span></span></code></pre></div><p>命令名 是希望定义的命令的名称。
 命令定义 是要执行的一系列Vim命令。</p>
 <p>例如，要创建一个名为 MyCommand 的自定义命令，它执行两个Vim命令 :w（保存）和 :q（退出），可以添加以下代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">command! MyCommand :w | q
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>command! MyCommand :w | q
+</span></span></code></pre></div><ol start="4">
 <li>保存配置文件并重新加载：修改完配置文件后，保存文件并重新启动Vim，或者使用以下命令重新加载配置文件使更改生效：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">:source ~/.vimrc
-</code></pre></div><p>现在已成功添加了自定义快捷键和命令。可以根据需要添加更多的自定义设置和命令。请记住，在添加自定义设置时，要确保语法正确并避免与现有的快捷键和命令冲突。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>:source ~/.vimrc
+</span></span></code></pre></div><p>现在已成功添加了自定义快捷键和命令。可以根据需要添加更多的自定义设置和命令。请记住，在添加自定义设置时，要确保语法正确并避免与现有的快捷键和命令冲突。</p>
 <h2 id="vim进阶技巧">Vim进阶技巧</h2>
 <h3 id="使用折叠和缩进">使用折叠和缩进</h3>
 <p>在Vim中，可以使用折叠功能和缩进功能来提高代码的可读性和编辑效率。下面是关于如何在Vim中使用折叠和缩进的简要说明：</p>
@@ -1030,9 +1025,9 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <li>手动折叠：在普通模式下，将光标放在想要折叠的行上，然后输入 zf + 移动光标到末尾行，例如 zf10j 折叠当前行和下方的10行。</li>
 <li>自动折叠：Vim支持根据特定规则自动生成折叠，例如按函数或语法折叠。可以启用自动折叠功能，在Vim配置文件（.vimrc）中添加以下行来设置默认开启：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set foldmethod<span style="color:#f92672">=</span>syntax  <span style="color:#e6db74">&#34; 使用语法折叠
-</span><span style="color:#e6db74">set foldenable        &#34;</span> 启用折叠
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set foldmethod<span style="color:#f92672">=</span>syntax  <span style="color:#e6db74">&#34; 使用语法折叠
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">set foldenable        &#34;</span> 启用折叠
+</span></span></code></pre></div><ol start="2">
 <li>展开折叠：</li>
 </ol>
 <ul>
@@ -1061,7 +1056,7 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 </ol>
 <ul>
 <li>在普通模式下，使用可视模式选择要过滤的文本。</li>
-<li>按下冒号（：）进入命令行模式，并且会自动出现选定的范围符号（'&lt;,'&gt;）。</li>
+<li>按下冒号（：）进入命令行模式，并且会自动出现选定的范围符号（&rsquo;&lt;,&rsquo;&gt;）。</li>
 <li>输入 ! 加上过滤命令，并按下回车键。例如，要使用排序命令对选定的文本进行排序，可以输入 !sort。</li>
 </ul>
 <ol start="3">
@@ -1146,10 +1141,10 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <ol start="6">
 <li>代码块选择：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">* <span style="color:#f92672">[[</span>：选择当前光标所在的代码块的开始
-
-* <span style="color:#f92672">][</span>：选择当前光标所在的代码块的结束
-</code></pre></div><h3 id="快速编辑和重复命令">快速编辑和重复命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>* <span style="color:#f92672">[[</span>：选择当前光标所在的代码块的开始
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>* <span style="color:#f92672">][</span>：选择当前光标所在的代码块的结束
+</span></span></code></pre></div><h3 id="快速编辑和重复命令">快速编辑和重复命令</h3>
 <p>Vim提供了快速编辑和重复命令的功能，可以显著提高编辑效率。</p>
 <ol>
 <li>快速编辑：</li>
@@ -1240,22 +1235,22 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <p>定义函数：在脚本文件中，使用function关键字定义一个函数，命名为希望的名称，并在函数体内编写执行特定任务的代码。例如，假设想要自动格式化当前缓冲区中的代码，可以定义一个名为AutoFormat的函数。</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span>! AutoFormat<span style="color:#f92672">()</span>
-  <span style="color:#e6db74">&#34; 在这里编写自动格式化代码的逻辑
-</span><span style="color:#e6db74">endfunction
-</span></code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">function</span>! AutoFormat<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34; 在这里编写自动格式化代码的逻辑
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">endfunction
+</span></span></span></code></pre></div><ol start="3">
 <li>注册命令或映射：在函数定义下方，可以使用以下方法之一将该函数与Vim命令或键盘映射相关联。</li>
 </ol>
 <p>以上示例将命令AutoFormat或按键F5分别与函数AutoFormat关联起来。</p>
 <ul>
 <li>命令方式注册命令：使用:command命令来注册一个自定义命令，该命令会调用定义的函数。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">command! AutoFormat :call AutoFormat<span style="color:#f92672">()</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>command! AutoFormat :call AutoFormat<span style="color:#f92672">()</span>
+</span></span></code></pre></div><ul>
 <li>键盘映射方式注册映射：使用:map命令来添加一个键盘映射，使特定按键触发定义的函数。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nnoremap &lt;F5&gt; :call AutoFormat<span style="color:#f92672">()</span>&lt;CR&gt;
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nnoremap &lt;F5&gt; :call AutoFormat<span style="color:#f92672">()</span>&lt;CR&gt;
+</span></span></code></pre></div><ol start="4">
 <li>
 <p>保存脚本文件：在完成编写脚本后，保存并关闭脚本文件。</p>
 </li>
@@ -1268,31 +1263,31 @@ map &lt;C-n&gt; :NERDTreeFind&lt;CR&gt;     <span style="color:#e6db74">&#34; �
 <li>如果使用了键盘映射方式，请按下相应的键（例如F5）执行自动格式化任务。</li>
 </ul>
 <p>示例，自动删除当前缓冲区中的所有空行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">function</span>! DeleteEmptyLines<span style="color:#f92672">()</span>
-  <span style="color:#e6db74">&#34; 保存当前光标位置
-</span><span style="color:#e6db74">  let save_cursor = getcurpos()
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">  &#34;</span> 移动到缓冲区开头
-  call cursor<span style="color:#f92672">(</span>1, 1<span style="color:#f92672">)</span>
-
-  <span style="color:#e6db74">&#34; 循环遍历缓冲区的每一行
-</span><span style="color:#e6db74">  while line(&#39;.&#39;) &lt;= line(&#39;</span>$<span style="color:#e6db74">&#39;)
-</span><span style="color:#e6db74">    &#34;</span> 如果当前行是空行，则删除
-    <span style="color:#66d9ef">if</span> getline<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span>~# <span style="color:#e6db74">&#39;^$&#39;</span>
-      silent! normal! dd
-    endif
-
-    <span style="color:#e6db74">&#34; 移动到下一行
-</span><span style="color:#e6db74">    call cursor(line(&#39;.&#39;) + 1, 1)
-</span><span style="color:#e6db74">  endwhile
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">  &#34;</span> 恢复原始光标位置
-  call setpos<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;.&#39;</span>, save_cursor<span style="color:#f92672">)</span>
-endfunction
-
-<span style="color:#e6db74">&#34; 注册命令
-</span><span style="color:#e6db74">command! DeleteEmptyLines :call DeleteEmptyLines()
-</span></code></pre></div><p>将上述代码保存为.vim文件（例如delete_empty_lines.vim）并加载到Vim中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">function</span>! DeleteEmptyLines<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34; 保存当前光标位置
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  let save_cursor = getcurpos()
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;</span> 移动到缓冲区开头
+</span></span><span style="display:flex;"><span>  call cursor<span style="color:#f92672">(</span>1, 1<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34; 循环遍历缓冲区的每一行
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  while line(&#39;.&#39;) &lt;= line(&#39;</span>$<span style="color:#e6db74">&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;</span> 如果当前行是空行，则删除
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> getline<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">=</span>~# <span style="color:#e6db74">&#39;^$&#39;</span>
+</span></span><span style="display:flex;"><span>      silent! normal! dd
+</span></span><span style="display:flex;"><span>    endif
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34; 移动到下一行
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    call cursor(line(&#39;.&#39;) + 1, 1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  endwhile
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;</span> 恢复原始光标位置
+</span></span><span style="display:flex;"><span>  call setpos<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;.&#39;</span>, save_cursor<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>endfunction
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34; 注册命令
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">command! DeleteEmptyLines :call DeleteEmptyLines()
+</span></span></span></code></pre></div><p>将上述代码保存为.vim文件（例如delete_empty_lines.vim）并加载到Vim中。</p>
 <p>然后，在Vim编辑器中执行:DeleteEmptyLines命令，即可删除当前缓冲区中的所有空行。</p>
 <h2 id="总结">总结</h2>
 <p>本文深入讨论了Vim的高级功能和强大的定制化能力，例如使用宏录制自动化重复操作、定制自己的键盘映射和命令别名、使用标签页管理多个文件等。读者将了解到如何通过这些技术来提高工作效率并实现个性化的编辑环境。</p>
@@ -1440,7 +1435,7 @@ endfunction
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -1448,7 +1443,7 @@ endfunction
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

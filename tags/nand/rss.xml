@@ -4,35 +4,30 @@
     <title>NAND on Kontronn</title>
     <link>https://www.kontronn.com/tags/nand/</link>
     <description>Recent content in NAND on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 25 Nov 2023 20:34:15 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nand/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Nov 2023 20:34:15 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/nand/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于芯片大厂裁员的几点思考</title>
       <link>https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</link>
       <pubDate>Sat, 25 Nov 2023 20:34:15 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</guid>
       <description>&lt;p&gt;近年来，半导体产业经历了波诡云谲的变革。疫情时代，远程办公技术激增带来了行业的暂时繁荣，但随后，我们见证了这一波潮的退却。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Marvell再传裁员！同行争抢订单和人才</title>
       <link>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</link>
       <pubDate>Fri, 17 Nov 2023 22:05:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</guid>
       <description>&lt;p&gt;集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2029年前，NAND是否能够替代HDD</title>
       <link>https://www.kontronn.com/post/storage/could-nand-capacity-replace-hdds-by-2029.html</link>
       <pubDate>Sat, 15 Jul 2023 23:12:03 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/storage/could-nand-capacity-replace-hdds-by-2029.html</guid>
       <description>&lt;p&gt;分析：Pure Storage表示，2028年后将不再出售新的硬盘驱动器（HDD）。Pure的这一大胆声明意味着，2029年本应销售的所有新HDD容量（不包括更换故障驱动器的容量）将被SSD容量取而代之。这将是大量额外的SSD出货量，并提出了一个问题：全球NAND制造能力是否能够生产足够的闪存？&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

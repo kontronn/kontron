@@ -4,48 +4,37 @@
     <title>Marvell on Kontronn</title>
     <link>https://www.kontronn.com/tags/marvell/</link>
     <description>Recent content in Marvell on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Sep 2024 20:20:12 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/marvell/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 20:20:12 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/marvell/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Marvell Teralynx 10 51.2Tbps 交换机</title>
       <link>https://www.kontronn.com/post/datacenter/marvell-teralynx-10-51.2-tbps-switch.html</link>
       <pubDate>Sat, 07 Sep 2024 20:20:12 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/marvell-teralynx-10-51.2-tbps-switch.html</guid>
-      <description>&lt;p&gt;随着
-&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;人工智能（AI）&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    人工智能（AI）
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;技术的迅猛发展，对数据处理和传输的需求日益增加，网络基础设施也必须随之升级。&lt;/p&gt;</description>
+      <description>&lt;p&gt;随着&#xA;&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;人工智能（AI）&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    人工智能（AI）&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;技术的迅猛发展，对数据处理和传输的需求日益增加，网络基础设施也必须随之升级。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>传英特尔拟出售Altera，Marvell或成潜在买家</title>
       <link>https://www.kontronn.com/post/news/intel-ceo-pitch-board-plans-shed-assets-cut-costs.html</link>
       <pubDate>Fri, 06 Sep 2024 21:34:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-ceo-pitch-board-plans-shed-assets-cut-costs.html</guid>
       <description>&lt;p&gt;9月1日，据路透社报道，英特尔CEO帕特·基辛格（Pat Gelsinger）及其核心管理团队正紧锣密鼓地筹备一项重大战略调整方案，计划于本月末正式提交给公司董事会审议。该方案旨在通过剥离非核心业务与削减成本，重振英特尔作为昔日芯片业巨头的市场地位。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>关于芯片大厂裁员的几点思考</title>
       <link>https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</link>
       <pubDate>Sat, 25 Nov 2023 20:34:15 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/some-thoughts-on-layoffs-at-major-chip-manufacturers.html</guid>
       <description>&lt;p&gt;近年来，半导体产业经历了波诡云谲的变革。疫情时代，远程办公技术激增带来了行业的暂时繁荣，但随后，我们见证了这一波潮的退却。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Marvell再传裁员！同行争抢订单和人才</title>
       <link>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</link>
       <pubDate>Fri, 17 Nov 2023 22:05:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</guid>
       <description>&lt;p&gt;集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

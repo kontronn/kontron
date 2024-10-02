@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>exec on Kontronn</title>
+    <title>Exec on Kontronn</title>
     <link>https://www.kontronn.com/tags/exec/</link>
-    <description>Recent content in exec on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Exec on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 24 Jul 2023 11:33:10 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/exec/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Jul 2023 11:33:10 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/exec/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>find使用xargs和exec执行效率比较</title>
       <link>https://www.kontronn.com/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html</link>
       <pubDate>Mon, 24 Jul 2023 11:33:10 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html</guid>
       <description>&lt;p&gt;在linux上测试在使用find命令进行批量操作时，xargs和exec两种方式那个效率更高。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

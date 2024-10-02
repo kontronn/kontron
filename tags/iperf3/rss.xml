@@ -4,17 +4,16 @@
     <title>Iperf3 on Kontronn</title>
     <link>https://www.kontronn.com/tags/iperf3/</link>
     <description>Recent content in Iperf3 on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 20:13:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/iperf3/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 20:13:47 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/iperf3/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>精讲网络速率测试工具iperf3使用</title>
       <link>https://www.kontronn.com/post/linux/detailed-introduction-to-iperf3-network-speed-test-tool.html</link>
       <pubDate>Sat, 13 Jul 2024 20:13:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/detailed-introduction-to-iperf3-network-speed-test-tool.html</guid>
       <description>&lt;p&gt;iPerf3是用于主动测试IP网络上最大可用带宽的工具。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,18 +4,16 @@
     <title>VPN on Kontronn</title>
     <link>https://www.kontronn.com/tags/vpn/</link>
     <description>Recent content in VPN on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 16 Jul 2024 19:53:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/vpn/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Jul 2024 19:53:36 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/vpn/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>二十张图看懂VPN</title>
       <link>https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html</link>
       <pubDate>Tue, 16 Jul 2024 19:53:36 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/twenty-pictures-to-understand-vpn.html</guid>
-      <description>&lt;p&gt;近年来，随着家庭办公的普及，越来越多的公司发现了远程办公的各种优势，于是乎各大公司纷纷推行远程办公。&lt;/p&gt;
-&lt;p&gt;在家远程办公的时候，不可避免地需要访问公司内网的数据资源。这个时候就不得不提今天的主角——VPN了。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近年来，随着家庭办公的普及，越来越多的公司发现了远程办公的各种优势，于是乎各大公司纷纷推行远程办公。&lt;/p&gt;&#xA;&lt;p&gt;在家远程办公的时候，不可避免地需要访问公司内网的数据资源。这个时候就不得不提今天的主角——VPN了。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,21 +4,16 @@
     <title>Nessus on Kontronn</title>
     <link>https://www.kontronn.com/tags/nessus/</link>
     <description>Recent content in Nessus on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 00:48:39 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nessus/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 00:48:39 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/nessus/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nessus 工具介绍与使用教程</title>
       <link>https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html</link>
       <pubDate>Sat, 13 Jul 2024 00:48:39 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html</guid>
-      <description>&lt;p&gt;
-&lt;a href=&#34;https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html&#34; title=&#34;Nessus&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Nessus
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 是一款广泛使用的网络漏洞扫描工具，由 Tenable Network Security 开发。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&#xA;&lt;a href=&#34;https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html&#34; title=&#34;Nessus&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Nessus&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 是一款广泛使用的网络漏洞扫描工具，由 Tenable Network Security 开发。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

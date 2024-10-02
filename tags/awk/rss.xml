@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>awk on Kontronn</title>
+    <title>Awk on Kontronn</title>
     <link>https://www.kontronn.com/tags/awk/</link>
-    <description>Recent content in awk on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Awk on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 08 Jul 2023 22:04:43 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/awk/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jul 2023 22:04:43 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/awk/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux三剑客（grep,sed,awk）</title>
       <link>https://www.kontronn.com/post/linux/linux-three-musketeers.html</link>
       <pubDate>Sat, 08 Jul 2023 22:04:43 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/linux-three-musketeers.html</guid>
       <description>&lt;p&gt;在Linux系统中，awk、grep、sed等命令被广泛用于文本处理。它们是非常强大的命令行工具，可以用于搜索、替换、过滤、排序等多种操作。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux之awk使用技巧</title>
       <link>https://www.kontronn.com/post/linux/awk-usage-skills.html</link>
       <pubDate>Mon, 19 Dec 2022 08:18:31 -0500</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/awk-usage-skills.html</guid>
-      <description>&lt;p&gt;AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。&lt;/p&gt;
-&lt;p&gt;之所以叫 AWK 是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。&lt;/p&gt;</description>
+      <description>&lt;p&gt;AWK 是一种处理文本文件的语言，是一个强大的文本分析工具。&lt;/p&gt;&#xA;&lt;p&gt;之所以叫 AWK 是因为其取了三位创始人 Alfred Aho，Peter Weinberger, 和 Brian Kernighan 的 Family Name 的首字符。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

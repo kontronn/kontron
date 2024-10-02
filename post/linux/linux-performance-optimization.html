@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-23 12:00:28 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-performance-optimization.html","permalink":"https://www.kontronn.com/post/linux/linux-performance-optimization.html","title":"Linux性能优化"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -340,7 +336,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -520,76 +516,76 @@
 <p><strong>中断处理优先级比进程高，所以中断上下文切换和进程上下文切换不会同时发生</strong></p>
 <h3 id="cpu上下文切换下">CPU上下文切换(下)</h3>
 <p>通过vmstat可以查看系统总体的上下文切换情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">5</span>         <span style="color:#75715e">#每隔5s输出一组数据</span>
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
- r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511056</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">60</span>    <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">96</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">450</span> <span style="color:#ae81ff">1176</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">8</span>  <span style="color:#ae81ff">429</span> <span style="color:#ae81ff">1135</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">431</span> <span style="color:#ae81ff">1132</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">467</span> <span style="color:#ae81ff">1195</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">426</span> <span style="color:#ae81ff">1139</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">95184</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511108</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">74</span>  <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">1228</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">94</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103512</span> <span style="color:#ae81ff">145416</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">455</span>  <span style="color:#ae81ff">723</span> <span style="color:#ae81ff">1573</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">83</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">5</span>         <span style="color:#75715e">#每隔5s输出一组数据</span>
+</span></span><span style="display:flex;"><span>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+</span></span><span style="display:flex;"><span> r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511056</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">18</span>    <span style="color:#ae81ff">60</span>    <span style="color:#ae81ff">1</span>    <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">96</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">450</span> <span style="color:#ae81ff">1176</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">8</span>  <span style="color:#ae81ff">429</span> <span style="color:#ae81ff">1135</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">431</span> <span style="color:#ae81ff">1132</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">467</span> <span style="color:#ae81ff">1195</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103388</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">426</span> <span style="color:#ae81ff">1139</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">95184</span> <span style="color:#ae81ff">145412</span> <span style="color:#ae81ff">511108</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">74</span>  <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">1228</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">94</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">103512</span> <span style="color:#ae81ff">145416</span> <span style="color:#ae81ff">511076</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">455</span>  <span style="color:#ae81ff">723</span> <span style="color:#ae81ff">1573</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">83</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><ul>
 <li>cs （context switch） 每秒上下文切换次数</li>
 <li>in （interrupt） 每秒中断次数</li>
 <li>r （runnning or runnable）就绪队列的长度，正在运行和等待CPU的进程数</li>
 <li>b （Blocked） 处于不可中断睡眠状态的进程数</li>
 </ul>
 <p>要查看每个进程的详细情况，需要使用pidstat来查看每个进程上下文切换情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -w <span style="color:#ae81ff">5</span>
-14时51分16秒   UID       PID   cswch/s nvcswch/s  Command
-14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">1</span>      0.80      0.00  systemd
-14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">6</span>      1.40      0.00  ksoftirqd/0
-14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">9</span>     32.67      0.00  rcu_sched
-14时51分21秒     <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">11</span>      0.40      0.00  watchdog/0
-14时51分21秒     <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">32</span>      0.20      0.00  khugepaged
-14时51分21秒     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">271</span>      0.20      0.00  jbd2/vda1-8
-14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1332</span>      0.20      0.00  argusagent
-14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">5265</span>     10.02      0.00  AliSecGuard
-14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7439</span>      7.82      0.00  kworker/0:2
-14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7906</span>      0.20      0.00  pidstat
-14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">8346</span>      0.20      0.00  sshd
-14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">20654</span>      9.82      0.00  AliYunDun
-14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">25766</span>      0.20      0.00  kworker/u2:1
-14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">28603</span>      1.00      0.00  python3
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -w <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>14时51分16秒   UID       PID   cswch/s nvcswch/s  Command
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">1</span>      0.80      0.00  systemd
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">6</span>      1.40      0.00  ksoftirqd/0
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">9</span>     32.67      0.00  rcu_sched
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">11</span>      0.40      0.00  watchdog/0
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">32</span>      0.20      0.00  khugepaged
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">271</span>      0.20      0.00  jbd2/vda1-8
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1332</span>      0.20      0.00  argusagent
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">5265</span>     10.02      0.00  AliSecGuard
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7439</span>      7.82      0.00  kworker/0:2
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7906</span>      0.20      0.00  pidstat
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">8346</span>      0.20      0.00  sshd
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">20654</span>      9.82      0.00  AliYunDun
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">25766</span>      0.20      0.00  kworker/u2:1
+</span></span><span style="display:flex;"><span>14时51分21秒     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">28603</span>      1.00      0.00  python3
+</span></span></code></pre></div><ul>
 <li>cswch 每秒自愿上下文切换次数 （进程无法获取所需资源导致的上下文切换）</li>
 <li>nvcswch 每秒非自愿上下文切换次数 （时间片轮流等系统强制调度）</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>    <span style="color:#75715e">#首先获取空闲系统的上下文切换次数</span>
-sysbench --threads<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> --max-time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> threads run <span style="color:#75715e">#模拟多线程切换问题</span>
-
-vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>    <span style="color:#75715e">#新终端观察上下文切换情况</span>
-此时发现cs数据明显升高，同时观察其他指标：
-r列： 远超系统CPU个数，说明存在大量CPU竞争
-us和sy列： sy列占比80%，说明CPU主要被内核占用
-in列： 中断次数明显上升，说明中断处理也是潜在问题
-</code></pre></div><p>说明运行/等待CPU的进程过多，导致大量的上下文切换，上下文切换导致系统的CPU占用率高</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -w -u <span style="color:#ae81ff">1</span>  <span style="color:#75715e">#查看到底哪个进程导致的问题</span>
-</code></pre></div><p>从结果中看出是sysbench导致CPU使用率过高，但是pidstat输出的上下文次数加起来也并不多。分析sysbench模拟的是线程的切换，因此需要在pidstat后加-t参数查看线程指标。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>    <span style="color:#75715e">#首先获取空闲系统的上下文切换次数</span>
+</span></span><span style="display:flex;"><span>sysbench --threads<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> --max-time<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span> threads run <span style="color:#75715e">#模拟多线程切换问题</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>    <span style="color:#75715e">#新终端观察上下文切换情况</span>
+</span></span><span style="display:flex;"><span>此时发现cs数据明显升高，同时观察其他指标：
+</span></span><span style="display:flex;"><span>r列： 远超系统CPU个数，说明存在大量CPU竞争
+</span></span><span style="display:flex;"><span>us和sy列： sy列占比80%，说明CPU主要被内核占用
+</span></span><span style="display:flex;"><span>in列： 中断次数明显上升，说明中断处理也是潜在问题
+</span></span></code></pre></div><p>说明运行/等待CPU的进程过多，导致大量的上下文切换，上下文切换导致系统的CPU占用率高</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -w -u <span style="color:#ae81ff">1</span>  <span style="color:#75715e">#查看到底哪个进程导致的问题</span>
+</span></span></code></pre></div><p>从结果中看出是sysbench导致CPU使用率过高，但是pidstat输出的上下文次数加起来也并不多。分析sysbench模拟的是线程的切换，因此需要在pidstat后加-t参数查看线程指标。</p>
 <p>另外对于中断次数过多，我们可以通过/proc/interrupts文件读取</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">watch -d cat /proc/interrupts
-</code></pre></div><p>发现次数变化速度最快的是重调度中断（RES），该中断用来唤醒空闲状态的CPU来调度新的任务运行。分析还是因为过多任务的调度问题，和上下文切换分析一致。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>watch -d cat /proc/interrupts
+</span></span></code></pre></div><p>发现次数变化速度最快的是重调度中断（RES），该中断用来唤醒空闲状态的CPU来调度新的任务运行。分析还是因为过多任务的调度问题，和上下文切换分析一致。</p>
 <h3 id="某个应用的cpu使用率达到100怎么办">某个应用的CPU使用率达到100%，怎么办？</h3>
 <p>Linux作为多任务操作系统，将CPU时间划分为很短的时间片，通过调度器轮流分配给各个任务使用。为了维护CPU时间，Linux通过事先定义的节拍率，触发时间中断，并使用全局变了jiffies记录开机以来的节拍数。时间中断发生一次该值+1.</p>
 <p><strong>CPU使用率</strong>，除了空闲时间以外的其他时间占总CPU时间的百分比。可以通过/proc/stat中的数据来计算出CPU使用率。因为/proc/stat时开机以来的节拍数累加值，计算出来的是开机以来的平均CPU使用率，一般意义不大。可以间隔取一段时间的两次值作差来计算该段时间内的平均CPU使用率。 <strong>性能分析工具给出的都是间隔一段时间的平均CPU使用率，要注意间隔时间的设置。</strong></p>
 <p>CPU使用率可以通过top 或 ps来查看。分析进程的CPU问题可以通过perf，它以性能事件采样为基础，不仅可以分析系统的各种事件和内核性能，还可以用来分析指定应用程序的性能问题。</p>
 <p>perf top / perf record / perf report （-g 开启调用关系的采样）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo docker run --name nginx -p 10000:80 -itd feisky/nginx
-sudo docker run --name phpfpm -itd --network container:nginx feisky/php-fpm
-
-ab -c <span style="color:#ae81ff">10</span> -n <span style="color:#ae81ff">100</span> http://XXX.XXX.XXX.XXX:10000/ <span style="color:#75715e">#测试Nginx服务性能</span>
-</code></pre></div><p>发现此时每秒可承受请求给长少，此时将测试的请求数从100增加到10000。 在另外一个终端运行top查看每个CPU的使用率。发现系统中几个php-fpm进程导致CPU使用率骤升。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --name nginx -p 10000:80 -itd feisky/nginx
+</span></span><span style="display:flex;"><span>sudo docker run --name phpfpm -itd --network container:nginx feisky/php-fpm
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ab -c <span style="color:#ae81ff">10</span> -n <span style="color:#ae81ff">100</span> http://XXX.XXX.XXX.XXX:10000/ <span style="color:#75715e">#测试Nginx服务性能</span>
+</span></span></code></pre></div><p>发现此时每秒可承受请求给长少，此时将测试的请求数从100增加到10000。 在另外一个终端运行top查看每个CPU的使用率。发现系统中几个php-fpm进程导致CPU使用率骤升。</p>
 <p>接着用perf来分析具体是php-fpm中哪个函数导致该问题。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">perf top -g -p XXXX <span style="color:#75715e">#对某一个php-fpm进程进行分析</span>
-</code></pre></div><p>发现其中sqrt和add_function占用CPU过多， 此时查看源码找到原来是sqrt中在发布前没有删除测试代码段，存在一个百万次的循环导致。 将该无用代码删除后发现nginx负载能力明显提升</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>perf top -g -p XXXX <span style="color:#75715e">#对某一个php-fpm进程进行分析</span>
+</span></span></code></pre></div><p>发现其中sqrt和add_function占用CPU过多， 此时查看源码找到原来是sqrt中在发布前没有删除测试代码段，存在一个百万次的循环导致。 将该无用代码删除后发现nginx负载能力明显提升</p>
 <h3 id="系统的cpu使用率很高为什么找不到高cpu的应用">系统的CPU使用率很高，为什么找不到高CPU的应用？</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo docker run --name nginx -p 10000:80 -itd feisky/nginx:sp
-sudo docker run --name phpfpm -itd --network container:nginx feisky/php-fpm:sp
-ab -c <span style="color:#ae81ff">100</span> -n <span style="color:#ae81ff">1000</span> http://XXX.XXX.XXX.XXX:10000/ <span style="color:#75715e">#并发100个请求测试</span>
-</code></pre></div><p>实验结果中每秒请求数依旧不高，我们将并发请求数降为5后，nginx负载能力依旧很低。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --name nginx -p 10000:80 -itd feisky/nginx:sp
+</span></span><span style="display:flex;"><span>sudo docker run --name phpfpm -itd --network container:nginx feisky/php-fpm:sp
+</span></span><span style="display:flex;"><span>ab -c <span style="color:#ae81ff">100</span> -n <span style="color:#ae81ff">1000</span> http://XXX.XXX.XXX.XXX:10000/ <span style="color:#75715e">#并发100个请求测试</span>
+</span></span></code></pre></div><p>实验结果中每秒请求数依旧不高，我们将并发请求数降为5后，nginx负载能力依旧很低。</p>
 <p>此时用top和pidstat发现系统CPU使用率过高，但是并没有发现CPU使用率高的进程。</p>
 <p>出现这种情况一般时我们分析时遗漏的什么信息，重新运行top命令并观察一会。发现就绪队列中处于Running状态的进行过多，超过了我们的并发请求次数5. 再仔细查看进程运行数据，发现nginx和php-fpm都处于sleep状态，真正处于运行的却是几个stress进程。</p>
 <p>下一步就利用pidstat分析这几个stress进程，发现没有任何输出。用ps aux交叉验证发现依旧不存在该进程。说明不是工具的问题。再top查看发现stress进程的进程号变化了，此时有可能时以下两种原因导致：</p>
@@ -598,8 +594,8 @@ ab -c <span style="color:#ae81ff">100</span> -n <span style="color:#ae81ff">1000
 <li>短时进程导致，即其他应用内部通过exec调用的外面命令，这些命令一般只运行很短时间就结束，很难用top这种间隔较长的工具来发现</li>
 </ul>
 <p>可以通过pstree来查找 stress的父进程，找出调用关系。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pstree | grep stress
-</code></pre></div><p>发现是php-fpm调用的该子进程，此时去查看源码可以看出每个请求都会调用一个stress命令来模拟I/O压力。 之前top显示的结果是CPU使用率升高，是否真的是由该stress命令导致的，还需要继续分析。 代码中给每个请求加了verbose=1的参数后可以查看stress命令的输出，在中断测试该命令结果显示stress命令运行时存在因权限问题导致的文件创建失败的bug。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pstree | grep stress
+</span></span></code></pre></div><p>发现是php-fpm调用的该子进程，此时去查看源码可以看出每个请求都会调用一个stress命令来模拟I/O压力。 之前top显示的结果是CPU使用率升高，是否真的是由该stress命令导致的，还需要继续分析。 代码中给每个请求加了verbose=1的参数后可以查看stress命令的输出，在中断测试该命令结果显示stress命令运行时存在因权限问题导致的文件创建失败的bug。</p>
 <p>此时依旧只是猜测，下一步继续通过perf工具来分析。性能报告显示确实时stress占用了大量的CPU，通过修复权限问题来优化解决即可.</p>
 <h3 id="系统中出现大量不可中断进程和僵尸进程怎么办">系统中出现大量不可中断进程和僵尸进程怎么办？</h3>
 <h4 id="进程状态">进程状态</h4>
@@ -615,18 +611,18 @@ ab -c <span style="color:#ae81ff">100</span> -n <span style="color:#ae81ff">1000
 <p>对于不可中断状态，一般都是在很短时间内结束，可忽略。但是如果系统或硬件发生故障，进程可能会保持不可中断状态很久，甚至系统中出现大量不可中断状态，此时需注意是否出现了I/O性能问题。</p>
 <p>僵尸进程一般多进程应用容易遇到，父进程来不及处理子进程状态时子进程就提前退出，此时子进程就变成了僵尸进程。大量的僵尸进程会用尽PID进程号，导致新进程无法建立。</p>
 <h4 id="磁盘o_direct问题">磁盘O_DIRECT问题</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo docker run --privileged --name<span style="color:#f92672">=</span>app -itd feisky/app:iowait
-ps aux | grep <span style="color:#e6db74">&#39;/app&#39;</span>
-</code></pre></div><p>可以看到此时有多个app进程运行，状态分别时Ss+和D+。其中后面s表示进程是一个会话的领导进程，+号表示前台进程组。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --privileged --name<span style="color:#f92672">=</span>app -itd feisky/app:iowait
+</span></span><span style="display:flex;"><span>ps aux | grep <span style="color:#e6db74">&#39;/app&#39;</span>
+</span></span></code></pre></div><p>可以看到此时有多个app进程运行，状态分别时Ss+和D+。其中后面s表示进程是一个会话的领导进程，+号表示前台进程组。</p>
 <p>其中<strong>进程组</strong>表示一组相互关联的进程，子进程是父进程所在组的组员。 <strong>会话</strong>指共享同一个控制终端的一个或多个进程组。</p>
 <p>用top查看系统资源发现：1）平均负载在逐渐增加，且1分钟内平均负载达到了CPU个数，说明系统可能已经有了性能瓶颈；2）僵尸进程比较多且在不停增加；3）us和sys CPU使用率都不高，iowait却比较高；4）每个进程CPU使用率也不高，但有两个进程处于D状态，可能在等待IO。</p>
 <p>分析目前数据可知：iowait过高导致系统平均负载升高，僵尸进程不断增长说明有程序没能正确清理子进程资源。</p>
 <p>用dstat来分析，因为它可以同时查看CPU和I/O两种资源的使用情况，便于对比分析。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">dstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#间隔1秒输出10组数据</span>
-</code></pre></div><p>可以看到当wai（iowait）升高时磁盘请求read都会很大，说明iowait的升高和磁盘的读请求有关。接下来分析到底时哪个进程在读磁盘。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#间隔1秒输出10组数据</span>
+</span></span></code></pre></div><p>可以看到当wai（iowait）升高时磁盘请求read都会很大，说明iowait的升高和磁盘的读请求有关。接下来分析到底时哪个进程在读磁盘。</p>
 <p>之前top查看的处于D状态的进程号，用pidstat -d -p XXX 展示进程的I/O统计数据。发现处于D状态的进程都没有任何读写操作。 在用pidstat -d 查看所有进程的I/O统计数据，看到app进程在进行磁盘读操作，每秒读取32MB的数据。进程访问磁盘必须使用系统调用处于内核态，接下来重点就是找到app进程的系统调用。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo strace -p XXX <span style="color:#75715e">#对app进程调用进行跟踪</span>
-</code></pre></div><p>报错没有权限，因为已经时root权限了。所以遇到这种情况，首先要检查进程状态是否正常。 ps命令查找该进程已经处于Z状态，即僵尸进程。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo strace -p XXX <span style="color:#75715e">#对app进程调用进行跟踪</span>
+</span></span></code></pre></div><p>报错没有权限，因为已经时root权限了。所以遇到这种情况，首先要检查进程状态是否正常。 ps命令查找该进程已经处于Z状态，即僵尸进程。</p>
 <p>这种情况下top pidstat之类的工具无法给出更多的信息，此时像第5篇一样，用perf record -d和perf report进行分析，查看app进程调用栈。</p>
 <p>看到app确实在通过系统调用sys_read()读取数据，并且从new_sync_read和blkdev_direct_IO看出进程时进行直接读操作，请求直接从磁盘读，没有通过缓存导致iowait升高。</p>
 <p>通过层层分析后，root cause是app内部进行了磁盘的直接I/O。然后定位到具体代码位置进行优化即可。</p>
@@ -811,8 +807,8 @@ ps aux | grep <span style="color:#e6db74">&#39;/app&#39;</span>
 </li>
 <li>
 <p>杀死进程： OOM内核保护机制 （进程消耗内存越大oom_score越大，占用CPU越多oom_score越小，可以通过/proc手动调整oom_adj）</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">echo -16 &gt; /proc/<span style="color:#66d9ef">$(</span>pidof XXX<span style="color:#66d9ef">)</span>/oom_adj
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo -16 &gt; /proc/<span style="color:#66d9ef">$(</span>pidof XXX<span style="color:#66d9ef">)</span>/oom_adj
+</span></span></code></pre></div></li>
 </ul>
 <h4 id="如何查看内存使用情况">如何查看内存使用情况</h4>
 <p>free来查看整个系统的内存使用情况</p>
@@ -830,30 +826,30 @@ ps aux | grep <span style="color:#e6db74">&#39;/app&#39;</span>
 <p><strong>缓存命中率</strong>是指直接通过缓存获取数据的请求次数，占所有请求次数的百分比。<strong>命中率越高说明缓存带来的收益越高，应用程序的性能也就越好。</strong></p>
 <p>安装bcc包后可以通过cachestat和cachetop来监测缓存的读写命中情况。</p>
 <p>安装pcstat后可以查看文件在内存中的缓存大小以及缓存比例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#首先安装Go</span>
-export GOPATH<span style="color:#f92672">=</span>~/go
-export PATH<span style="color:#f92672">=</span>~/go/bin:$PATH
-go get golang.org/x/sys/unix
-go ge github.com/tobert/pcstat/pcstat
-</code></pre></div><h4 id="dd缓存加速">dd缓存加速</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sda1 of<span style="color:#f92672">=</span>file bs<span style="color:#f92672">=</span>1M count<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span> <span style="color:#75715e">#生产一个512MB的临时文件</span>
-echo <span style="color:#ae81ff">3</span> &gt; /proc/sys/vm/drop_caches <span style="color:#75715e">#清理缓存</span>
-pcstat file <span style="color:#75715e">#确定刚才生成文件不在系统缓存中，此时cached和percent都是0</span>
-cachetop <span style="color:#ae81ff">5</span>
-dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>file of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1M <span style="color:#75715e">#测试文件读取速度</span>
-<span style="color:#75715e">#此时文件读取性能为30+MB/s，查看cachetop结果发现并不是所有的读都落在磁盘上，读缓存命中率只有50%。</span>
-dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>file of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1M <span style="color:#75715e">#重复上述读文件测试</span>
-<span style="color:#75715e">#此时文件读取性能为4+GB/s，读缓存命中率为100%</span>
-pcstat file <span style="color:#75715e">#查看文件file的缓存情况，100%全部缓存</span>
-</code></pre></div><h4 id="o_direct选项绕过系统缓存">O_DIRECT选项绕过系统缓存</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cachetop <span style="color:#ae81ff">5</span>
-sudo docker run --privileged --name<span style="color:#f92672">=</span>app -itd feisky/app:io-direct
-sudo docker logs app <span style="color:#75715e">#确认案例启动成功</span>
-<span style="color:#75715e">#实验结果表明每读32MB数据都要花0.9s，且cachetop输出中显示1024次缓存全部命中</span>
-</code></pre></div><p>但是凭感觉可知如果缓存命中读速度不应如此慢，读次数时1024，页大小为4K，五秒的时间内读取了1024*4KB数据，即每秒0.8MB，和结果中32MB相差较大。说明该案例没有充分利用缓存，怀疑系统调用设置了直接I/O标志绕过系统缓存。因此接下来观察系统调用.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">strace -p <span style="color:#66d9ef">$(</span>pgrep app<span style="color:#66d9ef">)</span>
-<span style="color:#75715e">#strace 结果可以看到openat打开磁盘分区/dev/sdb1，传入参数为O_RDONLY|O_DIRECT</span>
-</code></pre></div><p>这就解释了为什么读32MB数据那么慢，直接从磁盘读写肯定远远慢于缓存。找出问题后我们再看案例的源代码发现flags中指定了直接IO标志。删除该选项后重跑，验证性能变化。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#首先安装Go</span>
+</span></span><span style="display:flex;"><span>export GOPATH<span style="color:#f92672">=</span>~/go
+</span></span><span style="display:flex;"><span>export PATH<span style="color:#f92672">=</span>~/go/bin:$PATH
+</span></span><span style="display:flex;"><span>go get golang.org/x/sys/unix
+</span></span><span style="display:flex;"><span>go ge github.com/tobert/pcstat/pcstat
+</span></span></code></pre></div><h4 id="dd缓存加速">dd缓存加速</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sda1 of<span style="color:#f92672">=</span>file bs<span style="color:#f92672">=</span>1M count<span style="color:#f92672">=</span><span style="color:#ae81ff">512</span> <span style="color:#75715e">#生产一个512MB的临时文件</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#ae81ff">3</span> &gt; /proc/sys/vm/drop_caches <span style="color:#75715e">#清理缓存</span>
+</span></span><span style="display:flex;"><span>pcstat file <span style="color:#75715e">#确定刚才生成文件不在系统缓存中，此时cached和percent都是0</span>
+</span></span><span style="display:flex;"><span>cachetop <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>file of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1M <span style="color:#75715e">#测试文件读取速度</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#此时文件读取性能为30+MB/s，查看cachetop结果发现并不是所有的读都落在磁盘上，读缓存命中率只有50%。</span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>file of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1M <span style="color:#75715e">#重复上述读文件测试</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#此时文件读取性能为4+GB/s，读缓存命中率为100%</span>
+</span></span><span style="display:flex;"><span>pcstat file <span style="color:#75715e">#查看文件file的缓存情况，100%全部缓存</span>
+</span></span></code></pre></div><h4 id="o_direct选项绕过系统缓存">O_DIRECT选项绕过系统缓存</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cachetop <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>sudo docker run --privileged --name<span style="color:#f92672">=</span>app -itd feisky/app:io-direct
+</span></span><span style="display:flex;"><span>sudo docker logs app <span style="color:#75715e">#确认案例启动成功</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#实验结果表明每读32MB数据都要花0.9s，且cachetop输出中显示1024次缓存全部命中</span>
+</span></span></code></pre></div><p>但是凭感觉可知如果缓存命中读速度不应如此慢，读次数时1024，页大小为4K，五秒的时间内读取了1024*4KB数据，即每秒0.8MB，和结果中32MB相差较大。说明该案例没有充分利用缓存，怀疑系统调用设置了直接I/O标志绕过系统缓存。因此接下来观察系统调用.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>strace -p <span style="color:#66d9ef">$(</span>pgrep app<span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#strace 结果可以看到openat打开磁盘分区/dev/sdb1，传入参数为O_RDONLY|O_DIRECT</span>
+</span></span></code></pre></div><p>这就解释了为什么读32MB数据那么慢，直接从磁盘读写肯定远远慢于缓存。找出问题后我们再看案例的源代码发现flags中指定了直接IO标志。删除该选项后重跑，验证性能变化。</p>
 <h3 id="内存泄漏如何定位和处理">内存泄漏，如何定位和处理？</h3>
 <p>对应用程序来说，动态内存的分配和回收是核心又复杂的一个逻辑功能模块。管理内存的过程中会发生各种各样的“事故”：</p>
 <ul>
@@ -869,12 +865,12 @@ sudo docker logs app <span style="color:#75715e">#确认案例启动成功</span
 <p><strong>内存泄漏的危害比较大，这些忘记释放的内存，不仅应用程序自己不能访问，系统也不能把它们再次分配给其他应用。</strong> 内存泄漏不断累积甚至会耗尽系统内存.</p>
 <h4 id="如何检测内存泄漏">如何检测内存泄漏</h4>
 <p>预先安装systat，docker，bcc</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo docker run --name<span style="color:#f92672">=</span>app -itd feisky/app:mem-leak
-sudo docker logs app
-vmstat <span style="color:#ae81ff">3</span>
-</code></pre></div><p>可以看到free在不断下降，buffer和cache基本保持不变。说明系统的内存一致在升高。但并不能说明存在内存泄漏。此时可以通过memleak工具来跟踪系统或进程的内存分配/释放请求</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">/usr/share/bcc/tools/memleak -a -p <span style="color:#66d9ef">$(</span>pidof app<span style="color:#66d9ef">)</span>
-</code></pre></div><p>从memleak输出可以看到，应用在不停地分配内存，并且这些分配的地址并没有被回收。通过调用栈看到是fibonacci函数分配的内存没有释放。定位到源码后查看源码来修复增加内存释放函数即可.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo docker run --name<span style="color:#f92672">=</span>app -itd feisky/app:mem-leak
+</span></span><span style="display:flex;"><span>sudo docker logs app
+</span></span><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>可以看到free在不断下降，buffer和cache基本保持不变。说明系统的内存一致在升高。但并不能说明存在内存泄漏。此时可以通过memleak工具来跟踪系统或进程的内存分配/释放请求</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/share/bcc/tools/memleak -a -p <span style="color:#66d9ef">$(</span>pidof app<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>从memleak输出可以看到，应用在不停地分配内存，并且这些分配的地址并没有被回收。通过调用栈看到是fibonacci函数分配的内存没有释放。定位到源码后查看源码来修复增加内存释放函数即可.</p>
 <h3 id="为什么系统的swap变高">为什么系统的Swap变高</h3>
 <p>系统内存资源紧张时通过内存回收和OOM杀死进程来解决。其中可回收内存包括：</p>
 <ul>
@@ -925,8 +921,8 @@ pages_high = pages_min</em> 3 / 2</p>
 <h4 id="numa-与-swap">NUMA 与 SWAP</h4>
 <p>很多情况下系统剩余内存较多，但SWAP依旧升高，这是由于处理器的NUMA架构。</p>
 <p>在NUMA架构下多个处理器划分到不同的Node，每个Node都拥有自己的本地内存空间。在分析内存的使用时应该针对每个Node单独分析</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">numactl --hardware <span style="color:#75715e">#查看处理器在Node的分布情况，以及每个Node的内存使用情况</span>
-</code></pre></div><p>内存三个阈值可以通过/proc/zoneinfo来查看，该文件中还包括活跃和非活跃的匿名页/文件页数。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>numactl --hardware <span style="color:#75715e">#查看处理器在Node的分布情况，以及每个Node的内存使用情况</span>
+</span></span></code></pre></div><p>内存三个阈值可以通过/proc/zoneinfo来查看，该文件中还包括活跃和非活跃的匿名页/文件页数。</p>
 <p>当某个Node内存不足时，系统可以从其他Node寻找空闲资源，也可以从本地内存中回收内存。 通过/proc/sys/vm/zone_raclaim_mode来调整。</p>
 <ul>
 <li>0表示既可以从其他Node寻找空闲资源，也可以从本地回收内存</li>
@@ -936,26 +932,26 @@ pages_high = pages_min</em> 3 / 2</p>
 <p>在实际回收过程中Linux根据/proc/sys/vm/swapiness选项来调整使用Swap的积极程度，从0-100，数值越大越积极使用Swap，即更倾向于回收匿名页；数值越小越消极使用Swap，即更倾向于回收文件页。</p>
 <p><strong>注意：这只是调整Swap积极程度的权重，即使设置为0，当剩余内存+文件页小于页高阈值时，还是会发生Swap。</strong></p>
 <h4 id="swap升高时如何定位分析">Swap升高时如何定位分析</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">free <span style="color:#75715e">#首先通过free查看swap使用情况，若swap=0表示未配置Swap</span>
-<span style="color:#75715e">#先创建并开启swap</span>
-fallocate -l 8G /mnt/swapfile
-chmod <span style="color:#ae81ff">600</span> /mnt/swapfile
-mkswap /mnt/swapfile
-swapon /mnt/swapfile
-
-free <span style="color:#75715e">#再次执行free确保Swap配置成功</span>
-
-dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sda1 of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1G count<span style="color:#f92672">=</span><span style="color:#ae81ff">2048</span> <span style="color:#75715e">#模拟大文件读取</span>
-sar -r -S <span style="color:#ae81ff">1</span>  <span style="color:#75715e">#查看内存各个指标变化 -r内存 -S swap</span>
-<span style="color:#75715e">#根据结果可以看出，%memused在不断增长，剩余内存kbmemfress不断减少，缓冲区kbbuffers不断增大，由此可知剩余内存不断分配给了缓冲区</span>
-<span style="color:#75715e">#一段时间之后，剩余内存很小，而缓冲区占用了大部分内存。此时Swap使用之间增大，缓冲区和剩余内存只在小范围波动</span>
-
-停下sar命令
-cachetop5 <span style="color:#75715e">#观察缓存</span>
-<span style="color:#75715e">#可以看到dd进程读写只有50%的命中率，未命中数为4w+页，说明正式dd进程导致缓冲区使用升高</span>
-watch -d grep -A <span style="color:#ae81ff">15</span> ‘Normal’ /proc/zoneinfo <span style="color:#75715e">#观察内存指标变化</span>
-<span style="color:#75715e">#发现升级内存在一个小范围不停的波动，低于页低阈值时会突然增大到一个大于页高阈值的值</span>
-</code></pre></div><p>说明剩余内存和缓冲区的波动变化正是由于内存回收和缓存再次分配的循环往复。有时候Swap用的多，有时候缓冲区波动更多。此时查看swappiness值为60，是一个相对中和的配置，系统会根据实际运行情况来选去合适的回收类型.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>free <span style="color:#75715e">#首先通过free查看swap使用情况，若swap=0表示未配置Swap</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#先创建并开启swap</span>
+</span></span><span style="display:flex;"><span>fallocate -l 8G /mnt/swapfile
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">600</span> /mnt/swapfile
+</span></span><span style="display:flex;"><span>mkswap /mnt/swapfile
+</span></span><span style="display:flex;"><span>swapon /mnt/swapfile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>free <span style="color:#75715e">#再次执行free确保Swap配置成功</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dd <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sda1 of<span style="color:#f92672">=</span>/dev/null bs<span style="color:#f92672">=</span>1G count<span style="color:#f92672">=</span><span style="color:#ae81ff">2048</span> <span style="color:#75715e">#模拟大文件读取</span>
+</span></span><span style="display:flex;"><span>sar -r -S <span style="color:#ae81ff">1</span>  <span style="color:#75715e">#查看内存各个指标变化 -r内存 -S swap</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#根据结果可以看出，%memused在不断增长，剩余内存kbmemfress不断减少，缓冲区kbbuffers不断增大，由此可知剩余内存不断分配给了缓冲区</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#一段时间之后，剩余内存很小，而缓冲区占用了大部分内存。此时Swap使用之间增大，缓冲区和剩余内存只在小范围波动</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>停下sar命令
+</span></span><span style="display:flex;"><span>cachetop5 <span style="color:#75715e">#观察缓存</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#可以看到dd进程读写只有50%的命中率，未命中数为4w+页，说明正式dd进程导致缓冲区使用升高</span>
+</span></span><span style="display:flex;"><span>watch -d grep -A <span style="color:#ae81ff">15</span> ‘Normal’ /proc/zoneinfo <span style="color:#75715e">#观察内存指标变化</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#发现升级内存在一个小范围不停的波动，低于页低阈值时会突然增大到一个大于页高阈值的值</span>
+</span></span></code></pre></div><p>说明剩余内存和缓冲区的波动变化正是由于内存回收和缓存再次分配的循环往复。有时候Swap用的多，有时候缓冲区波动更多。此时查看swappiness值为60，是一个相对中和的配置，系统会根据实际运行情况来选去合适的回收类型.</p>
 <h3 id="如何快准狠找到系统内存存在的问题">如何“快准狠”找到系统内存存在的问题</h3>
 <h4 id="内存性能指标">内存性能指标</h4>
 <p><strong>系统内存指标</strong></p>
@@ -1000,59 +996,59 @@ watch -d grep -A <span style="color:#ae81ff">15</span> ‘Normal’ /proc/zonein
 </ul>
 <h5 id="vmstat使用详解">vmstat使用详解</h5>
 <p>vmstat命令是最常见的Linux/Unix监控工具，可以展现给定时间间隔的服务器的状态值,包括服务器的CPU使用率，内存使用，虚拟内存交换情况,IO读写情况。可以看到整个机器的CPU,内存,IO的使用情况，而不是单单看到各个进程的CPU使用率和内存使用率(使用场景不一样)。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">2</span>
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
- r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1379064</span> <span style="color:#ae81ff">282244</span> <span style="color:#ae81ff">11537528</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">3</span>   <span style="color:#ae81ff">104</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">97</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1372716</span> <span style="color:#ae81ff">282244</span> <span style="color:#ae81ff">11537544</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">24</span> <span style="color:#ae81ff">4893</span> <span style="color:#ae81ff">8947</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1373404</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537544</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">5105</span> <span style="color:#ae81ff">9278</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1374168</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537556</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5001</span> <span style="color:#ae81ff">9208</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1376948</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537564</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">5176</span> <span style="color:#ae81ff">9388</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1379356</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11537580</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">202</span> <span style="color:#ae81ff">5474</span> <span style="color:#ae81ff">9519</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1368376</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11543696</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5894</span> <span style="color:#ae81ff">8940</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">88</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1371936</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11539240</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10554</span> <span style="color:#ae81ff">6176</span> <span style="color:#ae81ff">9481</span> <span style="color:#ae81ff">14</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">85</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1366184</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11542292</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">7456</span> <span style="color:#ae81ff">6102</span> <span style="color:#ae81ff">9983</span>  <span style="color:#ae81ff">7</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">91</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1353040</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11556176</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">16924</span> <span style="color:#ae81ff">7233</span> <span style="color:#ae81ff">9578</span> <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">80</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1359432</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11549124</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">12576</span> <span style="color:#ae81ff">5495</span> <span style="color:#ae81ff">9271</span>  <span style="color:#ae81ff">7</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">92</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1361744</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11549132</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">58</span> <span style="color:#ae81ff">8606</span> <span style="color:#ae81ff">15079</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">95</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1367120</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11549140</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">5716</span> <span style="color:#ae81ff">9205</span>  <span style="color:#ae81ff">8</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">92</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1346580</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11562644</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">70</span> <span style="color:#ae81ff">6416</span> <span style="color:#ae81ff">9944</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">88</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1359164</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11550108</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">2922</span> <span style="color:#ae81ff">4941</span> <span style="color:#ae81ff">8969</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">97</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
- <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1353992</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11557044</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">6023</span> <span style="color:#ae81ff">8917</span> <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">84</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
-
-<span style="color:#75715e"># 结果说明</span>
-- r 表示运行队列<span style="color:#f92672">(</span>就是说多少个进程真的分配到CPU<span style="color:#f92672">)</span>，我测试的服务器目前CPU比较空闲，没什么程序在跑，当这个值超过了CPU数目，就会出现CPU瓶颈了。这个也和top的负载有关系，一般负载超过了3就比较高，超过了5就高，超过了10就不正常了，服务器的状态很危险。top的负载类似每秒的运行队列。如果运行队列过大，表示你的CPU很繁忙，一般会造成CPU使用率很高。
-
-- b 表示阻塞的进程,这个不多说，进程阻塞，大家懂的。
-
-- swpd 虚拟内存已使用的大小，如果大于0，表示你的机器物理内存不足了，如果不是程序内存泄露的原因，那么你该升级内存了或者把耗内存的任务迁移到其他机器。
-
-- free   空闲的物理内存的大小，我的机器内存总共8G，剩余3415M。
-
-- buff   Linux/Unix系统是用来存储，目录里面有什么内容，权限等的缓存，我本机大概占用300多M
-
-- cache cache直接用来记忆我们打开的文件,给文件做缓冲，我本机大概占用300多M<span style="color:#f92672">(</span>这里是Linux/Unix的聪明之处，把空闲的物理内存的一部分拿来做文件和目录的缓存，是为了提高 程序执行的性能，当程序使用内存时，buffer/cached会很快地被使用。<span style="color:#f92672">)</span>
-
-- si  每秒从磁盘读入虚拟内存的大小，如果这个值大于0，表示物理内存不够用或者内存泄露了，要查找耗内存进程解决掉。我的机器内存充裕，一切正常。
-
-- so  每秒虚拟内存写入磁盘的大小，如果这个值大于0，同上。
-
-- bi  块设备每秒接收的块数量，这里的块设备是指系统上所有的磁盘和其他块设备，默认块大小是1024byte，我本机上没什么IO操作，所以一直是0，但是我曾在处理拷贝大量数据<span style="color:#f92672">(</span>2-3T<span style="color:#f92672">)</span>的机器上看过可以达到140000/s，磁盘写入速度差不多140M每秒
-
-- bo 块设备每秒发送的块数量，例如我们读取文件，bo就要大于0。bi和bo一般都要接近0，不然就是IO过于频繁，需要调整。
-
-- in 每秒CPU的中断次数，包括时间中断
-
-- cs 每秒上下文切换次数，例如我们调用系统函数，就要进行上下文切换，线程的切换，也要进程上下文切换，这个值要越小越好，太大了，要考虑调低线程或者进程的数目,例如在apache和nginx这种web服务器中，我们一般做性能测试时会进行几千并发甚至几万并发的测试，选择web服务器的进程可以由进程或者线程的峰值一直下调，压测，直到cs到一个比较小的值，这个进程和线程数就是比较合适的值了。系统调用也是，每次调用系统函数，我们的代码就会进入内核空间，导致上下文切换，这个是很耗资源，也要尽量避免频繁调用系统函数。上下文切换次数过多表示你的CPU大部分浪费在上下文切换，导致CPU干正经事的时间少了，CPU没有充分利用，是不可取的。
-
-- us 用户CPU时间，我曾经在一个做加密解密很频繁的服务器上，可以看到us接近100,r运行队列达到80<span style="color:#f92672">(</span>机器在做压力测试，性能表现不佳<span style="color:#f92672">)</span>。
-
-- sy 系统CPU时间，如果太高，表示系统调用时间长，例如是IO操作频繁。
-
-- id 空闲CPU时间，一般来说，id + us + sy <span style="color:#f92672">=</span> 100,一般我认为id是空闲CPU使用率，us是用户CPU使用率，sy是系统CPU使用率。
-
-- wt 等待IO CPU时间
-</code></pre></div><h5 id="pidstat-使用详解">pidstat 使用详解</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+</span></span><span style="display:flex;"><span> r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1379064</span> <span style="color:#ae81ff">282244</span> <span style="color:#ae81ff">11537528</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">3</span>   <span style="color:#ae81ff">104</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">97</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1372716</span> <span style="color:#ae81ff">282244</span> <span style="color:#ae81ff">11537544</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">24</span> <span style="color:#ae81ff">4893</span> <span style="color:#ae81ff">8947</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1373404</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537544</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">96</span> <span style="color:#ae81ff">5105</span> <span style="color:#ae81ff">9278</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1374168</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537556</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5001</span> <span style="color:#ae81ff">9208</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">99</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1376948</span> <span style="color:#ae81ff">282248</span> <span style="color:#ae81ff">11537564</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">80</span> <span style="color:#ae81ff">5176</span> <span style="color:#ae81ff">9388</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1379356</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11537580</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>   <span style="color:#ae81ff">202</span> <span style="color:#ae81ff">5474</span> <span style="color:#ae81ff">9519</span>  <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">98</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1368376</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11543696</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5894</span> <span style="color:#ae81ff">8940</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">88</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1371936</span> <span style="color:#ae81ff">282256</span> <span style="color:#ae81ff">11539240</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">10554</span> <span style="color:#ae81ff">6176</span> <span style="color:#ae81ff">9481</span> <span style="color:#ae81ff">14</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">85</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1366184</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11542292</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">7456</span> <span style="color:#ae81ff">6102</span> <span style="color:#ae81ff">9983</span>  <span style="color:#ae81ff">7</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">91</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1353040</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11556176</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">16924</span> <span style="color:#ae81ff">7233</span> <span style="color:#ae81ff">9578</span> <span style="color:#ae81ff">18</span>  <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">80</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1359432</span> <span style="color:#ae81ff">282260</span> <span style="color:#ae81ff">11549124</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">12576</span> <span style="color:#ae81ff">5495</span> <span style="color:#ae81ff">9271</span>  <span style="color:#ae81ff">7</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">92</span>  <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1361744</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11549132</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">58</span> <span style="color:#ae81ff">8606</span> <span style="color:#ae81ff">15079</span>  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">95</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1367120</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11549140</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">5716</span> <span style="color:#ae81ff">9205</span>  <span style="color:#ae81ff">8</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">92</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1346580</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11562644</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">70</span> <span style="color:#ae81ff">6416</span> <span style="color:#ae81ff">9944</span> <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">88</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1359164</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11550108</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">2922</span> <span style="color:#ae81ff">4941</span> <span style="color:#ae81ff">8969</span>  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">97</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">1353992</span> <span style="color:#ae81ff">282264</span> <span style="color:#ae81ff">11557044</span>    <span style="color:#ae81ff">0</span>    <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">6023</span> <span style="color:#ae81ff">8917</span> <span style="color:#ae81ff">15</span>  <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">84</span>  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 结果说明</span>
+</span></span><span style="display:flex;"><span>- r 表示运行队列<span style="color:#f92672">(</span>就是说多少个进程真的分配到CPU<span style="color:#f92672">)</span>，我测试的服务器目前CPU比较空闲，没什么程序在跑，当这个值超过了CPU数目，就会出现CPU瓶颈了。这个也和top的负载有关系，一般负载超过了3就比较高，超过了5就高，超过了10就不正常了，服务器的状态很危险。top的负载类似每秒的运行队列。如果运行队列过大，表示你的CPU很繁忙，一般会造成CPU使用率很高。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- b 表示阻塞的进程,这个不多说，进程阻塞，大家懂的。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- swpd 虚拟内存已使用的大小，如果大于0，表示你的机器物理内存不足了，如果不是程序内存泄露的原因，那么你该升级内存了或者把耗内存的任务迁移到其他机器。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- free   空闲的物理内存的大小，我的机器内存总共8G，剩余3415M。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- buff   Linux/Unix系统是用来存储，目录里面有什么内容，权限等的缓存，我本机大概占用300多M
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- cache cache直接用来记忆我们打开的文件,给文件做缓冲，我本机大概占用300多M<span style="color:#f92672">(</span>这里是Linux/Unix的聪明之处，把空闲的物理内存的一部分拿来做文件和目录的缓存，是为了提高 程序执行的性能，当程序使用内存时，buffer/cached会很快地被使用。<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- si  每秒从磁盘读入虚拟内存的大小，如果这个值大于0，表示物理内存不够用或者内存泄露了，要查找耗内存进程解决掉。我的机器内存充裕，一切正常。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- so  每秒虚拟内存写入磁盘的大小，如果这个值大于0，同上。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- bi  块设备每秒接收的块数量，这里的块设备是指系统上所有的磁盘和其他块设备，默认块大小是1024byte，我本机上没什么IO操作，所以一直是0，但是我曾在处理拷贝大量数据<span style="color:#f92672">(</span>2-3T<span style="color:#f92672">)</span>的机器上看过可以达到140000/s，磁盘写入速度差不多140M每秒
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- bo 块设备每秒发送的块数量，例如我们读取文件，bo就要大于0。bi和bo一般都要接近0，不然就是IO过于频繁，需要调整。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- in 每秒CPU的中断次数，包括时间中断
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- cs 每秒上下文切换次数，例如我们调用系统函数，就要进行上下文切换，线程的切换，也要进程上下文切换，这个值要越小越好，太大了，要考虑调低线程或者进程的数目,例如在apache和nginx这种web服务器中，我们一般做性能测试时会进行几千并发甚至几万并发的测试，选择web服务器的进程可以由进程或者线程的峰值一直下调，压测，直到cs到一个比较小的值，这个进程和线程数就是比较合适的值了。系统调用也是，每次调用系统函数，我们的代码就会进入内核空间，导致上下文切换，这个是很耗资源，也要尽量避免频繁调用系统函数。上下文切换次数过多表示你的CPU大部分浪费在上下文切换，导致CPU干正经事的时间少了，CPU没有充分利用，是不可取的。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- us 用户CPU时间，我曾经在一个做加密解密很频繁的服务器上，可以看到us接近100,r运行队列达到80<span style="color:#f92672">(</span>机器在做压力测试，性能表现不佳<span style="color:#f92672">)</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- sy 系统CPU时间，如果太高，表示系统调用时间长，例如是IO操作频繁。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- id 空闲CPU时间，一般来说，id + us + sy <span style="color:#f92672">=</span> 100,一般我认为id是空闲CPU使用率，us是用户CPU使用率，sy是系统CPU使用率。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>- wt 等待IO CPU时间
+</span></span></code></pre></div><h5 id="pidstat-使用详解">pidstat 使用详解</h5>
 <p>pidstat主要用于监控全部或指定进程占用系统资源的情况,如CPU,内存、设备IO、任务切换、线程等。</p>
 <p>使用方法：</p>
 <ul>
@@ -1063,20 +1059,20 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 <li>p PID 指定PID</li>
 </ul>
 <p>1、统计IO使用情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -d <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
-
-03:02:02 PM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
-03:02:03 PM     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">816</span>      0.00    918.81      0.00  jbd2/vda1-8
-03:02:03 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1007</span>      0.00      3.96      0.00  AliYunDun
-03:02:03 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>      0.00   1904.95    918.81  java
-03:02:03 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.00      3.96      0.00  java
-03:02:03 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">16066</span>      0.00     35.64      0.00  cmagent
-
-03:02:03 PM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
-03:02:04 PM     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">816</span>      0.00   1924.00      0.00  jbd2/vda1-8
-03:02:04 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>      0.00  11156.00   1888.00  java
-03:02:04 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.00      4.00      0.00  java
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -d <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>03:02:02 PM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+</span></span><span style="display:flex;"><span>03:02:03 PM     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">816</span>      0.00    918.81      0.00  jbd2/vda1-8
+</span></span><span style="display:flex;"><span>03:02:03 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1007</span>      0.00      3.96      0.00  AliYunDun
+</span></span><span style="display:flex;"><span>03:02:03 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>      0.00   1904.95    918.81  java
+</span></span><span style="display:flex;"><span>03:02:03 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.00      3.96      0.00  java
+</span></span><span style="display:flex;"><span>03:02:03 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">16066</span>      0.00     35.64      0.00  cmagent
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>03:02:03 PM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+</span></span><span style="display:flex;"><span>03:02:04 PM     <span style="color:#ae81ff">0</span>       <span style="color:#ae81ff">816</span>      0.00   1924.00      0.00  jbd2/vda1-8
+</span></span><span style="display:flex;"><span>03:02:04 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>      0.00  11156.00   1888.00  java
+</span></span><span style="display:flex;"><span>03:02:04 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.00      4.00      0.00  java
+</span></span></code></pre></div><ul>
 <li>UID</li>
 <li>PID</li>
 <li>kB_rd/s: 每秒进程从磁盘读取的数据量 KB 单位 read from disk each second KB</li>
@@ -1086,16 +1082,16 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 <li>Command: 进程名 task name</li>
 </ul>
 <p>2、统计CPU使用情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 统计CPU</span>
-pidstat -u <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
-03:03:33 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
-03:03:34 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">2321</span>    3.96    0.00    0.00    3.96     <span style="color:#ae81ff">0</span>  ansible
-03:03:34 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7110</span>    0.00    0.99    0.00    0.99     <span style="color:#ae81ff">4</span>  pidstat
-03:03:34 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
-03:03:34 PM   <span style="color:#ae81ff">984</span>     <span style="color:#ae81ff">15517</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
-03:03:34 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">24406</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
-03:03:34 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">32158</span>    3.96    0.00    0.00    3.96     <span style="color:#ae81ff">2</span>  ansible
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 统计CPU</span>
+</span></span><span style="display:flex;"><span>pidstat -u <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>03:03:33 PM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+</span></span><span style="display:flex;"><span>03:03:34 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">2321</span>    3.96    0.00    0.00    3.96     <span style="color:#ae81ff">0</span>  ansible
+</span></span><span style="display:flex;"><span>03:03:34 PM     <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7110</span>    0.00    0.99    0.00    0.99     <span style="color:#ae81ff">4</span>  pidstat
+</span></span><span style="display:flex;"><span>03:03:34 PM   <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
+</span></span><span style="display:flex;"><span>03:03:34 PM   <span style="color:#ae81ff">984</span>     <span style="color:#ae81ff">15517</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
+</span></span><span style="display:flex;"><span>03:03:34 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">24406</span>    0.99    0.00    0.00    0.99     <span style="color:#ae81ff">5</span>  java
+</span></span><span style="display:flex;"><span>03:03:34 PM     <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">32158</span>    3.96    0.00    0.00    3.96     <span style="color:#ae81ff">2</span>  ansible
+</span></span></code></pre></div><ul>
 <li>UID</li>
 <li>PID</li>
 <li>%usr: 进程在用户空间占用 cpu 的百分比</li>
@@ -1107,25 +1103,25 @@ pidstat -u <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</
 <li>Command: 进程名</li>
 </ul>
 <p>3、统计内存使用情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 统计内存</span>
-pidstat -r <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
-Average:      UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
-Average:        <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">1</span>      0.20      0.00  <span style="color:#ae81ff">191256</span>   <span style="color:#ae81ff">3064</span>   0.01  systemd
-Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1007</span>      1.30      0.00  <span style="color:#ae81ff">143256</span>  <span style="color:#ae81ff">22720</span>   0.07  AliYunDun
-Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">6642</span>      0.10      0.00 <span style="color:#ae81ff">6301904</span> <span style="color:#ae81ff">107680</span>   0.33  java
-Average:      <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>     10.89      0.00 <span style="color:#ae81ff">13468904</span> <span style="color:#ae81ff">8395848</span>  26.04  java
-Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7795</span>    348.15      0.00  <span style="color:#ae81ff">108376</span>   <span style="color:#ae81ff">1233</span>   0.00  pidstat
-Average:      <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.50      0.00 <span style="color:#ae81ff">8242256</span> <span style="color:#ae81ff">2062228</span>   6.40  java
-Average:      <span style="color:#ae81ff">987</span>      <span style="color:#ae81ff">9518</span>      0.20      0.00 <span style="color:#ae81ff">6300944</span> <span style="color:#ae81ff">1242924</span>   3.85  java
-Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">10280</span>      3.70      0.00  <span style="color:#ae81ff">807372</span>   <span style="color:#ae81ff">8344</span>   0.03  aliyun-service
-Average:      <span style="color:#ae81ff">984</span>     <span style="color:#ae81ff">15517</span>      0.40      0.00 <span style="color:#ae81ff">6386464</span> <span style="color:#ae81ff">1464572</span>   4.54  java
-Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">16066</span>    236.46      0.00 <span style="color:#ae81ff">2678332</span>  <span style="color:#ae81ff">71020</span>   0.22  cmagent
-Average:      <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>      0.30      0.00 <span style="color:#ae81ff">6312520</span> <span style="color:#ae81ff">1408040</span>   4.37  java
-Average:      <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20956</span>      0.20      0.00 <span style="color:#ae81ff">6093764</span> <span style="color:#ae81ff">1505028</span>   4.67  java
-Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">23936</span>      0.10      0.00 <span style="color:#ae81ff">5302416</span> <span style="color:#ae81ff">110804</span>   0.34  java
-Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">24406</span>      0.70      0.00 <span style="color:#ae81ff">10211672</span> <span style="color:#ae81ff">2361304</span>   7.32  java
-Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">26870</span>      1.40      0.00 <span style="color:#ae81ff">1470212</span>  <span style="color:#ae81ff">36084</span>   0.11  promtail
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 统计内存</span>
+</span></span><span style="display:flex;"><span>pidstat -r <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>Average:      UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">1</span>      0.20      0.00  <span style="color:#ae81ff">191256</span>   <span style="color:#ae81ff">3064</span>   0.01  systemd
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">1007</span>      1.30      0.00  <span style="color:#ae81ff">143256</span>  <span style="color:#ae81ff">22720</span>   0.07  AliYunDun
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">6642</span>      0.10      0.00 <span style="color:#ae81ff">6301904</span> <span style="color:#ae81ff">107680</span>   0.33  java
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">7326</span>     10.89      0.00 <span style="color:#ae81ff">13468904</span> <span style="color:#ae81ff">8395848</span>  26.04  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>      <span style="color:#ae81ff">7795</span>    348.15      0.00  <span style="color:#ae81ff">108376</span>   <span style="color:#ae81ff">1233</span>   0.00  pidstat
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">997</span>      <span style="color:#ae81ff">8539</span>      0.50      0.00 <span style="color:#ae81ff">8242256</span> <span style="color:#ae81ff">2062228</span>   6.40  java
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">987</span>      <span style="color:#ae81ff">9518</span>      0.20      0.00 <span style="color:#ae81ff">6300944</span> <span style="color:#ae81ff">1242924</span>   3.85  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">10280</span>      3.70      0.00  <span style="color:#ae81ff">807372</span>   <span style="color:#ae81ff">8344</span>   0.03  aliyun-service
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">984</span>     <span style="color:#ae81ff">15517</span>      0.40      0.00 <span style="color:#ae81ff">6386464</span> <span style="color:#ae81ff">1464572</span>   4.54  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">16066</span>    236.46      0.00 <span style="color:#ae81ff">2678332</span>  <span style="color:#ae81ff">71020</span>   0.22  cmagent
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>      0.30      0.00 <span style="color:#ae81ff">6312520</span> <span style="color:#ae81ff">1408040</span>   4.37  java
+</span></span><span style="display:flex;"><span>Average:      <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20956</span>      0.20      0.00 <span style="color:#ae81ff">6093764</span> <span style="color:#ae81ff">1505028</span>   4.67  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">23936</span>      0.10      0.00 <span style="color:#ae81ff">5302416</span> <span style="color:#ae81ff">110804</span>   0.34  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">24406</span>      0.70      0.00 <span style="color:#ae81ff">10211672</span> <span style="color:#ae81ff">2361304</span>   7.32  java
+</span></span><span style="display:flex;"><span>Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae81ff">26870</span>      1.40      0.00 <span style="color:#ae81ff">1470212</span>  <span style="color:#ae81ff">36084</span>   0.11  promtail
+</span></span></code></pre></div><ul>
 <li>UID</li>
 <li>PID</li>
 <li>Minflt/s : 每秒次缺页错误次数 （minor page faults），虚拟内存地址映射成物理内存地址产生的 page fault 次数</li>
@@ -1136,13 +1132,13 @@ Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae8
 <li>Command : 该进程的命令 task name</li>
 </ul>
 <p>4、查看具体进程使用情况</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -T ALL -r -p <span style="color:#ae81ff">20955</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
-03:12:16 PM   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
-03:12:17 PM   <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>      0.00      0.00 <span style="color:#ae81ff">6312520</span> <span style="color:#ae81ff">1408040</span>   4.37  java
-
-03:12:16 PM   UID       PID minflt-nr majflt-nr  Command
-03:12:17 PM   <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>         <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">0</span>  java
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -T ALL -r -p <span style="color:#ae81ff">20955</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>03:12:16 PM   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+</span></span><span style="display:flex;"><span>03:12:17 PM   <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>      0.00      0.00 <span style="color:#ae81ff">6312520</span> <span style="color:#ae81ff">1408040</span>   4.37  java
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>03:12:16 PM   UID       PID minflt-nr majflt-nr  Command
+</span></span><span style="display:flex;"><span>03:12:17 PM   <span style="color:#ae81ff">995</span>     <span style="color:#ae81ff">20955</span>         <span style="color:#ae81ff">0</span>         <span style="color:#ae81ff">0</span>  java
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -1289,7 +1285,7 @@ Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae8
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -1297,7 +1293,7 @@ Average:        <span style="color:#ae81ff">0</span>     <span style="color:#ae8
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

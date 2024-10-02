@@ -4,17 +4,16 @@
     <title>Terminology on Kontronn</title>
     <link>https://www.kontronn.com/tags/terminology/</link>
     <description>Recent content in Terminology on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 18 Nov 2023 22:19:49 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/terminology/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Nov 2023 22:19:49 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/terminology/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大型语言模型入门必知术语汇总</title>
       <link>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</link>
       <pubDate>Sat, 18 Nov 2023 22:19:49 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</guid>
       <description>&lt;p&gt;在本文中，我将以一种非数据科学家易于理解的方式分解与LLM和AI相关的一些基本术语和概念。我将涵盖从神经网络到数据增强的所有内容，并为每个术语提供简单的解释和示例。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-08-06 00:17:14 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"ddr-working-principle.html","permalink":"https://www.kontronn.com/post/hardware/ddr-working-principle.html","title":"DDR的工作原理"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -273,7 +269,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -431,8 +427,8 @@ FPGA中实用的DDR接口应用方法。</p>
 <p><img src="https://www.kontronn.com/imgs/post/ddr-work-principle-10.png" alt="DDR Working Principle"></p>
 <p>电源、地、配置信号的功能很简单，在此不赘述。DDR4中最重要的信号就是地址信号和数据信号。</p>
 <p>如上DDR4芯片有20根地址线（17根Address、2根BA、1根BG），16根数据线。在搞清楚这些信号线的作用以及地址信号为何还有复用功能之前，我们先抛出1个问题。假如我们用20根地址线，16根数据线，设计一款DDR，我们能设计出的DDR寻址容量有多大？</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">Size<span style="color:#960050;background-color:#1e0010">（</span>max<span style="color:#960050;background-color:#1e0010">）</span><span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">20</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2048</span> KB <span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> MB<span style="color:#960050;background-color:#1e0010">。</span>
-</code></pre></div><p>但是事实上，该DDR最大容量可以做到1GB，比传统的单线编码寻址容量大了整整512倍，它是如何做到的呢？答案很简单，分时复用。我们把DDR存储空间可以设计成如下样式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Size<span style="color:#960050;background-color:#1e0010">（</span>max<span style="color:#960050;background-color:#1e0010">）</span><span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">20</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2048</span> KB <span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> MB<span style="color:#960050;background-color:#1e0010">。</span>
+</span></span></code></pre></div><p>但是事实上，该DDR最大容量可以做到1GB，比传统的单线编码寻址容量大了整整512倍，它是如何做到的呢？答案很简单，分时复用。我们把DDR存储空间可以设计成如下样式：</p>
 <p>首先将存储空间分成两个大块，分别为BANK GROUP0和BANK GROUP1，再用1根地址线（还剩19根），命名为BG，进行编码。若BG拉高选择BANK GROUP0，拉低选择BANK GROUP1。（当然你也可以划分成4个大块，用2根线进行编码）。</p>
 <p><img src="https://www.kontronn.com/imgs/post/ddr-work-principle-11.png" alt="DDR Working Principle"></p>
 <p>再将1个BANK GROUP区域分成4个BANK小区域，分别命名为BANK0、BANK1、BANK2、BANK3。然后我们挑出2根地址线（还剩余17根）命名为BA0和BA1，为4个小BANK进行地址编码。</p>
@@ -622,7 +618,7 @@ FPGA中实用的DDR接口应用方法。</p>
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -630,7 +626,7 @@ FPGA中实用的DDR接口应用方法。</p>
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

@@ -4,17 +4,16 @@
     <title>LED on Kontronn</title>
     <link>https://www.kontronn.com/tags/led/</link>
     <description>Recent content in LED on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 24 Sep 2023 18:40:34 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/led/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Sep 2023 18:40:34 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/led/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>STM32之GPIO点亮LED</title>
       <link>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</link>
       <pubDate>Sun, 24 Sep 2023 18:40:34 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</guid>
       <description>&lt;p&gt;我们在基础部分讲了有关GPIO的方面，从这章开始我们进入模块的讲解，从最开始的LED灯到各种传感器模块进行。专栏预计25个章节。后续可能会不定时的增加。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

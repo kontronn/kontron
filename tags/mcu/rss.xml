@@ -4,36 +4,30 @@
     <title>MCU on Kontronn</title>
     <link>https://www.kontronn.com/tags/mcu/</link>
     <description>Recent content in MCU on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Oct 2023 16:15:55 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 Oct 2023 16:15:55 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/mcu/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>十年经验的大神谈如何学STM32嵌入式开发</title>
       <link>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</link>
       <pubDate>Thu, 05 Oct 2023 16:15:55 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</guid>
       <description>&lt;p&gt;本文描述了十年经验的大神谈如何学STM32嵌入式开发&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32怎么选型</title>
       <link>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</link>
       <pubDate>Mon, 02 Oct 2023 14:54:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</guid>
-      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;
-&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;&#xA;&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CPU、MPU、MCU和SOC的简介</title>
       <link>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</link>
       <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</guid>
       <description>&lt;p&gt;在嵌入式开发中，我们会经常看到或接触一些专业术语，例如CPU、MPU、MCU和SOC等，并且这些专业术语出现的频率也是非常之高，在面试中也常常会作为提问的知识点，下面我们就来看一下他们之间的特点和区别。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

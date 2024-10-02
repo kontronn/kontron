@@ -4,157 +4,121 @@
     <title>MCU on Kontronn</title>
     <link>https://www.kontronn.com/categories/mcu/</link>
     <description>Recent content in MCU on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 03 Dec 2023 17:38:16 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 17:38:16 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/categories/mcu/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>一个轻量级的嵌入式框架</title>
       <link>https://www.kontronn.com/post/mcu/a-lightweight-embedded-program-framework.html</link>
       <pubDate>Sun, 03 Dec 2023 17:38:16 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/a-lightweight-embedded-program-framework.html</guid>
       <description>&lt;p&gt;Zorb Framework是一个基于面向对象的思想来搭建一个轻量级的嵌入式框架。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>单片机数字滤波算法</title>
       <link>https://www.kontronn.com/post/mcu/microcontroller-digital-filtering-algorithm.html</link>
       <pubDate>Sun, 03 Dec 2023 14:47:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/microcontroller-digital-filtering-algorithm.html</guid>
       <description>&lt;p&gt;单片机主要作用是控制外围的器件，并实现一定的通信和数据处理。但在某些特定场合，不可避免地要用到数学运算，尽管单片机并不擅长实现算法和进行复杂的运算。下面主要是介绍如何用单片机实现数字滤波。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>一个超级精简高可移植的shell命令行C实现</title>
       <link>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</link>
       <pubDate>Thu, 23 Nov 2023 20:19:37 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/a-super-streamlined-and-highly-portable-shell-command-line-implemented-by-c.html</guid>
       <description>&lt;p&gt;在嵌入式开发中,一般需要使用shell命令行来进行交互。在一些资源非常受限的平台比如8位单片机平台，则各种开源的shell框架都显得过于大和复杂。此时实现一个超级精简的shell命令行则显得很必要。我们这里就来实现一个，方便以后快速集成到任何平台中使用。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32高阶应用--使用DFU方案实现固件升级</title>
       <link>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</link>
       <pubDate>Thu, 23 Nov 2023 11:01:07 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</guid>
       <description>&lt;p&gt;DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>新手必看的单片机知识</title>
       <link>https://www.kontronn.com/post/mcu/knowledge-on-mcu.html</link>
       <pubDate>Tue, 21 Nov 2023 20:19:37 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/knowledge-on-mcu.html</guid>
       <description>&lt;p&gt;1946年2月15日，第一台电子数字计算机 ENIAC问世，这标志着计算机时代的到来。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>嵌入式高级工程师10年经验总结</title>
       <link>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</link>
       <pubDate>Sun, 19 Nov 2023 12:22:45 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/summary-of-10-years-of-experience-as-a-senior-embedded-engineer.html</guid>
-      <description>&lt;p&gt;本文是一位
-&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;嵌入式&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    嵌入式
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;高级工程师对10年工作经验的总结。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本文是一位&#xA;&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;嵌入式&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    嵌入式&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;高级工程师对10年工作经验的总结。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32单片机开发中的RTOS</title>
       <link>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</link>
       <pubDate>Sat, 07 Oct 2023 17:52:20 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</guid>
       <description>&lt;p&gt;很多STM32单片机初学者都是从裸机开始的，裸机确实也能开发出好的产品。但是，作为一个嵌入式软件工程师，况且用的并不是51那种低端单片机，如果只会用裸机开发产品，那肯定是不够的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>十年经验的大神谈如何学STM32嵌入式开发</title>
       <link>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</link>
       <pubDate>Thu, 05 Oct 2023 16:15:55 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</guid>
       <description>&lt;p&gt;本文描述了十年经验的大神谈如何学STM32嵌入式开发&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32怎么选型</title>
       <link>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</link>
       <pubDate>Mon, 02 Oct 2023 14:54:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</guid>
-      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;
-&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;&#xA;&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>一个简单的MCU内存管理模块(附源码)</title>
       <link>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</link>
       <pubDate>Sun, 24 Sep 2023 18:50:17 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</guid>
       <description>&lt;p&gt;现在非常多的的MCU性能都还不错，同时用户也会去扩展一些外部RAM，那么如何高效便捷的管理这些内存是一个重要话题。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32之GPIO点亮LED</title>
       <link>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</link>
       <pubDate>Sun, 24 Sep 2023 18:40:34 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</guid>
       <description>&lt;p&gt;我们在基础部分讲了有关GPIO的方面，从这章开始我们进入模块的讲解，从最开始的LED灯到各种传感器模块进行。专栏预计25个章节。后续可能会不定时的增加。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>简单分析STM32和51的区别</title>
       <link>https://www.kontronn.com/post/mcu/difference-between-smt32-and-c51.html</link>
       <pubDate>Sat, 23 Sep 2023 23:01:22 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/difference-between-smt32-and-c51.html</guid>
       <description>&lt;p&gt;分享本文，简单分析STM32与51单片机的区别与取舍之处。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>ARMv8架构u-boot启动流程详细分析</title>
       <link>https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html</link>
       <pubDate>Sat, 29 Jul 2023 11:44:46 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/uboot-boot-process-depth-analysis-based-on-ARMv8.html</guid>
       <description>&lt;p&gt;本文基于 armv8 架构来对 u-boot 进行启动流程分析，u-boot版本为2022-01。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32的完整启动流程分析</title>
       <link>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</link>
       <pubDate>Fri, 23 Jun 2023 23:36:57 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</guid>
       <description>&lt;p&gt;关于STM32的启动流程，网上有的资料在讨论几种boot模式，有的在回答启动文件的内容，在查阅了很多资料后，本文给出一个比较全面的总结和回答。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>单片机基础概念：指令、数位、字节、存储器、总线</title>
       <link>https://www.kontronn.com/post/mcu/basic-concept-of-micro-processor-unit.html</link>
       <pubDate>Fri, 23 Jun 2023 08:19:59 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/basic-concept-of-micro-processor-unit.html</guid>
       <description>&lt;p&gt;本文介绍单片机基础概念：指令、数位、字节、存储器、总线&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CPU、MPU、MCU和SOC的简介</title>
       <link>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</link>
       <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</guid>
       <description>&lt;p&gt;在嵌入式开发中，我们会经常看到或接触一些专业术语，例如CPU、MPU、MCU和SOC等，并且这些专业术语出现的频率也是非常之高，在面试中也常常会作为提问的知识点，下面我们就来看一下他们之间的特点和区别。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

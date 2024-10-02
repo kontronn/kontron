@@ -4,17 +4,16 @@
     <title>Motor on Kontronn</title>
     <link>https://www.kontronn.com/tags/motor/</link>
     <description>Recent content in Motor on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Aug 2023 12:50:46 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/motor/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Aug 2023 12:50:46 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/motor/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何做个PCB电动机</title>
       <link>https://www.kontronn.com/post/hardware/how-to-make-a-pcb-motor.html</link>
       <pubDate>Sat, 05 Aug 2023 12:50:46 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/how-to-make-a-pcb-motor.html</guid>
       <description>&lt;p&gt;电动机印制电路板的每一层都有一组线圈，它们堆叠在一起并互相连接以形成连续的迹线。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

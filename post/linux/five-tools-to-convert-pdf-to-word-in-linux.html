@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-06-18 11:06:12 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"five-tools-to-convert-pdf-to-word-in-linux.html","permalink":"https://www.kontronn.com/post/linux/five-tools-to-convert-pdf-to-word-in-linux.html","title":"Linux中pdf转word的工具你知道几个"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -273,7 +269,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -393,44 +389,44 @@
   <p>下面推荐5款Linux中pdf转word的工具</p>
 <h2 id="libreoffice">LibreOffice</h2>
 <p>LibreOffice是一个免费的开源Office套件，可以将PDF文件转换为Word文档。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装LibreOffice</span>
-sudo apt-get install libreoffice
-
-<span style="color:#75715e"># 将PDF转换为Word文档</span>
-libreoffice --convert-to docx filename.pdf
-</code></pre></div><p>其中，“docx”表示要将PDF转换为的输出格式，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux系统中使用，并且命令简单易用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装LibreOffice</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install libreoffice
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将PDF转换为Word文档</span>
+</span></span><span style="display:flex;"><span>libreoffice --convert-to docx filename.pdf
+</span></span></code></pre></div><p>其中，“docx”表示要将PDF转换为的输出格式，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux系统中使用，并且命令简单易用。</p>
 <h2 id="pdf2doc">Pdf2doc</h2>
 <p>Pdf2doc是一个基于Python的命令行工具，可以将PDF文件转换为Microsoft Word文档。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装Pdf2doc</span>
-sudo apt-get install pdf2doc
-
-<span style="color:#75715e"># 将PDF转换为Word文档</span>
-pdf2doc filename.pdf
-</code></pre></div><p>在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中使用，只需在终端输入相应的命令即可。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装Pdf2doc</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install pdf2doc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将PDF转换为Word文档</span>
+</span></span><span style="display:flex;"><span>pdf2doc filename.pdf
+</span></span></code></pre></div><p>在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中使用，只需在终端输入相应的命令即可。</p>
 <h2 id="gimagereader">GImageReader</h2>
 <p>GImageReader是一款免费的OCR（光学字符识别）软件，可以将扫描的PDF文件转换为Word文档。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装GImageReader</span>
-sudo apt-get install gimagereader
-
-<span style="color:#75715e"># 将PDF转换为Word文档</span>
-gimagereader filename.pdf
-</code></pre></div><p>在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具支持多种语言的OCR识别，可以在Linux中使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装GImageReader</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install gimagereader
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将PDF转换为Word文档</span>
+</span></span><span style="display:flex;"><span>gimagereader filename.pdf
+</span></span></code></pre></div><p>在这个命令中，“filename.pdf”是要转换的PDF文件的文件名。该工具支持多种语言的OCR识别，可以在Linux中使用。</p>
 <h2 id="pandoc">Pandoc</h2>
 <p>Pandoc是一个跨平台的文档格式转换器，支持将PDF文件转换为Word文档。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装Pandoc</span>
-sudo apt-get install pandoc
-
-<span style="color:#75715e"># 将PDF转换为Word文档</span>
-pandoc -s -o output.docx input.pdf
-</code></pre></div><p>在这个命令中，“-s”表示生成带有样式的Word文档，“-o”后面跟输出文件的名称和保存的路径，“input.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中进行使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装Pandoc</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install pandoc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将PDF转换为Word文档</span>
+</span></span><span style="display:flex;"><span>pandoc -s -o output.docx input.pdf
+</span></span></code></pre></div><p>在这个命令中，“-s”表示生成带有样式的Word文档，“-o”后面跟输出文件的名称和保存的路径，“input.pdf”是要转换的PDF文件的文件名。该工具可以在Linux中进行使用。</p>
 <h2 id="unoconv">Unoconv</h2>
 <p>Unoconv是一个用于文件格式转换的Python包，可以将PDF文件转换为Word文档。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 安装Unoconv</span>
-sudo apt-get install unoconv
-
-<span style="color:#75715e"># 将PDF转换为Word文档</span>
-unoconv -f docx filename.pdf
-</code></pre></div><p>在这个命令中，“docx”表示要将PDF文件转换成的输出格式，“filename.pdf”表明要转换的PDF文件的文件名。这个工具也非常简单易用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 安装Unoconv</span>
+</span></span><span style="display:flex;"><span>sudo apt-get install unoconv
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将PDF转换为Word文档</span>
+</span></span><span style="display:flex;"><span>unoconv -f docx filename.pdf
+</span></span></code></pre></div><p>在这个命令中，“docx”表示要将PDF文件转换成的输出格式，“filename.pdf”表明要转换的PDF文件的文件名。这个工具也非常简单易用。</p>
 <p>总结：以上是5个将PDF文件转换为Word文档的Linux工具，它们都是免费的工具，不需要任何商业版本。这些工具均可以在Linux平台上使用，并且可以快速并且容易地将PDF文件转换为Word文档。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
@@ -578,7 +574,7 @@ unoconv -f docx filename.pdf
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -586,7 +582,7 @@ unoconv -f docx filename.pdf
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

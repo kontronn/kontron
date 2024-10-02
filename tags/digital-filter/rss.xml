@@ -4,17 +4,16 @@
     <title>Digital Filter on Kontronn</title>
     <link>https://www.kontronn.com/tags/digital-filter/</link>
     <description>Recent content in Digital Filter on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 03 Dec 2023 14:47:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/digital-filter/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 14:47:33 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/digital-filter/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>单片机数字滤波算法</title>
       <link>https://www.kontronn.com/post/mcu/microcontroller-digital-filtering-algorithm.html</link>
       <pubDate>Sun, 03 Dec 2023 14:47:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/microcontroller-digital-filtering-algorithm.html</guid>
       <description>&lt;p&gt;单片机主要作用是控制外围的器件，并实现一定的通信和数据处理。但在某些特定场合，不可避免地要用到数学运算，尽管单片机并不擅长实现算法和进行复杂的运算。下面主要是介绍如何用单片机实现数字滤波。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

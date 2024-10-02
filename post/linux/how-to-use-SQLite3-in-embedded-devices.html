@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-08-07 12:49:40 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"how-to-use-SQLite3-in-embedded-devices.html","permalink":"https://www.kontronn.com/post/linux/how-to-use-SQLite3-in-embedded-devices.html","title":"手把手教你在嵌入式设备中使用SQLite3"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -298,7 +294,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -421,56 +417,56 @@
 <h2 id="安装sqlite3">安装SQLite3</h2>
 <p>有C环境就可以调用sqlite</p>
 <h3 id="直接用命令安装">直接用命令安装</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sudo apt-get update
-sudo apt-get install sqlite3
-</code></pre></div><h3 id="直接编译源码">直接编译源码</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>sudo apt-get install sqlite3
+</span></span></code></pre></div><h3 id="直接编译源码">直接编译源码</h3>
 <p>将源码拷贝到Ubuntu的非共享目录解压</p>
 <p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-1.png" alt="Linux Embedded SQLite3"></p>
 <p>解压命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">tar zvxf sqlite-autoconf-3380500.tar.gz
-</code></pre></div><p>配置</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">cd sqlite-snapshot-201708031550
-./configure --prefix<span style="color:#f92672">=</span>/home/gec/sqlite
-</code></pre></div><p>编译</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make
-</code></pre></div><p>安装</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">make install
-</code></pre></div><h2 id="sqlite的使用">SQLite的使用</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tar zvxf sqlite-autoconf-3380500.tar.gz
+</span></span></code></pre></div><p>配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd sqlite-snapshot-201708031550
+</span></span><span style="display:flex;"><span>./configure --prefix<span style="color:#f92672">=</span>/home/gec/sqlite
+</span></span></code></pre></div><p>编译</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make
+</span></span></code></pre></div><p>安装</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>make install
+</span></span></code></pre></div><h2 id="sqlite的使用">SQLite的使用</h2>
 <p>新建数据库文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sqlite3 数据库文件的路径   //打开/创建
-//比如：sqlite3 first.db
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-2.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sqlite3 数据库文件的路径   //打开/创建
+</span></span><span style="display:flex;"><span>//比如：sqlite3 first.db
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-2.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="基本操作命令">基本操作命令</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">.exit/.quit -------- 退出数据库命令行
-.help -------------- 帮助说明信息
-.tables ------------ 查看当前数据库中所有的表
-</code></pre></div><h3 id="数据库访问的sql语句">数据库访问的SQL语句</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.exit/.quit -------- 退出数据库命令行
+</span></span><span style="display:flex;"><span>.help -------------- 帮助说明信息
+</span></span><span style="display:flex;"><span>.tables ------------ 查看当前数据库中所有的表
+</span></span></code></pre></div><h3 id="数据库访问的sql语句">数据库访问的SQL语句</h3>
 <p>基本语法：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">所有的SQL语句都以分号(;)结束
-不区分大小写
-</code></pre></div><h3 id="新建表格">新建表格</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">create table 表名<span style="color:#f92672">(</span>字段名1 字段类型1,字段名2 字段类型2,字段名3 字段类型3,...<span style="color:#f92672">)</span>;
-比如：
-//创建一个stutbl的表，表中有3个字段
-//分别是整数类型的学号id,字符串类型的name和整数类型的age
-create table zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
-//不存在则创建
-create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
-//如果希望表中某个字段的内容不重复,可以用unique修饰该字段
-create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int unique,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-3.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>所有的SQL语句都以分号(;)结束
+</span></span><span style="display:flex;"><span>不区分大小写
+</span></span></code></pre></div><h3 id="新建表格">新建表格</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>create table 表名<span style="color:#f92672">(</span>字段名1 字段类型1,字段名2 字段类型2,字段名3 字段类型3,...<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>比如：
+</span></span><span style="display:flex;"><span>//创建一个stutbl的表，表中有3个字段
+</span></span><span style="display:flex;"><span>//分别是整数类型的学号id,字符串类型的name和整数类型的age
+</span></span><span style="display:flex;"><span>create table zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//不存在则创建
+</span></span><span style="display:flex;"><span>create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//如果希望表中某个字段的内容不重复,可以用unique修饰该字段
+</span></span><span style="display:flex;"><span>create table <span style="color:#66d9ef">if</span> not exists zhiguoxin<span style="color:#f92672">(</span>id int unique,name char<span style="color:#f92672">[</span>20<span style="color:#f92672">]</span>,age int<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-3.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="删除表格">删除表格</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">drop table 表名;
-//drop table zhiguoxin;
-</code></pre></div><h3 id="往表格中插入数据">往表格中插入数据</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">insert into 表名 values<span style="color:#f92672">(</span>字段值1,字段值2,字段值3,....<span style="color:#f92672">)</span>;
-//字段值如果是字符串,必须用<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">(</span>单引号<span style="color:#f92672">)</span>括起来
-比如：
-insert into zhiguoxin values<span style="color:#f92672">(</span>1001,<span style="color:#e6db74">&#39;刘尧&#39;</span>,18<span style="color:#f92672">)</span>;
-insert into zhiguoxin values<span style="color:#f92672">(</span>1002,<span style="color:#e6db74">&#39;聂衍文&#39;</span>,19<span style="color:#f92672">)</span>;
-insert into zhiguoxin values<span style="color:#f92672">(</span>1003,<span style="color:#e6db74">&#39;杨佳晨&#39;</span>,20<span style="color:#f92672">)</span>;
-insert into zhiguoxin values<span style="color:#f92672">(</span>1004,<span style="color:#e6db74">&#39;冯华阳&#39;</span>,21<span style="color:#f92672">)</span>;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-4.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>drop table 表名;
+</span></span><span style="display:flex;"><span>//drop table zhiguoxin;
+</span></span></code></pre></div><h3 id="往表格中插入数据">往表格中插入数据</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>insert into 表名 values<span style="color:#f92672">(</span>字段值1,字段值2,字段值3,....<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//字段值如果是字符串,必须用<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">(</span>单引号<span style="color:#f92672">)</span>括起来
+</span></span><span style="display:flex;"><span>比如：
+</span></span><span style="display:flex;"><span>insert into zhiguoxin values<span style="color:#f92672">(</span>1001,<span style="color:#e6db74">&#39;刘尧&#39;</span>,18<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>insert into zhiguoxin values<span style="color:#f92672">(</span>1002,<span style="color:#e6db74">&#39;聂衍文&#39;</span>,19<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>insert into zhiguoxin values<span style="color:#f92672">(</span>1003,<span style="color:#e6db74">&#39;杨佳晨&#39;</span>,20<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>insert into zhiguoxin values<span style="color:#f92672">(</span>1004,<span style="color:#e6db74">&#39;冯华阳&#39;</span>,21<span style="color:#f92672">)</span>;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-4.png" alt="Linux Embedded SQLite3"></p>
 <p>完成插入之后，zhiguoxin 的表格内容如下：</p>
 <p>id	name	age
 1001	刘尧	18
@@ -479,128 +475,128 @@ insert into zhiguoxin values<span style="color:#f92672">(</span>1004,<span style
 1004	冯华阳	21</p>
 <h3 id="查询表中的数据">查询表中的数据</h3>
 <p>//查询表中的所有数据</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from 表名;
-//select * from zhiguoxin;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-5.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from 表名;
+</span></span><span style="display:flex;"><span>//select * from zhiguoxin;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-5.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="查看数据库">查看数据库</h3>
 <p>可以把first.db数据库文件拷贝至windows下，使用SQLite Developer打开即可看到。SQLite Developer下载地址</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">https://mydown.yesky.com/pcsoft/443425.html
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-6.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>https://mydown.yesky.com/pcsoft/443425.html
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-6.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="按条件查找">按条件查找</h3>
 <ol>
 <li>使用where指定查询条件</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin where id<span style="color:#f92672">=</span>1003;//查询id值为1003的条目
-<span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> and age&lt;21;
-<span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> or age&lt;21;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-7.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin where id<span style="color:#f92672">=</span>1003;//查询id值为1003的条目
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> and age&lt;21;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin where age&gt;<span style="color:#f92672">=</span><span style="color:#ae81ff">19</span> or age&lt;21;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-7.png" alt="Linux Embedded SQLite3"></p>
 <ol start="2">
 <li>指定查询的字段</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> id,name,age from zhiguoxin;//只查询id,name,age的字段
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-8.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> id,name,age from zhiguoxin;//只查询id,name,age的字段
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-8.png" alt="Linux Embedded SQLite3"></p>
 <ol start="3">
 <li>使用where+like实现模糊查询</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin where name like <span style="color:#e6db74">&#39;刘%&#39;</span>;//查找名字以刘开头的条目
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-9.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin where name like <span style="color:#e6db74">&#39;刘%&#39;</span>;//查找名字以刘开头的条目
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-9.png" alt="Linux Embedded SQLite3"></p>
 <ol start="4">
 <li>使用order by实现查询结果按某个字段的值升序/降序输出</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">select</span> * from zhiguoxin order by age desc;//按年龄降序排序
-<span style="color:#66d9ef">select</span> * from zhiguoxin order by id asc;  //按id升序排序
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-10.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin order by age desc;//按年龄降序排序
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">select</span> * from zhiguoxin order by id asc;  //按id升序排序
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-10.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="删除表中的条目">删除表中的条目</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">delete from 表名 where 条件;//删除所有符合条件的条目
-比如：
-delete from zhiguoxin where id=1001;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-11.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>delete from 表名 where 条件;//删除所有符合条件的条目
+</span></span><span style="display:flex;"><span>比如：
+</span></span><span style="display:flex;"><span>delete from zhiguoxin where id=1001;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-11.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="更新修改表中的条目">更新(修改)表中的条目</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">update 表名 set 字段名1=字段值1,字段名2=字段值2... where 条件;//修改符合条件的条目
-比如：
-update zhiguoxin set age=100 where id=1002;
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-12.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>update 表名 set 字段名1=字段值1,字段名2=字段值2... where 条件;//修改符合条件的条目
+</span></span><span style="display:flex;"><span>比如：
+</span></span><span style="display:flex;"><span>update zhiguoxin set age=100 where id=1002;
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-12.png" alt="Linux Embedded SQLite3"></p>
 <h3 id="sqlite中字段类型">SQLite中字段类型</h3>
 <p>数字：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">int ------- 整型
-smallint ---- 短整型
-tinyint ----- 微型整数(0~255)
-bit --------- 0 or 1
-float ------ 单精度浮点型
-real ------- 双精度浮点型
-</code></pre></div><p>字符串：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">char ---------- 非unicode定长字符串 &lt; 8000
-varchar ------- 非unicode变长字符串 &lt; 8000
-text ---------- 非unicode变长字符串 &lt; 2^32-1
-nchar ---------- unicode定长字符串 &lt; 8000
-nvarchar ------- unicode变长字符串 &lt; 8000
-ntext ---------- unicode变长字符串 &lt; 2^32-1
-</code></pre></div><h2 id="sqlite的c语言访问接口">SQLite的C语言访问接口</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>int ------- 整型
+</span></span><span style="display:flex;"><span>smallint ---- 短整型
+</span></span><span style="display:flex;"><span>tinyint ----- 微型整数(0~255)
+</span></span><span style="display:flex;"><span>bit --------- 0 or 1
+</span></span><span style="display:flex;"><span>float ------ 单精度浮点型
+</span></span><span style="display:flex;"><span>real ------- 双精度浮点型
+</span></span></code></pre></div><p>字符串：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>char <span style="color:#f92672">----------</span> <span style="color:#960050;background-color:#1e0010">非</span>unicode定长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>varchar <span style="color:#f92672">-------</span> <span style="color:#960050;background-color:#1e0010">非</span>unicode变长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>text <span style="color:#f92672">----------</span> <span style="color:#960050;background-color:#1e0010">非</span>unicode变长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">32</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>nchar <span style="color:#f92672">----------</span> unicode定长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>nvarchar <span style="color:#f92672">-------</span> unicode变长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>ntext <span style="color:#f92672">----------</span> unicode变长字符串 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">32</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h2 id="sqlite的c语言访问接口">SQLite的C语言访问接口</h2>
 <p>sqlite本身自带C语言访问接口，在C语言的环境下可以直接使用，使用这些接口的代码需要 sqlite的源码编译进可执行程序 或者 编译时链接sqlite的库。</p>
 <h3 id="打开-sqlite3_open">打开 sqlite3_open</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_open<span style="color:#f92672">(</span>
-  const char *filename,   /* 数据库的文件路径 */
-  sqlite3 **ppDb          /* 输出参数：传出代表打开数据库的句柄 */
-<span style="color:#f92672">)</span>;
-//成功返回SQLITE_OK,否则打开失败char ---------- 非unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
-varchar ：非unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
-text ：非unicode变长字符串 &lt; 2^32-1
-nchar：unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
-nvarchar : unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
-ntext :unicode变长字符串 &lt; 2^32-1
-</code></pre></div><h3 id="关闭-sqlite3_close">关闭 sqlite3_close</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_close<span style="color:#f92672">(</span>sqlite3 *pDb<span style="color:#f92672">)</span>;
-//传入要关闭的数据库的句柄
-</code></pre></div><h3 id="编译方法">编译方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>int sqlite3_open<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  const char *filename,   /* 数据库的文件路径 */
+</span></span><span style="display:flex;"><span>  sqlite3 **ppDb          /* 输出参数：传出代表打开数据库的句柄 */
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//成功返回SQLITE_OK,否则打开失败char ---------- 非unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>varchar ：非unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>text ：非unicode变长字符串 &lt; 2^32-1
+</span></span><span style="display:flex;"><span>nchar：unicode定长字符串 &lt; <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>nvarchar : unicode变长字符串 &lt; <span style="color:#ae81ff">8000</span>
+</span></span><span style="display:flex;"><span>ntext :unicode变长字符串 &lt; 2^32-1
+</span></span></code></pre></div><h3 id="关闭-sqlite3_close">关闭 sqlite3_close</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>int sqlite3_close<span style="color:#f92672">(</span>sqlite3 *pDb<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//传入要关闭的数据库的句柄
+</span></span></code></pre></div><h3 id="编译方法">编译方法</h3>
 <ol>
 <li>直接编译源码</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">gcc sqlite3.c sqlite_test.c -pthread -ldl -o sqlite_test
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcc sqlite3.c sqlite_test.c -pthread -ldl -o sqlite_test
+</span></span></code></pre></div><ol start="2">
 <li>链接sqlite3的动态库</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">gcc sqlite_test.c -pthread -ldl -lsqlite3 -L /home/gec/sqlite/lib -o sqlite_test
-//如果运行时找不到sqlite3的库，可以将编译出来的库文件拷贝到/usr/lib目录下<span style="color:#f92672">(</span>cp -r<span style="color:#f92672">)</span>
-</code></pre></div><h3 id="执行sql语句的接口-sqlite3_exec">执行SQL语句的接口 sqlite3_exec</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">int sqlite3_exec<span style="color:#f92672">(</span>
-  sqlite3 *pDb,                              /* 打开的数据库的句柄 */
-  const char *sql,                           /* 要执行的SQL语句 */
-  int <span style="color:#f92672">(</span>*callback<span style="color:#f92672">)(</span>void *arg,int col,char **str,char **name<span style="color:#f92672">)</span>,
-  /* 回调函数,处理SQL语句执行返回的结果<span style="color:#f92672">(</span>查询<span style="color:#f92672">)</span>,一条结果调用一次
-      arg - exec的第四个参数
-      col - 本条结果的字段数
-      str - 记录字段值的数组
-      name - 记录字段名的数组
-     回调函数必须返回SQLITE_OK */
-  void *arg,                                 /* 传递给回调函数的第一个参数 */
-  char **errmsg                              /* 错误信息 */
-<span style="color:#f92672">)</span>;
-//成功返回SQLITE_OK,否则执行失败
-</code></pre></div><p>几个例子</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">//连接数据库
-int Connection_Sqlite3DataBase<span style="color:#f92672">()</span>
-<span style="color:#f92672">{</span>
-    rc <span style="color:#f92672">=</span> sqlite3_open<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;./face_database/face.db&#34;</span>, &amp;db<span style="color:#f92672">)</span>;
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>rc !<span style="color:#f92672">=</span> SQLITE_OK<span style="color:#f92672">)</span>
-    <span style="color:#f92672">{</span>
-        fprintf<span style="color:#f92672">(</span>stderr, <span style="color:#e6db74">&#34;Can&#39;t open database: %s\n&#34;</span>, sqlite3_errmsg<span style="color:#f92672">(</span>db<span style="color:#f92672">))</span>;
-        sqlite3_close<span style="color:#f92672">(</span>db<span style="color:#f92672">)</span>;
-        exit<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>;
-    <span style="color:#f92672">}</span>
-    <span style="color:#66d9ef">else</span>
-        printf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;You have opened a sqlite3 database named bind.db successfully!\nCongratulation! Have fun!\n&#34;</span><span style="color:#f92672">)</span>;
-    <span style="color:#66d9ef">return</span> 0;
-<span style="color:#f92672">}</span>
-//将图片插入到数据库
-void insert_face_data_toDataBase<span style="color:#f92672">(</span>const char *name, MByte *face_feature, MInt32 featureSize<span style="color:#f92672">)</span>
-<span style="color:#f92672">{</span>
-    sqlite3_prepare<span style="color:#f92672">(</span>db, <span style="color:#e6db74">&#34;insert into face_data_table(name,face_feature,feature_size) values (?,?,?);&#34;</span>, -1, &amp;stmt, NULL<span style="color:#f92672">)</span>;
-    sqlite3_bind_text<span style="color:#f92672">(</span>stmt, 1, name, strlen<span style="color:#f92672">(</span>name<span style="color:#f92672">)</span>, NULL<span style="color:#f92672">)</span>;
-    sqlite3_bind_blob<span style="color:#f92672">(</span>stmt, 2, face_feature, featureSize, NULL<span style="color:#f92672">)</span>;
-    sqlite3_bind_int<span style="color:#f92672">(</span>stmt, 3, featureSize<span style="color:#f92672">)</span>;
-    sqlite3_step<span style="color:#f92672">(</span>stmt<span style="color:#f92672">)</span>;
-<span style="color:#f92672">}</span>
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-13.png" alt="Linux Embedded SQLite3"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gcc sqlite_test.c -pthread -ldl -lsqlite3 -L /home/gec/sqlite/lib -o sqlite_test
+</span></span><span style="display:flex;"><span>//如果运行时找不到sqlite3的库，可以将编译出来的库文件拷贝到/usr/lib目录下<span style="color:#f92672">(</span>cp -r<span style="color:#f92672">)</span>
+</span></span></code></pre></div><h3 id="执行sql语句的接口-sqlite3_exec">执行SQL语句的接口 sqlite3_exec</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>int sqlite3_exec<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>  sqlite3 *pDb,                              /* 打开的数据库的句柄 */
+</span></span><span style="display:flex;"><span>  const char *sql,                           /* 要执行的SQL语句 */
+</span></span><span style="display:flex;"><span>  int <span style="color:#f92672">(</span>*callback<span style="color:#f92672">)(</span>void *arg,int col,char **str,char **name<span style="color:#f92672">)</span>,
+</span></span><span style="display:flex;"><span>  /* 回调函数,处理SQL语句执行返回的结果<span style="color:#f92672">(</span>查询<span style="color:#f92672">)</span>,一条结果调用一次
+</span></span><span style="display:flex;"><span>      arg - exec的第四个参数
+</span></span><span style="display:flex;"><span>      col - 本条结果的字段数
+</span></span><span style="display:flex;"><span>      str - 记录字段值的数组
+</span></span><span style="display:flex;"><span>      name - 记录字段名的数组
+</span></span><span style="display:flex;"><span>     回调函数必须返回SQLITE_OK */
+</span></span><span style="display:flex;"><span>  void *arg,                                 /* 传递给回调函数的第一个参数 */
+</span></span><span style="display:flex;"><span>  char **errmsg                              /* 错误信息 */
+</span></span><span style="display:flex;"><span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>//成功返回SQLITE_OK,否则执行失败
+</span></span></code></pre></div><p>几个例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>//连接数据库
+</span></span><span style="display:flex;"><span>int Connection_Sqlite3DataBase<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    rc <span style="color:#f92672">=</span> sqlite3_open<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;./face_database/face.db&#34;</span>, &amp;db<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>rc !<span style="color:#f92672">=</span> SQLITE_OK<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        fprintf<span style="color:#f92672">(</span>stderr, <span style="color:#e6db74">&#34;Can&#39;t open database: %s\n&#34;</span>, sqlite3_errmsg<span style="color:#f92672">(</span>db<span style="color:#f92672">))</span>;
+</span></span><span style="display:flex;"><span>        sqlite3_close<span style="color:#f92672">(</span>db<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        exit<span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        printf<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;You have opened a sqlite3 database named bind.db successfully!\nCongratulation! Have fun!\n&#34;</span><span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> 0;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>//将图片插入到数据库
+</span></span><span style="display:flex;"><span>void insert_face_data_toDataBase<span style="color:#f92672">(</span>const char *name, MByte *face_feature, MInt32 featureSize<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    sqlite3_prepare<span style="color:#f92672">(</span>db, <span style="color:#e6db74">&#34;insert into face_data_table(name,face_feature,feature_size) values (?,?,?);&#34;</span>, -1, &amp;stmt, NULL<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    sqlite3_bind_text<span style="color:#f92672">(</span>stmt, 1, name, strlen<span style="color:#f92672">(</span>name<span style="color:#f92672">)</span>, NULL<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    sqlite3_bind_blob<span style="color:#f92672">(</span>stmt, 2, face_feature, featureSize, NULL<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    sqlite3_bind_int<span style="color:#f92672">(</span>stmt, 3, featureSize<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>    sqlite3_step<span style="color:#f92672">(</span>stmt<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Embedded-SQLite3-13.png" alt="Linux Embedded SQLite3"></p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -747,7 +743,7 @@ void insert_face_data_toDataBase<span style="color:#f92672">(</span>const char *
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -755,7 +751,7 @@ void insert_face_data_toDataBase<span style="color:#f92672">(</span>const char *
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

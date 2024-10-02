@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-08-08 04:48:07 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"fpga-timing-constraints.html","permalink":"https://www.kontronn.com/post/fpga/fpga-timing-constraints.html","title":"FPGA时序约束--实战篇"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -274,7 +270,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -422,41 +418,41 @@
 </ol>
 <p>将计算逻辑分成多个时钟周期实现，这是常用的时序优化方法，可以减少过多的组合逻辑层数，但会增加延时。</p>
 <p>这里以一个多路输入求和计算为例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">module <span style="color:#a6e22e">sum</span>(
-    input        clk,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
-    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum_o <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B <span style="color:#f92672">+</span> data_C <span style="color:#f92672">+</span> data_D;
-     end
-
-endmodule
-</code></pre></div><p>增加寄存器后，改为</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">module <span style="color:#a6e22e">sum</span>(
-    input        clk,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
-    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
-    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
-
-    reg [<span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum0, sum1;
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum0 <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B;
-        sum1 <span style="color:#f92672">&lt;=</span> data_C <span style="color:#f92672">+</span> data_D;
-     end
-
-    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
-        sum_o <span style="color:#f92672">&lt;=</span> sum0 <span style="color:#f92672">+</span> sum1;
-     end
-
-endmodule
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>module <span style="color:#a6e22e">sum</span>(
+</span></span><span style="display:flex;"><span>    input        clk,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
+</span></span><span style="display:flex;"><span>    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
+</span></span><span style="display:flex;"><span>        sum_o <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B <span style="color:#f92672">+</span> data_C <span style="color:#f92672">+</span> data_D;
+</span></span><span style="display:flex;"><span>     end
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>endmodule
+</span></span></code></pre></div><p>增加寄存器后，改为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>module <span style="color:#a6e22e">sum</span>(
+</span></span><span style="display:flex;"><span>    input        clk,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_A,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_B,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_C,
+</span></span><span style="display:flex;"><span>    input  [<span style="color:#ae81ff">15</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] data_D,
+</span></span><span style="display:flex;"><span>    output [<span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum_o);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    reg [<span style="color:#ae81ff">16</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0</span>] sum0, sum1;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
+</span></span><span style="display:flex;"><span>        sum0 <span style="color:#f92672">&lt;=</span> data_A <span style="color:#f92672">+</span> data_B;
+</span></span><span style="display:flex;"><span>        sum1 <span style="color:#f92672">&lt;=</span> data_C <span style="color:#f92672">+</span> data_D;
+</span></span><span style="display:flex;"><span>     end
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    always <span style="color:#960050;background-color:#1e0010">@</span>(posedge clk) begin
+</span></span><span style="display:flex;"><span>        sum_o <span style="color:#f92672">&lt;=</span> sum0 <span style="color:#f92672">+</span> sum1;
+</span></span><span style="display:flex;"><span>     end
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>endmodule
+</span></span></code></pre></div><ol start="2">
 <li>逻辑展平设计</li>
 </ol>
 <p>优化代码中优先级译码电路逻辑，主要出现在IF/ELSE结构语句中，这样逻辑结构被展平，路径延迟得以缩短。</p>
@@ -640,7 +636,7 @@ endmodule
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -648,7 +644,7 @@ endmodule
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

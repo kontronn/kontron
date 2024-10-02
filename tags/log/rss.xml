@@ -4,17 +4,16 @@
     <title>Log on Kontronn</title>
     <link>https://www.kontronn.com/tags/log/</link>
     <description>Recent content in Log on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 12 Aug 2023 11:54:28 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/log/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Aug 2023 11:54:28 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/log/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux 日志管理</title>
       <link>https://www.kontronn.com/post/linux/linux-system-log-management.html</link>
       <pubDate>Sat, 12 Aug 2023 11:54:28 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/linux-system-log-management.html</guid>
       <description>&lt;p&gt;Linux 日志管理是指对 Linux 系统中产生的各种日志文件进行收集、分析、备份、轮转和删除等操作，以便监控系统的运行状况，诊断和解决问题，提高系统的安全性和性能。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

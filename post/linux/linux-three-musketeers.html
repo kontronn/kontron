@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-08 22:04:43 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-three-musketeers.html","permalink":"https://www.kontronn.com/post/linux/linux-three-musketeers.html","title":"Linux三剑客（grep,sed,awk）"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -294,7 +290,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -415,8 +411,8 @@
 <p>本文将介绍这些命令的基本用法和示例，帮助读者更好地了解它们的功能和用法。</p>
 <h2 id="grep命令">grep命令</h2>
 <p>grep是一种非常常见的文本搜索工具，它可以搜索指定字符串在一个或多个文件中出现的行，并将结果输出到标准输出。它的语法格式如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> PATTERN <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
-</code></pre></div><p>其中，OPTIONS表示选项，PATTERN表示要搜索的模式，FILE表示要搜索的文件名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> PATTERN <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>其中，OPTIONS表示选项，PATTERN表示要搜索的模式，FILE表示要搜索的文件名。</p>
 <p>下面是一些grep命令的常用选项：</p>
 <ul>
 <li>-i：忽略大小写</li>
@@ -428,19 +424,19 @@
 </ul>
 <p>下面是一些grep命令的实例：</p>
 <h3 id="在文件中搜索指定字符串">在文件中搜索指定字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
-</code></pre></div><h3 id="在文件中搜索多个字符串">在文件中搜索多个字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep -e <span style="color:#e6db74">&#34;hello&#34;</span> -e <span style="color:#e6db74">&#34;world&#34;</span> file.txt
-</code></pre></div><h3 id="在文件中搜索并显示匹配行号">在文件中搜索并显示匹配行号</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep -n <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
-</code></pre></div><h3 id="在文件中搜索并显示不匹配的行">在文件中搜索并显示不匹配的行</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep -v <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
-</code></pre></div><h3 id="在目录中递归搜索指定字符串">在目录中递归搜索指定字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">grep -r <span style="color:#e6db74">&#34;hello&#34;</span> directory/
-</code></pre></div><h2 id="sed命令">sed命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
+</span></span></code></pre></div><h3 id="在文件中搜索多个字符串">在文件中搜索多个字符串</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -e <span style="color:#e6db74">&#34;hello&#34;</span> -e <span style="color:#e6db74">&#34;world&#34;</span> file.txt
+</span></span></code></pre></div><h3 id="在文件中搜索并显示匹配行号">在文件中搜索并显示匹配行号</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -n <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
+</span></span></code></pre></div><h3 id="在文件中搜索并显示不匹配的行">在文件中搜索并显示不匹配的行</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -v <span style="color:#e6db74">&#34;hello&#34;</span> file.txt
+</span></span></code></pre></div><h3 id="在目录中递归搜索指定字符串">在目录中递归搜索指定字符串</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>grep -r <span style="color:#e6db74">&#34;hello&#34;</span> directory/
+</span></span></code></pre></div><h2 id="sed命令">sed命令</h2>
 <p>sed是一种流编辑器，它可以执行各种文本操作，如替换、删除、插入等。它的语法格式如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sed <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> COMMAND <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
-</code></pre></div><p>其中，OPTIONS表示选项，COMMAND表示要执行的sed命令，FILE表示要处理的文件名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> COMMAND <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>其中，OPTIONS表示选项，COMMAND表示要执行的sed命令，FILE表示要处理的文件名。</p>
 <p>下面是一些常用的sed命令：</p>
 <ul>
 <li>s：替换指定模式</li>
@@ -452,17 +448,17 @@
 </ul>
 <p>下面是一些sed命令的实例：</p>
 <h3 id="替换文件中的指定字符串">替换文件中的指定字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sed <span style="color:#e6db74">&#39;s/hello/world/&#39;</span> file.txt
-</code></pre></div><h3 id="删除文件中的指定行">删除文件中的指定行</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sed <span style="color:#e6db74">&#39;3d&#39;</span> file.txt
-</code></pre></div><h3 id="在文件中指定行后插入指定字符串">在文件中指定行后插入指定字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sed <span style="color:#e6db74">&#39;2i\hello world&#39;</span> file.txt
-</code></pre></div><h3 id="替换文件中指定行的内容">替换文件中指定行的内容</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sed <span style="color:#e6db74">&#39;3c\hello world&#39;</span> file.txt
-</code></pre></div><h2 id="awk命令">awk命令</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;s/hello/world/&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="删除文件中的指定行">删除文件中的指定行</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;3d&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="在文件中指定行后插入指定字符串">在文件中指定行后插入指定字符串</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;2i\hello world&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="替换文件中指定行的内容">替换文件中指定行的内容</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed <span style="color:#e6db74">&#39;3c\hello world&#39;</span> file.txt
+</span></span></code></pre></div><h2 id="awk命令">awk命令</h2>
 <p>awk是一种文本处理工具，它可以用于格式化、过滤、计算等操作。它的语法格式如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#e6db74">&#39;PATTERN { ACTION }&#39;</span> <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
-</code></pre></div><p>其中，OPTIONS表示选项，PATTERN表示要匹配的模式，ACTION表示要执行的操作，FILE表示要处理的文件名。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#f92672">[</span>OPTIONS<span style="color:#f92672">]</span> <span style="color:#e6db74">&#39;PATTERN { ACTION }&#39;</span> <span style="color:#f92672">[</span>FILE...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>其中，OPTIONS表示选项，PATTERN表示要匹配的模式，ACTION表示要执行的操作，FILE表示要处理的文件名。</p>
 <p>下面是一些常用的awk命令：</p>
 <ul>
 <li>print：打印指定内容</li>
@@ -472,16 +468,16 @@
 </ul>
 <p>下面是一些awk命令的实例：</p>
 <h3 id="打印文件中的所有行">打印文件中的所有行</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;{print}&#39;</span> file.txt
-</code></pre></div><h3 id="打印文件中第二列的内容">打印文件中第二列的内容</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> file.txt
-</code></pre></div><h3 id="计算文件中所有数字的总和">计算文件中所有数字的总和</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;{sum += $1} END {print sum}&#39;</span> file.txt
-</code></pre></div><h3 id="打印文件中包含指定字符串的行">打印文件中包含指定字符串的行</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;/hello/ {print}&#39;</span> file.txt
-</code></pre></div><h3 id="在文件中指定列后面添加指定字符串">在文件中指定列后面添加指定字符串</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">awk <span style="color:#e6db74">&#39;{$3 = $3 &#34;hello&#34;} {print}&#39;</span> file.txt
-</code></pre></div><p>以上是grep、sed、awk命令的基本语法和示例。这些命令可以通过选项和参数进行进一步定制和扩展。例如，grep命令可以通过-i选项忽略大小写，-r选项递归搜索子目录，-n选项显示行号等。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print}&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="打印文件中第二列的内容">打印文件中第二列的内容</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{print $2}&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="计算文件中所有数字的总和">计算文件中所有数字的总和</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{sum += $1} END {print sum}&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="打印文件中包含指定字符串的行">打印文件中包含指定字符串的行</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;/hello/ {print}&#39;</span> file.txt
+</span></span></code></pre></div><h3 id="在文件中指定列后面添加指定字符串">在文件中指定列后面添加指定字符串</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>awk <span style="color:#e6db74">&#39;{$3 = $3 &#34;hello&#34;} {print}&#39;</span> file.txt
+</span></span></code></pre></div><p>以上是grep、sed、awk命令的基本语法和示例。这些命令可以通过选项和参数进行进一步定制和扩展。例如，grep命令可以通过-i选项忽略大小写，-r选项递归搜索子目录，-n选项显示行号等。</p>
 <p>在实际应用中，这些命令通常会被结合使用。例如，可以使用grep命令搜索指定字符串，然后使用sed命令进行替换，最后使用awk命令进行计算和格式化。</p>
 <p>此外，这些命令也可以通过管道符号（|）进行连接。例如，可以使用grep命令搜索指定字符串，然后将结果通过管道符号传递给sed命令进行替换，最后将结果再次通过管道符号传递给awk命令进行计算和格式化。</p>
 <p>总之，grep、sed、awk等命令是Linux系统中非常重要和常用的文本处理工具。熟练掌握它们的基本语法和用法，可以大大提高文本处理的效率和质量。</p>
@@ -634,7 +630,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -642,7 +638,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

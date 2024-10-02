@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-12-03 17:38:16 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"a-lightweight-embedded-program-framework.html","permalink":"https://www.kontronn.com/post/mcu/a-lightweight-embedded-program-framework.html","title":"一个轻量级的嵌入式框架"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -278,7 +274,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -364,7 +360,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>527</span>
+  <span class="post-meta-item-text">字数：</span><span>536</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -415,264 +411,264 @@
 <p>采用STM32F429开发板作为硬件运行环境，硬件资源用到串口1和systick，其中串口1提供调试打印功能，systick提供系统时间计数功能。</p>
 <p><img src="https://www.kontronn.com/imgs/post/embedded-framework-1.png" alt="Lightweight Embedded Framework"></p>
 <p>关于硬件环境的搭建不多说，可以参照开发板提供的例程来搭建，板级初始化完成了调试串口和systick的初始化。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/******************************************************************************
-</span><span style="color:#75715e"> * 描述  ：硬件环境初始化
-</span><span style="color:#75715e"> * 参数  ：无
-</span><span style="color:#75715e"> * 返回  ：无
-</span><span style="color:#75715e">******************************************************************************/</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BSP_init</span>(<span style="color:#66d9ef">void</span>)
-{
-    <span style="color:#75715e">/* 嵌套向量中断控制器组选择 */</span>
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-
-    <span style="color:#75715e">/* 初始化调试串口 */</span>
-    Debug_USART_init();
-
-    <span style="color:#75715e">/* Systick初始化 */</span>
-    SystemTick_init();
-}
-
-<span style="color:#75715e">/******************************************************************************
-</span><span style="color:#75715e"> * 描述  ：硬件底层程序
-</span><span style="color:#75715e"> * 参数  ：无
-</span><span style="color:#75715e"> * 返回  ：无
-</span><span style="color:#75715e">******************************************************************************/</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BSP_process</span>(<span style="color:#66d9ef">void</span>)
-{
-
-}
-</code></pre></div><h2 id="调试输出">调试输出</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/******************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 描述  ：硬件环境初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 参数  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 返回  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">******************************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BSP_init</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 嵌套向量中断控制器组选择 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">NVIC_PriorityGroupConfig</span>(NVIC_PriorityGroup_2);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 初始化调试串口 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">Debug_USART_init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* Systick初始化 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">SystemTick_init</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 描述  ：硬件底层程序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 参数  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 返回  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">******************************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BSP_process</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="调试输出">调试输出</h2>
 <p>开发一个程序，最开始也最重要的是搭建调试的环境，我们采用串口1作为调试输出（printf映射），然后调试信息分为三个等级，后续上位机可以根据不同等级进行高亮提示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @file    zf_debug.h
-</span><span style="color:#75715e">  * @author  Zorb
-</span><span style="color:#75715e">  * @version V1.0.0
-</span><span style="color:#75715e">  * @date    2018-06-28
-</span><span style="color:#75715e">  * @brief   调试输出的头文件
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @history
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  * 1. Date:2018-06-28
-</span><span style="color:#75715e">  *    Author:Zorb
-</span><span style="color:#75715e">  *    Modification:建立文件
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  */</span>
-
-<span style="color:#75715e">#ifndef __ZF_DEBUG_H__
-</span><span style="color:#75715e">#define __ZF_DEBUG_H__
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdbool.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#define LOG_D 0; </span><span style="color:#75715e">/* 信息等级：正常 */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define LOG_W 1; </span><span style="color:#75715e">/* 信息等级：告警 */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define LOG_E 2; </span><span style="color:#75715e">/* 信息等级：错误 */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#define _ZF_DEBUG             </span><span style="color:#75715e">/* 定义调试功能 */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define ZF_DEBUG_ON true      </span><span style="color:#75715e">/* 启用调试功能 */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef _ZF_DEBUG
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#if ZF_DEBUG_ON
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">#define ZF_DEBUG(rank, x...) do     \
-</span><span style="color:#75715e">        {                                   \
-</span><span style="color:#75715e">            char code[10] = &#34;[rank=0]&#34;;     \
-</span><span style="color:#75715e">            code[6] = &#39;0&#39; + (char)rank;     \
-</span><span style="color:#75715e">            if (code[6] != &#39;0&#39;)             \
-</span><span style="color:#75715e">            {                               \
-</span><span style="color:#75715e">                printf(&#34;%s&#34;, code);         \
-</span><span style="color:#75715e">            }                               \
-</span><span style="color:#75715e">            printf(x);                      \
-</span><span style="color:#75715e">        } while(0)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#else
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">#define ZF_DEBUG(rank, x...)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#endif </span><span style="color:#75715e">/* ZF_DEBUG_ON */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* _ZF_DEBUG */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span>}
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_DEBUG_H__ */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
-</code></pre></div><h2 id="实现断言">实现断言</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @file    zf_debug.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @author  Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @version V1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @date    2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @brief   调试输出的头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @history
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * 1. Date:2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Author:Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Modification:建立文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef __ZF_DEBUG_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define __ZF_DEBUG_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdio.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdbool.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define LOG_D 0; </span><span style="color:#75715e">/* 信息等级：正常 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LOG_W 1; </span><span style="color:#75715e">/* 信息等级：告警 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define LOG_E 2; </span><span style="color:#75715e">/* 信息等级：错误 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define _ZF_DEBUG             </span><span style="color:#75715e">/* 定义调试功能 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_DEBUG_ON true      </span><span style="color:#75715e">/* 启用调试功能 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef _ZF_DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#if ZF_DEBUG_ON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">#define ZF_DEBUG(rank, x...) do     \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        {                                   \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            char code[10] = &#34;[rank=0]&#34;;     \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            code[6] = &#39;0&#39; + (char)rank;     \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            if (code[6] != &#39;0&#39;)             \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            {                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                printf(&#34;%s&#34;, code);         \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            }                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            printf(x);                      \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        } while(0)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">#define ZF_DEBUG(rank, x...)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#endif </span><span style="color:#75715e">/* ZF_DEBUG_ON */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* _ZF_DEBUG */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_DEBUG_H__ */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
+</span></span></code></pre></div><h2 id="实现断言">实现断言</h2>
 <p>在开发过程中，在关键地方进行一些断言，可以方便定位bug。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @file    zf_assert.h
-</span><span style="color:#75715e">  * @author  Zorb
-</span><span style="color:#75715e">  * @version V1.0.0
-</span><span style="color:#75715e">  * @date    2018-06-28
-</span><span style="color:#75715e">  * @brief   断言的头文件
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @history
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  * 1. Date:2018-06-28
-</span><span style="color:#75715e">  *    Author:Zorb
-</span><span style="color:#75715e">  *    Modification:建立文件
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  */</span>
-
-<span style="color:#75715e">#ifndef __ZF_ASSERT_H__
-</span><span style="color:#75715e">#define __ZF_ASSERT_H__
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdint.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#define _ZF_ASSERT              </span><span style="color:#75715e">/* 定义断言功能 */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#define ZF_ASSERT_ON true       </span><span style="color:#75715e">/* 启用断言功能 */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef _ZF_ASSERT
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#if ZF_ASSERT_ON
-</span><span style="color:#75715e"></span>         <span style="color:#75715e">#define ZF_ASSERT(expression_) ((expression_) ?\
-</span><span style="color:#75715e">            (void)0 : ZF_assertHandle((uint8_t *)__FILE__, (int)__LINE__));
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#else
-</span><span style="color:#75715e"></span>         <span style="color:#75715e">#define ZF_ASSERT(expression_)
-</span><span style="color:#75715e"></span>    <span style="color:#75715e">#endif </span><span style="color:#75715e">/* ZF_ASSERT_ON */</span><span style="color:#75715e">
-</span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* _ZF_ASSERT */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 断言产生时的处理 */</span>
-<span style="color:#66d9ef">void</span> ZF_assertHandle(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>pFileName, <span style="color:#66d9ef">int</span> line);
-
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span>}
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_ASSERT_H__ */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
-</code></pre></div><p>断言的处理很简单，就是告诉我们在哪个文件哪一行出错就可以，实现如下</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @file    zf_assert.c
-</span><span style="color:#75715e">  * @author  Zorb
-</span><span style="color:#75715e">  * @version V1.0.0
-</span><span style="color:#75715e">  * @date    2018-06-28
-</span><span style="color:#75715e">  * @brief   断言的实现
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @history
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  * 1. Date:2018-06-28
-</span><span style="color:#75715e">  *    Author:Zorb
-</span><span style="color:#75715e">  *    Modification:建立文件
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  */</span>
-
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;zf_assert.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;zf_debug.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/******************************************************************************
-</span><span style="color:#75715e"> * 描述  ：断言产生时的处理
-</span><span style="color:#75715e"> * 参数  ：(in)-pFileName 文件名
-</span><span style="color:#75715e"> *         (in)-line 行数
-</span><span style="color:#75715e"> * 返回  ：无
-</span><span style="color:#75715e">******************************************************************************/</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_assertHandle</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>pFileName, <span style="color:#66d9ef">int</span> line)
-{
-    ZF_DEBUG(LOG_E, <span style="color:#e6db74">&#34;file:%s line:%d:asserted</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, pFileName, line);
-
-    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>);
-}
-
-<span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
-</code></pre></div><h2 id="建立时间系统">建立时间系统</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @file    zf_assert.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @author  Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @version V1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @date    2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @brief   断言的头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @history
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * 1. Date:2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Author:Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Modification:建立文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef __ZF_ASSERT_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define __ZF_ASSERT_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdint.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define _ZF_ASSERT              </span><span style="color:#75715e">/* 定义断言功能 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_ASSERT_ON true       </span><span style="color:#75715e">/* 启用断言功能 */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef _ZF_ASSERT
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#if ZF_ASSERT_ON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         <span style="color:#75715e">#define ZF_ASSERT(expression_) ((expression_) ?\
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">            (void)0 : ZF_assertHandle((uint8_t *)__FILE__, (int)__LINE__));
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>         <span style="color:#75715e">#define ZF_ASSERT(expression_)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">#endif </span><span style="color:#75715e">/* ZF_ASSERT_ON */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* _ZF_ASSERT */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 断言产生时的处理 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_assertHandle</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>pFileName, <span style="color:#66d9ef">int</span> line);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_ASSERT_H__ */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
+</span></span></code></pre></div><p>断言的处理很简单，就是告诉我们在哪个文件哪一行出错就可以，实现如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @file    zf_assert.c
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @author  Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @version V1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @date    2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @brief   断言的实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @history
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * 1. Date:2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Author:Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Modification:建立文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;zf_assert.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;zf_debug.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 描述  ：断言产生时的处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 参数  ：(in)-pFileName 文件名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *         (in)-line 行数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 返回  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">******************************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_assertHandle</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>pFileName, <span style="color:#66d9ef">int</span> line)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ZF_DEBUG</span>(LOG_E, <span style="color:#e6db74">&#34;file:%s line:%d:asserted</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>, pFileName, line);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
+</span></span></code></pre></div><h2 id="建立时间系统">建立时间系统</h2>
 <p>为了减少框架对资源的消耗，所以初步设定框架的最小时间周期为1ms，因此我们需要设置systick的定时周期为1ms，然后每次进入中断为我们的框架计数即可。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/******************************************************************************
-</span><span style="color:#75715e"> * 描述  ：SysTick中断服务程序
-</span><span style="color:#75715e"> * 参数  ：无
-</span><span style="color:#75715e"> * 返回  ：无
-</span><span style="color:#75715e">******************************************************************************/</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SysTick_Handler</span>(<span style="color:#66d9ef">void</span>)
-{
-    <span style="color:#75715e">/* 为zorb framework提供计时 */</span>
-    ZF_timeTick();
-}
-</code></pre></div><p>现在时间系统提供的功能比较基础，只有系统滴答计数和系统死等待延时，后面我们开发定时器功能和任务功能的时候会重新扩展时间系统。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">/**
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @file    zf_time.h
-</span><span style="color:#75715e">  * @author  Zorb
-</span><span style="color:#75715e">  * @version V1.0.0
-</span><span style="color:#75715e">  * @date    2018-06-28
-</span><span style="color:#75715e">  * @brief   系统时间的头文件
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  * @history
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  * 1. Date:2018-06-28
-</span><span style="color:#75715e">  *    Author:Zorb
-</span><span style="color:#75715e">  *    Modification:建立文件
-</span><span style="color:#75715e">  *
-</span><span style="color:#75715e">  *****************************************************************************
-</span><span style="color:#75715e">  */</span>
-
-<span style="color:#75715e">#ifndef __ZF_TIME_H__
-</span><span style="color:#75715e">#define __ZF_TIME_H__
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdbool.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdint.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 系统滴答周期(ms) */</span>
-<span style="color:#75715e">#define ZF_TICK_PERIOD 1
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 获取系统滴答数 */</span>
-<span style="color:#75715e">#define ZF_SYSTICK() ZF_getSystemTick()
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 获取系统时间(ms) */</span>
-<span style="color:#75715e">#define ZF_SYSTIME_MS() ZF_getSystemTimeMS()
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 系统延时(ms) */</span>
-<span style="color:#75715e">#define ZF_DELAY_MS(ms_) do                            \
-</span><span style="color:#75715e">{                                                      \
-</span><span style="color:#75715e">    if (ms_ % ZF_TICK_PERIOD)                          \
-</span><span style="color:#75715e">    {                                                  \
-</span><span style="color:#75715e">        ZF_delayTick((ms_ / ZF_TICK_PERIOD) + 1);      \
-</span><span style="color:#75715e">    }                                                  \
-</span><span style="color:#75715e">    else                                               \
-</span><span style="color:#75715e">    {                                                  \
-</span><span style="color:#75715e">        ZF_delayTick(ms_ / ZF_TICK_PERIOD);            \
-</span><span style="color:#75715e">    }                                                  \
-</span><span style="color:#75715e">} while(0)
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/* 获取系统滴答数 */</span>
-<span style="color:#66d9ef">uint32_t</span> ZF_getSystemTick(<span style="color:#66d9ef">void</span>);
-
-<span style="color:#75715e">/* 获取系统时间(ms) */</span>
-<span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">ZF_getSystemTimeMS</span>(<span style="color:#66d9ef">void</span>);
-
-<span style="color:#75715e">/* 系统延时 */</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_delayTick</span>(<span style="color:#66d9ef">uint32_t</span> tick);
-
-<span style="color:#75715e">/* 系统滴答程序(需挂在硬件的时间中断里边) */</span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_timeTick</span> (<span style="color:#66d9ef">void</span>);
-
-<span style="color:#75715e">#ifdef __cplusplus
-</span><span style="color:#75715e"></span>}
-<span style="color:#75715e">#endif
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_TIME_H__ */</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
-</code></pre></div><h2 id="最后">最后</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/******************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 描述  ：SysTick中断服务程序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 参数  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 返回  ：无
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">******************************************************************************/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">SysTick_Handler</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* 为zorb framework提供计时 */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">ZF_timeTick</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>现在时间系统提供的功能比较基础，只有系统滴答计数和系统死等待延时，后面我们开发定时器功能和任务功能的时候会重新扩展时间系统。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @file    zf_time.h
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @author  Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @version V1.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @date    2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @brief   系统时间的头文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * @history
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  * 1. Date:2018-06-28
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Author:Zorb
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *    Modification:建立文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  *****************************************************************************
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifndef __ZF_TIME_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define __ZF_TIME_H__
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">extern</span> <span style="color:#e6db74">&#34;C&#34;</span> {
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdbool.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;stdint.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 系统滴答周期(ms) */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_TICK_PERIOD 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 获取系统滴答数 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_SYSTICK() ZF_getSystemTick()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 获取系统时间(ms) */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_SYSTIME_MS() ZF_getSystemTimeMS()
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 系统延时(ms) */</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#define ZF_DELAY_MS(ms_) do                            \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">{                                                      \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    if (ms_ % ZF_TICK_PERIOD)                          \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    {                                                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        ZF_delayTick((ms_ / ZF_TICK_PERIOD) + 1);      \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }                                                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    else                                               \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    {                                                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        ZF_delayTick(ms_ / ZF_TICK_PERIOD);            \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    }                                                  \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">} while(0)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 获取系统滴答数 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">ZF_getSystemTick</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 获取系统时间(ms) */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">ZF_getSystemTimeMS</span>(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 系统延时 */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_delayTick</span>(<span style="color:#66d9ef">uint32_t</span> tick);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* 系统滴答程序(需挂在硬件的时间中断里边) */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ZF_timeTick</span> (<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ifdef __cplusplus
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#endif </span><span style="color:#75715e">/* __ZF_TIME_H__ */</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/******************************** END OF FILE ********************************/</span>
+</span></span></code></pre></div><h2 id="最后">最后</h2>
 <p>本篇实现的功能比较基础，但是整个框架开发的根基，后面所有扩展的功能都需要在此环境下进行开发。</p>
 <p>搭建良好的调试输出环境，可以帮我们快速定位bug的所在，从而提高开发效率。</p>
 <h3 id="github-地址">Github 地址</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">https://github.com/54zorb/Zorb-Framework
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>https://github.com/54zorb/Zorb-Framework
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -819,7 +815,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -827,7 +823,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

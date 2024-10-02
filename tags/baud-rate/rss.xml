@@ -4,21 +4,16 @@
     <title>Baud Rate on Kontronn</title>
     <link>https://www.kontronn.com/tags/baud-rate/</link>
     <description>Recent content in Baud Rate on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Sep 2024 20:34:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/baud-rate/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 20:34:41 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/baud-rate/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何计算串口的传输速率</title>
       <link>https://www.kontronn.com/post/hardware/how-to-calculate-uart-rate.html</link>
       <pubDate>Sat, 07 Sep 2024 20:34:41 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/how-to-calculate-uart-rate.html</guid>
-      <description>&lt;p&gt;1960年代，DEC（Digital Equipment Corp）公司的Gordon Bell采用大约50个分离元件设计了一个电路板，发明了
-&lt;a href=&#34;https://www.vxworks.net/arm/1077-uart-communication&#34; title=&#34;UART串口&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    UART串口
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;。&lt;/p&gt;</description>
+      <description>&lt;p&gt;1960年代，DEC（Digital Equipment Corp）公司的Gordon Bell采用大约50个分离元件设计了一个电路板，发明了&#xA;&lt;a href=&#34;https://www.vxworks.net/arm/1077-uart-communication&#34; title=&#34;UART串口&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    UART串口&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-08-08 12:50:06 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"fmt-lib-usage-in-c-plus-plus.html","permalink":"https://www.kontronn.com/post/programming/fmt-lib-usage-in-c-plus-plus.html","title":"C++中fmt库的用法"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -277,7 +273,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -402,54 +398,54 @@
 <p>据说这个库进入了 C++ 20 当中，不清楚，毕竟我用的还是 C++ 11</p>
 <h2 id="用法">用法</h2>
 <p>最简单的输出就是 print</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#define FMT_HEADER_ONLY
-</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;fmt-10.0.0/include/fmt/core.h&#34;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
-{
-    fmt<span style="color:#f92672">::</span>print(<span style="color:#e6db74">&#34;Hello fmt!&#34;</span>);
-}
-</code></pre></div><p>这样其实和正常的 printf 没有什么区别？C++相对C的最大区别之一就是尽可能地追求typesafe，所以C++从一开始就在寻找替代printf系列函数的解决方案，于是从一开始就有了各种各样的ostream。typesafe是做到了，但是性能低下。三方库 fmt 就是想既解决 typesafe ，也想要一定的性能。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#define FMT_HEADER_ONLY
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;fmt-10.0.0/include/fmt/core.h&#34;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Hello fmt!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这样其实和正常的 printf 没有什么区别？C++相对C的最大区别之一就是尽可能地追求typesafe，所以C++从一开始就在寻找替代printf系列函数的解决方案，于是从一开始就有了各种各样的ostream。typesafe是做到了，但是性能低下。三方库 fmt 就是想既解决 typesafe ，也想要一定的性能。</p>
 <h2 id="参数替换">参数替换</h2>
 <p>类似于 printf 的 % 占位符输出，fmt 使用大括号替代参数。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>print(<span style="color:#e6db74">&#34;Also {}&#34;</span>,<span style="color:#e6db74">&#34;hello fmt!&#34;</span>);
-</code></pre></div><p>输出结果：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">Also hello fmt<span style="color:#f92672">!</span>
-</code></pre></div><p>其实这种语法有点类似于 Vue.js 的设计。据说是未来的趋势。。。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Also {}&#34;</span>,<span style="color:#e6db74">&#34;hello fmt!&#34;</span>);
+</span></span></code></pre></div><p>输出结果：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>Also hello fmt<span style="color:#f92672">!</span>
+</span></span></code></pre></div><p>其实这种语法有点类似于 Vue.js 的设计。据说是未来的趋势。。。</p>
 <p>另一个有效的函数是 fmt::format，所以上面的输出也可以写成</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">std<span style="color:#f92672">::</span>string hello_buffer <span style="color:#f92672">=</span> fmt<span style="color:#f92672">::</span>format(<span style="color:#e6db74">&#34;Also {}&#34;</span>,<span style="color:#e6db74">&#34;hello fmt!&#34;</span>);
-fmt<span style="color:#f92672">::</span>print(<span style="color:#e6db74">&#34;{}&#34;</span>,hello_buffer);
-</code></pre></div><p>另外，和 cout 一样，fmt 输出对参数是无关的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>println(<span style="color:#e6db74">&#34;{}&#34;</span>,<span style="color:#ae81ff">4.12</span>);
-</code></pre></div><p>这样的也是可以正常输出的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>string hello_buffer <span style="color:#f92672">=</span> fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">format</span>(<span style="color:#e6db74">&#34;Also {}&#34;</span>,<span style="color:#e6db74">&#34;hello fmt!&#34;</span>);
+</span></span><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;{}&#34;</span>,hello_buffer);
+</span></span></code></pre></div><p>另外，和 cout 一样，fmt 输出对参数是无关的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;{}&#34;</span>,<span style="color:#ae81ff">4.12</span>);
+</span></span></code></pre></div><p>这样的也是可以正常输出的。</p>
 <h2 id="参数格式设计">参数格式设计</h2>
 <p>在大括号内可以对格式进行处理，printf 也有类似的功能，但据说 fmt 的功能更加全面？而且 fmt 利用 format 可以直接处理字符串，这点是 printf 没有的。</p>
 <p>但是网上针对这个库的文章很少。。。我也是第一次用，所以只能贴出我整理到的用法了。</p>
 <p>大括号的参数分为前后两部分，分别为为位置参数（arg_id）和格式化参数（format_spec）。前者用来显式声明参数在字符串中的位置，后者对值进行一定的格式化转换。（这两个是我翻译的，毕竟官网也没有这俩的中文翻译。。。）</p>
 <h3 id="位置参数">位置参数</h3>
 <p>官方对位置参数的解释是用正则表达式。。。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">replacement_field    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{&#34;</span>[arg_id][<span style="color:#e6db74">&#34;:&#34;</span> format_spec] <span style="color:#e6db74">&#34;}&#34;</span>
-arg_id    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> integer <span style="color:#f92672">|</span> identifier
-integer    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> digit <span style="color:#f92672">+</span>
-digit    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0&#34;</span>...<span style="color:#e6db74">&#34;9&#34;</span>
-identifier    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> id_start id_continue<span style="color:#f92672">*</span>
-id_start    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a&#34;</span>...<span style="color:#e6db74">&#34;z&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;A&#34;</span>...<span style="color:#e6db74">&#34;Z&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;_&#34;</span>
-id_continue    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> id_start <span style="color:#f92672">|</span> digit
-</code></pre></div><p>简单解释下吧 从0开始，然后1、2、3，等等</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>println(<span style="color:#e6db74">&#34;{0} + {1} = {2}&#34;</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>);
-<span style="color:#75715e">//2 + 3 = 5
-</span></code></pre></div><p>如果没有指定位置，默认从0往后排</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>println(<span style="color:#e6db74">&#34;{} + {} = {}&#34;</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>);
-<span style="color:#75715e">//2 + 3 = 5
-</span></code></pre></div><p>参数位置与值是一一对应的，所以可以交换顺序</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>println(<span style="color:#e6db74">&#34;{1} + {2} = {0}&#34;</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>);
-<span style="color:#75715e">//2 + 3 = 5
-</span></code></pre></div><p>如果你不想用数字，也可以用fmt::arg指定别名参数</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">fmt<span style="color:#f92672">::</span>print(<span style="color:#e6db74">&#34;Hello, {name}! The answer is {number}. Goodbye, {name}.&#34;</span>,
-           fmt<span style="color:#f92672">::</span>arg(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;World&#34;</span>), fmt<span style="color:#f92672">::</span>arg(<span style="color:#e6db74">&#34;number&#34;</span>, <span style="color:#ae81ff">42</span>));
-<span style="color:#75715e">//Hello, World! The answer is 42. Goodbye, World.
-</span></code></pre></div><h3 id="格式化参数">格式化参数</h3>
-<p>可选的arg_id放在format_spec的后面，其后是冒号'：'。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>replacement_field    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{&#34;</span>[arg_id][<span style="color:#e6db74">&#34;:&#34;</span> format_spec] <span style="color:#e6db74">&#34;}&#34;</span>
+</span></span><span style="display:flex;"><span>arg_id    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> integer <span style="color:#f92672">|</span> identifier
+</span></span><span style="display:flex;"><span>integer    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> digit <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>digit    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0&#34;</span>...<span style="color:#e6db74">&#34;9&#34;</span>
+</span></span><span style="display:flex;"><span>identifier    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> id_start id_continue<span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>id_start    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;a&#34;</span>...<span style="color:#e6db74">&#34;z&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;A&#34;</span>...<span style="color:#e6db74">&#34;Z&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;_&#34;</span>
+</span></span><span style="display:flex;"><span>id_continue    <span style="color:#f92672">::</span> <span style="color:#f92672">=</span> id_start <span style="color:#f92672">|</span> digit
+</span></span></code></pre></div><p>简单解释下吧 从0开始，然后1、2、3，等等</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;{0} + {1} = {2}&#34;</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//2 + 3 = 5
+</span></span></span></code></pre></div><p>如果没有指定位置，默认从0往后排</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;{} + {} = {}&#34;</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//2 + 3 = 5
+</span></span></span></code></pre></div><p>参数位置与值是一一对应的，所以可以交换顺序</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;{1} + {2} = {0}&#34;</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//2 + 3 = 5
+</span></span></span></code></pre></div><p>如果你不想用数字，也可以用fmt::arg指定别名参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Hello, {name}! The answer is {number}. Goodbye, {name}.&#34;</span>,
+</span></span><span style="display:flex;"><span>           fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">arg</span>(<span style="color:#e6db74">&#34;name&#34;</span>, <span style="color:#e6db74">&#34;World&#34;</span>), fmt<span style="color:#f92672">::</span><span style="color:#a6e22e">arg</span>(<span style="color:#e6db74">&#34;number&#34;</span>, <span style="color:#ae81ff">42</span>));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//Hello, World! The answer is 42. Goodbye, World.
+</span></span></span></code></pre></div><h3 id="格式化参数">格式化参数</h3>
+<p>可选的arg_id放在format_spec的后面，其后是冒号&rsquo;：&rsquo;。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -596,7 +592,7 @@ id_continue    <span style="color:#f92672">::</span> <span style="color:#f92672"
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -604,7 +600,7 @@ id_continue    <span style="color:#f92672">::</span> <span style="color:#f92672"
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

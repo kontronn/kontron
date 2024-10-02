@@ -4,17 +4,16 @@
     <title>GH200 on Kontronn</title>
     <link>https://www.kontronn.com/tags/gh200/</link>
     <description>Recent content in GH200 on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 19 Nov 2023 10:47:43 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/gh200/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Nov 2023 10:47:43 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/gh200/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GH200，来自英伟达的AI超级计算机</title>
       <link>https://www.kontronn.com/post/news/gh200-from-nvidia.html</link>
       <pubDate>Sun, 19 Nov 2023 10:47:43 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/gh200-from-nvidia.html</guid>
       <description>&lt;p&gt;Nvidia的GH200 AI超级计算机是一款巨大的进步，相比于之前的H100，其在使用TB级数据训练和部署AI模型方面的性能提升了3-7倍。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

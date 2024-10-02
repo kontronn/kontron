@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-08-21 22:06:51 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"why-rust-is-suitable-for-embedded-development.html","permalink":"https://www.kontronn.com/post/programming/why-rust-is-suitable-for-embedded-development.html","title":"Rust 为什么适合嵌入式开发"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -272,7 +268,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -404,19 +400,19 @@
 <li>移植优势</li>
 </ol>
 <p>可移植性移植是嵌入式开发的一个大问题，每个工作可能或多或少会考虑一些模块的可移植性，想进来在不同框架不同平台上能够共有这些模块，避免重复造轮子。Rust 则提供了高效的方法来保证库能够轻松移植，避免库接口域业务接口杂糅到一起。trait 等特性让 Rust 的库能在不同的 CPU 如 ARM 或 RISV-V 甚至操作系统上方便得使用，无需过多关注库的文件数量、无需手动添加库的每个文件，仅仅只需在toml文件中添加库的名字、版本、开启所需的featues即可。在 Rust 中你可以轻松得将各种 IIC 的传感器库添加到自己的工程，很少花时间在适配上。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-go" data-lang="go">[<span style="color:#a6e22e">dependencies</span>]
-<span style="color:#a6e22e">panic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">halt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
-<span style="color:#a6e22e">ufmt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
-<span style="color:#a6e22e">nb</span> = <span style="color:#e6db74">&#34;1.1.0&#34;</span>
-<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span> = <span style="color:#e6db74">&#34;1.0&#34;</span>
-<span style="color:#a6e22e">pwm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pca9685</span> = <span style="color:#e6db74">&#34;1.0.0&#34;</span>
-<span style="color:#a6e22e">infrared</span> = <span style="color:#e6db74">&#34;0.14.1&#34;</span>
-<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">storage</span> = <span style="color:#e6db74">&#34;0.2&#34;</span>
-
-[<span style="color:#a6e22e">dependencies</span>.<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span><span style="color:#f92672">-</span><span style="color:#a6e22e">v0</span>]
-<span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;0.2.3&#34;</span>
-<span style="color:#f92672">package</span> = <span style="color:#e6db74">&#34;embedded-hal&#34;</span>
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-go" data-lang="go"><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">panic</span><span style="color:#f92672">-</span><span style="color:#a6e22e">halt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ufmt</span> = <span style="color:#e6db74">&#34;0.2.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nb</span> = <span style="color:#e6db74">&#34;1.1.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span> = <span style="color:#e6db74">&#34;1.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">pwm</span><span style="color:#f92672">-</span><span style="color:#a6e22e">pca9685</span> = <span style="color:#e6db74">&#34;1.0.0&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">infrared</span> = <span style="color:#e6db74">&#34;0.14.1&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">storage</span> = <span style="color:#e6db74">&#34;0.2&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">dependencies</span>.<span style="color:#a6e22e">embedded</span><span style="color:#f92672">-</span><span style="color:#a6e22e">hal</span><span style="color:#f92672">-</span><span style="color:#a6e22e">v0</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;0.2.3&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> = <span style="color:#e6db74">&#34;embedded-hal&#34;</span>
+</span></span></code></pre></div><ol start="2">
 <li>Rust 官方发布了许多标准的库，基于这些库能简化开发、指导用户完成统一的适配接口。Rust 社区也非常活跃，发布了大量的开源库。</li>
 </ol>
 <blockquote>
@@ -424,16 +420,16 @@ As part of the Rust open source project, support for embedded systems is driven 
 </blockquote>
 <h2 id="调试">调试</h2>
 <p>Rust 生成的固件能使用 openocd 来轻松 gdb 调试，与 C/C++ 完全一样，单步、断电、查看等操作都支持。无需担心调试障碍。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break main
-Breakpoint <span style="color:#ae81ff">1</span> at 0x8000d18: file examples/hello.rs, line 15.
-
-<span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span>
-Continuing.
-Note: automatically using hardware breakpoints <span style="color:#66d9ef">for</span> read-only addresses.
-
-Breakpoint 1, main <span style="color:#f92672">()</span> at examples/hello.rs:15
-<span style="color:#ae81ff">15</span>          let mut stdout <span style="color:#f92672">=</span> hio::hstdout<span style="color:#f92672">()</span>.unwrap<span style="color:#f92672">()</span>;
-</code></pre></div><h2 id="语言优势">语言优势</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> break main
+</span></span><span style="display:flex;"><span>Breakpoint <span style="color:#ae81ff">1</span> at 0x8000d18: file examples/hello.rs, line 15.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>Continuing.
+</span></span><span style="display:flex;"><span>Note: automatically using hardware breakpoints <span style="color:#66d9ef">for</span> read-only addresses.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Breakpoint 1, main <span style="color:#f92672">()</span> at examples/hello.rs:15
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">15</span>          let mut stdout <span style="color:#f92672">=</span> hio::hstdout<span style="color:#f92672">()</span>.unwrap<span style="color:#f92672">()</span>;
+</span></span></code></pre></div><h2 id="语言优势">语言优势</h2>
 <ol>
 <li>内存安全优势。</li>
 </ol>
@@ -463,55 +459,55 @@ Rust makes it impossible to accidentally share state between threads. Use any co
 Integrate Rust into your existing C codebase or leverage an existing SDK to write a Rust application.
 </blockquote>
 <p>如果目前你的项目无法使用 Rust 来完成所有的模块，你也可以使用 FFF 机制来轻松绑定原项目的 C/C++接口，能够轻松与 C/C++互相操作。可以使用bindgen命令来轻松构建外部接口，也可在build.rs中编译 C/C++ 文件，也能 C/C++ 调用库文件如*.a。轻松集成。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">/* File: cool_bindings.rs */
-#[repr(C)]
-pub struct CoolStruct {
-    pub x: cty::c_int,
-    pub y: cty::c_int,
-}
-
-pub extern &#34;C&#34; fn cool_function(
-    i: cty::c_int,
-    c: cty::c_char,
-    cs: *mut CoolStruct
-);
-pub extern &#34;C&#34; fn cool_function( ... );
-
-extern crate cc;
-
-fn main() {
-    cc::Build::new()
-        .file(&#34;foo.c&#34;)
-        .compile(&#34;libfoo.a&#34;);
-}
-</code></pre></div><ol start="6">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>/* File: cool_bindings.rs */
+</span></span><span style="display:flex;"><span>#[repr(C)]
+</span></span><span style="display:flex;"><span>pub struct CoolStruct {
+</span></span><span style="display:flex;"><span>    pub x: cty::c_int,
+</span></span><span style="display:flex;"><span>    pub y: cty::c_int,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pub extern &#34;C&#34; fn cool_function(
+</span></span><span style="display:flex;"><span>    i: cty::c_int,
+</span></span><span style="display:flex;"><span>    c: cty::c_char,
+</span></span><span style="display:flex;"><span>    cs: *mut CoolStruct
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>pub extern &#34;C&#34; fn cool_function( ... );
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>extern crate cc;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fn main() {
+</span></span><span style="display:flex;"><span>    cc::Build::new()
+</span></span><span style="display:flex;"><span>        .file(&#34;foo.c&#34;)
+</span></span><span style="display:flex;"><span>        .compile(&#34;libfoo.a&#34;);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="6">
 <li>底层控制能力</li>
 </ol>
 <p>Rust 也提供了接口能尽可能安全访问地访问底层接口，如 PAC 包用来抽象微控制器的外设寄存器的访问，能编译成高效的二进制代码且接口容易使用，用户无需太多关注寄存器各域的位置，只需聚焦于芯片手册来操作各域的值，不会出现移位错或写错的低级错误。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">#![no_std]
-#![no_main]
-
-extern crate panic_halt; // panic handler
-
-use cortex_m_rt::entry;
-use tm4c123x;
-
-#[entry]
-pub fn init() -&gt; (Delay, Leds) {
-    let cp = cortex_m::Peripherals::take().unwrap();
-    let p = tm4c123x::Peripherals::take().unwrap();
-
-    let pwm = p.PWM0;
-    pwm.ctl.write(|w| w.globalsync0().clear_bit());
-    // Mode = 1 =&gt; Count up/down mode
-    pwm._2_ctl.write(|w| w.enable().set_bit().mode().set_bit());
-    pwm._2_gena.write(|w| w.actcmpau().zero().actcmpad().one());
-    // 528 cycles (264 up and down) = 4 loops per video line (2112 cycles)
-    pwm._2_load.write(|w| unsafe { w.load().bits(263) });
-    pwm._2_cmpa.write(|w| unsafe { w.compa().bits(64) });
-    pwm.enable.write(|w| w.pwm4en().set_bit());
-}
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#75715e">#![no_std]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#![no_main]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>extern crate panic_halt; <span style="color:#f92672">//</span> panic handler
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>use cortex_m_rt::entry;
+</span></span><span style="display:flex;"><span>use tm4c123x;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#[entry]</span>
+</span></span><span style="display:flex;"><span>pub fn init() <span style="color:#f92672">-&gt;</span> (Delay, Leds) {
+</span></span><span style="display:flex;"><span>    let cp <span style="color:#f92672">=</span> cortex_m::Peripherals::take()<span style="color:#f92672">.</span>unwrap();
+</span></span><span style="display:flex;"><span>    let p <span style="color:#f92672">=</span> tm4c123x::Peripherals::take()<span style="color:#f92672">.</span>unwrap();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    let pwm <span style="color:#f92672">=</span> p<span style="color:#f92672">.</span>PWM0;
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>ctl<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w<span style="color:#f92672">.</span>globalsync0()<span style="color:#f92672">.</span>clear_bit());
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">//</span> Mode <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=&gt;</span> Count up<span style="color:#f92672">/</span>down mode
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>_2_ctl<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w<span style="color:#f92672">.</span>enable()<span style="color:#f92672">.</span>set_bit()<span style="color:#f92672">.</span>mode()<span style="color:#f92672">.</span>set_bit());
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>_2_gena<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w<span style="color:#f92672">.</span>actcmpau()<span style="color:#f92672">.</span>zero()<span style="color:#f92672">.</span>actcmpad()<span style="color:#f92672">.</span>one());
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">//</span> <span style="color:#ae81ff">528</span> cycles (<span style="color:#ae81ff">264</span> up <span style="color:#f92672">and</span> down) <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> loops per video line (<span style="color:#ae81ff">2112</span> cycles)
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>_2_load<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> unsafe { w<span style="color:#f92672">.</span>load()<span style="color:#f92672">.</span>bits(<span style="color:#ae81ff">263</span>) });
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>_2_cmpa<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> unsafe { w<span style="color:#f92672">.</span>compa()<span style="color:#f92672">.</span>bits(<span style="color:#ae81ff">64</span>) });
+</span></span><span style="display:flex;"><span>    pwm<span style="color:#f92672">.</span>enable<span style="color:#f92672">.</span>write(<span style="color:#f92672">|</span>w<span style="color:#f92672">|</span> w<span style="color:#f92672">.</span>pwm4en()<span style="color:#f92672">.</span>set_bit());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -658,7 +654,7 @@ pub fn init() -&gt; (Delay, Leds) {
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -666,7 +662,7 @@ pub fn init() -&gt; (Delay, Leds) {
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

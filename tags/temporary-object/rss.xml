@@ -4,17 +4,16 @@
     <title>Temporary Object on Kontronn</title>
     <link>https://www.kontronn.com/tags/temporary-object/</link>
     <description>Recent content in Temporary Object on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Apr 2024 19:31:47 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/temporary-object/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Apr 2024 19:31:47 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/temporary-object/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C&#43;&#43;中的临时对象</title>
       <link>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</link>
       <pubDate>Sat, 27 Apr 2024 19:31:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/temporary-object-in-c-plus-plus.html</guid>
       <description>&lt;p&gt;Temporary object，临时对象。一听名字就明白，这个对象的意义不大，只是临时中转一下或者存在一下，有的可能连个存在感都刷不到就消失了。但不要小看这种临时对象，对C/C++这种以效率严苛为前提的编程环境下，它就是效率低下的某种代名词。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

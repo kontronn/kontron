@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-12-22 21:05:32 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"tr-a-useful-command-in-linux.html","permalink":"https://www.kontronn.com/post/linux/tr-a-useful-command-in-linux.html","title":"tr, 一个非常实用的linux命令"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -273,7 +269,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -398,34 +394,34 @@
 <h2 id="删除字符">删除字符</h2>
 <p>tr命令的一个常见用法是删除指定的字符。使用选项-d，我们可以删除输入中出现的指定字符。</p>
 <p>示例代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr -d <span style="color:#e6db74">&#39;o&#39;</span>
-</code></pre></div><p>输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">Hell, Wrld!
-</code></pre></div><p>解析：上述示例中，我们使用了管道符号（|）将字符串“Hello, World!”传递给tr命令。选项-d告诉tr命令删除指定的字符，这里我们删除了字符&rsquo;o'。因此，输出中的所有&rsquo;o&rsquo;都被删除了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr -d <span style="color:#e6db74">&#39;o&#39;</span>
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Hell, Wrld!
+</span></span></code></pre></div><p>解析：上述示例中，我们使用了管道符号（|）将字符串“Hello, World!”传递给tr命令。选项-d告诉tr命令删除指定的字符，这里我们删除了字符&rsquo;o&rsquo;。因此，输出中的所有&rsquo;o&rsquo;都被删除了。</p>
 <h2 id="压缩字符">压缩字符</h2>
 <p>tr命令还可以用于压缩字符。使用选项-s，我们可以将输入中连续出现的重复字符压缩成一个字符。</p>
 <p>示例代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;Hello,   World!&#34;</span> | tr -s <span style="color:#e6db74">&#39; &#39;</span>
-</code></pre></div><p>输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">Hello, World!
-</code></pre></div><p>解析：在上述示例中，我们使用tr命令将连续出现的空格字符压缩成一个空格。选项-s告诉tr命令进行字符压缩。因此，输出中的多个连续空格被替换为一个空格。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello,   World!&#34;</span> | tr -s <span style="color:#e6db74">&#39; &#39;</span>
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Hello, World!
+</span></span></code></pre></div><p>解析：在上述示例中，我们使用tr命令将连续出现的空格字符压缩成一个空格。选项-s告诉tr命令进行字符压缩。因此，输出中的多个连续空格被替换为一个空格。</p>
 <h2 id="字符集取补集">字符集取补集</h2>
 <p>tr命令还可以用于字符集的取补集。使用选项-c，我们可以对输入进行字符集求反操作。</p>
 <p>示例代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr -c <span style="color:#e6db74">&#39;A-Za-z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span>
-</code></pre></div><p>输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">Hello
-
-
-World
-</code></pre></div><p>解析：在上述示例中，我们使用了选项-c来对输入进行字符集求反操作。第一个参数&rsquo;A-Za-z&rsquo;指定了一个字符集，它包含了所有的字母字符。第二个参数'\n&rsquo;指定了替换字符，这里是换行符。因此，输出中的所有非字母字符都被替换为换行符。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr -c <span style="color:#e6db74">&#39;A-Za-z&#39;</span> <span style="color:#e6db74">&#39;\n&#39;</span>
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Hello
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>World
+</span></span></code></pre></div><p>解析：在上述示例中，我们使用了选项-c来对输入进行字符集求反操作。第一个参数&rsquo;A-Za-z&rsquo;指定了一个字符集，它包含了所有的字母字符。第二个参数&rsquo;\n&rsquo;指定了替换字符，这里是换行符。因此，输出中的所有非字母字符都被替换为换行符。</p>
 <h2 id="大小写转换">大小写转换</h2>
 <p>tr命令还可以用于大小写转换。使用选项-u和-l，我们可以将输入中的字母字符转换为大写或小写。</p>
 <p>示例代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr <span style="color:#e6db74">&#39;[:lower:]&#39;</span> <span style="color:#e6db74">&#39;[:upper:]&#39;</span>
-</code></pre></div><p>输出：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">HELLO, WORLD!
-</code></pre></div><p>解析：在上述示例中，我们使用tr命令将输入中的所有小写字母转换为大写字母。选项&rsquo;u&rsquo;和&rsquo;l&rsquo;用于指定转换为大写和小写。参数'[:lower:]&lsquo;和&rsquo;[:upper:]&lsquo;是字符类，用于表示所有的小写和大写字母。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Hello, World!&#34;</span> | tr <span style="color:#e6db74">&#39;[:lower:]&#39;</span> <span style="color:#e6db74">&#39;[:upper:]&#39;</span>
+</span></span></code></pre></div><p>输出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HELLO, WORLD!
+</span></span></code></pre></div><p>解析：在上述示例中，我们使用tr命令将输入中的所有小写字母转换为大写字母。选项&rsquo;u&rsquo;和&rsquo;l&rsquo;用于指定转换为大写和小写。参数&rsquo;[:lower:]&lsquo;和&rsquo;[:upper:]&lsquo;是字符类，用于表示所有的小写和大写字母。</p>
 <h2 id="总结">总结：</h2>
 <p>tr命令是Linux中一个功能强大的字符转换工具。它可以删除、替换、压缩字符，进行字符集转换和大小写转换等操作。本文介绍了tr命令的几个常用选项，包括删除字符、替换字符、字符集转换、大小写转换和字符集补集。通过这些示例，读者可以了解tr命令的基本使用方法，并根据实际需求在Linux系统中灵活应用该命令。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
@@ -571,7 +567,7 @@ World
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -579,7 +575,7 @@ World
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

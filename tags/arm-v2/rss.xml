@@ -4,21 +4,16 @@
     <title>ARM V2 on Kontronn</title>
     <link>https://www.kontronn.com/tags/arm-v2/</link>
     <description>Recent content in ARM V2 on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 03 Aug 2024 00:22:06 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/arm-v2/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Aug 2024 00:22:06 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/arm-v2/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ARM V2处理器微架构介绍</title>
       <link>https://www.kontronn.com/post/soc/introduction-to-ARM-V2-processor-microarchitecture.html</link>
       <pubDate>Sat, 03 Aug 2024 00:22:06 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/introduction-to-ARM-V2-processor-microarchitecture.html</guid>
-      <description>&lt;p&gt;今年V3/N3已经发布，但考虑到没有公布太多的细节，我依据手册在
-&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;ARM发布新一代高性能处理器&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    ARM发布新一代高性能处理器
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;一文中对微架构有阐述，本文主要简单分析ARM V2的一些微架构内容。&lt;/p&gt;</description>
+      <description>&lt;p&gt;今年V3/N3已经发布，但考虑到没有公布太多的细节，我依据手册在&#xA;&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;ARM发布新一代高性能处理器&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    ARM发布新一代高性能处理器&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;一文中对微架构有阐述，本文主要简单分析ARM V2的一些微架构内容。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

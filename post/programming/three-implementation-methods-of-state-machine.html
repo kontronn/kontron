@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-25 09:57:02 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"three-implementation-methods-of-state-machine.html","permalink":"https://www.kontronn.com/post/programming/three-implementation-methods-of-state-machine.html","title":"状态机的三种实现方法"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -281,7 +277,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -409,33 +405,33 @@
 <h2 id="switchcase-法">switch—case 法</h2>
 <p>状态用 switch—case 组织起来， 将事件也用switch—case 组织起来， 然后让其中一个 switch—case 整体插入到另一个 switch—case 的每一个 case 项中  。</p>
 <h3 id="程序清单-list4--">「程序清单 List4  ：」</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">switch</span> (StateVal) {
-<span style="color:#66d9ef">case</span> S0:
-    <span style="color:#66d9ef">switch</span> (EvntID) {
-    <span style="color:#66d9ef">case</span> E1:
-        action_S0_E1();         <span style="color:#75715e">/*S0 状态下 E1 事件的响应 */</span>
-        StateVal <span style="color:#f92672">=</span> new state value;     <span style="color:#75715e">/*状态迁移，不迁移则没有此行 */</span>
-        <span style="color:#66d9ef">break</span>;
-    <span style="color:#66d9ef">case</span> E2:
-        action_S0_E2();         <span style="color:#75715e">/*S0 状态下 E2 事件的响应 */</span>
-        StateVal <span style="color:#f92672">=</span> new state value;
-        <span style="color:#66d9ef">break</span>;
-    ... ... <span style="color:#66d9ef">case</span> Em:
-        action_S0_Em();         <span style="color:#75715e">/*S0 状态下 Em 事件的响应 */</span>
-        StateVal <span style="color:#f92672">=</span> new state value;
-        <span style="color:#66d9ef">break</span>;
-    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-        <span style="color:#66d9ef">break</span>;
-    }
-    <span style="color:#66d9ef">break</span>;
-<span style="color:#66d9ef">case</span> S1:
-    ... ... <span style="color:#66d9ef">break</span>;
-... ... <span style="color:#66d9ef">case</span> Sn:
-    ... ... <span style="color:#66d9ef">break</span>;
-<span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-    <span style="color:#66d9ef">break</span>;
-}
-</code></pre></div><p>上面的伪代码示例只是通用的情况，实际应用远没有这么复杂。虽然一个系统中事件可能有很多种，但在实际应用中，许多事件可能对某个状态是没有意义的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">switch</span> (StateVal) {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">case</span> S0:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">switch</span> (EvntID) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> E1:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">action_S0_E1</span>();         <span style="color:#75715e">/*S0 状态下 E1 事件的响应 */</span>
+</span></span><span style="display:flex;"><span>        StateVal <span style="color:#f92672">=</span> new state value;     <span style="color:#75715e">/*状态迁移，不迁移则没有此行 */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">case</span> E2:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">action_S0_E2</span>();         <span style="color:#75715e">/*S0 状态下 E2 事件的响应 */</span>
+</span></span><span style="display:flex;"><span>        StateVal <span style="color:#f92672">=</span> new state value;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    ... ... <span style="color:#66d9ef">case</span> Em:
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">action_S0_Em</span>();         <span style="color:#75715e">/*S0 状态下 Em 事件的响应 */</span>
+</span></span><span style="display:flex;"><span>        StateVal <span style="color:#f92672">=</span> new state value;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">case</span> S1:
+</span></span><span style="display:flex;"><span>    ... ... <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>... ... <span style="color:#66d9ef">case</span> Sn:
+</span></span><span style="display:flex;"><span>    ... ... <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面的伪代码示例只是通用的情况，实际应用远没有这么复杂。虽然一个系统中事件可能有很多种，但在实际应用中，许多事件可能对某个状态是没有意义的。</p>
 <p>例如在程序清单 List4中，如果 E2、······ Em 对处在 S0 状态下的系统没有意义，那么在 S0 的 case 下有关事件E2、······ Em 的代码根本没有必要写,状态 S0 只需要考虑事件 E1 的处理就行了。</p>
 <p>既然是两个 switch—case 之间的嵌套， 那么就有一个谁嵌套谁的问题， 所以说 switch—case法有两种写法：状态嵌套事件和事件嵌套状态。这两种写法都可以， 各有利弊， 至于到底选用哪种方式就留给设计人员根据具体情况自行决断吧。</p>
 <p>关于 switch—case 法还有最后一点要说明， 因为 switch—case 的原理是从上到下挨个比较，越靠后，查找耗费的时间就越长，所以要注意状态和事件在各自的 switch 语句中的安排顺序，不推荐程序清单 List4 那样按顺序号排布的方式。出现频率高或者实时性要求高的状态和事件的位置应该尽量靠前。</p>
@@ -443,12 +439,12 @@
 <p>如果说 switch—case 法是线性的，那么表格驱动法则是平面的。表格驱动法的实质就是将状态和事件之间的关系固化到一张二维表格里，把事件当做纵轴，把状态当做横轴，交点[Sn , Em]则是系统在 Sn 状态下对事件 Em 的响应。</p>
 <p><img src="https://www.kontronn.com/imgs/post/State-Machine.png" alt="State Machine"></p>
 <p>如图 4， 我把表格中的 Node_SnEm 叫做状态机节点， 状态机节点 Node_SnEm 是系统在 Sn状态下对事件 Em 的响应。这里所说的响应包含两个方面：输出动作和状态迁移。状态机节点一般是一个类似程序清单 List5 中的结构体变量 。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> fsm_node
-{
-    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt);
-    INT8U u8NxtStat;
-};
-</code></pre></div><p>程序清单 List5 中的这个结构体有两个成员：fpAction 和 u8NxtStat。fpAction 是一个函数指针， 指向一个形式为 void func(void * pEvnt)的函数， func 这个函数是对状态转移中动作序列的标准化封装。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fsm_node
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt);
+</span></span><span style="display:flex;"><span>    INT8U u8NxtStat;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>程序清单 List5 中的这个结构体有两个成员：fpAction 和 u8NxtStat。fpAction 是一个函数指针， 指向一个形式为 void func(void * pEvnt)的函数， func 这个函数是对状态转移中动作序列的标准化封装。</p>
 <p>也就是说， 状态机在状态迁移的时候， 不管输出多少个动作、操作多少个变量、调用多少个函数，这些行为统统放到函数 func 中去做。</p>
 <p>把动作封装好了之后，再把封装函数 func 的地址交给函数指针 fpAction，这样，想要输出动作，只需要调用函数指针 fpAction 就行了。</p>
 <p>再看看上面的 func 函数，会发现函数有一个形参 pEvnt，这是一个类型为 void * 的指针， 在程序实际运行时指向一个能存储事件的变量，通过这个指针我们就能获知关于事件的全部信息，这个形参是很有必要的。事件一般包括两个属性：事件的类型和事件的内容。</p>
@@ -464,19 +460,19 @@
 <p>表格驱动法屏蔽了不同状态下处理各个事件的差异性，因此可以将处理过程中的共性部分提炼出来，做成标准统一的框架式代码，形成统一的调用接口。根据程序清单 List5 中的状态机节点结构体，做成的框架代码如程序清单 List6 所示。</p>
 <p>表格驱动法查找目标实际上就是一次二维数组的寻址操作，所以它的平均效率要远高于switch—case 法。</p>
 <p>###「程序清单 List6  ：」</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">struct</span> fsm_node g_arFsmDrvTbl[][]; <span style="color:#75715e">/*状态机驱动表格*/</span>
-INT8U u8CurStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*状态暂存*/</span>
-INT8U u8EvntTyp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*事件类型暂存*/</span>
-<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">/*事件变量地址暂存*/</span>
-<span style="color:#66d9ef">struct</span> fsm_node stNodeTmp <span style="color:#f92672">=</span> {NULL, <span style="color:#ae81ff">0</span>}; <span style="color:#75715e">/*状态机节点暂存*/</span>
-u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="color:#75715e">/*读取当前状态*/</span>
-u8EvntTyp <span style="color:#f92672">=</span> get_cur_evnt_typ(); <span style="color:#75715e">/*读取当前触发事件类型*/</span>
-pEvnt <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)get_cur_evnt_ptr(); <span style="color:#75715e">/*读取事件变量地址*/</span>
-stNodeTmp <span style="color:#f92672">=</span> g_arFsmDrvTbl[u8CurStat ][u8EvntTyp ];<span style="color:#75715e">/*定位状态机节点*/</span>
-stNodeTmp.fpAction(pEvnt ); <span style="color:#75715e">/*动作响应*/</span>
-set_cur_state(stNodeTmp.u8NxtStat); <span style="color:#75715e">/*状态迁移*/</span>
-.....
-</code></pre></div><p>表格驱动法好则好矣，但用它写出来的程序还有点儿小问题，我们先来看看按照表格驱动法写出来的程序有什么特点 。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">struct</span> fsm_node g_arFsmDrvTbl[][]; <span style="color:#75715e">/*状态机驱动表格*/</span>
+</span></span><span style="display:flex;"><span>INT8U u8CurStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*状态暂存*/</span>
+</span></span><span style="display:flex;"><span>INT8U u8EvntTyp <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/*事件类型暂存*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt <span style="color:#f92672">=</span> NULL; <span style="color:#75715e">/*事件变量地址暂存*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fsm_node stNodeTmp <span style="color:#f92672">=</span> {NULL, <span style="color:#ae81ff">0</span>}; <span style="color:#75715e">/*状态机节点暂存*/</span>
+</span></span><span style="display:flex;"><span>u8CurStat <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_cur_state</span>(); <span style="color:#75715e">/*读取当前状态*/</span>
+</span></span><span style="display:flex;"><span>u8EvntTyp <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_cur_evnt_typ</span>(); <span style="color:#75715e">/*读取当前触发事件类型*/</span>
+</span></span><span style="display:flex;"><span>pEvnt <span style="color:#f92672">=</span> (<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span>)<span style="color:#a6e22e">get_cur_evnt_ptr</span>(); <span style="color:#75715e">/*读取事件变量地址*/</span>
+</span></span><span style="display:flex;"><span>stNodeTmp <span style="color:#f92672">=</span> g_arFsmDrvTbl[u8CurStat ][u8EvntTyp ];<span style="color:#75715e">/*定位状态机节点*/</span>
+</span></span><span style="display:flex;"><span>stNodeTmp.<span style="color:#a6e22e">fpAction</span>(pEvnt ); <span style="color:#75715e">/*动作响应*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">set_cur_state</span>(stNodeTmp.u8NxtStat); <span style="color:#75715e">/*状态迁移*/</span>
+</span></span><span style="display:flex;"><span>.....
+</span></span></code></pre></div><p>表格驱动法好则好矣，但用它写出来的程序还有点儿小问题，我们先来看看按照表格驱动法写出来的程序有什么特点 。</p>
 <p>前面说过，表格驱动法可以把状态机调度的部分做成标准统一的框架代码，这个框架适用性极强， 不管用状态机来实现什么样的应用， 框架代码都不需要做改动， 我们只需要根据实际应用场合规划好状态转换图，然后将图中的各个要素(状态、事件、动作、迁移，有关“条件”要素一会儿再说)用代码实现就行了，我把这部分代码称作应用代码。</p>
 <p>在应用代码的.c 文件中， 你会看到一个声明为 const 的二维数组， 也就是图 4 所示的状态驱动表格， 还会看到许多彼此之间毫无关联的函数， 也就是前面提到的动作封装函数。这样的一份代码， 如果手头上没有一张状态转换图， 让谁看了也会一头雾水， 这样的格式直接带来了代码可读性差的问题。</p>
 <p>如果我们想给状态机再添加一个状态，反映到代码上就是给驱动表格再加一列内容，同时也要新添加若干个动作封装函数。如果驱动表格很大， 做这些工作是很费事儿的， 而且容易出错。如果不小心在数组中填错了位置， 那么程序跑起来就和设计者的意图南辕北辙了，</p>
@@ -491,27 +487,27 @@ set_cur_state(stNodeTmp.u8NxtStat); <span style="color:#75715e">/*状态迁移*/
 <p>压缩表格驱动法的这个特点， 完美的解决了 Extended State Machine 不能在表格驱动法中使用的问题 。</p>
 <p>程序清单 List7 中的示例代码包含了压缩状态机节点结构体和状态机调用的框架代码。</p>
 <h3 id="程序清单-list7">「程序清单 List7：」</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> fsm_node <span style="color:#75715e">/*压缩状态机节点结构体*/</span>
-{
- INT8U (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt); <span style="color:#75715e">/*事件处理函数指针*/</span>
- INT8U u8StatChk; <span style="color:#75715e">/*状态校验*/</span>
-};
-......
-u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="color:#75715e">/*读取当前状态*/</span>
-......
-<span style="color:#66d9ef">if</span>(stNodeTmp.u8StatChk <span style="color:#f92672">==</span> u8CurStat )
-{
- u8CurStat <span style="color:#f92672">=</span> stNodeTmp.fpAction(pEvnt ); <span style="color:#75715e">/*事件处理*/</span>
- set_cur_state(u8CurStat ); <span style="color:#75715e">/*状态迁移*/</span>
-}
-<span style="color:#66d9ef">else</span>
-{
- state_crash(u8CurStat ); <span style="color:#75715e">/*非法状态处理*/</span>
-}
-.....
-</code></pre></div><p>对照程序清单 List5，就会发现程序清单 List7 中 struct fsm_node 结构体的改动之处。首先， fpAction 所指向函数的函数形式变了，动作封装函数 func 的模样成了这样的了：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">INT8U <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> pEvnt);
-</code></pre></div><p>现在的动作封装函数 func 是要返回类型为 INT8U 的返回值的，这个返回值就是状态机要转向的状态， 也就是说， 压缩表格驱动法中的状态机节点不负责状态机新状态的确定， 而把这项任务交给了动作封装函数 func， func 返回哪个状态， 状态机就转向哪个状态。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> fsm_node <span style="color:#75715e">/*压缩状态机节点结构体*/</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">INT8U</span> (<span style="color:#f92672">*</span>fpAction)(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt); <span style="color:#75715e">/*事件处理函数指针*/</span>
+</span></span><span style="display:flex;"><span> INT8U u8StatChk; <span style="color:#75715e">/*状态校验*/</span>
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span>u8CurStat <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_cur_state</span>(); <span style="color:#75715e">/*读取当前状态*/</span>
+</span></span><span style="display:flex;"><span>......
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(stNodeTmp.u8StatChk <span style="color:#f92672">==</span> u8CurStat )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> u8CurStat <span style="color:#f92672">=</span> stNodeTmp.<span style="color:#a6e22e">fpAction</span>(pEvnt ); <span style="color:#75715e">/*事件处理*/</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">set_cur_state</span>(u8CurStat ); <span style="color:#75715e">/*状态迁移*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">state_crash</span>(u8CurStat ); <span style="color:#75715e">/*非法状态处理*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>.....
+</span></span></code></pre></div><p>对照程序清单 List5，就会发现程序清单 List7 中 struct fsm_node 结构体的改动之处。首先， fpAction 所指向函数的函数形式变了，动作封装函数 func 的模样成了这样的了：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>INT8U <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">void</span> <span style="color:#f92672">*</span> pEvnt);
+</span></span></code></pre></div><p>现在的动作封装函数 func 是要返回类型为 INT8U 的返回值的，这个返回值就是状态机要转向的状态， 也就是说， 压缩表格驱动法中的状态机节点不负责状态机新状态的确定， 而把这项任务交给了动作封装函数 func， func 返回哪个状态， 状态机就转向哪个状态。</p>
 <p>新状态由原来的常量变成了现在的变量，自然要灵活许多。上面说到现在的动作封装函数 func 要对当前发生的所有的事件都要负责， 那么 func 怎么会知道到底是哪个事件触发了它呢？看一下 func 的形参 void * pEvnt 。</p>
 <p>在程序清单 List5 中我们提到过，这个形参是用来向动作封装函数传递事件内容的，但是从前文的叙述中我们知道， pEvnt 所指向的内存包含了事件的所有信息， 包括事件类型和事件内容 ， 所以通过形参 pEvnt ， 动作封装函数 func 照样可以知道事件的类型。</p>
 <p>程序清单 List7 中 struct fsm_node 结构体还有一个成员 u8StatChk ， 这里面存储的是状态机 的一个状态，干什么用的呢？玩 C 语言数组的人都知道，要严防数组寻址越界。</p>
@@ -523,28 +519,28 @@ u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="col
 <p>还有一个方法也可以防止状态机跑飞，如果状态变量是枚举，那么框架代码就可以获知状态值的最大值， 在调用动作封装函数之前判断一下当前状态值是否在合法的范围之内， 同样能保证状态机的安全运行。</p>
 <p>压缩表格驱动法中动作封装函数的定义形式我们已经知道了，函数里面到底是什么样子的呢？程序清单 List8 是一个标准的示例。</p>
 <h3 id="程序清单list8">「程序清单List8：」</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">INT8U <span style="color:#a6e22e">action_S0</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt)
-{
- INT8U u8NxtStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
- INT8U u8EvntTyp <span style="color:#f92672">=</span> get_evnt_typ(pEvnt);
- <span style="color:#66d9ef">switch</span>(u8EvntTyp )
- {
-  <span style="color:#66d9ef">case</span> E1:
-   action_S0_E1(); <span style="color:#75715e">/*事件 E1 的动作响应*/</span>
-   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
-   <span style="color:#66d9ef">break</span>;
-   ......
-  <span style="color:#66d9ef">case</span> Em:
-   action_S0_Em(); <span style="color:#75715e">/*事件 Em 的动作响应*/</span>
-   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
-   <span style="color:#66d9ef">break</span>;
-  <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-   ; <span style="color:#75715e">/*不相关事件处理*/</span>
-   <span style="color:#66d9ef">break</span>;
- }
- <span style="color:#66d9ef">return</span> u8NxtStat ; <span style="color:#75715e">/*返回新状态*/</span>
-}
-</code></pre></div><p>从程序清单 List8 可以看出， 动作封装函数其实就是事件 switch—case 的具体实现。函数根据形参 pEvnt 获知事件类型， 并根据事件类型选择动作响应， 确定状态机迁移状态， 最后将新的状态作为执行结果返回给框架代码。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>INT8U <span style="color:#a6e22e">action_S0</span>(<span style="color:#66d9ef">void</span><span style="color:#f92672">*</span> pEvnt)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> INT8U u8NxtStat <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span> INT8U u8EvntTyp <span style="color:#f92672">=</span> <span style="color:#a6e22e">get_evnt_typ</span>(pEvnt);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">switch</span>(u8EvntTyp )
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> E1:
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">action_S0_E1</span>(); <span style="color:#75715e">/*事件 E1 的动作响应*/</span>
+</span></span><span style="display:flex;"><span>   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>   ......
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">case</span> Em:
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">action_S0_Em</span>(); <span style="color:#75715e">/*事件 Em 的动作响应*/</span>
+</span></span><span style="display:flex;"><span>   u8NxtStat <span style="color:#f92672">=</span> new state value; <span style="color:#75715e">/*状态迁移，不迁移也必须有本行*/</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>   ; <span style="color:#75715e">/*不相关事件处理*/</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> u8NxtStat ; <span style="color:#75715e">/*返回新状态*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>从程序清单 List8 可以看出， 动作封装函数其实就是事件 switch—case 的具体实现。函数根据形参 pEvnt 获知事件类型， 并根据事件类型选择动作响应， 确定状态机迁移状态， 最后将新的状态作为执行结果返回给框架代码。</p>
 <p>有了这样的动作封装函数， Extended State Machine 的应用就可以完全不受限制了！到此，有关压缩表格驱动法的介绍就结束了。</p>
 <p>个人认为压缩表格驱动法是相当优秀的，它既有表格驱动法的简洁、高效、标准，又有 switch—case 法的直白、灵活、多变，相互取长补短，相得益彰。</p>
 <h2 id="函数指针法">函数指针法</h2>
@@ -702,7 +698,7 @@ u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="col
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -710,7 +706,7 @@ u8CurStat <span style="color:#f92672">=</span> get_cur_state(); <span style="col
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

@@ -4,21 +4,16 @@
     <title>NAT Server on Kontronn</title>
     <link>https://www.kontronn.com/tags/nat-server/</link>
     <description>Recent content in NAT Server on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Oct 2023 21:07:01 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nat-server/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Oct 2023 21:07:01 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/nat-server/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>通过NAT Server从内网向外网提供服务</title>
       <link>https://www.kontronn.com/post/linux/NAT-server-how-to.html</link>
       <pubDate>Sat, 07 Oct 2023 21:07:01 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/NAT-server-how-to.html</guid>
-      <description>&lt;p&gt;今天给大家介绍一下NAT 
-&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;Server&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Server
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;，包括NAT Server的原理、工作过程、配置（华为、思科、Juniper）。&lt;/p&gt;</description>
+      <description>&lt;p&gt;今天给大家介绍一下NAT &#xA;&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;Server&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Server&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;，包括NAT Server的原理、工作过程、配置（华为、思科、Juniper）。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

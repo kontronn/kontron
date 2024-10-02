@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-08-18 16:59:46 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"c-plus-plus-function-return-value-type-postfix.html","permalink":"https://www.kontronn.com/post/programming/c-plus-plus-function-return-value-type-postfix.html","title":"C++函数返回值类型后置"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -274,7 +270,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -394,46 +390,46 @@
   <p>在C++的语法中，函数的返回值类型一直是函数声明的重要组成部分。然而，随着C++11及后续版本的引入，函数返回值类型后置（Trailing Return Type）的语法为开发者提供了新的可能。这种语法虽然看似是语法上的细微调整，却在现代C++的函数设计和代码可读性方面带来了显著的影响。</p>
 <h2 id="c-函数返回值类型的传统声明">C++ 函数返回值类型的传统声明</h2>
 <p>在传统的C++函数声明中，返回值类型通常位于函数名之前。例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
-    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
-}
-</code></pre></div><p>这种声明方式一直沿用至今，直观、简洁，并且与大多数开发者的编程习惯相吻合。然而，随着泛型编程和lambda表达式在C++中的应用，传统的返回值声明方式逐渐暴露出一些局限性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这种声明方式一直沿用至今，直观、简洁，并且与大多数开发者的编程习惯相吻合。然而，随着泛型编程和lambda表达式在C++中的应用，传统的返回值声明方式逐渐暴露出一些局限性。</p>
 <h2 id="函数返回值类型后置的语法">函数返回值类型后置的语法</h2>
 <p>函数返回值类型后置是C++11引入的新语法，使用 -&gt; 符号将返回值类型放置在参数列表之后。其基本语法格式如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">function_name</span>(parameters) <span style="color:#f92672">-&gt;</span> return_type {
-    <span style="color:#75715e">// function body
-</span><span style="color:#75715e"></span>}
-</code></pre></div><p>例如，上述 add 函数可以改写为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
-    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
-}
-</code></pre></div><p>虽然这样的语法在功能上与传统语法没有太大区别，但它为处理复杂的返回值类型提供了更大的灵活性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">function_name</span>(parameters) <span style="color:#f92672">-&gt;</span> return_type {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// function body
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>例如，上述 add 函数可以改写为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>虽然这样的语法在功能上与传统语法没有太大区别，但它为处理复杂的返回值类型提供了更大的灵活性。</p>
 <h2 id="返回值类型后置的应用场景">返回值类型后置的应用场景</h2>
 <ol>
 <li>函数模板和复杂返回值</li>
 </ol>
 <p>在使用函数模板时，返回值类型可能依赖于模板参数。在这种情况下，返回值类型后置语法显得尤为方便。例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">template<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T1, <span style="color:#66d9ef">typename</span> T2<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">auto</span> multiply(T1 a, T2 b) <span style="color:#f92672">-&gt;</span> decltype(a <span style="color:#f92672">*</span> b) {
-    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b;
-}
-</code></pre></div><p>在这个例子中，返回值类型 decltype(a * b) 依赖于 a 和 b 的类型，后置的语法使得这种声明更加直观。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>template<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T1, <span style="color:#66d9ef">typename</span> T2<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">multiply</span>(T1 a, T2 b) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">decltype</span>(a <span style="color:#f92672">*</span> b) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">*</span> b;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在这个例子中，返回值类型 decltype(a * b) 依赖于 a 和 b 的类型，后置的语法使得这种声明更加直观。</p>
 <ol start="2">
 <li>Lambda表达式与 auto 类型推导</li>
 </ol>
 <p>在现代C++中，lambda表达式广泛应用，而 auto 关键字的引入更是简化了类型推导。当需要显式指定lambda的返回类型时，后置语法可以提供更清晰的代码结构。例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">auto</span> lambda <span style="color:#f92672">=</span> [](<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
-    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
-};
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> lambda <span style="color:#f92672">=</span> [](<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">int</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ol start="3">
 <li>与 decltype 和 std::declval 的结合</li>
 </ol>
 <p>对于一些依赖于表达式结果的返回值类型， decltype 和 std::declval 常与返回值类型后置语法结合使用。例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">template<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
-<span style="color:#66d9ef">auto</span> getValue(T<span style="color:#f92672">&amp;</span> t) <span style="color:#f92672">-&gt;</span> decltype(t.getValue()) {
-    <span style="color:#66d9ef">return</span> t.getValue();
-}
-</code></pre></div><p>这种方式不仅简化了类型推导，还使代码结构更加清晰。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>template<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">typename</span> T<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">auto</span> <span style="color:#a6e22e">getValue</span>(T<span style="color:#f92672">&amp;</span> t) <span style="color:#f92672">-&gt;</span> <span style="color:#a6e22e">decltype</span>(t.<span style="color:#a6e22e">getValue</span>()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> t.<span style="color:#a6e22e">getValue</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这种方式不仅简化了类型推导，还使代码结构更加清晰。</p>
 <h2 id="返回值类型后置的优势">返回值类型后置的优势</h2>
 <ol>
 <li>提高代码可读性</li>
@@ -594,7 +590,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -602,7 +598,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

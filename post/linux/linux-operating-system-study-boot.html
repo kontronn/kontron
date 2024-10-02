@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-08 22:28:31 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-operating-system-study-boot.html","permalink":"https://www.kontronn.com/post/linux/linux-operating-system-study-boot.html","title":"Linux操作系统学习——启动"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -308,7 +304,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -464,29 +460,29 @@
 <p>保护模式（Protected Mode)：又名 Protected Virtual Address Mode，采用虚拟内存、页等机制对内存进行了保护，比起实模式更为安全可靠，同时也增加了灵活性和扩展性。</p>
 <h3 id="从启动电源到bios">从启动电源到BIOS</h3>
 <p>当我们按下电源键，主板会发向电源组发出信号，接收到信号后，电源会提供合适的电压给计算机。当主板收到电源正常启动的信号后，主板会启动CPU。CPU重置所有寄存器数据，并设置初始化数据，这个初始化数据在X86架构里如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">1IP          0xfff0
-2CS selector 0xf000
-3CS base     0xffff0000
-4IP/EIP <span style="color:#f92672">(</span>Instruction Pointer<span style="color:#f92672">)</span> : 指令指针寄存器，记录将要执行的指令在代码段内的偏移地址
-5CS（Code Segment Register）：代码段寄存器，指向CPU当前执行代码在内存中的区域（定义了存放代码的存储器的起始地址）
-</code></pre></div><p>实模式采取内存段来管理 0 - 0xFFFFF的这1M内存空间，但是由于只有16位寄存器，所以最大地址只能表示为0xFFFFF（64KB)，因此不得不采取将内存按段划分为64KB的方式来充分利用1M空间。也就是上所示的，采取段选择子 + 偏移量的表示法。这种方法在保护模式中对于页的设计上也沿用了下来，可谓祖传的智慧了。具体的计算公式如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">1PhysicalAddress <span style="color:#f92672">=</span> Segment Selector * <span style="color:#ae81ff">16</span> + Offset
-</code></pre></div><p>该部分由硬件完成，通过计算访问0XFFFF0，如果该位置没有可执行代码则计算机无法启动。如果有，则执行该部分代码，这里也就是我们故事的开始，BIOS程序了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1IP          0xfff0
+</span></span><span style="display:flex;"><span>2CS selector 0xf000
+</span></span><span style="display:flex;"><span>3CS base     0xffff0000
+</span></span><span style="display:flex;"><span>4IP/EIP <span style="color:#f92672">(</span>Instruction Pointer<span style="color:#f92672">)</span> : 指令指针寄存器，记录将要执行的指令在代码段内的偏移地址
+</span></span><span style="display:flex;"><span>5CS（Code Segment Register）：代码段寄存器，指向CPU当前执行代码在内存中的区域（定义了存放代码的存储器的起始地址）
+</span></span></code></pre></div><p>实模式采取内存段来管理 0 - 0xFFFFF的这1M内存空间，但是由于只有16位寄存器，所以最大地址只能表示为0xFFFFF（64KB)，因此不得不采取将内存按段划分为64KB的方式来充分利用1M空间。也就是上所示的，采取段选择子 + 偏移量的表示法。这种方法在保护模式中对于页的设计上也沿用了下来，可谓祖传的智慧了。具体的计算公式如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1PhysicalAddress <span style="color:#f92672">=</span> Segment Selector * <span style="color:#ae81ff">16</span> + Offset
+</span></span></code></pre></div><p>该部分由硬件完成，通过计算访问0XFFFF0，如果该位置没有可执行代码则计算机无法启动。如果有，则执行该部分代码，这里也就是我们故事的开始，BIOS程序了。</p>
 <h3 id="bios到bootloader">BIOS到BootLoader</h3>
 <p>BIOS执行程序存储在ROM中，起始位置为0XFFFF0，当CS:IP指向该位置时，BIOS开始执行。BIOS主要包括以下内存映射：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"> 10x00000000 - 0x000003FF - Real Mode Interrupt Vector Table
- 20x00000400 - 0x000004FF - BIOS Data Area
- 30x00000500 - 0x00007BFF - Unused
- 40x00007C00 - 0x00007DFF - Our Bootloader
- 50x00007E00 - 0x0009FFFF - Unused
- 60x000A0000 - 0x000BFFFF - Video RAM <span style="color:#f92672">(</span>VRAM<span style="color:#f92672">)</span> Memory
- 70x000B0000 - 0x000B7777 - Monochrome Video Memory
- 80x000B8000 - 0x000BFFFF - Color Video Memory
- 90x000C0000 - 0x000C7FFF - Video ROM BIOS
-100x000C8000 - 0x000EFFFF - BIOS Shadow Area
-110x000F0000 - 0x000FFFFF - System BIOS
-<span style="color:#ae81ff">12</span>
-</code></pre></div><p>其中最重要的莫过于中断向量表和中断服务程序。BIOS程序在内存最开始的位置（0x00000）用1 KB的内存空间（0x00000～0x003FF）构建中断向量表，在紧挨着它的位置用256字节的内存空间构建BIOS数据区（0x00400～0x004FF），并在大约57 KB以后的位置（0x0E05B）加载了8 KB左右的与中断向量表相应的若干中断服务程序。中断向量表中有256个中断向量，每个中断向量占4字节，其中两个字节是CS的值，两个字节是IP的值。每个中断向量都指向一个具体的中断服务程序。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> 10x00000000 - 0x000003FF - Real Mode Interrupt Vector Table
+</span></span><span style="display:flex;"><span> 20x00000400 - 0x000004FF - BIOS Data Area
+</span></span><span style="display:flex;"><span> 30x00000500 - 0x00007BFF - Unused
+</span></span><span style="display:flex;"><span> 40x00007C00 - 0x00007DFF - Our Bootloader
+</span></span><span style="display:flex;"><span> 50x00007E00 - 0x0009FFFF - Unused
+</span></span><span style="display:flex;"><span> 60x000A0000 - 0x000BFFFF - Video RAM <span style="color:#f92672">(</span>VRAM<span style="color:#f92672">)</span> Memory
+</span></span><span style="display:flex;"><span> 70x000B0000 - 0x000B7777 - Monochrome Video Memory
+</span></span><span style="display:flex;"><span> 80x000B8000 - 0x000BFFFF - Color Video Memory
+</span></span><span style="display:flex;"><span> 90x000C0000 - 0x000C7FFF - Video ROM BIOS
+</span></span><span style="display:flex;"><span>100x000C8000 - 0x000EFFFF - BIOS Shadow Area
+</span></span><span style="display:flex;"><span>110x000F0000 - 0x000FFFFF - System BIOS
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span>
+</span></span></code></pre></div><p>其中最重要的莫过于中断向量表和中断服务程序。BIOS程序在内存最开始的位置（0x00000）用1 KB的内存空间（0x00000～0x003FF）构建中断向量表，在紧挨着它的位置用256字节的内存空间构建BIOS数据区（0x00400～0x004FF），并在大约57 KB以后的位置（0x0E05B）加载了8 KB左右的与中断向量表相应的若干中断服务程序。中断向量表中有256个中断向量，每个中断向量占4字节，其中两个字节是CS的值，两个字节是IP的值。每个中断向量都指向一个具体的中断服务程序。</p>
 <p>BIOS程序会选择一个启动设备，并将控制权转交给启动扇区中的代码。主要工作即使用中断向量和中断服务程序完成BootLoader的加载，最终将boot.img加载至0X7C00的位置启动。Linux内核通过Boot Protocol定义如何实现该引导程序，有如GRUB 2和syslinux等具体实现方式，这里仅介绍GRUB2。</p>
 <h3 id="bootloader的工作">BootLoader的工作</h3>
 <p>boot.img由boot.S编译而成，512字节，安装在启动盘的第一个扇区，即MBR。由于空间有限，其代码十分简单，仅仅是起到一个引导的作用，指向后续的核心镜像文件，即core.img。core.img包括很多重要的部分，如lzma_decompress.img、diskboot.img、kernel.img等，结构如下图。</p>
@@ -644,7 +640,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -652,7 +648,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

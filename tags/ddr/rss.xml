@@ -4,58 +4,44 @@
     <title>DDR on Kontronn</title>
     <link>https://www.kontronn.com/tags/ddr/</link>
     <description>Recent content in DDR on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Sep 2024 18:32:41 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Sep 2024 18:32:41 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/ddr/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DDR内存介绍</title>
       <link>https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html</link>
       <pubDate>Tue, 17 Sep 2024 18:32:41 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/introduction-to-ddr-memory.html</guid>
-      <description>&lt;p&gt;手机、笔记本电脑、云计算和网络等现代电子设计要求非常高的性能。除了处理器速度/性能外，
-&lt;a href=&#34;https://www.gaitpu.com/data-center/storage/introduction-to-various-memory-dimms&#34; title=&#34;存储器&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    存储器
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;在整体系统性能中起着非常关键的作用。双数据速率（DDR）存储器由于其低延迟、更大的存储空间和低功耗，一直是所有复杂设计的常见选择。&lt;/p&gt;</description>
+      <description>&lt;p&gt;手机、笔记本电脑、云计算和网络等现代电子设计要求非常高的性能。除了处理器速度/性能外，&#xA;&lt;a href=&#34;https://www.gaitpu.com/data-center/storage/introduction-to-various-memory-dimms&#34; title=&#34;存储器&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    存储器&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;在整体系统性能中起着非常关键的作用。双数据速率（DDR）存储器由于其低延迟、更大的存储空间和低功耗，一直是所有复杂设计的常见选择。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GDDR 和 DDR 内存之间有什么区别</title>
       <link>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</link>
       <pubDate>Sun, 15 Sep 2024 20:30:52 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/difference-between-gddr-and-ddr.html</guid>
       <description>&lt;p&gt;DDR 代表double data rate，GDDR 代表graphics double data rate。需要明确的是，DDR 和 GDDR 架构并不共享相同的速度、带宽等标准。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DDR SDRAM 的读写timing</title>
       <link>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</link>
       <pubDate>Tue, 13 Aug 2024 00:29:43 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/ddr-sdram-read-and-write-timing.html</guid>
       <description>&lt;p&gt;本文简要讲述了DDR SDRAM 的读写timing。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DDR的工作原理</title>
       <link>https://www.kontronn.com/post/hardware/ddr-working-principle.html</link>
       <pubDate>Sun, 06 Aug 2023 00:17:14 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/ddr-working-principle.html</guid>
-      <description>&lt;p&gt;在本专栏中，我们将由浅入深地讲述如何利用FPGA开发DDR接口。首先，我们将回顾DDR协议的基本原理和工作机制；然后介绍FPGA开发DDR接口时需要用到的IP核及使用方法；随后，验证我们开发的接口功能是否正确；最后向大家介绍几种在
-FPGA中实用的DDR接口应用方法。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在本专栏中，我们将由浅入深地讲述如何利用FPGA开发DDR接口。首先，我们将回顾DDR协议的基本原理和工作机制；然后介绍FPGA开发DDR接口时需要用到的IP核及使用方法；随后，验证我们开发的接口功能是否正确；最后向大家介绍几种在&#xA;FPGA中实用的DDR接口应用方法。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>DDR、DDR2、DDR3、DDR4、LPDDR区别</title>
       <link>https://www.kontronn.com/post/hardware/difference-between-different-generation-DDRs.html</link>
       <pubDate>Sun, 01 Jan 2023 09:14:46 -0500</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/difference-between-different-generation-DDRs.html</guid>
       <description>&lt;p&gt;今天我们和大家介绍一下各代DDR的区别&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

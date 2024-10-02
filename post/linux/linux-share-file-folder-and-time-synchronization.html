@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-25 05:03:04 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-share-file-folder-and-time-synchronization.html","permalink":"https://www.kontronn.com/post/linux/linux-share-file-folder-and-time-synchronization.html","title":"Linux系统内核概述"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -279,7 +275,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -399,67 +395,67 @@
   <p>本文讲解了<code>主从服务器创建共享目录</code>以及<code>主从服务器实现时钟同步</code>。</p>
 <h1 id="目标主从服务器创建共享目录">目标：主从服务器创建共享目录。</h1>
 <h2 id="安装并启动nfs">安装并启动NFS</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">安装：yum install -y nfs-utils
-systemctl enable rpcbind        <span style="color:#75715e">#网络服务,负责在客户端和服务端之间建立联系。</span>
-systemctl enable nfs-server
-systemctl start rpcbind
-systemctl start nfs-server
-</code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Linux-NFS.png" alt="Linux NFS"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>安装：yum install -y nfs-utils
+</span></span><span style="display:flex;"><span>systemctl enable rpcbind        <span style="color:#75715e">#网络服务,负责在客户端和服务端之间建立联系。</span>
+</span></span><span style="display:flex;"><span>systemctl enable nfs-server
+</span></span><span style="display:flex;"><span>systemctl start rpcbind
+</span></span><span style="display:flex;"><span>systemctl start nfs-server
+</span></span></code></pre></div><p><img src="https://www.kontronn.com/imgs/post/Linux-NFS.png" alt="Linux NFS"></p>
 <h2 id="nfs服务端创建共享目录">NFS服务端创建共享目录</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">所有服务器均创建目录：mkdir -p /opt/gao/test/file
-修改配置文件：vi /etc/exports
-/opt/gao/test/file/ *<span style="color:#f92672">(</span>insecure,rw,sync,no_root_squash<span style="color:#f92672">)</span>
-:wq
-重启NFS服务:systemctl restart nfs-server
-查看配置路径键入：exportfs
-</code></pre></div><h2 id="nfs客户端配置">NFS客户端配置</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">查看主服务器可挂载目录：showmount -e 主服务器IP
-修改文件：vi /etc/fsta
-主服务器IP:/opt/gao/test/file /opt/gao/test/file/ nfs defaults,_netdev <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
-:wq
-挂载目录：mount -t nfs 主服务器IP:/opt/gao/test/file /opt/gao/test/file/
-</code></pre></div><h2 id="测试连通性">测试连通性</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>所有服务器均创建目录：mkdir -p /opt/gao/test/file
+</span></span><span style="display:flex;"><span>修改配置文件：vi /etc/exports
+</span></span><span style="display:flex;"><span>/opt/gao/test/file/ *<span style="color:#f92672">(</span>insecure,rw,sync,no_root_squash<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>:wq
+</span></span><span style="display:flex;"><span>重启NFS服务:systemctl restart nfs-server
+</span></span><span style="display:flex;"><span>查看配置路径键入：exportfs
+</span></span></code></pre></div><h2 id="nfs客户端配置">NFS客户端配置</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>查看主服务器可挂载目录：showmount -e 主服务器IP
+</span></span><span style="display:flex;"><span>修改文件：vi /etc/fsta
+</span></span><span style="display:flex;"><span>主服务器IP:/opt/gao/test/file /opt/gao/test/file/ nfs defaults,_netdev <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>:wq
+</span></span><span style="display:flex;"><span>挂载目录：mount -t nfs 主服务器IP:/opt/gao/test/file /opt/gao/test/file/
+</span></span></code></pre></div><h2 id="测试连通性">测试连通性</h2>
 <p>任意一台服务器的/opt/gao/test/file目录下创建文件，去其他服务相同目录查看。</p>
 <h1 id="目标主从服务器实现时钟同步">目标：主从服务器实现时钟同步。</h1>
 <h2 id="部署ntp服务">部署NTP服务</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">查看ntp和ntpdate安装情况：rpm -qa | grep ntp
-安装ntp：yum -y install ntp
-安装ntpdate：yum -y install ntpdate
-设置时区：cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-</code></pre></div><h2 id="配置ntp服务端">配置NTP服务端</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vim /etc/ntp.conf    
-<span style="color:#75715e">#注释以下内容</span>
-restrict default nomodify notrap nopeer noquery
-restrict ::1
-<span style="color:#75715e"># 新增下面内容</span>
-<span style="color:#75715e"># 备注eg:191.169.6.156服务端所在网段为191.169.6.0</span>
-restrict default kod nomodify notrap nopeer noquery
-restrict -6 default kod nomodify notrap nopeer noquery
-restrict -6 ::1
-restrict 191.169.6.0<span style="color:#f92672">(</span>服务端所在网段<span style="color:#f92672">)</span> mask 服务端子网掩码
-server 127.127.1.0 prefer
-fudge 127.127.1.0 stratum <span style="color:#ae81ff">10</span>
-<span style="color:#75715e">#执行命令</span>
-启动服务：service ntpd start      
-开机启动：chkconfig ntpd on    
-查看同步状态：ntpstat
-</code></pre></div><h2 id="配置ntp客户端">配置NTP客户端</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vim /etc/ntp.conf 
-<span style="color:#75715e"># 注释下面内容：</span>
-restrict default nomodify notrap nopeer noquery
-restrict ::1
-<span style="color:#75715e">#新增下面内容：</span>
-restrict default kod nomodify notrap nopeer noquery
-restrict -6 default kod nomodify notrap nopeer noquery
-restrict -6 ::1
-server  191.169.6.156 preferservice ntpd stop     
-chkconfig ntpd off  
-</code></pre></div><h2 id="配置定时同步时间">配置定时同步时间</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">crontab -e
-输入：*/2 * * * * /usr/sbin/ntpdate NTP服务端IP &gt;&gt; /dev/null
-硬件时钟与系统时钟同步：hwclock -w
-各服务器键入date验证：date
-</code></pre></div><p>原文连接：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>查看ntp和ntpdate安装情况：rpm -qa | grep ntp
+</span></span><span style="display:flex;"><span>安装ntp：yum -y install ntp
+</span></span><span style="display:flex;"><span>安装ntpdate：yum -y install ntpdate
+</span></span><span style="display:flex;"><span>设置时区：cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+</span></span></code></pre></div><h2 id="配置ntp服务端">配置NTP服务端</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/ntp.conf    
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#注释以下内容</span>
+</span></span><span style="display:flex;"><span>restrict default nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict ::1
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 新增下面内容</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 备注eg:191.169.6.156服务端所在网段为191.169.6.0</span>
+</span></span><span style="display:flex;"><span>restrict default kod nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -6 default kod nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -6 ::1
+</span></span><span style="display:flex;"><span>restrict 191.169.6.0<span style="color:#f92672">(</span>服务端所在网段<span style="color:#f92672">)</span> mask 服务端子网掩码
+</span></span><span style="display:flex;"><span>server 127.127.1.0 prefer
+</span></span><span style="display:flex;"><span>fudge 127.127.1.0 stratum <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#执行命令</span>
+</span></span><span style="display:flex;"><span>启动服务：service ntpd start      
+</span></span><span style="display:flex;"><span>开机启动：chkconfig ntpd on    
+</span></span><span style="display:flex;"><span>查看同步状态：ntpstat
+</span></span></code></pre></div><h2 id="配置ntp客户端">配置NTP客户端</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vim /etc/ntp.conf 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注释下面内容：</span>
+</span></span><span style="display:flex;"><span>restrict default nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict ::1
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#新增下面内容：</span>
+</span></span><span style="display:flex;"><span>restrict default kod nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -6 default kod nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -6 ::1
+</span></span><span style="display:flex;"><span>server  191.169.6.156 preferservice ntpd stop     
+</span></span><span style="display:flex;"><span>chkconfig ntpd off  
+</span></span></code></pre></div><h2 id="配置定时同步时间">配置定时同步时间</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e
+</span></span><span style="display:flex;"><span>输入：*/2 * * * * /usr/sbin/ntpdate NTP服务端IP &gt;&gt; /dev/null
+</span></span><span style="display:flex;"><span>硬件时钟与系统时钟同步：hwclock -w
+</span></span><span style="display:flex;"><span>各服务器键入date验证：date
+</span></span></code></pre></div><p>原文连接：
 <a href="https://www.vxworks.net/linux/1034-linux-share-file-folder-and-time-synchronization" title="Linux共享目录和时钟同步" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
     Linux共享目录和时钟同步
     <i class="fa fa-external-link-alt"></i>
@@ -610,7 +606,7 @@ chkconfig ntpd off
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -618,7 +614,7 @@ chkconfig ntpd off
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

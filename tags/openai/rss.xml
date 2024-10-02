@@ -4,21 +4,16 @@
     <title>OpenAI on Kontronn</title>
     <link>https://www.kontronn.com/tags/openai/</link>
     <description>Recent content in OpenAI on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 26 Jun 2024 23:26:32 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/openai/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Jun 2024 23:26:32 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/openai/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大厂加速自研AI芯片：Nvidia主导地位受到挑战</title>
       <link>https://www.kontronn.com/post/ai/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</link>
       <pubDate>Wed, 26 Jun 2024 23:26:32 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/ai/nvidias-dominance-in-ai-chips-challenged-by-big-tech-companies.html</guid>
-      <description>&lt;p&gt;随着生成式
-&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;人工智能&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    人工智能
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;（GenAI）热潮的兴起，大型科技公司对全球领先的高端图形处理器（GPU）制造商Nvidia的依赖性日益凸显。人工智能解决方案对专用芯片的需求激增助长了这种依赖。然而，这种依赖局面即将被打破。&lt;/p&gt;</description>
+      <description>&lt;p&gt;随着生成式&#xA;&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;人工智能&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    人工智能&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;（GenAI）热潮的兴起，大型科技公司对全球领先的高端图形处理器（GPU）制造商Nvidia的依赖性日益凸显。人工智能解决方案对专用芯片的需求激增助长了这种依赖。然而，这种依赖局面即将被打破。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

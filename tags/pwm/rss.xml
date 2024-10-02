@@ -4,17 +4,16 @@
     <title>PWM on Kontronn</title>
     <link>https://www.kontronn.com/tags/pwm/</link>
     <description>Recent content in PWM on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 02 Apr 2023 00:00:24 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/pwm/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Apr 2023 00:00:24 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/pwm/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>动图演示常用通信协议原理</title>
       <link>https://www.kontronn.com/post/hardware/animation-demonstrates-principles-of-common-communication-protocols.html</link>
       <pubDate>Sun, 02 Apr 2023 00:00:24 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/animation-demonstrates-principles-of-common-communication-protocols.html</guid>
       <description>&lt;p&gt;本文分享电子系统中信号波形的动图，有助于帮助我们理解传输的机理。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

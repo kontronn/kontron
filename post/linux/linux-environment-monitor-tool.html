@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2022-12-21 09:53:46 -0500 -0500" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"linux-environment-monitor-tool.html","permalink":"https://www.kontronn.com/post/linux/linux-environment-monitor-tool.html","title":"Linux环境监控工具基础参考"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -274,7 +270,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -394,55 +390,55 @@
   <p>Linux 操作系统有很多自带和第三方监控工具，这篇文章从不同维度整理了一些，但仅限基础了解，因为，单独讲任何一个指令，都可以成篇文章，具体指令参数，可以检索 man，从中理解。</p>
 <h2 id="cpu">CPU</h2>
 <p>top(任务管理工具)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">top -n <span style="color:#ae81ff">1</span> -b
-</code></pre></div><p>vmstat(展现给定时间间隔的服务器的状态值，包括服务器的 CPU 使用率，内存使用)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#每1秒采集一次共采集10次</span>
-</code></pre></div><p>pidstat(进程实时监控)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -u <span style="color:#ae81ff">1</span> -p pid
-</code></pre></div><p>mpstat(多 CPU 实时监控工具)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">mpstat -P ALL <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
-</code></pre></div><p>sar(性能监控和瓶颈检查)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sar -u
-</code></pre></div><p>dstat(dstat 是一个可以取代 vmstat，iostat，netstat 和 ifstat 这些命令的多功能产品)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">dstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#每2秒采集一次共采集10次</span>
-</code></pre></div><h2 id="内存">内存</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>top -n <span style="color:#ae81ff">1</span> -b
+</span></span></code></pre></div><p>vmstat(展现给定时间间隔的服务器的状态值，包括服务器的 CPU 使用率，内存使用)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#每1秒采集一次共采集10次</span>
+</span></span></code></pre></div><p>pidstat(进程实时监控)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -u <span style="color:#ae81ff">1</span> -p pid
+</span></span></code></pre></div><p>mpstat(多 CPU 实时监控工具)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mpstat -P ALL <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>sar(性能监控和瓶颈检查)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -u
+</span></span></code></pre></div><p>dstat(dstat 是一个可以取代 vmstat，iostat，netstat 和 ifstat 这些命令的多功能产品)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">10</span>    <span style="color:#75715e">#每2秒采集一次共采集10次</span>
+</span></span></code></pre></div><h2 id="内存">内存</h2>
 <p>top</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">top -n <span style="color:#ae81ff">1</span> -b
-</code></pre></div><p>pidstat</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">pidstat -r
-</code></pre></div><p>free(查看当前系统的物理内存使用情况)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">free -mh
-</code></pre></div><p>sar(性能监控和瓶颈检查)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sar -r <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">3</span>    <span style="color:#75715e">#每10秒采样一次，连续采样3次</span>
-</code></pre></div><p>vmstat</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><h2 id="磁盘-io">磁盘 IO</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>top -n <span style="color:#ae81ff">1</span> -b
+</span></span></code></pre></div><p>pidstat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pidstat -r
+</span></span></code></pre></div><p>free(查看当前系统的物理内存使用情况)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>free -mh
+</span></span></code></pre></div><p>sar(性能监控和瓶颈检查)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -r <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">3</span>    <span style="color:#75715e">#每10秒采样一次，连续采样3次</span>
+</span></span></code></pre></div><p>vmstat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h2 id="磁盘-io">磁盘 IO</h2>
 <p>iostat(IO 实时监控)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">iostat -d -x -k <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
-</code></pre></div><p>iotop(监控系统中各个进程对 IO 的使用量)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">iotop
-</code></pre></div><p>pidstat</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">示例: pidstat -d
-</code></pre></div><p>sar</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sar -d
-</code></pre></div><p>vmstat</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vmstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><h2 id="网络">网络</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iostat -d -x -k <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>iotop(监控系统中各个进程对 IO 的使用量)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iotop
+</span></span></code></pre></div><p>pidstat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>示例: pidstat -d
+</span></span></code></pre></div><p>sar</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -d
+</span></span></code></pre></div><p>vmstat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vmstat <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h2 id="网络">网络</h2>
 <p>netstat(监控 TCP/IP 网络)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">netstat -nltup
-</code></pre></div><p>iftop(实时流量监控工具)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">iftop -i em2
-</code></pre></div><p>ss(获取 socket 统计信息，他可以显示和 netstat 类似的内容)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ss -aA tcp
-</code></pre></div><p>sar</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sar -n EDEV <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
-</code></pre></div><p>tcpdump(抓包工具)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">tcpdump -i em1 host 192.168.1.1 and port <span style="color:#ae81ff">80</span>
-</code></pre></div><p>tcpflow(分析网络流量)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">tcpflow -i em1 port <span style="color:#ae81ff">80</span>
-</code></pre></div><p>nload(用于查看 Linux 网络流量状况，实时输出)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nload -t <span style="color:#ae81ff">200</span> -i <span style="color:#ae81ff">1024</span> -o <span style="color:#ae81ff">128</span> -U M
-</code></pre></div><h2 id="系统负载">系统负载</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>netstat -nltup
+</span></span></code></pre></div><p>iftop(实时流量监控工具)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>iftop -i em2
+</span></span></code></pre></div><p>ss(获取 socket 统计信息，他可以显示和 netstat 类似的内容)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ss -aA tcp
+</span></span></code></pre></div><p>sar</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -n EDEV <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>tcpdump(抓包工具)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tcpdump -i em1 host 192.168.1.1 and port <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>tcpflow(分析网络流量)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tcpflow -i em1 port <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><p>nload(用于查看 Linux 网络流量状况，实时输出)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nload -t <span style="color:#ae81ff">200</span> -i <span style="color:#ae81ff">1024</span> -o <span style="color:#ae81ff">128</span> -U M
+</span></span></code></pre></div><h2 id="系统负载">系统负载</h2>
 <p>(1) CPU 负载说明</p>
 <blockquote>
 <p>如果某个程序频繁的进行计算、逻辑判断等操作，那么此类程序主要依赖于 CPU 的处理速度，故称之为 &ldquo;计算密集型程序&rdquo;。</p>
@@ -452,12 +448,12 @@
 <p>如果某个程序频繁的从磁盘中读取写入文件，那么这种类型的操作主要依赖于磁盘的读取速度，也就是输入输出 (input/output)，简写为 I/O。此类 I/O 负载的程序，称为 I/O 密集型程序。</p>
 </blockquote>
 <p>top</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">top
-</code></pre></div><p>uptime</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">uptime
-</code></pre></div><p>sar</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">sar -q <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">20</span>
-</code></pre></div><h2 id="其他工具">其他工具</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>top
+</span></span></code></pre></div><p>uptime</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>uptime
+</span></span></code></pre></div><p>sar</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sar -q <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">20</span>
+</span></span></code></pre></div><h2 id="其他工具">其他工具</h2>
 <ul>
 <li>htop(类似 top，比 top 更加人性化)</li>
 <li>glances(类似 top，基于 Python 的系统遥测监控工具)</li>
@@ -612,7 +608,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -620,7 +616,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

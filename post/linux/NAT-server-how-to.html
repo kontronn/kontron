@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-10-07 21:07:01 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"NAT-server-how-to.html","permalink":"https://www.kontronn.com/post/linux/NAT-server-how-to.html","title":"通过NAT Server从内网向外网提供服务"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -276,7 +272,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -466,74 +462,74 @@
 <ol>
 <li>创建NAT地址池：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nat address-group <span style="color:#ae81ff">1</span> 10.0.0.0 255.255.255.0 202.0.0.0 255.255.255.0
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nat address-group <span style="color:#ae81ff">1</span> 10.0.0.0 255.255.255.0 202.0.0.0 255.255.255.0
+</span></span></code></pre></div><ol start="2">
 <li>创建ACL：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">acl number <span style="color:#ae81ff">2001</span>
-rule permit tcp source any destination 202.0.0.0 0.0.0.255
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>acl number <span style="color:#ae81ff">2001</span>
+</span></span><span style="display:flex;"><span>rule permit tcp source any destination 202.0.0.0 0.0.0.255
+</span></span></code></pre></div><ol start="3">
 <li>创建NAT实例并关联地址池和ACL：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">nat instance <span style="color:#ae81ff">1</span>
-acl <span style="color:#ae81ff">2001</span>
-address-group <span style="color:#ae81ff">1</span>
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nat instance <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>acl <span style="color:#ae81ff">2001</span>
+</span></span><span style="display:flex;"><span>address-group <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><ol start="4">
 <li>配置接口并启用NAT Server功能：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">interface GigabitEthernet 0/0/1
-nat server global <span style="color:#ae81ff">1</span>
-</code></pre></div><ol start="5">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>interface GigabitEthernet 0/0/1
+</span></span><span style="display:flex;"><span>nat server global <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><ol start="5">
 <li>应用NAT实例：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">interface GigabitEthernet 0/0/1
-nat server protocol tcp global <span style="color:#ae81ff">80</span> inside 10.0.0.10 <span style="color:#ae81ff">80</span>
-</code></pre></div><h2 id="思科设备配置示例">思科设备配置示例：</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>interface GigabitEthernet 0/0/1
+</span></span><span style="display:flex;"><span>nat server protocol tcp global <span style="color:#ae81ff">80</span> inside 10.0.0.10 <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><h2 id="思科设备配置示例">思科设备配置示例：</h2>
 <ol>
 <li>创建NAT地址池：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ip nat pool NAT_POOL 202.0.0.1 202.0.0.254 netmask 255.255.255.0
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip nat pool NAT_POOL 202.0.0.1 202.0.0.254 netmask 255.255.255.0
+</span></span></code></pre></div><ol start="2">
 <li>创建ACL：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">access-list <span style="color:#ae81ff">101</span> permit tcp any host 202.0.0.10 eq <span style="color:#ae81ff">80</span>
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>access-list <span style="color:#ae81ff">101</span> permit tcp any host 202.0.0.10 eq <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><ol start="3">
 <li>配置NAT实例并关联地址池和ACL：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ip nat inside source list <span style="color:#ae81ff">101</span> pool NAT_POOL overload
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip nat inside source list <span style="color:#ae81ff">101</span> pool NAT_POOL overload
+</span></span></code></pre></div><ol start="4">
 <li>配置接口并启用NAT Server功能：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">interface GigabitEthernet0/0
-ip nat inside
-</code></pre></div><ol start="5">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>interface GigabitEthernet0/0
+</span></span><span style="display:flex;"><span>ip nat inside
+</span></span></code></pre></div><ol start="5">
 <li>应用NAT实例：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">ip nat inside source static tcp 10.0.0.10 <span style="color:#ae81ff">80</span> 202.0.0.10 <span style="color:#ae81ff">80</span>
-</code></pre></div><h2 id="juniper设备配置示例">Juniper设备配置示例：</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ip nat inside source static tcp 10.0.0.10 <span style="color:#ae81ff">80</span> 202.0.0.10 <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><h2 id="juniper设备配置示例">Juniper设备配置示例：</h2>
 <ol>
 <li>创建NAT地址池：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set security nat pool NAT_POOL address 202.0.0.0/24
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set security nat pool NAT_POOL address 202.0.0.0/24
+</span></span></code></pre></div><ol start="2">
 <li>创建ACL：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set security nat source rule-set SOURCE_RULE_SET from zone trust
-set security nat source rule-set SOURCE_RULE_SET to zone untrust
-set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match source-address any
-set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match destination-address any
-set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match application junos-http
-set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP <span style="color:#66d9ef">then</span> source-nat pool NAT_POOL
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET from zone trust
+</span></span><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET to zone untrust
+</span></span><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match source-address any
+</span></span><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match destination-address any
+</span></span><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP match application junos-http
+</span></span><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP <span style="color:#66d9ef">then</span> source-nat pool NAT_POOL
+</span></span></code></pre></div><ol start="3">
 <li>配置接口并启用NAT Server功能：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set security zones security-zone trust interfaces ge-0/0/1
-set security zones security-zone untrust interfaces ge-0/0/2
-</code></pre></div><ol start="4">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set security zones security-zone trust interfaces ge-0/0/1
+</span></span><span style="display:flex;"><span>set security zones security-zone untrust interfaces ge-0/0/2
+</span></span></code></pre></div><ol start="4">
 <li>应用NAT实例：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP <span style="color:#66d9ef">then</span> source-nat interface
-</code></pre></div><p>以上示例仅供参考，实际配置可能因设备型号、固件版本和网络拓扑而有所不同。在进行设备配置时，请根据厂商的官方文档和设备型号，参考相关文档并根据实际情况进行配置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set security nat source rule-set SOURCE_RULE_SET rule ALLOW_TCP <span style="color:#66d9ef">then</span> source-nat interface
+</span></span></code></pre></div><p>以上示例仅供参考，实际配置可能因设备型号、固件版本和网络拓扑而有所不同。在进行设备配置时，请根据厂商的官方文档和设备型号，参考相关文档并根据实际情况进行配置。</p>
 <h2 id="nat-server-挑战">NAT Server 挑战</h2>
 <p>NAT Server的使用也存在一些限制和考虑因素。例如，NAT转换表项的数量和管理可能会带来一定的复杂性。此外，如果有大量外部用户同时访问内网服务器，NAT Server可能会面临负载压力和网络拥塞的挑战。因此，在设计和配置NAT Server时，需要综合考虑网络规模、性能需求以及安全性等因素，确保其正常运行和适应实际需求。</p>
 <h2 id="总结">总结</h2>
@@ -724,7 +720,7 @@ set security zones security-zone untrust interfaces ge-0/0/2
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -732,7 +728,7 @@ set security zones security-zone untrust interfaces ge-0/0/2
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

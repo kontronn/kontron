@@ -4,44 +4,37 @@
     <title>Struct on Kontronn</title>
     <link>https://www.kontronn.com/tags/struct/</link>
     <description>Recent content in Struct on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 22 Nov 2023 22:51:58 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 22:51:58 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/struct/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>C语言中结构体struct的用法</title>
       <link>https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</link>
       <pubDate>Wed, 22 Nov 2023 22:51:58 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/usage-of-struct-in-c.html</guid>
       <description>&lt;p&gt;本文简要介绍了c语言中结构体Struct的用法。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>10道经典的嵌入式C语言题目</title>
       <link>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</link>
       <pubDate>Mon, 10 Jul 2023 09:22:33 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/ten-classical-embedded-c-language-examination-questions.html</guid>
       <description>&lt;p&gt;10个C语言面试题，涉及指针、进程、运算、结构体、函数、内存，看看你能做出几个&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux内核中使用的C语言技巧</title>
       <link>https://www.kontronn.com/post/programming/c-language-tricks-used-in-the-linux-kernel.html</link>
       <pubDate>Fri, 23 Jun 2023 08:31:44 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/c-language-tricks-used-in-the-linux-kernel.html</guid>
       <description>&lt;p&gt;下面是Linux内核中常常使用到的C语言技巧，比较实用，小伙伴们学起来！注意需要GCC编译器才支持这些特性。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>嵌入式C语言之结构体封装函数</title>
       <link>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</link>
       <pubDate>Fri, 23 Jun 2023 03:04:41 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/embedded-c-programming-language-struct-pack-function.html</guid>
       <description>&lt;p&gt;在嵌入式系统中，结构体封装函数可以用于对于嵌入式硬件资源进行抽象和封装，从而提高软件的可维护性和可移植性。结构体封装函数通常包含数据和行为，并提供了对数据的访问和操作方法。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

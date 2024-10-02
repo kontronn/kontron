@@ -4,43 +4,30 @@
     <title>Boot on Kontronn</title>
     <link>https://www.kontronn.com/tags/boot/</link>
     <description>Recent content in Boot on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 00:48:39 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/boot/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 00:48:39 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/boot/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nessus 工具介绍与使用教程</title>
       <link>https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html</link>
       <pubDate>Sat, 13 Jul 2024 00:48:39 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html</guid>
-      <description>&lt;p&gt;
-&lt;a href=&#34;https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html&#34; title=&#34;Nessus&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Nessus
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 是一款广泛使用的网络漏洞扫描工具，由 Tenable Network Security 开发。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&#xA;&lt;a href=&#34;https://www.kontronn.com/post/linux/Nessus-tool-introduction-and-use-tutorial.html&#34; title=&#34;Nessus&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Nessus&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 是一款广泛使用的网络漏洞扫描工具，由 Tenable Network Security 开发。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>通过NAT Server从内网向外网提供服务</title>
       <link>https://www.kontronn.com/post/linux/NAT-server-how-to.html</link>
       <pubDate>Sat, 07 Oct 2023 21:07:01 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/NAT-server-how-to.html</guid>
-      <description>&lt;p&gt;今天给大家介绍一下NAT 
-&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;Server&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Server
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;，包括NAT Server的原理、工作过程、配置（华为、思科、Juniper）。&lt;/p&gt;</description>
+      <description>&lt;p&gt;今天给大家介绍一下NAT &#xA;&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;Server&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Server&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;，包括NAT Server的原理、工作过程、配置（华为、思科、Juniper）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Linux操作系统学习——启动</title>
       <link>https://www.kontronn.com/post/linux/linux-operating-system-study-boot.html</link>
       <pubDate>Sat, 08 Jul 2023 22:28:31 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/linux-operating-system-study-boot.html</guid>
       <description>&lt;p&gt;Linux操作系统内核是服务端学习的根基，也是提高编程能力、源码阅读能力和进阶知识学习能力的重要部分，本文开始将记录Linux操作系统中的各个部分源码学习历程。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

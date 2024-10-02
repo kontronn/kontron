@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-07-24 11:33:10 -0400 -0400" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"comparison-of-execution-efficiency-between-find-xargs-and-exec.html","permalink":"https://www.kontronn.com/post/linux/comparison-of-execution-efficiency-between-find-xargs-and-exec.html","title":"find使用xargs和exec执行效率比较"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -279,7 +275,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -402,103 +398,103 @@
 <h2 id="实验">实验</h2>
 <h3 id="实验准备">实验准备</h3>
 <p>批量创建一批文件，用来做测试使用</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 创建100个文件</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..100}</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
-file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
-file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
-file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
-file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 修改前50个文件的文件属主和属组为jin</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># chown jin:jin file{1..50}</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ll |head -10</span>
-total <span style="color:#ae81ff">0</span>
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file1
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file10
--rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file100
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file11
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file12
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file13
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file14
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file15
--rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file16
-</code></pre></div><h3 id="time命令">time命令</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 创建100个文件</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..100}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
+</span></span><span style="display:flex;"><span>file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
+</span></span><span style="display:flex;"><span>file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
+</span></span><span style="display:flex;"><span>file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
+</span></span><span style="display:flex;"><span>file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 修改前50个文件的文件属主和属组为jin</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># chown jin:jin file{1..50}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ll |head -10</span>
+</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file1
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file10
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file100
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file11
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file12
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file13
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file14
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file15
+</span></span><span style="display:flex;"><span>-rw-r--r--. <span style="color:#ae81ff">1</span> jin  jin  <span style="color:#ae81ff">0</span> Jul <span style="color:#ae81ff">19</span> 11:02 file16
+</span></span></code></pre></div><h3 id="time命令">time命令</h3>
 <p>time命令用来统计一个命令执行使用的时间</p>
 <p>语法：time + 执行的命令</p>
 <p>实例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time ls</span>
-file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
-file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
-file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
-file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
-file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
-
-real 0m0.006s
-user 0m0.002s
-sys 0m0.004s
-</code></pre></div><h3 id="xargs测试">xargs测试</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#删除当前目录下文件属主为jin的文件</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time find ./ -user jin |xargs rm -rf </span>
-
-real 0m0.006s
-user 0m0.001s
-sys 0m0.005s
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
-file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
-file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
-</code></pre></div><p>可以看到使用管道配置xargs查找并删除文件属主为jin的文件一共用时0.006s,前50个文件已经被删除</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time ls</span>
+</span></span><span style="display:flex;"><span>file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
+</span></span><span style="display:flex;"><span>file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
+</span></span><span style="display:flex;"><span>file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
+</span></span><span style="display:flex;"><span>file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
+</span></span><span style="display:flex;"><span>file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real 0m0.006s
+</span></span><span style="display:flex;"><span>user 0m0.002s
+</span></span><span style="display:flex;"><span>sys 0m0.004s
+</span></span></code></pre></div><h3 id="xargs测试">xargs测试</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#删除当前目录下文件属主为jin的文件</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time find ./ -user jin |xargs rm -rf </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real 0m0.006s
+</span></span><span style="display:flex;"><span>user 0m0.001s
+</span></span><span style="display:flex;"><span>sys 0m0.005s
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
+</span></span><span style="display:flex;"><span>file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
+</span></span><span style="display:flex;"><span>file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
+</span></span></code></pre></div><p>可以看到使用管道配置xargs查找并删除文件属主为jin的文件一共用时0.006s,前50个文件已经被删除</p>
 <h3 id="exec测试">exec测试</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#创建file1...file50文件</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..50}</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
-file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
-file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
-file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
-file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
-
-<span style="color:#75715e">#修改file1...file50这50个文件的属主和属组为jin</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># chown jin:jin file{1..50}</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time find ./ -user jin |wc -l</span>
-<span style="color:#ae81ff">50</span>
-
-real 0m0.032s
-user 0m0.002s
-sys 0m0.003s
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#使用-exec删除匹配到到文件</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e">#  time find /root/a -user jin  -exec rm -rf {} \;</span>
-
-real 0m0.057s
-user 0m0.018s
-sys 0m0.032s
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
-file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
-file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
-</code></pre></div><p>可以看到使用exec查找并删除文件属主为jin的文件一共用时0.057s,前50个文件已经被删除.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#创建file1...file50文件</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..50}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
+</span></span><span style="display:flex;"><span>file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
+</span></span><span style="display:flex;"><span>file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
+</span></span><span style="display:flex;"><span>file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
+</span></span><span style="display:flex;"><span>file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#修改file1...file50这50个文件的属主和属组为jin</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># chown jin:jin file{1..50}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time find ./ -user jin |wc -l</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">50</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real 0m0.032s
+</span></span><span style="display:flex;"><span>user 0m0.002s
+</span></span><span style="display:flex;"><span>sys 0m0.003s
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#使用-exec删除匹配到到文件</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e">#  time find /root/a -user jin  -exec rm -rf {} \;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real 0m0.057s
+</span></span><span style="display:flex;"><span>user 0m0.018s
+</span></span><span style="display:flex;"><span>sys 0m0.032s
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
+</span></span><span style="display:flex;"><span>file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
+</span></span><span style="display:flex;"><span>file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
+</span></span></code></pre></div><p>可以看到使用exec查找并删除文件属主为jin的文件一共用时0.057s,前50个文件已经被删除.</p>
 <h2 id="结论">结论</h2>
 <p>在使用find查找文件并准备做批量操作时，xargs的效率比exec的效率更高效</p>
 <h2 id="彩蛋">彩蛋</h2>
 <p>使用rm命令直接删除效率更高</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..50}</span>
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
-file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
-file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
-file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
-file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time rm -rf file{1..50}</span>
-
-real 0m0.003s
-user 0m0.001s
-sys 0m0.002s
-<span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
-file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
-file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
-file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># touch file{1..50}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file1    file13  file18  file22  file27  file31  file36  file40  file45  file5   file54  file59  file63  file68  file72  file77  file81  file86  file90  file95
+</span></span><span style="display:flex;"><span>file10   file14  file19  file23  file28  file32  file37  file41  file46  file50  file55  file6   file64  file69  file73  file78  file82  file87  file91  file96
+</span></span><span style="display:flex;"><span>file100  file15  file2   file24  file29  file33  file38  file42  file47  file51  file56  file60  file65  file7   file74  file79  file83  file88  file92  file97
+</span></span><span style="display:flex;"><span>file11   file16  file20  file25  file3   file34  file39  file43  file48  file52  file57  file61  file66  file70  file75  file8   file84  file89  file93  file98
+</span></span><span style="display:flex;"><span>file12   file17  file21  file26  file30  file35  file4   file44  file49  file53  file58  file62  file67  file71  file76  file80  file85  file9   file94  file99
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># time rm -rf file{1..50}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>real 0m0.003s
+</span></span><span style="display:flex;"><span>user 0m0.001s
+</span></span><span style="display:flex;"><span>sys 0m0.002s
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@localhost a<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+</span></span><span style="display:flex;"><span>file100  file53  file56  file59  file62  file65  file68  file71  file74  file77  file80  file83  file86  file89  file92  file95  file98
+</span></span><span style="display:flex;"><span>file51   file54  file57  file60  file63  file66  file69  file72  file75  file78  file81  file84  file87  file90  file93  file96  file99
+</span></span><span style="display:flex;"><span>file52   file55  file58  file61  file64  file67  file70  file73  file76  file79  file82  file85  file88  file91  file94  file97
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -648,7 +644,7 @@ file52   file55  file58  file61  file64  file67  file70  file73  file76  file79 
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -656,7 +652,7 @@ file52   file55  file58  file61  file64  file67  file70  file73  file76  file79 
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

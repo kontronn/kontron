@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mmap on Kontronn</title>
+    <title>Mmap on Kontronn</title>
     <link>https://www.kontronn.com/tags/mmap/</link>
-    <description>Recent content in mmap on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Mmap on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Jun 2023 11:11:12 -0400</lastBuildDate><atom:link href="https://www.kontronn.com/tags/mmap/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Jun 2023 11:11:12 -0400</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/mmap/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Linux驱动IO篇——mmap操作</title>
       <link>https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html</link>
       <pubDate>Thu, 22 Jun 2023 11:11:12 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/linux-io-device-driver-mmap-operation.html</guid>
       <description>&lt;p&gt;平时我们写Linux驱动和用户空间交互时，都是通过&lt;code&gt;copy_from_user&lt;/code&gt;把用户空间传过来的数据进行拷贝，为什么要这么做呢？&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

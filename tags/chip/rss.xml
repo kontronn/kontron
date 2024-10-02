@@ -4,36 +4,30 @@
     <title>Chip on Kontronn</title>
     <link>https://www.kontronn.com/tags/chip/</link>
     <description>Recent content in Chip on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 Mar 2024 22:28:36 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/chip/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Mar 2024 22:28:36 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/chip/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>机器学习如何帮助芯片设计</title>
       <link>https://www.kontronn.com/post/soc/how-machine-learning-can-help-chip-design.html</link>
       <pubDate>Fri, 29 Mar 2024 22:28:36 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/how-machine-learning-can-help-chip-design.html</guid>
-      <description>&lt;p&gt;在过去的 20 年里，集成电路 （IC） 行业的发展是难以想象的，我们现在正在见证下一阶段的变化。为了利用半导体工艺的进步带来的机遇，需要不断开发新的工具和方法，以便使用这些技术的设计工程师尽可能地提高生产力。&lt;/p&gt;
-&lt;p&gt;机器学习（ML）也已经发展到现在似乎每个人都在使用的工具之一，但是ML对芯片设计意味着什么？是否ML确实是芯片设计的未来？&lt;/p&gt;</description>
+      <description>&lt;p&gt;在过去的 20 年里，集成电路 （IC） 行业的发展是难以想象的，我们现在正在见证下一阶段的变化。为了利用半导体工艺的进步带来的机遇，需要不断开发新的工具和方法，以便使用这些技术的设计工程师尽可能地提高生产力。&lt;/p&gt;&#xA;&lt;p&gt;机器学习（ML）也已经发展到现在似乎每个人都在使用的工具之一，但是ML对芯片设计意味着什么？是否ML确实是芯片设计的未来？&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>新的架构，更快的芯片</title>
       <link>https://www.kontronn.com/post/soc/faster-chip-with-new-architecture.html</link>
       <pubDate>Thu, 23 Nov 2023 18:10:54 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/faster-chip-with-new-architecture.html</guid>
       <description>&lt;p&gt;芯片行业在多个物理维度和多种架构方法方面取得了进展。基于更多模块化和异构设计、新的先进封装选项以及至少几个工艺节点的数字逻辑的持续扩展，为性能的巨大提升奠定了基础。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>芯片设计中的DRAM</title>
       <link>https://www.kontronn.com/post/fpga/DRAM-in-chip-design.html</link>
       <pubDate>Mon, 06 Nov 2023 17:40:31 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/fpga/DRAM-in-chip-design.html</guid>
       <description>&lt;p&gt;本文将介绍芯片设计中动态随机存取存储器（DRAM）的相关知识，包括其工作原理、分类以及在现代电子设备中的应用。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,41 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NVLink on Kontronn</title>
+    <title>NVLINK on Kontronn</title>
     <link>https://www.kontronn.com/tags/nvlink/</link>
-    <description>Recent content in NVLink on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in NVLINK on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 18 Jul 2024 23:14:06 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/nvlink/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 23:14:06 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/nvlink/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>摩尔线程开发MTLink挑战英伟达NVLink技术</title>
       <link>https://www.kontronn.com/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html</link>
       <pubDate>Thu, 18 Jul 2024 23:14:06 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/moore-threads-develop-MTLink-to-challenge-Nvidia-NVLink.html</guid>
-      <description>&lt;p&gt;在当今科技高速发展的时代，
-&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;数据中心&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    数据中心
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;和
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    人工智能
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;（AI）运算的需求不断增加，推动了GPU技术的快速进步。英伟达（NVIDIA）作为GPU行业的领军企业，以其强大的硬件和软件解决方案在全球数据中心中占据了主导地位。然而，中国的GPU厂商摩尔线程（Moores Threads）正在迎头赶上，通过自主研发和技术创新，力图在全球市场中争得一席之地。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在当今科技高速发展的时代，&#xA;&lt;a href=&#34;https://www.gaitpu.com/category/data-center/server&#34; title=&#34;数据中心&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    数据中心&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;和&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    人工智能&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;（AI）运算的需求不断增加，推动了GPU技术的快速进步。英伟达（NVIDIA）作为GPU行业的领军企业，以其强大的硬件和软件解决方案在全球数据中心中占据了主导地位。然而，中国的GPU厂商摩尔线程（Moores Threads）正在迎头赶上，通过自主研发和技术创新，力图在全球市场中争得一席之地。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Nvidia HGX B200主板上的NVLink Switch变化</title>
       <link>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</link>
       <pubDate>Sat, 13 Jul 2024 20:38:29 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</guid>
-      <description>&lt;p&gt;在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从
-&lt;a href=&#34;https://www.gaitpu.com/tag/h100&#34; title=&#34;H100&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    H100
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;的4个减少到2个，并且在主板上的位置也发生了变化。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/h100&#34; title=&#34;H100&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    H100&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;的4个减少到2个，并且在主板上的位置也发生了变化。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

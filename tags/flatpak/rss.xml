@@ -4,25 +4,16 @@
     <title>Flatpak on Kontronn</title>
     <link>https://www.kontronn.com/tags/flatpak/</link>
     <description>Recent content in Flatpak on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 05 Aug 2024 22:48:35 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/flatpak/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Aug 2024 22:48:35 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/flatpak/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>使用Flatpak安装linux应用</title>
       <link>https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html</link>
       <pubDate>Mon, 05 Aug 2024 22:48:35 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html</guid>
-      <description>&lt;p&gt;所有 
-&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Linux
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 桌面都可以使用 
-&lt;a href=&#34;https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html&#34; title=&#34;Flathub&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Flathub
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 获取和分发应用。Flathub 由 Flatpak 驱动，让 Flathub 应用在几乎所有的 Linux 发行版上都能运行。&lt;/p&gt;</description>
+      <description>&lt;p&gt;所有 &#xA;&lt;a href=&#34;https://www.gaitpu.com/category/os/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Linux&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 桌面都可以使用 &#xA;&lt;a href=&#34;https://www.kontronn.com/post/linux/install-linux-applications-using-flatpak.html&#34; title=&#34;Flathub&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Flathub&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 获取和分发应用。Flathub 由 Flatpak 驱动，让 Flathub 应用在几乎所有的 Linux 发行版上都能运行。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

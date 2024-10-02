@@ -4,72 +4,58 @@
     <title>STM32 on Kontronn</title>
     <link>https://www.kontronn.com/tags/stm32/</link>
     <description>Recent content in STM32 on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 23 Nov 2023 11:01:07 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/stm32/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Nov 2023 11:01:07 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/stm32/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>STM32高阶应用--使用DFU方案实现固件升级</title>
       <link>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</link>
       <pubDate>Thu, 23 Nov 2023 11:01:07 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html</guid>
       <description>&lt;p&gt;DFU全称为Device Firmware update，是ST官方推出的一个通过USB接口进行IAP升级的方案，同串口ISP一样，他们都集成在了芯片内部的Bootloader区段，可以通过配置boot引脚来启动。（具体可参照ST文档：AN2606）。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32单片机开发中的RTOS</title>
       <link>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</link>
       <pubDate>Sat, 07 Oct 2023 17:52:20 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/the-rtos-for-STM32-development.html</guid>
       <description>&lt;p&gt;很多STM32单片机初学者都是从裸机开始的，裸机确实也能开发出好的产品。但是，作为一个嵌入式软件工程师，况且用的并不是51那种低端单片机，如果只会用裸机开发产品，那肯定是不够的。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>十年经验的大神谈如何学STM32嵌入式开发</title>
       <link>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</link>
       <pubDate>Thu, 05 Oct 2023 16:15:55 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-learn-stm32-embedded-development.html</guid>
       <description>&lt;p&gt;本文描述了十年经验的大神谈如何学STM32嵌入式开发&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32怎么选型</title>
       <link>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</link>
       <pubDate>Mon, 02 Oct 2023 14:54:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/how-to-select-stm32.html</guid>
-      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;
-&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;什么是-stm32&#34;&gt;什么是 STM32&lt;/h2&gt;&#xA;&lt;p&gt;STM32，从字面上来理解，ST是意法半导体，M是Microelectronics的缩写，32表示32位，合起来理解，STM32就是指ST公司开发的32位微控制器。在如今的32位控制器当中，STM32可以说是最璀璨的新星，它受宠若娇，大受工程师和市场的青睐，无芯能出其右。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>一个简单的MCU内存管理模块(附源码)</title>
       <link>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</link>
       <pubDate>Sun, 24 Sep 2023 18:50:17 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/a-simple-mcu-memory-management-module.html</guid>
       <description>&lt;p&gt;现在非常多的的MCU性能都还不错，同时用户也会去扩展一些外部RAM，那么如何高效便捷的管理这些内存是一个重要话题。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32之GPIO点亮LED</title>
       <link>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</link>
       <pubDate>Sun, 24 Sep 2023 18:40:34 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/STM32-gpio-led.html</guid>
       <description>&lt;p&gt;我们在基础部分讲了有关GPIO的方面，从这章开始我们进入模块的讲解，从最开始的LED灯到各种传感器模块进行。专栏预计25个章节。后续可能会不定时的增加。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>STM32的完整启动流程分析</title>
       <link>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</link>
       <pubDate>Fri, 23 Jun 2023 23:36:57 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/STM32-whole-boot-up-process-analysis.html</guid>
       <description>&lt;p&gt;关于STM32的启动流程，网上有的资料在讨论几种boot模式，有的在回答启动文件的内容，在查阅了很多资料后，本文给出一个比较全面的总结和回答。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

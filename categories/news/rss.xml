@@ -4,519 +4,331 @@
     <title>News on Kontronn</title>
     <link>https://www.kontronn.com/categories/news/</link>
     <description>Recent content in News on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 29 Sep 2024 20:47:23 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Sep 2024 20:47:23 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/categories/news/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>英特尔的Lunar Lake在大模型中表现出出色的AI推理能力</title>
       <link>https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</link>
       <pubDate>Sun, 29 Sep 2024 20:47:23 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html</guid>
-      <description>&lt;p&gt;近日，
-&lt;a href=&#34;https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html&#34; title=&#34;英特尔的 Lunar Lake Core Ultra 9 288V&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    英特尔的 Lunar Lake Core Ultra 9 288V
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 处理器在最新发布的 Meta LLaMA 3.2 模型上展示了令人瞩目的 AI 推理性能，令人惊喜。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近日，&#xA;&lt;a href=&#34;https://www.kontronn.com/post/news/Intel-Lunar-Lake-shows-excellent-AI-inference-capabilities-in-large-models.html&#34; title=&#34;英特尔的 Lunar Lake Core Ultra 9 288V&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    英特尔的 Lunar Lake Core Ultra 9 288V&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 处理器在最新发布的 Meta LLaMA 3.2 模型上展示了令人瞩目的 AI 推理性能，令人惊喜。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>博通对英特尔18A芯片制程工艺表示不满</title>
       <link>https://www.kontronn.com/post/news/broadcom-is-dissatisfied-with-intel-18A-chip-process.html</link>
       <pubDate>Sun, 29 Sep 2024 20:26:59 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/broadcom-is-dissatisfied-with-intel-18A-chip-process.html</guid>
-      <description>&lt;p&gt;近日，根据路透社报道，博通对英特尔18A芯片制程工艺表示不满。据说博通在过去几个月一直在测试
-&lt;a href=&#34;https://www.kontronn.com/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html&#34; title=&#34;英特尔的18A芯片工艺&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    英特尔的18A芯片工艺
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;，并于上个月收到了英特尔的晶圆。但是博通高层评估后认为，英特尔的芯片制程工艺尚未达到大规模量产的标准。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近日，根据路透社报道，博通对英特尔18A芯片制程工艺表示不满。据说博通在过去几个月一直在测试&#xA;&lt;a href=&#34;https://www.kontronn.com/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html&#34; title=&#34;英特尔的18A芯片工艺&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    英特尔的18A芯片工艺&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;，并于上个月收到了英特尔的晶圆。但是博通高层评估后认为，英特尔的芯片制程工艺尚未达到大规模量产的标准。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔CEO基辛格公布稳定财务计划</title>
       <link>https://www.kontronn.com/post/news/Intel-CEO-Kissinger-unveils-plan-to-stabilize-finances.html</link>
       <pubDate>Sun, 29 Sep 2024 19:05:39 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/Intel-CEO-Kissinger-unveils-plan-to-stabilize-finances.html</guid>
-      <description>&lt;p&gt;在数周的传言，提出了各种可能稳定英特尔财务下滑的解决方案之后，CEO帕特·基辛格（Pat Gelsinger）终于向所有员工发送了一封官方信函，概述了公司需要采取的下一步措施，以渡过
-&lt;a href=&#34;https://www.kontronn.com/post/news/Intel-CEO-Kissinger-unveils-plan-to-stabilize-finances.html&#34; title=&#34;财务危机&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    财务危机
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在数周的传言，提出了各种可能稳定英特尔财务下滑的解决方案之后，CEO帕特·基辛格（Pat Gelsinger）终于向所有员工发送了一封官方信函，概述了公司需要采取的下一步措施，以渡过&#xA;&lt;a href=&#34;https://www.kontronn.com/post/news/Intel-CEO-Kissinger-unveils-plan-to-stabilize-finances.html&#34; title=&#34;财务危机&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    财务危机&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔回归本心，聚焦x86 CPU业务</title>
       <link>https://www.kontronn.com/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html</link>
       <pubDate>Sat, 21 Sep 2024 10:34:02 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-returns-to-its-roots-and-focuses-on-x86-cpu-business.html</guid>
-      <description>&lt;p&gt;最近这段时间里，英特尔一直在挣扎。&lt;/p&gt;
-&lt;p&gt;英特尔CEO帕特基辛格向员工发布了一条关于英特尔下一阶段转型的信息。“有很多工作要做以提高效率、盈利能力和我们的市场竞争力”。帕特基辛格强调了3个关键要点：&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近这段时间里，英特尔一直在挣扎。&lt;/p&gt;&#xA;&lt;p&gt;英特尔CEO帕特基辛格向员工发布了一条关于英特尔下一阶段转型的信息。“有很多工作要做以提高效率、盈利能力和我们的市场竞争力”。帕特基辛格强调了3个关键要点：&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>2025 版 Windows 来了</title>
       <link>https://www.kontronn.com/post/news/windows-2025-is-coming.html</link>
       <pubDate>Fri, 20 Sep 2024 21:28:06 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/windows-2025-is-coming.html</guid>
-      <description>&lt;p&gt;面向 Canary（金丝雀）频道预览体验成员&lt;/p&gt;
-&lt;p&gt;微软推送 
-&lt;a href=&#34;https://www.vxworks.net/wince/1051-ten-best-virtual-machine-in-windows&#34; title=&#34;Windows&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Windows
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 预览版更新 Build 27695&lt;/p&gt;
-&lt;p&gt;Build 27XXX 系列面向 2025 版 Windows 系统构建&lt;/p&gt;</description>
+      <description>&lt;p&gt;面向 Canary（金丝雀）频道预览体验成员&lt;/p&gt;&#xA;&lt;p&gt;微软推送 &#xA;&lt;a href=&#34;https://www.vxworks.net/wince/1051-ten-best-virtual-machine-in-windows&#34; title=&#34;Windows&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Windows&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 预览版更新 Build 27695&lt;/p&gt;&#xA;&lt;p&gt;Build 27XXX 系列面向 2025 版 Windows 系统构建&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔官宣重要转型：晶圆厂独立，出售Altera股份，延迟建厂</title>
       <link>https://www.kontronn.com/post/news/intel-officially-announced-an-important-transformation.html</link>
       <pubDate>Tue, 17 Sep 2024 16:30:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-officially-announced-an-important-transformation.html</guid>
-      <description>&lt;p&gt;
-&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;英特尔&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    英特尔
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;正在剥离其芯片制造业务，这是其扭转数十亿美元亏损和股价暴跌的计划的一部分。英特尔首席执行官帕特·基辛格在周一的声明中表示，英特尔代工厂将成为一家独立的子公司，与英特尔“更加明确地分离和独立”。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&#xA;&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;英特尔&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    英特尔&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;正在剥离其芯片制造业务，这是其扭转数十亿美元亏损和股价暴跌的计划的一部分。英特尔首席执行官帕特·基辛格在周一的声明中表示，英特尔代工厂将成为一家独立的子公司，与英特尔“更加明确地分离和独立”。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔如何失去索尼 PlayStation 业务</title>
       <link>https://www.kontronn.com/post/news/how-intel-lost-sony-playstation-business.html</link>
       <pubDate>Tue, 17 Sep 2024 16:18:24 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/how-intel-lost-sony-playstation-business.html</guid>
-      <description>&lt;p&gt;据知情人士透露，
-&lt;a href=&#34;https://www.gaitpu.com/data-center/server/new-intel-xeon-platinum-8321hc&#34; title=&#34;英特尔&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    英特尔
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;在2022年输掉了为索尼设计和制造PlayStation 6芯片的合同，这对其新兴的合同制造业务造成了重大打击。&lt;/p&gt;</description>
+      <description>&lt;p&gt;据知情人士透露，&#xA;&lt;a href=&#34;https://www.gaitpu.com/data-center/server/new-intel-xeon-platinum-8321hc&#34; title=&#34;英特尔&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    英特尔&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;在2022年输掉了为索尼设计和制造PlayStation 6芯片的合同，这对其新兴的合同制造业务造成了重大打击。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>美国推动英伟达和苹果让英特尔代工芯片</title>
       <link>https://www.kontronn.com/post/news/US-pushes-Nvidia-and-Apple-to-use-Intel-for-chip-manufacturing.html</link>
       <pubDate>Sun, 15 Sep 2024 17:04:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/US-pushes-Nvidia-and-Apple-to-use-Intel-for-chip-manufacturing.html</guid>
       <description>&lt;p&gt;美国商务部部长雷蒙多、英特尔首席执行官帕特•基辛格对美国依赖台积电生产先进工艺芯片表示失望。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>传高通考虑收购英特尔芯片设计业务</title>
       <link>https://www.kontronn.com/post/news/qualcomm-reportedly-considering-buying-Intel-chip-design-business.html</link>
       <pubDate>Sat, 07 Sep 2024 10:34:23 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/qualcomm-reportedly-considering-buying-Intel-chip-design-business.html</guid>
-      <description>&lt;p&gt;据路透社今日报道，
-&lt;a href=&#34;https://www.vxworks.net/news/1187-big-chip-players-join-forces-to-form-another-risc-v-venture&#34; title=&#34;高通&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    高通
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;已探索收购英特尔部分股权的可能。据两位知情人士透露，高通正在寻求收购英特尔的设计业务，以丰富其产品组合。&lt;/p&gt;</description>
+      <description>&lt;p&gt;据路透社今日报道，&#xA;&lt;a href=&#34;https://www.vxworks.net/news/1187-big-chip-players-join-forces-to-form-another-risc-v-venture&#34; title=&#34;高通&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    高通&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;已探索收购英特尔部分股权的可能。据两位知情人士透露，高通正在寻求收购英特尔的设计业务，以丰富其产品组合。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>传英特尔拟出售Altera，Marvell或成潜在买家</title>
       <link>https://www.kontronn.com/post/news/intel-ceo-pitch-board-plans-shed-assets-cut-costs.html</link>
       <pubDate>Fri, 06 Sep 2024 21:34:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-ceo-pitch-board-plans-shed-assets-cut-costs.html</guid>
       <description>&lt;p&gt;9月1日，据路透社报道，英特尔CEO帕特·基辛格（Pat Gelsinger）及其核心管理团队正紧锣密鼓地筹备一项重大战略调整方案，计划于本月末正式提交给公司董事会审议。该方案旨在通过剥离非核心业务与削减成本，重振英特尔作为昔日芯片业巨头的市场地位。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三星或将斥资709亿收购诺基亚移动网络资产</title>
       <link>https://www.kontronn.com/post/news/samsung-takeover-of-nokia-mobile-would-show-futility-of-open-ran.html</link>
       <pubDate>Sat, 31 Aug 2024 18:20:03 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/samsung-takeover-of-nokia-mobile-would-show-futility-of-open-ran.html</guid>
       <description>&lt;p&gt;周四，彭博社援引知情人士的话报道称，电信设备制造商诺基亚正在与韩国三星等公司就出售其移动网络业务部门进行谈判。彭博社称，诺基亚已考虑多种选择，包括撤资、出售部分或全部移动网络业务（价值可能高达 100 亿美元），以及与竞争对手合并。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔或出售晶圆厂</title>
       <link>https://www.kontronn.com/post/news/intel-may-sell-its-wafer-fab.html</link>
       <pubDate>Sat, 31 Aug 2024 18:08:12 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-may-sell-its-wafer-fab.html</guid>
-      <description>8月30日消息，据知情人士透露，英特尔公司正与投资银行合作，帮助渡过公司56年历史上最困难的时期。
-知情人士说，该公司正在讨论各种可能的情况，包括拆分或出售其芯片制造业务，以及哪些工厂项目可能会被关闭。
-由于讨论是私下进行的，这些人士要求不具名。知情人士说，长期为英特尔服务的投行摩根士丹利和高盛集团一直在就各种可能性提供建议，其中可能还包括潜在的并购。上述知情人士说，这些方案预计将在9月份的董事会会议上宣布。
-据报道，按照英特尔的财报，英特尔第二季度晶圆代工营收季减2％，年增4％，亏损扩大到28.3亿美元，相当于18个月，合计亏损了123.3亿美元，折合人民币是880亿元左右。
-按照机构的数据，台积电每卖1片10000美元的晶圆，就赚4350美元，等于每片制造成本为5650美元，利润率高达43.5%。而英特尔每卖一片10000美元的晶圆，就要亏掉6550美元（约4.7万元），真的是妥妥的负担。</description>
+      <description>&lt;p&gt;8月30日消息，据知情人士透露，英特尔公司正与投资银行合作，帮助渡过公司56年历史上最困难的时期。&lt;/p&gt;&#xA;&lt;p&gt;知情人士说，该公司正在讨论各种可能的情况，包括拆分或出售其芯片制造业务，以及哪些工厂项目可能会被关闭。&lt;/p&gt;&#xA;&lt;p&gt;由于讨论是私下进行的，这些人士要求不具名。知情人士说，长期为英特尔服务的投行摩根士丹利和高盛集团一直在就各种可能性提供建议，其中可能还包括潜在的并购。上述知情人士说，这些方案预计将在9月份的董事会会议上宣布。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/intel-sell-wafer-fab.png&#34; alt=&#34;Intel Sell Wafer Fab&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;据报道，按照英特尔的财报，英特尔第二季度晶圆代工营收季减2％，年增4％，亏损扩大到28.3亿美元，相当于18个月，合计亏损了123.3亿美元，折合人民币是880亿元左右。&lt;/p&gt;&#xA;&lt;p&gt;按照机构的数据，台积电每卖1片10000美元的晶圆，就赚4350美元，等于每片制造成本为5650美元，利润率高达43.5%。而英特尔每卖一片10000美元的晶圆，就要亏掉6550美元（约4.7万元），真的是妥妥的负担。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>思科取消独立的网络部门</title>
       <link>https://www.kontronn.com/post/news/cisco-to-slash-more-jobs-merge-networking-unit.html</link>
       <pubDate>Sat, 24 Aug 2024 20:44:47 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/cisco-to-slash-more-jobs-merge-networking-unit.html</guid>
-      <description>&lt;p&gt;近日，思科宣布了一项新的的企业重组计划，除了裁减约 7% 的员工外，长期担任
-&lt;a href=&#34;https://www.gaitpu.com/category/data-center/network&#34; title=&#34;网络&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    网络
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;部门负责人的Jonathan Davidson将离职，他之前所在的网络部门将并入思科的安全和协作团队。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近日，思科宣布了一项新的的企业重组计划，除了裁减约 7% 的员工外，长期担任&#xA;&lt;a href=&#34;https://www.gaitpu.com/category/data-center/network&#34; title=&#34;网络&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    网络&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;部门负责人的Jonathan Davidson将离职，他之前所在的网络部门将并入思科的安全和协作团队。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔宣布裁员15000人，股价暴跌</title>
       <link>https://www.kontronn.com/post/news/intel-announces-layoffs-15000-employees-shares-plummet.html</link>
       <pubDate>Sat, 03 Aug 2024 17:52:06 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-announces-layoffs-15000-employees-shares-plummet.html</guid>
       <description>&lt;p&gt;英特尔日前公布了2024年第二财季的财报，数据显示，公司在本季度实现营收128亿美元，同比下降1%，而净亏损则达到了16亿美元。与去年同期的15亿美元净利润相比，英特尔在这一财季由盈转亏。此外，公司毛利润为45.47亿美元，同比有所下降。由于英特尔宣布停止派息，导致其股价暴跌了20%。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三星推出Mach-1 AI芯片，挑战英伟达</title>
       <link>https://www.kontronn.com/post/news/samsung-launches-Mach-1-AI-chip-to-challenge-Nvidia.html</link>
       <pubDate>Mon, 25 Mar 2024 22:23:13 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/samsung-launches-Mach-1-AI-chip-to-challenge-Nvidia.html</guid>
-      <description>&lt;p&gt;近日，作为全球领先的半导体科技巨头，三星近期在人工智能领域动作连连。首先是宣布即将推出其全新的
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;Mach-1 AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Mach-1 AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;芯片，准备在挑战NVIDIA的市场地位。然后是准备在高带宽存储器（HBM）领域加大投入，准备与其主要竞争对手SK hynix展开激烈竞争。接着宣布将成立一家人工通用智能（AGI）计算实验室，加速其在人工通用智能研发工作的进展。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近日，作为全球领先的半导体科技巨头，三星近期在人工智能领域动作连连。首先是宣布即将推出其全新的&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;Mach-1 AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Mach-1 AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;芯片，准备在挑战NVIDIA的市场地位。然后是准备在高带宽存储器（HBM）领域加大投入，准备与其主要竞争对手SK hynix展开激烈竞争。接着宣布将成立一家人工通用智能（AGI）计算实验室，加速其在人工通用智能研发工作的进展。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AMD Zen6架构继续飞跃！核显跨越下下代RDNA5</title>
       <link>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</link>
       <pubDate>Thu, 22 Feb 2024 09:27:52 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/AMD-Zen6-architecture-continues-to-leap-forward.html</guid>
       <description>&lt;p&gt;AMD的下一代Zen5 CPU架构还没来，Zen6的消息就已经多次传出，现在又提到了所集成的GPU核显，居然将会搭配同样下下一代的RDNA5。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>中国合规RTX 4090D正式发布：性能只差5%</title>
       <link>https://www.kontronn.com/post/news/China-compliant-RTX-4090D-officially-released-by-NVIDIA.html</link>
       <pubDate>Sat, 30 Dec 2023 10:06:35 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/China-compliant-RTX-4090D-officially-released-by-NVIDIA.html</guid>
-      <description>&lt;p&gt;刚刚，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;官网发布了针对中国市场定制的RTX 4090D——D就是传说中的Dragon，对应即将到来的中国龙年。&lt;/p&gt;</description>
+      <description>&lt;p&gt;刚刚，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;官网发布了针对中国市场定制的RTX 4090D——D就是传说中的Dragon，对应即将到来的中国龙年。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>全球第二款24TB大硬盘诞生</title>
       <link>https://www.kontronn.com/post/news/the-world-second-24TB-large-hard-drive-is-born.html</link>
       <pubDate>Thu, 28 Dec 2023 15:29:29 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/the-world-second-24TB-large-hard-drive-is-born.html</guid>
       <description>&lt;p&gt;继银河Exos X24之后，希捷近日发布了全球第二款24TB超大容量的机械硬盘，这次隶属于SkyHawk AI酷鹰人工智能系列，主要面向边缘和安防领域的视频图像应用(VIA)。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AMD锐龙8040产品全球首发</title>
       <link>https://www.kontronn.com/post/news/AMD-Ryzen-8040-product-launches-globally.html</link>
       <pubDate>Fri, 15 Dec 2023 17:27:18 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/AMD-Ryzen-8040-product-launches-globally.html</guid>
       <description>&lt;p&gt;AMD日前官宣了代号Hawk Point的新一代锐龙8040系列移动处理器，是现有锐龙7040系列的升级版，工艺、架构不变，重点提升NPU AI性能，并调整了功耗设定。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NVIDIA AI芯片可以卖给中国！只有一条件</title>
       <link>https://www.kontronn.com/post/news/NVIDIA-AI-chips-can-be-sold-to-China-with-one-condition.html</link>
       <pubDate>Wed, 13 Dec 2023 21:34:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/NVIDIA-AI-chips-can-be-sold-to-China-with-one-condition.html</guid>
-      <description>&lt;p&gt;为了满足美国政府的出口管制条件，尽可能向中国销售高端
-&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;芯片，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;可以说操碎了心，不断研究各种特供版。&lt;/p&gt;</description>
+      <description>&lt;p&gt;为了满足美国政府的出口管制条件，尽可能向中国销售高端&#xA;&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;芯片，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;可以说操碎了心，不断研究各种特供版。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>VAST Data新一轮1.18亿美元融资</title>
       <link>https://www.kontronn.com/post/news/Vast-Data-founder-on-new-118M-us-dollar-funding.html</link>
       <pubDate>Sun, 10 Dec 2023 11:00:39 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/Vast-Data-founder-on-new-118M-us-dollar-funding.html</guid>
-      <description>&lt;p&gt;对于科技行业最大的“独角兽”之一，总部位于纽约的VAST Data，本周标志着一个重要时刻的到来。这家公司开发了一种将存储、数据库和计算融合在一起，以支持
-&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;和GPU加速应用的平台。它刚刚宣布完成E轮融资，不仅为其带来额外的1.18亿美元现金，还将其估值几乎提升了两倍，达到91亿美元。&lt;/p&gt;</description>
+      <description>&lt;p&gt;对于科技行业最大的“独角兽”之一，总部位于纽约的VAST Data，本周标志着一个重要时刻的到来。这家公司开发了一种将存储、数据库和计算融合在一起，以支持&#xA;&lt;a href=&#34;https://www.gaitpu.com/category/ai&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;和GPU加速应用的平台。它刚刚宣布完成E轮融资，不仅为其带来额外的1.18亿美元现金，还将其估值几乎提升了两倍，达到91亿美元。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>锐龙8040官宣！AMD首创的AI PC性能飙升60%</title>
       <link>https://www.kontronn.com/post/news/ryzen-8040-official-announcement-AMD-first-AI-PC.html</link>
       <pubDate>Fri, 08 Dec 2023 09:25:41 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/ryzen-8040-official-announcement-AMD-first-AI-PC.html</guid>
-      <description>&lt;p&gt;
-&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AMD
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 2023年初发布的锐龙7040系列处理器，不但为笔记本带来了迄今最先进的4nm制造工艺、Zen4 CPU架构、RDNA3 GPU架构，还第一次为x86处理器加入了独立的NPU 
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;引擎硬件单元。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&#xA;&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AMD&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 2023年初发布的锐龙7040系列处理器，不但为笔记本带来了迄今最先进的4nm制造工艺、Zen4 CPU架构、RDNA3 GPU架构，还第一次为x86处理器加入了独立的NPU &#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;引擎硬件单元。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NVIDIA 收到商务部长警告, 勿为中国重新设计芯片</title>
       <link>https://www.kontronn.com/post/news/NVIDIA-receives-warning-from-Commerce-Secretary.html</link>
       <pubDate>Tue, 05 Dec 2023 22:18:21 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/NVIDIA-receives-warning-from-Commerce-Secretary.html</guid>
-      <description>&lt;p&gt;虽然美国禁止了 NVIDIA 一些 
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt; 芯片出口中国，不过 NVIDIA 正试图看能否不放弃中国这块大饼，推出一些管制边缘能符合条件的卡，如 HGX H20 或将要推出的特规 RTX 4090D。&lt;/p&gt;</description>
+      <description>&lt;p&gt;虽然美国禁止了 NVIDIA 一些 &#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt; 芯片出口中国，不过 NVIDIA 正试图看能否不放弃中国这块大饼，推出一些管制边缘能符合条件的卡，如 HGX H20 或将要推出的特规 RTX 4090D。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>AMD PC全面出击，英特尔危险了</title>
       <link>https://www.kontronn.com/post/news/amd-pc-attacks-in-full-force.html</link>
       <pubDate>Tue, 05 Dec 2023 21:05:45 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/amd-pc-attacks-in-full-force.html</guid>
-      <description>&lt;p&gt;
-&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AMD
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;最近两年在消费级PC市场的日子并不好过，相比起往年的驰骋风云，如今不管是市占率还是市场声量都小了很多，从CPU到
-&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;GPU&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    GPU
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;，AMD在两个消费级业务上都面临严峻挑战。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AMD&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;最近两年在消费级PC市场的日子并不好过，相比起往年的驰骋风云，如今不管是市占率还是市场声量都小了很多，从CPU到&#xA;&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;GPU&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    GPU&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;，AMD在两个消费级业务上都面临严峻挑战。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>美芯片巨头全球大裁员,最新人数近3000!内部称或多达2万</title>
       <link>https://www.kontronn.com/post/news/us-chip-giant-lays-off-employees-worldwide.html</link>
       <pubDate>Sun, 03 Dec 2023 14:40:44 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/us-chip-giant-lays-off-employees-worldwide.html</guid>
       <description>&lt;p&gt;集微网消息，博通公司斥资690亿美元收购VMware后进行裁员的官方数字上升至2838人，数据来自博通在美国多个州提交的WARN（工人调整和再培训通知）通知。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NVIDIA为中国打造特供RTX 4090D</title>
       <link>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</link>
       <pubDate>Sun, 03 Dec 2023 10:01:56 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</guid>
-      <description>&lt;p&gt;RTX 4090在国内遭到禁售，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;正在规划特供版本RTX 4090 D，性能降级以满足出口管制——D代表Dragon，因为明年是中国龙年。&lt;/p&gt;</description>
+      <description>&lt;p&gt;RTX 4090在国内遭到禁售，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;正在规划特供版本RTX 4090 D，性能降级以满足出口管制——D代表Dragon，因为明年是中国龙年。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>传三星斩获AMD部分订单</title>
       <link>https://www.kontronn.com/post/news/samsung-is-rumored-to-have-won-some-orders-from-AMD.html</link>
       <pubDate>Sun, 19 Nov 2023 23:22:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/samsung-is-rumored-to-have-won-some-orders-from-AMD.html</guid>
-      <description>&lt;p&gt;据报道，三星已获得
-&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AMD
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;的订单，将使用其的4nm工艺技术，为AMD生产基于Zen 5c架构的处理器。目前，这一消息在多个渠道得到了证实。&lt;/p&gt;</description>
+      <description>&lt;p&gt;据报道，三星已获得&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/amd&#34; title=&#34;AMD&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AMD&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;的订单，将使用其的4nm工艺技术，为AMD生产基于Zen 5c架构的处理器。目前，这一消息在多个渠道得到了证实。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GH200，来自英伟达的AI超级计算机</title>
       <link>https://www.kontronn.com/post/news/gh200-from-nvidia.html</link>
       <pubDate>Sun, 19 Nov 2023 10:47:43 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/gh200-from-nvidia.html</guid>
       <description>&lt;p&gt;Nvidia的GH200 AI超级计算机是一款巨大的进步，相比于之前的H100，其在使用TB级数据训练和部署AI模型方面的性能提升了3-7倍。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英伟达发布H200, 高性价比全面升级</title>
       <link>https://www.kontronn.com/post/news/nvidia-launch-h200-gpu.html</link>
       <pubDate>Sun, 19 Nov 2023 09:40:58 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/nvidia-launch-h200-gpu.html</guid>
-      <description>&lt;p&gt;在11月13日的S23大会上，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;宣布推出NVIDIA HGX H200，为生成式人工智能和高性能计算（HPC）工作负载提供强大支持。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在11月13日的S23大会上，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;宣布推出NVIDIA HGX H200，为生成式人工智能和高性能计算（HPC）工作负载提供强大支持。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>GPT4.0 终于可以免费使用了</title>
       <link>https://www.kontronn.com/post/news/gpt-4.0-is-finally-free-to-use.html</link>
       <pubDate>Sun, 19 Nov 2023 09:16:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/gpt-4.0-is-finally-free-to-use.html</guid>
-      <description>&lt;p&gt;2023年末将至，今年几乎每个产业都在经历着集体转型，
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;技术的发展为工作方式带来了新的变革。在最近的Microsoft Ignite技术大会上，微软展示了他们最新的技术和产品进展，让每个人都能体验到科技创新的力量。&lt;/p&gt;</description>
+      <description>&lt;p&gt;2023年末将至，今年几乎每个产业都在经历着集体转型，&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;技术的发展为工作方式带来了新的变革。在最近的Microsoft Ignite技术大会上，微软展示了他们最新的技术和产品进展，让每个人都能体验到科技创新的力量。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Marvell再传裁员！同行争抢订单和人才</title>
       <link>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</link>
       <pubDate>Fri, 17 Nov 2023 22:05:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/marvell-announces-layoffs-again.html</guid>
       <description>&lt;p&gt;集微网消息，受NAND Flash市况不佳以及中美贸易战限制影响，IC设计厂Marvell（美满电子）的NAND Flash控制IC业务受到冲击，业界传出Marvell会裁撤中国台湾的NAND Flash控制IC的团队，且近期已经生效，行业争抢NAND Flash控制IC订单及人才。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英伟达再度释放AI“炸弹”</title>
       <link>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</link>
       <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</guid>
       <description>&lt;p&gt;近日，在计算机图形学顶会SIGGRAPH 2023现场，英伟达再度释放深夜“炸弹”，大模型专用芯片迎来升级版本。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Intel驱动开始默认搜集数据：NVIDIA强制、AMD良心</title>
       <link>https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html</link>
       <pubDate>Mon, 07 Aug 2023 12:26:33 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/Intel-driver-starts-to-collect-data-by-default.html</guid>
       <description>&lt;p&gt;Intel最近发布了101.4578 Beta测试版显卡驱动，重点支持Arc锐炫系列，但在常规更新之外，还有一个隐藏点。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
       <link>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</link>
       <pubDate>Mon, 07 Aug 2023 11:07:46 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</guid>
       <description>&lt;p&gt;AI硬件市场上，NVIDIA可谓呼风唤雨，旗下的A100、H100加速器炙手可热。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Intel 4工艺太难了！酷睿Ultra终于突破5GHz</title>
       <link>https://www.kontronn.com/post/news/intel-core-ultra-finally-breaks-through-5G-HZ.html</link>
       <pubDate>Mon, 07 Aug 2023 10:54:18 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-core-ultra-finally-breaks-through-5G-HZ.html</guid>
       <description>&lt;p&gt;无论是14nm还是10nm，Intel这些年的新工艺都有一个通性：刚诞生的时候性能平平，高频率都上不去，只能用于笔记本移动端(分别对应5代酷睿、10代酷睿)，后期才不断成熟，比如到了13代酷睿就达到史无前例的6GHz。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>芯片行业最大的收购，英国批准了</title>
       <link>https://www.kontronn.com/post/news/UK-has-approved-broadcom-69-billion-takeover-of-VMware.html</link>
       <pubDate>Sat, 22 Jul 2023 10:28:52 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/UK-has-approved-broadcom-69-billion-takeover-of-VMware.html</guid>
       <description>&lt;p&gt;据路透社报道，英国竞争监管机构周三暂时批准了美国科技公司博通以690亿美元收购VMware 的交易，称该交易不会削弱关键计算机服务器产品供应的竞争。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>风河携手三星推进软件定义汽车演进</title>
       <link>https://www.kontronn.com/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</link>
       <pubDate>Tue, 27 Jun 2023 11:36:10 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/wind-river-and-samsung-drive-the-evolution-of-software-defined-vehicles.html</guid>
       <description>&lt;p&gt;领先的关键任务智能系统软件提供商风河公司宣布与三星电子系统LSI业务部建立新的合作关系。双方将致力于加速软件定义汽车的发展，开发高质量车载信息娱乐解决方案（IVI）、座舱监控和高级驾驶辅助系统。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英特尔宣布，出售设备公司股份</title>
       <link>https://www.kontronn.com/post/news/intel-announces-sale-of-stake-IMS.html</link>
       <pubDate>Sat, 24 Jun 2023 11:07:17 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/intel-announces-sale-of-stake-IMS.html</guid>
       <description>&lt;p&gt;英特尔公司今天宣布，已同意将其 IMS Nanofabrication GmbH (“IMS”) 业务约 20% 的股份出售给 Bain Capital Special Situations（“贝恩资本”）处理的一项交易中，IMS 的估值约为 43 亿美元。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>什么是大数据时代</title>
       <link>https://www.kontronn.com/post/news/what-is-the-era-of-big-data.html</link>
       <pubDate>Fri, 23 Jun 2023 21:31:45 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/what-is-the-era-of-big-data.html</guid>
       <description>&lt;p&gt;最早提出&amp;quot;大数据&amp;quot;时代到来的是全球知名咨询公司麦肯锡，麦肯锡称:&amp;ldquo;数据，已经渗透到当今每一个行业和业务职能领域，成为重要的生产因素。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>风河支持NXP S32G3——信心百倍、加速创新</title>
       <link>https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html</link>
       <pubDate>Tue, 20 Jun 2023 10:43:19 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/wind-river-supports-nxp-s32g3.html</guid>
       <description>&lt;p&gt;风河公司与NXP公司的合作伙伴关系深厚且长远，由此不断地为我们的共同客户带来新的效益。 风河公司非常兴奋地宣布其运行时（Runtime）产品组合和Wind River Studio Linux 服务都已经支持下一代NXP S32G3处理器，从而有力地促进企业客户加速智能边缘设备的创建与部署。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>风河 Helix 虚拟化平台和 VxWorks 653 提供扩展的安全认证证据支持以加速下一代 A&amp;D 系统的开发</title>
       <link>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</link>
       <pubDate>Mon, 22 May 2023 12:48:11 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/wind-river-helix-virtualization-platform-and-vxWorks-653-deliver-expanded-safety-certification.html</guid>
       <description>&lt;p&gt;为关键任务智能系统提供软件的全球领导者 Wind River® 今天宣布扩展其行业领先平台的架构支持，以进一步满足高度计算的苛刻需求 - 重型任务关键型应用，特别是那些与航空航天和国防工业相关的应用。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三星电子研发出其首款支持CXL 2.0的CXL DRAM</title>
       <link>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</link>
       <pubDate>Fri, 12 May 2023 12:31:56 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/samsung-develops-first-CXL-DRAM-supporting-CXL-2.0.html</guid>
       <description>&lt;p&gt;基于先进CXL 2.0的128GB CXL DRAM将于今年量产，加速下一代存储器解决方案的商用化，三星将继续与全球数据中心、服务器、芯片企业合作，扩大CXL生态系统&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>苦战15年，谷歌云业务终于实现首次盈利</title>
       <link>https://www.kontronn.com/post/news/google-cloud-business-is-finally-profitable-for-the-first-time.html</link>
       <pubDate>Mon, 01 May 2023 00:01:05 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/google-cloud-business-is-finally-profitable-for-the-first-time.html</guid>
       <description>&lt;p&gt;谷歌云业务（Google Cloud）是谷歌母公司 Alphabet 旗下的一个部门，负责提供云计算、数据分析、机器学习等服务。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>边缘计算的5类最佳应用场景</title>
       <link>https://www.kontronn.com/post/news/5-best-use-cases-for-edge-computing.html</link>
       <pubDate>Sat, 29 Apr 2023 00:01:05 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/5-best-use-cases-for-edge-computing.html</guid>
       <description>&lt;p&gt;当你认可时间等同于金钱或安全时；当你面对数据合规性问题时，边缘计算就是你最好的选择。本文将带给你5个边缘计算的应用场景，从而帮助大家思考如何进行边缘化设计。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>6个与戈登・摩尔相关的冷知识</title>
       <link>https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html</link>
       <pubDate>Sat, 01 Apr 2023 03:27:05 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/6-trivia-about-Gordon-moore.html</guid>
       <description>&lt;p&gt;英特尔的创始人戈登・摩尔于上周五（2023年3月24日）逝世，享年 94 岁，他的一生对计算机科学和半导体工业的发展做出了巨大的贡献。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>风河携手TCS建构5G/Open RAN分布式移动网络基础设施生态系统</title>
       <link>https://www.kontronn.com/post/news/windriver-and-TCS-build-5G-Open-Ran-ecos.html</link>
       <pubDate>Thu, 13 Oct 2022 08:53:45 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/windriver-and-TCS-build-5G-Open-Ran-ecos.html</guid>
-      <description>&lt;blockquote&gt;
-&lt;p&gt;全球领先的关键任务智能系统软件提供商风河公司®宣布，正在与塔塔咨询服务公司（TCS）合作，在Wind River Studio上托管vRAN解决方案。这项战略合作将创建一个全栈移动基础设施解决方案，在4G-5G vRAN下一代网络中开展TCS部署和工程服务，并以Studio作为云平台。&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;全球领先的关键任务智能系统软件提供商风河公司®宣布，正在与塔塔咨询服务公司（TCS）合作，在Wind River Studio上托管vRAN解决方案。这项战略合作将创建一个全栈移动基础设施解决方案，在4G-5G vRAN下一代网络中开展TCS部署和工程服务，并以Studio作为云平台。&lt;/p&gt;&#xA;&lt;/blockquote&gt;</description>
     </item>
-    
   </channel>
 </rss>

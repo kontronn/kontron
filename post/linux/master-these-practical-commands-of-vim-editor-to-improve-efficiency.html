@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-12-22 14:39:12 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"master-these-practical-commands-of-vim-editor-to-improve-efficiency.html","permalink":"https://www.kontronn.com/post/linux/master-these-practical-commands-of-vim-editor-to-improve-efficiency.html","title":"掌握vim编辑器这些实用命令，让编辑效率翻倍"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -272,7 +268,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -401,86 +397,86 @@
 <p>编辑模式：在命令模式下，输入“i、a、o、s”等字母可以进入编辑模式。在此模式下，可以在光标所在位置插入新的文本或修改现有的文本。可以通过光标键来移动光标到新的位置，然后继续编辑。</p>
 <h2 id="进入退出vim编辑器">进入/退出vim编辑器</h2>
 <p>vi file  打开文件，文件不存在则新建文件</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">:q  未修改时退出
-:q!  放弃修改并退出
-:x  保存修改并退出
-:x!  强制保存修改并退出
-:e!  放弃修改重新载入文件
-</code></pre></div><h2 id="命令模式基本操作">命令模式基本操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>:q  未修改时退出
+</span></span><span style="display:flex;"><span>:q!  放弃修改并退出
+</span></span><span style="display:flex;"><span>:x  保存修改并退出
+</span></span><span style="display:flex;"><span>:x!  强制保存修改并退出
+</span></span><span style="display:flex;"><span>:e!  放弃修改重新载入文件
+</span></span></code></pre></div><h2 id="命令模式基本操作">命令模式基本操作</h2>
 <p>显示/隐藏行号：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">:set nu  显示行号，nu是number的简写
-:set nonu  隐藏行号，nonu是nonumber的简写
-</code></pre></div><p>光标移动：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">h  左移一个字符
-j  下移一行
-gj  在折行文本中下移一行
-k  上移一行
-gk  在折行文本中上移一行
-l  右移一个字符
-e  跳到下一个单词词尾
-ge  跳到上一个单词词尾
-w  跳到下一个单词词首
-b  跳到上一个单词词首
-<span style="color:#ae81ff">0</span>  跳到行首
-^  跳行首第一个非空字符处
-$  跳到行尾
-:n  n为具体数字，跳到第n行
-gg  跳到文件首行
-G  跳到文件末行
-ctrl+f  向下翻页
-ctrl+b  向上翻页
-</code></pre></div><p>编辑：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">i  进入编辑模式，可以在光标位置插入字符
-I  （大写i）进入编辑模式，可以在光标所在行首插入字符
-a  光标后移一位进入编辑模式，可以在光标位置插入字符
-A  进入编辑模式，可以在光标所在行尾插入字符
-o  进入编辑模式，在光标所在行下方新建一行
-O  进入编辑模式，在光标所在行上方新建一行
-r  进入编辑模式，可以在光标位置替换一个字符
-R  进入编辑模式，可以从光标位置开始替换字符
-s  删除光标位置的字符然后进入编辑模式，可以在光标位置插入字符
-S  删除光标所在行的字符然后进入编辑模式，可以在光标位置插入字符
-x  删除光标位置的字符
-X  删除光标位置前面的字符
-D  删除光标位置及之后的字符
-dd  剪切光标所在的行
-diw  剪切光标处的单词
-daw  剪切光标处的单词和其后的空白字符
-yy  复制光标所在的行
-yiw  复制光标处的单词
-yaw  复制光标处的单词和其后的空白字符
-p  粘贴剪切/复制的行到光标所在的行下方，或者粘贴剪切/复制的单词到光标位置后面
-u  撤销上一次操作
-</code></pre></div><p>命令前面可以添加数字，表示重复执行该命令的次数。例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">4j  表示光标向下移动四行
-3dd  表示剪切当前行及其下面的两行共三行内容
-2p  表示将复制的内容粘贴二次
-3u  表示撤销前面三次操作
-</code></pre></div><p>搜索/替换：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">/pattern  从当前位置向文件尾开始搜索，按回车键跳转到第一个匹配项
-?pattern  从当前位置向文件头开始搜索，按回车键跳转到第一个匹配项
-n  跳转到下一个匹配项
-N  跳转到上一个匹配项
-:s/pattern/新字符串/g  将当前行中的所有与pattern匹配的内容替换为新字符串，g表示全局替换，省略g或者省略/g，则仅替换第一个匹配项
-:7,9s/pattern/新字符串/g  在第7-9行进行替换，省略g或者省略/g，则每行仅替换第一个匹配项
-:%s/pattern/新字符串/g  在整个文件中进行替换，省略g或者省略/g，则每行仅替换第一个匹配项
-</code></pre></div><h2 id="命令模式高级操作">命令模式高级操作</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>:set nu  显示行号，nu是number的简写
+</span></span><span style="display:flex;"><span>:set nonu  隐藏行号，nonu是nonumber的简写
+</span></span></code></pre></div><p>光标移动：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>h  左移一个字符
+</span></span><span style="display:flex;"><span>j  下移一行
+</span></span><span style="display:flex;"><span>gj  在折行文本中下移一行
+</span></span><span style="display:flex;"><span>k  上移一行
+</span></span><span style="display:flex;"><span>gk  在折行文本中上移一行
+</span></span><span style="display:flex;"><span>l  右移一个字符
+</span></span><span style="display:flex;"><span>e  跳到下一个单词词尾
+</span></span><span style="display:flex;"><span>ge  跳到上一个单词词尾
+</span></span><span style="display:flex;"><span>w  跳到下一个单词词首
+</span></span><span style="display:flex;"><span>b  跳到上一个单词词首
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>  跳到行首
+</span></span><span style="display:flex;"><span>^  跳行首第一个非空字符处
+</span></span><span style="display:flex;"><span>$  跳到行尾
+</span></span><span style="display:flex;"><span>:n  n为具体数字，跳到第n行
+</span></span><span style="display:flex;"><span>gg  跳到文件首行
+</span></span><span style="display:flex;"><span>G  跳到文件末行
+</span></span><span style="display:flex;"><span>ctrl+f  向下翻页
+</span></span><span style="display:flex;"><span>ctrl+b  向上翻页
+</span></span></code></pre></div><p>编辑：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>i  进入编辑模式，可以在光标位置插入字符
+</span></span><span style="display:flex;"><span>I  （大写i）进入编辑模式，可以在光标所在行首插入字符
+</span></span><span style="display:flex;"><span>a  光标后移一位进入编辑模式，可以在光标位置插入字符
+</span></span><span style="display:flex;"><span>A  进入编辑模式，可以在光标所在行尾插入字符
+</span></span><span style="display:flex;"><span>o  进入编辑模式，在光标所在行下方新建一行
+</span></span><span style="display:flex;"><span>O  进入编辑模式，在光标所在行上方新建一行
+</span></span><span style="display:flex;"><span>r  进入编辑模式，可以在光标位置替换一个字符
+</span></span><span style="display:flex;"><span>R  进入编辑模式，可以从光标位置开始替换字符
+</span></span><span style="display:flex;"><span>s  删除光标位置的字符然后进入编辑模式，可以在光标位置插入字符
+</span></span><span style="display:flex;"><span>S  删除光标所在行的字符然后进入编辑模式，可以在光标位置插入字符
+</span></span><span style="display:flex;"><span>x  删除光标位置的字符
+</span></span><span style="display:flex;"><span>X  删除光标位置前面的字符
+</span></span><span style="display:flex;"><span>D  删除光标位置及之后的字符
+</span></span><span style="display:flex;"><span>dd  剪切光标所在的行
+</span></span><span style="display:flex;"><span>diw  剪切光标处的单词
+</span></span><span style="display:flex;"><span>daw  剪切光标处的单词和其后的空白字符
+</span></span><span style="display:flex;"><span>yy  复制光标所在的行
+</span></span><span style="display:flex;"><span>yiw  复制光标处的单词
+</span></span><span style="display:flex;"><span>yaw  复制光标处的单词和其后的空白字符
+</span></span><span style="display:flex;"><span>p  粘贴剪切/复制的行到光标所在的行下方，或者粘贴剪切/复制的单词到光标位置后面
+</span></span><span style="display:flex;"><span>u  撤销上一次操作
+</span></span></code></pre></div><p>命令前面可以添加数字，表示重复执行该命令的次数。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>4j  表示光标向下移动四行
+</span></span><span style="display:flex;"><span>3dd  表示剪切当前行及其下面的两行共三行内容
+</span></span><span style="display:flex;"><span>2p  表示将复制的内容粘贴二次
+</span></span><span style="display:flex;"><span>3u  表示撤销前面三次操作
+</span></span></code></pre></div><p>搜索/替换：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/pattern  从当前位置向文件尾开始搜索，按回车键跳转到第一个匹配项
+</span></span><span style="display:flex;"><span>?pattern  从当前位置向文件头开始搜索，按回车键跳转到第一个匹配项
+</span></span><span style="display:flex;"><span>n  跳转到下一个匹配项
+</span></span><span style="display:flex;"><span>N  跳转到上一个匹配项
+</span></span><span style="display:flex;"><span>:s/pattern/新字符串/g  将当前行中的所有与pattern匹配的内容替换为新字符串，g表示全局替换，省略g或者省略/g，则仅替换第一个匹配项
+</span></span><span style="display:flex;"><span>:7,9s/pattern/新字符串/g  在第7-9行进行替换，省略g或者省略/g，则每行仅替换第一个匹配项
+</span></span><span style="display:flex;"><span>:%s/pattern/新字符串/g  在整个文件中进行替换，省略g或者省略/g，则每行仅替换第一个匹配项
+</span></span></code></pre></div><h2 id="命令模式高级操作">命令模式高级操作</h2>
 <p>分屏查看：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">:split  将文件分为上下两个窗口查看
-:vsplit 将文件分为左右两个窗口查看
-ctrl+w+w  （按住ctrl，然后按两次w）在不同窗口之间切换
-ctrl+w+h/j/k/l  切换到左、下、上、右一个窗口
-ctrl+w+v  （按住ctrl，先后按w和v）将当前窗口分为左右两个窗口查看
-:q  退出当前窗口
-</code></pre></div><p>标签页编辑多个文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">:tabedit file1  在同一个窗口中打开另一个文件，以标签页显示
-:tabn  切换到下一文件
-:tabp  切换到上一文件
-</code></pre></div><p>一次编辑多个文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">vi file1 file2 ...  一次打开多个文件
-:n  切换到下一文件
-:N  切换到上一文件
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>:split  将文件分为上下两个窗口查看
+</span></span><span style="display:flex;"><span>:vsplit 将文件分为左右两个窗口查看
+</span></span><span style="display:flex;"><span>ctrl+w+w  （按住ctrl，然后按两次w）在不同窗口之间切换
+</span></span><span style="display:flex;"><span>ctrl+w+h/j/k/l  切换到左、下、上、右一个窗口
+</span></span><span style="display:flex;"><span>ctrl+w+v  （按住ctrl，先后按w和v）将当前窗口分为左右两个窗口查看
+</span></span><span style="display:flex;"><span>:q  退出当前窗口
+</span></span></code></pre></div><p>标签页编辑多个文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>:tabedit file1  在同一个窗口中打开另一个文件，以标签页显示
+</span></span><span style="display:flex;"><span>:tabn  切换到下一文件
+</span></span><span style="display:flex;"><span>:tabp  切换到上一文件
+</span></span></code></pre></div><p>一次编辑多个文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>vi file1 file2 ...  一次打开多个文件
+</span></span><span style="display:flex;"><span>:n  切换到下一文件
+</span></span><span style="display:flex;"><span>:N  切换到上一文件
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -624,7 +620,7 @@ ctrl+w+v  （按住ctrl，先后按w和v）将当前窗口分为左右两个窗�
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -632,7 +628,7 @@ ctrl+w+v  （按住ctrl，先后按w和v）将当前窗口分为左右两个窗�
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

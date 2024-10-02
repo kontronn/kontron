@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-07-09 22:02:24 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"vxlan-revolutionizing-network-virtualization.html","permalink":"https://www.kontronn.com/post/linux/vxlan-revolutionizing-network-virtualization.html","title":"VXLAN: 彻底改变网络虚拟化"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -333,7 +329,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -617,13 +613,13 @@
 <li>配置VNI与VLAN的映射：将VNI映射到本地的VLAN，确保本地网络流量能够正确封装为VXLAN报文。</li>
 </ol>
 <p>以下是一个典型的VTEP配置示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">interface VTEP1
-  ip address 192.168.1.1/24
-  vxlan encapsulation
-  vxlan vni <span style="color:#ae81ff">10001</span>
-  remote vtep 192.168.1.2
-  vlan <span style="color:#ae81ff">10</span>
-</code></pre></div><p>在这个示例中，VTEP1接口的IP地址为192.168.1.1，使用VNI 10001与远端VTEP（192.168.1.2）建立VXLAN隧道，并将本地的VLAN 10映射到VNI 10001。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>interface VTEP1
+</span></span><span style="display:flex;"><span>  ip address 192.168.1.1/24
+</span></span><span style="display:flex;"><span>  vxlan encapsulation
+</span></span><span style="display:flex;"><span>  vxlan vni <span style="color:#ae81ff">10001</span>
+</span></span><span style="display:flex;"><span>  remote vtep 192.168.1.2
+</span></span><span style="display:flex;"><span>  vlan <span style="color:#ae81ff">10</span>
+</span></span></code></pre></div><p>在这个示例中，VTEP1接口的IP地址为192.168.1.1，使用VNI 10001与远端VTEP（192.168.1.2）建立VXLAN隧道，并将本地的VLAN 10映射到VNI 10001。</p>
 <h3 id="控制平面协议的配置">控制平面协议的配置</h3>
 <p>控制平面协议负责VXLAN网络的管理和配置，包括MAC地址的学习和分发、VNI的分配等。常用的控制平面协议包括BGP EVPN和SDN控制器。</p>
 <p>BGP EVPN是一种常用的VXLAN控制平面协议，通过BGP（边界网关协议）分发VXLAN网络中的MAC地址和VNI信息。以下是BGP EVPN的配置步骤：</p>
@@ -633,14 +629,14 @@
 <li>分发MAC地址和VNI信息：通过BGP EVPN分发VXLAN网络中的MAC地址和VNI信息，实现VTEP之间的网络拓扑学习。</li>
 </ol>
 <p>以下是一个BGP EVPN配置示例：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">router bgp <span style="color:#ae81ff">65000</span>
-  neighbor 192.168.1.2 remote-as <span style="color:#ae81ff">65000</span>
-  address-family l2vpn evpn
-    advertise-all-vni
-    advertise-macip
-  exit-address-family
-exit
-</code></pre></div><p>在这个示例中，配置了BGP邻居192.168.1.2，启用了EVPN地址族，并分发所有VNI和MAC地址信息。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>router bgp <span style="color:#ae81ff">65000</span>
+</span></span><span style="display:flex;"><span>  neighbor 192.168.1.2 remote-as <span style="color:#ae81ff">65000</span>
+</span></span><span style="display:flex;"><span>  address-family l2vpn evpn
+</span></span><span style="display:flex;"><span>    advertise-all-vni
+</span></span><span style="display:flex;"><span>    advertise-macip
+</span></span><span style="display:flex;"><span>  exit-address-family
+</span></span><span style="display:flex;"><span>exit
+</span></span></code></pre></div><p>在这个示例中，配置了BGP邻居192.168.1.2，启用了EVPN地址族，并分发所有VNI和MAC地址信息。</p>
 <p>SDN控制器是一种集中化的网络管理工具，通过南向接口与VTEP设备通信，实现集中化的VXLAN网络配置和管理。以下是SDN控制器的配置步骤：</p>
 <ol>
 <li>部署SDN控制器：在数据中心中部署SDN控制器，确保其能够与所有VTEP设备通信。</li>
@@ -847,7 +843,7 @@ exit
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -855,7 +851,7 @@ exit
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

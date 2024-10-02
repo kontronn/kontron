@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-11-22 22:51:58 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"usage-of-struct-in-c.html","permalink":"https://www.kontronn.com/post/programming/usage-of-struct-in-c.html","title":"C语言中结构体struct的用法"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -273,7 +269,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -359,7 +355,7 @@
   <span class="post-meta-item-icon">
     <i class="far fa-file-word"></i>
   </span>
-  <span class="post-meta-item-text">字数：</span><span>236</span>
+  <span class="post-meta-item-text">字数：</span><span>237</span>
 </span>
     
 <span class="post-meta-item" title="阅读">
@@ -393,126 +389,126 @@
   <p>本文简要介绍了c语言中结构体Struct的用法。</p>
 <h2 id="定义结构体变量">定义结构体变量</h2>
 <p>下面举一个例子来说明怎样定义结构体变量。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> string 
- { 
-    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-    <span style="color:#66d9ef">int</span> age; 
-    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
-    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
-    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
- }person;
-</code></pre></div><p>这个例子定义了一个结构名为string的结构体变量person。还可以省略变量名person，做如下定义：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> string 
- { 
-    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-    <span style="color:#66d9ef">int</span> age; 
-    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
-    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
-    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
- };  
- <span style="color:#66d9ef">struct</span> string person;   <span style="color:#75715e">//定义结构名为string的结构体变量person
-</span></code></pre></div><p>定义多个具有相同形式的结构变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> string Liming, Liuqi, ...;
-</code></pre></div><p>有一种结构体常常出现在函数内部，省略结构名，则称之为无名结构，如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> 
- { 
-    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-    <span style="color:#66d9ef">int</span> age; 
-    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
-    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
-    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
- } Liming, Liuqi;
-</code></pre></div><h2 id="结构体成员的获取与赋值">结构体成员的获取与赋值</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span> string 
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+</span></span><span style="display:flex;"><span> }person;
+</span></span></code></pre></div><p>这个例子定义了一个结构名为string的结构体变量person。还可以省略变量名person，做如下定义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span> string 
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+</span></span><span style="display:flex;"><span> };  
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span> string person;   <span style="color:#75715e">//定义结构名为string的结构体变量person
+</span></span></span></code></pre></div><p>定义多个具有相同形式的结构变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> string Liming, Liuqi, ...;
+</span></span></code></pre></div><p>有一种结构体常常出现在函数内部，省略结构名，则称之为无名结构，如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span> 
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> depart[<span style="color:#ae81ff">20</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> wage1, wage2, wage3, wage4, wage5; 
+</span></span><span style="display:flex;"><span> } Liming, Liuqi;
+</span></span></code></pre></div><h2 id="结构体成员的获取与赋值">结构体成员的获取与赋值</h2>
 <p>结构是一个新的数据类型，结构成员的表示方式为:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构变量.成员名
-</code></pre></div><p>如果将&quot;结构变量.成员名&quot;看成一个整体，这样就可以像其他变量那样使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>结构变量.成员名
+</span></span></code></pre></div><p>如果将&quot;结构变量.成员名&quot;看成一个整体，这样就可以像其他变量那样使用。</p>
 <p>下面这个例子定义了一个结构变量stu1，分别给name、age、group赋值，并打印输出。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
-{
-  <span style="color:#66d9ef">struct</span> 
-  {
-    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;  <span style="color:#75715e">//姓名
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> age;  <span style="color:#75715e">//年龄
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> group;  <span style="color:#75715e">//所在小组
-</span><span style="color:#75715e"></span>  } stu1;
-  <span style="color:#75715e">//给结构体成员赋值
-</span><span style="color:#75715e"></span>  stu1.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tom&#34;</span>;
-  stu1.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
-  stu1.group <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>;
-  <span style="color:#75715e">//读取结构体成员的值
-</span><span style="color:#75715e"></span>  printf(<span style="color:#e6db74">&#34;%s的年龄是%d，在%c组</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, stu1.name, stu1.age, stu1.group);
-  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-}
-</code></pre></div><h2 id="结构体数组">结构体数组</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">struct</span> 
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;  <span style="color:#75715e">//姓名
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> age;  <span style="color:#75715e">//年龄
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">char</span> group;  <span style="color:#75715e">//所在小组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } stu1;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//给结构体成员赋值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  stu1.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tom&#34;</span>;
+</span></span><span style="display:flex;"><span>  stu1.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+</span></span><span style="display:flex;"><span>  stu1.group <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//读取结构体成员的值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%s的年龄是%d，在%c组</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, stu1.name, stu1.age, stu1.group);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="结构体数组">结构体数组</h2>
 <p>结构体数组就是具有相同结构类型的变量集合，假如要定义一个班级40个同学 的姓名、性别、年龄和住址, 可以定义成一个结构数组。如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span>
- { 
-    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
-    <span style="color:#66d9ef">int</span> age; 
-    <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
- }student[<span style="color:#ae81ff">40</span>];
-</code></pre></div><p>结构体数组成员的访问是以数组元素为结构变量的, 其形式为:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构数组元素.成员名
-</code></pre></div><p>例如：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">student[<span style="color:#ae81ff">0</span>].name 
-student[<span style="color:#ae81ff">30</span>].age
-</code></pre></div><h2 id="结构体指针">结构体指针</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span>
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
+</span></span><span style="display:flex;"><span> }student[<span style="color:#ae81ff">40</span>];
+</span></span></code></pre></div><p>结构体数组成员的访问是以数组元素为结构变量的, 其形式为:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>结构数组元素.成员名
+</span></span></code></pre></div><p>例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>student[<span style="color:#ae81ff">0</span>].name 
+</span></span><span style="display:flex;"><span>student[<span style="color:#ae81ff">30</span>].age
+</span></span></code></pre></div><h2 id="结构体指针">结构体指针</h2>
 <p>结构体指针由一个加在结构变量名前的*操作符来定义，定义一个结构体指针如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> string
-{ 
-   <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-   <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
-   <span style="color:#66d9ef">int</span> age; 
-   <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
-}<span style="color:#f92672">*</span>student;
-</code></pre></div><p>使用结构体指针对结构体成员的访问与结构体变量对结构体成员的访问在表达方式不同。结构体指针对结构体成员的访问方式为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">结构体指针名-&gt;结构体成员 
-</code></pre></div><p>给上面定义的结构体中name和age赋值的语句：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">strcpy(student<span style="color:#f92672">-&gt;</span>name, <span style="color:#e6db74">&#34;acket&#34;</span>); <span style="color:#75715e">//student-&gt;name就是(*student).name
-</span><span style="color:#75715e"></span>student<span style="color:#f92672">-&gt;</span>age<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>; 
-</code></pre></div><p>需要指出的是结构体指针是指向结构体的一个指针，即结构体中第一个成员的首地址，因此在使用之前应该对结构体指针初始化，即分配整个结构体长度的字节空间：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">student<span style="color:#f92672">=</span>(<span style="color:#66d9ef">struct</span> string<span style="color:#f92672">*</span>)malloc(size of (<span style="color:#66d9ef">struct</span> string));
-<span style="color:#75715e">//size of (struct string)是自动求取string结构体的字节长度
-</span></code></pre></div><p>malloc()函数定义了一个大小为结构体长度的内存区域，然后将其地址作为结构体指针返回。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> string
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">char</span> sex[<span style="color:#ae81ff">2</span>]; 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">char</span> addr[<span style="color:#ae81ff">40</span>]; 
+</span></span><span style="display:flex;"><span>}<span style="color:#f92672">*</span>student;
+</span></span></code></pre></div><p>使用结构体指针对结构体成员的访问与结构体变量对结构体成员的访问在表达方式不同。结构体指针对结构体成员的访问方式为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>结构体指针名-&gt;结构体成员 
+</span></span></code></pre></div><p>给上面定义的结构体中name和age赋值的语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">strcpy</span>(student<span style="color:#f92672">-&gt;</span>name, <span style="color:#e6db74">&#34;acket&#34;</span>); <span style="color:#75715e">//student-&gt;name就是(*student).name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>student<span style="color:#f92672">-&gt;</span>age<span style="color:#f92672">=</span><span style="color:#ae81ff">18</span>; 
+</span></span></code></pre></div><p>需要指出的是结构体指针是指向结构体的一个指针，即结构体中第一个成员的首地址，因此在使用之前应该对结构体指针初始化，即分配整个结构体长度的字节空间：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>student<span style="color:#f92672">=</span>(<span style="color:#66d9ef">struct</span> string<span style="color:#f92672">*</span>)<span style="color:#a6e22e">malloc</span>(size <span style="color:#a6e22e">of</span> (<span style="color:#66d9ef">struct</span> string));
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//size of (struct string)是自动求取string结构体的字节长度
+</span></span></span></code></pre></div><p>malloc()函数定义了一个大小为结构体长度的内存区域，然后将其地址作为结构体指针返回。</p>
 <h2 id="位结构">位结构</h2>
 <p>位结构是一种特殊的结构体，位结构定义的一般形式为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span> <span style="color:#960050;background-color:#1e0010">位结构名</span>
- { 
-    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
-    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
- }<span style="color:#960050;background-color:#1e0010">位结构变量</span>;
-</code></pre></div><p>其中数据类型必须是int（unsigned或signed，但当成员长度为1时, 会被认为是unsigned类型），整型常数必须是0~15的非负整数，表示二进制位个数。变量名是选择项，可以不命名，下面定义了一个位结构：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">struct</span>
- { 
-    <span style="color:#66d9ef">unsigned</span> incon: <span style="color:#ae81ff">8</span>;    <span style="color:#75715e">/*incon占用低字节 的0~7共8位*/</span> 
-    <span style="color:#66d9ef">unsigned</span> txcolor: <span style="color:#ae81ff">4</span>;<span style="color:#75715e">/*txcolor占用高字节的0~3位共4位*/</span> 
-    <span style="color:#66d9ef">unsigned</span> bgcolor: <span style="color:#ae81ff">3</span>;<span style="color:#75715e">/*bgcolor占用高字节的4~6位共3位*/</span> 
-    <span style="color:#66d9ef">unsigned</span> blink: <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">/*blink占用高字节的第7位*/</span> 
- }ch;
-</code></pre></div><p>位结构成员的访问与结构体成员的访问相同，访问位结构中的bgcolor成员可写成：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">  ch.bgcolor
-</code></pre></div><p>举个例子</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> info
-{ 
-    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
-    <span style="color:#66d9ef">int</span> age; 
-    <span style="color:#66d9ef">struct</span> addr address; 
-    <span style="color:#66d9ef">float</span> pay; 
-    <span style="color:#66d9ef">unsigned</span> state: <span style="color:#ae81ff">1</span>; 
-    <span style="color:#66d9ef">unsigned</span> pay: <span style="color:#ae81ff">1</span>; 
-}workers;
-</code></pre></div><p>上面结构体定义了工资的信息，其中有两个只有1位的位结构成员，表示工人的状态以及工资是否已发放。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span> <span style="color:#960050;background-color:#1e0010">位结构名</span>
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">数据类型</span> <span style="color:#960050;background-color:#1e0010">变量名</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">整型常数</span>; 
+</span></span><span style="display:flex;"><span> }<span style="color:#960050;background-color:#1e0010">位结构变量</span>;
+</span></span></code></pre></div><p>其中数据类型必须是int（unsigned或signed，但当成员长度为1时, 会被认为是unsigned类型），整型常数必须是0~15的非负整数，表示二进制位个数。变量名是选择项，可以不命名，下面定义了一个位结构：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">struct</span>
+</span></span><span style="display:flex;"><span> { 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> incon: <span style="color:#ae81ff">8</span>;    <span style="color:#75715e">/*incon占用低字节 的0~7共8位*/</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> txcolor: <span style="color:#ae81ff">4</span>;<span style="color:#75715e">/*txcolor占用高字节的0~3位共4位*/</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> bgcolor: <span style="color:#ae81ff">3</span>;<span style="color:#75715e">/*bgcolor占用高字节的4~6位共3位*/</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> blink: <span style="color:#ae81ff">1</span>;  <span style="color:#75715e">/*blink占用高字节的第7位*/</span> 
+</span></span><span style="display:flex;"><span> }ch;
+</span></span></code></pre></div><p>位结构成员的访问与结构体成员的访问相同，访问位结构中的bgcolor成员可写成：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>  ch.bgcolor
+</span></span></code></pre></div><p>举个例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> info
+</span></span><span style="display:flex;"><span>{ 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">char</span> name[<span style="color:#ae81ff">8</span>]; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> age; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> addr address; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">float</span> pay; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> state: <span style="color:#ae81ff">1</span>; 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unsigned</span> pay: <span style="color:#ae81ff">1</span>; 
+</span></span><span style="display:flex;"><span>}workers;
+</span></span></code></pre></div><p>上面结构体定义了工资的信息，其中有两个只有1位的位结构成员，表示工人的状态以及工资是否已发放。</p>
 <p>typedef定义结构体</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span>  person 
-{
-  <span style="color:#66d9ef">int</span> age ;
-  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
-  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sex;
-}student;
-student stu1; <span style="color:#75715e">//此处可以用student来定义一个结构体变量
-</span></code></pre></div><p>typedef的作用就相当于给struct person取了一个别名student。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span>  person 
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> age ;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>name;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>sex;
+</span></span><span style="display:flex;"><span>}student;
+</span></span><span style="display:flex;"><span>student stu1; <span style="color:#75715e">//此处可以用student来定义一个结构体变量
+</span></span></span></code></pre></div><p>typedef的作用就相当于给struct person取了一个别名student。</p>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -662,7 +658,7 @@ student stu1; <span style="color:#75715e">//此处可以用student来定义一�
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -670,7 +666,7 @@ student stu1; <span style="color:#75715e">//此处可以用student来定义一�
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

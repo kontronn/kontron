@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-11-23 11:01:07 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"using-DFU-solution-to-update-the-firmware-for-stm32.html","permalink":"https://www.kontronn.com/post/mcu/using-DFU-solution-to-update-the-firmware-for-stm32.html","title":"STM32高阶应用--使用DFU方案实现固件升级"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -274,7 +270,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -431,105 +427,105 @@
 </ol>
 <p>打开 src 目录下的 usbd_dfu_if.c 文件补全其中的功能代码</p>
 <p>Flash 解锁</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_Init_HS</span>(<span style="color:#66d9ef">void</span>)
-{
-    HAL_FLASH_Unlock();
-    <span style="color:#66d9ef">return</span> (USBD_OK);
-}
-</code></pre></div><p>Flash 上锁</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_DeInit_HS</span>(<span style="color:#66d9ef">void</span>)
-{
-    HAL_FLASH_Lock();
-    <span style="color:#66d9ef">return</span> (USBD_OK);
-}
-</code></pre></div><p>Flash 擦除</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">GetSector</span>(<span style="color:#66d9ef">uint32_t</span> Address)
-{
-     <span style="color:#66d9ef">uint32_t</span> sector <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
-     <span style="color:#66d9ef">if</span> ((Address <span style="color:#f92672">&lt;</span> ADDR_FLASH_SECTOR_1) <span style="color:#f92672">&amp;&amp;</span> (Address <span style="color:#f92672">&gt;=</span> ADDR_FLASH_SECTOR_0))
-     {
-        sector <span style="color:#f92672">=</span> FLASH_SECTOR_0;
-     }
-
-     ......
-
-      }
-      <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> ((Address <span style="color:#f92672">&lt;</span> ADDR_FLASH_SECTOR_23) <span style="color:#f92672">&amp;&amp;</span> (Address <span style="color:#f92672">&gt;=</span> ADDR_FLASH_SECTOR_22))
-      {
-        sector <span style="color:#f92672">=</span> FLASH_SECTOR_22;
-      }
-      <span style="color:#66d9ef">else</span>
-      {
-        sector <span style="color:#f92672">=</span> FLASH_SECTOR_23;
-      }
-      <span style="color:#66d9ef">return</span> sector;
-    }
-
-    <span style="color:#66d9ef">uint16_t</span> MEM_If_Erase_HS(<span style="color:#66d9ef">uint32_t</span> Add)
-    {
-      <span style="color:#66d9ef">uint32_t</span> startsector <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-      <span style="color:#66d9ef">uint32_t</span> sectornb <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-      <span style="color:#75715e">/* Variable contains Flash operation status */</span>
-      HAL_StatusTypeDef status;
-      FLASH_EraseInitTypeDef eraseinitstruct;
-
-      <span style="color:#75715e">/* Get the number of sector */</span>
-      startsector <span style="color:#f92672">=</span> GetSector(Add);
-
-      eraseinitstruct.TypeErase <span style="color:#f92672">=</span> FLASH_TYPEERASE_SECTORS;
-      eraseinitstruct.VoltageRange <span style="color:#f92672">=</span> FLASH_VOLTAGE_RANGE_3;
-      eraseinitstruct.Sector <span style="color:#f92672">=</span> startsector;
-      eraseinitstruct.NbSectors <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-      status <span style="color:#f92672">=</span> HAL_FLASHEx_Erase(<span style="color:#f92672">&amp;</span>eraseinitstruct, <span style="color:#f92672">&amp;</span>sectornb);
-
-      <span style="color:#66d9ef">if</span> (status <span style="color:#f92672">!=</span> HAL_OK)
-      {
-        <span style="color:#66d9ef">return</span> (USBD_FAIL);
-      }
-      <span style="color:#66d9ef">return</span> (USBD_OK);
-}
-</code></pre></div><p>Flash 写入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_Write_HS</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>src, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>dest, <span style="color:#66d9ef">uint32_t</span> Len)
-{
-    <span style="color:#66d9ef">uint32_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-
-    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Len; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>)
-    {
-        <span style="color:#75715e">/* Device voltage range supposed to be [2.7V to 3.6V], the operation will
-</span><span style="color:#75715e">       be done by byte */</span>
-        <span style="color:#66d9ef">if</span> (HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, (<span style="color:#66d9ef">uint32_t</span>)(dest <span style="color:#f92672">+</span> i), <span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(src <span style="color:#f92672">+</span> i)) <span style="color:#f92672">==</span> HAL_OK)
-        {
-          <span style="color:#75715e">/* Check the written value */</span>
-          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(src <span style="color:#f92672">+</span> i) <span style="color:#f92672">!=</span> <span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(dest <span style="color:#f92672">+</span> i))
-          {
-            <span style="color:#75715e">/* Flash content doesn&#39;t match SRAM content */</span>
-            <span style="color:#66d9ef">return</span> (USBD_FAIL);
-          }
-        }
-        <span style="color:#66d9ef">else</span>
-        {
-          <span style="color:#75715e">/* Error occurred while writing data in Flash memory */</span>
-          <span style="color:#66d9ef">return</span> (USBD_FAIL);
-        }
-    }
-    <span style="color:#66d9ef">return</span> (USBD_OK);
-}
-</code></pre></div><p>Flash 读取</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">MEM_If_Read_HS</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>src, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>dest, <span style="color:#66d9ef">uint32_t</span> Len)
-{
-      <span style="color:#75715e">/* Return a valid address to avoid HardFault */</span>
-      <span style="color:#66d9ef">uint32_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-      <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>psrc <span style="color:#f92672">=</span> src;
-
-      <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Len; i<span style="color:#f92672">++</span>)
-      {
-        dest[i] <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>psrc<span style="color:#f92672">++</span>;
-      }
-      <span style="color:#75715e">/* Return a valid address to avoid HardFault */</span>
-      <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>)(dest);
-}
-</code></pre></div><p>获取 Flash 擦写时间参数</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_Init_HS</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HAL_FLASH_Unlock</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (USBD_OK);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Flash 上锁</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_DeInit_HS</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">HAL_FLASH_Lock</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (USBD_OK);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Flash 擦除</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">uint32_t</span> <span style="color:#a6e22e">GetSector</span>(<span style="color:#66d9ef">uint32_t</span> Address)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">uint32_t</span> sector <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ((Address <span style="color:#f92672">&lt;</span> ADDR_FLASH_SECTOR_1) <span style="color:#f92672">&amp;&amp;</span> (Address <span style="color:#f92672">&gt;=</span> ADDR_FLASH_SECTOR_0))
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>        sector <span style="color:#f92672">=</span> FLASH_SECTOR_0;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     ......
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> ((Address <span style="color:#f92672">&lt;</span> ADDR_FLASH_SECTOR_23) <span style="color:#f92672">&amp;&amp;</span> (Address <span style="color:#f92672">&gt;=</span> ADDR_FLASH_SECTOR_22))
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        sector <span style="color:#f92672">=</span> FLASH_SECTOR_22;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        sector <span style="color:#f92672">=</span> FLASH_SECTOR_23;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> sector;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_Erase_HS</span>(<span style="color:#66d9ef">uint32_t</span> Add)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint32_t</span> startsector <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint32_t</span> sectornb <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Variable contains Flash operation status */</span>
+</span></span><span style="display:flex;"><span>      HAL_StatusTypeDef status;
+</span></span><span style="display:flex;"><span>      FLASH_EraseInitTypeDef eraseinitstruct;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Get the number of sector */</span>
+</span></span><span style="display:flex;"><span>      startsector <span style="color:#f92672">=</span> <span style="color:#a6e22e">GetSector</span>(Add);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      eraseinitstruct.TypeErase <span style="color:#f92672">=</span> FLASH_TYPEERASE_SECTORS;
+</span></span><span style="display:flex;"><span>      eraseinitstruct.VoltageRange <span style="color:#f92672">=</span> FLASH_VOLTAGE_RANGE_3;
+</span></span><span style="display:flex;"><span>      eraseinitstruct.Sector <span style="color:#f92672">=</span> startsector;
+</span></span><span style="display:flex;"><span>      eraseinitstruct.NbSectors <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>      status <span style="color:#f92672">=</span> <span style="color:#a6e22e">HAL_FLASHEx_Erase</span>(<span style="color:#f92672">&amp;</span>eraseinitstruct, <span style="color:#f92672">&amp;</span>sectornb);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (status <span style="color:#f92672">!=</span> HAL_OK)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> (USBD_FAIL);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (USBD_OK);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Flash 写入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint16_t</span> <span style="color:#a6e22e">MEM_If_Write_HS</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>src, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>dest, <span style="color:#66d9ef">uint32_t</span> Len)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">uint32_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Len; i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/* Device voltage range supposed to be [2.7V to 3.6V], the operation will
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       be done by byte */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">HAL_FLASH_Program</span>(FLASH_TYPEPROGRAM_WORD, (<span style="color:#66d9ef">uint32_t</span>)(dest <span style="color:#f92672">+</span> i), <span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(src <span style="color:#f92672">+</span> i)) <span style="color:#f92672">==</span> HAL_OK)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">/* Check the written value */</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> (<span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(src <span style="color:#f92672">+</span> i) <span style="color:#f92672">!=</span> <span style="color:#f92672">*</span>(<span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(dest <span style="color:#f92672">+</span> i))
+</span></span><span style="display:flex;"><span>          {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">/* Flash content doesn&#39;t match SRAM content */</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (USBD_FAIL);
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">/* Error occurred while writing data in Flash memory */</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> (USBD_FAIL);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (USBD_OK);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Flash 读取</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">MEM_If_Read_HS</span>(<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>src, <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>dest, <span style="color:#66d9ef">uint32_t</span> Len)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Return a valid address to avoid HardFault */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint32_t</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>psrc <span style="color:#f92672">=</span> src;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Len; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        dest[i] <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>psrc<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Return a valid address to avoid HardFault */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">uint8_t</span> <span style="color:#f92672">*</span>)(dest);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>获取 Flash 擦写时间参数</p>
 <p>``c
 uint16_t MEM_If_GetStatus_HS(uint32_t Add, uint8_t Cmd, uint8_t <em>buffer)
 {
@@ -556,120 +552,120 @@ uint16_t time;</p>
   /* USER CODE END 11 */
 </code></pre>
 <p>}</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">
-usbd_dfu_if.h 文件添加的宏定义
-
-```c
-/* Define flash address */
-// BLANK 1
-
-#define ADDR_FLASH_SECTOR_0 0x08000000
-
-#define ADDR_FLASH_SECTOR_1 0x08004000
-
-#define ADDR_FLASH_SECTOR_2 0x08008000
-
-#define ADDR_FLASH_SECTOR_3 0x0800C000
-
-#define ADDR_FLASH_SECTOR_4 0x08010000
-
-#define ADDR_FLASH_SECTOR_5 0x08020000
-
-#define ADDR_FLASH_SECTOR_6 0x08040000
-
-#define ADDR_FLASH_SECTOR_7 0x08060000
-
-#define ADDR_FLASH_SECTOR_8 0x08080000
-
-#define ADDR_FLASH_SECTOR_9 0x080A0000
-
-#define ADDR_FLASH_SECTOR_10 0x080C0000
-
-#define ADDR_FLASH_SECTOR_11 0x080E0000
-
-// BLANK 2
-
-#define ADDR_FLASH_SECTOR_12 0x08100000
-
-#define ADDR_FLASH_SECTOR_13 0x08104000
-
-#define ADDR_FLASH_SECTOR_14 0x08108000
-
-#define ADDR_FLASH_SECTOR_15 0x0810C000
-
-#define ADDR_FLASH_SECTOR_16 0x08110000
-
-#define ADDR_FLASH_SECTOR_17 0x08120000
-
-#define ADDR_FLASH_SECTOR_18 0x08140000
-
-#define ADDR_FLASH_SECTOR_19 0x08160000
-
-#define ADDR_FLASH_SECTOR_20 0x08180000
-
-#define ADDR_FLASH_SECTOR_21 0x081A0000
-
-#define ADDR_FLASH_SECTOR_22 0x081C0000
-
-#define ADDR_FLASH_SECTOR_23 0x081E0000
-
-/* Flash oprate time from datasheet page 128 */
-
-#define FLASH_SECTOR_16KB_WRITE_ERASE_TIME 500       //500 usb frame,means 500ms
-
-#define FLASH_SECTOR_64KB_WRITE_ERASE_TIME 1100
-
-#define FLASH_SECTOR_128KB_WRITE_ERASE_TIME 2000
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>usbd_dfu_if.h 文件添加的宏定义
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>```c
+</span></span><span style="display:flex;"><span>/* Define flash address */
+</span></span><span style="display:flex;"><span>// BLANK 1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_0 0x08000000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_1 0x08004000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_2 0x08008000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_3 0x0800C000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_4 0x08010000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_5 0x08020000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_6 0x08040000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_7 0x08060000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_8 0x08080000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_9 0x080A0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_10 0x080C0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_11 0x080E0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// BLANK 2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_12 0x08100000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_13 0x08104000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_14 0x08108000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_15 0x0810C000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_16 0x08110000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_17 0x08120000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_18 0x08140000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_19 0x08160000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_20 0x08180000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_21 0x081A0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_22 0x081C0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define ADDR_FLASH_SECTOR_23 0x081E0000
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/* Flash oprate time from datasheet page 128 */
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define FLASH_SECTOR_16KB_WRITE_ERASE_TIME 500       //500 usb frame,means 500ms
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define FLASH_SECTOR_64KB_WRITE_ERASE_TIME 1100
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#define FLASH_SECTOR_128KB_WRITE_ERASE_TIME 2000
+</span></span></code></pre></div><ol start="2">
 <li>修改Main文件</li>
 </ol>
 <p>首先在main文件前添加几个用于加载APP程序的变量和函数定义</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">void</span> (<span style="color:#f92672">*</span>pFunction)(<span style="color:#66d9ef">void</span>);
-
-pFunction JumpToApplication;
-<span style="color:#66d9ef">uint32_t</span> JumpAddress;<span style="color:#ae81ff">1234</span>
-</code></pre></div><p>然后再 main 函数中加入 外部按键的判断、APP程序加载以及USB DFU初始化功能</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
-{
-      <span style="color:#75715e">/* Reset of all peripherals, Initializes the Flash interface and the Systick. */</span>
-      HAL_Init();
-
-      <span style="color:#75715e">/* Configure the system clock */</span>
-      SystemClock_Config();
-
-      <span style="color:#75715e">/* Initialize all configured peripherals */</span>
-      MX_GPIO_Init();
-
-      <span style="color:#66d9ef">if</span> (HAL_GPIO_ReadPin(USER_BTN_GPIO_Port, USER_BTN_Pin) <span style="color:#f92672">==</span> GPIO_PIN_SET)
-      {
-        HAL_GPIO_WritePin(GPIOG, LD3_Pin, GPIO_PIN_SET); <span style="color:#75715e">// For debug
-</span><span style="color:#75715e"></span>        <span style="color:#75715e">/* Test if user code is programmed starting from address 0x0800C000 */</span>
-        <span style="color:#66d9ef">if</span> (((<span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)USBD_DFU_APP_DEFAULT_ADD) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x2FF80000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x20000000</span>)
-        {
-          HAL_GPIO_WritePin(GPIOG, LD4_Pin, GPIO_PIN_SET); <span style="color:#75715e">// For debug
-</span><span style="color:#75715e"></span>          <span style="color:#75715e">/* Jump to user application */</span>
-          JumpAddress <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(USBD_DFU_APP_DEFAULT_ADD <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);
-          JumpToApplication <span style="color:#f92672">=</span> (pFunction)JumpAddress;
-
-          <span style="color:#75715e">/* Reset of all peripherals */</span>
-          HAL_DeInit();
-
-          <span style="color:#75715e">/* Set interrupt vector to app code */</span>
-          SCB<span style="color:#f92672">-&gt;</span>VTOR <span style="color:#f92672">=</span> USBD_DFU_APP_DEFAULT_ADD;
-
-          <span style="color:#75715e">/* Initialize user application&#39;s Stack Pointer */</span>
-          __set_MSP(<span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)USBD_DFU_APP_DEFAULT_ADD);
-          JumpToApplication();
-        }
-      }
-
-      MX_USB_DEVICE_Init();
-
-      <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>)
-      {
-      }
-}
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">typedef</span> <span style="color:#a6e22e">void</span> (<span style="color:#f92672">*</span>pFunction)(<span style="color:#66d9ef">void</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pFunction JumpToApplication;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">uint32_t</span> JumpAddress;<span style="color:#ae81ff">1234</span>
+</span></span></code></pre></div><p>然后再 main 函数中加入 外部按键的判断、APP程序加载以及USB DFU初始化功能</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Reset of all peripherals, Initializes the Flash interface and the Systick. */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">HAL_Init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Configure the system clock */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">SystemClock_Config</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Initialize all configured peripherals */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">MX_GPIO_Init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">HAL_GPIO_ReadPin</span>(USER_BTN_GPIO_Port, USER_BTN_Pin) <span style="color:#f92672">==</span> GPIO_PIN_SET)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">HAL_GPIO_WritePin</span>(GPIOG, LD3_Pin, GPIO_PIN_SET); <span style="color:#75715e">// For debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">/* Test if user code is programmed starting from address 0x0800C000 */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (((<span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)USBD_DFU_APP_DEFAULT_ADD) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x2FF80000</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x20000000</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">HAL_GPIO_WritePin</span>(GPIOG, LD4_Pin, GPIO_PIN_SET); <span style="color:#75715e">// For debug
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#75715e">/* Jump to user application */</span>
+</span></span><span style="display:flex;"><span>          JumpAddress <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)(USBD_DFU_APP_DEFAULT_ADD <span style="color:#f92672">+</span> <span style="color:#ae81ff">4</span>);
+</span></span><span style="display:flex;"><span>          JumpToApplication <span style="color:#f92672">=</span> (pFunction)JumpAddress;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">/* Reset of all peripherals */</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">HAL_DeInit</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">/* Set interrupt vector to app code */</span>
+</span></span><span style="display:flex;"><span>          SCB<span style="color:#f92672">-&gt;</span>VTOR <span style="color:#f92672">=</span> USBD_DFU_APP_DEFAULT_ADD;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>          <span style="color:#75715e">/* Initialize user application&#39;s Stack Pointer */</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">__set_MSP</span>(<span style="color:#f92672">*</span>(__IO <span style="color:#66d9ef">uint32_t</span> <span style="color:#f92672">*</span>)USBD_DFU_APP_DEFAULT_ADD);
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">JumpToApplication</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">MX_USB_DEVICE_Init</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="3">
 <li>编译程序下载进入单片机</li>
 </ol>
 <h2 id="使用dfuse">使用DfuSe</h2>
@@ -686,8 +682,8 @@ pFunction JumpToApplication;
 <p>仔细区看看DfuSe的安装目录，里面有DFU的资料文档，还有DFU的工程源代码，可以用来改写自己需要的DFU升级程序。</p>
 <h2 id="参考资料">参考资料</h2>
 <p>ST官网DfuSe</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-fallback" data-lang="fallback">http://www.stmicroelectronics.com.cn/content/st_com/zh/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-stm32080.html
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>http:<span style="color:#f92672">//</span>www<span style="color:#f92672">.</span>stmicroelectronics<span style="color:#f92672">.</span>com<span style="color:#f92672">.</span>cn<span style="color:#f92672">/</span>content<span style="color:#f92672">/</span>st_com<span style="color:#f92672">/</span>zh<span style="color:#f92672">/</span>products<span style="color:#f92672">/</span>development<span style="color:#f92672">-</span>tools<span style="color:#f92672">/</span>software<span style="color:#f92672">-</span>development<span style="color:#f92672">-</span>tools<span style="color:#f92672">/</span>stm32<span style="color:#f92672">-</span>software<span style="color:#f92672">-</span>development<span style="color:#f92672">-</span>tools<span style="color:#f92672">/</span>stm32<span style="color:#f92672">-</span>programmers<span style="color:#f92672">/</span>stsw<span style="color:#f92672">-</span>stm32080<span style="color:#f92672">.</span>html
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -837,7 +833,7 @@ pFunction JumpToApplication;
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -845,7 +841,7 @@ pFunction JumpToApplication;
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

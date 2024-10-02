@@ -4,40 +4,30 @@
     <title>HPC on Kontronn</title>
     <link>https://www.kontronn.com/tags/hpc/</link>
     <description>Recent content in HPC on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/hpc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/hpc/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>洞察之路变革：AI-HPC范式转移</title>
       <link>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</link>
       <pubDate>Wed, 25 Sep 2024 00:05:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</guid>
-      <description>&lt;p&gt;在一篇近期发布的论文中，作者提出了一种令人担忧的现象：当AI模型在先前LLM模型递归生成的数据点上进行训练时，可能会发生模型崩溃，即所谓的“蛇吞尾”现象。生成式AI在挖掘互联网数据，构建大型LLM模型方面取得了显著的成功，这些模型能够对许多问题提供类人的回答。&lt;/p&gt;
-&lt;p&gt;特别是，生成新文本一直是许多LLM的强项。从文档摘要到报告生成，LLM能够创造大量文本。然而，不可避免地，这些LLM生成的文本会出现在互联网上，并被下一代LLM模型所采集。论文中的研究人员认为，这种递归训练会导致模型性能退化，最终引发模型崩溃。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在一篇近期发布的论文中，作者提出了一种令人担忧的现象：当AI模型在先前LLM模型递归生成的数据点上进行训练时，可能会发生模型崩溃，即所谓的“蛇吞尾”现象。生成式AI在挖掘互联网数据，构建大型LLM模型方面取得了显著的成功，这些模型能够对许多问题提供类人的回答。&lt;/p&gt;&#xA;&lt;p&gt;特别是，生成新文本一直是许多LLM的强项。从文档摘要到报告生成，LLM能够创造大量文本。然而，不可避免地，这些LLM生成的文本会出现在互联网上，并被下一代LLM模型所采集。论文中的研究人员认为，这种递归训练会导致模型性能退化，最终引发模型崩溃。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数据中心的机架密度：何以见高峰</title>
       <link>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</link>
       <pubDate>Fri, 29 Sep 2023 22:06:12 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</guid>
-      <description>&lt;p&gt;人工智能（
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;）和高性能计算（HPC）已将计算、存储容量和网络资源的需求推向了极限。更强大的芯片是推动机架密度不断提升的主要驱动力之一。仅仅十年前，平均处理器的功耗还不到100瓦，但如今它们的功耗已经达到了约500瓦。&lt;/p&gt;</description>
+      <description>&lt;p&gt;人工智能（&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;）和高性能计算（HPC）已将计算、存储容量和网络资源的需求推向了极限。更强大的芯片是推动机架密度不断提升的主要驱动力之一。仅仅十年前，平均处理器的功耗还不到100瓦，但如今它们的功耗已经达到了约500瓦。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>HPC需求高速增长推动224G以太网SerDes技术发展加速</title>
       <link>https://www.kontronn.com/post/datacenter/hpc-demand-growth-promotes-the-development-of-224G-Ethernet-SerDes-technology.html</link>
       <pubDate>Mon, 14 Aug 2023 12:37:51 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/hpc-demand-growth-promotes-the-development-of-224G-Ethernet-SerDes-technology.html</guid>
       <description>&lt;p&gt;数据，是现在网联社会的核心，数据量级的提升远超我们的想象。根据IDC的预测，到2025年全球的数据量将达到175 ZB。数据量的增长带动了对高带宽和网络速度这些新基础设施的需求。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

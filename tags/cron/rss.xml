@@ -4,21 +4,16 @@
     <title>Cron on Kontronn</title>
     <link>https://www.kontronn.com/tags/cron/</link>
     <description>Recent content in Cron on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Sep 2024 15:43:14 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/cron/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 Sep 2024 15:43:14 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/cron/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>了解Linux定时任务Cron</title>
       <link>https://www.kontronn.com/post/linux/understanding-linux-scheduled-tasks-cron.html</link>
       <pubDate>Sat, 07 Sep 2024 15:43:14 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/understanding-linux-scheduled-tasks-cron.html</guid>
-      <description>&lt;p&gt;Cron是
-&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Linux
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;和Unix系统中的任务调度程序，用于在指定的时间或间隔自动执行脚本或命令。它的主要作用是帮助系统管理员和用户自动化一些重复性的任务，从而节省时间和避免人为错误。无论是定时备份数据、定期清理日志文件，还是自动发送报告，Cron都能胜任。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Cron是&#xA;&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Linux&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;和Unix系统中的任务调度程序，用于在指定的时间或间隔自动执行脚本或命令。它的主要作用是帮助系统管理员和用户自动化一些重复性的任务，从而节省时间和避免人为错误。无论是定时备份数据、定期清理日志文件，还是自动发送报告，Cron都能胜任。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

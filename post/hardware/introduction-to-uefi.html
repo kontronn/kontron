@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-09-24 00:56:41 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"introduction-to-uefi.html","permalink":"https://www.kontronn.com/post/hardware/introduction-to-uefi.html","title":"uEFI BIOS简介"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -317,7 +313,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -553,60 +549,60 @@
 <p>UEFI 考虑到了这些限制，并提供了传统模式（Legacy mode）。在该模式下，您可以像拥有 BIOS 固件一样运行所有内容。但请记住，英特尔已宣布从 2020 年起将不再支持传统 BIOS。</p>
 <p>以下是一个简化的表格，展示了UEFI和BIOS之间的主要对比结果：</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th>UEFI</th>
-<th>BIOS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>基本概念</td>
-<td>统一可扩展固件接口</td>
-<td>基本输入输出系统</td>
-</tr>
-<tr>
-<td>数据存储方式</td>
-<td>数据存储在非易失性存储器中，以.efi文件形式组织</td>
-<td>数据直接存储在ROM中</td>
-</tr>
-<tr>
-<td>启动速度</td>
-<td>更快，使用更高效的算法和数据结构</td>
-<td>较慢，受限于16位代码和存储限制</td>
-</tr>
-<tr>
-<td>硬盘容量支持</td>
-<td>支持高达9泽它字节的驱动器大小</td>
-<td>仅支持最大2.2太字节的硬盘</td>
-</tr>
-<tr>
-<td>用户界面</td>
-<td>提供图形用户界面（GUI），支持鼠标导航</td>
-<td>通常仅提供基于文本的界面，支持键盘导航</td>
-</tr>
-<tr>
-<td>安全功能</td>
-<td>支持安全启动（Secure Boot），防止未经授权/未签名的应用程序启动</td>
-<td>不具备或仅具备有限的安全功能</td>
-</tr>
-<tr>
-<td>代码模式</td>
-<td>以32位或64位模式运行</td>
-<td>以16位模式运行</td>
-</tr>
-<tr>
-<td>模块化与可扩展性</td>
-<td>支持模块化设计，易于更新和扩展</td>
-<td>较为封闭，更新和扩展较为困难</td>
-</tr>
-<tr>
-<td>未来支持</td>
-<td>逐渐成为主流，英特尔已宣布不再支持传统BIOS</td>
-<td>传统BIOS正在逐渐被UEFI取代</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left">UEFI</th>
+          <th style="text-align: left">BIOS</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">基本概念</td>
+          <td style="text-align: left">统一可扩展固件接口</td>
+          <td style="text-align: left">基本输入输出系统</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">数据存储方式</td>
+          <td style="text-align: left">数据存储在非易失性存储器中，以.efi文件形式组织</td>
+          <td style="text-align: left">数据直接存储在ROM中</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">启动速度</td>
+          <td style="text-align: left">更快，使用更高效的算法和数据结构</td>
+          <td style="text-align: left">较慢，受限于16位代码和存储限制</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">硬盘容量支持</td>
+          <td style="text-align: left">支持高达9泽它字节的驱动器大小</td>
+          <td style="text-align: left">仅支持最大2.2太字节的硬盘</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">用户界面</td>
+          <td style="text-align: left">提供图形用户界面（GUI），支持鼠标导航</td>
+          <td style="text-align: left">通常仅提供基于文本的界面，支持键盘导航</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">安全功能</td>
+          <td style="text-align: left">支持安全启动（Secure Boot），防止未经授权/未签名的应用程序启动</td>
+          <td style="text-align: left">不具备或仅具备有限的安全功能</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">代码模式</td>
+          <td style="text-align: left">以32位或64位模式运行</td>
+          <td style="text-align: left">以16位模式运行</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">模块化与可扩展性</td>
+          <td style="text-align: left">支持模块化设计，易于更新和扩展</td>
+          <td style="text-align: left">较为封闭，更新和扩展较为困难</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">未来支持</td>
+          <td style="text-align: left">逐渐成为主流，英特尔已宣布不再支持传统BIOS</td>
+          <td style="text-align: left">传统BIOS正在逐渐被UEFI取代</td>
+      </tr>
+  </tbody>
 </table>
 <blockquote>
 <p>请注意，这个表格是对UEFI和BIOS之间主要区别的简化概述，并未涵盖所有细节。在实际应用中，两者之间可能还存在其他差异和特性。</p>
@@ -976,7 +972,7 @@
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -984,7 +980,7 @@
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

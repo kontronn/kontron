@@ -827,6 +827,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://www.kontronn.com/tags/ai/ml/</loc>
+    <lastmod>2024-08-19T22:02:08+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://www.kontronn.com/tags/vxworks/</loc>
     <lastmod>2024-08-19T22:02:08+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -904,6 +909,11 @@
   </url><url>
     <loc>https://www.kontronn.com/tags/pcie-gen7/</loc>
     <lastmod>2024-08-17T21:12:10+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://www.kontronn.com/tags/core-13/14/</loc>
+    <lastmod>2024-08-15T23:13:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -2827,7 +2837,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/parity-ecc/</loc>
+    <loc>https://www.kontronn.com/tags/parity--ecc/</loc>
     <lastmod>2023-07-24T11:22:13-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -3352,12 +3362,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/dbm-vpp/</loc>
+    <loc>https://www.kontronn.com/post/hardware/dBm-Vpp-convert.html</loc>
     <lastmod>2023-04-05T07:28:59-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/post/hardware/dBm-Vpp-convert.html</loc>
+    <loc>https://www.kontronn.com/tags/dbm-vpp/</loc>
     <lastmod>2023-04-05T07:28:59-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -3577,12 +3587,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/categories/python/</loc>
+    <loc>https://www.kontronn.com/tags/python/</loc>
     <lastmod>2022-10-29T07:53:45-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/python/</loc>
+    <loc>https://www.kontronn.com/categories/python/</loc>
     <lastmod>2022-10-29T07:53:45-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -3702,12 +3712,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/%E4%B8%B2%E5%8F%A3/</loc>
+    <loc>https://www.kontronn.com/tags/%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2022-10-07T05:35:25-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://www.kontronn.com/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>https://www.kontronn.com/tags/%E4%B8%B2%E5%8F%A3/</loc>
     <lastmod>2022-10-07T05:35:25-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -3754,14 +3764,6 @@
   </url><url>
     <loc>https://www.kontronn.com/post/vxworks/windriver-capital-transaction.html</loc>
     <lastmod>2022-01-20T05:40:25-04:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/ai/ml/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://www.kontronn.com/tags/core-13/14/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url><url>

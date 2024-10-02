@@ -4,153 +4,93 @@
     <title>AI on Kontronn</title>
     <link>https://www.kontronn.com/tags/ai/</link>
     <description>Recent content in AI on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/ai/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 25 Sep 2024 00:05:33 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/ai/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>洞察之路变革：AI-HPC范式转移</title>
       <link>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</link>
       <pubDate>Wed, 25 Sep 2024 00:05:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/the-path-to-insight-is-changing-the-ai-hpc-paradigm-shift.html</guid>
-      <description>&lt;p&gt;在一篇近期发布的论文中，作者提出了一种令人担忧的现象：当AI模型在先前LLM模型递归生成的数据点上进行训练时，可能会发生模型崩溃，即所谓的“蛇吞尾”现象。生成式AI在挖掘互联网数据，构建大型LLM模型方面取得了显著的成功，这些模型能够对许多问题提供类人的回答。&lt;/p&gt;
-&lt;p&gt;特别是，生成新文本一直是许多LLM的强项。从文档摘要到报告生成，LLM能够创造大量文本。然而，不可避免地，这些LLM生成的文本会出现在互联网上，并被下一代LLM模型所采集。论文中的研究人员认为，这种递归训练会导致模型性能退化，最终引发模型崩溃。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在一篇近期发布的论文中，作者提出了一种令人担忧的现象：当AI模型在先前LLM模型递归生成的数据点上进行训练时，可能会发生模型崩溃，即所谓的“蛇吞尾”现象。生成式AI在挖掘互联网数据，构建大型LLM模型方面取得了显著的成功，这些模型能够对许多问题提供类人的回答。&lt;/p&gt;&#xA;&lt;p&gt;特别是，生成新文本一直是许多LLM的强项。从文档摘要到报告生成，LLM能够创造大量文本。然而，不可避免地，这些LLM生成的文本会出现在互联网上，并被下一代LLM模型所采集。论文中的研究人员认为，这种递归训练会导致模型性能退化，最终引发模型崩溃。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>400G光模块简介</title>
       <link>https://www.kontronn.com/post/datacenter/introduction-to-400G-optical-module.html</link>
       <pubDate>Sun, 08 Sep 2024 08:23:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/introduction-to-400G-optical-module.html</guid>
-      <description>&lt;p&gt;400G将是下一代骨干网升级和新建设的方向，将成为
-&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;数据中心&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    数据中心
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;发展的必然趋势。&lt;/p&gt;</description>
+      <description>&lt;p&gt;400G将是下一代骨干网升级和新建设的方向，将成为&#xA;&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;数据中心&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    数据中心&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;发展的必然趋势。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>HBM内存芯片: AI革命的无名英雄</title>
       <link>https://www.kontronn.com/post/ai/hbm-memory-chips-the-unsung-hero-of-the-ai-revolution.html</link>
       <pubDate>Sat, 07 Sep 2024 23:22:45 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/ai/hbm-memory-chips-the-unsung-hero-of-the-ai-revolution.html</guid>
-      <description>&lt;p&gt;像DRAM这样长期受周期性趋势影响的存储芯片，现在正瞄准一个更稳定的市场：
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能(AI)&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    人工智能(AI)
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;，如全球第二大存储芯片供应商SK海力士。三星电子CFO Kim Woo-hyun表示:“三星将通过引领变革和提供定制化解决方案，成长为全面的人工智能存储器供应商。”&lt;/p&gt;</description>
+      <description>&lt;p&gt;像DRAM这样长期受周期性趋势影响的存储芯片，现在正瞄准一个更稳定的市场：&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能(AI)&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    人工智能(AI)&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;，如全球第二大存储芯片供应商SK海力士。三星电子CFO Kim Woo-hyun表示:“三星将通过引领变革和提供定制化解决方案，成长为全面的人工智能存储器供应商。”&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>风河VxWorks搭档TI处理器助汽车AI/ML大放异彩</title>
       <link>https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html</link>
       <pubDate>Mon, 19 Aug 2024 22:02:08 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/vxworks/wind-river-vxworks-and-ti-processors-help-automotive-ai-ml-shine.html</guid>
-      <description>&lt;p&gt;在技术进步的大潮中，
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能(AI)&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    人工智能(AI)
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;和机器学习(ML)已经成为一股革命性的力量，重新塑造着各个行业，同时拓展了我们曾经以为不可企及的新疆界。AI/ML与嵌入式系统的融合激发出了大量的商业机会，特别是在汽车和工业领域。嵌入式系统 开发人员可以从 
-&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;VxWorks&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    VxWorks
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;实时操作系统(RTOS)所具备的高确定性和高性能中大为受益，这套操作系统还具有高效的AI/ML集成功能，并且支持在云计算环境中进行开发、测试和部署——由此极大地加快了企业产品进入市场的速度。运行在德州仪器TDA4VH-Q1处理器之上的VxWorks，可以为开发人员提供极有价值的板上功能，包括集成化图形能力、AI加速功能和视频协处理功能。这种强强组合可以为高级驾驶辅助系统(ADAS)提供智能边缘计算支持。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在技术进步的大潮中，&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;人工智能(AI)&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    人工智能(AI)&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;和机器学习(ML)已经成为一股革命性的力量，重新塑造着各个行业，同时拓展了我们曾经以为不可企及的新疆界。AI/ML与嵌入式系统的融合激发出了大量的商业机会，特别是在汽车和工业领域。嵌入式系统 开发人员可以从 &#xA;&lt;a href=&#34;https://www.vxworks.net&#34; title=&#34;VxWorks&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    VxWorks&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;实时操作系统(RTOS)所具备的高确定性和高性能中大为受益，这套操作系统还具有高效的AI/ML集成功能，并且支持在云计算环境中进行开发、测试和部署——由此极大地加快了企业产品进入市场的速度。运行在德州仪器TDA4VH-Q1处理器之上的VxWorks，可以为开发人员提供极有价值的板上功能，包括集成化图形能力、AI加速功能和视频协处理功能。这种强强组合可以为高级驾驶辅助系统(ADAS)提供智能边缘计算支持。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>三星推出Mach-1 AI芯片，挑战英伟达</title>
       <link>https://www.kontronn.com/post/news/samsung-launches-Mach-1-AI-chip-to-challenge-Nvidia.html</link>
       <pubDate>Mon, 25 Mar 2024 22:23:13 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/samsung-launches-Mach-1-AI-chip-to-challenge-Nvidia.html</guid>
-      <description>&lt;p&gt;近日，作为全球领先的半导体科技巨头，三星近期在人工智能领域动作连连。首先是宣布即将推出其全新的
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;Mach-1 AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Mach-1 AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;芯片，准备在挑战NVIDIA的市场地位。然后是准备在高带宽存储器（HBM）领域加大投入，准备与其主要竞争对手SK hynix展开激烈竞争。接着宣布将成立一家人工通用智能（AGI）计算实验室，加速其在人工通用智能研发工作的进展。&lt;/p&gt;</description>
+      <description>&lt;p&gt;近日，作为全球领先的半导体科技巨头，三星近期在人工智能领域动作连连。首先是宣布即将推出其全新的&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;Mach-1 AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Mach-1 AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;芯片，准备在挑战NVIDIA的市场地位。然后是准备在高带宽存储器（HBM）领域加大投入，准备与其主要竞争对手SK hynix展开激烈竞争。接着宣布将成立一家人工通用智能（AGI）计算实验室，加速其在人工通用智能研发工作的进展。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NVIDIA AI芯片可以卖给中国！只有一条件</title>
       <link>https://www.kontronn.com/post/news/NVIDIA-AI-chips-can-be-sold-to-China-with-one-condition.html</link>
       <pubDate>Wed, 13 Dec 2023 21:34:09 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/NVIDIA-AI-chips-can-be-sold-to-China-with-one-condition.html</guid>
-      <description>&lt;p&gt;为了满足美国政府的出口管制条件，尽可能向中国销售高端
-&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;芯片，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;可以说操碎了心，不断研究各种特供版。&lt;/p&gt;</description>
+      <description>&lt;p&gt;为了满足美国政府的出口管制条件，尽可能向中国销售高端&#xA;&lt;a href=&#34;https://www.gaitpu.com/&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;芯片，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;可以说操碎了心，不断研究各种特供版。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>NVIDIA为中国打造特供RTX 4090D</title>
       <link>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</link>
       <pubDate>Sun, 03 Dec 2023 10:01:56 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/NVIDIA-creates-special-RTX-4090D-for-China.html</guid>
-      <description>&lt;p&gt;RTX 4090在国内遭到禁售，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;正在规划特供版本RTX 4090 D，性能降级以满足出口管制——D代表Dragon，因为明年是中国龙年。&lt;/p&gt;</description>
+      <description>&lt;p&gt;RTX 4090在国内遭到禁售，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;正在规划特供版本RTX 4090 D，性能降级以满足出口管制——D代表Dragon，因为明年是中国龙年。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>大型语言模型入门必知术语汇总</title>
       <link>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</link>
       <pubDate>Sat, 18 Nov 2023 22:19:49 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/terminology-of-large-scale-language-models.html</guid>
       <description>&lt;p&gt;在本文中，我将以一种非数据科学家易于理解的方式分解与LLM和AI相关的一些基本术语和概念。我将涵盖从神经网络到数据增强的所有内容，并为每个术语提供简单的解释和示例。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>揭穿四个常见的AI/ML数据存储迷思</title>
       <link>https://www.kontronn.com/post/datacenter/busting-four-common-AI-ML-and-Data-Storage-Myths.html</link>
       <pubDate>Fri, 06 Oct 2023 19:28:02 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/busting-four-common-AI-ML-and-Data-Storage-Myths.html</guid>
       <description>&lt;p&gt;如今，消费者和商业用户在不知不觉中与人工智能和机器学习互动。从消费者的角度来看，这涉及从流媒体上观看喜爱的节目到随时叫车的车辆服务。从商业的角度来看，组织利用人工智能和机器学习来获得更好的洞察，支持其业务目标。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>数据中心的机架密度：何以见高峰</title>
       <link>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</link>
       <pubDate>Fri, 29 Sep 2023 22:06:12 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/datacenter/data-center-rack-density-how-high-can-it-go.html</guid>
-      <description>&lt;p&gt;人工智能（
-&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    AI
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;）和高性能计算（HPC）已将计算、存储容量和网络资源的需求推向了极限。更强大的芯片是推动机架密度不断提升的主要驱动力之一。仅仅十年前，平均处理器的功耗还不到100瓦，但如今它们的功耗已经达到了约500瓦。&lt;/p&gt;</description>
+      <description>&lt;p&gt;人工智能（&#xA;&lt;a href=&#34;https://www.gaitpu.com&#34; title=&#34;AI&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    AI&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;）和高性能计算（HPC）已将计算、存储容量和网络资源的需求推向了极限。更强大的芯片是推动机架密度不断提升的主要驱动力之一。仅仅十年前，平均处理器的功耗还不到100瓦，但如今它们的功耗已经达到了约500瓦。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英伟达再度释放AI“炸弹”</title>
       <link>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</link>
       <pubDate>Thu, 17 Aug 2023 10:09:03 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/nvidia-launch-gh200-grace-hopper.html</guid>
       <description>&lt;p&gt;近日，在计算机图形学顶会SIGGRAPH 2023现场，英伟达再度释放深夜“炸弹”，大模型专用芯片迎来升级版本。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>不让NVIDIA吃独食！AMD下一代Zen5大杀器在路上</title>
       <link>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</link>
       <pubDate>Mon, 07 Aug 2023 11:07:46 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/AMD-next-generation-zen5-is-on-the-way.html</guid>
       <description>&lt;p&gt;AI硬件市场上，NVIDIA可谓呼风唤雨，旗下的A100、H100加速器炙手可热。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2023-11-21 13:48:03 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"compiler-c-programming-in-embedded-design.html","permalink":"https://www.kontronn.com/post/programming/compiler-c-programming-in-embedded-design.html","title":"嵌入式开发中的C语言——编译器"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -310,7 +306,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -442,69 +438,69 @@
 <p>C语言足够灵活，对于一个数组test[30]，它允许使用像test[-1]这样的形式来快速获取数组首元素所在地址前面的数据；允许将一个常数强制转换为函数指针，使用代码(((void()())0))()来调用位于0地址的函数。C语言给了程序员足够的自由，但也由程序员承担滥用自由带来的责任。</p>
 <h3 id="莫名的死机">莫名的死机</h3>
 <p>下面的两个例子都是死循环，如果在不常用分支中出现类似代码，将会造成看似莫名其妙的死机或者重启。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> i;    <span style="color:#75715e">//例程1 
-</span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">256</span>;i<span style="color:#f92672">++</span>)
- {
-     <span style="color:#75715e">//其它代码  
-</span><span style="color:#75715e"></span> }
-</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> i;     <span style="color:#75715e">//例程2 
-</span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>;i<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">--</span>)
- {
-     <span style="color:#75715e">//其它代码  
-</span><span style="color:#75715e"></span> }
-</code></pre></div><p>对于无符号char类型，表示的范围为0~255，所以无符号char类型变量i永远小于256（第一个for循环无限执行），永远大于等于0（第二个for循环无限执行）。需要说明的是，赋值代码i=256是被C语言允许的，即使这个初值已经超出了变量i可以表示的范围。C语言会千方百计的为程序员创造出错的机会，可见一斑。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> i;    <span style="color:#75715e">//例程1 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">256</span>;i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//其它代码  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> }
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span> i;     <span style="color:#75715e">//例程2 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>;i<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">--</span>)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//其它代码  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> }
+</span></span></code></pre></div><p>对于无符号char类型，表示的范围为0~255，所以无符号char类型变量i永远小于256（第一个for循环无限执行），永远大于等于0（第二个for循环无限执行）。需要说明的是，赋值代码i=256是被C语言允许的，即使这个初值已经超出了变量i可以表示的范围。C语言会千方百计的为程序员创造出错的机会，可见一斑。</p>
 <h3 id="不起眼的改变">不起眼的改变</h3>
 <p>假如你在if语句后误加了一个分号，可能会完全改变了程序逻辑。编译器也会很配合的帮忙掩盖，甚至连警告都不提示。代码如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">if</span>(a<span style="color:#f92672">&gt;</span>b);           <span style="color:#75715e">//这里误加了一个分号  
-</span><span style="color:#75715e"></span> a<span style="color:#f92672">=</span>b;              <span style="color:#75715e">//这句代码一直被执行
-</span></code></pre></div><p>不但如此，编译器还会忽略掉多余的空格符和换行符，就像下面的代码也不会给出足够提示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">if</span>(n<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">3</span>)
-<span style="color:#66d9ef">return</span>	<span style="color:#75715e">//这里少加了一个分号
-</span><span style="color:#75715e"></span>logrec.data<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">0</span>];
-logrec.time<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">1</span>];
-logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</span>];
-</code></pre></div><p>这段代码的本意是n&lt;3时程序直接返回，由于程序员的失误，return少了一个结束分号。编译器将它翻译成返回表达式logrec.data=x[0]的结果，return后面即使是一个表达式也是C语言允许的。这样当n&gt;=3时，表达式logrec.data=x[0];就不会被执行，给程序埋下了隐患。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">if</span>(a<span style="color:#f92672">&gt;</span>b);           <span style="color:#75715e">//这里误加了一个分号  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> a<span style="color:#f92672">=</span>b;              <span style="color:#75715e">//这句代码一直被执行
+</span></span></span></code></pre></div><p>不但如此，编译器还会忽略掉多余的空格符和换行符，就像下面的代码也不会给出足够提示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(n<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>	<span style="color:#75715e">//这里少加了一个分号
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>logrec.data<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>logrec.time<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</span>];
+</span></span></code></pre></div><p>这段代码的本意是n&lt;3时程序直接返回，由于程序员的失误，return少了一个结束分号。编译器将它翻译成返回表达式logrec.data=x[0]的结果，return后面即使是一个表达式也是C语言允许的。这样当n&gt;=3时，表达式logrec.data=x[0];就不会被执行，给程序埋下了隐患。</p>
 <h3 id="难查的数组越界">难查的数组越界</h3>
 <p>上文曾提到数组常常是引起程序不稳定的重要因素，程序员往往不经意间就会写数组越界。</p>
 <p>一位同事的代码在硬件上运行，一段时间后就会发现LCD显示屏上的一个数字不正常的被改变。经过一段时间的调试，问题被定位到下面的一段代码中：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">int</span> SensorData[<span style="color:#ae81ff">30</span>];
- <span style="color:#75715e">//其他代码 
-</span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>;i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">--</span>)
- {
-      SensorData[i]<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">…</span>;
-      <span style="color:#75715e">//其他代码   
-</span><span style="color:#75715e"></span> }
-</code></pre></div><p>这里声明了拥有30个元素的数组，不幸的是for循环代码中误用了本不存在的数组元素SensorData[30]，但C语言却默许这么使用，并欣然的按照代码改变了数组元素SensorData[30]所在位置的值， SensorData[30]所在的位置原本是一个LCD显示变量，这正是显示屏上的那个值不正常被改变的原因。真庆幸这么轻而易举的发现了这个Bug。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">int</span> SensorData[<span style="color:#ae81ff">30</span>];
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">//其他代码 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>;i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>;i<span style="color:#f92672">--</span>)
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>      SensorData[i]<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">…</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//其他代码   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> }
+</span></span></code></pre></div><p>这里声明了拥有30个元素的数组，不幸的是for循环代码中误用了本不存在的数组元素SensorData[30]，但C语言却默许这么使用，并欣然的按照代码改变了数组元素SensorData[30]所在位置的值， SensorData[30]所在的位置原本是一个LCD显示变量，这正是显示屏上的那个值不正常被改变的原因。真庆幸这么轻而易举的发现了这个Bug。</p>
 <p>其实很多编译器会对上述代码产生一个警告：赋值超出数组界限。但并非所有程序员都对编译器警告保持足够敏感，况且，编译器也并不能检查出数组越界的所有情况。比如下面的例子：</p>
 <p>你在模块A中定义数组：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">int</span> SensorData[<span style="color:#ae81ff">30</span>];
-</code></pre></div><p>在模块B中引用该数组，但由于你引用代码并不规范，这里没有显示声明数组大小，但编译器也允许这么做：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> SensorData[];
-</code></pre></div><p>这次，编译器不会给出警告信息，因为编译器压根就不知道数组的元素个数。所以，当一个数组声明为具有外部链接，它的大小应该显式声明。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">int</span> SensorData[<span style="color:#ae81ff">30</span>];
+</span></span></code></pre></div><p>在模块B中引用该数组，但由于你引用代码并不规范，这里没有显示声明数组大小，但编译器也允许这么做：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">int</span> SensorData[];
+</span></span></code></pre></div><p>这次，编译器不会给出警告信息，因为编译器压根就不知道数组的元素个数。所以，当一个数组声明为具有外部链接，它的大小应该显式声明。</p>
 <p>再举一个编译器检查不出数组越界的例子。函数func()的形参是一个数组形式，函数代码简化如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">char</span> SensorData[<span style="color:#ae81ff">30</span>])
-{
-	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#ae81ff">1</span>;
-	<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>)
-	{
-		SensorData[i]<span style="color:#f92672">=</span>...;
-		<span style="color:#75715e">//其他代码
-</span><span style="color:#75715e"></span>	}
-}
-</code></pre></div><p>这个给SensorData[30]赋初值的语句，编译器也是不给任何警告的。实际上，编译器是将数组名Sensor隐含的转化为指向数组第一个元素的指针，函数体是使用指针的形式来访问数组的，它当然也不会知道数组元素的个数了。造成这种局面的原因之一是C编译器的作者们认为指针代替数组可以提高程序效率，而且，可以简化编译器的复杂度。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">char</span> SensorData[<span style="color:#ae81ff">30</span>])
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span>(i<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		SensorData[i]<span style="color:#f92672">=</span>...;
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//其他代码
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>这个给SensorData[30]赋初值的语句，编译器也是不给任何警告的。实际上，编译器是将数组名Sensor隐含的转化为指向数组第一个元素的指针，函数体是使用指针的形式来访问数组的，它当然也不会知道数组元素的个数了。造成这种局面的原因之一是C编译器的作者们认为指针代替数组可以提高程序效率，而且，可以简化编译器的复杂度。</p>
 <p>指针和数组是容易给程序造成混乱的，我们有必要仔细的区分它们的不同。其实换一个角度想想，它们也是容易区分的：可以将数组名等同于指针的情况有且只有一处，就是上面例子提到的数组作为函数形参时。其它时候，数组名是数组名，指针是指针。</p>
 <p>下面的例子编译器同样检查不出数组越界。</p>
 <p>我们常常用数组来缓存通讯中的一帧数据。在通讯中断中将接收的数据保存到数组中，直到一帧数据完全接收后再进行处理。即使定义的数组长度足够长，接收数据的过程中也可能发生数组越界，特别是干扰严重时。</p>
 <p>这是由于外界的干扰破坏了数据帧的某些位，对一帧的数据长度判断错误，接收的数据超出数组范围，多余的数据改写与数组相邻的变量，造成系统崩溃。由于中断事件的异步性，这类数组越界编译器无法检查到。</p>
 <p>如果局部数组越界，可能引发ARM架构硬件异常。</p>
 <p>同事的一个设备用于接收无线传感器的数据，一次软件升级后，发现接收设备工作一段时间后会死机。调试表明ARM7处理器发生了硬件异常，异常处理代码是一段死循环（死机的直接原因）。接收设备有一个硬件模块用于接收无线传感器的整包数据并存在自己的缓冲区中，当硬件模块接收数据完成后，使用外部中断通知设备取数据，外部中断服务程序精简后如下所示：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">__irq <span style="color:#a6e22e">ExintHandler</span>(<span style="color:#66d9ef">void</span>)  
- {
-      unsignedchar DataBuf[<span style="color:#ae81ff">50</span>];
-      GetData(DataBug);        <span style="color:#75715e">//从硬件缓冲区取一帧数据  
-</span><span style="color:#75715e"></span>      <span style="color:#75715e">//其他代码 
-</span><span style="color:#75715e"></span> }
-</code></pre></div><p>由于存在多个无线传感器近乎同时发送数据的可能加之GetData()函数保护力度不够，数组DataBuf在取数据过程中发生越界。由于数组DataBuf为局部变量，被分配在堆栈中，同在此堆栈中的还有中断发生时的运行环境以及中断返回地址。溢出的数据将这些数据破坏掉，中断返回时PC指针可能变成一个不合法值，硬件异常由此产生。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>__irq <span style="color:#a6e22e">ExintHandler</span>(<span style="color:#66d9ef">void</span>)  
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>      unsignedchar DataBuf[<span style="color:#ae81ff">50</span>];
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">GetData</span>(DataBug);        <span style="color:#75715e">//从硬件缓冲区取一帧数据  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">//其他代码 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> }
+</span></span></code></pre></div><p>由于存在多个无线传感器近乎同时发送数据的可能加之GetData()函数保护力度不够，数组DataBuf在取数据过程中发生越界。由于数组DataBuf为局部变量，被分配在堆栈中，同在此堆栈中的还有中断发生时的运行环境以及中断返回地址。溢出的数据将这些数据破坏掉，中断返回时PC指针可能变成一个不合法值，硬件异常由此产生。</p>
 <p>如果我们精心设计溢出部分的数据，化数据为指令，就可以利用数组越界来修改PC指针的值，使之指向我们希望执行的代码。</p>
 <p>1988年，第一个网络蠕虫在一天之内感染了2000到6000台计算机，这个蠕虫程序利用的正是一个标准输入库函数的数组越界Bug。起因是一个标准输入输出库函数gets()，原来设计为从数据流中获取一段文本，遗憾的是，gets()函数没有规定输入文本的长度。</p>
 <p>gets()函数内部定义了一个500字节的数组，攻击者发送了大于500字节的数据，利用溢出的数据修改了堆栈中的PC指针，从而获取了系统权限。目前，虽然有更好的库函数来代替gets函数，但gets函数仍然存在着。</p>
@@ -515,72 +511,72 @@ logrec.code<span style="color:#f92672">=</span>x[<span style="color:#ae81ff">2</
 <p>你的代码逻辑可能是每次都会读取IO端口数据，但实际上编译器将代码翻译成汇编时，可能只是读一次IO端口数据并保存到寄存器中，接下来的多次读IO口都是使用寄存器中的值来进行处理。因为读写寄存器是最快的，这样可以优化程序效率。与之类似的，中断里的变量、多线程中的共享变量等都存在这样的问题。</p>
 <p>不使用volatile，可能造成运行逻辑错误，但是不必要的使用volatile会造成代码效率低下（编译器不优化volatile限定的变量），因此清楚的知道何处该使用volatile限定符，是一个嵌入式程序员的必修内容。</p>
 <p>一个程序模块通常由两个文件组成，源文件和头文件。如果你在源文件定义变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;
-</code></pre></div><p>并在头文件中声明该变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> test;
-</code></pre></div><p>编译器会提示一个语法错误：变量’ test’声明类型不一致。但如果你在源文件定义变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;
-</code></pre></div><p>在头文件中这样声明变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;     <span style="color:#75715e">/*缺少volatile限定符*/</span>
-</code></pre></div><p>编译器却不会给出错误信息（有些编译器仅给出一条警告）。当你在另外一个模块（该模块包含声明变量test的头文件）使用变量test时，它已经不再具有volatile限定，这样很可能造成一些重大错误。比如下面的例子，注意该例子是为了说明volatile限定符而专门构造出的，因为现实中的volatile使用Bug大都隐含，并且难以理解。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;
+</span></span></code></pre></div><p>并在头文件中声明该变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> test;
+</span></span></code></pre></div><p>编译器会提示一个语法错误：变量’ test’声明类型不一致。但如果你在源文件定义变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;
+</span></span></code></pre></div><p>在头文件中这样声明变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> test;     <span style="color:#75715e">/*缺少volatile限定符*/</span>
+</span></span></code></pre></div><p>编译器却不会给出错误信息（有些编译器仅给出一条警告）。当你在另外一个模块（该模块包含声明变量test的头文件）使用变量test时，它已经不再具有volatile限定，这样很可能造成一些重大错误。比如下面的例子，注意该例子是为了说明volatile限定符而专门构造出的，因为现实中的volatile使用Bug大都隐含，并且难以理解。</p>
 <p>在模块A的源文件中，定义变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> TimerCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</code></pre></div><p>该变量用来在一个定时器中断服务程序中进行软件计时：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> TimerCount<span style="color:#f92672">++</span>;
-</code></pre></div><p>在模块A的头文件中，声明变量：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> TimerCount;   <span style="color:#75715e">//这里漏掉了类型限定符volatile
-</span></code></pre></div><p>在模块B中，要使用TimerCount变量进行精确的软件延时：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;…A.h&#34;                   //首先包含模块A的头文件  </span><span style="color:#75715e">
-</span><span style="color:#75715e"></span> <span style="color:#75715e">//其他代码  
-</span><span style="color:#75715e"></span> TimerCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
- <span style="color:#66d9ef">while</span>(TimerCount<span style="color:#f92672">&lt;=</span>TIMER_VALUE);   <span style="color:#75715e">//延时一段时间(感谢网友chhfish指这里的逻辑错误)  
-</span><span style="color:#75715e"></span> <span style="color:#75715e">//其他代码
-</span></code></pre></div><p>实际上，这是一个死循环。由于模块A头文件中声明变量TimerCount时漏掉了volatile限定符，在模块B中，变量TimerCount是被当作unsigned int类型变量。由于寄存器速度远快于RAM，编译器在使用非volatile限定变量时是先将变量从RAM中拷贝到寄存器中，如果同一个代码块再次用到该变量，就不再从RAM中拷贝数据而是直接使用之前寄存器备份值。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">volatile</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> TimerCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span></code></pre></div><p>该变量用来在一个定时器中断服务程序中进行软件计时：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> TimerCount<span style="color:#f92672">++</span>;
+</span></span></code></pre></div><p>在模块A的头文件中，声明变量：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">extern</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> TimerCount;   <span style="color:#75715e">//这里漏掉了类型限定符volatile
+</span></span></span></code></pre></div><p>在模块B中，要使用TimerCount变量进行精确的软件延时：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;…A.h&#34;                   //首先包含模块A的头文件  </span><span style="color:#75715e">
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#75715e">//其他代码  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> TimerCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">while</span>(TimerCount<span style="color:#f92672">&lt;=</span>TIMER_VALUE);   <span style="color:#75715e">//延时一段时间(感谢网友chhfish指这里的逻辑错误)  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#75715e">//其他代码
+</span></span></span></code></pre></div><p>实际上，这是一个死循环。由于模块A头文件中声明变量TimerCount时漏掉了volatile限定符，在模块B中，变量TimerCount是被当作unsigned int类型变量。由于寄存器速度远快于RAM，编译器在使用非volatile限定变量时是先将变量从RAM中拷贝到寄存器中，如果同一个代码块再次用到该变量，就不再从RAM中拷贝数据而是直接使用之前寄存器备份值。</p>
 <p>代码while(TimerCount&lt;=TIMER_VALUE)中，变量TimerCount仅第一次执行时被使用，之后都是使用的寄存器备份值，而这个寄存器值一直为0，所以程序无限循环。下面的流程图说明了程序使用限定符volatile和不使用volatile的执行过程。</p>
 <p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-1.png" alt="Embedded Design C Compiler"></p>
 <p>为了更容易的理解编译器如何处理volatile限定符，这里给出未使用volatile限定符和使用volatile限定符程序的反汇编代码：</p>
 <ul>
 <li>没有使用关键字volatile，在keil MDK V4.54下编译，默认优化级别，如下所示（注意最后两行）：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#ae81ff">122</span><span style="color:#f92672">:</span>     unIdleCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-    <span style="color:#ae81ff">123</span><span style="color:#f92672">:</span>
- <span style="color:#ae81ff">0x00002E10</span>  E59F11D4  LDR       R1,[PC,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x01D4</span>]
- <span style="color:#ae81ff">0x00002E14</span>  E3A05000  MOV       R5,<span style="color:#960050;background-color:#1e0010">#</span>key1(<span style="color:#ae81ff">0x00000000</span>)
- <span style="color:#ae81ff">0x00002E18</span>  E1A00005  MOV       R0,R5
- <span style="color:#ae81ff">0x00002E1C</span>  E5815000  STR       R5,[R1]
-    <span style="color:#ae81ff">124</span><span style="color:#f92672">:</span>     <span style="color:#66d9ef">while</span>(unIdleCount<span style="color:#f92672">!=</span><span style="color:#ae81ff">200</span>);   <span style="color:#75715e">//延时2S钟   
-</span><span style="color:#75715e"></span>    <span style="color:#ae81ff">125</span><span style="color:#f92672">:</span>
-      <span style="color:#ae81ff">0x00002E20</span>  E35000C8  CMP       R0,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x000000C8</span>  
- <span style="color:#ae81ff">0x00002E24</span>  <span style="color:#ae81ff">1</span>AFFFFFD  BNE       <span style="color:#ae81ff">0x00002E20</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ae81ff">122</span><span style="color:#f92672">:</span>     unIdleCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">123</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E10</span>  E59F11D4  LDR       R1,[PC,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x01D4</span>]
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E14</span>  E3A05000  MOV       R5,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">key1</span>(<span style="color:#ae81ff">0x00000000</span>)
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E18</span>  E1A00005  MOV       R0,R5
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E1C</span>  E5815000  STR       R5,[R1]
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">124</span><span style="color:#f92672">:</span>     <span style="color:#66d9ef">while</span>(unIdleCount<span style="color:#f92672">!=</span><span style="color:#ae81ff">200</span>);   <span style="color:#75715e">//延时2S钟   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">125</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#ae81ff">0x00002E20</span>  E35000C8  CMP       R0,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x000000C8</span>  
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E24</span>  <span style="color:#ae81ff">1</span>AFFFFFD  BNE       <span style="color:#ae81ff">0x00002E20</span>
+</span></span></code></pre></div><ul>
 <li>使用关键字volatile，在keil MDK V4.54下编译，默认优化级别，如下所示（注意最后三行）：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">
-<span style="color:#ae81ff">122</span><span style="color:#f92672">:</span>     unIdleCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-    <span style="color:#ae81ff">123</span><span style="color:#f92672">:</span>
- <span style="color:#ae81ff">0x00002E10</span>  E59F01D4  LDR       R0,[PC,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x01D4</span>]
- <span style="color:#ae81ff">0x00002E14</span>  E3A05000  MOV       R5,<span style="color:#960050;background-color:#1e0010">#</span>key1(<span style="color:#ae81ff">0x00000000</span>)
- <span style="color:#ae81ff">0x00002E18</span>  E5805000  STR       R5,[R0]
-    <span style="color:#ae81ff">124</span><span style="color:#f92672">:</span>     <span style="color:#66d9ef">while</span>(unIdleCount<span style="color:#f92672">!=</span><span style="color:#ae81ff">200</span>);   <span style="color:#75715e">//延时2S钟   
-</span><span style="color:#75715e"></span>    <span style="color:#ae81ff">125</span><span style="color:#f92672">:</span>
- <span style="color:#ae81ff">0x00002E1C</span>  E5901000  LDR       R1,[R0]
- <span style="color:#ae81ff">0x00002E20</span>  E35100C8  CMP       R1,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x000000C8</span>  
- <span style="color:#ae81ff">0x00002E24</span>  <span style="color:#ae81ff">1</span>AFFFFFC  BNE       <span style="color:#ae81ff">0x00002E1C</span>
-</code></pre></div><p>可以看到，如果没有使用volatile关键字，程序一直比较R0内数据与0xC8是否相等，但R0中的数据是0，所以程序会一直在这里循环比较（死循环）；再看使用了volatile关键字的反汇编代码，程序会先从变量中读出数据放到R1寄存器中，然后再让R1内数据与0xC8相比较，这才是我们C代码的正确逻辑！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">122</span><span style="color:#f92672">:</span>     unIdleCount<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">123</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E10</span>  E59F01D4  LDR       R0,[PC,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x01D4</span>]
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E14</span>  E3A05000  MOV       R5,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#a6e22e">key1</span>(<span style="color:#ae81ff">0x00000000</span>)
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E18</span>  E5805000  STR       R5,[R0]
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">124</span><span style="color:#f92672">:</span>     <span style="color:#66d9ef">while</span>(unIdleCount<span style="color:#f92672">!=</span><span style="color:#ae81ff">200</span>);   <span style="color:#75715e">//延时2S钟   
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#ae81ff">125</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E1C</span>  E5901000  LDR       R1,[R0]
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E20</span>  E35100C8  CMP       R1,<span style="color:#960050;background-color:#1e0010">#</span><span style="color:#ae81ff">0x000000C8</span>  
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">0x00002E24</span>  <span style="color:#ae81ff">1</span>AFFFFFC  BNE       <span style="color:#ae81ff">0x00002E1C</span>
+</span></span></code></pre></div><p>可以看到，如果没有使用volatile关键字，程序一直比较R0内数据与0xC8是否相等，但R0中的数据是0，所以程序会一直在这里循环比较（死循环）；再看使用了volatile关键字的反汇编代码，程序会先从变量中读出数据放到R1寄存器中，然后再让R1内数据与0xC8相比较，这才是我们C代码的正确逻辑！</p>
 <h3 id="局部变量">局部变量</h3>
 <p>ARM架构下的编译器会频繁的使用堆栈，堆栈用于存储函数的返回值、AAPCS规定的必须保护的寄存器以及局部变量，包括局部数组、结构体、联合体和C++的类。默认情况下，堆栈的位置、初始值都是由编译器设置，因此需要对编译器的堆栈有一定了解。</p>
 <p>从堆栈中分配的局部变量的初值是不确定的，因此需要运行时显式初始化该变量。一旦离开局部变量的作用域，这个变量立即被释放，其它代码也就可以使用它，因此堆栈中的一个内存位置可能对应整个程序的多个变量。</p>
 <p>局部变量必须显式初始化，除非你确定知道你要做什么。下面的代码得到的温度值跟预期会有很大差别，因为在使用局部变量sum时，并不能保证它的初值为0。编译器会在第一次运行时清零堆栈区域，这加重了此类Bug的隐蔽性。</p>
 <p><img src="https://www.kontronn.com/imgs/post/embedded-c-compiler-2.png" alt="Embedded Design C Compiler"></p>
 <p>由于一旦程序离开局部变量的作用域即被释放，所以下面代码返回指向局部变量的指针是没有实际意义的，该指针指向的区域可能会被其它程序使用，其值会被改变。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">
- <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GetData</span>(<span style="color:#66d9ef">void</span>)  
- {
-      <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">100</span>];      <span style="color:#75715e">//局部数组  
-</span><span style="color:#75715e"></span>      <span style="color:#960050;background-color:#1e0010">…</span>
-      <span style="color:#66d9ef">return</span> buffer;
- }
-</code></pre></div><h3 id="使用外部工具">使用外部工具</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">GetData</span>(<span style="color:#66d9ef">void</span>)  
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">char</span> buffer[<span style="color:#ae81ff">100</span>];      <span style="color:#75715e">//局部数组  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#960050;background-color:#1e0010">…</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> buffer;
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><h3 id="使用外部工具">使用外部工具</h3>
 <p>由于编译器的语义检查比较弱，我们可以使用第三方代码分析工具，使用这些工具来发现潜在的问题，这里介绍其中比较著名的是PC-Lint。</p>
 <p>PC-Lint由Gimpel Software公司开发，可以检查C代码的语法和语义并给出潜在的BUG报告。PC-Lint可以显著降低调试时间。</p>
 <p>目前公司ARM7和Cortex-M3内核多是使用Keil MDK编译器来开发程序，通过简单配置，PC-Lint可以被集成到MDK上，以便更方便的检查代码。MDK已经提供了PC-Lint的配置模板，所以整个配置过程十分简单，Keil MDK开发套件并不包含PC-Lint程序，在此之前，需要预先安装可用的PC-Lint程序，配置过程如下：</p>
@@ -618,25 +614,25 @@ PC-Lint的输出信息显示在MDK编译器的Build Output窗口中，双击其�
 <h4 id="自增自减在表达式中连续出现并作用于同一变量或者自增自减在表达式中出现一次但作用的变量多次出现">自增自减在表达式中连续出现并作用于同一变量或者自增自减在表达式中出现一次，但作用的变量多次出现</h4>
 <pre><code>自增（++）和自减（--）这一动作发生在表达式的哪个时刻是由编译器决定的，比如：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> r <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>];
-</code></pre></div><pre><code>不同的编译器可能有着不同的汇编代码，可能是先执行i++再进行乘法和加法运行，也可能是先进行加法和乘法运算，再执行i++，因为这句代码在一个表达式中出现了连续的自增并作用于同一变量。更加隐蔽的是自增自减在表达式中出现一次，但作用的变量多次出现，比如：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> r <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> a[i<span style="color:#f92672">++</span>];
+</span></span></code></pre></div><pre><code>不同的编译器可能有着不同的汇编代码，可能是先执行i++再进行乘法和加法运行，也可能是先进行加法和乘法运算，再执行i++，因为这句代码在一个表达式中出现了连续的自增并作用于同一变量。更加隐蔽的是自增自减在表达式中出现一次，但作用的变量多次出现，比如：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> a[i] <span style="color:#f92672">=</span> i<span style="color:#f92672">++</span>; <span style="color:#75715e">/* 未定义行为 */</span>
-</code></pre></div><pre><code>先执行i++再赋值，还是先赋值再执行i++是由编译器决定的，而两种不同的执行顺序的结果差别是巨大的。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> a[i] <span style="color:#f92672">=</span> i<span style="color:#f92672">++</span>; <span style="color:#75715e">/* 未定义行为 */</span>
+</span></span></code></pre></div><pre><code>先执行i++再赋值，还是先赋值再执行i++是由编译器决定的，而两种不同的执行顺序的结果差别是巨大的。
 </code></pre>
 <h4 id="函数实参被求值的顺序">函数实参被求值的顺序</h4>
 <pre><code>函数如果有多个实参，这些实参的求值顺序是由编译器决定的，比如：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> printf(<span style="color:#e6db74">&#34;%d %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">++</span>n, power(<span style="color:#ae81ff">2</span>, n));    <span style="color:#75715e">/* 未定义行为 */</span> 
-</code></pre></div><pre><code>是先执行++n还是先执行power(2,n)是由编译器决定的。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;%d %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, <span style="color:#f92672">++</span>n, <span style="color:#a6e22e">power</span>(<span style="color:#ae81ff">2</span>, n));    <span style="color:#75715e">/* 未定义行为 */</span> 
+</span></span></code></pre></div><pre><code>是先执行++n还是先执行power(2,n)是由编译器决定的。
 </code></pre>
 <h4 id="有符号整数溢出">有符号整数溢出</h4>
 <pre><code>有符号整数溢出是未定义的行为，编译器决定有符号整数溢出按照哪种方式取值。比如下面代码：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">int</span> value1,value2,sum
- <span style="color:#75715e">//其它操作  
-</span><span style="color:#75715e"></span> sum<span style="color:#f92672">=</span>value1<span style="color:#f92672">+</span>value;    <span style="color:#75715e">/*sum可能发生溢出*/</span>
-</code></pre></div><h4 id="有符号数右移移位的数量是负值或者大于操作数的位数">有符号数右移、移位的数量是负值或者大于操作数的位数</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">int</span> value1,value2,sum
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">//其它操作  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> sum<span style="color:#f92672">=</span>value1<span style="color:#f92672">+</span>value;    <span style="color:#75715e">/*sum可能发生溢出*/</span>
+</span></span></code></pre></div><h4 id="有符号数右移移位的数量是负值或者大于操作数的位数">有符号数右移、移位的数量是负值或者大于操作数的位数</h4>
 <h4 id="除数为零">除数为零</h4>
 <h4 id="malloccalloc或realloc分配零字节内存">malloc()、calloc()或realloc()分配零字节内存</h4>
 <h3 id="如何避免c语言未定义行为">如何避免C语言未定义行为</h3>
@@ -665,31 +661,31 @@ PC-Lint的输出信息显示在MDK编译器的Build Output窗口中，双击其�
 <p>检查是否溢出、除数是否为零，申请的内存数量是否为零等等，比如上面的有符号整数溢出例子，可以按照如下方式编写，以消除未定义特性：</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">
- <span style="color:#66d9ef">int</span> value1,value2,sum;
- <span style="color:#75715e">//其它代码  
-</span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span>((value1<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value2<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value1<span style="color:#f92672">&gt;</span>(INT_MAX<span style="color:#f92672">-</span>value2))<span style="color:#f92672">||</span>
-    (value1<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value2<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value1<span style="color:#f92672">&lt;</span>(INT_MIN<span style="color:#f92672">-</span>value2)))
- {
-     <span style="color:#75715e">//处理错误  
-</span><span style="color:#75715e"></span> }
- <span style="color:#66d9ef">else</span>  
- {
-     sum<span style="color:#f92672">=</span>value1<span style="color:#f92672">+</span>value2;
- }
-</code></pre></div><p>上面的代码是通用的，不依赖于任何CPU架构，但是代码效率很低。如果是有符号数使用补码的CPU架构（目前常见CPU绝大多数都是使用补码），还可以用下面的代码来做溢出检查：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> value1, value2, sum;
-<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> usum <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)value1 <span style="color:#f92672">+</span> value2;
-
-<span style="color:#66d9ef">if</span>((usum <span style="color:#f92672">^</span> value1) <span style="color:#f92672">&amp;</span> (usum <span style="color:#f92672">^</span> value2) <span style="color:#f92672">&amp;</span> INT_MIN)
-{
- <span style="color:#75715e">/*处理溢出情况*/</span>
-}
-<span style="color:#66d9ef">else</span>
-{
- sum <span style="color:#f92672">=</span> value1 <span style="color:#f92672">+</span> value2;
-}
-</code></pre></div><pre><code>使用的原理解释一下，因为在加法运算中，操作数value1和value2只有符号相同时，才可能发生溢出，所以我们先将这两个数转换为无符号类型，两个数的和保存在变量usum中。如果发生溢出，则value1、value2和usum的最高位（符号位）一定不同，表达式(usum ^ value1) &amp; (usum ^ value2) 的最高位一定为1，这个表达式位与（&amp;）上INT_MIN是为了将最高位之外的其它位设置为0。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">int</span> value1,value2,sum;
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">//其它代码  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#66d9ef">if</span>((value1<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value2<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value1<span style="color:#f92672">&gt;</span>(INT_MAX<span style="color:#f92672">-</span>value2))<span style="color:#f92672">||</span>
+</span></span><span style="display:flex;"><span>    (value1<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value2<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> value1<span style="color:#f92672">&lt;</span>(INT_MIN<span style="color:#f92672">-</span>value2)))
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>     <span style="color:#75715e">//处理错误  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">else</span>  
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>     sum<span style="color:#f92672">=</span>value1<span style="color:#f92672">+</span>value2;
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><p>上面的代码是通用的，不依赖于任何CPU架构，但是代码效率很低。如果是有符号数使用补码的CPU架构（目前常见CPU绝大多数都是使用补码），还可以用下面的代码来做溢出检查：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> value1, value2, sum;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> usum <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)value1 <span style="color:#f92672">+</span> value2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>((usum <span style="color:#f92672">^</span> value1) <span style="color:#f92672">&amp;</span> (usum <span style="color:#f92672">^</span> value2) <span style="color:#f92672">&amp;</span> INT_MIN)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#75715e">/*处理溢出情况*/</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> sum <span style="color:#f92672">=</span> value1 <span style="color:#f92672">+</span> value2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><pre><code>使用的原理解释一下，因为在加法运算中，操作数value1和value2只有符号相同时，才可能发生溢出，所以我们先将这两个数转换为无符号类型，两个数的和保存在变量usum中。如果发生溢出，则value1、value2和usum的最高位（符号位）一定不同，表达式(usum ^ value1) &amp; (usum ^ value2) 的最高位一定为1，这个表达式位与（&amp;）上INT_MIN是为了将最高位之外的其它位设置为0。
 </code></pre>
 <ul>
 <li>
@@ -729,9 +725,9 @@ II&gt; 栈或堆上的结构，例如，用malloc()或者auto定义的结构，�
 <h3 id="初始化的全局变量和静态变量的初始值被放到了哪里">初始化的全局变量和静态变量的初始值被放到了哪里？</h3>
 <pre><code>我们程序中的一些全局变量和静态变量在定义时进行了初始化，经过编译器编译后，这些初始值被存放在了代码的哪里？我们举个例子说明：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> g_unRunFlag<span style="color:#f92672">=</span><span style="color:#ae81ff">0xA5</span>;
- <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> s_unCountFlag<span style="color:#f92672">=</span><span style="color:#ae81ff">0x5A</span>;
-</code></pre></div><pre><code>我曾做过一个项目，项目中的一个设备需要在线编程，也就是通过协议，将上位机发给设备的数据通过在应用编程（IAP）技术写入到设备的内部Flash中。我将内部Flash做了划分，一小部分运行程序，大部分用来存储上位机发来的数据。随着程序量的增加，在一次更新程序后发现，在线编程之后，设备运行正常，但是重启设备后，运行出现了故障！经过一系列排查，发现故障的原因是一个全局变量的初值被改变了。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> g_unRunFlag<span style="color:#f92672">=</span><span style="color:#ae81ff">0xA5</span>;
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> s_unCountFlag<span style="color:#f92672">=</span><span style="color:#ae81ff">0x5A</span>;
+</span></span></code></pre></div><pre><code>我曾做过一个项目，项目中的一个设备需要在线编程，也就是通过协议，将上位机发给设备的数据通过在应用编程（IAP）技术写入到设备的内部Flash中。我将内部Flash做了划分，一小部分运行程序，大部分用来存储上位机发来的数据。随着程序量的增加，在一次更新程序后发现，在线编程之后，设备运行正常，但是重启设备后，运行出现了故障！经过一系列排查，发现故障的原因是一个全局变量的初值被改变了。
 
 这是件很不可思议的事情，你在定义这个变量的时候指定了初始值，当你在第一次使用这个变量时却发现这个初值已经被改掉了！这中间没有对这个变量做任何赋值操作，其它变量也没有任何溢出，并且多次在线调试表明，进入main函数的时候，该变量的初值已经被改为一个恒定值。
 
@@ -779,31 +775,31 @@ MDK编译程序生成的可执行文件中，每个输出段都最多有三个�
 <ol>
 <li>修改分散加载文件，增加一个名为MYRAM的执行节，该执行节起始地址为0x1000A000，长度为0x2000字节（8KB），由UNINIT修饰：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">   LR_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {    ; load region size_region
-   ER_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {  ; load address <span style="color:#f92672">=</span> execution address
-    <span style="color:#f92672">*</span>.o (RESET, <span style="color:#f92672">+</span>First)
-    <span style="color:#f92672">*</span>(InRoot<span style="color:#960050;background-color:#1e0010">$$</span>Sections)
-    .ANY (<span style="color:#f92672">+</span>RO)
-   }
-   RW_IRAM1 <span style="color:#ae81ff">0x10000000</span> <span style="color:#ae81ff">0x0000A000</span>  {  ; RW data
-    .ANY (<span style="color:#f92672">+</span>RW <span style="color:#f92672">+</span>ZI)
-   }
-   MYRAM <span style="color:#ae81ff">0x1000A000</span> UNINIT <span style="color:#ae81ff">0x00002000</span>  {
-    .ANY (NO_INIT)
-   }
- }
-</code></pre></div><pre><code>那么，如果在程序中有一个数组，你不想让它复位后零初始化，就可以这样来定义变量：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>   LR_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {    ; load region size_region
+</span></span><span style="display:flex;"><span>   ER_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {  ; load address <span style="color:#f92672">=</span> execution address
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>.<span style="color:#a6e22e">o</span> (RESET, <span style="color:#f92672">+</span>First)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(InRoot<span style="color:#960050;background-color:#1e0010">$$</span>Sections)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">ANY</span> (<span style="color:#f92672">+</span>RO)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   RW_IRAM1 <span style="color:#ae81ff">0x10000000</span> <span style="color:#ae81ff">0x0000A000</span>  {  ; RW data
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">ANY</span> (<span style="color:#f92672">+</span>RW <span style="color:#f92672">+</span>ZI)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   MYRAM <span style="color:#ae81ff">0x1000A000</span> UNINIT <span style="color:#ae81ff">0x00002000</span>  {
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">ANY</span> (NO_INIT)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><pre><code>那么，如果在程序中有一个数组，你不想让它复位后零初始化，就可以这样来定义变量：
 </code></pre>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span>  plc_eu_backup[<span style="color:#ae81ff">32</span>] __attribute__((at(<span style="color:#ae81ff">0x1000A000</span>)));
-</code></pre></div><pre><code>变量属性修饰符__attribute__((at(adde)))用来将变量强制定位到adde所在地址处。由于地址0x1000A000开始的8KB区域ZI变量不会被零初始化，所以位于这一区域的数组plc_eu_backup也就不会被零初始化了。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span>  plc_eu_backup[<span style="color:#ae81ff">32</span>] <span style="color:#a6e22e">__attribute__</span>((<span style="color:#a6e22e">at</span>(<span style="color:#ae81ff">0x1000A000</span>)));
+</span></span></code></pre></div><pre><code>变量属性修饰符__attribute__((at(adde)))用来将变量强制定位到adde所在地址处。由于地址0x1000A000开始的8KB区域ZI变量不会被零初始化，所以位于这一区域的数组plc_eu_backup也就不会被零初始化了。
 
 这种方法的缺点是显而易见的：要程序员手动分配变量的地址。如果非零初始化数据比较多，这将是件难以想象的大工程（以后的维护、增加、修改代码等等）。所以要找到一种办法，让编译器去自动分配这一区域的变量。
 </code></pre>
 <ol start="2">
 <li>分散加载文件同方法1，如果还是定义一个数组，可以用下面方法：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c"><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span>  plc_eu_backup[<span style="color:#ae81ff">32</span>] __attribute__((section(<span style="color:#e6db74">&#34;NO_INIT&#34;</span>),zero_init));
-</code></pre></div><pre><code>变量属性修饰符__attribute__((section(“name”),zero_init))用于将变量强制定义到name属性数据节中，zero_init表示将未初始化的变量放到ZI数据节中。因为“NO_INIT”这显性命名的自定义节，具有UNINIT属性。
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">char</span>  plc_eu_backup[<span style="color:#ae81ff">32</span>] <span style="color:#a6e22e">__attribute__</span>((<span style="color:#a6e22e">section</span>(<span style="color:#e6db74">&#34;NO_INIT&#34;</span>),zero_init));
+</span></span></code></pre></div><pre><code>变量属性修饰符__attribute__((section(“name”),zero_init))用于将变量强制定义到name属性数据节中，zero_init表示将未初始化的变量放到ZI数据节中。因为“NO_INIT”这显性命名的自定义节，具有UNINIT属性。
 </code></pre>
 <ol start="3">
 <li>
@@ -811,19 +807,19 @@ MDK编译程序生成的可执行文件中，每个输出段都最多有三个�
 <p>假如该模块名字为test.c，修改分散加载文件如下所示：</p>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-c" data-lang="c">   LR_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {    ; load region size_region
-   ER_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {  ; load address <span style="color:#f92672">=</span> execution address
-    <span style="color:#f92672">*</span>.o (RESET, <span style="color:#f92672">+</span>First)
-    <span style="color:#f92672">*</span>(InRoot<span style="color:#960050;background-color:#1e0010">$$</span>Sections)
-   }
-   RW_IRAM1 <span style="color:#ae81ff">0x10000000</span> <span style="color:#ae81ff">0x0000A000</span>  {  ; RW data
-    .ANY (<span style="color:#f92672">+</span>RW <span style="color:#f92672">+</span>ZI)
-   }
-   RW_IRAM2 <span style="color:#ae81ff">0x1000A000</span> UNINIT <span style="color:#ae81ff">0x00002000</span>  {
-    test.o (<span style="color:#f92672">+</span>ZI)
-   }
- }
-</code></pre></div><pre><code>在该模块定义时变量时使用如下方法：
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>   LR_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {    ; load region size_region
+</span></span><span style="display:flex;"><span>   ER_IROM1 <span style="color:#ae81ff">0x00000000</span> <span style="color:#ae81ff">0x00080000</span>  {  ; load address <span style="color:#f92672">=</span> execution address
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>.<span style="color:#a6e22e">o</span> (RESET, <span style="color:#f92672">+</span>First)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">*</span>(InRoot<span style="color:#960050;background-color:#1e0010">$$</span>Sections)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   RW_IRAM1 <span style="color:#ae81ff">0x10000000</span> <span style="color:#ae81ff">0x0000A000</span>  {  ; RW data
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">ANY</span> (<span style="color:#f92672">+</span>RW <span style="color:#f92672">+</span>ZI)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   RW_IRAM2 <span style="color:#ae81ff">0x1000A000</span> UNINIT <span style="color:#ae81ff">0x00002000</span>  {
+</span></span><span style="display:flex;"><span>    test.<span style="color:#a6e22e">o</span> (<span style="color:#f92672">+</span>ZI)
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><pre><code>在该模块定义时变量时使用如下方法：
 
 这里，变量属性修饰符__attribute__((zero_init))用于将未初始化的变量放到ZI数据节中变量，其实MDK默认情况下，未初始化的变量就是放在ZI数据区的。
 </code></pre>
@@ -976,7 +972,7 @@ MDK编译程序生成的可执行文件中，每个输出段都最多有三个�
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -984,7 +980,7 @@ MDK编译程序生成的可执行文件中，每个输出段都最多有三个�
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

@@ -4,7 +4,7 @@
 <head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)" />
-<meta name="generator" content="Hugo 0.92.2" />
+<meta name="generator" content="Hugo 0.135.0">
 <link rel="shortcut icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/x-icon" href="/imgs/icons/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="/imgs/icons/favicon_16x16_next.png">
@@ -32,6 +32,7 @@
 <meta property="article:modified_time" content="2024-09-16 12:06:23 &#43;0800 CST" />
 
 
+
   
   <link type="text/css" rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.1.2/css/all.min.css" />
   
@@ -39,11 +40,6 @@
 
 
 <link rel="stylesheet" href="/css/main.min.7d561ec9984cf0cb727fc88e14a92134576c99ccb9ce2f31b5b5541ab4ced328.css">
-  <style type="text/css">
-    .post-footer, .flinks-list-footer hr:after {
-      content: "~ 我可是有底线的哟 ~";
-    }
-  </style>
   <script class="next-config" data-name="page" type="application/json">{"comments":false,"isHome":false,"isPage":true,"path":"detailed-installation-and-configuration-of-linux-NTP-service.html","permalink":"https://www.kontronn.com/post/linux/detailed-installation-and-configuration-of-linux-NTP-service.html","title":"Linux NTP服务安装配置详解"}</script>
   <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', () => {
@@ -283,7 +279,7 @@
       </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-font"></i>总字数：</div>
-      <div class="item-count" id="wordsCount" data-count="58317"></div>
+      <div class="item-count" id="wordsCount" data-count="58479"></div>
     </div>
     <div class="siteinfo-item">
       <div class="item-name"><i class="fa fa-mug-hot"></i>阅读约：</div>
@@ -411,118 +407,118 @@
     <i class="fa fa-external-link-alt"></i>
 </a>提供的 NTP 服务器。</p>
 <p>先给一个完整的配置文件示例</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># /etc/ntp.conf</span>
-
-<span style="color:#75715e"># 以下是阿里云提供的公共 NTP 服务器地址：</span>
-server ntp1.aliyun.com prefer
-server ntp2.aliyun.com
-server ntp3.aliyun.com
-server ntp4.aliyun.com
-
-<span style="color:#75715e"># 下面是一些默认的 NTP 设置，您可以根据需要调整：</span>
-<span style="color:#75715e">#</span>
-<span style="color:#75715e"># 指定 NTP 服务器的最小和最大 poll 时间间隔（单位为秒）</span>
-restrict default nomodify notrap nopeer noquery
-restrict -6 default kod notrap nomodify nopeer noquery
-restrict -4 default kod notrap nomodify nopeer noquery
-
-<span style="color:#75715e"># 如果您的网络环境中有路由器或防火墙，可能需要打开 UDP 123 端口</span>
-<span style="color:#75715e"># 并允许 NTP 流量通过。以下设置允许从本地网络进行同步：</span>
-restrict 192.168.122.0 mask 255.255.255.0 nomodify notrap
-
-<span style="color:#75715e"># 如果您希望从其他特定 IP 地址或子网同步时间，可以添加类似的 restrict 行</span>
-<span style="color:#75715e"># 例如：restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap</span>
-
-<span style="color:#75715e"># 允许广播更新（如果您的网络支持广播模式）</span>
-broadcast 224.0.1.1
-
-<span style="color:#75715e"># 允许 drift 文件被写入</span>
-filegen driftfile /var/lib/ntp/drift
-
-<span style="color:#75715e"># 如果您的网络环境需要，可以指定 drift 文件的权限和所有权</span>
-<span style="color:#75715e"># filegen driftfile /var/lib/ntp/drift perm 0644 iflag 0 oflag 0</span>
-
-<span style="color:#75715e"># 设置日志选项</span>
-logging <span style="color:#f92672">{</span>
-        <span style="color:#75715e"># 记录所有的调试信息（通常不需要这个级别的日志记录）</span>
-        <span style="color:#75715e"># debugtrace;</span>
-        <span style="color:#75715e"># 记录所有与包相关的错误</span>
-        <span style="color:#75715e"># packettrace;</span>
-        <span style="color:#75715e"># 记录所有警告信息</span>
-        <span style="color:#75715e"># warningtrace;</span>
-        <span style="color:#75715e"># 记录所有校正消息</span>
-        <span style="color:#75715e"># corrtag;</span>
-<span style="color:#f92672">}</span>
-
-<span style="color:#75715e"># 以下是 NTP 的默认设置，通常不需要修改这些行</span>
-<span style="color:#75715e"># driftfile /var/lib/ntp/drift</span>
-<span style="color:#75715e"># statsdir /var/log/ntpstats</span>
-<span style="color:#75715e"># pidfile /var/run/ntpd.pid</span>
-<span style="color:#75715e"># logfile /var/log/ntp.log</span>
-
-
-<span style="color:#75715e">#配置完成后，可以通过以下命令重启 NTP 服务来应用更改：</span>
-<span style="color:#75715e">#systemctl restart ntpd</span>
-</code></pre></div><p>接下来我们展开讲讲。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># /etc/ntp.conf</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 以下是阿里云提供的公共 NTP 服务器地址：</span>
+</span></span><span style="display:flex;"><span>server ntp1.aliyun.com prefer
+</span></span><span style="display:flex;"><span>server ntp2.aliyun.com
+</span></span><span style="display:flex;"><span>server ntp3.aliyun.com
+</span></span><span style="display:flex;"><span>server ntp4.aliyun.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下面是一些默认的 NTP 设置，您可以根据需要调整：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 指定 NTP 服务器的最小和最大 poll 时间间隔（单位为秒）</span>
+</span></span><span style="display:flex;"><span>restrict default nomodify notrap nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -6 default kod notrap nomodify nopeer noquery
+</span></span><span style="display:flex;"><span>restrict -4 default kod notrap nomodify nopeer noquery
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果您的网络环境中有路由器或防火墙，可能需要打开 UDP 123 端口</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 并允许 NTP 流量通过。以下设置允许从本地网络进行同步：</span>
+</span></span><span style="display:flex;"><span>restrict 192.168.122.0 mask 255.255.255.0 nomodify notrap
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果您希望从其他特定 IP 地址或子网同步时间，可以添加类似的 restrict 行</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 例如：restrict 192.168.0.0 mask 255.255.0.0 nomodify notrap</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 允许广播更新（如果您的网络支持广播模式）</span>
+</span></span><span style="display:flex;"><span>broadcast 224.0.1.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 允许 drift 文件被写入</span>
+</span></span><span style="display:flex;"><span>filegen driftfile /var/lib/ntp/drift
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果您的网络环境需要，可以指定 drift 文件的权限和所有权</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># filegen driftfile /var/lib/ntp/drift perm 0644 iflag 0 oflag 0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设置日志选项</span>
+</span></span><span style="display:flex;"><span>logging <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 记录所有的调试信息（通常不需要这个级别的日志记录）</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># debugtrace;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 记录所有与包相关的错误</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># packettrace;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 记录所有警告信息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># warningtrace;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 记录所有校正消息</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># corrtag;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 以下是 NTP 的默认设置，通常不需要修改这些行</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># driftfile /var/lib/ntp/drift</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># statsdir /var/log/ntpstats</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pidfile /var/run/ntpd.pid</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># logfile /var/log/ntp.log</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#配置完成后，可以通过以下命令重启 NTP 服务来应用更改：</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#systemctl restart ntpd</span>
+</span></span></code></pre></div><p>接下来我们展开讲讲。</p>
 <p>准备工作</p>
 <p>关闭防火墙、关闭selinux</p>
 <p>系统版本：CentOS7.x，</p>
 <p>NTP服务器IP：192.168.1.111，客户端IP：192.168.1.179</p>
 <p>安装配置NTP服务器端</p>
 <h2 id="安装ntp">安装ntp</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp -y</span>
-</code></pre></div><h2 id="修改ntp的配置文件">修改ntp的配置文件</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
-server 127.127.1.0 <span style="color:#75715e">#以本机作为时间服务器</span>
-fudge 127.127.1.0 startnum <span style="color:#ae81ff">10</span> <span style="color:#75715e">#设置服务器层级</span>
-restrict 127.0.0.1 <span style="color:#75715e"># 允许本机使用这个时间服务器</span>
-restrict 192.168.1.0 netmask 255.255.255.0 <span style="color:#75715e">#允许允许192.168.1.0/24网段的所有主机使用该时间服务器进行时间同步</span>
-driftfile /var/lib/ntp/ <span style="color:#75715e">#记录当前时间服务器，与上游服务器的时间差的文件</span>
-logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
-</code></pre></div><h2 id="创建日志文件">创建日志文件</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash">root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/lib/ntp/</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/lib/ntp/ntp.log</span>
-</code></pre></div><h2 id="启动服务">启动服务</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl enable ntpd</span>
-</code></pre></div><h2 id="查看状态">查看状态</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntp stat</span>
-synchronised to local net at stratum <span style="color:#ae81ff">6</span> time correct to within <span style="color:#ae81ff">11</span> ms polling server every <span style="color:#ae81ff">64</span> s
-<span style="color:#75715e">#synchronised：表示时间同步完成（ntp可以正常工作了）</span>
-<span style="color:#75715e">#unsynchronised：表示时间同步尚未完成</span>
-<span style="color:#75715e"># 或者用 ntpq -p查看状态</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p </span>
-remote refid st t when poll reach delay offset jitter
-<span style="color:#f92672">==============================================================================</span>
-*LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> .LOCL. <span style="color:#ae81ff">5</span> l <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">377</span> 0.000 0.000 0.000
-</code></pre></div><h2 id="安装配置ntp客户端">安装配置NTP客户端</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp -y</span>
+</span></span></code></pre></div><h2 id="修改ntp的配置文件">修改ntp的配置文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
+</span></span><span style="display:flex;"><span>server 127.127.1.0 <span style="color:#75715e">#以本机作为时间服务器</span>
+</span></span><span style="display:flex;"><span>fudge 127.127.1.0 startnum <span style="color:#ae81ff">10</span> <span style="color:#75715e">#设置服务器层级</span>
+</span></span><span style="display:flex;"><span>restrict 127.0.0.1 <span style="color:#75715e"># 允许本机使用这个时间服务器</span>
+</span></span><span style="display:flex;"><span>restrict 192.168.1.0 netmask 255.255.255.0 <span style="color:#75715e">#允许允许192.168.1.0/24网段的所有主机使用该时间服务器进行时间同步</span>
+</span></span><span style="display:flex;"><span>driftfile /var/lib/ntp/ <span style="color:#75715e">#记录当前时间服务器，与上游服务器的时间差的文件</span>
+</span></span><span style="display:flex;"><span>logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
+</span></span></code></pre></div><h2 id="创建日志文件">创建日志文件</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/lib/ntp/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/lib/ntp/ntp.log</span>
+</span></span></code></pre></div><h2 id="启动服务">启动服务</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl enable ntpd</span>
+</span></span></code></pre></div><h2 id="查看状态">查看状态</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntp stat</span>
+</span></span><span style="display:flex;"><span>synchronised to local net at stratum <span style="color:#ae81ff">6</span> time correct to within <span style="color:#ae81ff">11</span> ms polling server every <span style="color:#ae81ff">64</span> s
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#synchronised：表示时间同步完成（ntp可以正常工作了）</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#unsynchronised：表示时间同步尚未完成</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者用 ntpq -p查看状态</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p </span>
+</span></span><span style="display:flex;"><span>remote refid st t when poll reach delay offset jitter
+</span></span><span style="display:flex;"><span><span style="color:#f92672">==============================================================================</span>
+</span></span><span style="display:flex;"><span>*LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> .LOCL. <span style="color:#ae81ff">5</span> l <span style="color:#ae81ff">13</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">377</span> 0.000 0.000 0.000
+</span></span></code></pre></div><h2 id="安装配置ntp客户端">安装配置NTP客户端</h2>
 <h3 id="安装">安装</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp ntpdate -y</span>
-</code></pre></div><h3 id="修改配置文件">修改配置文件</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
-server 192.168.1.111 <span style="color:#75715e">#设置以192.168.1.111做为本机的时间服务器</span>
-restrict 127.0.0.1
-logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
-</code></pre></div><h3 id="创建日志文件-1">创建日志文件</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/log/ntp</span>
-<span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/log/ntp/ntp.log</span>
-</code></pre></div><h3 id="先执行一次ntpdate时间同步">先执行一次ntpdate时间同步</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpdate 192.168.1.111</span>
-</code></pre></div><h3 id="启动ntpd">启动ntpd</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
-</code></pre></div><h3 id="检查状态">检查状态</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpstat</span>
-unsynchronised
-time server re-starting
-polling server every <span style="color:#ae81ff">8</span> s
-</code></pre></div><p>或者</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p</span>
-remote refid st t when poll reach delay offset jitter
-<span style="color:#f92672">==============================================================================</span>
-192.168.1.111 LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#ae81ff">6</span> u <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">1</span> 0.502 0.009 0.000
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># yum install ntp ntpdate -y</span>
+</span></span></code></pre></div><h3 id="修改配置文件">修改配置文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># cp /etc/ntp.conf{,.bak}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># vim /etc/ntp.conf</span>
+</span></span><span style="display:flex;"><span>server 192.168.1.111 <span style="color:#75715e">#设置以192.168.1.111做为本机的时间服务器</span>
+</span></span><span style="display:flex;"><span>restrict 127.0.0.1
+</span></span><span style="display:flex;"><span>logfile /var/log/ntp/ntp.log <span style="color:#75715e">#指定日志文件位置，需要手动创建</span>
+</span></span></code></pre></div><h3 id="创建日志文件-1">创建日志文件</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># mkdir /var/log/ntp</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># touch /var/log/ntp/ntp.log</span>
+</span></span></code></pre></div><h3 id="先执行一次ntpdate时间同步">先执行一次ntpdate时间同步</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpdate 192.168.1.111</span>
+</span></span></code></pre></div><h3 id="启动ntpd">启动ntpd</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start ntpd</span>
+</span></span></code></pre></div><h3 id="检查状态">检查状态</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpstat</span>
+</span></span><span style="display:flex;"><span>unsynchronised
+</span></span><span style="display:flex;"><span>time server re-starting
+</span></span><span style="display:flex;"><span>polling server every <span style="color:#ae81ff">8</span> s
+</span></span></code></pre></div><p>或者</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>root@vxworks ~<span style="color:#f92672">]</span><span style="color:#75715e"># ntpq -p</span>
+</span></span><span style="display:flex;"><span>remote refid st t when poll reach delay offset jitter
+</span></span><span style="display:flex;"><span><span style="color:#f92672">==============================================================================</span>
+</span></span><span style="display:flex;"><span>192.168.1.111 LOCAL<span style="color:#f92672">(</span>0<span style="color:#f92672">)</span> <span style="color:#ae81ff">6</span> u <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">64</span> <span style="color:#ae81ff">1</span> 0.502 0.009 0.000
+</span></span></code></pre></div>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1543398821442998"
      crossorigin="anonymous"></script>
 
@@ -666,7 +662,7 @@ remote refid st t when poll reach delay offset jitter
   
   <script type="text/javascript" src="https://unpkg.com/animejs@3.2.1/lib/anime.min.js" defer></script>
 
-<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
+<script class="next-config" data-name="main" type="application/json">{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"https://www.kontronn.com/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"unpkg","router":"https://unpkg.com"},"version":"4.3.1","waline":{"cfg":{"emoji":false,"imguploader":false,"pageview":"#waline-pageview-count","placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.11.3"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.11.3"}}}</script>
 
 
 
@@ -674,7 +670,7 @@ remote refid st t when poll reach delay offset jitter
 
 
 
-<script type="text/javascript" src="/js/main.min.7e59cf1a98d842830d8a6f149f78fbbcf9e795b7a9eb76feb34b48c9bf1554d7.js" defer></script>
+<script type="text/javascript" src="/js/main.min.8bc1e2a2ac040735a2a32d113d257bd75c45142b9842ad7526f7de5e3d3a9298.js" defer></script>
 
 
 

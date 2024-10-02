@@ -4,34 +4,23 @@
     <title>H100 on Kontronn</title>
     <link>https://www.kontronn.com/tags/h100/</link>
     <description>Recent content in H100 on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Jul 2024 20:38:29 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/h100/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Jul 2024 20:38:29 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/h100/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nvidia HGX B200主板上的NVLink Switch变化</title>
       <link>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</link>
       <pubDate>Sat, 13 Jul 2024 20:38:29 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/ai/ingrasys-shows-big-nvidia-nvlink-switch-chips-change-to-the-hgx-b200-b100.html</guid>
-      <description>&lt;p&gt;在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从
-&lt;a href=&#34;https://www.gaitpu.com/tag/h100&#34; title=&#34;H100&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    H100
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;的4个减少到2个，并且在主板上的位置也发生了变化。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在Computex 2024展览上，富士康的一个部门Ingrasys的摊位上展示了一块没有安装散热片的Nvidia HGX B200的主板。我们可以看到NVLink Switch Chip的数量，从&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/h100&#34; title=&#34;H100&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    H100&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;的4个减少到2个，并且在主板上的位置也发生了变化。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>英伟达发布H200, 高性价比全面升级</title>
       <link>https://www.kontronn.com/post/news/nvidia-launch-h200-gpu.html</link>
       <pubDate>Sun, 19 Nov 2023 09:40:58 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/news/nvidia-launch-h200-gpu.html</guid>
-      <description>&lt;p&gt;在11月13日的S23大会上，
-&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    NVIDIA
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;宣布推出NVIDIA HGX H200，为生成式人工智能和高性能计算（HPC）工作负载提供强大支持。&lt;/p&gt;</description>
+      <description>&lt;p&gt;在11月13日的S23大会上，&#xA;&lt;a href=&#34;https://www.gaitpu.com/tag/nvidia&#34; title=&#34;NVIDIA&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    NVIDIA&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;宣布推出NVIDIA HGX H200，为生成式人工智能和高性能计算（HPC）工作负载提供强大支持。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

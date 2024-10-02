@@ -4,27 +4,23 @@
     <title>Fedora on Kontronn</title>
     <link>https://www.kontronn.com/tags/fedora/</link>
     <description>Recent content in Fedora on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 Mar 2024 22:08:33 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/fedora/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Mar 2024 22:08:33 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/fedora/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>各个Linux发行版的特点和优势</title>
       <link>https://www.kontronn.com/post/linux/features-and-advantages-of-each-linux-distribution.html</link>
       <pubDate>Fri, 29 Mar 2024 22:08:33 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/features-and-advantages-of-each-linux-distribution.html</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/linux-distributions-features-advantages.png&#34; alt=&#34;Linux CentOS Ubuntu Debian Fedora&#34;&gt;&lt;/p&gt;
-&lt;p&gt;在信息化快速发展的今天，服务器操作系统的选择对于企业的业务运行至关重要。在众多操作系统中，CentOS、Ubuntu、Debian和Fedora因其独特的优势和特点而备受关注。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/linux-distributions-features-advantages.png&#34; alt=&#34;Linux CentOS Ubuntu Debian Fedora&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;在信息化快速发展的今天，服务器操作系统的选择对于企业的业务运行至关重要。在众多操作系统中，CentOS、Ubuntu、Debian和Fedora因其独特的优势和特点而备受关注。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>哪个Linux发行版可以替代Ubuntu</title>
       <link>https://www.kontronn.com/post/linux/which-linux-distribution-could-be-alternative-of-ubuntu.html</link>
       <pubDate>Thu, 17 Aug 2023 06:33:59 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/which-linux-distribution-could-be-alternative-of-ubuntu.html</guid>
       <description>&lt;p&gt;在Linux的世界里，Ubuntu是广受欢迎的一个发行版，那么究竟还有哪些Linux的发行版可以和Ubuntu媲美的呢，今天就让我们一起来看看。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

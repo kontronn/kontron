@@ -4,21 +4,16 @@
     <title>Slackware on Kontronn</title>
     <link>https://www.kontronn.com/tags/slackware/</link>
     <description>Recent content in Slackware on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 22 Jul 2023 10:02:27 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/slackware/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Jul 2023 10:02:27 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/slackware/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>最古老的Linux之一：活了30年仍在运行</title>
       <link>https://www.kontronn.com/post/linux/Slackware-Linux-30th-anniversary.html</link>
       <pubDate>Sat, 22 Jul 2023 10:02:27 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/linux/Slackware-Linux-30th-anniversary.html</guid>
-      <description>&lt;p&gt;Slackware不是第一个
-&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    Linux
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;发行版，但它仍然是迄今为止最古老的且仍在运行的Linux发行版之一。本周，Slackware Linux将迎来其30周年生日。&lt;/p&gt;</description>
+      <description>&lt;p&gt;Slackware不是第一个&#xA;&lt;a href=&#34;https://www.vxworks.net/linux&#34; title=&#34;Linux&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    Linux&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;发行版，但它仍然是迄今为止最古老的且仍在运行的Linux发行版之一。本周，Slackware Linux将迎来其30周年生日。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

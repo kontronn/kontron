@@ -1,80 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SOC on Kontronn</title>
+    <title>SoC on Kontronn</title>
     <link>https://www.kontronn.com/tags/soc/</link>
-    <description>Recent content in SOC on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in SoC on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 25 Jun 2024 13:13:45 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/soc/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jun 2024 13:13:45 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/soc/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SoC设计中的晶振是什么</title>
       <link>https://www.kontronn.com/post/soc/what-is-the-crystal-oscillator-in-soc-design.html</link>
       <pubDate>Tue, 25 Jun 2024 13:13:45 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/what-is-the-crystal-oscillator-in-soc-design.html</guid>
       <description>&lt;p&gt;晶振是电路板数字电路的＂心跳＂，在电路板中随处可见,只要用得到处理器的地方就必定有晶振的存在,即使没有外部晶振，芯片内部也有晶振。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SoC的发展趋势</title>
       <link>https://www.kontronn.com/post/soc/SoC-development-trends.html</link>
       <pubDate>Fri, 29 Mar 2024 22:40:05 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/SoC-development-trends.html</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/SoC-development-trends.png&#34; alt=&#34;SoC发展趋势&#34;&gt;
-技术进步不断地加快，不断重塑当今科技的轮廓。&lt;/p&gt;
-&lt;p&gt;硅基科技的核心就是电子元件的演变，特别是它们如何集成和互连。这些技术创新中最具突破性的创新之一是System-on-a-Chip（SoC）。要充分掌握SoC发展的意义，必须探索其起源、演变及其对当今科技格局的影响。&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://www.kontronn.com/imgs/post/SoC-development-trends.png&#34; alt=&#34;SoC发展趋势&#34;&gt;&#xA;技术进步不断地加快，不断重塑当今科技的轮廓。&lt;/p&gt;&#xA;&lt;p&gt;硅基科技的核心就是电子元件的演变，特别是它们如何集成和互连。这些技术创新中最具突破性的创新之一是System-on-a-Chip（SoC）。要充分掌握SoC发展的意义，必须探索其起源、演变及其对当今科技格局的影响。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>梳理STM32芯片的内部架构</title>
       <link>https://www.kontronn.com/post/soc/STM32-chip-internal-architecture.html</link>
       <pubDate>Sun, 22 Oct 2023 20:55:44 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/STM32-chip-internal-architecture.html</guid>
-      <description>&lt;p&gt;STM32芯片主要由内核和片上外设组成，STM32F103采用的是Cortex-M3内核，内核由
-&lt;a href=&#34;https://www.vxworks.net/arm&#34; title=&#34;ARM&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;
-    ARM
-    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;
-&lt;/a&gt;公司设计。STM32的芯片生产厂商ST，负责在内核之外设计部件并生产整个芯片。这些内核之外的部件被称为核外外设或片上外设，如 GPIO、USART（串口）、I2C、SPI 等。&lt;/p&gt;</description>
+      <description>&lt;p&gt;STM32芯片主要由内核和片上外设组成，STM32F103采用的是Cortex-M3内核，内核由&#xA;&lt;a href=&#34;https://www.vxworks.net/arm&#34; title=&#34;ARM&#34; rel=&#34;noopener external nofollow noreferrer&#34; target=&#34;_blank&#34; class=&#34; exturl&#34;&gt;&#xA;    ARM&#xA;    &lt;i class=&#34;fa fa-external-link-alt&#34;&gt;&lt;/i&gt;&#xA;&lt;/a&gt;公司设计。STM32的芯片生产厂商ST，负责在内核之外设计部件并生产整个芯片。这些内核之外的部件被称为核外外设或片上外设，如 GPIO、USART（串口）、I2C、SPI 等。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>芯片设计中的uart模块</title>
       <link>https://www.kontronn.com/post/soc/uart-module-in-chip-design.html</link>
       <pubDate>Sun, 08 Oct 2023 22:17:50 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/uart-module-in-chip-design.html</guid>
       <description>&lt;p&gt;在芯片设计中，UART（Universal Asynchronous Receiver/Transmitter，通用异步接收/发送器）模块是一个非常重要的外设模块。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>efuse在soc中的重要作用</title>
       <link>https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html</link>
       <pubDate>Fri, 06 Oct 2023 13:11:10 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/soc/the-important-role-of-efuse-in-soc.html</guid>
       <description>&lt;p&gt;在现代 SoC 设计中，efuse 是一种非常重要的技术，可以用于保护 SoC 中的敏感信息，防止黑客攻击和未经授权的访问。本文将介绍什么是 efuse，它在 SoC 设计中的应用以及它的优缺点。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>嵌入式网络接口该怎么设计</title>
       <link>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</link>
       <pubDate>Thu, 20 Jul 2023 12:23:49 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/hardware/how-to-design-embedded-network-interface.html</guid>
       <description>&lt;p&gt;本篇文章是关于嵌入式网络接口的一些知识介绍。&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>CPU、MPU、MCU和SOC的简介</title>
       <link>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</link>
       <pubDate>Fri, 23 Jun 2023 08:13:55 -0400</pubDate>
-      
       <guid>https://www.kontronn.com/post/mcu/introduction-of-cpu-mpu-mcu-soc.html</guid>
       <description>&lt;p&gt;在嵌入式开发中，我们会经常看到或接触一些专业术语，例如CPU、MPU、MCU和SOC等，并且这些专业术语出现的频率也是非常之高，在面试中也常常会作为提问的知识点，下面我们就来看一下他们之间的特点和区别。&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

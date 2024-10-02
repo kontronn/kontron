@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Embedded design on Kontronn</title>
+    <title>Embedded Design on Kontronn</title>
     <link>https://www.kontronn.com/tags/embedded-design/</link>
-    <description>Recent content in Embedded design on Kontronn</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Embedded Design on Kontronn</description>
+    <generator>Hugo</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 21 Nov 2023 13:48:03 +0800</lastBuildDate><atom:link href="https://www.kontronn.com/tags/embedded-design/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Nov 2023 13:48:03 +0800</lastBuildDate>
+    <atom:link href="https://www.kontronn.com/tags/embedded-design/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>嵌入式开发中的C语言——编译器</title>
       <link>https://www.kontronn.com/post/programming/compiler-c-programming-in-embedded-design.html</link>
       <pubDate>Tue, 21 Nov 2023 13:48:03 +0800</pubDate>
-      
       <guid>https://www.kontronn.com/post/programming/compiler-c-programming-in-embedded-design.html</guid>
       <description>&lt;p&gt;如果你和一个优秀的程序员共事，你会发现他对他使用的工具非常熟悉，就像一个画家了解他的画具一样。&amp;mdash; 比尔.盖茨&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
